@@ -1,0 +1,45 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{ross}[RossTeX]
+
+% PACKAGES
+	\usepackage{mathtools}
+	\usepackage{amsfonts}
+	\usepackage{amsthm}
+	\usepackage{centernot}
+	\usepackage{amssymb}
+	\usepackage{hyperref}
+	\hypersetup{
+		colorlinks=true,
+		pdfpagemode=UseOutlines
+	}
+	\usepackage{hypcap}
+% DEFINITIONS
+	\def \Z {\mathbb{Z}}
+	\def \R {\mathbb{R}}
+	\def \N {\mathbb{N}}
+	\def \C {\mathbb{C}}
+	\def \== {\equiv}
+	\def \>= {\ge}
+	\def \<= {\le}
+	\def \!= {\ne}
+	\def \implies {\Rightarrow}
+	\def \iff {\Leftrightarrow}
+	\def \| {\mid}
+% THEOREMS
+	\theoremstyle{plain}% default
+	\newtheorem{theorem}{Theorem}[section]
+	\newtheorem{lemma}[theorem]{Lemma}
+	\newtheorem{proposition}[theorem]{Proposition}
+	\newtheorem*{corollary}{Corollary}
+
+	\theoremstyle{definition}
+	\newtheorem{definition}{Definition}[section]
+	\newtheorem{conjecture}{Conjecture}[section]
+	\newtheorem{example}{Example}[section]
+
+	\theoremstyle{remark}
+	\newtheorem*{remark}{Remark}
+	\newtheorem*{note}{Note}
+	\newtheorem{case}{Case}
+
+\endinput
