@@ -30,8 +30,7 @@
 
 [alias]
 	# natives
-	diff = diff --word-diff=plain
-	dif = diff --word-diff=plain
+	diff = diff --word-diff
 	grep = grep -Ii
 
 	# file-system metaphor
@@ -43,6 +42,7 @@
 	# shortcuts
 	amend = commit --amend
 	s = status -sb
+	df = diff --word-diff
 	staged = diff --staged
 	unstage = reset HEAD --
 	scrap = reset --hard HEAD
