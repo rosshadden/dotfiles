@@ -8,16 +8,50 @@
 	trustExitCode = false
 [merge]
 	tool = sublime
+
 [color]
 	ui = true
+    branch = auto
+    diff = auto
+    status = auto
+[color "branch"]
+    current = red reverse
+    local = blue
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
 [alias]
-	amend = commit --amend
-	s = status
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	# natives
+	diff = diff --word-diff=plain
+	dif = diff --word-diff=plain
+	grep = grep -Ii
+
+	# file-system metaphor
 	ls = status
 	cat = log -u
 	pwd = rev-parse --abbrev-ref HEAD
+	find = "!git ls-files | grep -i"
+
+	# shortcuts
+	amend = commit --amend
+	s = status -sb
+	staged = diff --staged
+	unstage = reset HEAD --
+	scrap = reset --hard HEAD
+
+	# dynamic
 	in = "!sh -c 'git pull ${1-origin} ${2-$(git pwd)}' -"
 	out = "!sh -c 'git push ${1-origin} ${2-$(git pwd)}' -"
+
+	# logging
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
 	new = "!sh -c 'git log $1@{1}..$1@{0} "$@"' -"
