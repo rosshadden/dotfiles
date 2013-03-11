@@ -35,7 +35,7 @@
 
 	# file-system metaphor
 	ls = status
-	cat = log -u
+	cat = log -u --word-diff
 	pwd = rev-parse --abbrev-ref HEAD
 	find = "!git ls-files | grep -i"
 
@@ -43,7 +43,7 @@
 	amend = commit --amend
 	s = status -sb
 	df = diff --word-diff
-	staged = diff --staged
+	staged = diff --staged --word-diff
 	unstage = reset HEAD --
 	scrap = reset --hard HEAD
 
