@@ -3,30 +3,30 @@
 	email = rosshadden@gmail.com
 [core]
 	editor = nano
-[mergetool "sublime"]
-	cmd = sublime -w $MERGED
+[mergetool "subl"]
+	cmd = subl -w $MERGED
 	trustExitCode = false
 [merge]
-	tool = sublime
+	tool = subl
 
 [color]
 	ui = true
-    branch = auto
-    diff = auto
-    status = auto
+	branch = auto
+	diff = auto
+	status = auto
 [color "branch"]
-    current = red reverse
-    local = blue
-    remote = green
+	current = red reverse
+	local = blue
+	remote = green
 [color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
 [color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
+	added = yellow
+	changed = green
+	untracked = cyan
 
 [alias]
 	# natives
@@ -50,8 +50,17 @@
 	# dynamic
 	in = "!sh -c 'git pull ${1-origin} ${2-$(git pwd)}' -"
 	out = "!sh -c 'git push ${1-origin} ${2-$(git pwd)}' -"
+	sync = "!git in && git out"
 
 	# logging
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
 	new = "!sh -c 'git log $1@{1}..$1@{0} "$@"' -"
+	co = checkout
+	c = commit
+	g = grep --break --heading --line-number
+[remote "origin"]
+	#fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+[grep]
+	extendRegexp = true
+	lineNumber = true

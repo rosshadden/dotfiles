@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="norm"
-ZSH_THEME="agnoster"
+ZSH_THEME="ross"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -29,10 +29,13 @@ ZSH_THEME="agnoster"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(battery command-not-found extract github grails node npm python nyan sublime)
+# Example format: plugins=(rails git textmate ruby lighthouse command-not-found)
+plugins=(extract git github grails node npm python nyan sublime)
+#plugins=(battery extract github grails node npm python nyan sublime vi-mode)
+#bindkey -M viins 'jj' vi-cmd-mode
 
 source $ZSH/oh-my-zsh.sh
+unsetopt correct_all
 
 # Customize to your needs...
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
@@ -42,6 +45,7 @@ export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/u
 #   ROSS
 . /home/$USER/Dropbox/.dots/path.sh
 . /home/$USER/Dropbox/.dots/alias.sh
+. /home/$USER/custom.sh
 
 # PROMPT='%{$fg[yellow]%}λ %{$fg[green]%}${PWD/#$HOME/~} %{$fg[yellow]%}→ $(git_prompt_info)%{$reset_color%}'
 
