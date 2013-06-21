@@ -6,6 +6,8 @@ var sys = require('sys'),
 	program = require('commander'),
 	Lazy = require('lazy');
 
+var config = require("./config");
+
 var puts = function(error, stdout, stderr) {
 	if (stdout.length) {
 		sys.puts(stdout);
@@ -51,8 +53,11 @@ program
 	.action(function(version) {
 		if (!program.get && !program.set) {
 			if (version) {
+				if (!/^\d+\.\d+\.\d+$/.test(version)) {
+					version = config.programs[version] || version;
+				}
 				run('update-alternatives --set grails /usr/share/grails/' + version + '/bin/grails');
-				console.log('Grails switched to ' + version + '.');
+				console.log("Grails switched to %s.", version);
 			}
 		}
 
