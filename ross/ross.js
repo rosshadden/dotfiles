@@ -46,9 +46,9 @@ program
 	});
 
 program
-	.command('grails [version]')
-	.description('Switch to a specified grails version.')
-	.option('-g, --get', 'Print the current version.')
+	.command("grails [version]")
+	.description("Switch to a specified grails version.")
+	.option("-g, --get", "Print the current version.")
 	.option("-s, --set [project]", "Set the version for a project.")
 	.action(function(version) {
 		if (!program.get && !program.set) {
@@ -56,17 +56,17 @@ program
 				if (!/^\d+\.\d+\.\d+$/.test(version)) {
 					version = config.programs[version] || version;
 				}
-				run('update-alternatives --set grails /usr/share/grails/' + version + '/bin/grails');
+				run("gvm use grails" + version);
 				console.log("Grails switched to %s.", version);
 			}
 		}
 
 		if (program.get) {
-			run('update-alternatives --get-selections | grep grails');
+			run("gvm current grails");
 		}
 
 		if (program.set) {
-			run('update-alternatives --get-selections | grep grails');
+			run("update-alternatives --get-selections | grep grails");
 		}
 	});
 
