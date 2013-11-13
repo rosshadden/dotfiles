@@ -8,6 +8,7 @@ alias ross-git-merge="git checkout master && git merge dev && git checkout dev &
 alias suspend="dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"
 alias l='ls -la'
 alias du='du --block-size=M'
+alias tree="ls -R | grep \":$\" | sed -e 's/:$//' -e 's/[^-][^\/]*\//----/g' -e 's/^/   /' -e 's/-/|/'"
 
 autoload -U edit-command-line
 zle -N edit-command-line
