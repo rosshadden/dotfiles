@@ -48,27 +48,33 @@ program
 program
 	.command("grails [version]")
 	.description("Switch to a specified grails version.")
-	.option("-g, --get", "Print the current version.")
-	.option("-s, --set [project]", "Set the version for a project.")
-	.action(function(version) {
-		if (!program.get && !program.set) {
+	.option("-g, --get <project>", "Return version used by a given project.")
+	.option("-s, --set <project> <version>", "Set the version for a project.")
+	.option("-c, --current", "Print the current version.")
+	.action(function(version, options) {
+		if (!options.get && !options.set && !options.current) {
 			if (version) {
 				if (!/^\d+\.\d+\.\d+$/.test(version)) {
 					version = config.programs[version] || version;
 				}
 				// run("update-alternatives --set grails /usr/share/grails/" + version + "/bin/grails");
-				run("gvm use grails" + version);
+				// run("gvm use grails" + version);
 				console.log("Grails switched to %s.", version);
 			}
 		}
 
-		if (program.get) {
+		if (options.current) {
 			// run("update-alternatives --get-selections | grep grails");
-			run("gvm current grails");
+			// run("gvm current grails");
+			console.log("Current.");
 		}
 
-		if (program.set) {
-			run("update-alternatives --get-selections | grep grails");
+		if (options.get) {
+			console.log(config.programs[options.get]);
+		}
+
+		if (options.set) {
+			config.programs[options.set] = version;
 		}
 	});
 
