@@ -2,6 +2,7 @@
 
 var sys = require('sys'),
 	fs = require('fs'),
+	path = require('path'),
 	exec = require('child_process').exec,
 	program = require('commander'),
 	Lazy = require('lazy');
@@ -75,6 +76,9 @@ program
 
 		if (options.set) {
 			config.programs[options.set] = version;
+			fs.writeFile(path.join(__dirname, "config.json"), JSON.stringify(config, null, "\t"), function() {
+				console.log("%s set to use version %s.", options.set, version);
+			});
 		}
 	});
 
