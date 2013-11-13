@@ -1,0 +1,22 @@
+{
+  "name": "ross",
+  "version": "0.0.1",
+  "description": "Local useful thing.",
+  "engines": {
+    "node": ">=0.8"
+  },
+  "author": {
+    "name": "Ross Hadden",
+    "email": "ross@rhadden.com"
+  },
+  "main": "./ross.js",
+  "bin": "./ross.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rosshadden/dotfiles"
+  },
+  "dependencies": {
+    "commander": "~2.0.0",
+    "lazy": "~1.0.11"
+  }
+}

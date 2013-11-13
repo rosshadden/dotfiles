@@ -56,12 +56,14 @@ program
 				if (!/^\d+\.\d+\.\d+$/.test(version)) {
 					version = config.programs[version] || version;
 				}
+				// run("update-alternatives --set grails /usr/share/grails/" + version + "/bin/grails");
 				run("gvm use grails" + version);
 				console.log("Grails switched to %s.", version);
 			}
 		}
 
 		if (program.get) {
+			// run("update-alternatives --get-selections | grep grails");
 			run("gvm current grails");
 		}
 
