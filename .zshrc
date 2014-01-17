@@ -46,4 +46,4 @@ export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/u
 # PROMPT='%{$fg[yellow]%}λ %{$fg[green]%}${PWD/#$HOME/~} %{$fg[yellow]%}→ $(git_prompt_info)%{$reset_color%}'
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "/home/rhadden/.gvm/bin/gvm-init.sh" ]] && source "/home/rhadden/.gvm/bin/gvm-init.sh"
+[[ -s "/home/$USER/.gvm/bin/gvm-init.sh" ]] && source "/home/$USER/.gvm/bin/gvm-init.sh"
