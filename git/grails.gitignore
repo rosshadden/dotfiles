@@ -1,0 +1,56 @@
+################
+# GENERAL
+################
+*.zip
+*.psd
+*.TODO
+/test-data/pdf/*
+/test-data/xml/*
+
+################
+# LOGS
+################
+*.log
+/logs
+
+################
+# WINDOWS
+################
+*.db
+
+################
+# LINUX
+################
+.fuse_hidden*
+
+################
+# VCS
+################
+CVS/
+.svn
+
+################
+# EDITOR
+################
+*.sublime-*
+/.settings
+/eclipse
+/target-eclipse
+
+################
+# GRAILS
+################
+*.war
+/target/
+prodDb.*
+*Db.script
+*Db.properties
+devDB.script
+devDB.properties
+/test/reports
+/plugins
+/web-app/plugins
+/web-app/WEB-INF/classes
+/.link_to_grails_plugins
+deploy.sh
+/data/
