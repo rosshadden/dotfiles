@@ -1,7 +1,7 @@
 export DEFAULT_USER=$USER
 
 export _NO_RESOLVE_SYMLINKS=true
-. /home/$USER/Dropbox/.dots/z/z.sh
+. $HOME/Dropbox/.dots/z/z.sh
 function precmd () {
 	_z --add "$(pwd)"
 }
@@ -15,3 +15,5 @@ export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64
 export PATH=$PATH:~/npm/bin:~/pear/bin
 
 export EDITOR=vi
+
+stty -ixon

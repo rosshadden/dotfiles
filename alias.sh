@@ -10,6 +10,7 @@ alias l='ls -lah'
 alias du='du -h'
 alias tree="ls -R | grep \":$\" | sed -e 's/:$//' -e 's/[^-][^\/]*\//----/g' -e 's/^/   /' -e 's/-/|/'"
 alias t='tmux'
+alias db='dropbox'
 
 # These are useful with the Dvorak keyboard layout
 alias 'h=l'

@@ -26,7 +26,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse command-not-found)
-plugins=(extract git github grails node npm python nyan sublime history-substring-search)
+plugins=(extract git github grails node npm python nyan sublime history-substring-search tmux)
 #plugins=(battery extract github grails node npm python nyan sublime vi-mode)
 #bindkey -M viins 'jj' vi-cmd-mode
 
@@ -39,11 +39,11 @@ export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/u
 
 ################################################################
 #   ROSS
-. /home/$USER/Dropbox/.dots/path.sh
-. /home/$USER/Dropbox/.dots/alias.sh
-. /home/$USER/.local.sh
+. $HOME/Dropbox/.dots/path.sh
+. $HOME/Dropbox/.dots/alias.sh
+. $HOME/.local.sh
 
 # PROMPT='%{$fg[yellow]%}λ %{$fg[green]%}${PWD/#$HOME/~} %{$fg[yellow]%}→ $(git_prompt_info)%{$reset_color%}'
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "/home/$USER/.gvm/bin/gvm-init.sh" ]] && source "/home/$USER/.gvm/bin/gvm-init.sh"
+[[ -s "$HOME/.gvm/bin/gvm-init.sh" ]] && source "$HOME/.gvm/bin/gvm-init.sh"

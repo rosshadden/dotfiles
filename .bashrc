@@ -109,9 +109,9 @@ fi
 ################
 #   ROSS
 ################
-. /home/$USER/Dropbox/.dots/path.sh
-. /home/$USER/Dropbox/.dots/alias.sh
+. $HOME/Dropbox/.dots/path.sh
+. $HOME/Dropbox/.dots/alias.sh
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/home/rhadden/.gvm/bin/gvm-init.sh" ]] && source "/home/rhadden/.gvm/bin/gvm-init.sh"
+[[ -s "$HOME/.gvm/bin/gvm-init.sh" ]] && source "$HOME/.gvm/bin/gvm-init.sh"
