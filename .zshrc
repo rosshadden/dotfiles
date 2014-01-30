@@ -31,6 +31,7 @@ plugins=(extract git github grails node npm python nyan sublime history-substrin
 #bindkey -M viins 'jj' vi-cmd-mode
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/Dropbox/.dots/scripts/vim.zsh
 unsetopt correct_all
 
 # Customize to your needs...
