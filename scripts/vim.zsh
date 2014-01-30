@@ -1,3 +1,6 @@
+# Shamelessly modified from https://github.com/sharat87/zsh-vim-mode
+# Huge thanks to @sharat87 !
+
 # Original from oh-my-zsh plugins.
 
 function zle-line-init zle-keymap-select {
