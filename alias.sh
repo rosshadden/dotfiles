@@ -12,6 +12,11 @@ alias tree="ls -R | grep \":$\" | sed -e 's/:$//' -e 's/[^-][^\/]*\//----/g' -e 
 alias t='tmux'
 alias db='dropbox'
 
+# Making these symlinks instead so sudo may benefit.
+# alias Y="yaourt"
+# alias P="pacman"
+# alias S="systemctl"
+
 # These are useful with the Dvorak keyboard layout
 alias 'h=l'
 alias 'hs=ls'
@@ -20,6 +25,12 @@ alias 'hh=ll'
 
 alias aoeu='if [ $DISPLAY ]; then setxkbmap -option grp_led:scroll -layout us,dvorak; else loadkeys us; fi'
 alias asdf='if [ $DISPLAY ]; then setxkbmap -option grp_led:scroll -layout dvorak,us; else loadkeys dvorak; fi'
+
+if [ -f /usr/local/bin/vimpager ]; then
+	export PAGER=/usr/local/bin/vimpager
+	alias less=$PAGER
+	alias zless=$PAGER
+fi
 
 autoload -U edit-command-line
 zle -N edit-command-line

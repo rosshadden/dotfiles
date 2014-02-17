@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="norm"
-ZSH_THEME="ross"
+ZSH_THEME="agnoster"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -42,7 +42,7 @@ export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/u
 #   ROSS
 . $HOME/Dropbox/.dots/path.sh
 . $HOME/Dropbox/.dots/alias.sh
-. $HOME/.local.sh
+[[ -e "$HOME/.local.sh" ]] && . $HOME/.local.sh
 
 # PROMPT='%{$fg[yellow]%}λ %{$fg[green]%}${PWD/#$HOME/~} %{$fg[yellow]%}→ $(git_prompt_info)%{$reset_color%}'
 

@@ -1,8 +1,19 @@
+filetype plugin on
+syntax on
+
 set number
 set smartcase
 set incsearch
 set hlsearch
 set mouse=a
+
+" Let arrow keys pass \n
+set whichwrap=b,s,<,>,[,]
+
+" Preserve cursor position
+if has("autocmd")
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
 
 " ctrl+s to save
 noremap		<silent> <C-S>		:update<CR>
@@ -21,3 +32,6 @@ inoremap	<silent> <C-X>		<C-O>:wq<CR>
 
 " U to redo
 noremap		U					<c-r>
+" Y to act similar to D and C.
+nmap Y y$
+
