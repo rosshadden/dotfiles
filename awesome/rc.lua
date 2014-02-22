@@ -185,7 +185,7 @@ end
 
 	-- Net
 		neticon = wibox.widget.imagebox(beautiful.net)
-		neticon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn_with_shell(iptraf) end)))
+		neticon:buttons(awful.util.table.join(awful.button({}, 1, function () awful.util.spawn_with_shell(iptraf) end)))
 		netwidget = wibox.widget.background(lain.widgets.net({
 			settings = function()
 				widget:set_markup(
@@ -243,22 +243,25 @@ end
 		arrl_ld = wibox.widget.imagebox()
 		arrl_ld:set_image(beautiful.arrl_ld)
 
+	-- DEBUG
+		debug = wibox.widget.textbox("")
+
 	-- Create a wibox for each screen and add it
 	mywibox = {}
 	mypromptbox = {}
 	mylayoutbox = {}
 	mytaglist = {}
 	mytaglist.buttons = awful.util.table.join(
-		awful.button({ }, 1, awful.tag.viewonly),
+		awful.button({}, 1, awful.tag.viewonly),
 		awful.button({ modkey }, 1, awful.client.movetotag),
-		awful.button({ }, 3, awful.tag.viewtoggle),
+		awful.button({}, 3, awful.tag.viewtoggle),
 		awful.button({ modkey }, 3, awful.client.toggletag),
-		awful.button({ }, 4, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
-		awful.button({ }, 5, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end)
+		awful.button({}, 4, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end),
+		awful.button({}, 5, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end)
 	)
 	mytasklist = {}
 	mytasklist.buttons = awful.util.table.join(
-		awful.button({ }, 1, function(c)
+		awful.button({}, 1, function(c)
 			if c == client.focus then
 				c.minimized = true
 			else
@@ -274,7 +277,7 @@ end
 				c:raise()
 			end
 		end),
-		awful.button({ }, 3, function()
+		awful.button({}, 3, function()
 			if instance then
 				instance:hide()
 				instance = nil
@@ -282,11 +285,11 @@ end
 				instance = awful.menu.clients({ width=250 })
 			end
 		end),
-		awful.button({ }, 4, function()
+		awful.button({}, 4, function()
 			awful.client.focus.byidx(1)
 			if client.focus then client.focus:raise() end
 		end),
-		awful.button({ }, 5, function()
+		awful.button({}, 5, function()
 			awful.client.focus.byidx(-1)
 			if client.focus then client.focus:raise() end
 		end)
@@ -300,10 +303,10 @@ end
 		mylayoutbox[s] = awful.widget.layoutbox(s)
 		mylayoutbox[s]:buttons(
 			awful.util.table.join(
-				awful.button({ }, 1, function() awful.layout.inc(layouts, 1) end),
-				awful.button({ }, 3, function() awful.layout.inc(layouts, -1) end),
-				awful.button({ }, 4, function() awful.layout.inc(layouts, 1) end),
-				awful.button({ }, 5, function() awful.layout.inc(layouts, -1) end)
+				awful.button({}, 1, function() awful.layout.inc(layouts, 1) end),
+				awful.button({}, 3, function() awful.layout.inc(layouts, -1) end),
+				awful.button({}, 4, function() awful.layout.inc(layouts, 1) end),
+				awful.button({}, 5, function() awful.layout.inc(layouts, -1) end)
 			)
 		)
 		-- Create a taglist widget
@@ -346,6 +349,7 @@ end
 		right_layout:add(arrl_ld)
 			right_layout:add(mytextclock)
 		right_layout:add(mylayoutbox[s])
+		right_layout:add(debug)
 
 		-- Now bring it all together (with the tasklist in the middle)
 		local layout = wibox.layout.align.horizontal()
@@ -359,9 +363,9 @@ end
 
 -- {{{ Mouse bindings
 	root.buttons(awful.util.table.join(
-		awful.button({ }, 3, function() mainmenu:toggle() end),
-		awful.button({ }, 4, awful.tag.viewprev),
-		awful.button({ }, 5, awful.tag.viewnext)
+		awful.button({}, 3, function() mainmenu:toggle() end),
+		awful.button({}, 4, awful.tag.viewprev),
+		awful.button({}, 5, awful.tag.viewnext)
 	))
 -- }}}
 
@@ -476,11 +480,11 @@ end
 			end),
 
 		-- Volume keys
-	   awful.key({ }, "XF86AudioRaiseVolume", function()
+	   awful.key({}, "XF86AudioRaiseVolume", function()
 		   awful.util.spawn("amixer set Master 5+", false) end),
-	   awful.key({ }, "XF86AudioLowerVolume", function()
+	   awful.key({}, "XF86AudioLowerVolume", function()
 		   awful.util.spawn("amixer set Master 5-", false) end),
-	   awful.key({ }, "XF86AudioMute", function()
+	   awful.key({}, "XF86AudioMute", function()
 		   awful.util.spawn("amixer set Master toggle", false) end)
 	)
 
@@ -489,44 +493,40 @@ end
 	-- This should map on the top row of your keyboard, usually 1 to 9.
 	for i = 1, 9 do
 		globalkeys = awful.util.table.join(globalkeys,
-			awful.key({ modkey }, "#" .. i + 9,
-					  function()
-							local screen = mouse.screen
-							local tag = awful.tag.gettags(screen)[i]
-							if tag then
-							   awful.tag.viewonly(tag)
-							end
-					  end),
-			awful.key({ modkey, "Control" }, "#" .. i + 9,
-					  function()
-						  local screen = mouse.screen
-						  local tag = awful.tag.gettags(screen)[i]
-						  if tag then
-							 awful.tag.viewtoggle(tag)
-						  end
-					  end),
-			awful.key({ modkey, "Shift" }, "#" .. i + 9,
-					  function()
-						  if client.focus then
-							  local tag = awful.tag.gettags(client.focus.screen)[i]
-							  if tag then
-								  awful.client.movetotag(tag)
-							  end
-						 end
-					  end),
-			awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
-					  function()
-						  if client.focus then
-							  local tag = awful.tag.gettags(client.focus.screen)[i]
-							  if tag then
-								  awful.client.toggletag(tag)
-							  end
-						  end
-					  end))
+			awful.key({ modkey }, "#" .. i + 9, function()
+				local screen = mouse.screen
+				local tag = awful.tag.gettags(screen)[i]
+				if tag then
+					awful.tag.viewonly(tag)
+				end
+			end),
+			awful.key({ modkey, "Control" }, "#" .. i + 9, function()
+				local screen = mouse.screen
+				local tag = awful.tag.gettags(screen)[i]
+				if tag then
+					awful.tag.viewtoggle(tag)
+				end
+			end),
+			awful.key({ modkey, "Shift" }, "#" .. i + 9, function()
+				if client.focus then
+					local tag = awful.tag.gettags(client.focus.screen)[i]
+					if tag then
+						awful.client.movetotag(tag)
+					end
+				end
+			end),
+			awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9, function()
+				if client.focus then
+					local tag = awful.tag.gettags(client.focus.screen)[i]
+					if tag then
+						awful.client.toggletag(tag)
+					end
+				end
+			end))
 	end
 
 	clientbuttons = awful.util.table.join(
-		awful.button({ }, 1, function(c) client.focus = c; c:raise() end),
+		awful.button({}, 1, function(c) client.focus = c; c:raise() end),
 		awful.button({ modkey }, 1, awful.mouse.client.move),
 		awful.button({ modkey }, 3, awful.mouse.client.resize))
 
@@ -535,23 +535,44 @@ end
 -- }}}
 
 -- {{{ Rules
+	left = 1
+	right = screen.count()
 	awful.rules.rules = {
 		-- All clients will match this rule.
-		{ rule = { },
-		  properties = { border_width = beautiful.border_width,
-						 border_color = beautiful.border_normal,
-						 focus = awful.client.focus.filter,
-						 keys = clientkeys,
-						 buttons = clientbuttons } },
-		{ rule = { class = "MPlayer" },
-		  properties = { floating = true } },
-		{ rule = { class = "pinentry" },
-		  properties = { floating = true } },
-		{ rule = { class = "gimp" },
-		  properties = { floating = true } },
-		-- Set Firefox to always map on tags number 2 of screen 1.
-		-- { rule = { class = "Firefox" },
-		--   properties = { tag = tags[1][2] } },
+		{
+			rule = {},
+			properties = {
+				border_width = beautiful.border_width,
+				border_color = beautiful.border_normal,
+				focus = awful.client.focus.filter,
+				keys = clientkeys,
+				buttons = clientbuttons
+			}
+		}, {
+			rule = { class = "MPlayer" },
+			properties = { floating = true }
+		}, {
+			rule = { class = "pinentry" },
+			properties = { floating = true }
+		}, {
+			rule = { class = "gimp" },
+			properties = { floating = true }
+		}, {
+			rule = { class = "Chrome" },
+			properties = { tag = tags[left][1] }
+		}, {
+			rule = { instance = "spacefm" },
+			properties = { tag = tags[left][5] }
+		}, {
+			rule = { instance = "geeqie" },
+			properties = { tag = tags[left][7] }
+		}, {
+			rule = { instance = "skype" },
+			properties = { tag = tags[left][8] }
+		}, {
+			rule = { instance = "subl" },
+			properties = { tag = tags[right][2] }
+		}
 	}
 -- }}}
 
@@ -559,12 +580,12 @@ end
 	-- Signal function to execute when a new client appears.
 	client.connect_signal("manage", function(c, startup)
 		-- Enable sloppy focus
-		c:connect_signal("mouse::enter", function(c)
-			if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-				and awful.client.focus.filter(c) then
-				client.focus = c
-			end
-		end)
+		-- c:connect_signal("mouse::enter", function(c)
+		-- 	if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
+		-- 		and awful.client.focus.filter(c) then
+		-- 		client.focus = c
+		-- 	end
+		-- end)
 
 		if not startup then
 			-- Set the windows at the slave,
@@ -582,17 +603,17 @@ end
 		if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
 			-- buttons for the titlebar
 			local buttons = awful.util.table.join(
-					awful.button({ }, 1, function()
-						client.focus = c
-						c:raise()
-						awful.mouse.client.move(c)
-					end),
-					awful.button({ }, 3, function()
-						client.focus = c
-						c:raise()
-						awful.mouse.client.resize(c)
-					end)
-					)
+				awful.button({}, 1, function()
+					client.focus = c
+					c:raise()
+					awful.mouse.client.move(c)
+				end),
+				awful.button({}, 3, function()
+					client.focus = c
+					c:raise()
+					awful.mouse.client.resize(c)
+				end)
+			)
 
 			-- Widgets that are aligned to the left
 			local left_layout = wibox.layout.fixed.horizontal()
