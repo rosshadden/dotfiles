@@ -208,6 +208,7 @@
 
 	-- Create a wibox for each screen and add it
 	mywibox = {}
+	mywibox2 = {}
 	mypromptbox = {}
 	mylayoutbox = {}
 	mytaglist = {}
@@ -277,6 +278,7 @@
 
 		-- Create the wibox
 		mywibox[s] = awful.wibox({ position = "top", screen = s })
+		-- mywibox2[s] = awful.wibox({ position = "left", screen = s })
 
 		-- Widgets that are aligned to the left
 		local left_layout = wibox.layout.fixed.horizontal()
@@ -314,10 +316,14 @@
 		-- Now bring it all together (with the tasklist in the middle)
 		local layout = wibox.layout.align.horizontal()
 		layout:set_left(left_layout)
-		layout:set_middle(mytasklist[s])
+		-- layout:set_middle(mytasklist[s])
 		layout:set_right(right_layout)
-
 		mywibox[s]:set_widget(layout)
+
+		-- local layout2 = wibox.layout.rotate()
+		-- layout2:set_widget(mytasklist[s])
+		-- layout2:set_direction("east")
+		-- mywibox2[s]:set_widget(layout2)
 	end
 
 
@@ -441,11 +447,11 @@
 
 			-- Volume keys
 		   awful.key({}, "XF86AudioRaiseVolume", function()
-			   awful.util.spawn("amixer set Master 5+", false) end),
+			   awful.util.spawn("pulseaudio-ctl up", false) end),
 		   awful.key({}, "XF86AudioLowerVolume", function()
-			   awful.util.spawn("amixer set Master 5-", false) end),
+			   awful.util.spawn("pulseaudio-ctl down", false) end),
 		   awful.key({}, "XF86AudioMute", function()
-			   awful.util.spawn("amixer set Master toggle", false) end)
+			   awful.util.spawn("pulseaudio-ctl mute", false) end)
 		)
 
 		-- Bind all key numbers to tags.
@@ -559,7 +565,7 @@
 			end
 		end
 
-		local titlebars_enabled = false
+		local titlebars_enabled = true
 		if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
 			-- buttons for the titlebar
 			local buttons = awful.util.table.join(
@@ -601,7 +607,11 @@
 			layout:set_right(right_layout)
 			layout:set_middle(middle_layout)
 
-			awful.titlebar(c):set_widget(layout)
+			local vert = wibox.layout.rotate()
+			vert:set_direction("east")
+			vert:set_widget(layout)
+
+			awful.titlebar(c, { position = "left" }):set_widget(vert)
 		end
 	end)
 

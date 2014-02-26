@@ -1,31 +1,42 @@
-getImagePath = function(app, size)
-	size = size or "32"
-	return "/usr/share/icons/hicolor/" .. size .. "x" .. size .. "/apps/" .. app .. ".png"
+getImagePath = function(options)
+	options.size = options.size or "32"
+	options.category = options.category or "apps"
+	options.ext = options.ext or "png"
+	local icon = "/usr/share/icons/hicolor/" .. options.size .. "x" .. options.size .. "/" .. options.category .. "/" .. options.app .. "." .. options.ext
+	print(icon)
+	return icon
 end
 
 hr = "-----------------------"
 
 
 function init(awesome, beautiful)
-	awesomemenu = {
+	awesomeMenu = {
 		{ "manual", handlers["terminal"] .. " -e man awesome" },
 		{ "edit config", handlers["edit"] .. " " .. awesome.conffile },
 		{ "restart", awesome.restart }
 	}
 
-	appsmenu = {
-		{ "Chrome", "chrome", getImagePath("google-chrome") },
-		{ "Sublime Text", "subl", getImagePath("sublime-text") },
-		{ "Skype", "skype", getImagePath("skype") },
+	appsMenu = {
+		{ "Chrome", "chrome --profile-directory=Default", getImagePath{ app = "google-chrome" }},
+		{ "Chrome - Zipscene", "chrome --profile-directory=Zipscene", getImagePath{ app = "zipscene", size = 72, category = "places" }},
+		{ "Sublime Text", "subl", getImagePath{ app = "sublime-text" }},
+		{ "SpaceFM", handlers["fm"], getImagePath{ app = "spacefm", size = 48 }},
+		{ "Terminator", handlers["terminal"], getImagePath{ app = "terminator" }},
+		{ "Skype", "skype", getImagePath{ app = "skype" }},
 	}
 
-	soundmenu = {
+	filesMenu = {}
+
+	terminalMenu = {}
+
+	soundMenu = {
 		{ "ALSA", handlers["terminal"] .. " -e alsamixer" },
 		{ "Mute toggle", "amixer set Master toggle" }
 	}
 
-	powermenu = {
-		{ "awesome", awesomemenu, beautiful.awesome_icon },
+	powerMenu = {
+		{ "awesome", awesomeMenu, beautiful.awesome_icon },
 		{ "Switch user", "dm-tool switch-to-greeter" },
 		{ "Sleep", "systemctl suspend" },
 		-- { "Hibernate", "systemctl hibernate" },
@@ -36,13 +47,13 @@ function init(awesome, beautiful)
 
 	return {
 		items = {
-			{ "apps", appsmenu, beautiful.awesome_icon },
+			{ "APPS", appsMenu, beautiful.awesome_icon },
 			{ hr },
-			{ "sound", soundmenu },
-			{ "files", handlers["fm"], getImagePath("spacefm", 48) },
-			{ "terminal", handlers["terminal"], getImagePath("terminator") },
+			{ "FILES", filesMenu, getImagePath{ app = "spacefm", size = 48 }},
+			{ "TERMINAL", terminalMenu, getImagePath{ app = "terminator" }},
+			{ "SOUND", soundMenu },
 			{ hr },
-			{ "power", powermenu },
+			{ "POWER", powerMenu },
 		}
 	}
 end
