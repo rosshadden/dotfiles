@@ -7,10 +7,20 @@ getImagePath = function(options)
 	return icon
 end
 
+makeBrowse = function(path)
+	return handlers["fm"] .. " " .. path
+end
+
+makeRun = function(cmd)
+	return handlers["terminal"] .. " -x run " .. cmd
+end
+
 hr = "-----------------------"
 
 
-function init(awesome, beautiful)
+function init(awesome, awful, beautiful)
+	local exec = awful.util.spawn
+
 	awesomeMenu = {
 		{ "manual", handlers["terminal"] .. " -e man awesome" },
 		{ "edit config", handlers["edit"] .. " " .. awesome.conffile },
@@ -23,12 +33,27 @@ function init(awesome, beautiful)
 		{ "Sublime Text", "subl", getImagePath{ app = "sublime-text" }},
 		{ "SpaceFM", handlers["fm"], getImagePath{ app = "spacefm", size = 48 }},
 		{ "Terminator", handlers["terminal"], getImagePath{ app = "terminator" }},
+		{ "Gimp", "gimp", getImagePath{ app = "gimp" }},
 		{ "Skype", "skype", getImagePath{ app = "skype" }},
 	}
 
-	filesMenu = {}
+	filesMenu = {
+		{ "Home", makeBrowse("~") },
+		{ "Download", makeBrowse("~/downloads") },
+	}
 
-	terminalMenu = {}
+	terminalMenu = {
+		{ "Finch", makeRun("finch") },
+		{ "Tmux", function()
+			local curTag = awful.tag.selected(mouse.screen).name
+			local doesExist = awful.util.pread("tmux list-sessions | sed -r 's|^(\\w+): .*|\\1|' | grep " .. curTag )
+			if doesExist == curTag .. "\n" then
+				exec(makeRun("tmux attach -t " .. curTag))
+			else
+				exec(makeRun("tmux new-session -s " .. curTag))
+			end
+		end },
+	}
 
 	soundMenu = {
 		{ "ALSA", handlers["terminal"] .. " -e alsamixer" },

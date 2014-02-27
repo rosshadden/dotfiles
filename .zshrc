@@ -44,6 +44,8 @@ export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/u
 . $HOME/Dropbox/.dots/alias.sh
 [[ -e "$HOME/.local.sh" ]] && . $HOME/.local.sh
 
+KEYTIMEOUT=1
+
 # PROMPT='%{$fg[yellow]%}λ %{$fg[green]%}${PWD/#$HOME/~} %{$fg[yellow]%}→ $(git_prompt_info)%{$reset_color%}'
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

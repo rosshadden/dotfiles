@@ -55,6 +55,8 @@
 	}
 	handlers["edit"] = handlers["terminal"] .. " -e " .. handlers["editor"]
 
+	current = {}
+
 	-- Default modkey.
 	-- Usually, Mod4 is the key with a logo between Control and Alt.
 	-- If you do not like this or do not have such a key,
@@ -97,11 +99,20 @@
 
 
 -- MENU
-	mainmenu = awful.menu(menu(awesome, beautiful))
+	mainmenu = awful.menu(menu(awesome, awful, beautiful))
 	mylauncher = awful.widget.launcher({
 		image = beautiful.awesome_icon,
 		menu = mainmenu
 	})
+
+	awful.menu.menu_keys = {
+		up    = { "k", "Up" },
+		down  = { "j", "Down" },
+		exec  = { "l", "Return", "Right" },
+		enter = { "Right" },
+		back  = { "h", "Left" },
+		close = { "q", "Escape" },
+	}
 
 	-- Menubar configuration
 	menubar.utils.terminal = handlers["terminal"] -- Set the terminal for applications that require it
@@ -330,7 +341,9 @@
 -- BINDS
 	-- MOUSE
 		root.buttons(awful.util.table.join(
-			awful.button({}, 3, function() mainmenu:toggle() end),
+			awful.button({}, 3, function()
+				mainmenu:toggle()
+			end),
 			awful.button({}, 4, awful.tag.viewprev),
 			awful.button({}, 5, awful.tag.viewnext)
 		))
