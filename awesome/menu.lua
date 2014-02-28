@@ -21,6 +21,16 @@ hr = "-----------------------"
 function init(awesome, awful, beautiful)
 	local exec = awful.util.spawn
 
+	tmuxThatShit = function()
+		local curTag = awful.tag.selected(mouse.screen).name
+		local doesExist = awful.util.pread("tmux list-sessions | sed -r 's|^(\\w+): .*|\\1|' | grep " .. curTag )
+		if doesExist == curTag .. "\n" then
+			exec(makeRun("tmux attach -t " .. curTag))
+		else
+			exec(makeRun("tmux new-session -s " .. curTag))
+		end
+	end
+
 	awesomeMenu = {
 		{ "manual", handlers["terminal"] .. " -e man awesome" },
 		{ "edit config", handlers["edit"] .. " " .. awesome.conffile },
@@ -39,20 +49,12 @@ function init(awesome, awful, beautiful)
 
 	filesMenu = {
 		{ "Home", makeBrowse("~") },
-		{ "Download", makeBrowse("~/downloads") },
+		{ "Downloads", makeBrowse("~/downloads") },
 	}
 
 	terminalMenu = {
 		{ "Finch", makeRun("finch") },
-		{ "Tmux", function()
-			local curTag = awful.tag.selected(mouse.screen).name
-			local doesExist = awful.util.pread("tmux list-sessions | sed -r 's|^(\\w+): .*|\\1|' | grep " .. curTag )
-			if doesExist == curTag .. "\n" then
-				exec(makeRun("tmux attach -t " .. curTag))
-			else
-				exec(makeRun("tmux new-session -s " .. curTag))
-			end
-		end },
+		{ "Tmux", tmuxThatShit },
 	}
 
 	soundMenu = {
@@ -63,6 +65,7 @@ function init(awesome, awful, beautiful)
 	powerMenu = {
 		{ "awesome", awesomeMenu, beautiful.awesome_icon },
 		{ "Switch user", "dm-tool switch-to-greeter" },
+		{ "Lock", "dm-tool lock" },
 		{ "Sleep", "systemctl suspend" },
 		-- { "Hibernate", "systemctl hibernate" },
 		-- { "Hybrid-sleep", "systemctl hybrid-sleep" },

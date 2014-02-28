@@ -323,6 +323,7 @@
 			right_layout:add(mytextclock)
 		right_layout:add(mylayoutbox[s])
 		right_layout:add(debug)
+		right_layout:add(wibox.widget.textbox(s))
 
 		-- Now bring it all together (with the tasklist in the middle)
 		local layout = wibox.layout.align.horizontal()
@@ -410,6 +411,8 @@
 
 			-- Standard program
 			awful.key({ modkey,		   }, "t", function() awful.util.spawn(handlers["terminal"]) end),
+			awful.key({ modkey,	"Shift" }, "t", tmuxThatShit),
+
 			awful.key({ modkey, "Control" }, "r", awesome.restart),
 			-- awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
@@ -436,7 +439,9 @@
 						  awful.util.getdir("cache") .. "/history_eval")
 					  end),
 			-- Menubar
-			awful.key({ modkey }, "p", function() menubar.show() end)
+			awful.key({ modkey }, "p", function() menubar.show() end),
+
+			awful.key({ modkey }, "Delete", function() awful.util.spawn("dm-tool lock") end)
 		)
 
 		clientkeys = awful.util.table.join(
