@@ -23,7 +23,7 @@ function init(awesome, awful, beautiful)
 
 	tmuxThatShit = function()
 		local curTag = awful.tag.selected(mouse.screen).name
-		local doesExist = awful.util.pread("tmux list-sessions | sed -r 's|^(\\w+): .*|\\1|' | grep " .. curTag )
+		local doesExist = awful.util.pread("tmux list-sessions | sed -r 's|^(.+): .*|\\1|' | grep " .. curTag )
 		if doesExist == curTag .. "\n" then
 			exec(makeRun("tmux attach -t " .. curTag))
 		else

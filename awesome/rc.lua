@@ -92,9 +92,13 @@
 -- TAGS
 	-- Define a tag table which hold all screen tags.
 	tags = {}
+	tagNames = { "explore", "dev", "sync", "hack", "browse", "VI", "read", "communicate", "run" }
+	tagNames = { "☁",      "{}",  "⌥",   "λ",    "browse", "♫",  "¶",   "☎",          "∞"   }
+	tagNames = { "",      "{}",  "",   "",   "",      "",  "",  "",          ""   }
+
 	for s = 1, screen.count() do
 		-- Each screen has its own tag table.
-		tags[s] = awful.tag({ "explore", "dev", "sync", "hack", "browse", "VI", "read", "communicate", "run" }, s, layouts[2])
+		tags[s] = awful.tag(tagNames, s, layouts[2])
 	end
 
 
