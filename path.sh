@@ -15,6 +15,6 @@ export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64
 export PATH=$PATH:~/pear/bin
 export PATH=$PATH:$HOME/local/bin
 
-export EDITOR=vi
+export EDITOR=vim
 
 stty -ixon

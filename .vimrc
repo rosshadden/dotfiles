@@ -6,6 +6,7 @@ set smartcase
 set incsearch
 set hlsearch
 set mouse=a
+set pastetoggle=
 
 " Let arrow keys pass \n
 set whichwrap=b,s,<,>,[,]

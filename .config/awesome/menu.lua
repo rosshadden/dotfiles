@@ -49,6 +49,7 @@ function init(awesome, awful, beautiful)
 
 	filesMenu = {
 		{ "Home", makeBrowse("~") },
+		{ "Dropbox", makeBrowse("~/Dropbox") },
 		{ "Downloads", makeBrowse("~/downloads") },
 	}
 
@@ -59,7 +60,7 @@ function init(awesome, awful, beautiful)
 
 	soundMenu = {
 		{ "ALSA", handlers["terminal"] .. " -e alsamixer" },
-		{ "Mute toggle", "amixer set Master toggle" }
+		{ "Mute toggle", "pulseaudio-ctl mute" }
 	}
 
 	powerMenu = {

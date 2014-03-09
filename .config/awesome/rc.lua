@@ -92,9 +92,9 @@
 -- TAGS
 	-- Define a tag table which hold all screen tags.
 	tags = {}
-	tagNames = { "explore", "dev", "sync", "hack", "browse", "VI", "read", "communicate", "run" }
-	tagNames = { "☁",      "{}",  "⌥",   "λ",    "browse", "♫",  "¶",   "☎",          "∞"   }
-	tagNames = { "",      "{}",  "",   "",   "",      "",  "",  "",          ""   }
+	tagNames = { "explore", "dev", "sync", "hack", "browse", "read", "communicate", "chat", "run" }
+	tagNames = { "☁",      "{}",  "⌥",   "λ",    "browse", "¶",    "☎",          "♫",   "∞"   }
+	tagNames = { "",      "{}",  "",    "",    "",     "",   "",           "",   ""  }
 
 	for s = 1, screen.count() do
 		-- Each screen has its own tag table.
@@ -128,7 +128,7 @@
 	-- clock
 		clockicon = wibox.widget.imagebox(beautiful.widget_clock)
 		mytextclock = wibox.widget.background(
-			awful.widget.textclock(" %a %d %b %H:%M")
+			awful.widget.textclock("%a %b %d, %H:%M")
 		, "#313131")
 
 	-- calendar
@@ -556,7 +556,7 @@
 			properties = { tag = tags[left][7] }
 		}, {
 			rule = { instance = "skype" },
-			properties = { tag = tags[left][8] }
+			properties = { tag = tags[left][7] }
 		}, {
 			rule = { instance = "subl" },
 			properties = { tag = tags[right][2] }
