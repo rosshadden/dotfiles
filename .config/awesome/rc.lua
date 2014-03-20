@@ -468,12 +468,23 @@
 				end),
 
 			-- Volume keys
-		   awful.key({}, "XF86AudioRaiseVolume", function()
-			   awful.util.spawn("pulseaudio-ctl up", false) end),
-		   awful.key({}, "XF86AudioLowerVolume", function()
-			   awful.util.spawn("pulseaudio-ctl down", false) end),
-		   awful.key({}, "XF86AudioMute", function()
-			   awful.util.spawn("pulseaudio-ctl mute", false) end)
+			awful.key({}, "XF86AudioRaiseVolume", function()
+				awful.util.spawn("pulseaudio-ctl up", false)
+			end),
+			awful.key({}, "XF86AudioLowerVolume", function()
+				awful.util.spawn("pulseaudio-ctl down", false)
+			end),
+			awful.key({}, "XF86AudioMute", function()
+				awful.util.spawn("pulseaudio-ctl mute", false)
+			end),
+
+			-- Screenshots
+			awful.key({}, "Print", function()
+				awful.util.spawn("escrotum /home/ross/img/%Y-%m-%d-%T.png", false)
+			end),
+			awful.key({ "Control", "Shift" }, "Print", function()
+				awful.util.spawn("escrotum -s /home/ross/img/%Y-%m-%d-%T.png", false)
+			end)
 		)
 
 		-- Bind all key numbers to tags.
@@ -553,7 +564,7 @@
 			properties = { tag = tags[left][5] }
 		}, {
 			rule = { instance = "geeqie" },
-			properties = { tag = tags[left][7] }
+			properties = { tag = tags[left][6] }
 		}, {
 			rule = { instance = "skype" },
 			properties = { tag = tags[left][7] }

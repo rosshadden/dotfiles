@@ -41,21 +41,22 @@ function init(awesome, awful, beautiful)
 		{ "Chrome", "chrome --profile-directory=Default", getImagePath{ app = "google-chrome" }},
 		{ "Chrome - Zipscene", "chrome --profile-directory=Zipscene", getImagePath{ app = "zipscene", size = 72, category = "places" }},
 		{ "Sublime Text", "subl", getImagePath{ app = "sublime-text" }},
-		{ "SpaceFM", handlers["fm"], getImagePath{ app = "spacefm", size = 48 }},
-		{ "Terminator", handlers["terminal"], getImagePath{ app = "terminator" }},
+		{ "Steam", "steam", getImagePath{ app = "steam" }},
 		{ "Gimp", "gimp", getImagePath{ app = "gimp" }},
 		{ "Skype", "skype", getImagePath{ app = "skype" }},
 	}
 
 	filesMenu = {
+		{ "SpaceFM", handlers["fm"], getImagePath{ app = "spacefm", size = 48 }},
 		{ "Home", makeBrowse("~") },
 		{ "Dropbox", makeBrowse("~/Dropbox") },
 		{ "Downloads", makeBrowse("~/downloads") },
 	}
 
 	terminalMenu = {
-		{ "Finch", makeRun("finch") },
+		{ "Terminator", handlers["terminal"], getImagePath{ app = "terminator" }},
 		{ "Tmux", tmuxThatShit },
+		{ "Finch", makeRun("finch") },
 	}
 
 	soundMenu = {
