@@ -298,7 +298,7 @@
 		-- Widgets that are aligned to the left
 		local left_layout = wibox.layout.fixed.horizontal()
 			-- left_layout:add(spr)
-		left_layout:add(mylauncher)
+		-- left_layout:add(mylauncher)
 		left_layout:add(mytaglist[s])
 		left_layout:add(mypromptbox[s])
 
@@ -346,9 +346,9 @@
 -- BINDS
 	-- MOUSE
 		root.buttons(awful.util.table.join(
-			awful.button({}, 3, function()
-				mainmenu:toggle()
-			end),
+			-- awful.button({}, 3, function()
+			-- 	mainmenu:toggle()
+			-- end),
 			awful.button({}, 4, awful.tag.viewprev),
 			awful.button({}, 5, awful.tag.viewnext)
 		))

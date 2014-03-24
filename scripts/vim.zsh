@@ -19,7 +19,11 @@ bindkey -M vicmd ' ' execute-named-cmd # Space for command line mode
 # Bind expected keys.
 # DEL
 bindkey "\e[3~" delete-char
+bindkey -M vicmd "\e[3~" delete-char
+bindkey -M viins "\e[3~" delete-char
 #bindkey "^e[3~" delete-word
+#bindkey -M vicmd "^e[3~" delete-word
+#bindkey -M viins "^e[3~" delete-word
 # HOME
 bindkey '\e[1~' vi-beginning-of-line
 bindkey '\eOH' vi-beginning-of-line
