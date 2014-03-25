@@ -15,6 +15,7 @@
 	local lain = require("lain")
 
 	-- Mine
+	local util = require("util")
 	local menu = require("menu")
 
 
@@ -103,7 +104,7 @@
 
 
 -- MENU
-	mainmenu = awful.menu(menu(awesome, awful, beautiful))
+	mainmenu = awful.menu(menu(awesome, beautiful))
 	mylauncher = awful.widget.launcher({
 		image = beautiful.awesome_icon,
 		menu = mainmenu
@@ -414,8 +415,8 @@
 				end),
 
 			-- Standard program
-			awful.key({ modkey,		   }, "t", function() awful.util.spawn(handlers["terminal"]) end),
-			awful.key({ modkey,	"Shift" }, "t", tmuxThatShit),
+			awful.key({ modkey,		   }, "t", function() util.spawn(handlers["terminal"]) end),
+			awful.key({ modkey,	"Shift" }, "t", util.tmuxify),
 
 			awful.key({ modkey, "Control" }, "r", awesome.restart),
 			-- awful.key({ modkey, "Shift"   }, "q", awesome.quit),
@@ -445,7 +446,7 @@
 			-- Menubar
 			awful.key({ modkey }, "p", function() menubar.show() end),
 
-			awful.key({ modkey }, "Delete", function() awful.util.spawn("dm-tool lock") end)
+			awful.key({ modkey }, "Delete", function() util.spawn("dm-tool lock") end)
 		)
 
 		clientkeys = awful.util.table.join(
@@ -469,21 +470,21 @@
 
 			-- Volume keys
 			awful.key({}, "XF86AudioRaiseVolume", function()
-				awful.util.spawn("pulseaudio-ctl up", false)
+				util.spawn("pulseaudio-ctl up", false)
 			end),
 			awful.key({}, "XF86AudioLowerVolume", function()
-				awful.util.spawn("pulseaudio-ctl down", false)
+				util.spawn("pulseaudio-ctl down", false)
 			end),
 			awful.key({}, "XF86AudioMute", function()
-				awful.util.spawn("pulseaudio-ctl mute", false)
+				util.spawn("pulseaudio-ctl mute", false)
 			end),
 
 			-- Screenshots
 			awful.key({}, "Print", function()
-				awful.util.spawn("escrotum /home/ross/img/%Y-%m-%d-%T.png", false)
+				util.spawn("escrotum /home/ross/img/%Y-%m-%d-%T.png", false)
 			end),
 			awful.key({ "Control", "Shift" }, "Print", function()
-				awful.util.spawn("escrotum -s /home/ross/img/%Y-%m-%d-%T.png", false)
+				util.spawn("escrotum -s /home/ross/img/%Y-%m-%d-%T.png", false)
 			end)
 		)
 
