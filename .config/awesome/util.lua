@@ -29,6 +29,15 @@ local tmuxify = function()
 	end
 end
 
+local isArray = function(t)
+	local i = 0
+	for _ in pairs(t) do
+		i = i + 1
+		if t[i] == nil then return false end
+	end
+	return true
+end
+
 
 return {
 	spawn = spawn,
@@ -36,5 +45,6 @@ return {
 	getImagePath = getImagePath,
 	makeBrowse = makeBrowse,
 	makeRun = makeRun,
-	tmuxify = tmuxify
+	tmuxify = tmuxify,
+	isArray = isArray,
 }

@@ -7,7 +7,9 @@
 	-- Widget and layout library
 	local wibox = require("wibox")
 	-- Theme handling library
-	local beautiful = require("beautiful")
+	beautiful = require("beautiful")
+	theme = "ross"
+	beautiful.init(awful.util.getdir("config") .. "/themes/" .. theme .. "/theme.lua")
 	-- Notification library
 	local naughty = require("naughty")
 	local menubar = require("menubar")
@@ -15,17 +17,19 @@
 	local lain = require("lain")
 
 	-- Mine
+	local apps = require("apps")
 	local util = require("util")
-	local menu = require("menu")
 
 
 -- ERRORS
 	-- Check if awesome encountered an error during startup and fell back to
 	-- another config (This code will only ever execute for the fallback config)
 	if awesome.startup_errors then
-		naughty.notify({ preset = naughty.config.presets.critical,
-						 title = "Oops, there were errors during startup!",
-						 text = awesome.startup_errors })
+		naughty.notify({
+			preset = naughty.config.presets.critical,
+			title = "Oops, there were errors during startup!",
+			text = awesome.startup_errors
+		})
 	end
 
 	-- Handle runtime errors after startup
@@ -36,33 +40,17 @@
 			if in_error then return end
 			in_error = true
 
-			naughty.notify({ preset = naughty.config.presets.critical,
-							 title = "Oops, an error happened!",
-							 text = err })
+			naughty.notify({
+				preset = naughty.config.presets.critical,
+				title = "Oops, an error happened!",
+				text = err
+			})
 			in_error = false
 		end)
 	end
 
 
 -- VARIABLES
-	-- Themes define colours, icons, and wallpapers
-	theme = "ross"
-	beautiful.init(awful.util.getdir("config") .. "/themes/" .. theme .. "/theme.lua")
-
-	handlers = {
-		terminal = "terminator",
-		fm = "spacefm",
-		editor = os.getenv("EDITOR") or "vim"
-	}
-	handlers["edit"] = handlers["terminal"] .. " -e " .. handlers["editor"]
-
-	current = {}
-
-	-- Default modkey.
-	-- Usually, Mod4 is the key with a logo between Control and Alt.
-	-- If you do not like this or do not have such a key,
-	-- I suggest you to remap Mod4 to another key using xmodmap or other tools.
-	-- However, you can use another modifier like Mod1, but it may interact with others.
 	modkey = "Mod4"
 
 	-- Table of layouts to cover with awful.layout.inc, order matters.
@@ -93,9 +81,7 @@
 -- TAGS
 	-- Define a tag table which hold all screen tags.
 	tags = {}
-	tagNames = { "explore", "dev", "sync", "hack", "browse", "read", "communicate", "chat", "run" }
-	tagNames = { "☁",      "{}",  "⌥",   "λ",    "browse", "¶",    "☎",          "♫",   "∞"   }
-	tagNames = { "",      "{}",  "",    "",    "",     "",   "",           "",   ""  }
+	tagNames = { "", "{}", "", "", "", "", "", "", "" }
 
 	for s = 1, screen.count() do
 		-- Each screen has its own tag table.
@@ -104,7 +90,7 @@
 
 
 -- MENU
-	mainmenu = awful.menu(menu(awesome, beautiful))
+	mainmenu = awful.menu(apps["menu"])
 	mylauncher = awful.widget.launcher({
 		image = beautiful.awesome_icon,
 		menu = mainmenu
@@ -161,7 +147,7 @@
 
 	-- Net
 		neticon = wibox.widget.imagebox(beautiful.net)
-		neticon:buttons(awful.util.table.join(awful.button({}, 1, function () awful.util.spawn_with_shell(iptraf) end)))
+		neticon:buttons(awful.util.table.join(awful.button({}, 1, function() awful.util.spawn_with_shell(iptraf) end)))
 		netwidget = wibox.widget.background(lain.widgets.net({
 			settings = function()
 				widget:set_markup(
@@ -552,26 +538,29 @@
 			rule = { class = "MPlayer" },
 			properties = { floating = true }
 		}, {
+			rule = { class = "Qalculate!" },
+			properties = { floating = true }
+		}, {
 			rule = { class = "pinentry" },
 			properties = { floating = true }
 		}, {
 			rule = { class = "gimp" },
 			properties = { floating = true }
-		}, {
-			rule = { class = "Chrome" },
-			properties = { tag = tags[left][1] }
-		}, {
-			rule = { instance = "spacefm" },
-			properties = { tag = tags[left][5] }
-		}, {
-			rule = { instance = "geeqie" },
-			properties = { tag = tags[left][6] }
-		}, {
-			rule = { instance = "skype" },
-			properties = { tag = tags[left][7] }
-		}, {
-			rule = { instance = "subl" },
-			properties = { tag = tags[right][2] }
+		-- }, {
+		-- 	rule = { class = "Chrome" },
+		-- 	properties = { tag = tags[left][1] }
+		-- }, {
+		-- 	rule = { instance = "spacefm" },
+		-- 	properties = { tag = tags[left][5] }
+		-- }, {
+		-- 	rule = { instance = "geeqie" },
+		-- 	properties = { tag = tags[left][6] }
+		-- }, {
+		-- 	rule = { instance = "skype" },
+		-- 	properties = { tag = tags[left][7] }
+		-- }, {
+		-- 	rule = { instance = "subl" },
+		-- 	properties = { tag = tags[right][2] }
 		}
 	}
 
