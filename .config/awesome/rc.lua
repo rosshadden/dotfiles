@@ -476,7 +476,7 @@
 				local url = "http://rhadden.com/img/" .. file
 
 				util.spawn("escrotum " .. path, false)
-				util.exec("echo -n " .. url .. " | xsel -ib")
+				util.copy(url)
 
 				naughty.notify({
 					title = "Screenshot saved",
@@ -490,11 +490,21 @@
 				local url = "http://rhadden.com/img/" .. file
 
 				util.spawn("escrotum -s " .. path, false)
-				util.exec("echo -n " .. url .. " | xsel -ib")
+				util.copy(url)
 
 				naughty.notify({
 					title = "Screenshot saved",
 					text = path .. "\n" .. url
+				})
+			end),
+
+			-- Debug
+			awful.key({ modkey, "Control" }, "space", function()
+				local clip = util.paste()
+
+				naughty.notify({
+					title = "Screenshot saved",
+					text = "["..clip.."]"
 				})
 			end)
 		)

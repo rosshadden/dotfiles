@@ -1,9 +1,11 @@
 local awful = require("awful")
 
-local spawn = awful.util.spawn
-local exec = awful.util.pread
+local util = {}
 
-local getIconPath = function(options)
+util.spawn = awful.util.spawn
+util.exec = awful.util.pread
+
+util.getIconPath = function(options)
 	options.size = options.size or "32"
 	options.category = options.category or "apps"
 	options.ext = options.ext or "png"
@@ -11,25 +13,35 @@ local getIconPath = function(options)
 	return icon
 end
 
-local makeBrowse = function(path)
+util.makeBrowse = function(path)
 	return handlers["fm"] .. " " .. path
 end
 
-local makeRun = function(cmd)
+util.makeRun = function(cmd)
 	return handlers["terminal"] .. " -x run " .. cmd
 end
 
-local tmuxify = function()
+util.copy = function(contents)
+	util.exec("echo -n " .. contents .. " | xsel -ib")
+	return contents
+end
+
+util.paste = function()
+	local contents = util.exec("xsel -b")
+	return contents
+end
+
+util.tmuxify = function()
 	local curTag = awful.tag.selected(mouse.screen).name
-	local doesExist = exec("tmux list-sessions | sed -r 's|^(.+): .*|\\1|' | grep " .. curTag)
+	local doesExist = util.exec("tmux list-sessions | sed -r 's|^(.+): .*|\\1|' | grep " .. curTag)
 	if doesExist == curTag .. "\n" then
-		spawn(makeRun("tmux attach -t " .. curTag))
+		util.spawn(util.makeRun("tmux attach -t " .. curTag))
 	else
-		spawn(makeRun("tmux new-session -s " .. curTag))
+		util.spawn(util.makeRun("tmux new-session -s " .. curTag))
 	end
 end
 
-local isArray = function(t)
+util.isArray = function(t)
 	local i = 0
 	for _ in pairs(t) do
 		i = i + 1
@@ -39,12 +51,4 @@ local isArray = function(t)
 end
 
 
-return {
-	spawn = spawn,
-	exec = exec,
-	getIconPath = getIconPath,
-	makeBrowse = makeBrowse,
-	makeRun = makeRun,
-	tmuxify = tmuxify,
-	isArray = isArray,
-}
+return util
