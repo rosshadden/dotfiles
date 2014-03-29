@@ -1,5 +1,5 @@
-alias copy='xclip -selection c'
-alias paste='xclip -o -selection CLIPBOARD'
+alias copy='xsel -ib'
+alias paste='xsel -b'
 
 alias g='git'
 alias open='xdg-open'
@@ -23,8 +23,8 @@ alias 'hs=ls'
 alias 'ha=la'
 alias 'hh=ll'
 
-alias aoeu='if [ $DISPLAY ]; then setxkbmap -option grp_led:scroll -layout us,dvorak; else loadkeys us; fi'
-alias asdf='if [ $DISPLAY ]; then setxkbmap -option grp_led:scroll -layout dvorak,us; else loadkeys dvorak; fi'
+alias aoeu='if [ $DISPLAY ]; then setxkbmap -option grp_led:scroll -option caps:escape -option compose:ralt -layout us,dvorak; else loadkeys us; fi'
+alias asdf='if [ $DISPLAY ]; then setxkbmap -option grp_led:scroll -option caps:escape -option compose:ralt -layout dvorak,us; else loadkeys dvorak; fi'
 
 if [ -f /usr/local/bin/vimpager ]; then
 	export PAGER=/usr/local/bin/vimpager

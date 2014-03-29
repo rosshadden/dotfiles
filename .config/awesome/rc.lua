@@ -285,7 +285,11 @@
 		-- Widgets that are aligned to the left
 		local left_layout = wibox.layout.fixed.horizontal()
 			-- left_layout:add(spr)
-		-- left_layout:add(mylauncher)
+
+		if util.exec("whoami") ~= "ross\n" then
+			left_layout:add(mylauncher)
+		end
+
 		left_layout:add(mytaglist[s])
 		left_layout:add(mypromptbox[s])
 
@@ -333,9 +337,9 @@
 -- BINDS
 	-- MOUSE
 		root.buttons(awful.util.table.join(
-			-- awful.button({}, 3, function()
-			-- 	mainmenu:toggle()
-			-- end),
+			awful.button({ modkey }, 3, function()
+				mainmenu:toggle()
+			end),
 			awful.button({}, 4, awful.tag.viewprev),
 			awful.button({}, 5, awful.tag.viewnext)
 		))
@@ -404,7 +408,7 @@
 			awful.key({ modkey,		   }, "t", function() util.spawn(handlers["terminal"]) end),
 			awful.key({ modkey,	"Shift" }, "t", util.tmuxify),
 
-			awful.key({ modkey, "Control" }, "r", awesome.restart),
+			awful.key({ modkey, "Control" }, "r", awful.util.restart),
 			-- awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
 			awful.key({ modkey,	"Control" }, "j",	 function() awful.tag.incmwfact( 0.05)	end),
@@ -467,10 +471,31 @@
 
 			-- Screenshots
 			awful.key({}, "Print", function()
-				util.spawn("escrotum /home/ross/img/%Y-%m-%d-%T.png", false)
+				local file = os.date("%Y-%m-%d-%T.png")
+				local path = "/srv/http/img/" .. file
+				local url = "http://rhadden.com/img/" .. file
+
+				util.spawn("escrotum " .. path, false)
+				util.exec("echo -n " .. url .. " | xsel -ib")
+
+				naughty.notify({
+					title = "Screenshot saved",
+					text = path .. "\n" .. url
+				})
 			end),
+
 			awful.key({ "Control", "Shift" }, "Print", function()
-				util.spawn("escrotum -s /home/ross/img/%Y-%m-%d-%T.png", false)
+				local file = os.date("%Y-%m-%d-%T.png")
+				local path = "/srv/http/img/" .. file
+				local url = "http://rhadden.com/img/" .. file
+
+				util.spawn("escrotum -s " .. path, false)
+				util.exec("echo -n " .. url .. " | xsel -ib")
+
+				naughty.notify({
+					title = "Screenshot saved",
+					text = path .. "\n" .. url
+				})
 			end)
 		)
 

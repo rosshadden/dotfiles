@@ -11,19 +11,19 @@ apps["list"] = {
 	chrome = {
 		name = "Chrome",
 		cmd = "chrome --profile-directory=Default",
-		icon = util.getImagePath{ app = "google-chrome" }
+		icon = util.getIconPath{ app = "google-chrome" }
 	},
 
 	chromeZipscene = {
 		name = "Chrome - Zipscene",
 		cmd = "chrome --profile-directory=Zipscene",
-		icon = util.getImagePath{ app = "zipscene", size = 72, category = "places" }
+		icon = util.getIconPath{ app = "zipscene", size = 72, category = "places" }
 	},
 
 	sublime = {
 		name = "Sublime Text",
 		cmd = "subl",
-		icon = util.getImagePath{ app = "sublime-text" }
+		icon = util.getIconPath{ app = "sublime-text" }
 	},
 
 	firefox = {
@@ -34,19 +34,36 @@ apps["list"] = {
 	steam = {
 		name = "Steam",
 		cmd = "steam",
-		icon = util.getImagePath{ app = "steam" }
+		icon = util.getIconPath{ app = "steam" }
+	},
+
+	transmission = {
+		name = "Transmission",
+		cmd = "transmission-gtk"
 	},
 
 	gimp = {
 		name = "Gimp",
 		cmd = "gimp",
-		icon = util.getImagePath{ app = "gimp" }
+		icon = util.getIconPath{ app = "gimp" }
 	},
 
 	skype = {
 		name = "Skype",
 		cmd = "skype",
-		icon = util.getImagePath{ app = "skype" }
+		icon = util.getIconPath{ app = "skype" }
+	},
+
+	robomongo = {
+		name = "Robomongo",
+		cmd = "robomongo",
+		icon = "/usr/share/robomongo/share/icons/robomongo.png"
+	},
+
+	qalculate = {
+		name = "Qalculate!",
+		cmd = "qalculate",
+		icon = "/usr/share/pixmaps/qalculate.png"
 	},
 }
 
@@ -81,19 +98,22 @@ end
 		makeEntry("sublime"),
 		makeEntry("firefox"),
 		makeEntry("steam"),
+		makeEntry("transmission"),
 		makeEntry("gimp"),
 		makeEntry("skype"),
+		makeEntry("robomongo"),
+		makeEntry("qalculate"),
 	}
 
 	filesMenu = {
-		{ "SpaceFM", handlers["fm"], util.getImagePath{ app = "spacefm", size = 48 }},
+		{ "SpaceFM", handlers["fm"], util.getIconPath{ app = "spacefm", size = 48 }},
 		{ "Home", util.makeBrowse("~") },
 		{ "Dropbox", util.makeBrowse("~/Dropbox") },
 		{ "Downloads", util.makeBrowse("~/downloads") },
 	}
 
 	terminalMenu = {
-		{ "Terminator", handlers["terminal"], util.getImagePath{ app = "terminator" }},
+		{ "Terminator", handlers["terminal"], util.getIconPath{ app = "terminator" }},
 		{ "Tmux", util.tmuxify },
 	}
 
@@ -123,8 +143,8 @@ end
 		items = {
 			{ "APPS", appsMenu, beautiful.awesome_icon },
 			{ hr },
-			{ "FILES", filesMenu, util.getImagePath{ app = "spacefm", size = 48 }},
-			{ "TERMINAL", terminalMenu, util.getImagePath{ app = "terminator" }},
+			{ "FILES", filesMenu, util.getIconPath{ app = "spacefm", size = 48 }},
+			{ "TERMINAL", terminalMenu, util.getIconPath{ app = "terminator" }},
 			{ "SOUND", soundMenu },
 			{ hr },
 			{ "POWER", powerMenu },

@@ -3,7 +3,7 @@ local awful = require("awful")
 local spawn = awful.util.spawn
 local exec = awful.util.pread
 
-local getImagePath = function(options)
+local getIconPath = function(options)
 	options.size = options.size or "32"
 	options.category = options.category or "apps"
 	options.ext = options.ext or "png"
@@ -42,7 +42,7 @@ end
 return {
 	spawn = spawn,
 	exec = exec,
-	getImagePath = getImagePath,
+	getIconPath = getIconPath,
 	makeBrowse = makeBrowse,
 	makeRun = makeRun,
 	tmuxify = tmuxify,
