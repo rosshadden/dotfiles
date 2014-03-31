@@ -69,6 +69,9 @@
 		awful.layout.suit.magnifier
 	}
 
+	-- Cache to store temp things.
+	local CACHE = {}
+
 
 -- WALLPAPER
 	if beautiful.wallpaper then
@@ -362,7 +365,6 @@
 						awful.client.movetotag(tag)
 					end
 				end
-
 			end),
 
 			-- Move current client to next tag.
@@ -375,7 +377,6 @@
 						awful.client.movetotag(tag)
 					end
 				end
-
 			end),
 
 			awful.key({ modkey,		   }, "j",
@@ -436,27 +437,7 @@
 			-- Menubar
 			awful.key({ modkey }, "p", function() menubar.show() end),
 
-			awful.key({ modkey }, "Delete", function() util.spawn("dm-tool lock") end)
-		)
-
-		clientkeys = awful.util.table.join(
-			awful.key({ modkey,		   }, "f",	  function(c) c.fullscreen = not c.fullscreen  end),
-			awful.key({ modkey, "Shift"   }, "c",	  function(c) c:kill()						 end),
-			awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle					 ),
-			awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end),
-			awful.key({ modkey,		   }, "o",	  awful.client.movetoscreen						),
-			awful.key({ modkey,		   }, "t",	  function(c) c.ontop = not c.ontop			end),
-			awful.key({ modkey,		   }, "n",
-				function(c)
-					-- The client currently has the input focus, so it cannot be
-					-- minimized, since minimized clients can't have the focus.
-					c.minimized = true
-				end),
-			awful.key({ modkey,		   }, "m",
-				function(c)
-					c.maximized_horizontal = not c.maximized_horizontal
-					c.maximized_vertical   = not c.maximized_vertical
-				end),
+			awful.key({ modkey }, "Delete", function() util.spawn("dm-tool lock") end),
 
 			-- Volume keys
 			awful.key({}, "XF86AudioRaiseVolume", function()
@@ -498,14 +479,58 @@
 				})
 			end),
 
+			-- Calculator
+			awful.key({ modkey }, "c", function ()
+				if not CACHE.calc then CACHE.calc = { expression = nil, equation = nil, result = nil } end
+
+				awful.prompt.run(
+					{
+						prompt = "Calc: ",
+						text = CACHE.calc.expression and tostring(CACHE.calc.expression)
+					},
+					mypromptbox[mouse.screen].widget,
+					function (expression)
+						if expression ~= "" then
+							CACHE.calc.expression = expression
+							CACHE.calc.equation = util.exec("qalc \"" .. expression .. "\"")
+							CACHE.calc.result = util.exec("qalc -t \"" .. expression .. "\"")
+							naughty.notify({
+								text = CACHE.calc.equation,
+								timeout = 10
+							})
+						end
+					end
+				)
+			end),
+
 			-- Debug
-			awful.key({ modkey, "Control" }, "space", function()
-				local clip = util.paste()
+			awful.key({ modkey, "Control", "Shift" }, "space", function()
+				local text = 55
 
 				naughty.notify({
-					title = "Screenshot saved",
-					text = "["..clip.."]"
+					title = "Debug",
+					text = text
 				})
+			end)
+		)
+
+		clientkeys = awful.util.table.join(
+			awful.key({ modkey,		   }, "f",	  function(c) c.fullscreen = not c.fullscreen  end),
+			awful.key({ modkey, "Shift"   }, "c",	  function(c) c:kill()						 end),
+			awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle					 ),
+			awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end),
+			awful.key({ modkey,		   }, "o",	  awful.client.movetoscreen						),
+			awful.key({ modkey,		   }, "t",	  function(c) c.ontop = not c.ontop			end),
+
+			awful.key({ modkey,		   }, "n", function(c)
+				-- The client currently has the input focus, so it cannot be
+				-- minimized, since minimized clients can't have the focus.
+				c.minimized = true
+			end),
+
+			awful.key({ modkey }, "m", function(c)
+				c.maximized_horizontal = not c.maximized_horizontal
+				c.maximized_vertical   = not c.maximized_vertical
 			end)
 		)
 

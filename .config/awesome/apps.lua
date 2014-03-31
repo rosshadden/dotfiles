@@ -14,7 +14,7 @@ apps["list"] = {
 		icon = util.getIconPath{ app = "google-chrome" }
 	},
 
-	chromeZipscene = {
+	["chrome-zipscene"] = {
 		name = "Chrome - Zipscene",
 		cmd = "chrome --profile-directory=Zipscene",
 		icon = util.getIconPath{ app = "zipscene", size = 72, category = "places" }
@@ -29,6 +29,7 @@ apps["list"] = {
 	firefox = {
 		name = "Firefox",
 		cmd = "firefox-aurora",
+		icon = "/usr/share/pixmaps/firefox-aurora-icon.png"
 	},
 
 	steam = {
@@ -62,7 +63,7 @@ apps["list"] = {
 
 	qalculate = {
 		name = "Qalculate!",
-		cmd = "qalculate",
+		cmd = "qalculate-gtk",
 		icon = "/usr/share/pixmaps/qalculate.png"
 	},
 }
@@ -94,7 +95,7 @@ end
 -- MENU
 	appsMenu = {
 		makeEntry("chrome"),
-		makeEntry("chromeZipscene"),
+		makeEntry("chrome-zipscene"),
 		makeEntry("sublime"),
 		makeEntry("firefox"),
 		makeEntry("steam"),
