@@ -505,7 +505,7 @@
 
 			-- Debug
 			awful.key({ modkey, "Control", "Shift" }, "space", function()
-				local text = 55
+				local text = selection()
 
 				naughty.notify({
 					title = "Debug",

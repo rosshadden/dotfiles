@@ -28,7 +28,11 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse command-not-found)
 plugins=(extract git github grails node npm python nyan sublime history-substring-search tmux)
 #plugins=(battery extract github grails node npm python nyan sublime vi-mode)
+
+# More betterer input
 #bindkey -M viins 'jj' vi-cmd-mode
+bindkey "^?" backward-delete-char
+bindkey "^W" backward-kill-word
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/Dropbox/.dots/scripts/vim.zsh
