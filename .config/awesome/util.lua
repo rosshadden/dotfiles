@@ -31,16 +31,6 @@ util.paste = function()
 	return contents
 end
 
-util.tmuxify = function()
-	local curTag = awful.tag.selected(mouse.screen).name
-	local doesExist = util.exec("tmux list-sessions | sed -r 's|^(.+): .*|\\1|' | grep " .. curTag)
-	if doesExist == curTag .. "\n" then
-		util.spawn(util.makeRun("tmux attach -t " .. curTag))
-	else
-		util.spawn(util.makeRun("tmux new-session -s " .. curTag))
-	end
-end
-
 util.isArray = function(t)
 	local i = 0
 	for _ in pairs(t) do

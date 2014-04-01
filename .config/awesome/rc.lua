@@ -407,7 +407,7 @@
 
 			-- Standard program
 			awful.key({ modkey,		   }, "t", function() util.spawn(handlers["terminal"]) end),
-			awful.key({ modkey,	"Shift" }, "t", util.tmuxify),
+			awful.key({ modkey,	"Shift" }, "t", apps.get("tmux").run),
 
 			awful.key({ modkey, "Control" }, "r", awful.util.restart),
 			-- awful.key({ modkey, "Shift"   }, "q", awesome.quit),

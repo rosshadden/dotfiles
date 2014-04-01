@@ -1,4 +1,5 @@
 local util = require("util")
+local awful = require("awful")
 local beautiful = require("beautiful")
 
 
@@ -10,84 +11,98 @@ local apps = {}
 apps.list = {
 	chrome = {
 		name = "Chrome",
-		cmd = "chrome --profile-directory=Default",
+		run = "chrome --profile-directory=Default",
 		icon = util.getIconPath{ app = "google-chrome" }
 	},
 
 	["chrome-zipscene"] = {
 		name = "Chrome - Zipscene",
-		cmd = "chrome --profile-directory=Zipscene",
+		run = "chrome --profile-directory=Zipscene",
 		icon = util.getIconPath{ app = "zipscene", size = 72, category = "places" }
 	},
 
 	firefox = {
 		name = "Firefox",
-		cmd = "firefox-aurora",
+		run = "firefox-aurora",
 		icon = "/usr/share/pixmaps/firefox-aurora-icon.png"
 	},
 
 	gimp = {
 		name = "Gimp",
-		cmd = "gimp",
+		run = "gimp",
 		icon = util.getIconPath{ app = "gimp" }
 	},
 
 	qalculate = {
 		name = "Qalculate!",
-		cmd = "qalculate-gtk",
+		run = "qalculate-gtk",
 		icon = "/usr/share/pixmaps/qalculate.png"
 	},
 
 	remmina = {
 		name = "Remmina",
-		cmd = "remmina",
+		run = "remmina",
 		icon = util.getIconPath{ app = "remmina" }
 	},
 
 	robomongo = {
 		name = "Robomongo",
-		cmd = "robomongo",
+		run = "robomongo",
 		icon = "/usr/share/robomongo/share/icons/robomongo.png"
 	},
 
 	skype = {
 		name = "Skype",
-		cmd = "skype",
+		run = "skype",
 		icon = util.getIconPath{ app = "skype" }
 	},
 
 	spacefm = {
 		name = "SpaceFM",
-		cmd = "spacefm",
+		run = "spacefm",
 		icon = util.getIconPath{ app = "spacefm", size = 48 }
 	},
 
 	steam = {
 		name = "Steam",
-		cmd = "steam",
+		run = "steam",
 		icon = util.getIconPath{ app = "steam" }
 	},
 
 	sublime = {
 		name = "Sublime Text",
-		cmd = "subl",
+		run = "subl",
 		icon = util.getIconPath{ app = "sublime-text" }
 	},
 
 	terminator = {
 		name = "Terminator",
-		cmd = "terminator",
+		run = "terminator",
 		icon = util.getIconPath{ app = "terminator" }
 	},
 
 	tmux = {
 		name = "Tmux",
-		cmd = util.tmuxify,
+		run = function(name)
+			local tmuxify = function()
+				if not name then name = awful.tag.selected(mouse.screen).name end
+
+				local doesExist = util.exec("tmux list-sessions | sed -r 's|^(.+): .*|\\1|' | grep " .. name)
+				if doesExist == name .. "\n" then
+					util.spawn(util.makeRun("tmux attach -t " .. name))
+				else
+					util.spawn(util.makeRun("tmux new-session -s " .. name))
+				end
+			end
+
+			-- Run or return.
+			if not name then tmuxify() else return tmuxify end
+		end,
 	},
 
 	transmission = {
 		name = "Transmission",
-		cmd = "transmission-gtk"
+		run = "transmission-gtk"
 	},
 }
 
@@ -98,9 +113,9 @@ end
 
 apps.run = function(app, args)
 	if type(app) == "string" then app = apps.get(app) end
-	cmd = app.cmd
-	if args then cmd = cmd .. " " .. args end
-	return cmd
+	run = app.run
+	if args then run = run .. " " .. args end
+	return run
 end
 
 
@@ -111,7 +126,7 @@ local makeEntry = function(app)
 		return app
 	end
 
-	local entry = { app.name, app.cmd }
+	local entry = { app.name, app.run }
 	if app.icon then table.insert(entry, app.icon) end
 
 	return entry
@@ -120,8 +135,8 @@ end
 
 -- TODO: remove global
 handlers = {
-	terminal = apps.get("terminator").cmd,
-	fm = apps.get("spacefm").cmd,
+	terminal = apps.get("terminator").run,
+	fm = apps.get("spacefm").run,
 	editor = os.getenv("EDITOR") or "vim"
 }
 handlers.edit = handlers.terminal .. " -e " .. handlers.editor
