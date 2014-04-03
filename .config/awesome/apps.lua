@@ -88,9 +88,9 @@ apps.list = {
 
 			local doesExist = util.exec("tmux list-sessions | sed -r 's|^(.+): .*|\\1|' | grep " .. name)
 			if doesExist == name .. "\n" then
-				util.spawn(util.makeRun("tmux attach -t " .. name))
+				return util.spawn(util.makeRun("tmux attach -t " .. name))
 			else
-				util.spawn(util.makeRun("tmux new-session -s " .. name))
+				return util.spawn(util.makeRun("tmux new-session -s " .. name))
 			end
 		end,
 	},
@@ -109,21 +109,33 @@ end
 -- TODO: Allow infinite args
 apps.bake = function(app, arg)
 	if type(app) == "string" then app = apps.get(app) end
-	fn = app.cmd
 
-	if type(fn) == "function" and arg then
-		fn = function()
-			app.cmd(arg)
+	local fn
+	local cmd = app.cmd
+
+	if type(cmd) == "function" then
+		if arg then
+			fn = function()
+				return cmd(arg)
+			end
+		else
+			fn = cmd
 		end
 	elseif arg then
-		fn = fn .. " " .. arg
+		cmd = cmd .. " " .. arg
+	end
+
+	if type(cmd) == "string" then
+		fn = function()
+			return util.spawn(cmd)
+		end
 	end
 
 	return fn
 end
 
 apps.run = function(app, arg)
-	apps.bake(app, arg)()
+	return apps.bake(app, arg)()
 end
 
 

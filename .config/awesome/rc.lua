@@ -526,9 +526,8 @@
 
 			-- Debug
 			awful.key({ modkey, "Control", "Shift" }, "space", function()
-				local text = util.paste()
-				log(text)
-				util.spawn("qalculate-gtk")
+				local pid = apps.run("qalculate")
+				log(pid)
 			end)
 		)
 
