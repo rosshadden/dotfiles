@@ -72,6 +72,14 @@
 	-- Cache to store temp things.
 	local CACHE = {}
 
+	-- Debugging
+	log = function(what)
+		naughty.notify({
+			title = "Debug",
+			text = what
+		})
+	end
+
 
 -- WALLPAPER
 	if beautiful.wallpaper then
@@ -407,7 +415,7 @@
 
 			-- Standard program
 			awful.key({ modkey,		   }, "t", function() util.spawn(handlers["terminal"]) end),
-			awful.key({ modkey,	"Shift" }, "t", apps.get("tmux").run),
+			awful.key({ modkey,	"Shift" }, "t", apps.bake("tmux")),
 
 			awful.key({ modkey, "Control" }, "r", awful.util.restart),
 			-- awful.key({ modkey, "Shift"   }, "q", awesome.quit),
@@ -503,14 +511,24 @@
 				)
 			end),
 
+			-- Init environments
+				-- reset
+				awful.key({ modkey }, "XF86Tools", function()
+					CACHE.env = nil
+				end),
+				-- Zipscene
+
+				awful.key({ modkey }, "XF86Launch6", function()
+					if CACHE.env ~= "zipscene" then
+						CACHE.env = "zipscene"
+					end
+				end),
+
 			-- Debug
 			awful.key({ modkey, "Control", "Shift" }, "space", function()
-				local text = selection()
-
-				naughty.notify({
-					title = "Debug",
-					text = text
-				})
+				local text = util.paste()
+				log(text)
+				util.spawn("qalculate-gtk")
 			end)
 		)
 

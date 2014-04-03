@@ -11,98 +11,93 @@ local apps = {}
 apps.list = {
 	chrome = {
 		name = "Chrome",
-		run = "chrome --profile-directory=Default",
+		cmd = "chrome --profile-directory=Default",
 		icon = util.getIconPath{ app = "google-chrome" }
 	},
 
 	["chrome-zipscene"] = {
 		name = "Chrome - Zipscene",
-		run = "chrome --profile-directory=Zipscene",
+		cmd = "chrome --profile-directory=Zipscene",
 		icon = util.getIconPath{ app = "zipscene", size = 72, category = "places" }
 	},
 
 	firefox = {
 		name = "Firefox",
-		run = "firefox-aurora",
+		cmd = "firefox-aurora",
 		icon = "/usr/share/pixmaps/firefox-aurora-icon.png"
 	},
 
 	gimp = {
 		name = "Gimp",
-		run = "gimp",
+		cmd = "gimp",
 		icon = util.getIconPath{ app = "gimp" }
 	},
 
 	qalculate = {
 		name = "Qalculate!",
-		run = "qalculate-gtk",
+		cmd = "qalculate-gtk",
 		icon = "/usr/share/pixmaps/qalculate.png"
 	},
 
 	remmina = {
 		name = "Remmina",
-		run = "remmina",
+		cmd = "remmina",
 		icon = util.getIconPath{ app = "remmina" }
 	},
 
 	robomongo = {
 		name = "Robomongo",
-		run = "robomongo",
+		cmd = "robomongo",
 		icon = "/usr/share/robomongo/share/icons/robomongo.png"
 	},
 
 	skype = {
 		name = "Skype",
-		run = "skype",
+		cmd = "skype",
 		icon = util.getIconPath{ app = "skype" }
 	},
 
 	spacefm = {
 		name = "SpaceFM",
-		run = "spacefm",
+		cmd = "spacefm",
 		icon = util.getIconPath{ app = "spacefm", size = 48 }
 	},
 
 	steam = {
 		name = "Steam",
-		run = "steam",
+		cmd = "steam",
 		icon = util.getIconPath{ app = "steam" }
 	},
 
 	sublime = {
 		name = "Sublime Text",
-		run = "subl",
+		cmd = "subl",
 		icon = util.getIconPath{ app = "sublime-text" }
 	},
 
 	terminator = {
 		name = "Terminator",
-		run = "terminator",
+		cmd = "terminator",
 		icon = util.getIconPath{ app = "terminator" }
 	},
 
 	tmux = {
 		name = "Tmux",
-		run = function(name)
-			local tmuxify = function()
-				if not name then name = awful.tag.selected(mouse.screen).name end
+		cmd = function(name)
+			if not name then name = awful.tag.selected(mouse.screen).name end
 
-				local doesExist = util.exec("tmux list-sessions | sed -r 's|^(.+): .*|\\1|' | grep " .. name)
-				if doesExist == name .. "\n" then
-					util.spawn(util.makeRun("tmux attach -t " .. name))
-				else
-					util.spawn(util.makeRun("tmux new-session -s " .. name))
-				end
+			local doesExist = util.exec("tmux list-sessions | sed -r 's|^(.+): .*|\\1|' | grep " .. name)
+			if doesExist == name .. "\n" then
+				util.spawn(util.makeRun("tmux attach -t " .. name))
+			else
+				util.spawn(util.makeRun("tmux new-session -s " .. name))
 			end
-
-			-- Run or return.
-			if not name then tmuxify() else return tmuxify end
 		end,
 	},
 
 	transmission = {
 		name = "Transmission",
-		run = "transmission-gtk"
+		cmd = "transmission-gtk"
 	},
 }
 
@@ -111,11 +106,24 @@ apps.get = function(app)
 	return apps.list[app]
 end
 
-apps.run = function(app, args)
+-- TODO: Allow infinite args
+apps.bake = function(app, arg)
 	if type(app) == "string" then app = apps.get(app) end
-	run = app.run
-	if args then run = run .. " " .. args end
-	return run
+	fn = app.cmd
+
+	if type(fn) == "function" and arg then
+		fn = function()
+			app.cmd(arg)
+		end
+	elseif arg then
+		fn = fn .. " " .. arg
+	end
+
+	return fn
+end
+
+apps.run = function(app, arg)
+	apps.bake(app, arg)()
 end
 
 
@@ -126,7 +134,7 @@ local makeEntry = function(app)
 		return app
 	end
 
-	local entry = { app.name, app.run }
+	local entry = { app.name, app.cmd }
 	if app.icon then table.insert(entry, app.icon) end
 
 	return entry
@@ -135,8 +143,8 @@ end
 
 -- TODO: remove global
 handlers = {
-	terminal = apps.get("terminator").run,
-	fm = apps.get("spacefm").run,
+	terminal = apps.get("terminator").cmd,
+	fm = apps.get("spacefm").cmd,
 	editor = os.getenv("EDITOR") or "vim"
 }
 handlers.edit = handlers.terminal .. " -e " .. handlers.editor
@@ -159,9 +167,9 @@ handlers.edit = handlers.terminal .. " -e " .. handlers.editor
 
 	filesMenu = {
 		makeEntry("spacefm"),
-		{ "Home", apps.run("spacefm", "~") },
-		{ "Dropbox", apps.run("spacefm", "~/Dropbox") },
-		{ "Downloads", apps.run("spacefm", "~/downloads") },
+		{ "Home", apps.bake("spacefm", "~") },
+		{ "Dropbox", apps.bake("spacefm", "~/Dropbox") },
+		{ "Downloads", apps.bake("spacefm", "~/downloads") },
 	}
 
 	terminalMenu = {
