@@ -307,24 +307,28 @@
 		-- Widgets that are aligned to the right
 		local right_layout = wibox.layout.fixed.horizontal()
 		if s == 1 then right_layout:add(wibox.widget.systray()) end
-		right_layout:add(arrl)
-			right_layout:add(tempicon)
-			right_layout:add(tempwidget)
-		right_layout:add(arrl_ld)
-			right_layout:add(neticon)
-			right_layout:add(netwidget)
-		right_layout:add(arrl_dl)
-			right_layout:add(memicon)
-			right_layout:add(memwidget)
-		right_layout:add(arrl_ld)
-			right_layout:add(cpuicon)
-			right_layout:add(cpuwidget)
-		right_layout:add(arrl_dl)
-			right_layout:add(volicon)
-			right_layout:add(volumewidget)
-		right_layout:add(arrl)
-			right_layout:add(baticon)
-			right_layout:add(batwidget)
+
+		if s == util.screens.right then
+			right_layout:add(arrl)
+				right_layout:add(tempicon)
+				right_layout:add(tempwidget)
+			right_layout:add(arrl_ld)
+				right_layout:add(neticon)
+				right_layout:add(netwidget)
+			right_layout:add(arrl_dl)
+				right_layout:add(memicon)
+				right_layout:add(memwidget)
+			right_layout:add(arrl_ld)
+				right_layout:add(cpuicon)
+				right_layout:add(cpuwidget)
+			right_layout:add(arrl_dl)
+				right_layout:add(volicon)
+				right_layout:add(volumewidget)
+			right_layout:add(arrl)
+				right_layout:add(baticon)
+				right_layout:add(batwidget)
+		end
+
 		right_layout:add(arrl_ld)
 			right_layout:add(mytextclock)
 		right_layout:add(mylayoutbox[s])
@@ -526,8 +530,20 @@
 
 			-- Debug
 			awful.key({ modkey, "Control", "Shift" }, "space", function()
-				local pid = apps.run("qalculate")
-				log(pid)
+				for e, entry in ipairs(apps.init.zipscene) do
+					local pid = apps.run(entry.app)
+
+					fn = function(c, startup)
+						if c.pid == pid then
+							local tag = awful.tag.gettags(entry.screen)
+							awful.client.movetotag(tag[entry.tag], c)
+							client.disconnect_signal("manage", fn)
+						end
+					end
+
+					client.connect_signal("manage", fn)
+				end
+
 			end)
 		)
 
@@ -598,8 +614,6 @@
 
 
 -- RULES
-	left = 1
-	right = screen.count()
 	awful.rules.rules = {
 		-- All clients will match this rule.
 		{
@@ -625,19 +639,19 @@
 			properties = { floating = true }
 		-- }, {
 		-- 	rule = { class = "Chrome" },
-		-- 	properties = { tag = tags[left][1] }
+		-- 	properties = { tag = tags[util.screens.left][1] }
 		-- }, {
 		-- 	rule = { instance = "spacefm" },
-		-- 	properties = { tag = tags[left][5] }
+		-- 	properties = { tag = tags[util.screens.left][5] }
 		-- }, {
 		-- 	rule = { instance = "geeqie" },
-		-- 	properties = { tag = tags[left][6] }
+		-- 	properties = { tag = tags[util.screens.left][6] }
 		-- }, {
 		-- 	rule = { instance = "skype" },
-		-- 	properties = { tag = tags[left][7] }
+		-- 	properties = { tag = tags[util.screens.left][7] }
 		-- }, {
 		-- 	rule = { instance = "subl" },
-		-- 	properties = { tag = tags[right][2] }
+		-- 	properties = { tag = tags[util.screens.right][2] }
 		}
 	}
 

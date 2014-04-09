@@ -40,5 +40,11 @@ util.isArray = function(t)
 	return true
 end
 
+-- Screens (may break out into module)
+util.screens = {
+	left = 1,
+	right = screen.count()
+}
+
 
 return util

@@ -225,4 +225,14 @@ handlers.edit = handlers.terminal .. " -e " .. handlers.editor
 	}
 
 
+-- INIT
+	apps.init = {
+		zipscene = {
+			{ app = apps.get("chrome-zipscene"), screen = util.screens.right, tag = 1 },
+			{ app = apps.get("sublime"), screen = util.screens.left, tag = 2 },
+			{ app = apps.get("skype"), screen = util.screens.right, tag = 7 },
+		}
+	}
+
+
 return apps
