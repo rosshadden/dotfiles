@@ -520,30 +520,33 @@
 				awful.key({ modkey }, "XF86Tools", function()
 					CACHE.env = nil
 				end),
-				-- Zipscene
 
+				-- dev
+				awful.key({ modkey }, "XF86Launch5", function()
+					if CACHE.env ~= "dev" then
+						CACHE.env = "dev"
+						apps.init("dev")
+					end
+				end),
+
+				-- zipscene
 				awful.key({ modkey }, "XF86Launch6", function()
 					if CACHE.env ~= "zipscene" then
 						CACHE.env = "zipscene"
+						apps.init("zipscene")
+					end
+				end),
+
+				-- test
+				awful.key({ modkey }, "XF86Launch8", function()
+					if CACHE.env ~= "test" then
+						CACHE.env = "test"
+						apps.init("test")
 					end
 				end),
 
 			-- Debug
 			awful.key({ modkey, "Control", "Shift" }, "space", function()
-				for e, entry in ipairs(apps.init.zipscene) do
-					local pid = apps.run(entry.app)
-
-					fn = function(c, startup)
-						if c.pid == pid then
-							local tag = awful.tag.gettags(entry.screen)
-							awful.client.movetotag(tag[entry.tag], c)
-							client.disconnect_signal("manage", fn)
-						end
-					end
-
-					client.connect_signal("manage", fn)
-				end
-
 			end)
 		)
 

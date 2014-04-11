@@ -43,7 +43,8 @@ end
 -- Screens (may break out into module)
 util.screens = {
 	left = 1,
-	right = screen.count()
+	right = screen.count(),
+	count = screen.count()
 }
 
 

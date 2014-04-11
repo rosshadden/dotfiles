@@ -109,6 +109,7 @@ end
 -- TODO: Allow infinite args
 apps.bake = function(app, arg)
 	if type(app) == "string" then app = apps.get(app) end
+	if type(app) == "function" then return app end
 
 	local fn
 	local cmd = app.cmd
@@ -226,13 +227,55 @@ handlers.edit = handlers.terminal .. " -e " .. handlers.editor
 
 
 -- INIT
-	apps.init = {
-		zipscene = {
-			{ app = apps.get("chrome-zipscene"), screen = util.screens.right, tag = 1 },
-			{ app = apps.get("sublime"), screen = util.screens.left, tag = 2 },
-			{ app = apps.get("skype"), screen = util.screens.right, tag = 7 },
-		}
+	local init = {}
+	init.dev = {
+		{ app = apps.get("chrome"), screen = util.screens.left, tag = 1 },
+		{ app = apps.get("sublime"), screen = util.screens.right, tag = 2 },
+		{ app = apps.bake("tmux", ""), screen = util.screens.left, tag = 3 },
+		{ app = apps.bake("tmux", ""), screen = util.screens.left, tag = 4 },
+		{ app = apps.bake("tmux", ""), screen = util.screens.left, tag = 8 },
 	}
+	if util.screens.count == 2 then
+		table.insert(init.dev, { app = apps.bake("tmux", ""), screen = util.screens.right, tag = 3 })
+		table.insert(init.dev, { app = apps.bake("tmux", ""), screen = util.screens.right, tag = 4 })
+		table.insert(init.dev, { app = apps.bake("tmux", ""), screen = util.screens.right, tag = 8 })
+	end
+
+	init.zipscene = {
+		{ app = apps.get("chrome-zipscene"), screen = util.screens.right, tag = 1 },
+		{ app = apps.get("sublime"), screen = util.screens.left, tag = 2 },
+		{ app = apps.get("skype"), screen = util.screens.right, tag = 7 },
+		{ app = apps.bake("tmux", ""), screen = util.screens.left, tag = 3 },
+		{ app = apps.bake("tmux", ""), screen = util.screens.left, tag = 4 },
+		{ app = apps.bake("tmux", ""), screen = util.screens.left, tag = 8 },
+		{ app = apps.bake("tmux", ""), screen = util.screens.left, tag = 9 },
+	}
+	if util.screens.count == 2 then
+		table.insert(init.zipscene, { app = apps.bake("tmux", ""), screen = util.screens.right, tag = 3 })
+		table.insert(init.zipscene, { app = apps.bake("tmux", ""), screen = util.screens.right, tag = 4 })
+		table.insert(init.zipscene, { app = apps.bake("tmux", ""), screen = util.screens.right, tag = 8 })
+		table.insert(init.zipscene, { app = apps.bake("tmux", ""), screen = util.screens.right, tag = 9 })
+	end
+
+	init.test = {
+		{ app = apps.bake("tmux", "test"), screen = util.screens.right, tag = 6 },
+	}
+
+	apps.init = function(profile)
+		for e, entry in ipairs(init[profile]) do
+			local pid = apps.run(entry.app)
+
+			fn = function(c, startup)
+				if c.pid == pid then
+					local tag = awful.tag.gettags(entry.screen)
+					awful.client.movetotag(tag[entry.tag], c)
+					client.disconnect_signal("manage", fn)
+				end
+			end
+
+			client.connect_signal("manage", fn)
+		end
+	end
 
 
 return apps
