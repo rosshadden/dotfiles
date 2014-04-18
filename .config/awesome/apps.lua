@@ -84,14 +84,16 @@ apps.list = {
 	tmux = {
 		name = "Tmux",
 		cmd = function(name)
-			if not name then name = awful.tag.selected(mouse.screen).name end
+			if type(name) ~= "string" then name = awful.tag.selected(mouse.screen).name end
 
+			local pid
 			local doesExist = util.exec("tmux list-sessions | sed -r 's|^(.+): .*|\\1|' | grep " .. name)
 			if doesExist == name .. "\n" then
-				return util.spawn(util.makeRun("tmux attach -t " .. name))
+				pid = util.spawn(util.makeRun("tmux attach -t " .. name))
 			else
-				return util.spawn(util.makeRun("tmux new-session -s " .. name))
+				pid = util.spawn(util.makeRun("tmux new-session -s " .. name))
 			end
+			return pid
 		end,
 	},
 
@@ -142,7 +144,7 @@ end
 
 local makeEntry = function(app)
 	if type(app) == "string" then
-		app = apps.list[app]
+		app = apps.get(app)
 	elseif util.isArray(app) then
 		return app
 	end
@@ -242,8 +244,9 @@ handlers.edit = handlers.terminal .. " -e " .. handlers.editor
 	end
 
 	init.zipscene = {
-		{ app = apps.get("chrome-zipscene"), screen = util.screens.right, tag = 1 },
-		{ app = apps.get("sublime"), screen = util.screens.left, tag = 2 },
+		{ app = apps.get("chrome-zipscene"), screen = util.screens.left, tag = 1 },
+		{ app = apps.get("chrome"), screen = util.screens.right, tag = 1 },
+		{ app = apps.get("sublime"), screen = util.screens.right, tag = 2 },
 		{ app = apps.get("skype"), screen = util.screens.right, tag = 7 },
 		{ app = apps.bake("tmux", ""), screen = util.screens.left, tag = 3 },
 		{ app = apps.bake("tmux", ""), screen = util.screens.left, tag = 4 },
@@ -259,6 +262,7 @@ handlers.edit = handlers.terminal .. " -e " .. handlers.editor
 
 	init.test = {
 		{ app = apps.bake("tmux", "test"), screen = util.screens.right, tag = 6 },
+		{ app = apps.bake("tmux", "aoeu"), screen = util.screens.right, tag = 7 },
 	}
 
 	apps.init = function(profile)

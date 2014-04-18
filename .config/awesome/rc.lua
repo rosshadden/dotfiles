@@ -73,10 +73,14 @@
 	local CACHE = {}
 
 	-- Debugging
-	log = function(what)
+	log = function(title, body)
+		if not body then
+			body = title
+			title = "Debug"
+		end
 		naughty.notify({
-			title = "Debug",
-			text = what
+			title = tostring(title),
+			text = tostring(body)
 		})
 	end
 
@@ -321,14 +325,14 @@
 			right_layout:add(arrl_ld)
 				right_layout:add(cpuicon)
 				right_layout:add(cpuwidget)
-			right_layout:add(arrl_dl)
-				right_layout:add(volicon)
-				right_layout:add(volumewidget)
-			right_layout:add(arrl)
-				right_layout:add(baticon)
-				right_layout:add(batwidget)
 		end
 
+		right_layout:add(arrl_dl)
+			right_layout:add(volicon)
+			right_layout:add(volumewidget)
+		right_layout:add(arrl)
+			right_layout:add(baticon)
+			right_layout:add(batwidget)
 		right_layout:add(arrl_ld)
 			right_layout:add(mytextclock)
 		right_layout:add(mylayoutbox[s])
@@ -465,8 +469,8 @@
 			-- Screenshots
 			awful.key({}, "Print", function()
 				local file = os.date("%Y-%m-%d-%T.png")
-				local path = "/srv/http/img/" .. file
-				local url = "http://rhadden.com/img/" .. file
+				local path = "/srv/http/media/img/" .. file
+				local url = "http://rhadden.com/media/img/" .. file
 
 				util.spawn("escrotum " .. path, false)
 				util.copy(url)
@@ -479,8 +483,8 @@
 
 			awful.key({ "Control", "Shift" }, "Print", function()
 				local file = os.date("%Y-%m-%d-%T.png")
-				local path = "/srv/http/img/" .. file
-				local url = "http://rhadden.com/img/" .. file
+				local path = "/srv/http/media/img/" .. file
+				local url = "http://rhadden.com/media/img/" .. file
 
 				util.spawn("escrotum -s " .. path, false)
 				util.copy(url)
@@ -517,12 +521,12 @@
 
 			-- Init environments
 				-- reset
-				awful.key({ modkey }, "XF86Tools", function()
+				awful.key({ modkey }, "F1", function()
 					CACHE.env = nil
 				end),
 
 				-- dev
-				awful.key({ modkey }, "XF86Launch5", function()
+				awful.key({ modkey }, "F2", function()
 					if CACHE.env ~= "dev" then
 						CACHE.env = "dev"
 						apps.init("dev")
@@ -530,7 +534,7 @@
 				end),
 
 				-- zipscene
-				awful.key({ modkey }, "XF86Launch6", function()
+				awful.key({ modkey }, "F3", function()
 					if CACHE.env ~= "zipscene" then
 						CACHE.env = "zipscene"
 						apps.init("zipscene")
@@ -538,7 +542,7 @@
 				end),
 
 				-- test
-				awful.key({ modkey }, "XF86Launch8", function()
+				awful.key({ modkey }, "F4", function()
 					if CACHE.env ~= "test" then
 						CACHE.env = "test"
 						apps.init("test")
