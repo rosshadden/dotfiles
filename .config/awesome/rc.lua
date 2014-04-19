@@ -72,18 +72,6 @@
 	-- Cache to store temp things.
 	local CACHE = {}
 
-	-- Debugging
-	log = function(title, body)
-		if not body then
-			body = title
-			title = "Debug"
-		end
-		naughty.notify({
-			title = tostring(title),
-			text = tostring(body)
-		})
-	end
-
 
 -- WALLPAPER
 	if beautiful.wallpaper then
@@ -425,7 +413,7 @@
 			awful.key({ modkey,		   }, "t", function() util.spawn(handlers["terminal"]) end),
 			awful.key({ modkey,	"Shift" }, "t", apps.bake("tmux")),
 
-			awful.key({ modkey, "Control" }, "r", awful.util.restart),
+			awful.key({ modkey, "Control", "Shift" }, "r", awful.util.restart),
 			-- awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
 			awful.key({ modkey,	"Control" }, "j",	 function() awful.tag.incmwfact( 0.05)	end),
@@ -510,10 +498,7 @@
 							CACHE.calc.expression = expression
 							CACHE.calc.equation = util.exec("qalc \"" .. expression .. "\"")
 							CACHE.calc.result = util.exec("qalc -t \"" .. expression .. "\"")
-							naughty.notify({
-								text = CACHE.calc.equation,
-								timeout = 10
-							})
+							log("aoeui", CACHE.calc.equation)
 						end
 					end
 				)
@@ -551,6 +536,7 @@
 
 			-- Debug
 			awful.key({ modkey, "Control", "Shift" }, "space", function()
+				test("this", "is", { title = "aoeu" })
 			end)
 		)
 
