@@ -266,18 +266,26 @@ handlers.edit = handlers.terminal .. " -e " .. handlers.editor
 	}
 
 	apps.init = function(profile)
-		for e, entry in ipairs(init[profile]) do
-			local pid = apps.run(entry.app)
+		local rules = {}
+		local numCaught = 0
 
-			fn = function(c, startup)
-				if c.pid == pid then
-					local tag = awful.tag.gettags(entry.screen)
-					awful.client.movetotag(tag[entry.tag], c)
-					client.disconnect_signal("manage", fn)
-				end
+		rules.handler = function(c, startup)
+			local entry = rules[c.pid]
+			if entry then
+				local tag = awful.tag.gettags(entry.screen)
+				awful.client.movetotag(tag[entry.tag], c)
+				numCaught = numCaught + 1
 			end
 
-			client.connect_signal("manage", fn)
+			if numCaught == table.maxn(init[profile]) then
+				client.disconnect_signal("manage", rules.handler)
+			end
+		end
+		client.connect_signal("manage", rules.handler)
+
+		for e, entry in ipairs(init[profile]) do
+			local pid = apps.run(entry.app)
+			rules[pid] = entry
 		end
 	end
 
