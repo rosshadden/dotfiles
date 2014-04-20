@@ -46,6 +46,12 @@ util.isArray = function(t)
 	return true
 end
 
+util.fileExists = function(path)
+	local file = io.open(path, "r")
+	if file ~= nil then io.close(file) return true end
+	return false
+end
+
 -- Screens (may break out into module)
 util.screens = {
 	left = 1,

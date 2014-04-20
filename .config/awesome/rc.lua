@@ -93,7 +93,7 @@
 
 
 -- MENU
-	mainmenu = awful.menu(apps["menu"])
+	mainmenu = awful.menu(apps.menu)
 	mylauncher = awful.widget.launcher({
 		image = beautiful.awesome_icon,
 		menu = mainmenu
@@ -109,16 +109,18 @@
 	}
 
 	-- Menubar configuration
-	menubar.utils.terminal = handlers["terminal"] -- Set the terminal for applications that require it
+	menubar.utils.terminal = apps.get("terminal") -- Set the terminal for applications that require it
 
 
 -- WIDGETS
 	markup = lain.util.markup
 
 	-- clock
+		local dateformat = "<span font='FontAwesome'></span> %a %b %d"
+		local timeformat = "<span font='FontAwesome'></span> %H:%M"
 		clockicon = wibox.widget.imagebox(beautiful.widget_clock)
 		mytextclock = wibox.widget.background(
-			awful.widget.textclock("%a %b %d, %H:%M")
+			awful.widget.textclock(" " .. dateformat .. "  " .. timeformat .. "")
 		, "#313131")
 
 	-- calendar
@@ -141,12 +143,14 @@
 		}), "#313131")
 
 	-- Coretemp
-		tempicon = wibox.widget.imagebox(beautiful.temp)
-		tempwidget = lain.widgets.temp({
-			settings = function()
-				widget:set_text(coretemp_now .. "°C ")
-			end
-		})
+		if (util.fileExists("/sys/class/thermal/thermal_zone0/temp")) then
+			tempicon = wibox.widget.imagebox(beautiful.temp)
+			tempwidget = lain.widgets.temp({
+				settings = function()
+					widget:set_text(coretemp_now .. "°C ")
+				end
+			})
+		end
 
 	-- Net
 		neticon = wibox.widget.imagebox(beautiful.net)
@@ -163,38 +167,48 @@
 		}), "#313131")
 
 	-- Battery
-		baticon = wibox.widget.imagebox(beautiful.battery)
-		batwidget = lain.widgets.bat({
-			settings = function()
-				if bat_now.status ~= "Discharging" then
-					widget:set_markup(bat_now.perc .. "% [" .. bat_now.status .. "] ")
-					baticon:set_image(beautiful.ac)
-					return
-				elseif tonumber(bat_now.perc) <= 5 then
-					baticon:set_image(beautiful.battery_empty)
-				elseif tonumber(bat_now.perc) <= 15 then
-					baticon:set_image(beautiful.battery_low)
-				else
-					baticon:set_image(beautiful.battery)
+		if (util.fileExists("/sys/class/power_supply/BAT0")) then
+			baticon = wibox.widget.imagebox(beautiful.battery)
+			batwidget = lain.widgets.bat({
+				settings = function()
+					if bat_now.status ~= "Discharging" then
+						widget:set_markup(bat_now.perc .. "% [" .. bat_now.status .. "] ")
+						baticon:set_image(beautiful.ac)
+						return
+					end
+
+					widget:set_markup(bat_now.perc .. "% ")
+					if tonumber(bat_now.perc) <= 5 then
+						baticon:set_image(beautiful.battery_empty)
+					elseif tonumber(bat_now.perc) <= 15 then
+						baticon:set_image(beautiful.battery_low)
+					else
+						baticon:set_image(beautiful.battery)
+					end
 				end
-				widget:set_markup(bat_now.perc .. "% ")
-			end
-		})
+			})
+		end
 
 	-- Volume
 		volicon = wibox.widget.imagebox(beautiful.vol)
 		volumewidget = lain.widgets.alsa({
 			settings = function()
+				local icon = ""
 				if volume_now.status == "off" then
+					icon = ""
 					volicon:set_image(beautiful.vol_mute)
 				elseif tonumber(volume_now.level) == 0 then
+					icon = ""
 					volicon:set_image(beautiful.vol_no)
 				elseif tonumber(volume_now.level) <= 50 then
+					icon = ""
 					volicon:set_image(beautiful.vol_low)
 				else
+					icon = ""
 					volicon:set_image(beautiful.vol)
 				end
 
+				-- widget:set_text("<span font='FontAwesome'>" .. icon .. "</span> " .. volume_now.level .. "% ")
 				widget:set_text(volume_now.level .. "% ")
 			end
 		})
@@ -301,31 +315,40 @@
 		if s == 1 then right_layout:add(wibox.widget.systray()) end
 
 		if s == util.screens.right then
-			right_layout:add(arrl)
+			if batwidget then
+				right_layout:add(arrl)
 				right_layout:add(tempicon)
 				right_layout:add(tempwidget)
+			end
+
 			right_layout:add(arrl_ld)
-				right_layout:add(neticon)
-				right_layout:add(netwidget)
+			right_layout:add(neticon)
+			right_layout:add(netwidget)
+
 			right_layout:add(arrl_dl)
-				right_layout:add(memicon)
-				right_layout:add(memwidget)
+			right_layout:add(memicon)
+			right_layout:add(memwidget)
+
 			right_layout:add(arrl_ld)
-				right_layout:add(cpuicon)
-				right_layout:add(cpuwidget)
+			right_layout:add(cpuicon)
+			right_layout:add(cpuwidget)
 		end
 
 		right_layout:add(arrl_dl)
-			right_layout:add(volicon)
-			right_layout:add(volumewidget)
-		right_layout:add(arrl)
+		right_layout:add(volicon)
+		right_layout:add(volumewidget)
+
+		if batwidget then
+			right_layout:add(arrl)
 			right_layout:add(baticon)
 			right_layout:add(batwidget)
+		end
+
 		right_layout:add(arrl_ld)
-			right_layout:add(mytextclock)
+		right_layout:add(mytextclock)
+
 		right_layout:add(mylayoutbox[s])
 		right_layout:add(debug)
-		right_layout:add(wibox.widget.textbox(s))
 
 		-- Now bring it all together (with the tasklist in the middle)
 		local layout = wibox.layout.align.horizontal()
@@ -410,7 +433,7 @@
 				end),
 
 			-- Standard program
-			awful.key({ modkey,		   }, "t", function() util.spawn(handlers["terminal"]) end),
+			awful.key({ modkey,		   }, "t", function() apps.run("terminal") end),
 			awful.key({ modkey,	"Shift" }, "t", apps.bake("tmux")),
 
 			awful.key({ modkey, "Control", "Shift" }, "r", awful.util.restart),
@@ -431,13 +454,16 @@
 			awful.key({ modkey },			"Return", function() mypromptbox[mouse.screen]:run() end),
 			awful.key({ modkey },			"r",	  function() mypromptbox[mouse.screen]:run() end),
 
-			awful.key({ modkey }, "x",
-					  function()
-						  awful.prompt.run({ prompt = "Run Lua code: " },
-						  mypromptbox[mouse.screen].widget,
-						  awful.util.eval, nil,
-						  awful.util.getdir("cache") .. "/history_eval")
-					  end),
+			awful.key( { modkey }, "x", function()
+				awful.prompt.run(
+					{ prompt = "Run Lua code: " },
+					mypromptbox[mouse.screen].widget,
+					awful.util.eval,
+					nil,
+					awful.util.getdir("cache") .. "/history_eval"
+				)
+			end),
+
 			-- Menubar
 			awful.key({ modkey }, "p", function() menubar.show() end),
 
@@ -498,9 +524,11 @@
 							CACHE.calc.expression = expression
 							CACHE.calc.equation = util.exec("qalc \"" .. expression .. "\"")
 							CACHE.calc.result = util.exec("qalc -t \"" .. expression .. "\"")
-							log("aoeui", CACHE.calc.equation)
+							log(CACHE.calc.equation)
 						end
-					end
+					end,
+					nil,
+					awful.util.getdir("cache") .. "/history_calc"
 				)
 			end),
 

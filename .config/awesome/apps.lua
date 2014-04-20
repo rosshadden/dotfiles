@@ -102,11 +102,23 @@ apps.list = {
 		cmd = "transmission-gtk"
 	},
 }
+apps.list.terminal = apps.list.terminator
+apps.list.fm = apps.list.spacefm
 
 
 apps.get = function(app)
 	return apps.list[app]
 end
+
+
+-- TODO: remove global
+handlers = {
+	terminal = apps.get("terminator").cmd,
+	fm = apps.get("spacefm").cmd,
+	editor = os.getenv("EDITOR") or "vim"
+}
+handlers.edit = handlers.terminal .. " -e " .. handlers.editor
+
 
 -- TODO: Allow infinite args
 apps.bake = function(app, arg)
@@ -154,15 +166,6 @@ local makeEntry = function(app)
 
 	return entry
 end
-
-
--- TODO: remove global
-handlers = {
-	terminal = apps.get("terminator").cmd,
-	fm = apps.get("spacefm").cmd,
-	editor = os.getenv("EDITOR") or "vim"
-}
-handlers.edit = handlers.terminal .. " -e " .. handlers.editor
 
 
 -- MENU
