@@ -17,8 +17,8 @@
 	local lain = require("lain")
 
 	-- Mine
-	local apps = require("apps")
 	local util = require("util")
+	local apps = require("apps")
 
 
 -- ERRORS
