@@ -7,9 +7,9 @@
 	-- Widget and layout library
 	local wibox = require("wibox")
 	-- Theme handling library
-	beautiful = require("beautiful")
-	theme = "ross"
-	beautiful.init(awful.util.getdir("config") .. "/themes/" .. theme .. "/theme.lua")
+	theme = require("beautiful")
+	themeName = "ross"
+	theme.init(awful.util.getdir("config") .. "/themes/" .. themeName .. "/theme.lua")
 	-- Notification library
 	local naughty = require("naughty")
 	local menubar = require("menubar")
@@ -74,9 +74,9 @@
 
 
 -- WALLPAPER
-	if beautiful.wallpaper then
+	if theme.wallpaper then
 		for s = 1, screen.count() do
-			gears.wallpaper.maximized(beautiful.wallpaper, s, true)
+			gears.wallpaper.maximized(theme.wallpaper, s, true)
 		end
 	end
 
@@ -95,7 +95,7 @@
 -- MENU
 	mainmenu = awful.menu(apps.menu)
 	mylauncher = awful.widget.launcher({
-		image = beautiful.awesome_icon,
+		image = theme.awesome_icon,
 		menu = mainmenu
 	})
 
@@ -118,16 +118,16 @@
 	-- clock
 		local dateformat = "<span font='FontAwesome'></span> %a %b %d"
 		local timeformat = "<span font='FontAwesome'></span> %H:%M"
-		clockicon = wibox.widget.imagebox(beautiful.widget_clock)
+		clockicon = wibox.widget.imagebox(theme.widget_clock)
 		mytextclock = wibox.widget.background(
-			awful.widget.textclock(" " .. dateformat .. "  " .. timeformat .. "")
-		, "#313131")
+			awful.widget.textclock(" " .. dateformat .. "  " .. timeformat .. " ")
+		, theme.colors.pastel.red)
 
 	-- calendar
 		lain.widgets.calendar:attach(mytextclock, { font_size = 12 })
 
 	-- MEM
-		memicon = wibox.widget.imagebox(beautiful.mem)
+		memicon = wibox.widget.imagebox(theme.mem)
 		memwidget = lain.widgets.mem({
 			settings = function()
 				widget:set_text(mem_now.used .. "MB ")
@@ -135,26 +135,32 @@
 		})
 
 	-- CPU
-		cpuicon = wibox.widget.imagebox(beautiful.cpu)
+		cpuicon = wibox.widget.background()
+		cpuiconInner = wibox.widget.imagebox(theme.cpu)
+		cpuicon:set_widget(cpuiconInner)
+		cpuicon:set_bg(theme.colors.pastel.red)
 		cpuwidget = wibox.widget.background(lain.widgets.cpu({
 			settings = function()
 				widget:set_text(cpu_now.usage .. "% ")
 			end
-		}), "#313131")
+		}), theme.colors.pastel.red)
 
 	-- Coretemp
 		if (util.fileExists("/sys/class/thermal/thermal_zone0/temp")) then
-			tempicon = wibox.widget.imagebox(beautiful.temp)
-			tempwidget = lain.widgets.temp({
+			tempicon = wibox.widget.background(wibox.widget.imagebox(theme.temp), theme.colors.pastel.yellow)
+			tempwidget = wibox.widget.background(lain.widgets.temp({
 				settings = function()
 					widget:set_text(coretemp_now .. "°C ")
 				end
-			})
+			}), theme.colors.pastel.yellow)
 		end
 
 	-- Net
-		neticon = wibox.widget.imagebox(beautiful.net)
-		neticon:buttons(awful.util.table.join(awful.button({}, 1, function() awful.util.spawn_with_shell(iptraf) end)))
+		neticon = wibox.widget.background()
+		neticonInner = wibox.widget.imagebox(theme.net)
+		neticonInner:buttons(awful.util.table.join(awful.button({}, 1, function() awful.util.spawn_with_shell(iptraf) end)))
+		neticon:set_widget(neticonInner)
+		neticon:set_bg(theme.colors.pastel.red)
 		netwidget = wibox.widget.background(lain.widgets.net({
 			settings = function()
 				widget:set_markup(
@@ -164,63 +170,64 @@
 					.. " "
 				)
 			end
-		}), "#313131")
+		}), theme.colors.pastel.red)
 
 	-- Battery
 		if (util.fileExists("/sys/class/power_supply/BAT0")) then
-			baticon = wibox.widget.imagebox(beautiful.battery)
-			batwidget = lain.widgets.bat({
+			baticonInner = wibox.widget.imagebox(theme.battery)
+			baticon = wibox.widget.background(baticonInner, theme.colors.pastel.blue)
+			batwidget = wibox.widget.background(lain.widgets.bat({
 				settings = function()
 					if bat_now.status ~= "Discharging" then
 						widget:set_markup(bat_now.perc .. "% [" .. bat_now.status .. "] ")
-						baticon:set_image(beautiful.ac)
+						baticonInner:set_image(theme.ac)
 						return
 					end
 
 					widget:set_markup(bat_now.perc .. "% ")
 					if tonumber(bat_now.perc) <= 5 then
-						baticon:set_image(beautiful.battery_empty)
+						baticonInner:set_image(theme.battery_empty)
 					elseif tonumber(bat_now.perc) <= 15 then
-						baticon:set_image(beautiful.battery_low)
+						baticonInner:set_image(theme.battery_low)
 					else
-						baticon:set_image(beautiful.battery)
+						baticonInner:set_image(theme.battery)
 					end
 				end
-			})
+			}), theme.colors.pastel.blue)
 		end
 
 	-- Volume
-		volicon = wibox.widget.imagebox(beautiful.vol)
-		volumewidget = lain.widgets.alsa({
+		voliconInner = wibox.widget.imagebox(theme.vol)
+		volicon = wibox.widget.background(voliconInner, theme.colors.pastel.green)
+		volumewidget = wibox.widget.background(lain.widgets.alsa({
 			settings = function()
 				local icon = ""
 				if volume_now.status == "off" then
 					icon = ""
-					volicon:set_image(beautiful.vol_mute)
+					voliconInner:set_image(theme.vol_mute)
 				elseif tonumber(volume_now.level) == 0 then
 					icon = ""
-					volicon:set_image(beautiful.vol_no)
+					voliconInner:set_image(theme.vol_no)
 				elseif tonumber(volume_now.level) <= 50 then
 					icon = ""
-					volicon:set_image(beautiful.vol_low)
+					voliconInner:set_image(theme.vol_low)
 				else
 					icon = ""
-					volicon:set_image(beautiful.vol)
+					voliconInner:set_image(theme.vol)
 				end
 
 				-- widget:set_text("<span font='FontAwesome'>" .. icon .. "</span> " .. volume_now.level .. "% ")
 				widget:set_text(volume_now.level .. "% ")
 			end
-		})
+		}), theme.colors.pastel.green)
 
 	-- Separators
 		spr = wibox.widget.textbox(" ")
-		arrl = wibox.widget.imagebox()
-		arrl:set_image(beautiful.arrl)
-		arrl_dl = wibox.widget.imagebox()
-		arrl_dl:set_image(beautiful.arrl_dl)
-		arrl_ld = wibox.widget.imagebox()
-		arrl_ld:set_image(beautiful.arrl_ld)
+		separate = function(from, to)
+			if not from then from = theme.colors.bg end
+			if not to then to = theme.colors.bg end
+			return wibox.widget.textbox("<span font='FontAwesome 30' color='" .. to .. "' bgcolor='" .. from .. "'></span>")
+		end
 
 	-- DEBUG
 		debug = wibox.widget.textbox("")
@@ -316,35 +323,35 @@
 
 		if s == util.screens.right then
 			if batwidget then
-				right_layout:add(arrl)
+				right_layout:add(separate(nil, theme.colors.pastel.yellow))
 				right_layout:add(tempicon)
 				right_layout:add(tempwidget)
 			end
 
-			right_layout:add(arrl_ld)
+			right_layout:add(separate(theme.colors.pastel.yellow, theme.colors.pastel.red))
 			right_layout:add(neticon)
 			right_layout:add(netwidget)
 
-			right_layout:add(arrl_dl)
+			right_layout:add(separate(theme.colors.pastel.red, nil))
 			right_layout:add(memicon)
 			right_layout:add(memwidget)
 
-			right_layout:add(arrl_ld)
+			right_layout:add(separate(nil, theme.colors.pastel.red))
 			right_layout:add(cpuicon)
 			right_layout:add(cpuwidget)
 		end
 
-		right_layout:add(arrl_dl)
+		right_layout:add(separate(theme.colors.pastel.red, theme.colors.pastel.green))
 		right_layout:add(volicon)
 		right_layout:add(volumewidget)
 
 		if batwidget then
-			right_layout:add(arrl)
+			right_layout:add(separate(theme.colors.pastel.green, theme.colors.pastel.blue))
 			right_layout:add(baticon)
 			right_layout:add(batwidget)
 		end
 
-		right_layout:add(arrl_ld)
+		right_layout:add(separate(theme.colors.pastel.blue, theme.colors.pastel.red))
 		right_layout:add(mytextclock)
 
 		right_layout:add(mylayoutbox[s])
@@ -353,7 +360,7 @@
 		-- Now bring it all together (with the tasklist in the middle)
 		local layout = wibox.layout.align.horizontal()
 		layout:set_left(left_layout)
-		-- layout:set_middle(mytasklist[s])
+		layout:set_middle(mytasklist[s])
 		layout:set_right(right_layout)
 		mywibox[s]:set_widget(layout)
 
@@ -640,8 +647,8 @@
 		{
 			rule = {},
 			properties = {
-				border_width = beautiful.border_width,
-				border_color = beautiful.border_normal,
+				border_width = theme.border_width,
+				border_color = theme.border_normal,
 				focus = awful.client.focus.filter,
 				keys = clientkeys,
 				buttons = clientbuttons
@@ -750,5 +757,5 @@
 		end
 	end)
 
-	client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-	client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+	client.connect_signal("focus", function(c) c.border_color = theme.border_focus end)
+	client.connect_signal("unfocus", function(c) c.border_color = theme.border_normal end)
