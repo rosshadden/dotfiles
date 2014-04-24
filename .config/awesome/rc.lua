@@ -115,8 +115,8 @@
 	-- Separators
 		spr = wibox.widget.textbox(" ")
 		separate = function(from, to)
-			if not from then from = theme.colors.bg end
-			if not to then to = theme.colors.bg end
+			if not from then from = theme.colors.dark end
+			if not to then to = theme.colors.dark end
 			return wibox.widget.textbox("<span font='FontAwesome 30' color='" .. to .. "' bgcolor='" .. from .. "'></span>")
 		end
 
@@ -219,14 +219,25 @@
 			theme.colors.pastel.green,
 			theme.colors.pastel.blue,
 		}
-		colors[0] = theme.colors.bg
+		colors[0] = theme.colors.dark
 		for w, widget in ipairs(widgets) do
 			if not widget.screen or widget.screen == s then
 				local left = colors[color]
 				local right = colors[color % (#colors) + 1]
+				local theIcon = wibox.widget.background(widget.icon, right)
+				local theWidget = wibox.widget.background(widget.widget, right)
+
+				if util.colors.isDark(right) then
+					theIcon:set_fg(theme.colors.light)
+					theWidget:set_fg(theme.colors.light)
+				else
+					theIcon:set_fg("#666666")
+					theWidget:set_fg("#666666")
+				end
+
 				right_layout:add(separate(left, right))
-				right_layout:add(wibox.widget.background(widget.icon, right))
-				right_layout:add(wibox.widget.background(widget.widget, right))
+				right_layout:add(theIcon)
+				right_layout:add(theWidget)
 				color = color % (#colors) + 1
 			end
 		end

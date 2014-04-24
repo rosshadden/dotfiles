@@ -23,9 +23,9 @@ dirs.theme = dirs.themes .. "/ross"
 	-- Colors
 		theme.colors = {
 			-- darkgrey
-			bg = "#1f211c",
+			dark = "#1f211c",
 			-- offwhite
-			text = "#F8F8F2",
+			light = "#F8F8F2",
 			-- rich blue
 			current = "#2463B4",
 			-- pastel yellow
@@ -36,18 +36,18 @@ dirs.theme = dirs.themes .. "/ross"
 			pastel = {
 				red = "#E67373",
 				yellow = "#ECEC85",
-				yellow = "#E0E259",
+				-- yellow = "#E0E259",
 				green = "#9DE970",
-				green = "#6Db940",
+				-- green = "#6Db940",
 				blue = "#708EE9",
 			}
 		}
 
 	-- General
-		theme.fg_normal  = theme.colors.text
+		theme.fg_normal  = theme.colors.light
 		theme.fg_focus   = "#FFFFFF"
 		theme.fg_urgent  = "#CC9393"
-		theme.bg_normal  = theme.colors.bg
+		theme.bg_normal  = theme.colors.dark
 		theme.bg_focus   = theme.colors.current
 		theme.bg_urgent  = theme.colors.highlight
 		theme.bg_systray = theme.bg_normal

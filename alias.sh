@@ -17,6 +17,8 @@ alias db='dropbox'
 # alias P="pacman"
 # alias S="systemctl"
 
+alias psu="ps -u $USER"
+
 # These are useful with the Dvorak keyboard layout
 alias 'h=l'
 alias 'hs=ls'

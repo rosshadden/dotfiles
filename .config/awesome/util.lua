@@ -60,4 +60,51 @@ util.screens = {
 }
 
 
+util.colors = {
+	-- RGB to HSL
+	rgbToHSL = function(r, g, b)
+	   --r, g, b = r/255, g/255, b/255
+	   local min = math.min(r, g, b)
+	   local max = math.max(r, g, b)
+	   local delta = max - min
+
+	   local h, s, l = 0, 0, ((min+max)/2)
+
+	   if l > 0 and l < 0.5 then s = delta/(max+min) end
+	   if l >= 0.5 and l < 1 then s = delta/(2-max-min) end
+
+	   if delta > 0 then
+	      if max == r and max ~= g then h = h + (g-b)/delta end
+	      if max == g and max ~= b then h = h + 2 + (b-r)/delta end
+	      if max == b and max ~= r then h = h + 4 + (r-g)/delta end
+	      h = h / 6;
+	   end
+
+	   if h < 0 then h = h + 1 end
+	   if h > 1 then h = h - 1 end
+
+	   return h * 360, s, l
+	end,
+
+	-- hex to HSL
+	hexToHSL = function(hex)
+		return util.colors.rgbToHSL(
+			tonumber(hex:sub(2, 3), 16) / 256,
+			tonumber(hex:sub(4, 5), 16) / 256,
+			tonumber(hex:sub(6, 7), 16) / 256
+		)
+	end,
+
+	isLight = function(hex, tolerance)
+		if not tolerance then tolerance = 0 end
+		return ({util.colors.hexToHSL(hex)})[3] >= .5 - tolerance
+	end,
+
+	isDark = function(hex, tolerance)
+		if not tolerance then tolerance = 0 end
+		return ({util.colors.hexToHSL(hex)})[3] < .5 + tolerance
+	end
+}
+
+
 return util
