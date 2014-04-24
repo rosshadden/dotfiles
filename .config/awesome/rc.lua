@@ -13,12 +13,11 @@
 	-- Notification library
 	local naughty = require("naughty")
 	local menubar = require("menubar")
-	-- Misc
-	local lain = require("lain")
 
 	-- Mine
 	local util = require("util")
 	local apps = require("apps")
+	local widgets = require("widgets")
 
 
 -- ERRORS
@@ -113,114 +112,6 @@
 
 
 -- WIDGETS
-	markup = lain.util.markup
-
-	-- clock
-		local dateformat = "<span font='FontAwesome'></span> %a %b %d"
-		local timeformat = "<span font='FontAwesome'></span> %H:%M"
-		clockicon = wibox.widget.imagebox(theme.widget_clock)
-		mytextclock = wibox.widget.background(
-			awful.widget.textclock(" " .. dateformat .. "  " .. timeformat .. " ")
-		, theme.colors.pastel.red)
-
-	-- calendar
-		lain.widgets.calendar:attach(mytextclock, { font_size = 12 })
-
-	-- MEM
-		memicon = wibox.widget.imagebox(theme.mem)
-		memwidget = lain.widgets.mem({
-			settings = function()
-				widget:set_text(mem_now.used .. "MB ")
-			end
-		})
-
-	-- CPU
-		cpuicon = wibox.widget.background()
-		cpuiconInner = wibox.widget.imagebox(theme.cpu)
-		cpuicon:set_widget(cpuiconInner)
-		cpuicon:set_bg(theme.colors.pastel.red)
-		cpuwidget = wibox.widget.background(lain.widgets.cpu({
-			settings = function()
-				widget:set_text(cpu_now.usage .. "% ")
-			end
-		}), theme.colors.pastel.red)
-
-	-- Coretemp
-		if (util.fileExists("/sys/class/thermal/thermal_zone0/temp")) then
-			tempicon = wibox.widget.background(wibox.widget.imagebox(theme.temp), theme.colors.pastel.yellow)
-			tempwidget = wibox.widget.background(lain.widgets.temp({
-				settings = function()
-					widget:set_text(coretemp_now .. "°C ")
-				end
-			}), theme.colors.pastel.yellow)
-		end
-
-	-- Net
-		neticon = wibox.widget.background()
-		neticonInner = wibox.widget.imagebox(theme.net)
-		neticonInner:buttons(awful.util.table.join(awful.button({}, 1, function() awful.util.spawn_with_shell(iptraf) end)))
-		neticon:set_widget(neticonInner)
-		neticon:set_bg(theme.colors.pastel.red)
-		netwidget = wibox.widget.background(lain.widgets.net({
-			settings = function()
-				widget:set_markup(
-					markup("#7AC82E", net_now.received)
-					.. "/" ..
-					markup("#46A8C3", net_now.sent)
-					.. " "
-				)
-			end
-		}), theme.colors.pastel.red)
-
-	-- Battery
-		if (util.fileExists("/sys/class/power_supply/BAT0")) then
-			baticonInner = wibox.widget.imagebox(theme.battery)
-			baticon = wibox.widget.background(baticonInner, theme.colors.pastel.blue)
-			batwidget = wibox.widget.background(lain.widgets.bat({
-				settings = function()
-					if bat_now.status ~= "Discharging" then
-						widget:set_markup(bat_now.perc .. "% [" .. bat_now.status .. "] ")
-						baticonInner:set_image(theme.ac)
-						return
-					end
-
-					widget:set_markup(bat_now.perc .. "% ")
-					if tonumber(bat_now.perc) <= 5 then
-						baticonInner:set_image(theme.battery_empty)
-					elseif tonumber(bat_now.perc) <= 15 then
-						baticonInner:set_image(theme.battery_low)
-					else
-						baticonInner:set_image(theme.battery)
-					end
-				end
-			}), theme.colors.pastel.blue)
-		end
-
-	-- Volume
-		voliconInner = wibox.widget.imagebox(theme.vol)
-		volicon = wibox.widget.background(voliconInner, theme.colors.pastel.green)
-		volumewidget = wibox.widget.background(lain.widgets.alsa({
-			settings = function()
-				local icon = ""
-				if volume_now.status == "off" then
-					icon = ""
-					voliconInner:set_image(theme.vol_mute)
-				elseif tonumber(volume_now.level) == 0 then
-					icon = ""
-					voliconInner:set_image(theme.vol_no)
-				elseif tonumber(volume_now.level) <= 50 then
-					icon = ""
-					voliconInner:set_image(theme.vol_low)
-				else
-					icon = ""
-					voliconInner:set_image(theme.vol)
-				end
-
-				-- widget:set_text("<span font='FontAwesome'>" .. icon .. "</span> " .. volume_now.level .. "% ")
-				widget:set_text(volume_now.level .. "% ")
-			end
-		}), theme.colors.pastel.green)
-
 	-- Separators
 		spr = wibox.widget.textbox(" ")
 		separate = function(from, to)
@@ -321,38 +212,24 @@
 		local right_layout = wibox.layout.fixed.horizontal()
 		if s == 1 then right_layout:add(wibox.widget.systray()) end
 
-		if s == util.screens.right then
-			if batwidget then
-				right_layout:add(separate(nil, theme.colors.pastel.yellow))
-				right_layout:add(tempicon)
-				right_layout:add(tempwidget)
+		local color = 0
+		local colors = {
+			theme.colors.pastel.red,
+			theme.colors.pastel.yellow,
+			theme.colors.pastel.green,
+			theme.colors.pastel.blue,
+		}
+		colors[0] = theme.colors.bg
+		for w, widget in ipairs(widgets) do
+			if not widget.screen or widget.screen == s then
+				local left = colors[color]
+				local right = colors[color % (#colors) + 1]
+				right_layout:add(separate(left, right))
+				right_layout:add(wibox.widget.background(widget.icon, right))
+				right_layout:add(wibox.widget.background(widget.widget, right))
+				color = color % (#colors) + 1
 			end
-
-			right_layout:add(separate(theme.colors.pastel.yellow, theme.colors.pastel.red))
-			right_layout:add(neticon)
-			right_layout:add(netwidget)
-
-			right_layout:add(separate(theme.colors.pastel.red, nil))
-			right_layout:add(memicon)
-			right_layout:add(memwidget)
-
-			right_layout:add(separate(nil, theme.colors.pastel.red))
-			right_layout:add(cpuicon)
-			right_layout:add(cpuwidget)
 		end
-
-		right_layout:add(separate(theme.colors.pastel.red, theme.colors.pastel.green))
-		right_layout:add(volicon)
-		right_layout:add(volumewidget)
-
-		if batwidget then
-			right_layout:add(separate(theme.colors.pastel.green, theme.colors.pastel.blue))
-			right_layout:add(baticon)
-			right_layout:add(batwidget)
-		end
-
-		right_layout:add(separate(theme.colors.pastel.blue, theme.colors.pastel.red))
-		right_layout:add(mytextclock)
 
 		right_layout:add(mylayoutbox[s])
 		right_layout:add(debug)

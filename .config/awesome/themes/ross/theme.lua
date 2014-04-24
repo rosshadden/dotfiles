@@ -27,7 +27,7 @@ dirs.theme = dirs.themes .. "/ross"
 			-- offwhite
 			text = "#F8F8F2",
 			-- rich blue
-			select = "#2463B4",
+			current = "#2463B4",
 			-- pastel yellow
 			highlight = "#f2eb8f",
 			-- rose
@@ -36,7 +36,7 @@ dirs.theme = dirs.themes .. "/ross"
 			pastel = {
 				red = "#E67373",
 				yellow = "#ECEC85",
-				yellow = "#708EE9",
+				yellow = "#E0E259",
 				green = "#9DE970",
 				green = "#6Db940",
 				blue = "#708EE9",
@@ -48,7 +48,7 @@ dirs.theme = dirs.themes .. "/ross"
 		theme.fg_focus   = "#FFFFFF"
 		theme.fg_urgent  = "#CC9393"
 		theme.bg_normal  = theme.colors.bg
-		theme.bg_focus   = theme.colors.select
+		theme.bg_focus   = theme.colors.current
 		theme.bg_urgent  = theme.colors.highlight
 		theme.bg_systray = theme.bg_normal
 
@@ -67,6 +67,9 @@ dirs.theme = dirs.themes .. "/ross"
 		theme.taglist_fg_focus = theme.fg_focus
 		theme.taglist_fg_urgent = theme.bg_normal
 		-- theme.taglist_bg_urgent = theme.colors.highlight
+
+	-- Tasklist
+		theme.tasklist_bg_focus = theme.colors.current .. "88"
 
 	-- There are other variable sets
 	-- overriding the default one when
