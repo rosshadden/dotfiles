@@ -53,7 +53,7 @@ dirs.theme = dirs.themes .. "/ross"
 		theme.bg_systray = theme.bg_normal
 
 	-- Borders
-		theme.border_width  = 1
+		theme.border_width  = 0
 		theme.border_normal = "#6F6F6F"
 		theme.border_focus  = theme.colors.accent
 		theme.border_marked = theme.fg_urgent

@@ -227,12 +227,12 @@
 				local theIcon = wibox.widget.background(widget.icon, right)
 				local theWidget = wibox.widget.background(widget.widget, right)
 
-				if util.colors.isDark(right) then
+				if (util.color.hexToHSL(right)[1] < 40 or 200 < util.color.hexToHSL(right)[1]) and util.color.isDark(right, .2) then
 					theIcon:set_fg(theme.colors.light)
 					theWidget:set_fg(theme.colors.light)
 				else
-					theIcon:set_fg("#666666")
-					theWidget:set_fg("#666666")
+					theIcon:set_fg("#999999")
+					theWidget:set_fg("#999999")
 				end
 
 				right_layout:add(separate(left, right))
@@ -488,6 +488,7 @@
 		-- This should map on the top row of your keyboard, usually 1 to 9.
 		for i = 1, 9 do
 			globalkeys = awful.util.table.join(globalkeys,
+				-- Switch to tag
 				awful.key({ modkey }, "#" .. i + 9, function()
 					local screen = mouse.screen
 					local tag = awful.tag.gettags(screen)[i]
@@ -495,6 +496,7 @@
 						awful.tag.viewonly(tag)
 					end
 				end),
+				-- Toggle tag
 				awful.key({ modkey, "Control" }, "#" .. i + 9, function()
 					local screen = mouse.screen
 					local tag = awful.tag.gettags(screen)[i]
@@ -502,6 +504,7 @@
 						awful.tag.viewtoggle(tag)
 					end
 				end),
+				-- Move client to tag
 				awful.key({ modkey, "Shift" }, "#" .. i + 9, function()
 					if client.focus then
 						local tag = awful.tag.gettags(client.focus.screen)[i]
@@ -510,6 +513,7 @@
 						end
 					end
 				end),
+				-- Toggle client on tag
 				awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9, function()
 					if client.focus then
 						local tag = awful.tag.gettags(client.focus.screen)[i]
@@ -517,7 +521,8 @@
 							awful.client.toggletag(tag)
 						end
 					end
-				end))
+				end)
+			)
 		end
 
 		clientbuttons = awful.util.table.join(
@@ -641,7 +646,7 @@
 			vert:set_direction("east")
 			vert:set_widget(layout)
 
-			awful.titlebar(c, { position = "left" }):set_widget(vert)
+			-- awful.titlebar(c, { position = "left" }):set_widget(vert)
 		end
 	end)
 

@@ -60,7 +60,7 @@ util.screens = {
 }
 
 
-util.colors = {
+util.color = {
 	-- RGB to HSL
 	rgbToHSL = function(r, g, b)
 	   --r, g, b = r/255, g/255, b/255
@@ -83,12 +83,12 @@ util.colors = {
 	   if h < 0 then h = h + 1 end
 	   if h > 1 then h = h - 1 end
 
-	   return h * 360, s, l
+	   return { h * 360, s, l }
 	end,
 
 	-- hex to HSL
 	hexToHSL = function(hex)
-		return util.colors.rgbToHSL(
+		return util.color.rgbToHSL(
 			tonumber(hex:sub(2, 3), 16) / 256,
 			tonumber(hex:sub(4, 5), 16) / 256,
 			tonumber(hex:sub(6, 7), 16) / 256
@@ -97,13 +97,18 @@ util.colors = {
 
 	isLight = function(hex, tolerance)
 		if not tolerance then tolerance = 0 end
-		return ({util.colors.hexToHSL(hex)})[3] >= .5 - tolerance
+		return util.color.hexToHSL(hex)[3] >= .5 - tolerance
 	end,
 
 	isDark = function(hex, tolerance)
 		if not tolerance then tolerance = 0 end
-		return ({util.colors.hexToHSL(hex)})[3] < .5 + tolerance
-	end
+		return util.color.hexToHSL(hex)[3] < .5 + tolerance
+	end,
+
+	isSaturated = function(hex, tolerance)
+		if not tolerance then tolerance = 0 end
+		return util.color.hexToHSL(hex)[2] >= .5 - tolerance
+	end,
 }
 
 
