@@ -27,6 +27,11 @@ apps.list = {
 		icon = "/usr/share/pixmaps/firefox-aurora-icon.png"
 	},
 
+	atom = {
+		name = "Atom",
+		cmd = "atom",
+	},
+
 	gimp = {
 		name = "Gimp",
 		cmd = "gimp",
@@ -88,7 +93,7 @@ apps.list = {
 
 			local pid
 			local doesExist = util.exec("tmux list-sessions | sed -r 's|^(.+): .*|\\1|' | grep " .. name)
-			if doesExist == name .. "\n" then
+			if doesExist == name then
 				pid = util.spawn(util.makeRun("tmux attach -t " .. name))
 			else
 				pid = util.spawn(util.makeRun("tmux new-session -s " .. name))
@@ -173,6 +178,7 @@ end
 		makeEntry("chrome"),
 		makeEntry("chrome-zipscene"),
 		makeEntry("sublime"),
+		makeEntry("atom"),
 		makeEntry("firefox"),
 		makeEntry("steam"),
 		makeEntry("transmission"),

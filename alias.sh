@@ -9,8 +9,13 @@ alias suspend="dbus-send --print-reply --system --dest=org.freedesktop.UPower /o
 alias l='ls -lah'
 alias du='du -h'
 alias tree="ls -R | grep \":$\" | sed -e 's/:$//' -e 's/[^-][^\/]*\//----/g' -e 's/^/   /' -e 's/-/|/'"
-alias t='tmux'
+
 alias db='dropbox'
+
+alias t='tmux'
+alias ta='tmux attach -t'
+alias ts='tmux new-session -s'
+alias tl='tmux list-sessions'
 
 # Making these symlinks instead so sudo may benefit.
 # alias Y="yaourt"

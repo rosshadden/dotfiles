@@ -5,7 +5,13 @@ local awful = require("awful")
 local util = {}
 
 util.spawn = awful.util.spawn
-util.exec = awful.util.pread
+util.pread = awful.util.pread
+
+util.exec = function(cmd)
+	result = util.pread(cmd)
+	if result:sub(-1) == "\n" then result = result:sub(1, -2) end
+	return result
+end
 
 test = function(...)
 	log(...)

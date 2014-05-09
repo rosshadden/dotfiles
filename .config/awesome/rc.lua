@@ -201,7 +201,7 @@
 		local left_layout = wibox.layout.fixed.horizontal()
 			-- left_layout:add(spr)
 
-		if util.exec("whoami") ~= "ross\n" then
+		if util.exec("whoami") ~= "ross" then
 			left_layout:add(mylauncher)
 		end
 
@@ -362,7 +362,9 @@
 			-- Menubar
 			awful.key({ modkey }, "p", function() menubar.show() end),
 
-			awful.key({ modkey }, "Delete", function() util.spawn("dm-tool lock") end),
+			awful.key({ modkey }, "Delete", function() util.spawn("light-locker-command -l") end),
+			--awful.key({ "Control", "Alt" }, "L", function() util.spawn("light-locker-command -l") end),
+			--awful.key({ "Control", "Alt" }, "N", function() util.spawn("light-locker-command -l") end),
 
 			-- Volume keys
 			awful.key({}, "XF86AudioRaiseVolume", function()

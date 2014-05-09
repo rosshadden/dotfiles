@@ -28,12 +28,14 @@ local widgets = {}
 	netIcon:buttons(awful.util.table.join(awful.button({}, 1, function() awful.util.spawn_with_shell(iptraf) end)))
 	netWidget = lain.widgets.net({
 		settings = function()
-			netWidget:set_markup(
+			local content =
 				markup("#7AC82E", net_now.received)
 				.. "/" ..
 				markup("#46A8C3", net_now.sent)
 				.. " "
-			)
+			local wifi = util.exec("netctl-auto current")
+			if wifi and wifi ~= "" then content = content .. "[" .. wifi .. "]" end
+			netWidget:set_markup(content)
 		end
 	})
 

@@ -1,6 +1,9 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+# Path to dotfiles.
+DOTS=$HOME/dotfiles
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -35,7 +38,7 @@ bindkey "^?" backward-delete-char
 bindkey "^W" backward-kill-word
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/Dropbox/.dots/scripts/vim.zsh
+source $DOTS/scripts/vim.zsh
 unsetopt correct_all
 
 # Customize to your needs...
@@ -44,8 +47,8 @@ export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/u
 
 ################################################################
 # ROSS
-. $HOME/Dropbox/.dots/path.sh
-. $HOME/Dropbox/.dots/alias.sh
+. $DOTS/path.sh
+. $DOTS/alias.sh
 [[ -e "$HOME/.local.sh" ]] && . $HOME/.local.sh
 
 # vi-mode stuff

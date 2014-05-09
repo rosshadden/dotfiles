@@ -1,7 +1,7 @@
 export DEFAULT_USER=$USER
 
 export _NO_RESOLVE_SYMLINKS=true
-. $HOME/Dropbox/.dots/z/z.sh
+. $DOTS/z/z.sh
 function precmd () {
 	_z --add "$(pwd)"
 }
@@ -14,6 +14,7 @@ export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64
 
 export PATH=$PATH:~/pear/bin
 export PATH=$PATH:$HOME/local/bin
+[[ -e /usr/bin/ruby ]] && export PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
 
 export EDITOR=vim
 

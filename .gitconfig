@@ -75,4 +75,5 @@
 	extendRegexp = true
 	lineNumber = true
 [push]
-	#default = simple
+	default = matching
+
