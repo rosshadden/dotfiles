@@ -5,6 +5,7 @@ local awful = require("awful")
 local util = {}
 
 util.spawn = awful.util.spawn
+util.shell = awful.util.spawn_with_shell
 util.pread = awful.util.pread
 
 util.exec = function(cmd)

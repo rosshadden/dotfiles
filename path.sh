@@ -18,4 +18,6 @@ export PATH=$PATH:$HOME/local/bin
 
 export EDITOR=vim
 
+export ATOM_REPOS_HOME=~/Dropbox/dev/forks
+
 stty -ixon

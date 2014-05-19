@@ -3,6 +3,7 @@
 	email = rosshadden@gmail.com
 [core]
 	editor = vi
+	excludesfile = /home/ross/dotfiles/git/.gitignore-global
 [mergetool "subl"]
 	cmd = subl -w $MERGED
 	trustExitCode = false
@@ -59,9 +60,12 @@
 
 	# logging
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -n64
+	lgs = "!git lg --stat --no-merges"
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat -n32
-	lawg = "!sh -c 'git --no-pager log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\" origin/$(git pwd)..$(git pwd)' -"
-	new = "!sh -c 'git log $1@{1}..$1@{0} "$@"' -"
+	lawg = log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\"
+	lawg-new = "!sh -c 'git --no-pager log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\" origin/$(git pwd)..$(git pwd)' -"
+	# new = "!sh -c 'git log $1@{1}..$1@{0} "$@"' -"
+	new = "!git lgs HEAD..FETCH_HEAD"
 	g = grep --break --heading --line-number
 
 	# utility

@@ -383,12 +383,21 @@
 				local path = "/srv/http/media/img/" .. file
 				local url = "http://rhadden.com/media/img/" .. file
 
-				util.spawn("escrotum " .. path, false)
+				util.shell("escrotum " .. path)
 				util.copy(url)
 
-				naughty.notify({
+				note = naughty.notify({
 					title = "Screenshot saved",
-					text = path .. "\n" .. url
+					text = path .. "\n" .. url .. "\n" .. "Click to move to Dropbox.",
+					timeout = 20,
+					run = function()
+						naughty.destroy(note)
+						local newPath = "~/Dropbox/Public/media/images/ss/" .. file
+						util.shell("mv " .. path .. " " .. newPath)
+						local puburl = util.exec("~/local/bin/dropbox puburl " .. newPath)
+						util.copy(puburl)
+						log("Moved to " .. newPath .. "\n" .. "Available at " .. puburl)
+					end
 				})
 			end),
 
@@ -397,12 +406,21 @@
 				local path = "/srv/http/media/img/" .. file
 				local url = "http://rhadden.com/media/img/" .. file
 
-				util.spawn("escrotum -s " .. path, false)
+				util.shell("escrotum -s " .. path)
 				util.copy(url)
 
-				naughty.notify({
+				note = naughty.notify({
 					title = "Screenshot saved",
-					text = path .. "\n" .. url
+					text = path .. "\n" .. url .. "\n" .. "Click to move to Dropbox.",
+					timeout = 20,
+					run = function()
+						naughty.destroy(note)
+						local newPath = "~/Dropbox/Public/media/images/ss/" .. file
+						util.shell("mv " .. path .. " " .. newPath)
+						local puburl = util.exec("~/local/bin/dropbox puburl " .. newPath)
+						util.copy(puburl)
+						log("Moved to " .. newPath .. "\n" .. "Available at " .. puburl)
+					end
 				})
 			end),
 
@@ -552,7 +570,7 @@
 			rule = { class = "MPlayer" },
 			properties = { floating = true }
 		}, {
-			rule = { class = "Qalculate!" },
+			rule = { instance = "qalculate-gtk" },
 			properties = { floating = true }
 		}, {
 			rule = { class = "pinentry" },
@@ -566,12 +584,12 @@
 		-- }, {
 		-- 	rule = { instance = "spacefm" },
 		-- 	properties = { tag = tags[util.screens.left][5] }
-		-- }, {
-		-- 	rule = { instance = "geeqie" },
-		-- 	properties = { tag = tags[util.screens.left][6] }
-		-- }, {
-		-- 	rule = { instance = "skype" },
-		-- 	properties = { tag = tags[util.screens.left][7] }
+		}, {
+			rule = { instance = "geeqie" },
+			properties = { tag = tags[util.screens.left][6] }
+		}, {
+			rule = { instance = "skype" },
+			properties = { tag = tags[util.screens.right][7] }
 		-- }, {
 		-- 	rule = { instance = "subl" },
 		-- 	properties = { tag = tags[util.screens.right][2] }
