@@ -1,3 +1,6 @@
 [submodule "z"]
 	path = z
 	url = https://github.com/rupa/z.git
+[submodule ".config/awesome/lain"]
+	path = .config/awesome/lain
+	url = git@github.com:copycat-killer/lain.git
