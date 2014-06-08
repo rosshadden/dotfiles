@@ -32,11 +32,6 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(extract github grails node npm python nyan sublime history-substring-search tmux)
 #plugins=(battery extract github grails node npm python nyan sublime vi-mode)
 
-# More betterer input
-#bindkey -M viins 'jj' vi-cmd-mode
-bindkey "^?" backward-delete-char
-bindkey "^W" backward-kill-word
-
 source $ZSH/oh-my-zsh.sh
 source $DOTS/scripts/vim.zsh
 unsetopt correct_all

@@ -60,12 +60,13 @@
 
 	# logging
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -n64
-	lgs = "!git lg --stat --no-merges"
+	lgs = "!git lg --stat"
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat -n32
 	lawg = log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\"
 	lawg-new = "!sh -c 'git --no-pager log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\" origin/$(git pwd)..$(git pwd)' -"
 	# new = "!sh -c 'git log $1@{1}..$1@{0} "$@"' -"
-	new = "!git lgs HEAD..FETCH_HEAD"
+	new = "!git lg HEAD..FETCH_HEAD"
+	news = "!git lgs HEAD..FETCH_HEAD"
 	g = grep --break --heading --line-number
 
 	# utility
@@ -73,6 +74,8 @@
 		xargs git show-branch $(git pwd)
 	track = update-index --no-assume-unchanged
 	untrack = update-index --assume-unchanged
+	i = in
+	o = out
 [remote "origin"]
 	#fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
 [grep]

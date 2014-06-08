@@ -31,6 +31,10 @@ bindkey '\eOH' vi-beginning-of-line
 bindkey '\e[4~' vi-end-of-line
 bindkey '\eOF' vi-end-of-line
 
+# More betterer input
+#bindkey -M viins 'jj' vi-cmd-mode
+bindkey "^?" backward-delete-char
+bindkey "^W" backward-kill-word
 
 bindkey -M viins '^o' vi-backward-kill-word
 
@@ -64,7 +68,7 @@ bindkey -M viins '^e' end-of-line
 
 # if mode indicator wasn't setup by theme, define default
 if [[ "$MODE_INDICATOR" == "" ]]; then
-  MODE_INDICATOR="%{$fg_bold[red]%}<%{$fg[red]%}<<%{$reset_color%}"
+  MODE_INDICATOR="%{$fg_bold[blue]%}<%{$fg[red]%}<<%{$reset_color%}"
 fi
 
 function vi_mode_prompt_info() {

@@ -113,15 +113,11 @@
 
 -- WIDGETS
 	-- Separators
-		spr = wibox.widget.textbox(" ")
 		separate = function(from, to)
 			if not from then from = theme.colors.dark end
 			if not to then to = theme.colors.dark end
 			return wibox.widget.textbox("<span font='FontAwesome 30' color='" .. to .. "' bgcolor='" .. from .. "'></span>")
 		end
-
-	-- DEBUG
-		debug = wibox.widget.textbox("")
 
 	-- Create a wibox for each screen and add it
 	mywibox = {}
@@ -199,7 +195,6 @@
 
 		-- Widgets that are aligned to the left
 		local left_layout = wibox.layout.fixed.horizontal()
-			-- left_layout:add(spr)
 
 		if util.exec("whoami") ~= "ross" then
 			left_layout:add(mylauncher)
@@ -243,6 +238,9 @@
 		end
 
 		right_layout:add(mylayoutbox[s])
+
+		-- DEBUG
+		local debug = wibox.widget.textbox(s)
 		right_layout:add(debug)
 
 		-- Now bring it all together (with the tasklist in the middle)
@@ -430,8 +428,7 @@
 
 				awful.prompt.run(
 					{
-						prompt = "Calc: ",
-						text = CACHE.calc.expression and tostring(CACHE.calc.expression)
+						prompt = "calc:  "
 					},
 					mypromptbox[mouse.screen].widget,
 					function (expression)
@@ -590,6 +587,9 @@
 		}, {
 			rule = { instance = "skype" },
 			properties = { tag = tags[util.screens.right][7] }
+		}, {
+			rule = { class = "Pidgin" },
+			properties = { tag = tags[util.screens.right][8] }
 		-- }, {
 		-- 	rule = { instance = "subl" },
 		-- 	properties = { tag = tags[util.screens.right][2] }

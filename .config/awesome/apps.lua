@@ -38,6 +38,12 @@ apps.list = {
 		icon = util.getIconPath{ app = "gimp" }
 	},
 
+	gimp = {
+		name = "Pidgin",
+		cmd = "pidgin",
+		icon = util.getIconPath{ app = "pidgin" }
+	},
+
 	qalculate = {
 		name = "Qalculate!",
 		cmd = "qalculate-gtk",
