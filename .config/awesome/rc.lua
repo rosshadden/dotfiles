@@ -108,7 +108,7 @@
 	}
 
 	-- Menubar configuration
-	menubar.utils.terminal = apps.get("terminal") -- Set the terminal for applications that require it
+	menubar.utils.terminal = handlers.terminal -- Set the terminal for applications that require it
 
 
 -- WIDGETS
@@ -476,7 +476,7 @@
 
 			-- Debug
 			awful.key({ modkey, "Control", "Shift" }, "space", function()
-				test("this", "is", { title = "aoeu" })
+				log("ueoa", { title = "aoeu" })
 			end)
 		)
 

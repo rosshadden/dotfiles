@@ -14,10 +14,6 @@ util.exec = function(cmd)
 	return result
 end
 
-test = function(...)
-	log(...)
-end
-
 util.getIconPath = function(options)
 	options.size = options.size or "32"
 	options.category = options.category or "apps"
@@ -31,7 +27,8 @@ util.makeBrowse = function(path)
 end
 
 util.makeRun = function(cmd)
-	return handlers["terminal"] .. " -x run " .. cmd
+	-- return handlers["terminal"] .. " -x run " .. cmd
+	return handlers["terminal"] .. " -x " .. cmd
 end
 
 util.copy = function(contents)
