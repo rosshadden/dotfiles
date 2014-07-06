@@ -35,28 +35,16 @@
 	diff = diff --word-diff
 	grep = grep -Ii
 
-	# file-system metaphor
-	ls = ls-files
-	cat = log -u --word-diff
-	pwd = rev-parse --abbrev-ref HEAD
-	find = "!git ls-files | grep -i"
-
-	# shortcuts
-	amend = commit --amend
-	a = add
-	c = commit
-	s = status -sb
-	co = checkout
-	rb = rebase
-	df = diff --word-diff
-	staged = diff --staged --word-diff
-	unstage = reset HEAD --
-	scrap = "!sh -c 'git reset --hard ${1-HEAD}' -"
-
 	# dynamic
 	in = "!sh -c 'git pull ${1-origin} ${2-$(git pwd)}' -"
 	out = "!sh -c 'git push ${1-origin} ${2-$(git pwd)}' -"
 	sync = "!git in && git out"
+
+	# unix metaphor
+	ls = ls-files
+	cat = log -u --word-diff
+	pwd = rev-parse --abbrev-ref HEAD
+	find = "!git ls-files | grep -i"
 
 	# logging
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -n64
@@ -67,13 +55,33 @@
 	# new = "!sh -c 'git log $1@{1}..$1@{0} "$@"' -"
 	new = "!git lg HEAD..FETCH_HEAD"
 	news = "!git lgs HEAD..FETCH_HEAD"
-	g = grep --break --heading --line-number
 
 	# utility
-	sb = !ls .git/refs/remotes/*/$(git pwd) | cut -d/ -f4,5 | \
-		xargs git show-branch $(git pwd)
+	sb = !ls .git/refs/remotes/*/$(git pwd) | cut -d/ -f4,5 | xargs git show-branch $(git pwd)
 	track = update-index --no-assume-unchanged
 	untrack = update-index --assume-unchanged
+
+	# shortcuts
+	df = diff --word-diff
+	staged = diff --staged --word-diff
+	unstage = reset HEAD --
+	scrap = "!sh -c 'git reset --hard ${1-HEAD}' -"
+	amend = commit --amend
+	g = grep --break --heading --line-number
+	s = status -sb
+
+	# stash
+	sl = stash list
+	ss = stash save
+	sa = "!sh -c 'git stash apply stash@{$1}' -"
+	sp = "!sh -c 'git stash pop stash@{$1}' -"
+	sd = "!sh -c 'git stash drop stash@{$1}' -"
+
+	# alias
+	a = add
+	c = commit
+	co = checkout
+	rb = rebase
 	i = in
 	o = out
 [remote "origin"]
@@ -83,4 +91,3 @@
 	lineNumber = true
 [push]
 	default = matching
-

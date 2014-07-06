@@ -33,11 +33,15 @@ plugins=(extract github grails node npm python nyan sublime history-substring-se
 #plugins=(battery extract github grails node npm python nyan sublime vi-mode)
 
 source $ZSH/oh-my-zsh.sh
-source $DOTS/scripts/vim.zsh
+source $DOTS/shell/vim.zsh
+source $DOTS/shell/opp.zsh/opp.zsh
+source $DOTS/shell/opp.zsh/opp/*.zsh
 unsetopt correct_all
 
 # Customize to your needs...
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+
+bindkey '^[[Z' reverse-menu-complete
 
 
 ################################################################

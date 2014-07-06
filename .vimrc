@@ -6,14 +6,14 @@ set smartcase
 set incsearch
 set hlsearch
 set mouse=a
-set pastetoggle=
+set pastetoggle=<F5>
 
 " Let arrow keys pass \n
 set whichwrap=b,s,<,>,[,]
 
 " Preserve cursor position
 if has("autocmd")
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
 
 " Get sudo when it has been forgotten.
@@ -35,7 +35,9 @@ vnoremap	<silent> <C-X>		<C-C>:wq<CR>
 inoremap	<silent> <C-X>		<C-O>:wq<CR>
 
 " U to redo
-noremap		U					<c-r>
+noremap		U			<c-r>
 " Y to act similar to D and C.
 nmap Y y$
 
+" When vimrc is edited, reload it
+autocmd! bufwritepost vimrc source ~/.vimrc

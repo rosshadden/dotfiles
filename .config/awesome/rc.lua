@@ -361,8 +361,6 @@
 			awful.key({ modkey }, "p", function() menubar.show() end),
 
 			awful.key({ modkey }, "Delete", function() util.spawn("light-locker-command -l") end),
-			--awful.key({ "Control", "Alt" }, "L", function() util.spawn("light-locker-command -l") end),
-			--awful.key({ "Control", "Alt" }, "N", function() util.spawn("light-locker-command -l") end),
 
 			-- Volume keys
 			awful.key({}, "XF86AudioRaiseVolume", function()
