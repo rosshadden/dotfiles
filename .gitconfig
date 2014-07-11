@@ -2,7 +2,7 @@
 	name = Ross Hadden
 	email = rosshadden@gmail.com
 [core]
-	editor = vi
+	editor = vim
 	excludesfile = /home/ross/dotfiles/git/.gitignore-global
 [mergetool "subl"]
 	cmd = subl -w $MERGED
