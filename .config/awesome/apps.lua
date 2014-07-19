@@ -180,7 +180,7 @@ end
 
 
 -- MENU
-	appsMenu = {
+	local appsMenu = {
 		makeEntry("chrome"),
 		makeEntry("chrome-zipscene"),
 		makeEntry("sublime"),
@@ -195,31 +195,31 @@ end
 		makeEntry("remmina"),
 	}
 
-	filesMenu = {
+	local filesMenu = {
 		makeEntry("spacefm"),
 		{ "Home", apps.bake("spacefm", "~") },
 		{ "Dropbox", apps.bake("spacefm", "~/Dropbox") },
 		{ "Downloads", apps.bake("spacefm", "~/downloads") },
 	}
 
-	terminalMenu = {
+	local terminalMenu = {
 		makeEntry("terminator"),
 		makeEntry("tmux"),
 	}
 
-	soundMenu = {
+	local soundMenu = {
 		{ "ALSA", handlers.terminal .. " -e alsamixer" },
 		{ "Mute toggle", "pulseaudio-ctl mute" },
 	}
 
-	awesomeMenu = {
+	local awesomeMenu = {
 		{ "manual", handlers.terminal .. " -e man awesome" },
 		{ "edit config", handlers.edit .. " " .. awesome.conffile },
 		{ "restart", awesome.restart },
 		{ "quit", awesome.quit },
 	}
 
-	powerMenu = {
+	local powerMenu = {
 		{ "awesome", awesomeMenu, beautiful.awesome_icon },
 		{ "Switch user", "dm-tool switch-to-greeter" },
 		{ "Lock", "dm-tool lock" },

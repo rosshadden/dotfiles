@@ -196,9 +196,9 @@
 		-- Widgets that are aligned to the left
 		local left_layout = wibox.layout.fixed.horizontal()
 
-		if util.exec("whoami") ~= "ross" then
+		-- if util.exec("whoami") ~= "ross" then
 			left_layout:add(mylauncher)
-		end
+		-- end
 
 		left_layout:add(mytaglist[s])
 		left_layout:add(mypromptbox[s])
@@ -390,7 +390,7 @@
 						naughty.destroy(note)
 						local newPath = "~/Dropbox/Public/media/images/ss/" .. file
 						util.shell("mv " .. path .. " " .. newPath)
-						local puburl = util.exec("~/local/bin/dropbox puburl " .. newPath)
+						local puburl = util.exec("dropbox puburl " .. newPath)
 						util.copy(puburl)
 						log("Moved to " .. newPath .. "\n" .. "Available at " .. puburl)
 					end
@@ -413,7 +413,7 @@
 						naughty.destroy(note)
 						local newPath = "~/Dropbox/Public/media/images/ss/" .. file
 						util.shell("mv " .. path .. " " .. newPath)
-						local puburl = util.exec("~/local/bin/dropbox puburl " .. newPath)
+						local puburl = util.exec("dropbox puburl " .. newPath)
 						util.copy(puburl)
 						log("Moved to " .. newPath .. "\n" .. "Available at " .. puburl)
 					end
