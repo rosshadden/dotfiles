@@ -37,6 +37,11 @@ small-button = true
 
 [GntEntry::remap]
 
+[GntWM::binding]
+a-l = window-next
+a-h = window-prev
+a-r = refresh-screen
+
 [GntWidget::binding]
 
 [Irssi::binding]
@@ -66,3 +71,4 @@ titled = white; gray
 text = red; darkgray
 disabled = gray; black
 urgent = green; black
+

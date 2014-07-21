@@ -30,6 +30,13 @@ alias 'hs=ls'
 alias 'ha=la'
 alias 'hh=ll'
 
+alias afk='light-locker-command -l'
+
+alias reload='alias reload="exec $SHELL -l"'
+
+# Turn off caps lock
+alias shh="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
+
 alias aoeu='if [ $DISPLAY ]; then setxkbmap -option grp_led:scroll -option caps:escape -option compose:ralt -layout us,dvorak; else loadkeys us; fi'
 alias asdf='if [ $DISPLAY ]; then setxkbmap -option grp_led:scroll -option caps:escape -option compose:ralt -layout dvorak,us; else loadkeys dvorak; fi'
 
