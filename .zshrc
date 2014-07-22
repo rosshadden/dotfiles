@@ -46,16 +46,28 @@ bindkey '^[[Z' reverse-menu-complete
 
 ################################################################
 # ROSS
-. $DOTS/path.sh
-. $DOTS/alias.sh
+. $DOTS/shell/general.sh
+. $DOTS/shell/path.sh
+. $DOTS/shell/alias.sh
 [[ -e "$HOME/.local.sh" ]] && . $HOME/.local.sh
 
 # vi-mode stuff
 KEYTIMEOUT=1
 
-
-# PROMPT='%{$fg[yellow]%}λ %{$fg[green]%}${PWD/#$HOME/~} %{$fg[yellow]%}→ $(git_prompt_info)%{$reset_color%}'
+# expand .[TAB] and ..[TAB]
+zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.gvm/bin/gvm-init.sh" ]] && source "$HOME/.gvm/bin/gvm-init.sh"
 
+
+man() {
+    env LESS_TERMCAP_mb=$'\E[01;31m' \
+    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+    LESS_TERMCAP_me=$'\E[0m' \
+    LESS_TERMCAP_se=$'\E[0m' \
+    LESS_TERMCAP_so=$'\E[38;5;246m' \
+    LESS_TERMCAP_ue=$'\E[0m' \
+    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+    man "$@"
+}
