@@ -29,7 +29,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse command-not-found)
-plugins=(extract github grails node npm python nyan sublime history-substring-search tmux)
+plugins=(extract github grails node npm python nyan sublime history-substring-search tmux zsh-syntax-highlighting)
 #plugins=(battery extract github grails node npm python nyan sublime vi-mode)
 
 source $ZSH/oh-my-zsh.sh
@@ -53,6 +53,11 @@ bindkey '^[[Z' reverse-menu-complete
 
 # vi-mode stuff
 KEYTIMEOUT=1
+
+# Fish-like syntax highlighting
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=red'
 
 # expand .[TAB] and ..[TAB]
 zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
