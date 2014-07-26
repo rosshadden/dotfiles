@@ -10,7 +10,8 @@ alias l='ls -lah'
 alias du='du -h'
 alias tree="ls -R | grep \":$\" | sed -e 's/:$//' -e 's/[^-][^\/]*\//----/g' -e 's/^/   /' -e 's/-/|/'"
 
-alias db='dropbox'
+alias e='$EDITOR'
+alias se='sudo $EDITOR'
 
 alias t='tmux'
 alias ta='tmux attach -t'
