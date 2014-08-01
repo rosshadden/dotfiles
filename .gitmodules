@@ -7,3 +7,9 @@
 [submodule "shell/opp.zsh"]
 	path = shell/opp.zsh
 	url = git@github.com:hchbaw/opp.zsh.git
+[submodule ".config/awesome/radical"]
+	path = .config/awesome/radical
+	url = git@github.com:Elv13/radical.git
+[submodule ".config/awesome/moses"]
+	path = .config/awesome/moses
+	url = git@github.com:Yonaba/Moses.git

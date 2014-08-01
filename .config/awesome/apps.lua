@@ -1,9 +1,8 @@
 local util = require("util")
 local awful = require("awful")
 local beautiful = require("beautiful")
-
-
-hr = "-----------------------"
+local radical = require("radical")
+local _ = require("moses/moses_min")
 
 
 local apps = {}
@@ -166,20 +165,30 @@ end
 
 
 local makeEntry = function(app)
+	local name = app
+
 	if type(app) == "string" then
 		app = apps.get(app)
 	elseif util.isArray(app) then
 		return app
 	end
 
-	local entry = { app.name, app.cmd }
-	if app.icon then table.insert(entry, app.icon) end
+	local run = apps.bake(name)
 
-	return entry
+	return {
+		text = app.name,
+		icon = app.icon,
+		button1 = function(item, menu, mods)
+			run()
+			menu.visible = false
+		end,
+	}
 end
 
 
 -- MENU
+	hr = { text = "-----------------------" }
+
 	local appsMenu = {
 		makeEntry("chrome"),
 		makeEntry("chrome-zipscene"),
@@ -197,9 +206,9 @@ end
 
 	local filesMenu = {
 		makeEntry("spacefm"),
-		{ "Home", apps.bake("spacefm", "~") },
-		{ "Dropbox", apps.bake("spacefm", "~/Dropbox") },
-		{ "Downloads", apps.bake("spacefm", "~/downloads") },
+		-- { "Home", apps.bake("spacefm", "~") },
+		-- { "Dropbox", apps.bake("spacefm", "~/Dropbox") },
+		-- { "Downloads", apps.bake("spacefm", "~/downloads") },
 	}
 
 	local terminalMenu = {
@@ -213,34 +222,62 @@ end
 	}
 
 	local awesomeMenu = {
-		{ "manual", handlers.terminal .. " -e man awesome" },
-		{ "edit config", handlers.edit .. " " .. awesome.conffile },
-		{ "restart", awesome.restart },
-		{ "quit", awesome.quit },
+		-- { "manual", handlers.terminal .. " -e man awesome" },
+		-- { "edit config", handlers.edit .. " " .. awesome.conffile },
+		-- { "restart", awesome.restart },
+		-- { "quit", awesome.quit },
 	}
 
 	local powerMenu = {
-		{ "awesome", awesomeMenu, beautiful.awesome_icon },
-		{ "Switch user", "dm-tool switch-to-greeter" },
-		{ "Lock", "dm-tool lock" },
-		{ "Sleep", "systemctl suspend" },
-		-- { "Hibernate", "systemctl hibernate" },
-		-- { "Hybrid-sleep", "systemctl hybrid-sleep" },
-		{ "Reboot", "systemctl reboot" },
-		{ "Shutdown", "systemctl poweroff" },
+		-- { "awesome", awesomeMenu, beautiful.awesome_icon },
+		-- { "Switch user", "dm-tool switch-to-greeter" },
+		-- { "Lock", "dm-tool lock" },
+		-- { "Sleep", "systemctl suspend" },
+		-- -- { "Hibernate", "systemctl hibernate" },
+		-- -- { "Hybrid-sleep", "systemctl hybrid-sleep" },
+		-- { "Reboot", "systemctl reboot" },
+		-- { "Shutdown", "systemctl poweroff" },
 	}
 
-	apps.menu = {
-		items = {
-			{ "APPS", appsMenu, beautiful.awesome_icon },
-			{ hr },
-			{ "FILES", filesMenu, util.getIconPath{ app = "spacefm", size = 48 }},
-			{ "TERMINAL", terminalMenu, util.getIconPath{ app = "terminator" }},
-			-- { "SOUND", soundMenu },
-			{ hr },
-			{ "POWER", powerMenu },
-		}
+	local mainMenu = {
+		{
+			text = "APPS",
+			icon = beautiful.awesome_icon,
+			entries = appsMenu,
+		},
+		hr,
+		{
+			text = "FILES",
+			icon = util.getIconPath{ app = "spacefm", size = 48 },
+			entries = filesMenu
+		},
+		{
+			text = "TERMINAL",
+			icon = util.getIconPath{ app = "terminator" },
+			entries = terminalMenu
+		},
+		-- { "SOUND", soundMenu },
+		hr,
+		{ "POWER", powerMenu },
 	}
+
+	buildMenu = function(entries)
+		local menu = radical.context{}
+
+		for e, entry in ipairs(entries) do
+			if _.has(entry, 'entries') then
+				entry.sub_menu = function()
+					return buildMenu(entry.entries)
+				end
+			end
+
+			menu:add_item(entry)
+		end
+
+		return menu
+	end
+
+	apps.menu = buildMenu(mainMenu)
 
 
 -- INIT

@@ -6,6 +6,7 @@
 	require("awful.autofocus")
 	-- Widget and layout library
 	local wibox = require("wibox")
+	local radical = require("radical")
 	-- Theme handling library
 	theme = require("beautiful")
 	themeName = "ross"
@@ -92,20 +93,23 @@
 
 
 -- MENU
-	mainmenu = awful.menu(apps.menu)
-	mylauncher = awful.widget.launcher({
-		image = theme.awesome_icon,
-		menu = mainmenu
-	})
+	-- mainmenu = awful.menu(apps.menu)
+	-- mylauncher = awful.widget.launcher({
+	-- 	image = theme.awesome_icon,
+	-- 	menu = mainmenu
+	-- })
 
-	awful.menu.menu_keys = {
-		up    = { "k", "Up" },
-		down  = { "j", "Down" },
-		exec  = { "l", "Return", "Right" },
-		enter = { "Right" },
-		back  = { "h", "Left" },
-		close = { "q", "Escape" },
-	}
+	-- awful.menu.menu_keys = {
+	-- 	up    = { "k", "Up" },
+	-- 	down  = { "j", "Down" },
+	-- 	exec  = { "l", "Return", "Right" },
+	-- 	enter = { "Right" },
+	-- 	back  = { "h", "Left" },
+	-- 	close = { "q", "Escape" },
+	-- }
+
+    local launcher = wibox.widget.textbox('MENU')
+    launcher:set_menu(apps.menu)
 
 	-- Menubar configuration
 	menubar.utils.terminal = handlers.terminal -- Set the terminal for applications that require it
@@ -196,9 +200,8 @@
 		-- Widgets that are aligned to the left
 		local left_layout = wibox.layout.fixed.horizontal()
 
-		-- if util.exec("whoami") ~= "ross" then
-			left_layout:add(mylauncher)
-		-- end
+		-- left_layout:add(mylauncher)
+		left_layout:add(launcher)
 
 		left_layout:add(mytaglist[s])
 		left_layout:add(mypromptbox[s])

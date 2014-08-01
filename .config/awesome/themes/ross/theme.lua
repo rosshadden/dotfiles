@@ -109,7 +109,8 @@ dirs.theme = dirs.themes .. "/ross"
 
 	-- Misc
 		theme.awesome_icon           = dirs.theme .. "/icons/awesome.png"
-		theme.menu_submenu_icon      = dirs.themes .. "/default/submenu.png"
+		theme.menu_submenu_icon      = dirs.theme .. "/icons/awesome.png"
+		-- theme.menu_submenu_icon      = dirs.themes .. "/default/submenu.png"
 
 	-- Layout
 		theme.layout_tile       = dirs.theme .. "/layouts/tile.png"
