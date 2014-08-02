@@ -279,6 +279,16 @@ end
 
 	apps.menu = buildMenu(mainMenu)
 
+	-- Add key bindings to menu
+		-- up
+		apps.menu:add_key_hook({}, "k", "press", function()
+			apps.menu.previous_item.selected = true
+		end)
+		-- down
+		apps.menu:add_key_hook({}, "j", "press", function()
+			apps.menu.next_item.selected = true
+		end)
+
 
 -- INIT
 	local init = {}

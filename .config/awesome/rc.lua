@@ -7,6 +7,7 @@
 	-- Widget and layout library
 	local wibox = require("wibox")
 	local radical = require("radical")
+	local alttab = require("radical.impl.alttab")
 	-- Theme handling library
 	theme = require("beautiful")
 	themeName = "ross"
@@ -264,7 +265,7 @@
 	-- MOUSE
 		root.buttons(awful.util.table.join(
 			awful.button({ modkey }, 3, function()
-				mainmenu:toggle()
+				apps.menu.visible = not apps.menu.visible
 			end),
 			awful.button({}, 4, awful.tag.viewprev),
 			awful.button({}, 5, awful.tag.viewnext)
@@ -312,7 +313,9 @@
 					awful.client.focus.byidx(-1)
 					if client.focus then client.focus:raise() end
 				end),
-			awful.key({ modkey,		   }, "w", function() mainmenu:show() end),
+			awful.key({ modkey,		   }, "w", function()
+				apps.menu.visible = true
+			end),
 
 			-- Layout manipulation
 			awful.key({ modkey, "Shift"   }, "j", function() awful.client.swap.byidx(  1)	end),
@@ -322,10 +325,7 @@
 			awful.key({ modkey,		   }, "u", awful.client.urgent.jumpto),
 			awful.key({ modkey,		   }, "Tab",
 				function()
-					awful.client.focus.history.previous()
-					if client.focus then
-						client.focus:raise()
-					end
+					alttab.altTab()
 				end),
 
 			-- Standard program
