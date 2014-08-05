@@ -332,7 +332,10 @@
 			awful.key({ modkey,		   }, "t", function() apps.run("terminal") end),
 			awful.key({ modkey,	"Shift" }, "t", apps.bake("tmux")),
 
-			awful.key({ modkey, "Control", "Shift" }, "r", awful.util.restart),
+			awful.key({ modkey, "Control", "Shift" }, "r", function()
+				mouse.coords({ x = 0, y = 0 })
+				awful.util.restart()
+			end),
 			-- awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
 			awful.key({ modkey,	"Control" }, "j",	 function() awful.tag.incmwfact( 0.05)	end),
@@ -446,34 +449,34 @@
 			end),
 
 			-- Init environments
-				-- reset
-				awful.key({ modkey }, "F1", function()
-					CACHE.env = nil
-				end),
+				-- -- reset
+				-- awful.key({ modkey, "Control", "Shift" }, "F1", function()
+				-- 	CACHE.env = nil
+				-- end),
 
-				-- dev
-				awful.key({ modkey }, "F2", function()
-					if CACHE.env ~= "dev" then
-						CACHE.env = "dev"
-						apps.init("dev")
-					end
-				end),
+				-- -- dev
+				-- awful.key({ modkey, "Control", "Shift" }, "F2", function()
+				-- 	if CACHE.env ~= "dev" then
+				-- 		CACHE.env = "dev"
+				-- 		apps.init("dev")
+				-- 	end
+				-- end),
 
-				-- zipscene
-				awful.key({ modkey }, "F3", function()
-					if CACHE.env ~= "zipscene" then
-						CACHE.env = "zipscene"
-						apps.init("zipscene")
-					end
-				end),
+				-- -- zipscene
+				-- awful.key({ modkey, "Control", "Shift" }, "F3", function()
+				-- 	if CACHE.env ~= "zipscene" then
+				-- 		CACHE.env = "zipscene"
+				-- 		apps.init("zipscene")
+				-- 	end
+				-- end),
 
-				-- test
-				awful.key({ modkey }, "F4", function()
-					if CACHE.env ~= "test" then
-						CACHE.env = "test"
-						apps.init("test")
-					end
-				end),
+				-- -- test
+				-- awful.key({ modkey, "Control", "Shift" }, "F4", function()
+				-- 	if CACHE.env ~= "test" then
+				-- 		CACHE.env = "test"
+				-- 		apps.init("test")
+				-- 	end
+				-- end),
 
 			-- Debug
 			awful.key({ modkey, "Control", "Shift" }, "space", function()
@@ -539,6 +542,19 @@
 							awful.client.toggletag(tag)
 						end
 					end
+				end)
+			)
+		end
+
+		for s = 1, screen.count() do
+			globalkeys = awful.util.table.join(globalkeys,
+				-- Focus screen
+				awful.key({ modkey }, "F" .. s, function()
+					awful.screen.focus(s)
+				end),
+				-- Move client to screen
+				awful.key({ modkey, "Shift" }, "F" .. s, function(client)
+					awful.client.movetoscreen(client, s)
 				end)
 			)
 		end
