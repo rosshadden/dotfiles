@@ -16,3 +16,6 @@
 [submodule ".config/awesome/forgotten"]
 	path = .config/awesome/forgotten
 	url = git@github.com:Elv13/forgotten.git
+[submodule ".config/awesome/cyclefocus"]
+	path = .config/awesome/cyclefocus
+	url = https://github.com/blueyed/awesome-cyclefocus

@@ -50,6 +50,10 @@ a-H = move-left
 a-J = move-down
 a-K = move-up
 
+[GntTree::binding]
+j = move-down
+k = move-up
+
 
 [colors]
 # The RGB values range in [0, 1000]
