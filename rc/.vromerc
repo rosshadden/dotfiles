@@ -5,3 +5,8 @@ set hintkeys=aoeuidhtns
 
 # I've come to like this better
 set useletters=0
+
+# use native keys
+unmap <C-f>
+unmap <C-g>
+
