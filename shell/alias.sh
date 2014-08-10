@@ -31,6 +31,12 @@ alias 'hs=ls'
 alias 'ha=la'
 alias 'hh=ll'
 
+# Easier navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+
 alias afk='light-locker-command -l'
 
 alias reload='alias reload="exec $SHELL -l"'

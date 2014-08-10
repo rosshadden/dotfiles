@@ -7,6 +7,7 @@
 	-- Widget and layout library
 	local wibox = require("wibox")
 	local radical = require("radical")
+	local alttab = require("radical.impl.alttab")
 	local cyclefocus = require('cyclefocus')
 	-- Theme handling library
 	theme = require("beautiful")
@@ -324,14 +325,13 @@
 			awful.key({ modkey, "Control" }, "h", function() awful.screen.focus_relative(-1) end),
 			awful.key({ modkey,		   }, "u", awful.client.urgent.jumpto),
 
-			-- Super+Tab: cycle through all clients.
-			awful.key({ modkey,         }, "Tab", function(c)
-				cyclefocus.cycle(1, { modifier = "Super_L" })
-			end),
-			-- Super+Shift+Tab: backwards
-			awful.key({ modkey, "Shift" }, "Tab", function(c)
-				cyclefocus.cycle(-1, { modifier = "Super_L" })
-			end),
+			-- Super+Tab: cycle through all clients
+			awful.key({ modkey,           }, "Tab"   , function() alttab.altTab()          end),
+			awful.key({ modkey, "Shift"   }, "Tab"   , function() alttab.altTabBack()      end),
+
+			-- Alt+Tab: cycle through all clients
+			awful.key({ "Mod1",           }, "Tab"   , function() alttab.altTab({ auto_release = true })          end),
+			awful.key({ "Mod1", "Shift"   }, "Tab"   , function() alttab.altTabBack({ auto_release = true })      end),
 
 			-- Standard program
 			awful.key({ modkey,		   }, "t", function() apps.run("terminal") end),
@@ -506,37 +506,7 @@
 			awful.key({ modkey }, "m", function(c)
 				c.maximized_horizontal = not c.maximized_horizontal
 				c.maximized_vertical   = not c.maximized_vertical
-			end),
-
-			-- Alt-Tab: cycle through clients on the same screen and tag
-			cyclefocus.key({ "Mod1", }, "Tab", 1, {
-				cycle_filters = { cyclefocus.filters.same_screen, cyclefocus.filters.common_tag }
-			}),
-			cyclefocus.key({ "Mod1", "Shift" }, "Tab", -1, {
-				cycle_filters = { cyclefocus.filters.same_screen, cyclefocus.filters.common_tag }
-			}),
-
-			-- Super-`: cycle through clients on the same screen
-			cyclefocus.key({ modkey, }, "#49", 1, {
-				cycle_filters = { cyclefocus.filters.same_screen },
-				keys = { "°", "^" },  -- the keys to be handled, wouldn't be required if the keycode was available in keygrabber.
-				modifier = "Super_L"
-			}),
-			cyclefocus.key({ modkey, "Shift" }, "#49", -1, {
-				cycle_filters = { cyclefocus.filters.same_screen },
-				keys = { "°", "^" },  -- the keys to be handled, wouldn't be required if the keycode was available in keygrabber.
-				modifier = "Super_L"
-			}),
-
-			-- Alt-`: cycle through clients with the same class name.
-			cyclefocus.key({ "Mod1" }, "#49", 1, {
-				cycle_filter = function (c, source_c) return c.class == source_c.class end,
-				keys = { "°", "^" },  -- the keys to be handled, wouldn't be required if the keycode was available in keygrabber.
-			}),
-			cyclefocus.key({ "Mod1", "Shift", }, "#49", -1, {  -- keycode #49 => ^/° on german keyboard, upper left below Escape and next to 1.
-				cycle_filter = function (c, source_c) return c.class == source_c.class end,
-				keys = { "°", "^" },  -- the keys to be handled, wouldn't be required if the keycode was available in keygrabber.
-			})
+			end)
 		)
 
 		-- Bind all key numbers to tags.
