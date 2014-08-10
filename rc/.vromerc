@@ -1,0 +1,7 @@
+# Used in https://chrome.google.com/webstore/detail/vrome/godjoomfiimiddapohpmfklhgmbfffjj
+
+# homerow, baby
+set hintkeys=aoeuidhtns
+
+# I've come to like this better
+set useletters=0
