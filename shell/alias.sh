@@ -10,6 +10,9 @@ alias l='ls -lah'
 alias du='du -h'
 alias tree="ls -R | grep \":$\" | sed -e 's/:$//' -e 's/[^-][^\/]*\//----/g' -e 's/^/   /' -e 's/-/|/'"
 
+# get full path of file or dir
+alias path="readlink -f"
+
 alias e='$EDITOR'
 alias se='sudo $EDITOR'
 
@@ -47,12 +50,3 @@ alias shh="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6
 alias aoeu='if [ $DISPLAY ]; then setxkbmap -option grp_led:scroll -option caps:escape -option compose:ralt -layout us,dvorak; else loadkeys us; fi'
 alias asdf='if [ $DISPLAY ]; then setxkbmap -option grp_led:scroll -option caps:escape -option compose:ralt -layout dvorak,us; else loadkeys dvorak; fi'
 
-if [ -f /usr/local/bin/vimpager ]; then
-	export PAGER=/usr/local/bin/vimpager
-	alias less=$PAGER
-	alias zless=$PAGER
-fi
-
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey '\C-x\C-x' edit-command-line

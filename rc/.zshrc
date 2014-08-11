@@ -29,7 +29,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse command-not-found)
-plugins=(extract github grails node npm python nyan sublime history-substring-search tmux systemd zsh-syntax-highlighting)
+plugins=(extract github grails node npm python nyan sublime history-substring-search tmux systemd zsh-syntax-highlighting fasd)
 #plugins=(battery extract github grails node npm python nyan sublime vi-mode)
 
 source $ZSH/oh-my-zsh.sh

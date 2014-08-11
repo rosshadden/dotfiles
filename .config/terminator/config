@@ -12,7 +12,6 @@
     background_image = None
     background_darkness = 0.85
     urgent_bell = True
-    background_type = transparent
     use_system_font = False
     cursor_color = "#dcff00"
     foreground_color = "#ffffff"
