@@ -35,9 +35,8 @@ vnoremap	<silent> <C-X>		<C-C>:wq<CR>
 inoremap	<silent> <C-X>		<C-O>:wq<CR>
 
 " U to redo
-noremap		U			<c-r>
-" Y to act similar to D and C.
-nmap Y y$
+noremap		U			<C-r>
 
 " When vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vimrc
+

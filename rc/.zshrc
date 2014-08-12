@@ -89,10 +89,11 @@ fi
 
 ################################################################
 # ROSS
-. $DOTS/shell/general.sh
-. $DOTS/shell/path.sh
-. $DOTS/shell/alias.sh
-[[ -e "$HOME/.local.sh" ]] && . $HOME/.local.sh
+source $DOTS/shell/general.sh
+source $DOTS/shell/path.sh
+source $DOTS/shell/alias.sh
+source $DOTS/shell/functions.sh
+[[ -e "$HOME/.local.sh" ]] && source $HOME/.local.sh
 
 # vi-mode stuff
 KEYTIMEOUT=1
