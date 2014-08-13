@@ -1,12 +1,6 @@
-[submodule "z"]
-	path = z
-	url = https://github.com/rupa/z.git
 [submodule ".config/awesome/lain"]
 	path = .config/awesome/lain
 	url = git@github.com:copycat-killer/lain.git
-[submodule "shell/opp.zsh"]
-	path = shell/opp.zsh
-	url = git@github.com:hchbaw/opp.zsh.git
 [submodule ".config/awesome/radical"]
 	path = .config/awesome/radical
 	url = git@github.com:Elv13/radical.git
@@ -19,3 +13,9 @@
 [submodule ".config/awesome/cyclefocus"]
 	path = .config/awesome/cyclefocus
 	url = https://github.com/blueyed/awesome-cyclefocus
+[submodule "rc/.vim/bundle/Vundle.vim"]
+	path = rc/.vim/bundle/Vundle.vim
+	url = https://github.com/gmarik/Vundle.vim.git
+[submodule "shell/plugins/opp.zsh"]
+	path = shell/plugins/opp.zsh
+	url = git@github.com:hchbaw/opp.zsh.git

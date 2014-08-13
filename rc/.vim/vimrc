@@ -1,14 +1,44 @@
-filetype plugin on
-syntax on
-"colorscheme monokai
+""""""""""""""""
+" VUNDLE
+""""""""""""""""
 
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+" PLUGINS
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Lokaltog/vim-easymotion'
+" /PLUGINS
+
+call vundle#end()
+
+
+""""""""""""""""
+" FLAGS
+""""""""""""""""
+
+filetype plugin indent on
+syntax on
+
+
+""""""""""""""""
+" SETTINGS
+""""""""""""""""
+
+let mapleader=","
 set number
 set smartcase
 set incsearch
 set hlsearch
 set mouse=a
 set pastetoggle=<F5>
-
 " Let arrow keys pass \n
 set whichwrap=b,s,<,>,[,]
 
@@ -16,6 +46,11 @@ set whichwrap=b,s,<,>,[,]
 if has("autocmd")
 	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
+
+
+""""""""""""""""
+" MAPPINGS
+""""""""""""""""
 
 " Get sudo when it has been forgotten.
 cmap w!! w !sudo tee > /dev/null %
@@ -37,6 +72,18 @@ inoremap	<silent> <C-X>		<C-O>:wq<CR>
 
 " U to redo
 noremap		U			<C-r>
+
+
+""""""""""""""""
+" THEME
+""""""""""""""""
+
+"colorscheme monokai
+
+
+""""""""""""""""
+" MISC
+""""""""""""""""
 
 " When vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vimrc
