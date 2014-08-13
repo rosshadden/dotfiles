@@ -33,7 +33,8 @@ plugins=(extract github grails node npm python nyan sublime history-substring-se
 #plugins=(battery extract github grails node npm python nyan sublime vi-mode)
 
 source $ZSH/oh-my-zsh.sh
-source $DOTS/shell/vim.zsh
+source $DOTS/shell/plugins/vim.zsh
+source $DOTS/shell/plugins/tmuxinator.zsh
 source $DOTS/shell/opp.zsh/opp.zsh
 source $DOTS/shell/opp.zsh/opp/*.zsh
 unsetopt correct_all
