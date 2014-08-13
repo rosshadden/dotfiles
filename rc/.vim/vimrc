@@ -1,6 +1,6 @@
 filetype plugin on
 syntax on
-colorscheme monokai
+"colorscheme monokai
 
 set number
 set smartcase
