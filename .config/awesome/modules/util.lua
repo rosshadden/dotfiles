@@ -1,5 +1,7 @@
+--
 require("modules/globals")
 local awful = require("awful")
+--
 
 
 local util = {}

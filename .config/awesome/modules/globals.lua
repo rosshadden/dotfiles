@@ -1,6 +1,8 @@
+--
 local awful = require("awful")
 local naughty = require("naughty")
 local _ = require("moses/moses_min")
+--
 
 
 modkey = "Mod4"
@@ -46,6 +48,8 @@ log = function(...)
 			return text
 		end, "")
 	, 2)
+
+	options.screen = options.screen or mouse.screen
 
 	naughty.notify(options)
 end

@@ -1,8 +1,11 @@
+--
 local wibox = require("wibox")
 local lain = require("lain")
 local awful = require("awful")
 
 local util = require("modules/util")
+--
+
 
 local markup = lain.util.markup
 local widgets = {}
@@ -143,5 +146,6 @@ local widgets = {}
 
 -- Calendar
 	lain.widgets.calendar:attach(clockWidget, { font_size = 12 })
+
 
 return widgets

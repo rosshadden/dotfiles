@@ -1,6 +1,13 @@
+--
 local awful = require("awful")
+local menubar = require("menubar")
+-- local radical = require("radical")
+local alttab = require("radical.impl.alttab")
+
 local apps = require("modules/apps")
 local util = require("modules/util")
+--
+
 
 local binds = {}
 
@@ -177,16 +184,19 @@ local binds = {}
 			if not CACHE.calc then CACHE.calc = { expression = nil, equation = nil, result = nil } end
 
 			awful.prompt.run(
-				{
-					prompt = "calc:  "
-				},
+				{ prompt = "calc:  " },
 				mypromptbox[mouse.screen].widget,
 				function (expression)
 					if expression ~= "" then
 						CACHE.calc.expression = expression
 						CACHE.calc.equation = util.exec("qalc \"" .. expression .. "\"")
 						CACHE.calc.result = util.exec("qalc -t \"" .. expression .. "\"")
-						log(CACHE.calc.equation)
+
+						log(CACHE.calc.equation, {
+							run = function()
+								util.copy(CACHE.calc.result)
+							end
+						})
 					end
 				end,
 				nil,

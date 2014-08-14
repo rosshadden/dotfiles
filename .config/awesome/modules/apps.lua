@@ -1,8 +1,11 @@
-local util = require("modules/util")
+--
 local awful = require("awful")
 local beautiful = require("beautiful")
 local radical = require("radical")
 local _ = require("moses/moses_min")
+
+local util = require("modules/util")
+--
 
 
 local apps = {}

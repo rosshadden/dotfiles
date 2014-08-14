@@ -1,40 +1,29 @@
 -- MODULES
-	-- Standard awesome library
 	local gears = require("gears")
-	local awful = require("awful")
-	awful.rules = require("awful.rules")
-	require("awful.autofocus")
-	-- Widget and layout library
 	local wibox = require("wibox")
-	local radical = require("radical")
-	local alttab = require("radical.impl.alttab")
-	local cyclefocus = require('cyclefocus')
-	-- Theme handling library
+	local awful = require("awful")
+
 	local themeName = "ross"
 	theme = require("beautiful")
 	theme.init(awful.util.getdir("config") .. "/themes/" .. themeName .. "/theme.lua")
-	-- Notification library
-	local naughty = require("naughty")
-	local menubar = require("menubar")
+--
 
-	-- Mine
-	local util = require("modules/util")
-	local apps = require("modules/apps")
-	local binds = require("modules/binds")
-	local widgets = require("modules/widgets")
+
+local main = {}
+
+
+-- INIT
+	main.util = require("modules/util")
+	main.apps = require("modules/apps")
+	main.binds = require("modules/binds")
+	main.widgets = require("modules/widgets")
+
+	awful.rules = require("awful.rules")
+	awful.rules.rules = require("modules/rules")
+	awful.autofocus = require("awful.autofocus")
 
 
 -- ERRORS
-	-- Check if awesome encountered an error during startup and fell back to
-	-- another config (This code will only ever execute for the fallback config)
-	if awesome.startup_errors then
-		naughty.notify({
-			preset = naughty.config.presets.critical,
-			title = "Oops, there were errors during startup!",
-			text = awesome.startup_errors
-		})
-	end
-
 	-- Handle runtime errors after startup
 	do
 		local in_error = false
@@ -43,10 +32,13 @@
 			if in_error then return end
 			in_error = true
 
-			naughty.notify({
-				preset = naughty.config.presets.critical,
-				title = "Oops, an error happened!",
-				text = err
+			log({
+				title = "ERROR",
+				text = err,
+				fg = "#ffffff",
+				bg = "#990000",
+				border_color = "#000000",
+				border_width = 2
 			})
 			in_error = false
 		end)
@@ -61,38 +53,9 @@
 	end
 
 
--- TAGS
-	-- Define a tag table which hold all screen tags.
-	local tags = {}
-	local tagNames = { "", "{}", "", "", "", "", "", "", "" }
-
-	for s = 1, screen.count() do
-		-- Each screen has its own tag table.
-		tags[s] = awful.tag(tagNames, s, layouts[2])
-	end
-
-
 -- MENU
-	-- mainmenu = awful.menu(apps.menu)
-	-- mylauncher = awful.widget.launcher({
-	-- 	image = theme.awesome_icon,
-	-- 	menu = mainmenu
-	-- })
-
-	-- awful.menu.menu_keys = {
-	-- 	up    = { "k", "Up" },
-	-- 	down  = { "j", "Down" },
-	-- 	exec  = { "l", "Return", "Right" },
-	-- 	enter = { "Right" },
-	-- 	back  = { "h", "Left" },
-	-- 	close = { "q", "Escape" },
-	-- }
-
 	local launcher = wibox.widget.textbox('MENU')
-	launcher:set_menu(apps.menu)
-
-	-- Menubar configuration
-	menubar.utils.terminal = handlers.terminal -- Set the terminal for applications that require it
+	launcher:set_menu(main.apps.menu)
 
 
 -- WIDGETS
@@ -198,14 +161,14 @@
 			theme.colors.pastel.blue,
 		}
 		colors[0] = theme.colors.dark
-		for w, widget in ipairs(widgets) do
+		for w, widget in ipairs(main.widgets) do
 			if not widget.screen or widget.screen == s then
 				local left = colors[color]
 				local right = colors[color % (#colors) + 1]
 				local theIcon = wibox.widget.background(widget.icon, right)
 				local theWidget = wibox.widget.background(widget.widget, right)
 
-				if (util.color.hexToHSL(right)[1] < 40 or 200 < util.color.hexToHSL(right)[1]) and util.color.isDark(right, .2) then
+				if (main.util.color.hexToHSL(right)[1] < 40 or 200 < main.util.color.hexToHSL(right)[1]) and main.util.color.isDark(right, .2) then
 					theIcon:set_fg(theme.colors.light)
 					theWidget:set_fg(theme.colors.light)
 				else
@@ -240,53 +203,9 @@
 	end
 
 
--- RULES
-	root.buttons(binds.globalMouse)
-	root.keys(binds.globalkeys)
-
-	awful.rules.rules = {
-		-- All clients will match this rule.
-		{
-			rule = {},
-			properties = {
-				border_width = theme.border_width,
-				border_color = theme.border_normal,
-				focus = awful.client.focus.filter,
-				keys = binds.clientkeys,
-				buttons = binds.clientbuttons
-			}
-		}, {
-			rule = { class = "MPlayer" },
-			properties = { floating = true }
-		}, {
-			rule = { instance = "qalculate-gtk" },
-			properties = { floating = true }
-		}, {
-			rule = { class = "pinentry" },
-			properties = { floating = true }
-		}, {
-			rule = { class = "gimp" },
-			properties = { floating = true }
-		-- }, {
-		-- 	rule = { class = "Chrome" },
-		-- 	properties = { tag = tags[util.screens.left][1] }
-		-- }, {
-		-- 	rule = { instance = "spacefm" },
-		-- 	properties = { tag = tags[util.screens.left][5] }
-		}, {
-			rule = { instance = "geeqie" },
-			properties = { tag = tags[util.screens.left][6] }
-		}, {
-			rule = { instance = "skype" },
-			properties = { tag = tags[util.screens.right][7] }
-		}, {
-			rule = { class = "Pidgin" },
-			properties = { tag = tags[util.screens.right][8] }
-		-- }, {
-		-- 	rule = { instance = "subl" },
-		-- 	properties = { tag = tags[util.screens.right][2] }
-		}
-	}
+-- BINDS
+	root.buttons(main.binds.globalMouse)
+	root.keys(main.binds.globalkeys)
 
 
 -- SIGNALS
@@ -358,7 +277,7 @@
 			vert:set_direction("east")
 			vert:set_widget(layout)
 
-			-- awful.titlebar(c, { position = "left" }):set_widget(vert)
+			awful.titlebar(c, { position = "left" }):set_widget(vert)
 		end
 	end)
 
