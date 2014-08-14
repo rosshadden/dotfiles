@@ -1,4 +1,4 @@
-require("globals")
+require("modules/globals")
 local awful = require("awful")
 
 

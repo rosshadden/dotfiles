@@ -1,4 +1,4 @@
-local util = require("util")
+local util = require("modules/util")
 local awful = require("awful")
 local beautiful = require("beautiful")
 local radical = require("radical")

@@ -2,7 +2,7 @@ local wibox = require("wibox")
 local lain = require("lain")
 local awful = require("awful")
 
-local util = require("util")
+local util = require("modules/util")
 
 local markup = lain.util.markup
 local widgets = {}

@@ -35,8 +35,8 @@ plugins=(extract github grails node npm python nyan sublime history-substring-se
 source $ZSH/oh-my-zsh.sh
 source $DOTS/shell/plugins/vim.zsh
 source $DOTS/shell/plugins/tmuxinator.zsh
-source $DOTS/shell/opp.zsh/opp.zsh
-source $DOTS/shell/opp.zsh/opp/*.zsh
+source $DOTS/shell/plugins/opp.zsh/opp.zsh
+source $DOTS/shell/plugins/opp.zsh/opp/*.zsh
 unsetopt correct_all
 
 # Customize to your needs...

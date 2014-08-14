@@ -5,7 +5,7 @@
 ------------------------------------
 
 local awful = require("awful")
-local util = require("util")
+local util = require("modules/util")
 
 dirs = {
 	themes = awful.util.getdir("config") .. "/themes"
