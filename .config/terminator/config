@@ -8,7 +8,7 @@
 [profiles]
   [[default]]
     scrollbar_position = hidden
-    palette = "#000000:#f92672:#6cc72c:#fe9720:#5f91ef:#9358fe:#36af90:#8c8c8c:#4c4c4c:#ff80f4:#a7e22e:#ffee99:#5fd9ef:#ae82fe:#66efd5:#c7cece"
+    palette = "#000000:#f92672:#6cc72c:#fe9720:#3e6fcb:#9358fe:#36af90:#8c8c8c:#4c4c4c:#ff80f4:#a7e22e:#ffee99:#5fd9ef:#ae82fe:#66efd5:#c7cece"
     background_image = None
     background_darkness = 0.85
     urgent_bell = True
@@ -19,6 +19,11 @@
     font = Ubuntu Mono derivative Powerline 12
     background_color = "#1f211c"
     scrollback_lines = 4096
+  [[4bit-1407995675774]]
+    use_theme_colors = False
+    background_color = "#313131"
+    foreground_color = "#d9e6f2"
+    palette = "#151515:#e3348b:#8be334:#e38b34:#348be3:#8b34e3:#34e38b:#c5c5c5:#313131:#f3a6cc:#ccf3a6:#f3cca6:#a6ccf3:#cca6f3:#a6f3cc:#ffffff"
 [layouts]
   [[default]]
     [[[child1]]]

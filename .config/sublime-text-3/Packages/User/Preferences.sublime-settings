@@ -1,0 +1,42 @@
+{
+	"bold_folder_labels": true,
+	"caret_extra_width": 12,
+	"color_scheme": "Packages/User/ross-brogrammer.tmTheme",
+	"dictionary": "Packages/Language - English/en_US.dic",
+	"ensure_newline_at_eof_on_save": true,
+	"fade_fold_buttons": false,
+	"font_face": "Ubuntu Mono",
+	"font_size": 14,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"GitGutter",
+		"Vintage",
+		"ColorPicker"
+	],
+	"indent_guide_options":
+	[
+		"draw_active"
+	],
+	"index_exclude_patterns":
+	[
+		"/home/ross/Dropbox/work/connectai/dev/sixtyvocab/node_modules*",
+		"*.log"
+	],
+	"match_brackets_angle": true,
+	"phoenix_color_blue": true,
+	"phoenix_color_expanded_folder": true,
+	"phoenix_dirty_bottom_bar": true,
+	"phoenix_dirty_bottom_bar_yellow": true,
+	"phoenix_highlight_current_tab": true,
+	"phoenix_solid_current_tab": true,
+	"phoenix_tabs_auto_width": true,
+	"shift_tab_unindent": true,
+	"show_tab_close_buttons": false,
+	"spell_check": true,
+	"theme": "Brogrammer.sublime-theme",
+	"trim_trailing_white_space_on_save": true,
+	"vintageous_use_sys_clipboard": false,
+	"word_wrap": false
+}

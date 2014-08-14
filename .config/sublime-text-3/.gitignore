@@ -1,0 +1,10 @@
+*
+
+!/.gitignore
+!/Packages/
+/Packages/*
+!/Packages/User/
+/Packages/User/*
+!/Packages/User/*.sublime-settings
+!/Packages/User/*.tmTheme
+
