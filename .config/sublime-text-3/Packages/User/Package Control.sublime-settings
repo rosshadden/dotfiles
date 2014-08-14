@@ -33,9 +33,11 @@
 		"SublimeLinter-pyflakes",
 		"SublimeLinter-shellcheck",
 		"SublimeREPL",
+		"Surround",
 		"Theme - Phoenix",
 		"UnicodeMath",
 		"Unity3D",
+		"Vintage Surround",
 		"Vintageous"
 	]
 }

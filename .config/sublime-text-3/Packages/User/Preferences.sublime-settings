@@ -12,8 +12,7 @@
 	"ignored_packages":
 	[
 		"GitGutter",
-		"Vintage",
-		"ColorPicker"
+		"Vintageous"
 	],
 	"indent_guide_options":
 	[
@@ -37,6 +36,7 @@
 	"spell_check": true,
 	"theme": "Brogrammer.sublime-theme",
 	"trim_trailing_white_space_on_save": true,
+	"vintage_start_in_command_mode": true,
 	"vintageous_use_sys_clipboard": false,
 	"word_wrap": false
 }
