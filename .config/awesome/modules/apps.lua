@@ -97,16 +97,10 @@ apps.list = {
 	tmux = {
 		name = "Tmux",
 		cmd = function(name)
+			-- TODO: make the session names the tag names, not icons
 			if type(name) ~= "string" then name = awful.tag.selected(mouse.screen).name end
 
-			local pid
-			local doesExist = util.exec("tmux list-sessions | sed -r 's|^(.+): .*|\\1|' | grep " .. name)
-			if doesExist == name then
-				pid = util.run(util.makeRun("tmux attach -t " .. name))
-			else
-				pid = util.run(util.makeRun("tmux new-session -s " .. name))
-			end
-			return pid
+			return util.run(util.makeRun("tmux new-session -A -s " .. name))
 		end,
 	},
 

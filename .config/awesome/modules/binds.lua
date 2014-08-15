@@ -210,7 +210,8 @@ local binds = {}
 					end
 				else
 					-- open the terminal
-					util.runOrRaise("terminator -T Quake", properties)
+					local cmd = handlers.terminal .. ' --title Quake --borderless -x tmux new-session -A -s scratch'
+					util.runOrRaise(cmd, properties)
 				end
 			end
 		end)()),
