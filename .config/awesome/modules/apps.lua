@@ -102,9 +102,9 @@ apps.list = {
 			local pid
 			local doesExist = util.exec("tmux list-sessions | sed -r 's|^(.+): .*|\\1|' | grep " .. name)
 			if doesExist == name then
-				pid = util.spawn(util.makeRun("tmux attach -t " .. name))
+				pid = util.run(util.makeRun("tmux attach -t " .. name))
 			else
-				pid = util.spawn(util.makeRun("tmux new-session -s " .. name))
+				pid = util.run(util.makeRun("tmux new-session -s " .. name))
 			end
 			return pid
 		end,
@@ -155,7 +155,7 @@ apps.bake = function(app, arg)
 
 	if type(cmd) == "string" then
 		fn = function()
-			return util.spawn(cmd)
+			return util.run(cmd)
 		end
 	end
 

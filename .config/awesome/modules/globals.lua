@@ -5,7 +5,9 @@ local _ = require("moses/moses_min")
 --
 
 
-modkey = "Mod4"
+SUPER = "Mod4"
+META = "Mod1"
+modkey = SUPER
 
 -- Cache to store temporary things.
 CACHE = {}

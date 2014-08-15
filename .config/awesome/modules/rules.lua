@@ -8,8 +8,8 @@ local util = require("modules/util")
 
 
 return {
-	-- All clients will match this rule.
 	{
+		-- All clients will match this rule.
 		rule = {},
 		properties = {
 			border_width = theme.border_width,
@@ -19,34 +19,32 @@ return {
 			buttons = binds.clientbuttons
 		}
 	}, {
-		rule = { class = "MPlayer" },
-		properties = { floating = true }
-	}, {
-		rule = { instance = "qalculate-gtk" },
-		properties = { floating = true }
-	}, {
-		rule = { class = "pinentry" },
-		properties = { floating = true }
-	}, {
-		rule = { class = "gimp" },
-		properties = { floating = true }
-	-- }, {
-	-- 	rule = { class = "Chrome" },
-	-- 	properties = { tag = tags[util.screens.left][1] }
-	-- }, {
-	-- 	rule = { instance = "spacefm" },
-	-- 	properties = { tag = tags[util.screens.left][5] }
+		rule = { name = "Quake" },
+		properties = {
+			floating = true,
+			-- widgth = 920,
+			height = 600,
+			-- y = 0,
+			-- x = 0,
+			maximized_horizontal = true,
+			-- maximized_vertical = true,
+			skip_taskbar = true
+		}
 	}, {
 		rule = { instance = "geeqie" },
-		properties = { tag = tags[util.screens.left][6] }
-	}, {
-		rule = { instance = "skype" },
-		properties = { tag = tags[util.screens.right][7] }
+		properties = {
+			tag = tags[util.screens.left][6],
+			switchtotag = true
+		}
 	}, {
 		rule = { class = "Pidgin" },
 		properties = { tag = tags[util.screens.right][8] }
-	-- }, {
-	-- 	rule = { instance = "subl" },
-	-- 	properties = { tag = tags[util.screens.right][2] }
+	}, {
+		rule_any = {
+			instance = {"qalculate-gtk", "gpick"},
+			class = {"Gimp", "MPlayer"},
+			name = {"CopyQ", "Terminator Preferences"}
+		},
+		properties = { floating = true }
 	}
 }

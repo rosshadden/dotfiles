@@ -1,28 +1,41 @@
 [global_config]
-  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   handle_size = 1
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  title_inactive_fg_color = "#929292"
   borderless = True
+  title_transmit_bg_color = "#373737"
+  title_inactive_bg_color = "#2f2f2f"
 [keybindings]
   split_horiz = <Alt>minus
   split_vert = <Alt>backslash
 [profiles]
   [[default]]
     scrollbar_position = hidden
-    palette = "#000000:#f92672:#6cc72c:#fe9720:#3e6fcb:#9358fe:#36af90:#8c8c8c:#4c4c4c:#ff80f4:#a7e22e:#ffee99:#5fd9ef:#ae82fe:#66efd5:#c7cece"
+    visible_bell = True
     background_image = None
-    background_darkness = 0.85
     urgent_bell = True
-    use_system_font = False
-    cursor_color = "#dcff00"
-    foreground_color = "#ffffff"
+    use_system_font = True
     scroll_on_output = False
-    font = Ubuntu Mono derivative Powerline 12
-    background_color = "#1f211c"
     scrollback_lines = 4096
-  [[4bit-1407995675774]]
+    background_darkness = 0.85
+    cursor_color = "#dcff00"
     use_theme_colors = False
-    background_color = "#313131"
-    foreground_color = "#d9e6f2"
+    background_color = "#1a1a1a"
+    foreground_color = "#e1eae5"
+    palette = "#151515:#e3348b:#8be334:#e38b34:#348be3:#8b34e3:#34e38b:#c5c5c5:#313131:#f3a6cc:#ccf3a6:#f3cca6:#a6ccf3:#cca6f3:#a6f3cc:#ffffff"
+  [[backup]]
+    scrollbar_position = hidden
+    visible_bell = True
+    background_image = None
+    urgent_bell = True
+    use_system_font = True
+    scroll_on_output = False
+    scrollback_lines = 4096
+    background_darkness = 0.85
+    cursor_color = "#dcff00"
+    use_theme_colors = False
+    background_color = "#112233"
+    foreground_color = "#e1eae5"
     palette = "#151515:#e3348b:#8be334:#e38b34:#348be3:#8b34e3:#34e38b:#c5c5c5:#313131:#f3a6cc:#ccf3a6:#f3cca6:#a6ccf3:#cca6f3:#a6f3cc:#ffffff"
 [layouts]
   [[default]]
