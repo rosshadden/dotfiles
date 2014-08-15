@@ -4,6 +4,7 @@ local beautiful = require("beautiful")
 local radical = require("radical")
 local _ = require("moses/moses_min")
 
+local tags = require("modules/tags")
 local util = require("modules/util")
 --
 
@@ -98,7 +99,9 @@ apps.list = {
 		name = "Tmux",
 		cmd = function(name)
 			-- TODO: make the session names the tag names, not icons
-			if type(name) ~= "string" then name = awful.tag.selected(mouse.screen).name end
+			if type(name) ~= "string" then
+				name = awful.tag.selected(mouse.screen).name
+			end
 
 			return util.run(util.makeRun("tmux new-session -A -s " .. name))
 		end,

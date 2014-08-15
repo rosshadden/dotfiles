@@ -33,17 +33,17 @@ return {
 	}, {
 		rule = { instance = "geeqie" },
 		properties = {
-			tag = tags[util.screens.left][6],
+			tag = tags.list[util.screens.left][6],
 			switchtotag = true
 		}
 	}, {
 		rule = { class = "Pidgin" },
-		properties = { tag = tags[util.screens.right][8] }
+		properties = { tag = tags.list[util.screens.right][8] }
 	}, {
 		rule_any = {
 			instance = {"qalculate-gtk", "gpick"},
 			class = {"Gimp", "MPlayer"},
-			name = {"CopyQ", "Terminator Preferences"}
+			name = {"CopyQ", "Zeal", "Terminator Preferences"}
 		},
 		properties = { floating = true }
 	}

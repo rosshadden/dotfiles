@@ -17,8 +17,7 @@ alias e='$EDITOR'
 alias se='sudo $EDITOR'
 
 alias t='tmux'
-alias ta='tmux attach -t'
-alias ts='tmux new-session -s'
+alias ta='tmux new-session -A -s'
 alias tl='tmux list-sessions'
 
 # Making these symlinks instead so sudo may benefit.
