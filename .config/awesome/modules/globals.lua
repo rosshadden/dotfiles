@@ -1,7 +1,8 @@
 --
 local awful = require("awful")
 local naughty = require("naughty")
-local _ = require("moses/moses_min")
+--
+local _ = require("modules/_")
 --
 
 

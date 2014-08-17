@@ -1,6 +1,7 @@
 --
 local awful = require("awful")
-local _ = require("moses/moses_min")
+--
+local util = require("modules/util")
 --
 
 
@@ -19,14 +20,16 @@ tags.entries = {
 	{ name = "chat", icon = "" },
 	{ name = "run", icon = "" }
 }
-tags.icons = {"", "{}", "", "", "", "", "", "", ""}
+tags.icons = _.map(tags.entries, function(tag)
+	return tag.icon
+end)
 
--- TODO: Does not work. I don't think moses supports arrays of objects.
 tags.getName = function(icon)
-	local tag = _.find(tags.entries, { icon = icon })
-	if tag then
-		return tag.name
-	end
+	local tag = _.find(tags.entries, function(tag)
+		return tag.icon == icon
+	end)
+
+	if tag then return tag.name end
 	return ""
 end
 
