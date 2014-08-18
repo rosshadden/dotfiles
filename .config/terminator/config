@@ -32,6 +32,17 @@
     scroll_on_output = False
     background_color = "#112233"
     scrollback_lines = 4096
+  [[quake]]
+    scrollbar_position = hidden
+    palette = "#151515:#e3348b:#8be334:#e38b34:#348be3:#8b34e3:#34e38b:#c5c5c5:#313131:#f3a6cc:#ccf3a6:#f3cca6:#a6ccf3:#cca6f3:#a6f3cc:#ffffff"
+    background_darkness = 0.89
+    urgent_bell = True
+    background_type = transparent
+    background_image = None
+    cursor_color = "#dcff00"
+    foreground_color = "#ffffff"
+    scroll_on_output = False
+    scrollback_lines = 4096
 [layouts]
   [[default]]
     [[[child1]]]

@@ -23,11 +23,13 @@ return {
 		properties = {
 			floating = true,
 			-- widgth = 920,
-			height = 600,
+			height = 800,
 			-- y = 0,
 			-- x = 0,
 			maximized_horizontal = true,
 			-- maximized_vertical = true,
+			sticky = true,
+			modal = true,
 			skip_taskbar = true
 		}
 	}, {

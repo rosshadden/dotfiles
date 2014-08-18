@@ -103,8 +103,12 @@ local binds = {}
 		awful.key({ SUPER, "Control" }, "n", awful.client.restore),
 
 		-- Prompt
-		awful.key({ SUPER },			"Return", function() mypromptbox[mouse.screen]:run() end),
-		awful.key({ SUPER },			"r",	  function() mypromptbox[mouse.screen]:run() end),
+		awful.key({ SUPER }, "Return", function()
+			util.menu()
+		end),
+		awful.key({ SUPER }, "r", function()
+			util.menu()
+		end),
 
 		awful.key( { SUPER }, "x", function()
 			awful.prompt.run(
@@ -118,7 +122,6 @@ local binds = {}
 
 		-- Menubar
 		awful.key({ SUPER }, "p", function()
-			-- util.run('dmenu_run')
 			menubar.show()
 		end),
 
@@ -205,12 +208,12 @@ local binds = {}
 						awful.client.movetoscreen(c, mouse.screen)
 
 						client.focus = c
+						c:raise()
 						c.hidden = false
-						c.ontop = true
 					end
 				else
 					-- open the terminal
-					local cmd = handlers.terminal .. ' --title Quake --borderless -x tmux new-session -A -s scratch'
+					local cmd = handlers.terminal .. ' --title Quake --borderless --profile=quake -x tmux new-session -A -s scratch'
 					util.runOrRaise(cmd, properties)
 				end
 			end

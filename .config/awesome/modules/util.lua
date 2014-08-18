@@ -28,9 +28,11 @@ util.makeBrowse = function(path)
 	return handlers["fm"] .. " " .. path
 end
 
-util.makeRun = function(cmd)
-	-- return handlers["terminal"] .. " -x run " .. cmd
-	return handlers["terminal"] .. " -x " .. cmd
+util.makeRun = function(cmd, title)
+	local run = handlers["terminal"]
+	if title then run = run .. " --title " .. title end
+	run = run .. " -x " .. cmd
+	return run
 end
 
 util.copy = function(contents)
@@ -182,6 +184,24 @@ util.findClient = function(properties)
 	end
 
 	return false
+end
+
+
+local demnuOptions = ' -fn "Ubuntu Mono 12"'
+
+util.menu = function(prompt, choices, fn)
+	util.run('dmenu_run' .. ' -p "RUN" -l 20' .. demnuOptions)
+end
+
+util.prompt = function(prompt, choices, fn)
+	if not fn then
+		fn = choices
+		choices = prompt
+		prompt = ">"
+	end
+
+	local choice = util.exec('echo -e "' .. table.concat(choices, '\n') .. '" | dmenu -p "' .. prompt .. '"' .. demnuOptions)
+	fn(choice)
 end
 
 
