@@ -16,3 +16,6 @@
 [submodule "shell/plugins/opp.zsh"]
 	path = shell/plugins/opp.zsh
 	url = git@github.com:hchbaw/opp.zsh.git
+[submodule ".config/awesome/tyrannical"]
+	path = .config/awesome/tyrannical
+	url = git@github.com:Elv13/tyrannical.git

@@ -5,6 +5,7 @@ local menubar = require("menubar")
 local alttab = require("radical.impl.alttab")
 
 local apps = require("modules/apps")
+local omni = require("modules/omni")
 local util = require("modules/util")
 --
 
@@ -103,13 +104,21 @@ local binds = {}
 		awful.key({ SUPER, "Control" }, "n", awful.client.restore),
 
 		-- Prompt
-		awful.key({ SUPER }, "Return", function()
-			util.menu()
-		end),
 		awful.key({ SUPER }, "r", function()
 			util.menu()
 		end),
 
+		-- Omnibar
+		awful.key({ SUPER }, "Return", function()
+			omni.open()
+		end),
+
+		-- Menubar
+		awful.key({ SUPER }, "p", function()
+			menubar.show()
+		end),
+
+		-- execute lua
 		awful.key( { SUPER }, "x", function()
 			awful.prompt.run(
 				{ prompt = "Run Lua code: " },
@@ -118,11 +127,6 @@ local binds = {}
 				nil,
 				awful.util.getdir("cache") .. "/history_eval"
 			)
-		end),
-
-		-- Menubar
-		awful.key({ SUPER }, "p", function()
-			menubar.show()
 		end),
 
 		awful.key({ SUPER }, "Delete", function() util.run("light-locker-command -l") end),

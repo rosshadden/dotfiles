@@ -11,6 +11,7 @@ local _ = require("modules/_")
 
 local apps = {}
 
+
 apps.list = {
 	chrome = {
 		name = "Chrome",
@@ -119,6 +120,9 @@ apps.list.fm = apps.list.spacefm
 
 apps.get = function(app)
 	return apps.list[app]
+end
+apps.getCmd = function(app)
+	return apps.get(app).cmd
 end
 
 

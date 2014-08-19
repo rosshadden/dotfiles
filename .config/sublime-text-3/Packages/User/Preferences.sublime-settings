@@ -11,8 +11,9 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Vintageous",
-		"GitGutter"
+		"GitGutter",
+		"Vintage",
+		"Vintage Surround"
 	],
 	"indent_guide_options":
 	[
