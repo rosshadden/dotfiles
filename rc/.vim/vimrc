@@ -38,6 +38,7 @@ set number
 set smartcase
 set incsearch
 set hlsearch
+set spell
 set mouse=a
 set pastetoggle=<F5>
 " Let arrow keys pass \n

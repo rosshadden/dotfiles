@@ -211,9 +211,9 @@ local binds = {}
 						awful.client.movetotag(tag, c)
 						awful.client.movetoscreen(c, mouse.screen)
 
-						client.focus = c
 						c:raise()
 						c.hidden = false
+						client.focus = c
 					end
 				else
 					-- open the terminal
@@ -280,7 +280,7 @@ local binds = {}
 
 		-- Debug
 		awful.key({ SUPER, "Control", "Shift" }, "space", function()
-			log("ueoa", { title = "aoeu" })
+			log(screen[mouse.screen].geometry.width)
 		end)
 	)
 
@@ -351,6 +351,8 @@ local binds = {}
 			-- Focus screen
 			awful.key({ SUPER }, "F" .. s, function()
 				awful.screen.focus(s)
+				local geometry = screen[mouse.screen].geometry
+				mouse.coords(geometry)
 			end),
 			-- Move client to screen
 			awful.key({ SUPER, "Shift" }, "F" .. s, function(client)
