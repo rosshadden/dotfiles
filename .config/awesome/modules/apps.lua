@@ -105,7 +105,7 @@ apps.list = {
 				name = tags.getName(icon)
 			end
 
-			return util.run(util.makeRun("tmux new-session -A -s " .. name, name))
+			return util.run(util.makeRun("tmux -2 new-session -A -s " .. name, name))
 		end,
 	},
 

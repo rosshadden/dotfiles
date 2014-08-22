@@ -217,7 +217,7 @@ local binds = {}
 					end
 				else
 					-- open the terminal
-					local cmd = handlers.terminal .. ' --title Quake --borderless --profile=quake -x tmux new-session -A -s scratch'
+					local cmd = handlers.terminal .. ' --title Quake --borderless --profile=quake -x tmux -2 new-session -A -s scratch'
 					util.runOrRaise(cmd, properties)
 				end
 			end

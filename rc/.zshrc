@@ -90,9 +90,9 @@ fi
 
 ################################################################
 # ROSS
-source $DOTS/shell/general.sh
-source $DOTS/shell/path.sh
+source $DOTS/shell/env.sh
 source $DOTS/shell/alias.sh
+source $DOTS/shell/general.sh
 source $DOTS/shell/functions.sh
 [[ -e "$HOME/.local.sh" ]] && source $HOME/.local.sh
 

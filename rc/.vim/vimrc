@@ -11,22 +11,18 @@ call vundle#begin()
 " PLUGINS
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'sjl/gundo.vim'
 " /PLUGINS
 
 call vundle#end()
-
-
-""""""""""""""""
-" FLAGS
-""""""""""""""""
-
-filetype plugin indent on
-syntax on
-"colorscheme monokai
 
 
 """"""""""""""""
@@ -34,20 +30,18 @@ syntax on
 """"""""""""""""
 
 let mapleader=","
+" line numbers
 set number
 set smartcase
-set incsearch
 set hlsearch
+" spell checking
 set spell
+" simple mouse support
 set mouse=a
+" paste without comments messing everything up
 set pastetoggle=<F5>
 " Let arrow keys pass \n
 set whichwrap=b,s,<,>,[,]
-
-" Preserve cursor position
-if has("autocmd")
-	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-endif
 
 
 """"""""""""""""
@@ -80,13 +74,23 @@ noremap		U			<C-r>
 " THEME
 """"""""""""""""
 
-"colorscheme monokai
+set t_Co=256
+colorscheme molokai
 
 
 """"""""""""""""
 " MISC
 """"""""""""""""
 
-" When vimrc is edited, reload it
-autocmd! bufwritepost vimrc source ~/.vimrc
+if has("autocmd")
+	" When vimrc is edited, reload it
+	augroup watchconfig
+		au!
+		autocmd! bufwritepost vimrc source ~/.vim/vimrc
+	augroup END
+
+	filetype on
+	" Preserve cursor position
+	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
 

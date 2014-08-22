@@ -1,0 +1,11 @@
+{
+	"extensions":
+	[
+		"conf",
+		".gitconfig",
+		".gntrc",
+		".tigrc",
+		".vromerc",
+		".zshrc"
+	]
+}
