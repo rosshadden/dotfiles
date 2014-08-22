@@ -10,5 +10,5 @@ omni.register('run', {
 	callback = util.run,
 
 	-- open run prompt
-	blank = util.menu
+	blank = omni.menu
 })

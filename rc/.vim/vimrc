@@ -34,8 +34,9 @@ let mapleader=","
 set number
 set smartcase
 set hlsearch
-" spell checking
-set spell
+set cursorline
+" spell checking (toggled with `cos`)
+" set spell
 " simple mouse support
 set mouse=a
 " paste without comments messing everything up

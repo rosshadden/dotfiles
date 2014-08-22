@@ -148,26 +148,4 @@ util.findClient = function(properties)
 end
 
 
-local demnuOptions = function()
-	local geometry = screen[mouse.screen].geometry
-	return ' -s 0 -x ' .. geometry.x .. ' -w ' .. geometry.width .. ' -h 32 -fn "Ubuntu Mono 16"'
-end
-
-util.menu = function()
-	local cmd = 'dmenu_run' .. demnuOptions() .. ' -p "RUN" -l 20'
-	return util.run(cmd)
-end
-
-util.prompt = function(prompt, choices, fn)
-	if not fn then
-		fn = choices
-		choices = prompt
-		prompt = '>'
-	end
-
-	local choice = util.exec('echo -e "' .. table.concat(choices, '\n') .. '"' .. ' | ' .. 'dmenu' .. demnuOptions() .. ' -p "' .. prompt .. '"')
-	fn(choice)
-end
-
-
 return util

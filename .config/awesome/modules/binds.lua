@@ -105,7 +105,7 @@ local binds = {}
 
 		-- Prompt
 		awful.key({ SUPER }, "r", function()
-			util.menu()
+			omni.menu()
 		end),
 
 		-- Omnibar
