@@ -6,9 +6,10 @@
   title_transmit_bg_color = "#373737"
   title_inactive_bg_color = "#2f2f2f"
 [keybindings]
-  split_horiz = <Alt>minus
+  cycle_prev = <Primary><Shift>Tab
+  cycle_next = <Primary>Tab
   split_vert = <Alt>backslash
-  close_term = None
+  split_horiz = <Alt>minus
 [profiles]
   [[default]]
     scrollbar_position = hidden
