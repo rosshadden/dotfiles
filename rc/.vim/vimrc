@@ -1,34 +1,47 @@
-""""""""""""""""
-" VUNDLE
-""""""""""""""""
-
+" Disable vi-compatibility
 set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
 
-call vundle#begin()
+""""""""""""""""
+" NEOBUNDLE
+""""""""""""""""
+
+if has ('vim_starting')
+	set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " PLUGINS
-Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-fugitive'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'sjl/gundo.vim'
+	" Let NeoBundle manage NeoBundle
+	NeoBundleFetch 'Shougo/neobundle.vim'
+
+	NeoBundle 'SearchComplete'
+
+	NeoBundle 'tpope/vim-surround'
+	NeoBundle 'tpope/vim-commentary'
+	NeoBundle 'tpope/vim-unimpaired'
+	NeoBundle 'tpope/vim-repeat'
+	NeoBundle 'tpope/vim-sensible'
+	NeoBundle 'tpope/vim-fugitive'
+	NeoBundle 'kien/ctrlp.vim'
+	NeoBundle 'scrooloose/nerdtree'
+	NeoBundle 'jistr/vim-nerdtree-tabs'
+	NeoBundle 'Lokaltog/vim-easymotion'
+	NeoBundle 'ervandew/supertab'
+	NeoBundle 'sjl/gundo.vim'
 " /PLUGINS
 
-call vundle#end()
+call neobundle#end()
+
+" Prompt to install any newly added bundles
+NeoBundleCheck
 
 
 """"""""""""""""
 " SETTINGS
 """"""""""""""""
 
+" take me to your <Leader>
 let mapleader=","
 " line numbers
 set number
@@ -44,31 +57,42 @@ set pastetoggle=<F5>
 " Let arrow keys pass \n
 set whichwrap=b,s,<,>,[,]
 
+" PLUGINS
+	" ctrlp: follow symlinks
+	let g:ctrlp_show_hidden = 1
+
 
 """"""""""""""""
 " MAPPINGS
 """"""""""""""""
 
-" Get sudo when it has been forgotten.
+" :w!! => Get sudo when it has been forgotten.
 cmap w!! w !sudo tee > /dev/null %
 
-" ctrl+s to save
+" C-s => save [:update]
 noremap		<silent> <C-S>		:update<CR>
 vnoremap	<silent> <C-S>		<C-C>:update<CR>
-inoremap	<silent> <C-S>		<C-O>:update<CR>
+inoremap	<silent> <C-S>		<Esc>:update<CR>
 
-" ctrl+q to (force) quit
+" C-q => (force) quit [:quit!]
 noremap		<silent> <C-Q>		:quit!<CR>
 vnoremap	<silent> <C-Q>		<C-C>:quit!<CR>
-inoremap	<silent> <C-Q>		<C-O>:quit!<CR>
+inoremap	<silent> <C-Q>		<Esc>:quit!<CR>
 
-" ctrl+x to save and quit
+" C-x => save and quit [:wq]
 noremap		<silent> <C-X>		:wq<CR>
 vnoremap	<silent> <C-X>		<C-C>:wq<CR>
-inoremap	<silent> <C-X>		<C-O>:wq<CR>
+inoremap	<silent> <C-X>		<Esc>:wq<CR>
 
-" U to redo
+" U => redo [:redo]
 noremap		U			<C-r>
+
+" PLUGINS
+	" L-n => toggle NERDTreeTabs
+	map		<Leader>n		<plug>NERDTreeTabsToggle<CR>
+
+	" L-u => toggle gundu menu [:GunduToggle]
+	map		<Leader>u		:GundoToggle<CR>
 
 
 """"""""""""""""

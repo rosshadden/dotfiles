@@ -8,6 +8,7 @@
 [keybindings]
   split_horiz = <Alt>minus
   split_vert = <Alt>backslash
+  close_term = None
 [profiles]
   [[default]]
     scrollbar_position = hidden

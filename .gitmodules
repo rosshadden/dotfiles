@@ -10,12 +10,12 @@
 [submodule ".config/awesome/cyclefocus"]
 	path = .config/awesome/cyclefocus
 	url = https://github.com/blueyed/awesome-cyclefocus
-[submodule "rc/.vim/bundle/Vundle.vim"]
-	path = rc/.vim/bundle/Vundle.vim
-	url = https://github.com/gmarik/Vundle.vim.git
 [submodule "shell/plugins/opp.zsh"]
 	path = shell/plugins/opp.zsh
 	url = git@github.com:hchbaw/opp.zsh.git
 [submodule ".config/awesome/tyrannical"]
 	path = .config/awesome/tyrannical
 	url = git@github.com:Elv13/tyrannical.git
+[submodule "rc/.vim/bundle/neobundle.vim"]
+	path = rc/.vim/bundle/neobundle.vim
+	url = git@github.com:Shougo/neobundle.vim.git
