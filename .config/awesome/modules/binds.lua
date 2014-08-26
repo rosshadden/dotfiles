@@ -224,7 +224,7 @@ local binds = {}
 		end)()),
 
 		-- Calculator
-		awful.key({ SUPER, "Shift" }, "c", function()
+		awful.key({ SUPER, "Control", "Shift" }, "c", function()
 			if not CACHE.calc then CACHE.calc = { expression = nil, equation = nil, result = nil } end
 
 			awful.prompt.run(
@@ -291,7 +291,7 @@ local binds = {}
 
 	local clientkeys = awful.util.table.join(
 		awful.key({ SUPER,		   }, "f",	  function(c) c.fullscreen = not c.fullscreen  end),
-		awful.key({ SUPER, "Shift", "Control" }, "c",	  function(c) c:kill()						 end),
+		awful.key({ SUPER, "Shift" }, "c",	  function(c) c:kill()						 end),
 		awful.key({ SUPER, "Control" }, "space",  awful.client.floating.toggle					 ),
 		awful.key({ SUPER, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end),
 		awful.key({ SUPER,		   }, "o",	  awful.client.movetoscreen						),

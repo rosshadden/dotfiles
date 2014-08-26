@@ -15,6 +15,16 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	" Let NeoBundle manage NeoBundle
 	NeoBundleFetch 'Shougo/neobundle.vim'
 
+	NeoBundle 'Shougo/vimproc.vim', {
+	\ 'build' : {
+	\     'windows' : 'tools\\update-dll-mingw',
+	\     'cygwin' : 'make -f make_cygwin.mak',
+	\     'mac' : 'make -f make_mac.mak',
+	\     'unix' : 'make -f make_unix.mak',
+	\    },
+	\ }
+	NeoBundle 'Shougo/unite.vim'
+
 	NeoBundle 'SearchComplete'
 
 	NeoBundle 'tpope/vim-surround'
@@ -29,6 +39,9 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'Lokaltog/vim-easymotion'
 	NeoBundle 'ervandew/supertab'
 	NeoBundle 'sjl/gundo.vim'
+	NeoBundle 'terryma/vim-multiple-cursors'
+	" themes
+	NeoBundle 'bling/vim-airline'
 " /PLUGINS
 
 call neobundle#end()
@@ -66,22 +79,23 @@ set whichwrap=b,s,<,>,[,]
 cmap w!! w !sudo tee > /dev/null %
 
 " C-s => save [:update]
-noremap		<silent> <C-S>		:update<CR>
-vnoremap	<silent> <C-S>		<C-C>:update<CR>
-inoremap	<silent> <C-S>		<Esc>:update<CR>
+noremap <silent>	<C-S>			:update<CR>
+inoremap <silent>	<C-S>			<Esc>:update<CR>
 
 " C-q => (force) quit [:quit!]
-noremap		<silent> <C-Q>		:quit!<CR>
-vnoremap	<silent> <C-Q>		<C-C>:quit!<CR>
-inoremap	<silent> <C-Q>		<Esc>:quit!<CR>
+noremap <silent>	<C-Q>			:quit!<CR>
+inoremap <silent>	<C-Q>			<Esc>:quit!<CR>
 
 " C-x => save and quit [:wq]
-noremap		<silent> <C-X>		:wq<CR>
-vnoremap	<silent> <C-X>		<C-C>:wq<CR>
-inoremap	<silent> <C-X>		<Esc>:wq<CR>
+noremap <silent>	<C-X>			:wq<CR>
+inoremap <silent>	<C-X>			<Esc>:wq<CR>
 
 " U => redo [:redo]
-noremap		U			<C-r>
+noremap				U				<C-r>
+
+" insert TAB
+noremap				<Leader>it		i<Tab>
+noremap				<Leader>at		a<Tab>
 
 
 """"""""""""""""
@@ -120,20 +134,46 @@ endif
 " PLUGINS
 """"""""""""""""
 
-" SETTINGS
+" ctrlp
 	" ctrlp: follow symlinks
 	let g:ctrlp_show_hidden = 1
-	
+
+" Unite
+	call unite#filters#matcher_default#use(['matcher_fuzzy'])
+	call unite#filters#sorter_default#use(['sorter_rank'])
+	call unite#custom#source('file_rec/async','sorters','sorter_rank')
+
+	" <Leader>p => CtrlP search
+	nnoremap <silent>	<Leader>p		:Unite -start-insert -buffer-name=files -winheight=10 file_rec/async<cr>
+
+	" <Leader>m => search recently edited files
+	nnoremap <silent>	<Leader>m		:Unite -buffer-name=recent -winheight=10 file_mru<cr>
+
+	" <Leader>b => navigate open buffers
+	nnoremap			<Leader>b		:Unite -buffer-name=buffers -winheight=10 buffer<cr>
+
+	" <Leader>f => search application
+	nnoremap			<Leader>f		:Unite grep:.<cr>
+
+" NERDTree
 	" NERDTree: show hidden files
 	let g:NERDTreeShowHidden = 1
 
 	" Open NERDTree on console vim startup
 	let g:nerdtree_tabs_open_on_console_startup = 1
 
-" MAPPINGS
 	" L-n => toggle NERDTreeTabs
-	map		<Leader>n		<plug>NERDTreeTabsToggle<CR>
+	map			<Leader>n		<plug>NERDTreeTabsToggle<CR>
 
+" Gundu
 	" L-u => toggle gundu menu [:GunduToggle]
-	map		<Leader>u		:GundoToggle<CR>
+	map			<Leader>u		:GundoToggle<CR>
+
+" vim-surround
+	" |vs| => |vS|
+	vmap		s			S
+
+" vim-airline
+	" powerline symbols
+	let g:airline_powerline_fonts = 1
 
