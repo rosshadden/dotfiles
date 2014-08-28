@@ -2,8 +2,7 @@
 export EDITOR=vim
 
 # PATH
-export PATH=$PATH:~/pear/bin
-export PATH=$PATH:$HOME/local/bin
+export PATH=$PATH:$DOTS/bin:$HOME/local/bin
 [[ -e /usr/bin/ruby ]] && export PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
 
 # java

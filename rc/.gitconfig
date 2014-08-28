@@ -4,13 +4,16 @@
 [core]
 	editor = vim
 	excludesfile = /home/ross/dotfiles/git/.gitignore-global
+[merge]
+	tool = diffconflicts
+[mergetool "diffconflicts"]
+	cmd = diffconflicts gvim $BASE $LOCAL $REMOTE $MERGED
+	trustExitCode = true
+	keepBackup = false
 [mergetool "subl"]
 	cmd = subl -w $MERGED
 	trustExitCode = false
-[merge]
-	#tool = subl
-	tool = meld
-
+	keepBackup = false
 [color]
 	ui = true
 	branch = auto

@@ -294,7 +294,15 @@ local binds = {}
 		awful.key({ SUPER, "Shift" }, "c",	  function(c) c:kill()						 end),
 		awful.key({ SUPER, "Control" }, "space",  awful.client.floating.toggle					 ),
 		awful.key({ SUPER, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end),
-		awful.key({ SUPER,		   }, "o",	  awful.client.movetoscreen						),
+
+		-- Move clients between screens
+		awful.key({ SUPER }, "o", function(c)
+			awful.client.movetoscreen(c, c.screen + 1)
+		end),
+		awful.key({ SUPER, "Shift" }, "o", function(c)
+			awful.client.movetoscreen(c, c.screen - 1)
+		end),
+
 		awful.key({ SUPER,		   }, "t",	  function(c) c.ontop = not c.ontop			end),
 
 		awful.key({ SUPER,		   }, "n", function(c)
