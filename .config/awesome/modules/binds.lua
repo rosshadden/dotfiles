@@ -142,6 +142,17 @@ local binds = {}
 			util.run("pulseaudio-ctl mute", false)
 		end),
 
+		-- Media keys
+		awful.key({}, "XF86AudioPlay", function()
+			util.run("playerctl play-pause", false)
+		end),
+		awful.key({}, "XF86AudioNext", function()
+			util.run("playerctl next", false)
+		end),
+		awful.key({}, "XF86AudioPrev", function()
+			util.run("playerctl previous", false)
+		end),
+
 		-- Screenshots
 		awful.key({}, "Print", function()
 			local file = os.date("%Y-%m-%d-%T.png")

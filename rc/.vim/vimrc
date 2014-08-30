@@ -42,6 +42,7 @@ set nocompatible
 		NeoBundle 'terryma/vim-multiple-cursors'
 		" languages
 		NeoBundle 'mustache/vim-mustache-handlebars'
+		NeoBundle 'Chiel92/vim-autoformat'
 		" themes
 		NeoBundle 'bling/vim-airline'
 	" /PLUGINS
@@ -60,6 +61,7 @@ set nocompatible
 	" line numbers
 	set number
 	set smartcase
+	set ignorecase
 	set hlsearch
 	set cursorline
 
@@ -79,7 +81,7 @@ set nocompatible
 	set foldmethod=indent
 	set foldlevelstart=128
 	set foldcolumn=2
-	augroup vimrc
+	augroup rcFolds
 		" support both indent and manual folding
 		au BufReadPre * setlocal foldmethod=indent
 		au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
@@ -147,13 +149,26 @@ set nocompatible
 	vnoremap < <gv
 	vnoremap > >gv 
 
+	" use Q for formatting, not Ex mode
+	noremap Q gq
+
+	" set a break in undo, so CTRL-U in insert mode is less destructive
+	inoremap <C-U> <C-G>u<C-U>
 
 	" CONSOLE
 		" :w!! => Get sudo when it has been forgotten.
 		cmap w!! w !sudo tee % > /dev/null
 
-		" Change Working Directory to that of the current file
+		" reload vimrc config
+		" cmap reload source ~/.vim/vimrc
+
+		" change Working Directory to that of the current file
 		cmap cwd lcd %:p:h
+
+		" diff unsaved changes
+		if !exists(":DiffOrig")
+			command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
+		endif
 
 
 """"""""""""""""
@@ -169,23 +184,24 @@ set nocompatible
 	if has("autocmd")
 		filetype plugin on
 
-		" Reload vimrc when edited
-		augroup watchconfig
+		augroup rcMain
 			au!
+
+			" Reload vimrc when edited (using :reload, defined above)
 			autocmd! BufWritePost vimrc source ~/.vim/vimrc
+
+			" Preserve cursor position
+			au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+			" Remove trailing whitespaces and \^M chars
+			au FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\\\s\\\\+$","","")'))
+
+			" syntax highlighting
+
+			" files without detected syntax
+			au BufNewFile,BufRead * if &syntax == '' | set syntax=bash | endif
+			au BufNewFile,BufRead * if &filetype == '' | set filetype=bash | endif
 		augroup END
-
-		" Preserve cursor position
-		au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-		" Remove trailing whitespaces and \^M chars
-		autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\\\s\\\\+$","","")'))
-
-		" syntax highlighting
-
-		" files without detected syntax
-		au BufNewFile,BufRead * if &syntax == '' | set syntax=bash | endif
-		au BufNewFile,BufRead * if &filetype == '' | set filetype=bash | endif
 	endif
 
 
@@ -231,11 +247,14 @@ set nocompatible
 
 	" NERDTree
 		" NERDTree: show hidden files
-		let g:NERDTreeShowHidden = 1
+		" let g:NERDTreeShowHidden = 1
+
+		" always focus file pane (this doesn't seem to work)
+		" let g:nerdtree_tabs_smart_startup_focus = 2
 
 		" if no files were passed, open NERDTree on startup
-		autocmd StdinReadPre * let s:std_in=1
-		autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+		" autocmd StdinReadPre * let s:std_in=1
+		" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 		" L-n => toggle NERDTreeTabs
 		map <Leader>n <plug>NERDTreeTabsToggle<CR>
@@ -251,4 +270,8 @@ set nocompatible
 	" vim-airline
 		" powerline symbols
 		let g:airline_powerline_fonts = 1
+	
+	" vim-autoformat
+		" format entire file
+		noremap QQ :Autoformat<CR>
 

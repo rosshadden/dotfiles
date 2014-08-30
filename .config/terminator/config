@@ -20,7 +20,7 @@
     cursor_color = "#dcff00"
     foreground_color = "#e1eae5"
     scroll_on_output = False
-    background_color = "#1a1a1a"
+    background_color = "#121212"
     scrollback_lines = 4096
   [[backup]]
     scrollbar_position = hidden
