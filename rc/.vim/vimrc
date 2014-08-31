@@ -380,3 +380,10 @@ set nocompatible
 		nmap s <plug>(easymotion-s2)
 		nmap S <plug>(easymotion-bd-s2)
 
+	" vim-tmux-navigator
+		" let the nav shortcuts work anywhere
+		inoremap <c-h> <esc>:TmuxNavigateLeft<cr>
+		inoremap <c-l> <esc>:TmuxNavigateRight<cr>
+		inoremap <c-k> <esc>:TmuxNavigateUp<cr>
+		inoremap <c-j> <esc>:TmuxNavigateDown<cr>
+
