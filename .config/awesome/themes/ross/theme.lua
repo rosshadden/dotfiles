@@ -69,7 +69,7 @@ dirs.theme = dirs.themes .. "/ross"
 		-- theme.taglist_bg_urgent = theme.colors.highlight
 
 	-- Tasklist
-		theme.tasklist_bg_focus = theme.colors.current .. "88"
+		theme.tasklist_bg_focus = theme.colors.current --.. "88"
 
 	-- There are other variable sets
 	-- overriding the default one when

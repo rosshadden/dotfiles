@@ -11,12 +11,12 @@ local tags = {}
 
 tags.entries = {
 	{ name = "explore", icon = "" },
-	{ name = "dev", icon = "{}" },
+	{ name = "dev", icon = "" },
 	{ name = "sync", icon = "" },
 	{ name = "hack", icon = "" },
 	{ name = "find", icon = "" },
-	{ name = "look", icon = "" },
-	{ name = "comm", icon = "" },
+	{ name = "watch", icon = "" },
+	{ name = "play", icon = "" },
 	{ name = "chat", icon = "" },
 	{ name = "run", icon = "" }
 }
@@ -41,3 +41,4 @@ end
 
 
 return tags
+

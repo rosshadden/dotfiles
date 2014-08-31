@@ -22,11 +22,27 @@ set nocompatible
 		\     'unix' : 'make -f make_unix.mak',
 		\    },
 		\ }
-		NeoBundle 'Shougo/neomru.vim'
-		NeoBundle 'Shougo/unite.vim'
 
+		" unite
+		NeoBundle 'Shougo/unite.vim'
+		NeoBundle 'Shougo/neomru.vim'
+		NeoBundle 'Shougo/unite-outline'
+		NeoBundle 'thinca/vim-unite-history'
+
+		" enhancements
 		NeoBundle 'SearchComplete'
 
+		" navigation
+		NeoBundle 'Lokaltog/vim-easymotion'
+
+		" languages
+		NeoBundle 'mustache/vim-mustache-handlebars'
+		NeoBundle 'Chiel92/vim-autoformat'
+
+		" UI
+		NeoBundle 'bling/vim-airline'
+
+		" utils
 		NeoBundle 'tpope/vim-surround'
 		NeoBundle 'tpope/vim-commentary'
 		NeoBundle 'tpope/vim-unimpaired'
@@ -36,15 +52,14 @@ set nocompatible
 		NeoBundle 'kien/ctrlp.vim'
 		NeoBundle 'scrooloose/nerdtree'
 		NeoBundle 'jistr/vim-nerdtree-tabs'
-		NeoBundle 'Lokaltog/vim-easymotion'
 		NeoBundle 'ervandew/supertab'
 		NeoBundle 'sjl/gundo.vim'
 		NeoBundle 'terryma/vim-multiple-cursors'
-		" languages
-		NeoBundle 'mustache/vim-mustache-handlebars'
-		NeoBundle 'Chiel92/vim-autoformat'
-		" themes
-		NeoBundle 'bling/vim-airline'
+		NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
+		NeoBundle 'rking/ag.vim'
+
+		" external
+		NeoBundle 'christoomey/vim-tmux-navigator'
 	" /PLUGINS
 
 	call neobundle#end()
@@ -56,7 +71,7 @@ set nocompatible
 """"""""""""""""
 " SETTINGS
 """"""""""""""""
-	" take me to your <Leader>
+	" take me to your <leader>
 	let mapleader=","
 	" line numbers
 	set number
@@ -65,6 +80,9 @@ set nocompatible
 	set hlsearch
 	set cursorline
 
+	" turn off auto-textwrap (vim-sensible turns it on)
+	set textwidth=0
+
 	" spell checking (toggled with `cos`)
 	" set spell
 
@@ -72,7 +90,7 @@ set nocompatible
 	set mouse=a
 
 	" paste without comments messing everything up
-	set pastetoggle=<F5>
+	set pastetoggle=<f5>
 
 	" Let arrow keys pass \n
 	set whichwrap=b,s,<,>,[,]
@@ -95,55 +113,62 @@ set nocompatible
 """"""""""""""""
 " MAPPINGS
 """"""""""""""""
+	" fix Y
+	noremap Y y$
+
 	" shift is for sucks? (avoids :W style typos)
 	noremap ; :
 
 	" C-s => save [:update]
-	noremap <silent> <C-S> :update<CR>
-	inoremap <silent> <C-S> <Esc>:update<CR>
+	noremap <silent> <leader>w :update<cr>
+	noremap <silent> <leader>W :write<cr>
+	noremap <silent> <c-s> :write<cr>
+	inoremap <silent> <c-s> <esc>:write<cr>
 
 	" C-q => quit [:quit]
-	noremap <silent> <C-Q> :quit<CR>
-	inoremap <silent> <C-Q> <Esc>:quit<CR>
-
+	noremap <silent> <leader>q :quit<cr>
+	noremap <silent> <c-q> :quit<cr>
+	inoremap <silent> <c-q> <esc>:quit<cr>
 	" C-S-q => force quit [:quit!]
-	noremap <silent> <Leader><C-Q> :quit!<CR>
-	inoremap <silent> <Leader><C-Q> <Esc>:quit!<CR>
+	noremap <silent> <leader>Q :quit!<cr>
+	noremap <silent> <leader><c-q> :quit!<cr>
 
 	" C-x => save and quit [:wq]
-	noremap <silent> <C-X> :wq<CR>
-	" inoremap <silent> <C-X> <Esc>:wq<CR>
+	noremap <silent> <leader>x :wq<cr>
 
 	" U => redo [:redo]
-	noremap U <C-r>
+	noremap U <c-r>
 
 	" insert TAB
-	noremap <Leader>it i<Tab>
-	noremap <Leader>at a<Tab>
+	noremap <leader>it i<tab>
+	noremap <leader>at a<tab>
+
+	" new tab
+	nnoremap <leader>t :tabnew<cr>
 
 	" better folding
-	nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-	vnoremap <Space> zf
-	nmap z` :set foldlevel=0<CR>
-	nmap z1 :set foldlevel=1<CR>
-	nmap z2 :set foldlevel=2<CR>
-	nmap z3 :set foldlevel=3<CR>
-	nmap z4 :set foldlevel=4<CR>
-	nmap z5 :set foldlevel=5<CR>
-	nmap z6 :set foldlevel=6<CR>
-	nmap z7 :set foldlevel=7<CR>
-	nmap z8 :set foldlevel=8<CR>
-	nmap z9 :set foldlevel=9<CR>
-	nmap z0 :set foldlevel=128<CR>
+	nnoremap <silent> <space> @=(foldlevel('.')?'za':"\<space>")<cr>
+	vnoremap <space> zf
+	nmap z` :set foldlevel=0<cr>
+	nmap z1 :set foldlevel=1<cr>
+	nmap z2 :set foldlevel=2<cr>
+	nmap z3 :set foldlevel=3<cr>
+	nmap z4 :set foldlevel=4<cr>
+	nmap z5 :set foldlevel=5<cr>
+	nmap z6 :set foldlevel=6<cr>
+	nmap z7 :set foldlevel=7<cr>
+	nmap z8 :set foldlevel=8<cr>
+	nmap z9 :set foldlevel=9<cr>
+	nmap z0 :set foldlevel=128<cr>
 
 	" clear highlighted search
-	nmap <silent> <leader>/ :nohlsearch<CR>
+	nmap <silent> <leader>/ :nohlsearch<cr>
 
 	" better pane navigation
-	nnoremap <Leader>j <C-W><C-J>
-	nnoremap <Leader>k <C-W><C-K>
-	nnoremap <Leader>l <C-W><C-L>
-	nnoremap <Leader>h <C-W><C-H>
+	nnoremap <leader>j <c-w><c-j>
+	nnoremap <leader>k <c-w><c-k>
+	nnoremap <leader>l <c-w><c-l>
+	nnoremap <leader>h <c-w><c-h>
 
 	" visual shifting (does not exit Visual mode)
 	vnoremap < <gv
@@ -153,7 +178,22 @@ set nocompatible
 	noremap Q gq
 
 	" set a break in undo, so CTRL-U in insert mode is less destructive
-	inoremap <C-U> <C-G>u<C-U>
+	inoremap <c-u> <c-g>u<c-u>
+
+	" switch to alternate file
+	noremap <leader><leader> <c-^>
+
+	" easier system clipboard
+	noremap <leader>y "+y
+	noremap <leader>Y "+Y
+	noremap <leader>p "+p
+	noremap <leader>P "+P
+
+	" grade-A prankster
+	noremap <Up> <Down>
+	noremap <Down> <Up>
+	noremap <Left> <Right>
+	noremap <Right> <Left>
 
 	" CONSOLE
 		" :w!! => Get sudo when it has been forgotten.
@@ -194,7 +234,7 @@ set nocompatible
 			au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 			" Remove trailing whitespaces and \^M chars
-			au FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\\\s\\\\+$","","")'))
+			au FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1, map(getline(1, "$"), 'substitute(v:val, "\\\\s\\\\+$", "", "")'))
 
 			" syntax highlighting
 
@@ -215,9 +255,17 @@ set nocompatible
 	" Unite
 		let g:unite_source_history_yank_enable = 1
 
+		" ack >> grep
 		if executable('ack')
 			let g:unite_source_grep_command = 'ack'
 			let g:unite_source_grep_default_opts = '-i --no-heading --no-color -k -H'
+			let g:unite_source_grep_recursive_opt = ''
+		endif
+
+		" ag >> ack
+		if executable('ag')
+			let g:unite_source_grep_command = 'ag'
+			let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
 			let g:unite_source_grep_recursive_opt = ''
 		endif
 
@@ -225,25 +273,74 @@ set nocompatible
 		call unite#filters#sorter_default#use(['sorter_rank'])
 		call unite#custom#source('file_rec/async', 'sorters', 'sorter_rank')
 
-		" CtrlP search
-		" current tab
-		nnoremap <Leader>fp :Unite -buffer-name=files -start-insert file_rec/async:!<cr>
-		" new tab
-		nnoremap <Leader>ft :Unite -default-action=tabopen -buffer-name=files -start-insert file_rec/async:!<cr>
-		" vertical split
-		nnoremap <Leader>f- :Unite -default-action=split -buffer-name=files -start-insert file_rec/async:!<cr>
-		" horizontal split
-		nnoremap <Leader>f\ :Unite -default-action=vsplit -buffer-name=files -start-insert file_rec/async:!<cr>
+		" in-buffer settings
+		function! s:unite_settings()
+			let b:SuperTabDisabled = 1
 
-		nnoremap <Leader>ff :Unite -buffer-name=files -start-insert file<cr>
-		" recently edited files
-		nnoremap <Leader>fr :Unite -buffer-name=mru file_mru<cr>
-		nnoremap <Leader>fo :Unite -buffer-name=outline outline<cr>
-		nnoremap <Leader>fy :Unite -buffer-name=yank history/yank<cr>
-		" navigate open buffers
-		nnoremap <Leader>fe :Unite -buffer-name=buffers buffer<cr>
+			imap <buffer> <c-j> <plug>(unite_select_next_line)
+			imap <buffer> <c-k> <plug>(unite_select_previous_line)
+			imap <buffer> <c-a> <plug>(unite_choose_action)
+
+			" open in horizontal split
+			nmap <silent><buffer><expr> s unite#do_action('split')
+			imap <silent><buffer><expr> <c-s> unite#do_action('split')
+			" open in vertical split
+			nmap <silent><buffer><expr> v unite#do_action('vsplit')
+			imap <silent><buffer><expr> <c-v> unite#do_action('vsplit')
+			" open in new tab
+			imap <silent><buffer><expr> <c-t> unite#do_action('tabopen')
+
+			" exit
+			nmap <buffer> <esc> <plug>(unite_exit)
+		endfunction
+		autocmd FileType unite call s:unite_settings()
+
+		" prefix
+		nnoremap [unite] <nop>
+		nmap <leader><space> [unite]
+
+		" general
+		nnoremap [unite]<space> :Unite -buffer-name=general -start-insert source<cr>
+
+		" files
+		" search, single directory
+		nnoremap [unite]f :Unite -buffer-name=files file file/new directory/new<cr>
+		nnoremap [unite]F :UniteWithBufferDir -buffer-name=files file file/new directory/new<cr>
+		" cd
+		nnoremap [unite]c :Unite -buffer-name=files -default-action=cd directory directory/new<cr>
+		nnoremap [unite]C :UniteWithBufferDir -buffer-name=files -default-action=cd directory directory/new<cr>
+		" search, recursive
+		nnoremap [unite]p :Unite -buffer-name=files -start-insert file_rec/async:!<cr>
+		nnoremap [unite]t :Unite -buffer-name=files -start-insert -default-action=tabopen file_rec/async:!<cr>
+
+		" recents
+		" files
+		nnoremap [unite]r :Unite -buffer-name=recent file_mru<cr>
+		" dirs
+		nnoremap [unite]R :Unite -buffer-name=recent -default-action=cd direcory_mru<cr>
+		" open buffers
+		nnoremap [unite]b :Unite -buffer-name=buffers buffer<cr>
+		" buffer, tab, or files
+		nnoremap [unite]a :Unite -start-insert buffer tab file_mru directory_mru bookmark<cr>
+
+		" content
+		" outline
+		nnoremap [unite]o :Unite -buffer-name=outline -auto-preview outline<cr>
+		" line
+		nnoremap [unite]l :Unite -buffer-name=line -start-insert line<cr>
+
+		" yank stack
+		nnoremap [unite]y :Unite -buffer-name=yank history/yank<cr>
+
 		" search within files
-		nnoremap <Leader>fg :Unite grep:.<cr>
+		nnoremap [unite]g :Unite grep:.<cr>
+		nnoremap [unite]G :Unite grep<cr>
+
+		" change and line
+		nnoremap [unite]k :Unite -buffer-name=search change line<cr>
+
+		" command history
+		nnoremap [unite]; :Unite -buffer-name=commands -default-action=execute history/command command<cr>
 
 	" NERDTree
 		" NERDTree: show hidden files
@@ -257,11 +354,11 @@ set nocompatible
 		" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 		" L-n => toggle NERDTreeTabs
-		map <Leader>n <plug>NERDTreeTabsToggle<CR>
+		map <leader>n <plug>NERDTreeTabsToggle<cr>
 
 	" Gundu
 		" L-u => toggle gundu menu [:GunduToggle]
-		map <Leader>u :GundoToggle<CR>
+		map <leader>u :GundoToggle<cr>
 
 	" vim-surround
 		" |vs| => |vS|
@@ -273,5 +370,13 @@ set nocompatible
 	
 	" vim-autoformat
 		" format entire file
-		noremap QQ :Autoformat<CR>
+		noremap QQ :Autoformat<cr>
+
+	" vim-easymotion
+		" prefix
+		map <leader>f <plug>(easymotion-prefix)
+
+		" vim-sneak
+		nmap s <plug>(easymotion-s2)
+		nmap S <plug>(easymotion-bd-s2)
 
