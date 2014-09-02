@@ -54,6 +54,7 @@ set nocompatible
 		NeoBundle 'terryma/vim-multiple-cursors'
 		NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 		NeoBundle 'rking/ag.vim'
+		NeoBundle 'AndrewRadev/linediff.vim'
 
 		" UI
 		NeoBundle 'bling/vim-airline'
@@ -64,6 +65,8 @@ set nocompatible
 
 		" external
 		NeoBundle 'christoomey/vim-tmux-navigator'
+		NeoBundle 'edkolev/tmuxline.vim'
+		NeoBundle 'edkolev/promptline.vim'
 	" /PLUGINS
 
 	call neobundle#end()
@@ -84,6 +87,10 @@ set nocompatible
 	set ignorecase
 	set hlsearch
 	set cursorline
+
+	" tabs!
+	set tabstop=4
+	set shiftwidth=4
 
 	" turn off auto-textwrap (vim-sensible turns it on)
 	set textwidth=0
@@ -185,6 +192,17 @@ set nocompatible
 	nmap z8 :set foldlevel=8<cr>
 	nmap z9 :set foldlevel=9<cr>
 	nmap z0 :set foldlevel=128<cr>
+	nmap zz :call ToggleFold()<cr>
+	let b:foldlevel=&l:foldlevel
+	function! ToggleFold()
+		if &l:foldenable
+			let b:foldlevel=&l:foldlevel
+			set nofoldenable
+		else
+			set foldenable
+			set foldlevel = b:foldlevel
+		endif
+	endfunction
 
 	" clear highlighted search
 	nmap <silent> <leader>/ :nohlsearch<cr>

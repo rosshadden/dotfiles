@@ -2,8 +2,10 @@
 export EDITOR=vim
 
 # PATH
-export PATH=$PATH:$DOTS/bin:$HOME/local/bin
+export PATH=$PATH:$DOTS/bin:$HOME/local/bin:$HOME/.local/bin
 [[ -e /usr/bin/ruby ]] && export PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
+
+export POWERLINE_PATH="/home/ross/.local/lib/python2.7/site-packages/powerline"
 
 # java
 export JAVA_HOME=/usr/lib/jvm/default-java
