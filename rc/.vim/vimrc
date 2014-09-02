@@ -39,9 +39,6 @@ set nocompatible
 		NeoBundle 'mustache/vim-mustache-handlebars'
 		NeoBundle 'Chiel92/vim-autoformat'
 
-		" UI
-		NeoBundle 'bling/vim-airline'
-
 		" utils
 		NeoBundle 'tpope/vim-surround'
 		NeoBundle 'tpope/vim-commentary'
@@ -58,6 +55,13 @@ set nocompatible
 		NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 		NeoBundle 'rking/ag.vim'
 
+		" UI
+		NeoBundle 'bling/vim-airline'
+		NeoBundle 'nanotech/jellybeans.vim'
+		NeoBundle 'tomasr/molokai'
+		NeoBundle 'xoria256.vim'
+		NeoBundle 'altercation/vim-colors-solarized'
+
 		" external
 		NeoBundle 'christoomey/vim-tmux-navigator'
 	" /PLUGINS
@@ -73,6 +77,7 @@ set nocompatible
 """"""""""""""""
 	" take me to your <leader>
 	let mapleader=","
+	let maplocalleader="-"
 	" line numbers
 	set number
 	set smartcase
@@ -90,7 +95,7 @@ set nocompatible
 	set mouse=a
 
 	" paste without comments messing everything up
-	set pastetoggle=<f5>
+	set pastetoggle=<f4>
 
 	" Let arrow keys pass \n
 	set whichwrap=b,s,<,>,[,]
@@ -108,6 +113,26 @@ set nocompatible
 	" more natural splits
 	set splitbelow
 	set splitright
+
+
+""""""""""""""""
+" THEME
+""""""""""""""""
+	syntax enable
+	set t_Co=256
+	set background=dark
+	" set background=light
+
+	" colorscheme molokai
+	" colorscheme jellybeans
+
+	colorscheme xoria256
+	let g:rehash256 = 1
+
+	" let g:solarized_termtrans = 1
+	" " let g:solarized_termcolors=256
+	" colorscheme solarized
+	call togglebg#map("<f5>")
 
 
 """"""""""""""""
@@ -137,7 +162,7 @@ set nocompatible
 	noremap <silent> <leader>x :wq<cr>
 
 	" U => redo [:redo]
-	noremap U <c-r>
+	" noremap U <c-r>
 
 	" insert TAB
 	noremap <leader>it i<tab>
@@ -184,16 +209,20 @@ set nocompatible
 	noremap <leader><leader> <c-^>
 
 	" easier system clipboard
-	noremap <leader>y "+y
-	noremap <leader>Y "+Y
-	noremap <leader>p "+p
-	noremap <leader>P "+P
+	nnoremap <leader>y "+y
+	vnoremap <leader>y "+y
+	nnoremap <leader>Y "+Y
+	vnoremap <leader>Y "+Y
+	nnoremap <leader>p "+p
+	vnoremap <leader>p "+p
+	nnoremap <leader>P "+P
+	vnoremap <leader>P "+P
 
 	" grade-A prankster
-	noremap <Up> <Down>
-	noremap <Down> <Up>
-	noremap <Left> <Right>
-	noremap <Right> <Left>
+	noremap <up> <down>
+	noremap <down> <up>
+	noremap <left> <right>
+	noremap <right> <left>
 
 	" CONSOLE
 		" :w!! => Get sudo when it has been forgotten.
@@ -209,13 +238,6 @@ set nocompatible
 		if !exists(":DiffOrig")
 			command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
 		endif
-
-
-""""""""""""""""
-" THEME
-""""""""""""""""
-	set t_Co=256
-	colorscheme molokai
 
 
 """"""""""""""""

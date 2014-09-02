@@ -95,6 +95,9 @@ source $DOTS/shell/general.sh
 source $DOTS/shell/functions.sh
 [[ -e "$HOME/.local.sh" ]] && source $HOME/.local.sh
 
+# powerline
+[[ -n ${POWERLINE_PATH:+x} ]] && . $POWERLINE_PATH/bindings/zsh/powerline.zsh
+
 # vi-mode stuff
 KEYTIMEOUT=1
 

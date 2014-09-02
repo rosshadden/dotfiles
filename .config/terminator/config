@@ -5,11 +5,13 @@
   borderless = True
   title_transmit_bg_color = "#373737"
   title_inactive_bg_color = "#2f2f2f"
+
 [keybindings]
   cycle_prev = <Primary><Shift>Tab
   cycle_next = <Primary>Tab
   split_vert = <Alt>backslash
   split_horiz = <Alt>minus
+
 [profiles]
   [[default]]
     scrollbar_position = hidden
@@ -18,10 +20,23 @@
     urgent_bell = True
     background_image = None
     cursor_color = "#dcff00"
-    foreground_color = "#e1eae5"
+    foreground_color = "#ffffff"
     scroll_on_output = False
-    background_color = "#121212"
+    background_color = "#1c1c1c"
     scrollback_lines = 4096
+
+  [[solarized-dark]]
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    foreground_color = "#eee8d5"
+    background_color = "#002b36"
+    cursor_color = "#eee8d5"
+
+  [[solarized-light]]
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    background_color = "#eee8d5"
+    foreground_color = "#002b36"
+    cursor_color = "#002b36"
+
   [[backup]]
     scrollbar_position = hidden
     palette = "#151515:#e3348b:#8be334:#e38b34:#348be3:#8b34e3:#34e38b:#c5c5c5:#313131:#f3a6cc:#ccf3a6:#f3cca6:#a6ccf3:#cca6f3:#a6f3cc:#ffffff"
@@ -34,6 +49,7 @@
     scroll_on_output = False
     background_color = "#112233"
     scrollback_lines = 4096
+
   [[quake]]
     scrollbar_position = hidden
     palette = "#151515:#e3348b:#8be334:#e38b34:#348be3:#8b34e3:#34e38b:#c5c5c5:#313131:#f3a6cc:#ccf3a6:#f3cca6:#a6ccf3:#cca6f3:#a6f3cc:#ffffff"
@@ -44,13 +60,16 @@
     cursor_color = "#dcff00"
     foreground_color = "#ffffff"
     scroll_on_output = False
+    background_color = "#1c1c1c"
     scrollback_lines = 4096
+
 [layouts]
   [[default]]
     [[[child1]]]
       type = Terminal
       parent = window0
       profile = default
+
     [[[window0]]]
       type = Window
       parent = ""
