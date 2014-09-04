@@ -62,6 +62,7 @@ set nocompatible
 		NeoBundle 'tomasr/molokai'
 		NeoBundle 'xoria256.vim'
 		NeoBundle 'altercation/vim-colors-solarized'
+		NeoBundle 'chriskempson/base16-vim'
 
 		" external
 		NeoBundle 'christoomey/vim-tmux-navigator'
@@ -406,8 +407,16 @@ set nocompatible
 
 	" vim-airline
 		" powerline symbols
-		let g:airline_powerline_fonts = 1
-	
+		let g:airline#extensions#tabline#enabled = 1
+		let g:airline_powerline_fonts   = 1
+		let g:airline_theme             = 'base16'
+		let g:airline_enable_branch     = 1
+
+		if !exists('g:airline_symbols')
+			let g:airline_symbols = {}
+		endif
+		" let g:airline_symbols.space = "\ua0"
+
 	" vim-autoformat
 		" format entire file
 		noremap QQ :Autoformat<cr>
