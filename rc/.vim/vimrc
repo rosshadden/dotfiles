@@ -55,6 +55,7 @@ set nocompatible
 		NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 		NeoBundle 'rking/ag.vim'
 		NeoBundle 'AndrewRadev/linediff.vim'
+		NeoBundle 'scrooloose/syntastic'
 
 		" UI
 		NeoBundle 'bling/vim-airline'
@@ -196,13 +197,18 @@ set nocompatible
 	nmap zz :call ToggleFold()<cr>
 	let b:foldlevel=&l:foldlevel
 	function! ToggleFold()
-		if &l:foldenable
-			let b:foldlevel=&l:foldlevel
-			set nofoldenable
+		if &l:foldmethod == 'indent'
+			set foldmethod=manual
 		else
-			set foldenable
-			set foldlevel = b:foldlevel
+			set foldmethod=indent
 		endif
+		" if &l:foldenable
+		" 	let b:foldlevel=&l:foldlevel
+		" 	set nofoldenable
+		" else
+		" 	set foldenable
+		" 	set foldlevel = b:foldlevel
+		" endif
 	endfunction
 
 	" clear highlighted search
@@ -276,6 +282,10 @@ set nocompatible
 
 			" Remove trailing whitespaces and \^M chars
 			au FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1, map(getline(1, "$"), 'substitute(v:val, "\\\\s\\\\+$", "", "")'))
+
+			" turn on spell check in certain files, and move cursor to beginning of gitcommits
+			au BufRead,BufNewFile *.md setlocal spell | set complete+=kspell
+			au FileType gitcommit setlocal spell | set complete+=kspell | call cursor(1, 1)
 
 			" syntax highlighting
 
@@ -431,8 +441,41 @@ set nocompatible
 
 	" vim-tmux-navigator
 		" let the nav shortcuts work anywhere
-		inoremap <c-h> <esc>:TmuxNavigateLeft<cr>
-		inoremap <c-l> <esc>:TmuxNavigateRight<cr>
-		inoremap <c-k> <esc>:TmuxNavigateUp<cr>
-		inoremap <c-j> <esc>:TmuxNavigateDown<cr>
+		let g:tmux_navigator_no_mappings = 1
+
+		nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+		nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+		nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+		nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+		nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
+
+		nnoremap <silent> <m-h> :TmuxNavigateLeft<cr>
+		nnoremap <silent> <m-l> :TmuxNavigateRight<cr>
+		nnoremap <silent> <m-k> :TmuxNavigateUp<cr>
+		nnoremap <silent> <m-j> :TmuxNavigateDown<cr>
+		nnoremap <silent> <m-\> :TmuxNavigatePrevious<cr>
+
+		vnoremap <silent> <c-h> <esc>:TmuxNavigateLeft<cr>
+		vnoremap <silent> <c-l> <esc>:TmuxNavigateDown<cr>
+		vnoremap <silent> <c-k> <esc>:TmuxNavigateUp<cr>
+		vnoremap <silent> <c-j> <esc>:TmuxNavigateRight<cr>
+		vnoremap <silent> <c-\> <esc>:TmuxNavigatePrevious<cr>
+
+		vnoremap <silent> <m-h> <esc>:TmuxNavigateLeft<cr>
+		vnoremap <silent> <m-l> <esc>:TmuxNavigateDown<cr>
+		vnoremap <silent> <m-k> <esc>:TmuxNavigateUp<cr>
+		vnoremap <silent> <m-j> <esc>:TmuxNavigateRight<cr>
+		vnoremap <silent> <m-\> <esc>:TmuxNavigatePrevious<cr>
+
+		inoremap <silent> <c-h> <esc>:TmuxNavigateLeft<cr>
+		inoremap <silent> <c-l> <esc>:TmuxNavigateDown<cr>
+		inoremap <silent> <c-k> <esc>:TmuxNavigateUp<cr>
+		inoremap <silent> <c-j> <esc>:TmuxNavigateRight<cr>
+		inoremap <silent> <c-\> <esc>:TmuxNavigatePrevious<cr>
+
+		inoremap <silent> <m-h> <esc>:TmuxNavigateLeft<cr>
+		inoremap <silent> <m-l> <esc>:TmuxNavigateDown<cr>
+		inoremap <silent> <m-k> <esc>:TmuxNavigateUp<cr>
+		inoremap <silent> <m-j> <esc>:TmuxNavigateRight<cr>
+		inoremap <silent> <m-\> <esc>:TmuxNavigatePrevious<cr>
 
