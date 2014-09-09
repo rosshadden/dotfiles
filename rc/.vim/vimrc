@@ -123,6 +123,9 @@ set nocompatible
 	set splitbelow
 	set splitright
 
+	" ignore in searches
+	set wildignore+=node_modules/**
+
 
 """"""""""""""""
 " THEME
@@ -304,6 +307,7 @@ set nocompatible
 		let g:ctrlp_show_hidden = 1
 
 	" Unite
+		let g:unite_winheight = 32
 		let g:unite_source_history_yank_enable = 1
 
 		" ack >> grep
@@ -318,11 +322,15 @@ set nocompatible
 			let g:unite_source_grep_command = 'ag'
 			let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
 			let g:unite_source_grep_recursive_opt = ''
+			let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
 		endif
 
 		call unite#filters#matcher_default#use(['matcher_fuzzy'])
-		call unite#filters#sorter_default#use(['sorter_rank'])
-		call unite#custom#source('file_rec/async', 'sorters', 'sorter_rank')
+		" call unite#filters#sorter_default#use(['sorter_length', 'sorter_rank'])
+		call unite#custom#source('buffer,file,file_rec,file_rec/async', 'sorters', ['sorter_length', 'sorter_rank'])
+		call unite#custom#source('file_rec,file_rec/async', 'ignore_globs', split(&wildignore, ','))
+		call unite#custom#source('file_rec/async', 'converters', [])
+		call unite#custom#source('file_rec/async', 'max_candidates', 32)
 
 		" in-buffer settings
 		function! s:unite_settings()
@@ -358,7 +366,7 @@ set nocompatible
 		nnoremap [unite]f :Unite -buffer-name=files file file/new directory/new<cr>
 		nnoremap [unite]F :UniteWithBufferDir -buffer-name=files file file/new directory/new<cr>
 		" cd
-		nnoremap [unite]c :Unite -buffer-name=files -default-action=cd directory directory/new<cr>
+		nnoremap [unite]c :Unite -buffer-name=files directory directory/new<cr>
 		nnoremap [unite]C :UniteWithBufferDir -buffer-name=files -default-action=cd directory directory/new<cr>
 		" search, recursive
 		nnoremap [unite]p :Unite -buffer-name=files -start-insert file_rec/async:!<cr>
@@ -376,9 +384,9 @@ set nocompatible
 
 		" content
 		" outline
-		nnoremap [unite]o :Unite -buffer-name=outline -auto-preview outline<cr>
+		nnoremap [unite]o :Unite -buffer-name=outline -no-split -auto-preview outline<cr>
 		" line
-		nnoremap [unite]l :Unite -buffer-name=line -start-insert line<cr>
+		nnoremap [unite]l :Unite -buffer-name=line -no-split -auto-preview -start-insert line<cr>
 
 		" yank stack
 		nnoremap [unite]y :Unite -buffer-name=yank history/yank<cr>
@@ -391,7 +399,7 @@ set nocompatible
 		nnoremap [unite]k :Unite -buffer-name=search change line<cr>
 
 		" command history
-		nnoremap [unite]; :Unite -buffer-name=commands -default-action=execute history/command command<cr>
+		nnoremap [unite]; :Unite -buffer-name=commands -no-split -auto-preview -default-action=execute history/command command<cr>
 
 	" NERDTree
 		" NERDTree: show hidden files

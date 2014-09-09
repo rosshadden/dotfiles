@@ -32,7 +32,7 @@ return {
 			skip_taskbar = true
 		}
 	}, {
-		rule = { instance = "spotify" },
+		rule = { instance = "nuvolaplayer" },
 		properties = {
 			tag = tags.list[util.screens.left][6],
 		}
