@@ -372,59 +372,83 @@ set nocompatible
 
 		" prefix
 		nnoremap [unite] <nop>
+		nnoremap [unite-alt] <nop>
 		nmap <leader><space> [unite]
+		nmap [unite]<space> [unite-alt]
 
 		" open files
 			" flat
 			nnoremap [unite]f :Unite              -buffer-name=files -start-insert file directory file/new directory/new<cr>
 			nnoremap [unite]F :UniteWithBufferDir -buffer-name=files -start-insert file directory file/new directory/new<cr>
+			nnoremap [unite-alt]f :Unite              -buffer-name=files -start-insert -auto-preview file directory file/new directory/new<cr>
+			nnoremap [unite-alt]F :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file directory file/new directory/new<cr>
 
 			" recursive
 			nnoremap [unite]p :Unite              -buffer-name=files -start-insert file_rec/async:!<cr>
 			nnoremap [unite]P :UniteWithBufferDir -buffer-name=files -start-insert file_rec/async:!<cr>
+			nnoremap [unite-alt]p :Unite              -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
+			nnoremap [unite-alt]P :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
 
 		" search files
 			nnoremap [unite]g :Unite              grep:.<cr>
 			nnoremap [unite]G :UniteWithBufferDir grep:.<cr>
+			nnoremap [unite]g :Unite              -auto-preview grep:.<cr>
+			nnoremap [unite]G :UniteWithBufferDir -auto-preview grep:.<cr>
 
 		" current and recent
 			" most recently used (mru) files
 			nnoremap [unite]r :Unite              -buffer-name=recent file_mru<cr>
 			nnoremap [unite]R :UniteWithBufferDir -buffer-name=recent file_mru<cr>
+			nnoremap [unite-alt]r :Unite              -buffer-name=recent -auto-preview file_mru<cr>
+			nnoremap [unite-alt]R :UniteWithBufferDir -buffer-name=recent -auto-preview file_mru<cr>
 
 			" current buffers
 			nnoremap [unite]b :Unite              -buffer-name=buffers buffer<cr>
 			nnoremap [unite]B :UniteWithBufferDir -buffer-name=buffers buffer<cr>
+			nnoremap [unite-alt]b :Unite              -buffer-name=buffers -auto-preview buffer<cr>
+			nnoremap [unite-alt]B :UniteWithBufferDir -buffer-name=buffers -auto-preview buffer<cr>
 
 			" buffer, tab, or files
 			nnoremap [unite]a :Unite              -start-insert buffer tab file_mru directory_mru bookmark<cr>
 			nnoremap [unite]A :UniteWithBufferDir -start-insert buffer tab file_mru directory_mru bookmark<cr>
+			nnoremap [unite-alt]a :Unite              -start-insert -auto-preview buffer tab file_mru directory_mru bookmark<cr>
+			nnoremap [unite-alt]A :UniteWithBufferDir -start-insert -auto-preview buffer tab file_mru directory_mru bookmark<cr>
 
 		" current file
 			" outline
 			nnoremap [unite]o :Unite               -buffer-name=outline -no-split -auto-preview outline<cr>
 			nnoremap [unite]O :UniteWithCursorWord -buffer-name=outline -no-split -auto-preview outline<cr>
+			nnoremap [unite-alt]o :Unite               -buffer-name=outline -no-split -auto-preview -auto-preview outline<cr>
+			nnoremap [unite-alt]O :UniteWithCursorWord -buffer-name=outline -no-split -auto-preview -auto-preview outline<cr>
 
 			" line
 			nnoremap [unite]l :Unite               -buffer-name=search -no-split -auto-preview -start-insert line<cr>
 			nnoremap [unite]L :UniteWithCursorWord -buffer-name=search -no-split -auto-preview -start-insert line<cr>
+			nnoremap [unite-alt]l :Unite               -buffer-name=search -no-split -auto-preview -start-insert -auto-preview line<cr>
+			nnoremap [unite-alt]L :UniteWithCursorWord -buffer-name=search -no-split -auto-preview -start-insert -auto-preview line<cr>
 
 			" changes
 			nnoremap [unite]k :Unite               -buffer-name=search change<cr>
 			nnoremap [unite]K :UniteWithCursorWord -buffer-name=search change<cr>
+			nnoremap [unite-alt]k :Unite               -buffer-name=search -auto-preview change<cr>
+			nnoremap [unite-alt]K :UniteWithCursorWord -buffer-name=search -auto-preview change<cr>
 
 		" misc
 			" do all the things
-			nnoremap [unite]<space> :Unite -buffer-name=omni -start-insert source<cr>
+			nnoremap [unite]<cr> :Unite -buffer-name=omni -start-insert source<cr>
+			nnoremap [unite-alt]<cr> :Unite -buffer-name=omni -start-insert -auto-preview source<cr>
 
 			" yank stack
 			nnoremap [unite]y :Unite -buffer-name=yank history/yank<cr>
+			nnoremap [unite-alt]y :Unite -buffer-name=yank -auto-preview history/yank<cr>
 
 			" command history
 			nnoremap [unite]; :Unite -buffer-name=commands -default-action=execute history/command command<cr>
+			nnoremap [unite-alt]; :Unite -buffer-name=commands -default-action=execute -auto-preview history/command command<cr>
 
 			" repeat last entry
 			nnoremap [unite]. :UniteResume<cr>
+			nnoremap [unite-alt]. :UniteResume -auto-preview<cr>
 
 	" NERDTree
 		" NERDTree: show hidden files
