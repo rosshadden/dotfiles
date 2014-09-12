@@ -294,6 +294,7 @@ set nocompatible
 			au FileType gitcommit setlocal spell | set complete+=kspell | call cursor(1, 1)
 
 			" syntax highlighting
+			au BufNewFile,BufReadPost *.md set filetype=markdown
 
 			" files without detected syntax
 			au BufNewFile,BufRead * if &syntax == '' | set syntax=bash | endif

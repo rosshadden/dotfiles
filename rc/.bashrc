@@ -107,14 +107,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 ################
-#   ROSS
+# MODULES
 ################
-DOTS=$HOME/dotfiles
+export DOTS=$HOME/dotfiles
 source $DOTS/shell/env.sh
 source $DOTS/shell/alias.sh
 source $DOTS/shell/general.sh
 source $DOTS/shell/functions.sh
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "$HOME/.gvm/bin/gvm-init.sh" ]] && source "$HOME/.gvm/bin/gvm-init.sh"
+[[ -e "$HOME/.local.sh" ]] && source $HOME/.local.sh
