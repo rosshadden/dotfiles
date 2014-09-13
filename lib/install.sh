@@ -1,6 +1,20 @@
 #!/usr/bin/env bash
 
 # TODO: have params for CLI-only or X-supported (don't need to install awesomeWM on a server)
+# TODO: make a cleanup process
+# TODO: either replace oh-my-zsh's .zshrc with mine or install that first, remove it, and then link ours
+# TODO: break variables out, since I currently have to use them both here and in .zshrc
+
+################
+# VARIABLES
+################
+	# oh-my-zsh
+	export ZSH=$HOME/.oh-my-zsh
+	# dots
+	export DOTS=$HOME/dotfiles
+	# dropbox
+	export DB=$HOME/Dropbox
+
 
 ################
 # INIT

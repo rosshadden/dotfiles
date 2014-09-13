@@ -33,7 +33,7 @@
 ################
 # MODULES
 ################
-	# source $DOTS/shell/env.sh
+	source $DOTS/shell/env.sh
 	source $DOTS/shell/alias.sh
 	source $DOTS/shell/general.sh
 	source $DOTS/shell/functions.sh

@@ -1,9 +1,9 @@
-" Disable vi-compatibility
-set nocompatible
+""""""""""""""""
+" NEOBUNDLE:
+""""""""""""""""
+	" Disable vi-compatibility
+	set nocompatible
 
-""""""""""""""""
-" NEOBUNDLE
-""""""""""""""""
 	if has ('vim_starting')
 		set runtimepath+=~/.vim/bundle/neobundle.vim/
 	endif
@@ -78,7 +78,7 @@ set nocompatible
 
 
 """"""""""""""""
-" SETTINGS
+" SETTINGS:
 """"""""""""""""
 	" take me to your <leader>
 	let mapleader=","
@@ -128,7 +128,7 @@ set nocompatible
 
 
 """"""""""""""""
-" THEME
+" THEME:
 """"""""""""""""
 	syntax enable
 	set t_Co=256
@@ -148,33 +148,26 @@ set nocompatible
 
 
 """"""""""""""""
-" MAPPINGS
+" MAPPINGS:
 """"""""""""""""
-	" fix Y
-	noremap Y y$
-
 	" shift is for sucks? (avoids :W style typos)
 	noremap ; :
 
-	" C-s => save [:update]
-	noremap <silent> <leader>w :update<cr>
-	noremap <silent> <leader>W :write<cr>
-	noremap <silent> <c-s> :write<cr>
-	inoremap <silent> <c-s> <esc>:write<cr>
+	" L-s => save [:update]
+	noremap <leader>s :update<cr>
+	" L-S => force save [:write]
+	noremap <leader>S :write<cr>
 
-	" C-q => quit [:quit]
-	noremap <silent> <leader>q :quit<cr>
-	noremap <silent> <c-q> :quit<cr>
-	inoremap <silent> <c-q> <esc>:quit<cr>
-	" C-S-q => force quit [:quit!]
-	noremap <silent> <leader>Q :quit!<cr>
-	noremap <silent> <leader><c-q> :quit!<cr>
+	" L-q => quit [:quit]
+	noremap <leader>w :quit<cr>
+	" L-Q => force quit [:quit!]
+	noremap <leader>W :quit!<cr>
 
-	" C-x => save and quit [:wq]
-	noremap <silent> <leader>x :wq<cr>
+	" L-x => save and quit [:wq]
+	noremap <leader>x :wq<cr>
 
-	" U => redo [:redo]
-	" noremap U <c-r>
+	" L-u => redo [:redo]
+	noremap <leader>u :redo<cr>
 
 	" insert TAB
 	noremap <leader>it i<tab>
@@ -272,7 +265,7 @@ set nocompatible
 
 
 """"""""""""""""
-" MISC
+" MISC:
 """"""""""""""""
 	if has("autocmd")
 		filetype plugin on
@@ -304,9 +297,9 @@ set nocompatible
 
 
 """"""""""""""""
-" PLUGINS
+" PLUGINS:
 """"""""""""""""
-	" Unite
+	" Unite:
 		let g:unite_source_history_yank_enable = 1
 
 		" ack >> grep
@@ -451,8 +444,8 @@ set nocompatible
 			nnoremap [unite]. :UniteResume<cr>
 			nnoremap [unite-alt]. :UniteResume -auto-preview<cr>
 
-	" NERDTree
-		" NERDTree: show hidden files
+	" NERDTree:
+		" show hidden files
 		" let g:NERDTreeShowHidden = 1
 
 		" always focus file pane (this doesn't seem to work)
@@ -465,15 +458,15 @@ set nocompatible
 		" L-n => toggle NERDTreeTabs
 		map <leader>n <plug>NERDTreeTabsToggle<cr>
 
-	" Gundu
-		" L-u => toggle gundu menu [:GunduToggle]
-		map <leader>u :GundoToggle<cr>
+	" Gundu:
+		" L-U => toggle gundu menu [:GunduToggle]
+		map <leader>U :GundoToggle<cr>
 
-	" vim-surround
+	" vim-surround:
 		" |vs| => |vS|
 		vmap s S
 
-	" vim-airline
+	" vim-airline:
 		" powerline symbols
 		let g:airline#extensions#tabline#enabled = 1
 		let g:airline_powerline_fonts   = 1
@@ -485,19 +478,26 @@ set nocompatible
 		endif
 		" let g:airline_symbols.space = "\ua0"
 
-	" vim-autoformat
+	" vim-autoformat:
 		" format entire file
 		noremap QQ :Autoformat<cr>
 
-	" vim-easymotion
+	" vim-easymotion:
+		let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+
 		" prefix
 		map <leader>f <plug>(easymotion-prefix)
 
 		" vim-sneak
 		nmap s <plug>(easymotion-s2)
-		nmap S <plug>(easymotion-bd-s2)
+		nmap S <plug>(easymotion-t2)
+	
+		map <Leader>l <Plug>(easymotion-lineforward)
+		map <Leader>j <Plug>(easymotion-j)
+		map <Leader>k <Plug>(easymotion-k)
+		map <Leader>h <Plug>(easymotion-linebackward)
 
-	" vim-tmux-navigator
+	" vim-tmux-navigator:
 		" let the nav shortcuts work anywhere
 		let g:tmux_navigator_no_mappings = 1
 

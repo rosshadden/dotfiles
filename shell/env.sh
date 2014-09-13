@@ -7,8 +7,10 @@
 	export PATH=$PATH:$DOTS/bin:$HOME/local/bin:$HOME/.local/bin
 	# ruby (if installed)
 	[[ -e /usr/bin/ruby ]] && export PATH="$PATH:`ruby -e 'puts Gem.user_dir'`/bin:$HOME/.rvm/bin"
+	# java
+	export PATH=$PATH:$JAVA_HOME/bin
 	# android
-	export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$JAVA_HOME/bin
+	export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 
 ################

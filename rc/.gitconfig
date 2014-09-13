@@ -93,4 +93,4 @@
 	extendRegexp = true
 	lineNumber = true
 [push]
-	default = matching
+	default = simple
