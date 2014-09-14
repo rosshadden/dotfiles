@@ -150,6 +150,9 @@
 """"""""""""""""
 " MAPPINGS:
 """"""""""""""""
+	" fix Y
+	noremap Y y$
+
 	" shift is for sucks? (avoids :W style typos)
 	noremap ; :
 
@@ -158,10 +161,12 @@
 	" L-S => force save [:write]
 	noremap <leader>S :write<cr>
 
-	" L-q => quit [:quit]
+	" L-w => quit [:quit]
 	noremap <leader>w :quit<cr>
-	" L-Q => force quit [:quit!]
+	noremap <leader>q :quit<cr>
+	" L-W => force quit [:quit!]
 	noremap <leader>W :quit!<cr>
+	noremap <leader>Q :quit!<cr>
 
 	" L-x => save and quit [:wq]
 	noremap <leader>x :wq<cr>
@@ -169,15 +174,38 @@
 	" L-u => redo [:redo]
 	noremap <leader>u :redo<cr>
 
-	" insert TAB
-	noremap <leader>it i<tab>
-	noremap <leader>at a<tab>
+	" L-r => reload file [:edit]
+	noremap <leader>r :edit<cr>
+
+	" insert/append
+		" tab
+		noremap <leader>it i<tab>
+		noremap <leader>i<tab> i<tab>
+		noremap <leader>at a<tab>
+		noremap <leader>a<tab> a<tab>
 
 	" tabs and panes
-	" new tab
-	nnoremap <leader>t :tabnew<cr>
-	" move tab to last
-	nnoremap <leader>T :tabmove<cr>
+		" new
+		nnoremap <leader>t :tabnew<cr>
+		nnoremap <leader>tt :tabnew<cr>
+		" duplicate
+		nnoremap <leader>td :tabnew %<cr>
+		" close
+		nnoremap <leader>tw :tabclose<cr>
+		nnoremap <leader>tW :tabclose!<cr>
+		" close others
+		nnoremap <leader>to :tabonly<cr>
+		nnoremap <leader>tO :tabonly!<cr>
+		" first
+		nnoremap <leader>tf :tabfirst<cr>
+		" last
+		nnoremap <leader>tl :tablast<cr>
+		" next
+		nnoremap <leader>tn :tabnext<cr>
+		" previous
+		nnoremap <leader>tp :tabprevious<cr>
+		" move to last
+		nnoremap <leader>T :tabmove<cr>
 
 	" better folding
 	nnoremap <silent> <space> @=(foldlevel('.')?'za':"\<space>")<cr>
@@ -213,18 +241,13 @@
 	" clear highlighted search
 	nmap <silent> <leader>/ :nohlsearch<cr>
 
-	" better pane navigation
-	nnoremap <leader>j <c-w><c-j>
-	nnoremap <leader>k <c-w><c-k>
-	nnoremap <leader>l <c-w><c-l>
-	nnoremap <leader>h <c-w><c-h>
-
 	" visual shifting (does not exit Visual mode)
 	vnoremap < <gv
 	vnoremap > >gv 
 
 	" use Q for formatting, not Ex mode
 	noremap Q gq
+	vnoremap Q gq
 
 	" set a break in undo, so CTRL-U in insert mode is less destructive
 	inoremap <c-u> <c-g>u<c-u>
@@ -249,8 +272,8 @@
 	noremap <right> <left>
 
 	" CONSOLE
-		" :w!! => Get sudo when it has been forgotten.
-		cmap w!! w !sudo tee % > /dev/null
+		" :W => write with sudo
+		command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 		" reload vimrc config
 		" cmap reload source ~/.vim/vimrc
@@ -289,9 +312,9 @@
 			" syntax highlighting
 			au BufNewFile,BufReadPost *.md set filetype=markdown
 
-			" files without detected syntax
-			au BufNewFile,BufRead * if &syntax == '' | set syntax=bash | endif
-			au BufNewFile,BufRead * if &filetype == '' | set filetype=bash | endif
+			" default to shell script syntax
+			au BufNewFile,BufRead * if &syntax == '' | set syntax=sh | endif
+			au BufNewFile,BufRead * if &filetype == '' | set filetype=sh | endif
 		augroup END
 	endif
 

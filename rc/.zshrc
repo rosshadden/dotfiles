@@ -107,7 +107,11 @@
 		fi
 
 	# vi-mode
-	KEYTIMEOUT=1
+		KEYTIMEOUT=1
+
+		bindkey -M vicmd '' redo
+		bindkey -M viins 'R' history-incremental-pattern-search-backward
+		bindkey -M vicmd 'R' history-incremental-pattern-search-backward
 
 	# Fish-like syntax highlighting
 	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)

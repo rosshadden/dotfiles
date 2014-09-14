@@ -40,7 +40,12 @@ small-button = true
 [GntWM::binding]
 c-l = window-next
 c-h = window-prev
+c-c = window-close
+c-C = window-close
+c-, = shift-left
+c-. = shift-right
 c-r = refresh-screen
+a-C = toggle-clipboard
 
 [GntWidget::binding]
 
