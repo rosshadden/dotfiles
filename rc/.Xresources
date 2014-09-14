@@ -1,0 +1,11 @@
+rofi.background: #333
+rofi.foreground: #1aa
+rofi.highlightbg: #1aa
+rofi.highlightfg: #111
+rofi.bordercolor: #277
+rofi.opacity: 90
+rofi.font: Ubuntu Mono 16
+rofi.padding: 3
+rofi.borderwidth: 3
+rofi.lines: 16
+rofi.terminal: terminator

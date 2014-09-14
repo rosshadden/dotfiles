@@ -46,7 +46,7 @@ return {
 		properties = { tag = tags.list[util.screens.right][8] }
 	}, {
 		rule_any = {
-			instance = { "qalculate-gtk", "gpick", "geeqie" },
+			instance = { "qalculate", "qalculate-gtk", "gpick", "geeqie" },
 			class = { "Gimp", "MPlayer" },
 			name = { "CopyQ", "Zeal", "Terminator Preferences" }
 		},

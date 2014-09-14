@@ -55,28 +55,20 @@ omni.open = function()
 end
 
 local demnuOptions = function()
-	local geometry = screen[mouse.screen].geometry
-	local screen = 0
-	local x = geometry.x + geometry.width / 4
-	local y = geometry.height / 3
-	local width = geometry.width / 2
-	local height = 32
 	local font = '"Ubuntu Mono 16"'
 
 	return '' ..
-		' -s ' .. screen ..
-		' -x ' .. x ..
-		' -y ' .. y ..
-		' -w ' .. width ..
-		' -h ' .. height ..
-		' -fn ' .. font
+		' -lines 25' ..
+		' -font ' .. font
 end
 
 omni.menu = function()
-	local cmd = 'dmenu_run' .. demnuOptions() .. ' -p "RUN" -l 16'
+	local cmd = 'rofi -show run' .. demnuOptions()
 	return util.run(cmd)
 end
 
+-- TODO: allow easy theming
+-- TODO: allow options to be passed
 omni.prompt = function(prompt, choices, fn)
 	if not fn then
 		fn = choices
@@ -84,7 +76,7 @@ omni.prompt = function(prompt, choices, fn)
 		prompt = '>'
 	end
 
-	local choice = util.exec('echo -e "' .. table.concat(choices, '\n') .. '"' .. ' | ' .. 'dmenu' .. demnuOptions() .. ' -p "' .. prompt .. '"')
+	local choice = util.exec('echo -e "' .. table.concat(choices, '\n') .. '"' .. ' | ' .. 'rofi -dmenu' .. demnuOptions() .. ' -p "' .. prompt .. '"')
 	fn(choice)
 end
 
