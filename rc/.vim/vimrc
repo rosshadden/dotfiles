@@ -163,10 +163,8 @@
 
 	" L-w => quit [:quit]
 	noremap <leader>w :quit<cr>
-	noremap <leader>q :quit<cr>
 	" L-W => force quit [:quit!]
 	noremap <leader>W :quit!<cr>
-	noremap <leader>Q :quit!<cr>
 
 	" L-x => save and quit [:wq]
 	noremap <leader>x :wq<cr>

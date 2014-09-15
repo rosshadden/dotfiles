@@ -19,3 +19,6 @@
 [submodule "rc/.vim/bundle/neobundle.vim"]
 	path = rc/.vim/bundle/neobundle.vim
 	url = git@github.com:Shougo/neobundle.vim.git
+[submodule "config/awesome/awmni"]
+	path = config/awesome/awmni
+	url = git@github.com:rosshadden/awmni.git
