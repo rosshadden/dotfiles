@@ -26,13 +26,13 @@
 # RC FILES
 ################
 	# link rc files
-	ln -s $DOTS/rc/{.bashrc,.gitconfig,.gntrc,.tigrc,.tmux.conf,.vim,.zshrc} $HOME/
+	ln -s $DOTS/rc/{.bashrc,.gitconfig,.gntrc,.tigrc,.tmux.conf,.vim,.zshrc,.Xresources} $HOME/
 
 ################
 # CONFIG
 ################
 	# link configs
-	ln -s $DOTS/.config/* $HOME/.config/
+	ln -s $DOTS/config/* $HOME/.config/
 
 ################
 # OH-MY-ZSH

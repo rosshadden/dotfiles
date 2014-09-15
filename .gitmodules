@@ -1,20 +1,20 @@
-[submodule ".config/awesome/lain"]
-	path = .config/awesome/lain
+[submodule "config/awesome/lain"]
+	path = config/awesome/lain
 	url = git@github.com:copycat-killer/lain.git
-[submodule ".config/awesome/radical"]
-	path = .config/awesome/radical
+[submodule "config/awesome/radical"]
+	path = config/awesome/radical
 	url = git@github.com:Elv13/radical.git
-[submodule ".config/awesome/forgotten"]
-	path = .config/awesome/forgotten
+[submodule "config/awesome/forgotten"]
+	path = config/awesome/forgotten
 	url = git@github.com:Elv13/forgotten.git
-[submodule ".config/awesome/cyclefocus"]
-	path = .config/awesome/cyclefocus
+[submodule "config/awesome/cyclefocus"]
+	path = config/awesome/cyclefocus
 	url = https://github.com/blueyed/awesome-cyclefocus
 [submodule "shell/plugins/opp.zsh"]
 	path = shell/plugins/opp.zsh
 	url = git@github.com:hchbaw/opp.zsh.git
-[submodule ".config/awesome/tyrannical"]
-	path = .config/awesome/tyrannical
+[submodule "config/awesome/tyrannical"]
+	path = config/awesome/tyrannical
 	url = git@github.com:Elv13/tyrannical.git
 [submodule "rc/.vim/bundle/neobundle.vim"]
 	path = rc/.vim/bundle/neobundle.vim
