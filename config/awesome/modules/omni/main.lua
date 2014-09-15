@@ -59,6 +59,7 @@ local demnuOptions = function()
 
 	return '' ..
 		' -lines 25' ..
+		' -width -64' ..
 		' -font ' .. font
 end
 

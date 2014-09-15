@@ -1,4 +1,4 @@
 *.dat
-.config/copyq/copyq_geometry.ini
-.config/copyq/copyq-bak.conf
-.config/copyq/copyq_tabs.ini
+config/copyq/copyq_geometry.ini
+config/copyq/copyq-bak.conf
+config/copyq/copyq_tabs.ini
