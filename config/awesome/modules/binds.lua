@@ -5,7 +5,7 @@ local menubar = require("menubar")
 local alttab = require("radical.impl.alttab")
 
 local apps = require("modules/apps")
-local omni = require("modules/omni")
+local awmni = require("awmni")
 local util = require("modules/util")
 --
 
@@ -105,12 +105,12 @@ local binds = {}
 
 		-- Prompt
 		awful.key({ SUPER }, "r", function()
-			omni.menu()
+			awmni.launcher()
 		end),
 
-		-- Omnibar
+		-- Amnibar
 		awful.key({ SUPER }, "Return", function()
-			omni.open()
+			awmni:open()
 		end),
 
 		-- Menubar

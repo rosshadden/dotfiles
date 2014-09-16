@@ -54,17 +54,8 @@ omni.open = function()
 	end)
 end
 
-local demnuOptions = function()
-	local font = '"Ubuntu Mono 16"'
-
-	return '' ..
-		' -lines 25' ..
-		' -width -64' ..
-		' -font ' .. font
-end
-
 omni.menu = function()
-	local cmd = 'rofi -show run' .. demnuOptions()
+	local cmd = 'rofi -show run'
 	return util.run(cmd)
 end
 
@@ -77,7 +68,7 @@ omni.prompt = function(prompt, choices, fn)
 		prompt = '>'
 	end
 
-	local choice = util.exec('echo -e "' .. table.concat(choices, '\n') .. '"' .. ' | ' .. 'rofi -dmenu' .. demnuOptions() .. ' -p "' .. prompt .. '"')
+	local choice = util.exec('echo -e "' .. table.concat(choices, '\n') .. '"' .. ' | ' .. 'rofi -dmenu -p "' .. prompt .. '"')
 	fn(choice)
 end
 

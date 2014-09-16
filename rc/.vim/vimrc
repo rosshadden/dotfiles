@@ -363,10 +363,10 @@
 			" TODO: get something like this working: (may depend on https://github.com/Shougo/unite.vim/issues/280)
 			vmap <buffer> a <plug>(unite_choose_action)
 
-			" open in horizontal split
-			nmap <buffer><expr> i unite#do_action('split')
-			imap <buffer><expr> <c-i> unite#do_action('split')
 			" open in vertical split
+			nmap <buffer><expr> - unite#do_action('split')
+			imap <buffer><expr> <c--> unite#do_action('split')
+			" open in horizontal split
 			nmap <buffer><expr> s unite#do_action('vsplit')
 			imap <buffer><expr> <c-s> unite#do_action('vsplit')
 			" open in new tab (`t` is default in normal mode)

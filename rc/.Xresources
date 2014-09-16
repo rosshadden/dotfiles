@@ -7,5 +7,6 @@ rofi.opacity: 90
 rofi.font: Ubuntu Mono 16
 rofi.padding: 3
 rofi.borderwidth: 3
-rofi.lines: 16
+rofi.lines: 25
+rofi.width: -64
 rofi.terminal: terminator
