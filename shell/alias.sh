@@ -42,7 +42,7 @@ alias .....='cd ../../../..'
 
 alias afk='light-locker-command -l'
 
-alias reload='alias reload="exec $SHELL -l"'
+alias reload='alias reload=". $HOME/.${SHELL}rc"'
 
 # Turn off caps lock
 alias shh="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"

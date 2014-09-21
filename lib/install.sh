@@ -2,12 +2,15 @@
 
 # TODO: have params for CLI-only or X-supported (don't need to install awesomeWM on a server)
 # TODO: make a cleanup process
-# TODO: either replace oh-my-zsh's .zshrc with mine or install that first, remove it, and then link ours
 # TODO: break variables out, since I currently have to use them both here and in .zshrc
+# TODO: support anonymous installs, where things like .gitconfig wouldn't be installed
+# TODO: vet [http://www.gnu.org/software/stow/](GNU stow) as a symlink organization tool
 
 ################
 # VARIABLES
 ################
+	task=$1
+
 	# oh-my-zsh
 	export ZSH=$HOME/.oh-my-zsh
 	# dots
@@ -23,6 +26,20 @@
 	git submodule update
 
 ################
+# OH-MY-ZSH
+################
+	# install oh-my-zsh, if it is not already
+	if [ ! -d $ZSH ]; then
+		curl -L http://install.ohmyz.sh | sh
+
+		# install oh-my-zsh plugins
+		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting
+
+		# remove the .zshrc installed by oh-my-zsh
+		rm $HOME/.zshrc
+	fi
+
+################
 # RC FILES
 ################
 	# link rc files
@@ -33,12 +50,3 @@
 ################
 	# link configs
 	ln -s $DOTS/config/* $HOME/.config/
-
-################
-# OH-MY-ZSH
-################
-	# install oh-my-zsh
-	curl -L http://install.ohmyz.sh | sh
-
-	# install oh-my-zsh plugins
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH/custom/plugins/zsh-syntax-highlighting

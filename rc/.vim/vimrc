@@ -23,52 +23,70 @@
 		\    },
 		\ }
 
-		" unite
-		NeoBundle 'Shougo/unite.vim'
-		NeoBundle 'Shougo/neomru.vim'
-		NeoBundle 'Shougo/unite-outline'
-		NeoBundle 'thinca/vim-unite-history'
-
 		" enhancements
-		NeoBundle 'SearchComplete'
+			" let `.` repeat things like plugin mappings
+			NeoBundle 'tpope/vim-repeat'
+			" <tab>-complete in insert mode
+			NeoBundle 'ervandew/supertab'
+			" <tab>-complete in the search prompt
+			NeoBundle 'SearchComplete'
 
 		" navigation
-		NeoBundle 'Lokaltog/vim-easymotion'
+			NeoBundle 'Lokaltog/vim-easymotion'
 
 		" languages
-		NeoBundle 'mustache/vim-mustache-handlebars'
-		NeoBundle 'Chiel92/vim-autoformat'
+			NeoBundle 'Chiel92/vim-autoformat'
+			NeoBundle 'mustache/vim-mustache-handlebars'
+
+		" unite
+			NeoBundle 'Shougo/unite.vim'
+			NeoBundle 'Shougo/neomru.vim'
+			NeoBundle 'Shougo/unite-outline'
+			NeoBundle 'thinca/vim-unite-history'
 
 		" utils
-		NeoBundle 'tpope/vim-surround'
-		NeoBundle 'tpope/vim-commentary'
-		NeoBundle 'tpope/vim-unimpaired'
-		NeoBundle 'tpope/vim-repeat'
-		NeoBundle 'tpope/vim-sensible'
-		NeoBundle 'tpope/vim-fugitive'
-		NeoBundle 'scrooloose/nerdtree'
-		NeoBundle 'jistr/vim-nerdtree-tabs'
-		NeoBundle 'ervandew/supertab'
-		NeoBundle 'sjl/gundo.vim'
-		NeoBundle 'terryma/vim-multiple-cursors'
-		NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
-		NeoBundle 'rking/ag.vim'
-		NeoBundle 'AndrewRadev/linediff.vim'
-		NeoBundle 'scrooloose/syntastic'
-		NeoBundle 'thinca/vim-qfreplace'
+			" sensible default settings
+			NeoBundle 'tpope/vim-sensible'
+			" auto-detuct indent settings
+			NeoBundle 'tpope/vim-sleuth'
+			NeoBundle 'tpope/vim-surround'
+			" comment mappings
+			NeoBundle 'tpope/vim-commentary'
+			" settings toggles and symmetrical before/after mappings
+			NeoBundle 'tpope/vim-unimpaired'
+			NeoBundle 'scrooloose/nerdtree'
+			NeoBundle 'jistr/vim-nerdtree-tabs'
+			" visualized undo tree
+			NeoBundle 'sjl/gundo.vim'
+			" better multiple-cursor functionality
+			NeoBundle 'terryma/vim-multiple-cursors'
+			" diff two selections
+			NeoBundle 'AndrewRadev/linediff.vim'
+			NeoBundle 'scrooloose/syntastic'
+			NeoBundle 'thinca/vim-qfreplace'
+			" show trailing whitespace, and provide a command to clean it
+			NeoBundle 'ntpeters/vim-better-whitespace'
 
 		" UI
-		NeoBundle 'bling/vim-airline'
-		NeoBundle 'nanotech/jellybeans.vim'
-		NeoBundle 'tomasr/molokai'
-		NeoBundle 'xoria256.vim'
-		NeoBundle 'altercation/vim-colors-solarized'
-		NeoBundle 'chriskempson/base16-vim'
+			NeoBundle 'bling/vim-airline'
+			NeoBundle 'nanotech/jellybeans.vim'
+			NeoBundle 'tomasr/molokai'
+			NeoBundle 'xoria256.vim'
+			NeoBundle 'altercation/vim-colors-solarized'
+			NeoBundle 'chriskempson/base16-vim'
+
+		" integration
+			" git
+			NeoBundle 'tpope/vim-fugitive'
+			" ag, the silver searcher
+			NeoBundle 'rking/ag.vim'
+			" LaTeX
+			NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 
 		" external
-		NeoBundle 'christoomey/vim-tmux-navigator'
-		NeoBundle 'edkolev/tmuxline.vim'
-		NeoBundle 'edkolev/promptline.vim'
+			NeoBundle 'christoomey/vim-tmux-navigator'
+			NeoBundle 'edkolev/tmuxline.vim'
+			NeoBundle 'edkolev/promptline.vim'
 	" /PLUGINS
 
 	call neobundle#end()
@@ -151,29 +169,31 @@
 " MAPPINGS:
 """"""""""""""""
 	" fix Y
-	noremap Y y$
+	map Y y$
 
 	" shift is for sucks? (avoids :W style typos)
-	noremap ; :
+	map ; :
 
 	" L-s => save [:update]
-	noremap <leader>s :update<cr>
+	map <leader>s :update<cr>
 	" L-S => force save [:write]
-	noremap <leader>S :write<cr>
+	map <leader>S :write<cr>
 
 	" L-w => quit [:quit]
-	noremap <leader>w :quit<cr>
+	map <leader>w :quit<cr>
 	" L-W => force quit [:quit!]
-	noremap <leader>W :quit!<cr>
+	map <leader>W :quit!<cr>
 
 	" L-x => save and quit [:wq]
-	noremap <leader>x :wq<cr>
+	map <leader>x :wq<cr>
 
-	" L-u => redo [:redo]
-	noremap <leader>u :redo<cr>
+	" U => redo [:redo]
+	map U :redo<cr>
+	" L-u => undo line
+	noremap <leader>u U<cr>
 
 	" L-r => reload file [:edit]
-	noremap <leader>r :edit<cr>
+	map <leader>r :edit<cr>
 
 	" insert/append
 		" tab
@@ -183,105 +203,112 @@
 		noremap <leader>a<tab> a<tab>
 
 	" tabs and panes
+		" prefix
+		map [tabs] <nop>
+		map [tabs][alt] <nop>
+		map <leader>t [tabs]
+		map <leader>T [tabs][alt]
+
 		" new
-		nnoremap <leader>t :tabnew<cr>
-		nnoremap <leader>tt :tabnew<cr>
+		map [tabs] :tabnew<cr>
+		map [tabs]t :tabnew<cr>
 		" duplicate
-		nnoremap <leader>td :tabnew %<cr>
+		map [tabs]d :tabnew %<cr>
 		" close
-		nnoremap <leader>tw :tabclose<cr>
-		nnoremap <leader>tW :tabclose!<cr>
+		map [tabs]w :tabclose<cr>
+		map [tabs]W :tabclose!<cr>
 		" close others
-		nnoremap <leader>to :tabonly<cr>
-		nnoremap <leader>tO :tabonly!<cr>
+		map [tabs]o :tabonly<cr>
+		map [tabs]O :tabonly!<cr>
 		" first
-		nnoremap <leader>tf :tabfirst<cr>
+		map [tabs]f :tabfirst<cr>
 		" last
-		nnoremap <leader>tl :tablast<cr>
+		map [tabs]l :tablast<cr>
 		" next
-		nnoremap <leader>tn :tabnext<cr>
+		map [tabs]n :tabnext<cr>
 		" previous
-		nnoremap <leader>tp :tabprevious<cr>
+		map [tabs]p :tabprevious<cr>
 		" move to last
-		nnoremap <leader>T :tabmove<cr>
+		map [tabs][alt] :tabmove<cr>
 
-	" better folding
-	nnoremap <silent> <space> @=(foldlevel('.')?'za':"\<space>")<cr>
-	vnoremap <space> zf
-	nmap z` :set foldlevel=0<cr>
-	nmap z1 :set foldlevel=1<cr>
-	nmap z2 :set foldlevel=2<cr>
-	nmap z3 :set foldlevel=3<cr>
-	nmap z4 :set foldlevel=4<cr>
-	nmap z5 :set foldlevel=5<cr>
-	nmap z6 :set foldlevel=6<cr>
-	nmap z7 :set foldlevel=7<cr>
-	nmap z8 :set foldlevel=8<cr>
-	nmap z9 :set foldlevel=9<cr>
-	nmap z0 :set foldlevel=128<cr>
-	nmap zz :call ToggleFold()<cr>
-	let b:foldlevel=&l:foldlevel
-	function! ToggleFold()
-		if &l:foldmethod == 'indent'
-			set foldmethod=manual
-		else
-			set foldmethod=indent
-		endif
-		" if &l:foldenable
-		" 	let b:foldlevel=&l:foldlevel
-		" 	set nofoldenable
-		" else
-		" 	set foldenable
-		" 	set foldlevel = b:foldlevel
-		" endif
-	endfunction
+	" folding
+		nnoremap <silent> <space> @=(foldlevel('.')?'za':"\<space>")<cr>
+		vnoremap <space> zf
 
-	" clear highlighted search
-	nmap <silent> <leader>/ :nohlsearch<cr>
+		nmap z` :set foldlevel=0<cr>
+		nmap z1 :set foldlevel=1<cr>
+		nmap z2 :set foldlevel=2<cr>
+		nmap z3 :set foldlevel=3<cr>
+		nmap z4 :set foldlevel=4<cr>
+		nmap z5 :set foldlevel=5<cr>
+		nmap z6 :set foldlevel=6<cr>
+		nmap z7 :set foldlevel=7<cr>
+		nmap z8 :set foldlevel=8<cr>
+		nmap z9 :set foldlevel=9<cr>
+		nmap z0 :set foldlevel=128<cr>
+		nmap zz :call ToggleFold()<cr>
+
+		let b:foldlevel=&l:foldlevel
+		function! ToggleFold()
+			if &l:foldmethod == 'indent'
+				set foldmethod=manual
+			else
+				set foldmethod=indent
+			endif
+			" if &l:foldenable
+			" 	let b:foldlevel=&l:foldlevel
+			" 	set nofoldenable
+			" else
+			" 	set foldenable
+			" 	set foldlevel = b:foldlevel
+			" endif
+		endfunction
+
+	" searching
+		" clear highlighted search
+		nmap <leader>/ :nohlsearch<cr>
+		" search for selected word
+		vmap <leader>/ y/<c-r>"<cr>
 
 	" visual shifting (does not exit Visual mode)
-	vnoremap < <gv
-	vnoremap > >gv 
+	map < <gv
+	map > >gv
 
 	" use Q for formatting, not Ex mode
-	noremap Q gq
-	vnoremap Q gq
+	map Q gq
+	map Q gq
 
 	" set a break in undo, so CTRL-U in insert mode is less destructive
-	inoremap <c-u> <c-g>u<c-u>
+	map <c-u> <c-g>u<c-u>
 
 	" switch to alternate file
-	noremap <leader><leader> <c-^>
+	map <leader><leader> <c-^>
 
 	" easier system clipboard
-	nnoremap <leader>y "+y
-	vnoremap <leader>y "+y
-	nnoremap <leader>Y "+Y
-	vnoremap <leader>Y "+Y
-	nnoremap <leader>p "+p
-	vnoremap <leader>p "+p
-	nnoremap <leader>P "+P
-	vnoremap <leader>P "+P
+	map <leader>y "+y
+	map <leader>Y "+Y
+	map <leader>p "+p
+	map <leader>P "+P
 
 	" grade-A prankster
-	noremap <up> <down>
+	noremap <up> <left>
 	noremap <down> <up>
 	noremap <left> <right>
-	noremap <right> <left>
+	noremap <right> <down>
 
 	" CONSOLE
 		" :W => write with sudo
 		command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 		" reload vimrc config
-		" cmap reload source ~/.vim/vimrc
+		cmap reload source ~/.vim/vimrc
 
 		" change Working Directory to that of the current file
 		cmap cwd lcd %:p:h
 
 		" diff unsaved changes
-		if !exists(":DiffOrig")
-			command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
+		if !exists(":DiffChanges")
+			command DiffChanges vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
 		endif
 
 
@@ -298,21 +325,22 @@
 			autocmd! BufWritePost vimrc source ~/.vim/vimrc
 
 			" Preserve cursor position
-			au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+			autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 			" Remove trailing whitespaces and \^M chars
-			au FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1, map(getline(1, "$"), 'substitute(v:val, "\\\\s\\\\+$", "", "")'))
+			" NOTE: removing in favor of vim-better-whitespace, for more control/knowledge
+			" autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1, map(getline(1, '$'), 'substitute(v:val, "\\s\\+$", "", "")'))
 
 			" turn on spell check in certain files, and move cursor to beginning of gitcommits
-			au BufRead,BufNewFile *.md setlocal spell | set complete+=kspell
-			au FileType gitcommit setlocal spell | set complete+=kspell | call cursor(1, 1)
+			autocmd BufRead,BufNewFile *.md setlocal spell | set complete+=kspell
+			autocmd FileType gitcommit setlocal spell | set complete+=kspell | call cursor(1, 1)
 
 			" syntax highlighting
-			au BufNewFile,BufReadPost *.md set filetype=markdown
+			autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 			" default to shell script syntax
-			au BufNewFile,BufRead * if &syntax == '' | set syntax=sh | endif
-			au BufNewFile,BufRead * if &filetype == '' | set filetype=sh | endif
+			autocmd BufNewFile,BufRead * if &syntax == '' | set syntax=sh | endif
+			autocmd BufNewFile,BufRead * if &filetype == '' | set filetype=sh | endif
 		augroup END
 	endif
 
@@ -330,7 +358,7 @@
 			let g:unite_source_grep_recursive_opt = ''
 		endif
 
-		" ag >> ack
+		" ag > ack
 		if executable('ag')
 			let g:unite_source_grep_command = 'ag'
 			let g:unite_source_grep_default_opts = '--nogroup --nocolor --column --hidden'
@@ -380,94 +408,94 @@
 
 			let unite = unite#get_current_unite()
 			if unite.profile_name ==# 'search'
-				nnoremap <silent><buffer><expr> r     unite#do_action('replace')
+				nmap <silent><buffer><expr> r     unite#do_action('replace')
 			else
-				nnoremap <silent><buffer><expr> r     unite#do_action('rename')
+				nmap <silent><buffer><expr> r     unite#do_action('rename')
 			endif
 		endfunction
 		autocmd FileType unite call s:unite_settings()
 
 		" prefix
-		nnoremap [unite] <nop>
-		nnoremap [unite-alt] <nop>
-		nmap <leader><space> [unite]
-		nmap [unite]<space> [unite-alt]
+		map [unite] <nop>
+		map <leader><space> [unite]
+		map [unite][alt] <nop>
+		map [unite]<space> [unite][alt]
 
 		" open files
 			" flat
-			nnoremap [unite]f :Unite              -buffer-name=files -start-insert file directory file/new directory/new<cr>
-			nnoremap [unite]F :UniteWithBufferDir -buffer-name=files -start-insert file directory file/new directory/new<cr>
-			nnoremap [unite-alt]f :Unite              -buffer-name=files -start-insert -auto-preview file directory file/new directory/new<cr>
-			nnoremap [unite-alt]F :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file directory file/new directory/new<cr>
+			nmap [unite]f :Unite              -buffer-name=files -start-insert file directory file/new directory/new<cr>
+			nmap [unite]F :UniteWithBufferDir -buffer-name=files -start-insert file directory file/new directory/new<cr>
+			nmap [unite][alt]f :Unite              -buffer-name=files -start-insert -auto-preview file directory file/new directory/new<cr>
+			nmap [unite][alt]F :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file directory file/new directory/new<cr>
 
 			" recursive
-			nnoremap [unite]p :Unite              -buffer-name=files -start-insert file_rec/async:!<cr>
-			nnoremap [unite]P :UniteWithBufferDir -buffer-name=files -start-insert file_rec/async:!<cr>
-			nnoremap [unite-alt]p :Unite              -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
-			nnoremap [unite-alt]P :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
+			nmap [unite]p :Unite              -buffer-name=files -start-insert file_rec/async:!<cr>
+			nmap [unite]P :UniteWithBufferDir -buffer-name=files -start-insert file_rec/async:!<cr>
+			nmap [unite][alt]p :Unite              -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
+			nmap [unite][alt]P :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
 
 		" search files
-			nnoremap [unite]g :Unite              grep:.<cr>
-			nnoremap [unite]G :UniteWithBufferDir grep:.<cr>
-			nnoremap [unite-alt]g :Unite              -auto-preview grep:.<cr>
-			nnoremap [unite-alt]G :UniteWithBufferDir -auto-preview grep:.<cr>
+			nmap [unite]g :Unite              grep:.<cr>
+			nmap [unite]G :UniteWithBufferDir grep:.<cr>
+			nmap [unite][alt]g :Unite              -auto-preview grep:.<cr>
+			nmap [unite][alt]G :UniteWithBufferDir -auto-preview grep:.<cr>
 			" TODO: get something like this working:
-			" vnoremap [unite]g :UniteWithCursorWord grep:.<cr>
+			" vmap [unite]g :UniteWithCursorWord grep:.<cr>
 
 		" current and recent
 			" most recently used (mru) files
-			nnoremap [unite]r :Unite              -buffer-name=recent file_mru<cr>
-			nnoremap [unite]R :UniteWithBufferDir -buffer-name=recent file_mru<cr>
-			nnoremap [unite-alt]r :Unite              -buffer-name=recent -auto-preview file_mru<cr>
-			nnoremap [unite-alt]R :UniteWithBufferDir -buffer-name=recent -auto-preview file_mru<cr>
+			nmap [unite]r :Unite              -buffer-name=recent file_mru<cr>
+			nmap [unite]R :UniteWithBufferDir -buffer-name=recent file_mru<cr>
+			nmap [unite][alt]r :Unite              -buffer-name=recent -auto-preview file_mru<cr>
+			nmap [unite][alt]R :UniteWithBufferDir -buffer-name=recent -auto-preview file_mru<cr>
 
 			" current buffers
-			nnoremap [unite]b :Unite              -buffer-name=buffers buffer<cr>
-			nnoremap [unite]B :UniteWithBufferDir -buffer-name=buffers buffer<cr>
-			nnoremap [unite-alt]b :Unite              -buffer-name=buffers -auto-preview buffer<cr>
-			nnoremap [unite-alt]B :UniteWithBufferDir -buffer-name=buffers -auto-preview buffer<cr>
+			nmap [unite]b :Unite              -buffer-name=buffers buffer<cr>
+			nmap [unite]B :UniteWithBufferDir -buffer-name=buffers buffer<cr>
+			nmap [unite][alt]b :Unite              -buffer-name=buffers -auto-preview buffer<cr>
+			nmap [unite][alt]B :UniteWithBufferDir -buffer-name=buffers -auto-preview buffer<cr>
 
 			" buffer, tab, or files
-			nnoremap [unite]a :Unite              -start-insert buffer tab file_mru directory_mru bookmark<cr>
-			nnoremap [unite]A :UniteWithBufferDir -start-insert buffer tab file_mru directory_mru bookmark<cr>
-			nnoremap [unite-alt]a :Unite              -start-insert -auto-preview buffer tab file_mru directory_mru bookmark<cr>
-			nnoremap [unite-alt]A :UniteWithBufferDir -start-insert -auto-preview buffer tab file_mru directory_mru bookmark<cr>
+			nmap [unite]a :Unite              -start-insert buffer tab file_mru directory_mru bookmark<cr>
+			nmap [unite]A :UniteWithBufferDir -start-insert buffer tab file_mru directory_mru bookmark<cr>
+			nmap [unite][alt]a :Unite              -start-insert -auto-preview buffer tab file_mru directory_mru bookmark<cr>
+			nmap [unite][alt]A :UniteWithBufferDir -start-insert -auto-preview buffer tab file_mru directory_mru bookmark<cr>
 
 		" current file
 			" outline
-			nnoremap [unite]o :Unite               -buffer-name=outline -no-split -auto-preview outline<cr>
-			nnoremap [unite]O :UniteWithCursorWord -buffer-name=outline -no-split -auto-preview outline<cr>
-			nnoremap [unite-alt]o :Unite               -buffer-name=outline -no-split -auto-preview -auto-preview outline<cr>
-			nnoremap [unite-alt]O :UniteWithCursorWord -buffer-name=outline -no-split -auto-preview -auto-preview outline<cr>
+			nmap [unite]o :Unite               -buffer-name=outline -no-split -auto-preview outline<cr>
+			nmap [unite]O :UniteWithCursorWord -buffer-name=outline -no-split -auto-preview outline<cr>
+			nmap [unite][alt]o :Unite               -buffer-name=outline -no-split -auto-preview -auto-preview outline<cr>
+			nmap [unite][alt]O :UniteWithCursorWord -buffer-name=outline -no-split -auto-preview -auto-preview outline<cr>
 
 			" line
-			nnoremap [unite]l :Unite               -buffer-name=search -no-split -auto-preview -start-insert line<cr>
-			nnoremap [unite]L :UniteWithCursorWord -buffer-name=search -no-split -auto-preview -start-insert line<cr>
-			nnoremap [unite-alt]l :Unite               -buffer-name=search -no-split -auto-preview -start-insert -auto-preview line<cr>
-			nnoremap [unite-alt]L :UniteWithCursorWord -buffer-name=search -no-split -auto-preview -start-insert -auto-preview line<cr>
+			nmap [unite]l :Unite               -buffer-name=search -no-split -auto-preview -start-insert line<cr>
+			nmap [unite]L :UniteWithCursorWord -buffer-name=search -no-split -auto-preview -start-insert line<cr>
+			nmap [unite][alt]l :Unite               -buffer-name=search -no-split -auto-preview -start-insert -auto-preview line<cr>
+			nmap [unite][alt]L :UniteWithCursorWord -buffer-name=search -no-split -auto-preview -start-insert -auto-preview line<cr>
 
 			" changes
-			nnoremap [unite]k :Unite               -buffer-name=search change<cr>
-			nnoremap [unite]K :UniteWithCursorWord -buffer-name=search change<cr>
-			nnoremap [unite-alt]k :Unite               -buffer-name=search -auto-preview change<cr>
-			nnoremap [unite-alt]K :UniteWithCursorWord -buffer-name=search -auto-preview change<cr>
+			nmap [unite]k :Unite               -buffer-name=search change<cr>
+			nmap [unite]K :UniteWithCursorWord -buffer-name=search change<cr>
+			nmap [unite][alt]k :Unite               -buffer-name=search -auto-preview change<cr>
+			nmap [unite][alt]K :UniteWithCursorWord -buffer-name=search -auto-preview change<cr>
 
 		" misc
 			" do all the things
-			nnoremap [unite]<cr> :Unite -buffer-name=omni -start-insert source<cr>
-			nnoremap [unite-alt]<cr> :Unite -buffer-name=omni -start-insert -auto-preview source<cr>
+			nmap [unite]<cr> :Unite -buffer-name=omni -start-insert source<cr>
+			nmap [unite][alt]<cr> :Unite -buffer-name=omni -start-insert -auto-preview source<cr>
 
 			" yank stack
-			nnoremap [unite]y :Unite -buffer-name=yank history/yank<cr>
-			nnoremap [unite-alt]y :Unite -buffer-name=yank -auto-preview history/yank<cr>
+			nmap [unite]y :Unite -buffer-name=yank history/yank<cr>
+			nmap [unite][alt]y :Unite -buffer-name=yank -auto-preview history/yank<cr>
 
 			" command history
-			nnoremap [unite]; :Unite -buffer-name=commands -default-action=execute history/command command<cr>
-			nnoremap [unite-alt]; :Unite -buffer-name=commands -default-action=execute -auto-preview history/command command<cr>
+			nmap [unite]; :Unite -buffer-name=commands -default-action=execute history/command command<cr>
+			nmap [unite][alt]; :Unite -buffer-name=commands -default-action=execute -auto-preview history/command command<cr>
 
 			" repeat last entry
-			nnoremap [unite]. :UniteResume<cr>
-			nnoremap [unite-alt]. :UniteResume -auto-preview<cr>
+			nmap [unite]. :UniteResume<cr>
+			nmap [unite][alt]. :UniteResume -auto-preview<cr>
 
 	" NERDTree:
 		" show hidden files
@@ -505,7 +533,7 @@
 
 	" vim-autoformat:
 		" format entire file
-		noremap QQ :Autoformat<cr>
+		nmap QQ :Autoformat<cr>
 
 	" vim-easymotion:
 		let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
@@ -516,7 +544,7 @@
 		" vim-sneak
 		nmap s <plug>(easymotion-s2)
 		nmap S <plug>(easymotion-t2)
-	
+
 		map <Leader>l <Plug>(easymotion-lineforward)
 		map <Leader>j <Plug>(easymotion-j)
 		map <Leader>k <Plug>(easymotion-k)
@@ -526,39 +554,27 @@
 		" let the nav shortcuts work anywhere
 		let g:tmux_navigator_no_mappings = 1
 
-		nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-		nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
-		nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-		nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-		nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
+		map <silent> <c-h> :TmuxNavigateLeft<cr>
+		map <silent> <c-l> :TmuxNavigateRight<cr>
+		map <silent> <c-k> :TmuxNavigateUp<cr>
+		map <silent> <c-j> :TmuxNavigateDown<cr>
+		map <silent> <c-\> :TmuxNavigatePrevious<cr>
 
-		nnoremap <silent> <m-h> :TmuxNavigateLeft<cr>
-		nnoremap <silent> <m-l> :TmuxNavigateRight<cr>
-		nnoremap <silent> <m-k> :TmuxNavigateUp<cr>
-		nnoremap <silent> <m-j> :TmuxNavigateDown<cr>
-		nnoremap <silent> <m-\> :TmuxNavigatePrevious<cr>
+		map <silent> <m-h> :TmuxNavigateLeft<cr>
+		map <silent> <m-l> :TmuxNavigateRight<cr>
+		map <silent> <m-k> :TmuxNavigateUp<cr>
+		map <silent> <m-j> :TmuxNavigateDown<cr>
+		map <silent> <m-\> :TmuxNavigatePrevious<cr>
 
-		vnoremap <silent> <c-h> <esc>:TmuxNavigateLeft<cr>
-		vnoremap <silent> <c-l> <esc>:TmuxNavigateDown<cr>
-		vnoremap <silent> <c-k> <esc>:TmuxNavigateUp<cr>
-		vnoremap <silent> <c-j> <esc>:TmuxNavigateRight<cr>
-		vnoremap <silent> <c-\> <esc>:TmuxNavigatePrevious<cr>
+		imap <silent> <c-h> <esc>:TmuxNavigateLeft<cr>
+		imap <silent> <c-l> <esc>:TmuxNavigateDown<cr>
+		imap <silent> <c-k> <esc>:TmuxNavigateUp<cr>
+		imap <silent> <c-j> <esc>:TmuxNavigateRight<cr>
+		imap <silent> <c-\> <esc>:TmuxNavigatePrevious<cr>
 
-		vnoremap <silent> <m-h> <esc>:TmuxNavigateLeft<cr>
-		vnoremap <silent> <m-l> <esc>:TmuxNavigateDown<cr>
-		vnoremap <silent> <m-k> <esc>:TmuxNavigateUp<cr>
-		vnoremap <silent> <m-j> <esc>:TmuxNavigateRight<cr>
-		vnoremap <silent> <m-\> <esc>:TmuxNavigatePrevious<cr>
-
-		inoremap <silent> <c-h> <esc>:TmuxNavigateLeft<cr>
-		inoremap <silent> <c-l> <esc>:TmuxNavigateDown<cr>
-		inoremap <silent> <c-k> <esc>:TmuxNavigateUp<cr>
-		inoremap <silent> <c-j> <esc>:TmuxNavigateRight<cr>
-		inoremap <silent> <c-\> <esc>:TmuxNavigatePrevious<cr>
-
-		inoremap <silent> <m-h> <esc>:TmuxNavigateLeft<cr>
-		inoremap <silent> <m-l> <esc>:TmuxNavigateDown<cr>
-		inoremap <silent> <m-k> <esc>:TmuxNavigateUp<cr>
-		inoremap <silent> <m-j> <esc>:TmuxNavigateRight<cr>
-		inoremap <silent> <m-\> <esc>:TmuxNavigatePrevious<cr>
+		imap <silent> <m-h> <esc>:TmuxNavigateLeft<cr>
+		imap <silent> <m-l> <esc>:TmuxNavigateDown<cr>
+		imap <silent> <m-k> <esc>:TmuxNavigateUp<cr>
+		imap <silent> <m-j> <esc>:TmuxNavigateRight<cr>
+		imap <silent> <m-\> <esc>:TmuxNavigatePrevious<cr>
 

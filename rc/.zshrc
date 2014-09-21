@@ -1,10 +1,10 @@
 ################
 # VARIABLES
 ################
-	# oh-my-zsh
-	export ZSH=$HOME/.oh-my-zsh
 	# dots
 	export DOTS=$HOME/dotfiles
+	# oh-my-zsh
+	export ZSH=$HOME/.oh-my-zsh
 	# dropbox
 	export DB=$HOME/Dropbox
 
@@ -33,17 +33,17 @@
 ################
 # MODULES
 ################
-	source $DOTS/shell/env.sh
-	source $DOTS/shell/alias.sh
-	source $DOTS/shell/general.sh
-	source $DOTS/shell/functions.sh
-	[[ -e "$HOME/.local.sh" ]] && source $HOME/.local.sh
+	. $DOTS/shell/env.sh
+	. $DOTS/shell/alias.sh
+	. $DOTS/shell/general.sh
+	. $DOTS/shell/functions.sh
+	[[ -e "$HOME/.local.sh" ]] && . $HOME/.local.sh
 
 
 ################
 # THEME
 ################
-	source $DOTS/themes/shell.sh
+	. $DOTS/themes/shell.sh
 
 
 ################
@@ -51,12 +51,11 @@
 ################
 	plugins=(battery extract git-extras node npm python nyan sublime vi-mode history-substring-search tmux systemd zsh-syntax-highlighting fasd)
 
-	# source $ZSH/oh-my-zsh.sh
-	source $HOME/.oh-my-zsh/oh-my-zsh.sh
-	source $DOTS/shell/plugins/vim.zsh
-	source $DOTS/shell/plugins/tmuxinator.zsh
-	source $DOTS/shell/plugins/opp.zsh/opp.zsh
-	source $DOTS/shell/plugins/opp.zsh/opp/*.zsh
+	. $ZSH/oh-my-zsh.sh
+	. $DOTS/shell/plugins/vim.zsh
+	. $DOTS/shell/plugins/tmuxinator.zsh
+	. $DOTS/shell/plugins/opp.zsh/opp.zsh
+	. $DOTS/shell/plugins/opp.zsh/opp/*.zsh
 	unsetopt correct_all
 
 
@@ -83,15 +82,15 @@
 		key[PageDown]=${terminfo[knp]}
 
 		# setup key accordingly
-		[[ -n "${key[End]}"      ]]  && bindkey  "${key[End]}"      end-of-line
-		[[ -n "${key[Insert]}"   ]]  && bindkey  "${key[Insert]}"   overwrite-mode
-		[[ -n "${key[Delete]}"   ]]  && bindkey  "${key[Delete]}"   delete-char
-		[[ -n "${key[Up]}"       ]]  && bindkey  "${key[Up]}"       up-line-or-history
-		[[ -n "${key[Down]}"     ]]  && bindkey  "${key[Down]}"     down-line-or-history
-		[[ -n "${key[Left]}"     ]]  && bindkey  "${key[Left]}"     backward-char
-		[[ -n "${key[Right]}"    ]]  && bindkey  "${key[Right]}"    forward-char
-		[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   beginning-of-buffer-or-history
-		[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" end-of-buffer-or-history
+		if [[ -n "${key[End]}"      ]]; then bindkey  "${key[End]}"      end-of-line; fi
+		if [[ -n "${key[Insert]}"   ]]; then bindkey  "${key[Insert]}"   overwrite-mode; fi
+		if [[ -n "${key[Delete]}"   ]]; then bindkey  "${key[Delete]}"   delete-char; fi
+		if [[ -n "${key[Up]}"       ]]; then bindkey  "${key[Up]}"       up-line-or-history; fi
+		if [[ -n "${key[Down]}"     ]]; then bindkey  "${key[Down]}"     down-line-or-history; fi
+		if [[ -n "${key[Left]}"     ]]; then bindkey  "${key[Left]}"     backward-char; fi
+		if [[ -n "${key[Right]}"    ]]; then bindkey  "${key[Right]}"    forward-char; fi
+		if [[ -n "${key[PageUp]}"   ]]; then bindkey  "${key[PageUp]}"   beginning-of-buffer-or-history; fi
+		if [[ -n "${key[PageDown]}" ]]; then bindkey  "${key[PageDown]}" end-of-buffer-or-history; fi
 
 		# Finally, make sure the terminal is in application mode, when zle is active.
 		# Only then are the values from $terminfo valid.
