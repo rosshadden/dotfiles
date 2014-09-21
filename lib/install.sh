@@ -2,6 +2,7 @@
 
 # TODO: have params for CLI-only or X-supported (don't need to install awesomeWM on a server)
 # TODO: make a cleanup process
+# TODO: possibly make a (generated?) manifest file, to make cleanup easier
 # TODO: break variables out, since I currently have to use them both here and in .zshrc
 # TODO: support anonymous installs, where things like .gitconfig wouldn't be installed
 # TODO: vet [http://www.gnu.org/software/stow/](GNU stow) as a symlink organization tool
@@ -42,11 +43,13 @@
 ################
 # RC FILES
 ################
-	# link rc files
-	ln -s $DOTS/rc/{.bashrc,.gitconfig,.gntrc,.tigrc,.tmux.conf,.vim,.zshrc,.Xresources} $HOME/
+	# genenal
+	ln -s $DOTS/rc/{.bashrc,.gitconfig,.gntrc,.tigrc,.tmux.conf,.vim,.zshrc} $HOME/
+	# user
+	ln -s $DOTS/rc/{.gitconfig} $HOME/
 
 ################
 # CONFIG
 ################
-	# link configs
+	# general
 	ln -s $DOTS/config/* $HOME/.config/

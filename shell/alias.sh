@@ -48,8 +48,8 @@ alias reload='alias reload=". $HOME/.${SHELL}rc"'
 alias shh="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
 
 # toggle dvorak/qwerty
-alias aoeu='if [ $DISPLAY ]; then setxkbmap -option grp_led:scroll -option caps:escape -option compose:ralt -layout us,dvorak; else loadkeys us; fi'
-alias asdf='if [ $DISPLAY ]; then setxkbmap -option grp_led:scroll -option caps:escape -option compose:ralt -layout dvorak,us; else loadkeys dvorak; fi'
+alias aoeu='setkeys qwerty'
+alias asdf='setkeys dvorak'
 
 # fasd
 alias j='fasd_cd -d'
