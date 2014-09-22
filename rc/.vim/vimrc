@@ -98,9 +98,6 @@
 """"""""""""""""
 " SETTINGS:
 """"""""""""""""
-	" take me to your <leader>
-	let mapleader=","
-	let maplocalleader="-"
 	" line numbers
 	set number
 	set smartcase
@@ -168,6 +165,19 @@
 """"""""""""""""
 " MAPPINGS:
 """"""""""""""""
+	" make prefixes
+	function! s:makePrefixes()
+	endfunction
+
+	" take me to your <leader>
+	let mapleader=","
+	let maplocalleader="-"
+	" modes
+	map <leader>[0] <nop>
+	map <leader>[1] <nop>
+	map <leader> <leader>[0]
+	map <leader><leader> <leader>[1]
+
 	" fix Y
 	map Y y$
 
@@ -205,31 +215,32 @@
 	" tabs and panes
 		" prefix
 		map [tabs] <nop>
-		map [tabs][alt] <nop>
-		map <leader>t [tabs]
-		map <leader>T [tabs][alt]
+		map [tabs][0] <nop>
+		map [tabs][1] <nop>
+		map <leader>t [tabs][0]
+		map [tabs][0] [tabs]
+		map [tabs]t [tabs][1]
 
 		" new
-		map [tabs] :tabnew<cr>
-		map [tabs]t :tabnew<cr>
+		map [tabs][0]<space> :tabnew<cr>
 		" duplicate
-		map [tabs]d :tabnew %<cr>
+		map [tabs][0]d :tabnew %<cr>
 		" close
-		map [tabs]w :tabclose<cr>
-		map [tabs]W :tabclose!<cr>
+		map [tabs][0]w :tabclose<cr>
+		map [tabs][0]W :tabclose!<cr>
 		" close others
-		map [tabs]o :tabonly<cr>
-		map [tabs]O :tabonly!<cr>
+		map [tabs][0]o :tabonly<cr>
+		map [tabs][0]O :tabonly!<cr>
 		" first
-		map [tabs]f :tabfirst<cr>
+		map [tabs][0]f :tabfirst<cr>
 		" last
-		map [tabs]l :tablast<cr>
+		map [tabs][0]l :tablast<cr>
 		" next
-		map [tabs]n :tabnext<cr>
+		map [tabs][0]n :tabnext<cr>
 		" previous
-		map [tabs]p :tabprevious<cr>
+		map [tabs][0]p :tabprevious<cr>
 		" move to last
-		map [tabs][alt] :tabmove<cr>
+		map [tabs][1] :tabmove<cr>
 
 	" folding
 		nnoremap <silent> <space> @=(foldlevel('.')?'za':"\<space>")<cr>
@@ -271,8 +282,8 @@
 		vmap <leader>/ y/<c-r>"<cr>
 
 	" visual shifting (does not exit Visual mode)
-	map < <gv
-	map > >gv
+	vnoremap < <gv
+	vnoremap > >gv
 
 	" use Q for formatting, not Ex mode
 	map Q gq
@@ -379,7 +390,7 @@
 		call unite#custom#source('buffer', 'converters', ['converter_file_directory'])
 
 		" in-buffer settings
-		function! s:unite_settings()
+		function! s:uniteSettings()
 			let b:SuperTabDisabled = 1
 
 			" vertical selecting (`j` and `k` is default in normal mode)
@@ -413,7 +424,7 @@
 				nmap <silent><buffer><expr> r     unite#do_action('rename')
 			endif
 		endfunction
-		autocmd FileType unite call s:unite_settings()
+		autocmd FileType unite call s:uniteSettings()
 
 		" prefix
 		map [unite] <nop>
