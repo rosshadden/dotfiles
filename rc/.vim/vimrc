@@ -178,10 +178,17 @@
 	map <leader>[0] <leader>
 	map <leader>[1] <leader><leader>
 
+	" expose the native mappings I've stolen
+		noremap <leader>[1]Y Y
+		noremap <leader>[1]s s
+		noremap <leader>[1]S S
+		noremap <leader>[1]U U
+		noremap <leader>[1]; ;
+
 	" fix Y
 	map Y y$
 
-	" shift is for sucks? (avoids :W style typos)
+	" shift is for sucks? (avoids :W style typos, or so I'm told)
 	map ; :
 
 	" L-s => save [:update]
@@ -199,8 +206,6 @@
 
 	" U => redo [:redo]
 	map U :redo<cr>
-	" L-u => undo line
-	noremap <leader>u U<cr>
 
 	" L-r => reload file [:edit]
 	map <leader>r :edit<cr>
@@ -212,7 +217,14 @@
 		noremap <leader>at a<tab>
 		noremap <leader>a<tab> a<tab>
 
-	" tabs and panes
+	" panes
+		" prefix
+		map [panes] <nop>
+		map <leader>n [panes]
+		map [panes]- :split<cr>
+		map [panes]s :vsplit<cr>
+
+	" tabs
 		" prefix
 		map [tabs] <nop>
 		map [tabs][0] <nop>
@@ -530,7 +542,7 @@
 		" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 		" L-n => toggle NERDTreeTabs
-		map <leader>n <plug>NERDTreeTabsToggle<cr>
+		map <leader>N <plug>NERDTreeTabsToggle<cr>
 
 	" Gundu:
 		" L-U => toggle gundu menu [:GunduToggle]
