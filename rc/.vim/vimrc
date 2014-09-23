@@ -175,8 +175,8 @@
 	" modes
 	map <leader>[0] <nop>
 	map <leader>[1] <nop>
-	map <leader> <leader>[0]
-	map <leader><leader> <leader>[1]
+	map <leader>[0] <leader>
+	map <leader>[1] <leader><leader>
 
 	" fix Y
 	map Y y$
@@ -221,8 +221,8 @@
 		map [tabs][0] [tabs]
 		map [tabs]t [tabs][1]
 
-		" new
-		map [tabs][0]<space> :tabnew<cr>
+		" new, at [n:+1]
+		map [tabs][0]<space> :<c-u>exe v:count."tabnew"<cr>
 		" duplicate
 		map [tabs][0]d :tabnew %<cr>
 		" close
@@ -231,16 +231,26 @@
 		" close others
 		map [tabs][0]o :tabonly<cr>
 		map [tabs][0]O :tabonly!<cr>
+
+		" NOTE: technically [tabs]g and [tabs]l are the same,
+		" though semantically the former is for absolute navigation and the latter for relative
+		" goto [n:+1]
+		map [tabs][0]g :<c-u>exe (v:count == 0) ? "tabnext" : "tabnext ".v:count1<cr>
+		" next [n:+1]
+		map [tabs][0]l :<c-u>exe (v:count == 0) ? "tabnext" : "tabnext ".v:count1<cr>
+		" previous [n:-1]
+		map [tabs][0]h :<c-u>exe (v:count == 0) ? "tabprevious" : "tabprevious ".v:count1<cr>
 		" first
 		map [tabs][0]f :tabfirst<cr>
 		" last
-		map [tabs][0]l :tablast<cr>
-		" next
-		map [tabs][0]n :tabnext<cr>
-		" previous
-		map [tabs][0]p :tabprevious<cr>
-		" move to last
-		map [tabs][1] :tabmove<cr>
+		map [tabs][0]F :tablast<cr>
+
+		" move [n:1] left
+		map [tabs][1]h :<c-u>exe "tabmove -".v:count1<cr>
+		" move [n:1] right
+		map [tabs][1]l :<c-u>exe "tabmove +".v:count1<cr>
+		" move to [n:end]
+		map [tabs][1]m :<c-u>exe "tabmove ".v:count<cr>
 
 	" folding
 		nnoremap <silent> <space> @=(foldlevel('.')?'za':"\<space>")<cr>
