@@ -166,24 +166,42 @@
 " MAPPINGS:
 """"""""""""""""
 	" make prefixes
-	function! s:makePrefixes()
+	function! s:makePrefix(name, key, ...)
+		" accept `mode` as an optional third argument
+		let mode = (a:0) ? a:0 : 0
+
+		let prefixLong = '[' . a:name . ':' . mode . ']'
+		execute 'map ' . prefixLong . ' <nop>'
+		execute 'map ' . a:key . ' ' . prefixLong
+
+		if mode == 0
+			let prefix = '[' . a:name . ']'
+			execute 'map ' . prefix . ' <nop>'
+			execute 'map ' . prefixLong . ' ' . prefix
+		endif
 	endfunction
 
 	" take me to your <leader>
 	let mapleader=","
 	let maplocalleader="-"
 	" modes
-	map <leader>[0] <nop>
-	map <leader>[1] <nop>
-	map <leader>[0] <leader>
-	map <leader>[1] <leader><leader>
+	call s:makePrefix('leader', '<leader>')
+	call s:makePrefix('leader', '<leader><leader>', 1)
 
 	" expose the native mappings I've stolen
-		noremap <leader>[1]Y Y
-		noremap <leader>[1]s s
-		noremap <leader>[1]S S
-		noremap <leader>[1]U U
-		noremap <leader>[1]; ;
+		" TODO: abstract this a bit, perhaps a function that takes an array of keys to fix
+		" TODO: independent of above, maybe I should fix all keys, instead of maintaining a list
+		noremap [leader:1]Y Y
+		noremap [leader:1]s s
+		noremap [leader:1]S S
+		noremap [leader:1]U U
+		noremap [leader:1]Q Q
+		noremap [leader:1]< <
+		noremap [leader:1]> >
+		noremap [leader:1]; ;
+		noremap [leader:1], ,
+		noremap [leader:1]- -
+		noremap [leader:1]<space> <space>
 
 	" fix Y
 	map Y y$
@@ -219,67 +237,67 @@
 
 	" panes
 		" prefix
-		map [panes] <nop>
-		map <leader>n [panes]
+		call s:makePrefix('panes', '<leader>n')
+
+		" split down
 		map [panes]- :split<cr>
+		" split right
 		map [panes]s :vsplit<cr>
 
 	" tabs
 		" prefix
-		map [tabs] <nop>
-		map [tabs][0] <nop>
-		map [tabs][1] <nop>
-		map <leader>t [tabs][0]
-		map [tabs][0] [tabs]
-		map [tabs]t [tabs][1]
+		call s:makePrefix('tabs', '<leader>t')
+		call s:makePrefix('tabs', '[tabs]t', 1)
 
 		" new, at [n:+1]
-		map [tabs][0]<space> :<c-u>exe v:count."tabnew"<cr>
+		map [tabs:0]n :<c-u>exe v:count."tabnew"<cr>
 		" duplicate
-		map [tabs][0]d :tabnew %<cr>
+		map [tabs:0]d :tabnew %<cr>
 		" close
-		map [tabs][0]w :tabclose<cr>
-		map [tabs][0]W :tabclose!<cr>
+		map [tabs:0]w :tabclose<cr>
+		map [tabs:0]W :tabclose!<cr>
 		" close others
-		map [tabs][0]o :tabonly<cr>
-		map [tabs][0]O :tabonly!<cr>
+		map [tabs:0]o :tabonly<cr>
+		map [tabs:0]O :tabonly!<cr>
 
 		" NOTE: technically [tabs]g and [tabs]l are the same,
 		" though semantically the former is for absolute navigation and the latter for relative
 		" goto [n:+1]
-		map [tabs][0]g :<c-u>exe (v:count == 0) ? "tabnext" : "tabnext ".v:count1<cr>
+		map [tabs:0]g :<c-u>exe (v:count == 0) ? "tabnext" : "tabnext ".v:count1<cr>
 		" next [n:+1]
-		map [tabs][0]l :<c-u>exe (v:count == 0) ? "tabnext" : "tabnext ".v:count1<cr>
-		" previous [n:-1]
-		map [tabs][0]h :<c-u>exe (v:count == 0) ? "tabprevious" : "tabprevious ".v:count1<cr>
+		map [tabs:0]l :<c-u>exe (v:count == 0) ? "tabnext" : "tabnext ".v:count1<cr>
+		" previous [n::1]
+		map [tabs:0]h :<c-u>exe (v:count == 0) ? "tabprevious" : "tabprevious ".v:count1<cr>
 		" first
-		map [tabs][0]f :tabfirst<cr>
+		map [tabs:0]f :tabfirst<cr>
 		" last
-		map [tabs][0]F :tablast<cr>
+		map [tabs:0]F :tablast<cr>
 
 		" move [n:1] left
-		map [tabs][1]h :<c-u>exe "tabmove -".v:count1<cr>
+		map [tabs:1]h :<c-u>exe "tabmove -".v:count1<cr>
 		" move [n:1] right
-		map [tabs][1]l :<c-u>exe "tabmove +".v:count1<cr>
+		map [tabs:1]l :<c-u>exe "tabmove +".v:count1<cr>
 		" move to [n:end]
-		map [tabs][1]m :<c-u>exe "tabmove ".v:count<cr>
+		map [tabs:1]m :<c-u>exe "tabmove ".v:count<cr>
 
 	" folding
+		" prefix
+		call s:makePrefix('folds', '<leader>z')
+
 		nnoremap <silent> <space> @=(foldlevel('.')?'za':"\<space>")<cr>
 		vnoremap <space> zf
-
-		nmap z` :set foldlevel=0<cr>
-		nmap z1 :set foldlevel=1<cr>
-		nmap z2 :set foldlevel=2<cr>
-		nmap z3 :set foldlevel=3<cr>
-		nmap z4 :set foldlevel=4<cr>
-		nmap z5 :set foldlevel=5<cr>
-		nmap z6 :set foldlevel=6<cr>
-		nmap z7 :set foldlevel=7<cr>
-		nmap z8 :set foldlevel=8<cr>
-		nmap z9 :set foldlevel=9<cr>
-		nmap z0 :set foldlevel=128<cr>
-		nmap zz :call ToggleFold()<cr>
+		nmap [folds]` :set foldlevel=0<cr>
+		nmap [folds]1 :set foldlevel=1<cr>
+		nmap [folds]2 :set foldlevel=2<cr>
+		nmap [folds]3 :set foldlevel=3<cr>
+		nmap [folds]4 :set foldlevel=4<cr>
+		nmap [folds]5 :set foldlevel=5<cr>
+		nmap [folds]6 :set foldlevel=6<cr>
+		nmap [folds]7 :set foldlevel=7<cr>
+		nmap [folds]8 :set foldlevel=8<cr>
+		nmap [folds]9 :set foldlevel=9<cr>
+		nmap [folds]0 :set foldlevel=128<cr>
+		nmap [folds]z :call ToggleFold()<cr>
 
 		let b:foldlevel=&l:foldlevel
 		function! ToggleFold()
@@ -309,13 +327,12 @@
 
 	" use Q for formatting, not Ex mode
 	map Q gq
-	map Q gq
 
 	" set a break in undo, so CTRL-U in insert mode is less destructive
 	map <c-u> <c-g>u<c-u>
 
 	" switch to alternate file
-	map <leader><leader> <c-^>
+	map <leader>b <c-^>
 
 	" easier system clipboard
 	map <leader>y "+y
@@ -396,7 +413,13 @@
 			let g:unite_source_grep_command = 'ag'
 			let g:unite_source_grep_default_opts = '--nogroup --nocolor --column --hidden'
 			let g:unite_source_grep_recursive_opt = ''
-			let g:unite_source_rec_async_command = 'ag --follow --nocolor --nogroup --hidden -g ""'
+			let g:unite_source_rec_async_command = 'ag' .
+				\ ' --follow' .
+				\ ' --nocolor' .
+				\ ' --nogroup' .
+				\ ' --hidden' .
+				\ ' --ignore ".git"' .
+				\ ' -g ""'
 		endif
 
 		call unite#custom#profile('default', 'context', {
@@ -449,86 +472,84 @@
 		autocmd FileType unite call s:uniteSettings()
 
 		" prefix
-		map [unite] <nop>
-		map <leader><space> [unite]
-		map [unite][alt] <nop>
-		map [unite]<space> [unite][alt]
+		call s:makePrefix('unite', '<leader><space>')
+		call s:makePrefix('unite', '[unite]<space>', 1)
 
 		" open files
 			" flat
-			nmap [unite]f :Unite              -buffer-name=files -start-insert file directory file/new directory/new<cr>
-			nmap [unite]F :UniteWithBufferDir -buffer-name=files -start-insert file directory file/new directory/new<cr>
-			nmap [unite][alt]f :Unite              -buffer-name=files -start-insert -auto-preview file directory file/new directory/new<cr>
-			nmap [unite][alt]F :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file directory file/new directory/new<cr>
+			nmap [unite:0]f :Unite              -buffer-name=files -start-insert file directory file/new directory/new<cr>
+			nmap [unite:0]F :UniteWithBufferDir -buffer-name=files -start-insert file directory file/new directory/new<cr>
+			nmap [unite:1]f :Unite              -buffer-name=files -start-insert -auto-preview file directory file/new directory/new<cr>
+			nmap [unite:1]F :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file directory file/new directory/new<cr>
 
 			" recursive
-			nmap [unite]p :Unite              -buffer-name=files -start-insert file_rec/async:!<cr>
-			nmap [unite]P :UniteWithBufferDir -buffer-name=files -start-insert file_rec/async:!<cr>
-			nmap [unite][alt]p :Unite              -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
-			nmap [unite][alt]P :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
+			nmap [unite:0]p :Unite              -buffer-name=files -start-insert file_rec/async:!<cr>
+			nmap [unite:0]P :UniteWithBufferDir -buffer-name=files -start-insert file_rec/async:!<cr>
+			nmap [unite:1]p :Unite              -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
+			nmap [unite:1]P :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
 
 		" search files
-			nmap [unite]g :Unite              grep:.<cr>
-			nmap [unite]G :UniteWithBufferDir grep:.<cr>
-			nmap [unite][alt]g :Unite              -auto-preview grep:.<cr>
-			nmap [unite][alt]G :UniteWithBufferDir -auto-preview grep:.<cr>
+			nmap [unite:0]g :Unite              grep:.<cr>
+			nmap [unite:0]G :UniteWithBufferDir grep:.<cr>
+			nmap [unite:1]g :Unite              -auto-preview grep:.<cr>
+			nmap [unite:1]G :UniteWithBufferDir -auto-preview grep:.<cr>
 			" TODO: get something like this working:
-			" vmap [unite]g :UniteWithCursorWord grep:.<cr>
+			" vmap [unite:0]g :UniteWithCursorWord grep:.<cr>
 
 		" current and recent
 			" most recently used (mru) files
-			nmap [unite]r :Unite              -buffer-name=recent file_mru<cr>
-			nmap [unite]R :UniteWithBufferDir -buffer-name=recent file_mru<cr>
-			nmap [unite][alt]r :Unite              -buffer-name=recent -auto-preview file_mru<cr>
-			nmap [unite][alt]R :UniteWithBufferDir -buffer-name=recent -auto-preview file_mru<cr>
+			nmap [unite:0]r :Unite              -buffer-name=recent file_mru<cr>
+			nmap [unite:0]R :UniteWithBufferDir -buffer-name=recent file_mru<cr>
+			nmap [unite:1]r :Unite              -buffer-name=recent -auto-preview file_mru<cr>
+			nmap [unite:1]R :UniteWithBufferDir -buffer-name=recent -auto-preview file_mru<cr>
 
 			" current buffers
-			nmap [unite]b :Unite              -buffer-name=buffers buffer<cr>
-			nmap [unite]B :UniteWithBufferDir -buffer-name=buffers buffer<cr>
-			nmap [unite][alt]b :Unite              -buffer-name=buffers -auto-preview buffer<cr>
-			nmap [unite][alt]B :UniteWithBufferDir -buffer-name=buffers -auto-preview buffer<cr>
+			nmap [unite:0]b :Unite              -buffer-name=buffers buffer<cr>
+			nmap [unite:0]B :UniteWithBufferDir -buffer-name=buffers buffer<cr>
+			nmap [unite:1]b :Unite              -buffer-name=buffers -auto-preview buffer<cr>
+			nmap [unite:1]B :UniteWithBufferDir -buffer-name=buffers -auto-preview buffer<cr>
 
 			" buffer, tab, or files
-			nmap [unite]a :Unite              -start-insert buffer tab file_mru directory_mru bookmark<cr>
-			nmap [unite]A :UniteWithBufferDir -start-insert buffer tab file_mru directory_mru bookmark<cr>
-			nmap [unite][alt]a :Unite              -start-insert -auto-preview buffer tab file_mru directory_mru bookmark<cr>
-			nmap [unite][alt]A :UniteWithBufferDir -start-insert -auto-preview buffer tab file_mru directory_mru bookmark<cr>
+			nmap [unite:0]a :Unite              -start-insert buffer tab file_mru directory_mru bookmark<cr>
+			nmap [unite:0]A :UniteWithBufferDir -start-insert buffer tab file_mru directory_mru bookmark<cr>
+			nmap [unite:1]a :Unite              -start-insert -auto-preview buffer tab file_mru directory_mru bookmark<cr>
+			nmap [unite:1]A :UniteWithBufferDir -start-insert -auto-preview buffer tab file_mru directory_mru bookmark<cr>
 
 		" current file
 			" outline
-			nmap [unite]o :Unite               -buffer-name=outline -no-split -auto-preview outline<cr>
-			nmap [unite]O :UniteWithCursorWord -buffer-name=outline -no-split -auto-preview outline<cr>
-			nmap [unite][alt]o :Unite               -buffer-name=outline -no-split -auto-preview -auto-preview outline<cr>
-			nmap [unite][alt]O :UniteWithCursorWord -buffer-name=outline -no-split -auto-preview -auto-preview outline<cr>
+			nmap [unite:0]o :Unite               -buffer-name=outline -no-split -auto-preview outline<cr>
+			nmap [unite:0]O :UniteWithCursorWord -buffer-name=outline -no-split -auto-preview outline<cr>
+			nmap [unite:1]o :Unite               -buffer-name=outline -no-split -auto-preview -auto-preview outline<cr>
+			nmap [unite:1]O :UniteWithCursorWord -buffer-name=outline -no-split -auto-preview -auto-preview outline<cr>
 
 			" line
-			nmap [unite]l :Unite               -buffer-name=search -no-split -auto-preview -start-insert line<cr>
-			nmap [unite]L :UniteWithCursorWord -buffer-name=search -no-split -auto-preview -start-insert line<cr>
-			nmap [unite][alt]l :Unite               -buffer-name=search -no-split -auto-preview -start-insert -auto-preview line<cr>
-			nmap [unite][alt]L :UniteWithCursorWord -buffer-name=search -no-split -auto-preview -start-insert -auto-preview line<cr>
+			nmap [unite:0]l :Unite               -buffer-name=search -no-split -auto-preview -start-insert line<cr>
+			nmap [unite:0]L :UniteWithCursorWord -buffer-name=search -no-split -auto-preview -start-insert line<cr>
+			nmap [unite:1]l :Unite               -buffer-name=search -no-split -auto-preview -start-insert -auto-preview line<cr>
+			nmap [unite:1]L :UniteWithCursorWord -buffer-name=search -no-split -auto-preview -start-insert -auto-preview line<cr>
 
 			" changes
-			nmap [unite]k :Unite               -buffer-name=search change<cr>
-			nmap [unite]K :UniteWithCursorWord -buffer-name=search change<cr>
-			nmap [unite][alt]k :Unite               -buffer-name=search -auto-preview change<cr>
-			nmap [unite][alt]K :UniteWithCursorWord -buffer-name=search -auto-preview change<cr>
+			nmap [unite:0]k :Unite               -buffer-name=search change<cr>
+			nmap [unite:0]K :UniteWithCursorWord -buffer-name=search change<cr>
+			nmap [unite:1]k :Unite               -buffer-name=search -auto-preview change<cr>
+			nmap [unite:1]K :UniteWithCursorWord -buffer-name=search -auto-preview change<cr>
 
 		" misc
 			" do all the things
-			nmap [unite]<cr> :Unite -buffer-name=omni -start-insert source<cr>
-			nmap [unite][alt]<cr> :Unite -buffer-name=omni -start-insert -auto-preview source<cr>
+			nmap [unite:0]<cr> :Unite -buffer-name=omni -start-insert source<cr>
+			nmap [unite:1]<cr> :Unite -buffer-name=omni -start-insert -auto-preview source<cr>
 
 			" yank stack
-			nmap [unite]y :Unite -buffer-name=yank history/yank<cr>
-			nmap [unite][alt]y :Unite -buffer-name=yank -auto-preview history/yank<cr>
+			nmap [unite:0]y :Unite -buffer-name=yank history/yank<cr>
+			nmap [unite:1]y :Unite -buffer-name=yank -auto-preview history/yank<cr>
 
 			" command history
-			nmap [unite]; :Unite -buffer-name=commands -default-action=execute history/command command<cr>
-			nmap [unite][alt]; :Unite -buffer-name=commands -default-action=execute -auto-preview history/command command<cr>
+			nmap [unite:0]; :Unite -buffer-name=commands -default-action=execute history/command command<cr>
+			nmap [unite:1]; :Unite -buffer-name=commands -default-action=execute -auto-preview history/command command<cr>
 
 			" repeat last entry
-			nmap [unite]. :UniteResume<cr>
-			nmap [unite][alt]. :UniteResume -auto-preview<cr>
+			nmap [unite:0]. :UniteResume<cr>
+			nmap [unite:1]. :UniteResume -auto-preview<cr>
 
 	" NERDTree:
 		" show hidden files
@@ -578,10 +599,10 @@
 		nmap s <plug>(easymotion-s2)
 		nmap S <plug>(easymotion-t2)
 
-		map <Leader>l <Plug>(easymotion-lineforward)
-		map <Leader>j <Plug>(easymotion-j)
-		map <Leader>k <Plug>(easymotion-k)
-		map <Leader>h <Plug>(easymotion-linebackward)
+		map <leader>l <Plug>(easymotion-lineforward)
+		map <leader>j <Plug>(easymotion-j)
+		map <leader>k <Plug>(easymotion-k)
+		map <leader>h <Plug>(easymotion-linebackward)
 
 	" vim-tmux-navigator:
 		" let the nav shortcuts work anywhere
