@@ -167,26 +167,44 @@
 """"""""""""""""
 	" make prefixes
 	function! s:makePrefix(name, key, ...)
-		" accept `mode` as an optional third argument
-		let mode = (a:0) ? a:0 : 0
+		" accept `mode` number as an optional third argument
+		let l:mode = (a:0 >= 1) ? a:1 : 0
 
-		let prefixLong = '[' . a:name . ':' . mode . ']'
-		execute 'map ' . prefixLong . ' <nop>'
-		execute 'map ' . a:key . ' ' . prefixLong
+		let l:doOverride = (a:0 == 0 || a:1 != 0)
 
-		if mode == 0
-			let prefix = '[' . a:name . ']'
-			execute 'map ' . prefix . ' <nop>'
-			execute 'map ' . prefixLong . ' ' . prefix
+		let l:prefixLong = '[' . a:name . ':' . l:mode . ']'
+		execute 'map ' . l:prefixLong . ' <nop>'
+		if l:doOverride == 1
+			execute 'map ' . a:key . ' ' . l:prefixLong
+		endif
+
+		if l:mode == 0
+			let l:prefix = '[' . a:name . ']'
+			execute 'map ' . l:prefix . ' <nop>'
+			execute 'map ' . l:prefixLong . ' ' . l:prefix
+		endif
+
+		if l:doOverride == 0
+			execute 'map ' . l:prefix . ' ' . a:key
 		endif
 	endfunction
 
-	" take me to your <leader>
+	" take me to your leader
+	" for single letter mappings
 	let mapleader=","
-	let maplocalleader="-"
-	" modes
 	call s:makePrefix('leader', '<leader>')
-	call s:makePrefix('leader', '<leader><leader>', 1)
+	call s:makePrefix('leader', '[leader]<leader>', 1)
+
+	" localleader
+	" for filetype-specific mappings
+	let maplocalleader="-"
+	call s:makePrefix('localleader', '<localleader>')
+	call s:makePrefix('localleader', '[localleader]<localleader>', 1)
+
+	" prefix
+	" for grouped/corded mappings
+	call s:makePrefix('prefix', '<space>')
+	call s:makePrefix('prefix', '[prefix]<space>', 1)
 
 	" expose the native mappings I've stolen
 		" TODO: abstract this a bit, perhaps a function that takes an array of keys to fix
@@ -227,6 +245,8 @@
 
 	" L-r => reload file [:edit]
 	map <leader>r :edit<cr>
+	" TODO: L-R => reload all opened tabs [:edit]
+	" map <leader>r :edit<cr>
 
 	" insert/append
 		" tab
@@ -235,18 +255,18 @@
 		noremap <leader>at a<tab>
 		noremap <leader>a<tab> a<tab>
 
-	" panes
+	" [panes]
 		" prefix
-		call s:makePrefix('panes', '<leader>n')
+		call s:makePrefix('panes', '[prefix]n')
 
 		" split down
 		map [panes]- :split<cr>
 		" split right
 		map [panes]s :vsplit<cr>
 
-	" tabs
+	" [tabs]
 		" prefix
-		call s:makePrefix('tabs', '<leader>t')
+		call s:makePrefix('tabs', '[prefix]t')
 		call s:makePrefix('tabs', '[tabs]t', 1)
 
 		" new, at [n:+1]
@@ -280,12 +300,12 @@
 		" move to [n:end]
 		map [tabs:1]m :<c-u>exe "tabmove ".v:count<cr>
 
-	" folding
+	" [folds]
 		" prefix
-		call s:makePrefix('folds', '<leader>z')
+		call s:makePrefix('folds', '[prefix]z')
 
-		nnoremap <silent> <space> @=(foldlevel('.')?'za':"\<space>")<cr>
-		vnoremap <space> zf
+		nnoremap <silent> [folds]<space> @=(foldlevel('.')?'za':"\<space>")<cr>
+		vnoremap [folds]<space> zf
 		nmap [folds]` :set foldlevel=0<cr>
 		nmap [folds]1 :set foldlevel=1<cr>
 		nmap [folds]2 :set foldlevel=2<cr>
@@ -297,7 +317,7 @@
 		nmap [folds]8 :set foldlevel=8<cr>
 		nmap [folds]9 :set foldlevel=9<cr>
 		nmap [folds]0 :set foldlevel=128<cr>
-		nmap [folds]z :call ToggleFold()<cr>
+		" nmap [folds]z :call ToggleFold()<cr>
 
 		let b:foldlevel=&l:foldlevel
 		function! ToggleFold()
@@ -472,8 +492,8 @@
 		autocmd FileType unite call s:uniteSettings()
 
 		" prefix
-		call s:makePrefix('unite', '<leader><space>')
-		call s:makePrefix('unite', '[unite]<space>', 1)
+		call s:makePrefix('unite', '[prefix]p')
+		call s:makePrefix('unite', '[unite]p', 1)
 
 		" open files
 			" flat
@@ -483,10 +503,10 @@
 			nmap [unite:1]F :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file directory file/new directory/new<cr>
 
 			" recursive
-			nmap [unite:0]p :Unite              -buffer-name=files -start-insert file_rec/async:!<cr>
-			nmap [unite:0]P :UniteWithBufferDir -buffer-name=files -start-insert file_rec/async:!<cr>
-			nmap [unite:1]p :Unite              -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
-			nmap [unite:1]P :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
+			nmap [unite:0]u :Unite              -buffer-name=files -start-insert file_rec/async:!<cr>
+			nmap [unite:0]U :UniteWithBufferDir -buffer-name=files -start-insert file_rec/async:!<cr>
+			nmap [unite:1]u :Unite              -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
+			nmap [unite:1]U :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
 
 		" search files
 			nmap [unite:0]g :Unite              grep:.<cr>

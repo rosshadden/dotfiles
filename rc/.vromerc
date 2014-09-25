@@ -48,5 +48,5 @@ map <M-R> R
 set searchengines+={"mdn": "https://developer.mozilla.org/en-US/search?q={{keyword}}", "wp": "http://en.wikipedia.org/wiki/{{keyword}}", "discogs": "http://discogs.com/search?q={{keyword}}", "gh": "http://github.com/search?q={{keyword}}", "gcache": "http://webcache.googleusercontent.com/search?q=cache:{{keyword}}", "image": "http://www.google.com/search?hl=en&tbm=isch&q={{keyword}}", "rd": "http://www.ruby-doc.org/q/{{keyword}}", "word": "http://www.wordnik.com/words/{{keyword}}"}
 
 # disabled sites
-set disablesites+=mail.google.com
+set disablesites+=mail.google.com,localhost
 
