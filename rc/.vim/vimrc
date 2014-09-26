@@ -317,7 +317,7 @@
 		nmap [folds]8 :set foldlevel=8<cr>
 		nmap [folds]9 :set foldlevel=9<cr>
 		nmap [folds]0 :set foldlevel=128<cr>
-		" nmap [folds]z :call ToggleFold()<cr>
+		nmap [folds]z :call ToggleFold()<cr>
 
 		let b:foldlevel=&l:foldlevel
 		function! ToggleFold()
@@ -492,8 +492,8 @@
 		autocmd FileType unite call s:uniteSettings()
 
 		" prefix
-		call s:makePrefix('unite', '[prefix]p')
-		call s:makePrefix('unite', '[unite]p', 1)
+		call s:makePrefix('unite', '[prefix]u')
+		call s:makePrefix('unite', '[unite]u', 1)
 
 		" open files
 			" flat
@@ -503,10 +503,10 @@
 			nmap [unite:1]F :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file directory file/new directory/new<cr>
 
 			" recursive
-			nmap [unite:0]u :Unite              -buffer-name=files -start-insert file_rec/async:!<cr>
-			nmap [unite:0]U :UniteWithBufferDir -buffer-name=files -start-insert file_rec/async:!<cr>
-			nmap [unite:1]u :Unite              -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
-			nmap [unite:1]U :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
+			nmap [unite:0]p :Unite              -buffer-name=files -start-insert file_rec/async:!<cr>
+			nmap [unite:0]P :UniteWithBufferDir -buffer-name=files -start-insert file_rec/async:!<cr>
+			nmap [unite:1]p :Unite              -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
+			nmap [unite:1]P :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
 
 		" search files
 			nmap [unite:0]g :Unite              grep:.<cr>
