@@ -35,8 +35,14 @@
 			NeoBundle 'Lokaltog/vim-easymotion'
 
 		" languages
+			" autoformat support for multiple
 			NeoBundle 'Chiel92/vim-autoformat'
+			" js
+			NeoBundle 'jelera/vim-javascript-syntax'
+			" hbs
 			NeoBundle 'mustache/vim-mustache-handlebars'
+			" jsdoc
+			NeoBundle 'heavenshell/vim-jsdoc'
 
 		" unite
 			NeoBundle 'Shougo/unite.vim'
@@ -462,21 +468,27 @@
 			let b:SuperTabDisabled = 1
 
 			" vertical selecting (`j` and `k` is default in normal mode)
+			map <buffer> <c-j> <plug>(unite_select_next_line)
 			imap <buffer> <c-j> <plug>(unite_select_next_line)
+			map <buffer> <c-k> <plug>(unite_select_previous_line)
 			imap <buffer> <c-k> <plug>(unite_select_previous_line)
 
 			" action menu (`a` is default in normal mode)
+			map <buffer> <c-a> <plug>(unite_choose_action)
 			imap <buffer> <c-a> <plug>(unite_choose_action)
 			" TODO: get something like this working: (may depend on https://github.com/Shougo/unite.vim/issues/280)
 			vmap <buffer> a <plug>(unite_choose_action)
 
 			" open in vertical split
-			nmap <buffer><expr> - unite#do_action('split')
+			map <buffer><expr> - unite#do_action('split')
+			map <buffer><expr> <c--> unite#do_action('split')
 			imap <buffer><expr> <c--> unite#do_action('split')
 			" open in horizontal split
-			nmap <buffer><expr> s unite#do_action('vsplit')
+			map <buffer><expr> s unite#do_action('vsplit')
+			map <buffer><expr> <c-s> unite#do_action('vsplit')
 			imap <buffer><expr> <c-s> unite#do_action('vsplit')
 			" open in new tab (`t` is default in normal mode)
+			map <buffer><expr> <c-t> unite#do_action('tabopen')
 			imap <buffer><expr> <c-t> unite#do_action('tabopen')
 
 			" toggle auto preview
@@ -487,9 +499,9 @@
 
 			let unite = unite#get_current_unite()
 			if unite.profile_name ==# 'search'
-				nmap <silent><buffer><expr> r     unite#do_action('replace')
+				nmap <silent><buffer><expr> r unite#do_action('replace')
 			else
-				nmap <silent><buffer><expr> r     unite#do_action('rename')
+				nmap <silent><buffer><expr> r unite#do_action('rename')
 			endif
 		endfunction
 		autocmd FileType unite call s:uniteSettings()
@@ -622,10 +634,10 @@
 		nmap s <plug>(easymotion-s2)
 		nmap S <plug>(easymotion-t2)
 
-		map <leader>l <Plug>(easymotion-lineforward)
-		map <leader>j <Plug>(easymotion-j)
-		map <leader>k <Plug>(easymotion-k)
-		map <leader>h <Plug>(easymotion-linebackward)
+		map <leader>l <plug>(easymotion-lineforward)
+		map <leader>j <plug>(easymotion-j)
+		map <leader>k <plug>(easymotion-k)
+		map <leader>h <plug>(easymotion-linebackward)
 
 	" vim-tmux-navigator:
 		" let the nav shortcuts work anywhere
@@ -654,3 +666,9 @@
 		imap <silent> <m-k> <esc>:TmuxNavigateUp<cr>
 		imap <silent> <m-j> <esc>:TmuxNavigateRight<cr>
 		imap <silent> <m-\> <esc>:TmuxNavigatePrevious<cr>
+	
+	" vim-jsdoc
+		let g:jsdoc_default_mapping = 0
+
+		autocmd FileType javascript
+			\ nmap <silent> <localleader>d <plug>(jsdoc)
