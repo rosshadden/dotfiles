@@ -2,7 +2,7 @@
 	local gears = require("gears")
 	local wibox = require("wibox")
 	local awful = require("awful")
-
+	--
 	local themeName = "ross"
 	theme = require("beautiful")
 	theme.init(awful.util.getdir("config") .. "/themes/" .. themeName .. "/theme.lua")

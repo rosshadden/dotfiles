@@ -74,6 +74,9 @@
 			NeoBundle 'xoria256.vim'
 			NeoBundle 'altercation/vim-colors-solarized'
 			NeoBundle 'chriskempson/base16-vim'
+			" sexy scrolling, with easing and animation
+			" NOTE: messes with mouse scrolling, which currently upsets me
+			" NeoBundle 'joeytwiddle/sexy_scroller.vim'
 
 		" integration
 			" git
@@ -651,4 +654,3 @@
 		imap <silent> <m-k> <esc>:TmuxNavigateUp<cr>
 		imap <silent> <m-j> <esc>:TmuxNavigateRight<cr>
 		imap <silent> <m-\> <esc>:TmuxNavigatePrevious<cr>
-

@@ -1,6 +1,6 @@
 --
 local awful = require("awful")
-
+--
 local binds = require("modules/binds")
 local tags = require("modules/tags")
 local util = require("modules/util")
@@ -51,5 +51,14 @@ return {
 			name = { "CopyQ", "Zeal", "Terminator Preferences" }
 		},
 		properties = { floating = true }
+	-- }, {
+	-- 	-- hangouts
+	-- 	rule = {
+	-- 		class = { "Chrome" },
+	-- 		role = { "pop-up" }
+	-- 	},
+	-- 	properties = { floating = true }
+	-- 	-- except = { name = "Hangouts" },
+	-- 	-- callback = awful.client.setslave
 	}
 }

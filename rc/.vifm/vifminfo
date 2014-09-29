@@ -1,0 +1,330 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Bookmarks:
+'D
+	/home/ross/Dropbox/
+	../
+1410047924
+'H
+	/home/ross/
+	../
+1408411741
+'b
+	/home/ross/bin/
+	../
+1408412019
+'d
+	/home/ross/dotfiles/
+	../
+1410047924
+'h
+	/home/ross/
+	../
+1408412019
+'z
+	/home/ross/.vifm
+	../
+1408411741
+
+# TUI:
+ar
+q0
+v1
+oh
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/home/ross
+	tmp/
+9
+d/home/ross/tmp
+	../
+0
+d/home/ross
+	private/
+8
+d/home/ross/private
+	../
+0
+d/home/ross
+	lab/
+6
+d/home/ross/lab
+	homebrew/
+1
+d/home/ross/lab/homebrew
+	gameconfig.txt
+4
+d/home/ross/dotfiles
+	../
+0
+d/home/ross
+	Dropbox/
+2
+d/home/ross/Dropbox
+	Camera Uploads/
+2
+d/home/ross/Dropbox/Camera Uploads
+	2014-09-06 14.25.27.jpg
+8
+d/home/ross/Dropbox
+	Camera Uploads/
+6
+d/home/ross
+	Dropbox/
+9
+d/home
+	ross/
+1
+d/
+	media/
+11
+d/media
+	main/
+1
+d/media/main
+	video/
+1
+d/media/main/video
+	screencast/
+2
+d/media/main
+	downloads/
+8
+d/media/main/downloads
+	stream/
+1
+d/media/main/downloads/stream
+	Doctor_Who_2005.2013_Christmas_Special.The_Time_of_The_Doctor.720p_HDTV_x264-FoV/
+9
+d/media/main/downloads/stream/Doctor_Who_2005.2013_Christmas_Special.The_Time_of_The_Doctor.720p_HDTV_x264-FoV
+	doctor_who_2004.2013_christmas_special.the_time_of_the_doctor.720p_hdtv_x264-fov.nfo
+32
+d/media/main/downloads/stream
+	../
+0
+d/media/main/downloads
+	../
+0
+d/media/main
+	video/
+1
+d/media/main/video
+	tv/
+1
+d/media/main/video/tv
+	Doctor Who/
+13
+d/media/main/video/tv/Doctor Who
+	doctor.who.2005.s08e02.hdtv.x264-tla.mp4
+9
+d/media/main/video/tv
+	Game Of Thrones/
+11
+d/media/main/video
+	tv/
+1
+d/media/main/video/tv
+	Continuum/
+8
+d/media/main/video/tv/Continuum
+	continuum.s02e02.720p.hdtv.x264-2hd.mkv
+2
+d/media/main/video/tv
+	Continuum/
+8
+d/media/main/video
+	tv/
+5
+d/media/main
+	video/
+12
+d/media
+	main/
+2
+d/
+	home/
+4
+d/home
+	ross/
+2
+d/home/ross
+	dev/
+4
+d/home
+	ross/
+2
+d/
+	media/
+8
+d/media
+	data/
+1
+d/media/data
+	../
+0
+d/media
+	main/
+2
+d/media/main
+	video/
+12
+d/media/main/video
+	tv/
+5
+d/media/main/video/tv
+	Continuum/
+8
+d/media/main/video
+	tv/
+5
+d/media/main/video/tv
+	Continuum/
+8
+d/media/main/video
+	tv/
+5
+d/media/main
+	downloads/
+5
+d/media/main/downloads
+	stream/
+3
+d/media/main/downloads/stream
+	Doctor.Who.2005.S08E06.720p.HDTV.x264-TLA/
+1
+d/media/main/downloads/stream/Doctor.Who.2005.S08E06.720p.HDTV.x264-TLA
+	doctor.who.2005.s08e06.720p.hdtv.x264-tla/
+2
+d/media/main/downloads/stream/Doctor.Who.2005.S08E06.720p.HDTV.x264-TLA/doctor.who.2005.s08e06.720p.hdtv.x264-tla
+	../
+0
+d
+
+# Right window history (oldest to newest):
+D/home/ross
+	dotfiles/
+4
+D/home
+	ross/
+2
+D/
+	home/
+4
+D/home
+	ross/
+2
+D/home/ross
+	tmp/
+9
+D/home
+	ross/
+2
+D/home/ross
+	tmp/
+9
+D/home/ross/tmp
+	npm-23553-74JZhjgz/
+7
+D/home/ross
+	tmp/
+9
+D/home/ross/tmp
+	gameconfigu.txt
+8
+D/home/ross
+	tmp/
+9
+D/home/ross/tmp
+	npm-14371-tWfw1Y22/
+6
+D/home/ross
+	tmp/
+9
+D/home/ross/x
+	atom/
+2
+D/home/ross
+	x/
+10
+D/home/ross/x
+	atom/
+2
+D/home/ross
+	x/
+11
+D/home
+	ross/
+2
+D/
+	media/
+8
+D/media
+	data/
+1
+D/media/data
+	games/
+1
+D/media
+	main/
+2
+D/media/main
+	video/
+12
+D/media/main/video
+	tv/
+5
+D/media/main/video/tv
+	Doctor Who/
+9
+D/media/main/video/tv/Doctor Who
+	doctor.who.2005.s08e06.720p.hdtv.x264-tla.mkv
+13
+D
+
+# Command line history (oldest to newest):
+:h
+:help sort
+:invert o
+:help
+:sort
+:!spacefm
+:!spacefm .
+:q
+
+# Search history (oldest to newest):
+/app
+/o
+/npm
+/doc
+
+# Prompt history (oldest to newest):
+pr
+pgameconfig.txtaoeu
+pgameconfig.txt
+pgameconfigu
+
+# Local filter history (oldest to newest):
+
+# Registers:
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+t/home/ross/.vifm/Trash/000_gameconfig.txtaoeu
+	/home/ross/tmp/gameconfig.txtaoeu
+t/home/ross/.vifm/Trash/000_gameconfigu.txt
+	/home/ross/tmp/gameconfigu.txt
+
+# State:
+f
+i1
+[.1
+[F
+F
+I1
+].1
+]F
+s0

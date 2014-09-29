@@ -30,7 +30,7 @@ local binds = {}
 		awful.key({ SUPER }, "Escape", awful.tag.history.restore),
 
 		-- Move current client to previous tag.
-		awful.key({ SUPER, "Shift"   }, "h",	 function()
+		awful.key({ SUPER, "Shift" }, "h", function()
 			if client.focus then
 				local index = ((awful.tag.getidx() - 1) % 10)
 				index = (index > 0) and index or 9
@@ -42,7 +42,7 @@ local binds = {}
 		end),
 
 		-- Move current client to next tag.
-		awful.key({ SUPER, "Shift"   }, "l",	 function()
+		awful.key({ SUPER, "Shift" }, "l", function()
 			if client.focus then
 				local index = ((awful.tag.getidx() + 1) % 10)
 				index = (index > 0) and index or 1
@@ -53,53 +53,55 @@ local binds = {}
 			end
 		end),
 
-		awful.key({ SUPER,		   }, "j",
+		awful.key({ SUPER, }, "j",
 			function()
 				awful.client.focus.byidx( 1)
 				if client.focus then client.focus:raise() end
 			end),
-		awful.key({ SUPER,		   }, "k",
+		awful.key({ SUPER, }, "k",
 			function()
 				awful.client.focus.byidx(-1)
 				if client.focus then client.focus:raise() end
 			end),
-		awful.key({ SUPER,		   }, "w", function()
+		awful.key({ SUPER, }, "w", function()
 			apps.menu.visible = true
 		end),
 
 		-- Layout manipulation
-		awful.key({ SUPER, "Shift"   }, "j", function() awful.client.swap.byidx(  1)	end),
-		awful.key({ SUPER, "Shift"   }, "k", function() awful.client.swap.byidx( -1)	end),
+		awful.key({ SUPER, "Shift" }, "j", function() awful.client.swap.byidx( 1) end),
+		awful.key({ SUPER, "Shift" }, "k", function() awful.client.swap.byidx(-1) end),
 		awful.key({ SUPER, "Control" }, "l", function() awful.screen.focus_relative( 1) end),
 		awful.key({ SUPER, "Control" }, "h", function() awful.screen.focus_relative(-1) end),
-		awful.key({ SUPER,		   }, "u", awful.client.urgent.jumpto),
+		awful.key({ SUPER, }, "u", awful.client.urgent.jumpto),
 
 		-- Super+Tab: cycle through all clients
-		awful.key({ SUPER,           }, "Tab"   , function() alttab.altTab()          end),
-		awful.key({ SUPER, "Shift"   }, "Tab"   , function() alttab.altTabBack()      end),
+		awful.key({ SUPER, }, "Tab", function() alttab.altTab() end),
+		awful.key({ SUPER, "Shift" }, "Tab", function() alttab.altTabBack() end),
 
 		-- Alt+Tab: cycle through all clients
-		awful.key({ META,           }, "Tab"   , function() alttab.altTab({ auto_release = true })          end),
-		awful.key({ META, "Shift"   }, "Tab"   , function() alttab.altTabBack({ auto_release = true })      end),
+		awful.key({ META, }, "Tab", function() alttab.altTab({ auto_release = true }) end),
+		awful.key({ META, "Shift" }, "Tab", function() alttab.altTabBack({ auto_release = true }) end),
 
 		-- Standard program
-		awful.key({ SUPER,		   }, "t", function() apps.run("terminal") end),
-		awful.key({ SUPER,	"Shift" }, "t", apps.bake("tmux")),
+		awful.key({ SUPER, }, "t", function() apps.run("terminal") end),
+		awful.key({ SUPER, "Shift" }, "t", apps.bake("tmux")),
 
 		awful.key({ SUPER, "Control", "Shift" }, "r", function()
 			mouse.coords({ x = 0, y = 0 })
 			awful.util.restart()
 		end),
-		-- awful.key({ SUPER, "Shift"   }, "q", awesome.quit),
+		-- awful.key({ SUPER, "Shift" }, "q", awesome.quit),
 
-		awful.key({ SUPER,	"Control" }, "j",	 function() awful.tag.incmwfact( 0.05)	end),
-		awful.key({ SUPER,	"Control" }, "k",	 function() awful.tag.incmwfact(-0.05)	end),
-		-- awful.key({ SUPER, "Control", "Shift"   }, "h",	 function() awful.tag.incnmaster( 1)	  end),
-		-- awful.key({ SUPER, "Control", "Shift"   }, "l",	 function() awful.tag.incnmaster(-1)	  end),
-		-- awful.key({ SUPER, "Control" }, "h",	 function() awful.tag.incncol( 1)		 end),
-		-- awful.key({ SUPER, "Control" }, "l",	 function() awful.tag.incncol(-1)		 end),
-		awful.key({ SUPER,		   }, "space", function() awful.layout.inc(layouts,  1) end),
-		awful.key({ SUPER, "Shift"   }, "space", function() awful.layout.inc(layouts, -1) end),
+		-- resize
+		awful.key({ SUPER }, "[", function() awful.tag.incmwfact( 0.05) end),
+		awful.key({ SUPER }, "]", function() awful.tag.incmwfact(-0.05) end),
+		awful.key({ SUPER, "Shift" }, "[", function() awful.tag.incnmaster( 1) end),
+		awful.key({ SUPER, "Shift" }, "]", function() awful.tag.incnmaster(-1) end),
+		awful.key({ SUPER, "Control" }, "[", function() awful.tag.incncol( 1) end),
+		awful.key({ SUPER, "Control" }, "]", function() awful.tag.incncol(-1) end),
+
+		awful.key({ SUPER }, "space", function() awful.layout.inc(layouts, 1) end),
+		awful.key({ SUPER, "Shift" }, "space", function() awful.layout.inc(layouts, -1) end),
 
 		awful.key({ SUPER, "Control" }, "n", awful.client.restore),
 
@@ -293,7 +295,7 @@ local binds = {}
 		awful.key({ SUPER }, "c", function()
 			util.run("copyq toggle")
 		end),
-		
+
 		-- Debug
 		awful.key({ SUPER, "Control", "Shift" }, "space", function()
 			log(screen[mouse.screen].geometry.width)
@@ -301,9 +303,9 @@ local binds = {}
 	)
 
 	local clientkeys = awful.util.table.join(
-		awful.key({ SUPER,		   }, "f",	  function(c) c.fullscreen = not c.fullscreen  end),
-		awful.key({ SUPER, "Shift" }, "c",	  function(c) c:kill()						 end),
-		awful.key({ SUPER, "Control" }, "space",  awful.client.floating.toggle					 ),
+		awful.key({ SUPER }, "f", function(c) c.fullscreen = not c.fullscreen end),
+		awful.key({ SUPER, "Shift" }, "c", function(c) c:kill() end),
+		awful.key({ SUPER, "Control" }, "space", awful.client.floating.toggle),
 		awful.key({ SUPER, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end),
 
 		-- Move clients between screens
@@ -314,9 +316,9 @@ local binds = {}
 			awful.client.movetoscreen(c, c.screen - 1)
 		end),
 
-		awful.key({ SUPER,		   }, "t",	  function(c) c.ontop = not c.ontop			end),
+		awful.key({ SUPER, "Control" }, "t", function(c) c.ontop = not c.ontop end),
 
-		awful.key({ SUPER,		   }, "n", function(c)
+		awful.key({ SUPER, }, "n", function(c)
 			-- The client currently has the input focus, so it cannot be
 			-- minimized, since minimized clients can't have the focus.
 			c.minimized = true
