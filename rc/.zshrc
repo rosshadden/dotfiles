@@ -49,7 +49,7 @@
 ################
 # PLUGINS
 ################
-	plugins=(battery extract git-extras node npm python nyan sublime vi-mode history-substring-search tmux systemd zsh-syntax-highlighting fasd)
+	plugins=(battery extract git-extras node npm python nyan sublime vi-mode history-substring-search systemd zsh-syntax-highlighting fasd)
 
 	. $ZSH/oh-my-zsh.sh
 	. $DOTS/shell/plugins/vim.zsh
@@ -111,6 +111,7 @@
 		bindkey -M vicmd '' redo
 		bindkey -M viins 'R' history-incremental-pattern-search-backward
 		bindkey -M vicmd 'R' history-incremental-pattern-search-backward
+		bindkey -M vicmd ' ' vi-forward-char
 
 	# Fish-like syntax highlighting
 	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)

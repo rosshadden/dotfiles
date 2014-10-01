@@ -254,8 +254,7 @@
 
 	" L-r => reload file [:edit]
 	map <leader>r :edit<cr>
-	" TODO: L-R => reload all opened tabs [:edit]
-	" map <leader>r :edit<cr>
+	map <leader>R :edit!<cr>
 
 	" insert/append
 		" tab
