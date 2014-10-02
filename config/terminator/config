@@ -20,7 +20,6 @@
     cursor_color = "#dcff00"
     foreground_color = "#ffffff"
     scroll_on_output = False
-    show_titlebar = False
     background_color = "#1c1c1c"
     scrollback_lines = 4096
   [[solarized-dark]]
