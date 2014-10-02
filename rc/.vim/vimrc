@@ -30,6 +30,8 @@
 			NeoBundle 'ervandew/supertab'
 			" <tab>-complete in the search prompt
 			NeoBundle 'SearchComplete'
+			" let `/` and `?` use perl regex
+			NeoBundle 'othree/eregex.vim'
 
 		" navigation
 			NeoBundle 'Lokaltog/vim-easymotion'
@@ -345,9 +347,10 @@
 
 	" searching
 		" clear highlighted search
-		nmap <leader>/ :nohlsearch<cr>
+		nmap [leader:1]/ :nohlsearch<cr>
 		" search for selected word
 		vmap <leader>/ y/<c-r>"<cr>
+		vmap <leader>? y?<c-r>"<cr>
 
 	" visual shifting (does not exit Visual mode)
 	vnoremap < <gv
@@ -379,10 +382,10 @@
 		command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 		" reload vimrc config
-		cmap reload source ~/.vim/vimrc
+		command! Reload source ~/.vim/vimrc
 
 		" change Working Directory to that of the current file
-		cmap cwd lcd %:p:h
+		command! CWD lcd %:p:h
 
 		" diff unsaved changes
 		if !exists(":DiffChanges")
@@ -639,14 +642,8 @@
 		map <leader>h <plug>(easymotion-linebackward)
 
 	" vim-tmux-navigator:
-		" let the nav shortcuts work anywhere
+		" use my own mappings, <meta> instead of <control>
 		let g:tmux_navigator_no_mappings = 1
-
-		map <silent> <c-h> :TmuxNavigateLeft<cr>
-		map <silent> <c-l> :TmuxNavigateRight<cr>
-		map <silent> <c-k> :TmuxNavigateUp<cr>
-		map <silent> <c-j> :TmuxNavigateDown<cr>
-		map <silent> <c-\> :TmuxNavigatePrevious<cr>
 
 		map <silent> <m-h> :TmuxNavigateLeft<cr>
 		map <silent> <m-l> :TmuxNavigateRight<cr>
@@ -654,20 +651,33 @@
 		map <silent> <m-j> :TmuxNavigateDown<cr>
 		map <silent> <m-\> :TmuxNavigatePrevious<cr>
 
-		imap <silent> <c-h> <esc>:TmuxNavigateLeft<cr>
-		imap <silent> <c-l> <esc>:TmuxNavigateDown<cr>
-		imap <silent> <c-k> <esc>:TmuxNavigateUp<cr>
-		imap <silent> <c-j> <esc>:TmuxNavigateRight<cr>
-		imap <silent> <c-\> <esc>:TmuxNavigatePrevious<cr>
+		map <silent> <c-h> :TmuxNavigateLeft<cr>
+		map <silent> <c-l> :TmuxNavigateRight<cr>
+		map <silent> <c-k> :TmuxNavigateUp<cr>
+		map <silent> <c-j> :TmuxNavigateDown<cr>
+		map <silent> <c-\> :TmuxNavigatePrevious<cr>
 
 		imap <silent> <m-h> <esc>:TmuxNavigateLeft<cr>
 		imap <silent> <m-l> <esc>:TmuxNavigateDown<cr>
 		imap <silent> <m-k> <esc>:TmuxNavigateUp<cr>
 		imap <silent> <m-j> <esc>:TmuxNavigateRight<cr>
 		imap <silent> <m-\> <esc>:TmuxNavigatePrevious<cr>
-	
+
+		imap <silent> <c-h> <esc>:TmuxNavigateLeft<cr>
+		imap <silent> <c-l> <esc>:TmuxNavigateDown<cr>
+		imap <silent> <c-k> <esc>:TmuxNavigateUp<cr>
+		imap <silent> <c-j> <esc>:TmuxNavigateRight<cr>
+		imap <silent> <c-\> <esc>:TmuxNavigatePrevious<cr>
+
 	" vim-jsdoc
 		let g:jsdoc_default_mapping = 0
 
 		autocmd FileType javascript
 			\ nmap <silent> <localleader>d <plug>(jsdoc)
+
+	" eregex
+		" disable the default `/` and `?` override
+		let g:eregex_default_enable = 0
+
+		nnoremap <leader>/ :M/
+		nnoremap <leader>? :M?

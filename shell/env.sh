@@ -7,8 +7,8 @@
 	export PATH=$PATH:$DOTS/bin:$HOME/local/bin:$HOME/.local/bin
 	# ruby (if installed)
 	[[ -e /usr/bin/ruby ]] && export PATH="$PATH:`ruby -e 'puts Gem.user_dir'`/bin:$HOME/.rvm/bin"
-	# java
-	export PATH=$PATH:$JAVA_HOME/bin
+	# java (if installed)
+	[[ -e /usr/bin/java ]] && export PATH=$PATH:$JAVA_HOME/bin
 	# android
 	export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
@@ -36,6 +36,12 @@
 ################
 	# used by some zsh themes (ex: agnoster)
 	export DEFAULT_USER=$USER
+
+	# sensible terminal
+	export TERMINAL=terminator
+
+	# sensible pager
+	export PAGER="less -FRSX"
 
 	# enable XON/XOFF flow control
 	stty -ixon
