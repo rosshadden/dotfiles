@@ -62,7 +62,7 @@ bindsym $mod+b workspace prev
 bindsym $mod+f workspace next
 
 # back to last workspace                                               ($mod+')
-bindsym $mod+apostrophe workspace back_and_forth
+bindsym $mod+Escape workspace back_and_forth
 workspace_auto_back_and_forth yes
 
 # split in horizontal orientation

@@ -82,11 +82,17 @@
 
 	# alias
 	a = add
+	b = branch
 	c = commit
-	co = checkout
-	rb = rebase
+	f = fetch
 	i = in
 	o = out
+	r = remote
+	ch = checkout
+	co = checkout
+	rb = rebase
+	sh = show
+	t = tag
 [remote "origin"]
 	#fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
 [grep]
