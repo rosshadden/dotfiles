@@ -2,15 +2,39 @@
 # VARIABLES
 ################
 	set $mod Mod4
+	set $alt Mod1
 
-	set $1 1:web
-	set $2 2:dev
-	set $3 3:sync
-	set $4 4:hack
-	set $5 5:files
-	set $6 6:media
-	set $9 9:run
-	set $0 0:chat
+	set $0 0
+	set $1 1: web
+	set $2 2: dev
+	set $3 3: sync
+	set $4 4: hack
+	set $5 5: files
+	set $6 6: media
+	set $7 7: games
+	set $8 8
+	set $9 9: run
+	set $10 10: chat
+	set $11 11
+	set $12 12
+
+	# return to the default mode
+	set $return mode "default"
+
+	# default apps
+	set $runner rofi -show run
+	set $launcher j4-dmenu-desktop --dmenu="rofi -dmenu -p launch:"
+	set $terminal i3-sensible-terminal
+	set $tmux i3-sensible-terminal -x tmux -2 new-session -A -s
+
+	# UI
+	set $borderWidth 8
+
+
+################
+# START
+################
+	exec --no-startup-id sh ~/.fehbg
 
 
 ################
@@ -18,7 +42,7 @@
 ################
 	# Font for window titles. Will also be used by the bar unless a different font
 	# is used in the bar {} block below.
-	font pango:Ubuntu Mono 12
+	font pango:Ubuntu Mono, FontAwesome 12
 
 	workspace_auto_back_and_forth yes
 
@@ -28,22 +52,24 @@
 	# Don't follow mouse focus
 	focus_follows_mouse no
 
+	# window borders
+	new_window normal $borderWidth
+	new_float pixel $borderWidth
+
+	mouse_warping none
+
 
 ################
 # BINDS
 ################
-	# start a terminal
-	bindsym $mod+t exec i3-sensible-terminal
+	# open terminal
+	bindsym $mod+t exec $terminal
 
-	# kill focused window
-	bindsym $mod+w kill
+	# open runner
+	bindsym $mod+r exec $runner
 
-	# start dmenu (a program launcher)
-	bindsym $mod+r exec dmenu_run
-	# There also is the (new) i3-dmenu-desktop which only displays applications
-	# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-	# installed.
-	bindsym $mod+p exec --no-startup-id i3-dmenu-desktop
+	# open launcher
+	bindsym $mod+p exec --no-startup-id $launcher
 
 	# lock screen
 	bindsym $mod+Delete exec i3lock
@@ -60,19 +86,19 @@
 	bindsym $mod+Shift+k move up
 	bindsym $mod+Shift+l move right
 
-	# previous/next workspace                                           ($mod+[ui])
+	# previous/next workspace
 	bindsym $mod+b workspace prev
 	bindsym $mod+f workspace next
 
-	# back to last workspace                                               ($mod+')
+	# back to last workspace
 	bindsym $mod+Escape workspace back_and_forth
 	bindsym $mod+Shift+Escape move container to workspace back_and_forth; workspace back_and_forth
 
 	# split in horizontal orientation
-	bindsym $mod+s split h
+	bindsym $mod+s split horizontal
 
 	# split in vertical orientation
-	bindsym $mod+minus split v
+	bindsym $mod+minus split vertical
 
 	# change container layout (stacked, tabbed, toggle split)
 	bindsym $mod+a layout tabbed
@@ -83,39 +109,35 @@
 	bindsym $mod+Shift+f fullscreen
 	bindsym $mod+Control+Shift+f fullscreen global
 
-	# toggle tiling / floating
-	bindsym $mod+Shift+space floating toggle
-
-	# change focus between tiling / floating windows
-	bindsym $mod+space focus mode_toggle
-
-	# focus the parent/child container
-	bindsym $mod+z focus parent
-	bindsym $mod+Shift+z focus child
-
 	# switch to workspace
-	bindsym $mod+1 workspace 1
-	bindsym $mod+2 workspace 2
-	bindsym $mod+3 workspace 3
-	bindsym $mod+4 workspace 4
-	bindsym $mod+5 workspace 5
-	bindsym $mod+6 workspace 6
-	bindsym $mod+7 workspace 7
-	bindsym $mod+8 workspace 8
-	bindsym $mod+9 workspace 9
-	bindsym $mod+0 workspace 10
+	bindsym $mod+grave workspace $0
+	bindsym $mod+1 workspace $1
+	bindsym $mod+2 workspace $2
+	bindsym $mod+3 workspace $3
+	bindsym $mod+4 workspace $4
+	bindsym $mod+5 workspace $5
+	bindsym $mod+6 workspace $6
+	bindsym $mod+7 workspace $7
+	bindsym $mod+8 workspace $8
+	bindsym $mod+9 workspace $9
+	bindsym $mod+0 workspace $10
+	bindsym $mod+bracketleft workspace $11
+	bindsym $mod+bracketright workspace $12
 
 	# move focused container to workspace
-	bindsym $mod+Shift+1 move container to workspace 1
-	bindsym $mod+Shift+2 move container to workspace 2
-	bindsym $mod+Shift+3 move container to workspace 3
-	bindsym $mod+Shift+4 move container to workspace 4
-	bindsym $mod+Shift+5 move container to workspace 5
-	bindsym $mod+Shift+6 move container to workspace 6
-	bindsym $mod+Shift+7 move container to workspace 7
-	bindsym $mod+Shift+8 move container to workspace 8
-	bindsym $mod+Shift+9 move container to workspace 9
-	bindsym $mod+Shift+0 move container to workspace 10
+	bindsym $mod+Shift+grave move container to workspace $0
+	bindsym $mod+Shift+1 move container to workspace $1
+	bindsym $mod+Shift+2 move container to workspace $2
+	bindsym $mod+Shift+3 move container to workspace $3
+	bindsym $mod+Shift+4 move container to workspace $4
+	bindsym $mod+Shift+5 move container to workspace $5
+	bindsym $mod+Shift+6 move container to workspace $6
+	bindsym $mod+Shift+7 move container to workspace $7
+	bindsym $mod+Shift+8 move container to workspace $8
+	bindsym $mod+Shift+9 move container to workspace $9
+	bindsym $mod+Shift+0 move container to workspace $10
+	bindsym $mod+Shift+bracketleft move container to workspace $11
+	bindsym $mod+Shift+bracketright move container to workspace $12
 
 	# move the currently focused window to the scratchpad
 	bindsym $mod+slash scratchpad show
@@ -134,18 +156,176 @@
 ################
 # MEDIA
 ################
+	# volume
 	bindsym XF86AudioRaiseVolume exec "pulseaudio-ctl up"
 	bindsym XF86AudioLowerVolume exec "pulseaudio-ctl down"
 	bindsym XF86AudioMute exec "pulseaudio-ctl mute"
+	# playback
 	bindsym XF86AudioPlay exec "playerctl play-pause"
 	bindsym XF86AudioNext exec "playerctl next"
 	bindsym XF86AudioPrev exec "playerctl previous"
+	# TODO: screenshot
 
 
 ################
 # MODES
 ################
-	# resize window (you can also use the mouse for that)
+	mode "leader" {
+		# close focused window
+		bindsym w kill; $return
+
+		# TODO: [W] kill with fire
+
+		bindsym Return $return
+		bindsym Escape $return
+	}
+
+	mode "prefix" {
+		bindsym l mode "layout"
+		bindsym m mode "mouse"
+		bindsym r mode "resize"
+		bindsym t mode "tmux"
+
+		bindsym Return $return
+		bindsym Escape $return
+	}
+
+	mode "mark" {
+		# by name
+			bindsym Return exec i3-input -F 'mark %s' -P 'Mark name: '; $return
+
+		# by number
+			bindsym grave mark mark-0; $return
+			bindsym 1 mark mark-1; $return
+			bindsym 2 mark mark-2; $return
+			bindsym 3 mark mark-3; $return
+			bindsym 4 mark mark-4; $return
+			bindsym 5 mark mark-5; $return
+			bindsym 6 mark mark-6; $return
+			bindsym 7 mark mark-7; $return
+			bindsym 8 mark mark-8; $return
+			bindsym 9 mark mark-9; $return
+			bindsym 0 mark mark-10; $return
+			bindsym bracketleft mark mark-11; $return
+			bindsym bracketright mark mark-12; $return
+
+		# by letter
+			bindsym a mark mark-a; $return
+			bindsym b mark mark-b; $return
+			bindsym c mark mark-c; $return
+			bindsym d mark mark-d; $return
+			bindsym e mark mark-e; $return
+			bindsym f mark mark-f; $return
+			bindsym g mark mark-g; $return
+			bindsym h mark mark-h; $return
+			bindsym i mark mark-i; $return
+			bindsym j mark mark-j; $return
+			bindsym k mark mark-k; $return
+			bindsym l mark mark-l; $return
+			bindsym m mark mark-m; $return
+			bindsym n mark mark-n; $return
+			bindsym o mark mark-o; $return
+			bindsym p mark mark-p; $return
+			bindsym q mark mark-q; $return
+			bindsym r mark mark-r; $return
+			bindsym s mark mark-s; $return
+			bindsym t mark mark-t; $return
+			bindsym u mark mark-u; $return
+			bindsym v mark mark-v; $return
+			bindsym w mark mark-w; $return
+			bindsym x mark mark-x; $return
+			bindsym y mark mark-y; $return
+			bindsym z mark mark-z; $return
+
+		# exit
+			bindsym Return $return
+			bindsym Escape $return
+	}
+
+	mode "goto" {
+		# by name
+			bindsym Return exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '; $return
+
+		# by number
+			bindsym grave [con_mark="mark-0"] focus; $return
+			bindsym 1 [con_mark="mark-1"] focus; $return
+			bindsym 2 [con_mark="mark-2"] focus; $return
+			bindsym 3 [con_mark="mark-3"] focus; $return
+			bindsym 4 [con_mark="mark-4"] focus; $return
+			bindsym 5 [con_mark="mark-5"] focus; $return
+			bindsym 6 [con_mark="mark-6"] focus; $return
+			bindsym 7 [con_mark="mark-7"] focus; $return
+			bindsym 8 [con_mark="mark-8"] focus; $return
+			bindsym 9 [con_mark="mark-9"] focus; $return
+			bindsym 0 [con_mark="mark-10"] focus; $return
+			bindsym bracketleft [con_mark="mark-11"] focus; $return
+			bindsym bracketright [con_mark="mark-12"] focus; $return
+
+		# by letter
+			bindsym a [con_mark="mark-a"] focus; $return
+			bindsym b [con_mark="mark-b"] focus; $return
+			# bindsym c [con_mark="mark-c"] focus; $return
+			bindsym d [con_mark="mark-d"] focus; $return
+			bindsym e [con_mark="mark-e"] focus; $return
+			# bindsym f [con_mark="mark-f"] focus; $return
+			bindsym g [con_mark="mark-g"] focus; $return
+			bindsym h [con_mark="mark-h"] focus; $return
+			bindsym i [con_mark="mark-i"] focus; $return
+			bindsym j [con_mark="mark-j"] focus; $return
+			bindsym k [con_mark="mark-k"] focus; $return
+			bindsym l [con_mark="mark-l"] focus; $return
+			bindsym m [con_mark="mark-m"] focus; $return
+			bindsym n [con_mark="mark-n"] focus; $return
+			bindsym o [con_mark="mark-o"] focus; $return
+			bindsym p [con_mark="mark-p"] focus; $return
+			bindsym q [con_mark="mark-q"] focus; $return
+			bindsym r [con_mark="mark-r"] focus; $return
+			bindsym s [con_mark="mark-s"] focus; $return
+			bindsym t [con_mark="mark-t"] focus; $return
+			bindsym u [con_mark="mark-u"] focus; $return
+			bindsym v [con_mark="mark-v"] focus; $return
+			# bindsym w [con_mark="mark-w"] focus; $return
+			bindsym x [con_mark="mark-x"] focus; $return
+			bindsym y [con_mark="mark-y"] focus; $return
+			bindsym z [con_mark="mark-z"] focus; $return
+
+		# by symbol
+			bindsym apostrophe [urgent=latest] focus; $return
+
+		# by app
+			bindsym c [class="(?i)terminal" title="finch"] focus; $return
+			bindsym f [class="(?i)terminal" title="vifm"] focus; $return
+			bindsym w [class="(?i)chrome"] focus; $return
+
+		bindsym Return $return
+		bindsym Escape $return
+	}
+
+	mode "tmux" {
+		# by name
+			bindsym Return exec i3-input -F 'exec $tmux %s' -P 'Session name: '; $return
+
+		# presets
+			bindsym grave exec $tmux 0; $return
+			bindsym 1 exec $tmux web; $return
+			bindsym 2 exec $tmux dev; $return
+			bindsym 3 exec $tmux sync; $return
+			bindsym 4 exec $tmux hack; $return
+			bindsym 5 exec $tmux files; $return
+			bindsym 6 exec $tmux media; $return
+			bindsym 7 exec $tmux games; $return
+			bindsym 8 exec $tmux 8; $return
+			bindsym 9 exec $tmux run; $return
+			bindsym 0 exec $tmux chat; $return
+			bindsym bracketleft exec $tmux 11; $return
+			bindsym bracketright exec $tmux 12; $return
+
+		# TODO: open preset for the current workspace
+
+		bindsym Return $return
+		bindsym Escape $return
+	}
+
 	mode "resize" {
 		# shrink the window’s width
 		bindsym h resize shrink width 10 px or 10 ppt
@@ -156,145 +336,107 @@
 		# grow the window’s height
 		bindsym l resize grow width 10 px or 10 ppt
 
-		# exit
-			bindsym Return mode "default"
-			bindsym Escape mode "default"
+		bindsym Return $return
+		bindsym Escape $return
 	}
-	bindsym $mod+Shift+m mode "resize"
 
-	mode "mark" {
-		# by name
-			bindsym Return exec i3-input -F 'mark %s' -P 'Mark name: '; mode "default"
+	mode "layout" {
+		bindsym grave layout default
+		bindsym 1 layout tabbed
+		bindsym 2 layout stacking
+		bindsym 3 layout splitv
+		bindsym 4 layout splith
 
-		# by number
-			bindsym grave mark mark-0; mode "default"
-			bindsym 1 mark mark-1; mode "default"
-			bindsym 2 mark mark-2; mode "default"
-			bindsym 3 mark mark-3; mode "default"
-			bindsym 4 mark mark-4; mode "default"
-			bindsym 5 mark mark-5; mode "default"
-			bindsym 6 mark mark-6; mode "default"
-			bindsym 7 mark mark-7; mode "default"
-			bindsym 8 mark mark-8; mode "default"
-			bindsym 9 mark mark-9; mode "default"
-			bindsym 0 mark mark-10; mode "default"
-			bindsym bracketleft mark mark-11; mode "default"
-			bindsym bracketright mark mark-12; mode "default"
+		# toggle [stacking, tabbed, splith, splitv]
+		bindsym a layout toggle all
+		# toggle [splith, splitv]
+		bindsym s layout toggle split
+		# toggle [stacking, tabbed, split]
+		bindsym t layout toggle
+		# toggle fullscreen
+		bindsym f fullscreen
+		# toggle [floating, tiled]
+		bindsym space floating toggle
 
-		# by letter
-			bindsym a mark mark-a; mode "default"
-			bindsym b mark mark-b; mode "default"
-			bindsym c mark mark-c; mode "default"
-			bindsym d mark mark-d; mode "default"
-			bindsym e mark mark-e; mode "default"
-			bindsym f mark mark-f; mode "default"
-			bindsym g mark mark-g; mode "default"
-			bindsym h mark mark-h; mode "default"
-			bindsym i mark mark-i; mode "default"
-			bindsym j mark mark-j; mode "default"
-			bindsym k mark mark-k; mode "default"
-			bindsym l mark mark-l; mode "default"
-			bindsym m mark mark-m; mode "default"
-			bindsym n mark mark-n; mode "default"
-			bindsym o mark mark-o; mode "default"
-			bindsym p mark mark-p; mode "default"
-			bindsym q mark mark-q; mode "default"
-			bindsym r mark mark-r; mode "default"
-			bindsym s mark mark-s; mode "default"
-			bindsym t mark mark-t; mode "default"
-			bindsym u mark mark-u; mode "default"
-			bindsym v mark mark-v; mode "default"
-			bindsym w mark mark-w; mode "default"
-			bindsym x mark mark-x; mode "default"
-			bindsym y mark mark-y; mode "default"
-			bindsym z mark mark-z; mode "default"
-
-		# exit
-			bindsym Return mode "default"
-			bindsym Escape mode "default"
+		bindsym Return $return
+		bindsym Escape $return
 	}
+
+	mode "mouse" {
+		# movement
+			# slow
+			bindsym $alt+h exec $(xdotool mousemove_relative -- -4  0)
+			bindsym $alt+l exec $(xdotool mousemove_relative --  4  0)
+			bindsym $alt+j exec $(xdotool mousemove_relative --  0  4)
+			bindsym $alt+k exec $(xdotool mousemove_relative --  0 -4)
+			# normal
+			bindsym h exec $(xdotool mousemove_relative -- -16   0)
+			bindsym l exec $(xdotool mousemove_relative --  16   0)
+			bindsym j exec $(xdotool mousemove_relative --   0  16)
+			bindsym k exec $(xdotool mousemove_relative --   0 -16)
+			# fast
+			bindsym Shift+h exec $(xdotool mousemove_relative -- -128    0)
+			bindsym Shift+l exec $(xdotool mousemove_relative --  128    0)
+			bindsym Shift+j exec $(xdotool mousemove_relative --    0  128)
+			bindsym Shift+k exec $(xdotool mousemove_relative --    0 -128)
+			# turbo
+			bindsym Control+h exec $(xdotool mousemove_relative -- -512    0)
+			bindsym Control+l exec $(xdotool mousemove_relative --  512    0)
+			bindsym Control+j exec $(xdotool mousemove_relative --    0  512)
+			bindsym Control+k exec $(xdotool mousemove_relative --    0 -512)
+
+		# buttons
+			# left
+			bindsym space exec $(xdotool click 1)
+			# middle
+			bindsym m exec $(xdotool click 2)
+			# right
+			bindsym Shift+space exec $(xdotool click 3)
+			# wheel up
+			bindsym b exec $(xdotool click 4)
+			# wheel down
+			bindsym f exec $(xdotool click 5)
+
+		bindsym Return $return
+		bindsym Escape $return
+	}
+
+	bindsym $mod+comma mode "leader"
+	bindsym $mod+space mode "prefix"
 	bindsym $mod+m mode "mark"
-
-	mode "goto" {
-		# by name
-			bindsym Return exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '; mode "default"
-
-		# by number
-			bindsym grave [con_mark="mark-0"] focus; mode "default"
-			bindsym 1 [con_mark="mark-1"] focus; mode "default"
-			bindsym 2 [con_mark="mark-2"] focus; mode "default"
-			bindsym 3 [con_mark="mark-3"] focus; mode "default"
-			bindsym 4 [con_mark="mark-4"] focus; mode "default"
-			bindsym 5 [con_mark="mark-5"] focus; mode "default"
-			bindsym 6 [con_mark="mark-6"] focus; mode "default"
-			bindsym 7 [con_mark="mark-7"] focus; mode "default"
-			bindsym 8 [con_mark="mark-8"] focus; mode "default"
-			bindsym 9 [con_mark="mark-9"] focus; mode "default"
-			bindsym 0 [con_mark="mark-10"] focus; mode "default"
-			bindsym bracketleft [con_mark="mark-11"] focus; mode "default"
-			bindsym bracketright [con_mark="mark-12"] focus; mode "default"
-
-		# by letter
-			bindsym a [con_mark="mark-a"] focus; mode "default"
-			bindsym b [con_mark="mark-b"] focus; mode "default"
-			# bindsym c [con_mark="mark-c"] focus; mode "default"
-			bindsym d [con_mark="mark-d"] focus; mode "default"
-			bindsym e [con_mark="mark-e"] focus; mode "default"
-			# bindsym f [con_mark="mark-f"] focus; mode "default"
-			bindsym g [con_mark="mark-g"] focus; mode "default"
-			bindsym h [con_mark="mark-h"] focus; mode "default"
-			bindsym i [con_mark="mark-i"] focus; mode "default"
-			bindsym j [con_mark="mark-j"] focus; mode "default"
-			bindsym k [con_mark="mark-k"] focus; mode "default"
-			bindsym l [con_mark="mark-l"] focus; mode "default"
-			bindsym m [con_mark="mark-m"] focus; mode "default"
-			bindsym n [con_mark="mark-n"] focus; mode "default"
-			bindsym o [con_mark="mark-o"] focus; mode "default"
-			bindsym p [con_mark="mark-p"] focus; mode "default"
-			bindsym q [con_mark="mark-q"] focus; mode "default"
-			bindsym r [con_mark="mark-r"] focus; mode "default"
-			bindsym s [con_mark="mark-s"] focus; mode "default"
-			bindsym t [con_mark="mark-t"] focus; mode "default"
-			bindsym u [con_mark="mark-u"] focus; mode "default"
-			bindsym v [con_mark="mark-v"] focus; mode "default"
-			# bindsym w [con_mark="mark-w"] focus; mode "default"
-			bindsym x [con_mark="mark-x"] focus; mode "default"
-			bindsym y [con_mark="mark-y"] focus; mode "default"
-			bindsym z [con_mark="mark-z"] focus; mode "default"
-
-		# by app
-			bindsym c [class="(?i)terminal" title="finch"] focus; mode "default"
-			bindsym f [class="(?i)terminal" title="vifm"] focus; mode "default"
-			bindsym w [class="(?i)chrome"] focus; mode "default"
-
-		# exit
-			bindsym Return mode "default"
-			bindsym Escape mode "default"
-	}
 	bindsym $mod+apostrophe mode "goto"
 
-	# TODO: [,] leader
-		# [w] close
-		# [W] kill with fire
-	# TODO: [space] prefix
 	# TODO: [y] yank
 	# TODO: [p] paste
-	# TODO: [prefix][m] mouse
 	# TODO: [q], [@] macros
+
 	# TODO: [f] focus (or maybe [/])
+	# change focus between tiling / floating windows
+	bindsym $mod+Shift+space focus mode_toggle
+
+	# focus the parent/child container
+	bindsym $mod+z focus parent
+	bindsym $mod+Shift+z focus child
 
 
 ################
-# APPS
-################
-	assign [class="^Google-chrome.*$"] $1
-
-
-################
-# STATUS
+# STATUSBAR
 ################
 	# Start i3bar to display a workspace bar (plus the system information i3status
 	# finds out, if available)
 	bar {
 		status_command i3status
 	}
+
+
+################
+# APPS
+################
+	# fix terminal borders
+	for_window [class="Terminator"] border normal $borderWidth
+
+	# chrome
+	assign [class="^Google-chrome.*$"] $1
+
+	# finch
+	assign [title="finch"] $10

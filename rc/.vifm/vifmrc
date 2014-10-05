@@ -1,4 +1,4 @@
-" vim: filetype=vifm :
+" vim: filetype=vim :
 " Sample configuration file for vifm (last updated: 27 Jun, 2013)
 " You can edit this file by hand.
 " The " character at the beginning of a line comments out the line.
@@ -312,4 +312,3 @@ nmap <f5> :copy<cr>
 nmap <f6> :move<cr>
 nmap <f7> :mkdir<space>
 nmap <f8> :delete<cr>
-

@@ -3,6 +3,7 @@
   enabled_plugins = LaunchpadCodeURLHandler,
   title_inactive_fg_color = "#929292"
   borderless = True
+  geometry_hinting = False
   title_transmit_bg_color = "#373737"
   title_inactive_bg_color = "#2f2f2f"
 [keybindings]

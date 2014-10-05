@@ -3,7 +3,7 @@ rofi.foreground: #1aa
 rofi.highlightbg: #1aa
 rofi.highlightfg: #111
 rofi.bordercolor: #277
-rofi.opacity: 90
+rofi.opacity: 100
 rofi.font: Ubuntu Mono 16
 rofi.padding: 3
 rofi.borderwidth: 3

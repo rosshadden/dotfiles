@@ -39,6 +39,17 @@
 		" motions
 			NeoBundle 'bkad/CamelCaseMotion'
 
+		" UI
+			NeoBundle 'bling/vim-airline'
+			NeoBundle 'nanotech/jellybeans.vim'
+			NeoBundle 'tomasr/molokai'
+			NeoBundle 'xoria256.vim'
+			NeoBundle 'altercation/vim-colors-solarized'
+			NeoBundle 'chriskempson/base16-vim'
+			" sexy scrolling, with easing and animation
+			" NOTE: messes with mouse scrolling, which currently upsets me
+			" NeoBundle 'joeytwiddle/sexy_scroller.vim'
+
 		" languages
 			" autoformat support for multiple
 			NeoBundle 'Chiel92/vim-autoformat'
@@ -48,6 +59,16 @@
 			NeoBundle 'mustache/vim-mustache-handlebars'
 			" jsdoc
 			NeoBundle 'heavenshell/vim-jsdoc'
+			" i3 config
+			NeoBundle 'PotatoesMaster/i3-vim-syntax'
+
+		" integration
+			" git
+			NeoBundle 'tpope/vim-fugitive'
+			" ag, the silver searcher
+			NeoBundle 'rking/ag.vim'
+			" LaTeX
+			NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 
 		" unite
 			NeoBundle 'Shougo/unite.vim'
@@ -77,25 +98,6 @@
 			NeoBundle 'thinca/vim-qfreplace'
 			" show trailing whitespace, and provide a command to clean it
 			NeoBundle 'ntpeters/vim-better-whitespace'
-
-		" UI
-			NeoBundle 'bling/vim-airline'
-			NeoBundle 'nanotech/jellybeans.vim'
-			NeoBundle 'tomasr/molokai'
-			NeoBundle 'xoria256.vim'
-			NeoBundle 'altercation/vim-colors-solarized'
-			NeoBundle 'chriskempson/base16-vim'
-			" sexy scrolling, with easing and animation
-			" NOTE: messes with mouse scrolling, which currently upsets me
-			" NeoBundle 'joeytwiddle/sexy_scroller.vim'
-
-		" integration
-			" git
-			NeoBundle 'tpope/vim-fugitive'
-			" ag, the silver searcher
-			NeoBundle 'rking/ag.vim'
-			" LaTeX
-			NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 
 		" external
 			NeoBundle 'christoomey/vim-tmux-navigator'
@@ -698,3 +700,7 @@
 		xmap <silent> [camel]ib <Plug>CamelCaseMotion_ib
 		omap <silent> [camel]ie <Plug>CamelCaseMotion_ie
 		xmap <silent> [camel]ie <Plug>CamelCaseMotion_ie
+
+	" vim-better-whitespace
+		map coW :ToggleWhitespace<cr>
+		map coS :ToggleStripWhitespaceOnSave<cr>
