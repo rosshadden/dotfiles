@@ -182,6 +182,7 @@
 " MAPPINGS:
 """"""""""""""""
 	" make prefixes
+	" TODO: automate the "mode" creation
 	function! s:makePrefix(name, key, ...)
 		" accept `mode` number as an optional third argument
 		let l:mode = (a:0 >= 1) ? a:1 : 0
@@ -270,14 +271,38 @@
 		noremap <leader>at a<tab>
 		noremap <leader>a<tab> a<tab>
 
-	" [panes]
+	" [buffers]
 		" prefix
-		call s:makePrefix('panes', '[prefix]n')
+		call s:makePrefix('buffers', '[prefix]b')
 
-		" split down
-		map [panes]- :split<cr>
-		" split right
-		map [panes]s :vsplit<cr>
+		" split buffer [h, j, k, l]
+		map [buffers]h :leftabove vnew<cr>
+		map [buffers]l :rightbelow vnew<cr>
+		map [buffers]j :rightbelow new<cr>
+		map [buffers]k :leftabove new<cr>
+
+	" [windows]
+		" prefix
+		call s:makePrefix('windows', '[prefix]w')
+
+		" split window [h, j, k, l]
+		map [windows]h :topleft vnew<cr>
+		map [windows]l :botright vnew<cr>
+		map [windows]j :botright new<cr>
+		map [windows]k :topleft new<cr>
+
+		" move window [H, J, K, L]
+		" NOTE: this is not expected, but all vim can natively do
+		map [windows]H <c-w>H
+		map [windows]L <c-w>L
+		map [windows]J <c-w>J
+		map [windows]K <c-w>K
+
+		" move window to a new tab
+		map [windows]t <c-w>T
+
+		" close all other windows
+		map [windows]o <c-w>O
 
 	" [tabs]
 		" prefix

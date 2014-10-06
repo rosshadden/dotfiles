@@ -72,7 +72,7 @@
 	bindsym $mod+p exec --no-startup-id $launcher
 
 	# lock screen
-	bindsym $mod+Delete exec i3lock
+	bindsym $mod+Delete exec i3lock --color=1c1c1c
 
 	# change focus
 	bindsym $mod+h focus left
@@ -426,6 +426,7 @@
 	# finds out, if available)
 	bar {
 		status_command i3status
+		position top
 	}
 
 
