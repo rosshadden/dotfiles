@@ -32,12 +32,6 @@
 
 
 ################
-# START
-################
-	exec --no-startup-id sh ~/.fehbg
-
-
-################
 # OPTIONS
 ################
 	# Font for window titles. Will also be used by the bar unless a different font
@@ -72,7 +66,7 @@
 	bindsym $mod+p exec --no-startup-id $launcher
 
 	# lock screen
-	bindsym $mod+Delete exec i3lock --color=1c1c1c
+	bindsym $mod+Delete exec i3lock --color=012345
 
 	# change focus
 	bindsym $mod+h focus left
@@ -441,3 +435,12 @@
 
 	# finch
 	assign [title="finch"] $10
+
+	# nuvola
+	assign [class="nuvolaplayer"] $6
+
+
+################
+# START
+################
+	exec --no-startup-id feh --bg-max --recursive --randomize ~/Dropbox/media/images/wallpaper &
