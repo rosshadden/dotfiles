@@ -30,13 +30,16 @@
 	# UI
 	set $borderWidth 8
 
+	# paths
+	set $wallpaperPath ~/Dropbox/media/images/wallpaper
+
 
 ################
 # OPTIONS
 ################
 	# Font for window titles. Will also be used by the bar unless a different font
 	# is used in the bar {} block below.
-	font pango:Ubuntu Mono, FontAwesome 12
+	font pango:Ubuntu Mono 12
 
 	workspace_auto_back_and_forth yes
 
@@ -164,7 +167,7 @@
 ################
 # MODES
 ################
-	mode "leader" {
+	mode "LEADER" {
 		# close focused window
 		bindsym w kill; $return
 
@@ -174,17 +177,17 @@
 		bindsym Escape $return
 	}
 
-	mode "prefix" {
-		bindsym l mode "layout"
-		bindsym m mode "mouse"
-		bindsym r mode "resize"
-		bindsym t mode "tmux"
+	mode "PREFIX" {
+		bindsym l mode "LAYOUT"
+		bindsym m mode "MOUSE"
+		bindsym r mode "RESIZE"
+		bindsym t mode "TMUX"
 
 		bindsym Return $return
 		bindsym Escape $return
 	}
 
-	mode "mark" {
+	mode "MARK" {
 		# by name
 			bindsym Return exec i3-input -F 'mark %s' -P 'Mark name: '; $return
 
@@ -236,7 +239,7 @@
 			bindsym Escape $return
 	}
 
-	mode "goto" {
+	mode "GOTO" {
 		# by name
 			bindsym Return exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '; $return
 
@@ -295,7 +298,7 @@
 		bindsym Escape $return
 	}
 
-	mode "tmux" {
+	mode "TMUX" {
 		# by name
 			bindsym Return exec i3-input -F 'exec $tmux %s' -P 'Session name: '; $return
 
@@ -320,7 +323,7 @@
 		bindsym Escape $return
 	}
 
-	mode "resize" {
+	mode "RESIZE" {
 		# shrink the window’s width
 		bindsym h resize shrink width 10 px or 10 ppt
 		# grow the window’s width
@@ -334,29 +337,29 @@
 		bindsym Escape $return
 	}
 
-	mode "layout" {
-		bindsym grave layout default
-		bindsym 1 layout tabbed
-		bindsym 2 layout stacking
-		bindsym 3 layout splitv
-		bindsym 4 layout splith
+	mode "LAYOUT" {
+		bindsym grave layout default; $return
+		bindsym 1 layout tabbed; $return
+		bindsym 2 layout stacking; $return
+		bindsym 3 layout splitv; $return
+		bindsym 4 layout splith; $return
 
 		# toggle [stacking, tabbed, splith, splitv]
-		bindsym a layout toggle all
+		bindsym a layout toggle all; $return
 		# toggle [splith, splitv]
-		bindsym s layout toggle split
+		bindsym s layout toggle split; $return
 		# toggle [stacking, tabbed, split]
-		bindsym t layout toggle
+		bindsym t layout toggle; $return
 		# toggle fullscreen
-		bindsym f fullscreen
+		bindsym f fullscreen; $return
 		# toggle [floating, tiled]
-		bindsym space floating toggle
+		bindsym space floating toggle; $return
 
 		bindsym Return $return
 		bindsym Escape $return
 	}
 
-	mode "mouse" {
+	mode "MOUSE" {
 		# movement
 			# slow
 			bindsym $alt+h exec $(xdotool mousemove_relative -- -4  0)
@@ -395,10 +398,10 @@
 		bindsym Escape $return
 	}
 
-	bindsym $mod+comma mode "leader"
-	bindsym $mod+space mode "prefix"
-	bindsym $mod+m mode "mark"
-	bindsym $mod+apostrophe mode "goto"
+	bindsym $mod+comma mode "LEADER"
+	bindsym $mod+space mode "PREFIX"
+	bindsym $mod+m mode "MARK"
+	bindsym $mod+apostrophe mode "GOTO"
 
 	# TODO: [y] yank
 	# TODO: [p] paste
@@ -421,7 +424,18 @@
 	bar {
 		status_command i3status
 		position top
+
+		font pango:FontAwesome 12
+
+		colors {
+			urgent_workspace #2f343a #d75f00 #ffffff
+		}
 	}
+
+
+################
+# WORKSPACES
+################
 
 
 ################
@@ -430,17 +444,28 @@
 	# fix terminal borders
 	for_window [class="Terminator"] border normal $borderWidth
 
-	# chrome
-	assign [class="^Google-chrome.*$"] $1
+	# dialogs
+	for_window [window_role="pop-up"] floating enable, move absolute center
 
-	# finch
-	assign [title="finch"] $10
+	# qalculate
+	for_window [title="Qalculate!"] floating enable
+
+	# copyq, zeal
+	for_window [class="Copyq|zeal"] floating enable
+
+	# chrome
+	assign [class="^Google-chrome.*$"] → $1
 
 	# nuvola
-	assign [class="nuvolaplayer"] $6
+	assign [class="nuvolaplayer"] → $6
+	for_window [class="nuvolaplayer"] move container to workspace $6
+
+	# finch
+	assign [title="finch"] → $10
+	for_window [title="finch"] move container to workspace $10
 
 
 ################
 # START
 ################
-	exec --no-startup-id feh --bg-max --recursive --randomize ~/Dropbox/media/images/wallpaper &
+	exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath
