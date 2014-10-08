@@ -15,7 +15,7 @@ function __promptline_ps1 {
   slice_prefix="${a_bg}${sep}${a_fg}${a_bg}${space}" slice_suffix="$space${a_sep_fg}" slice_joiner="${a_fg}${a_bg}${alt_sep}${space}" slice_empty_prefix="${a_fg}${a_bg}${space}"
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
   # section "a" slices
-  __promptline_wrapper "$([[ -n ${ZSH_VERSION-} ]] && print %m || printf "%s" \\h)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+  __promptline_wrapper "$(if [[ -n ${ZSH_VERSION-} ]]; then print %m; elif [[ -n ${FISH_VERSION-} ]]; then hostname -s; else printf "%s" \\h; fi )" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "b" header
   slice_prefix="${b_bg}${sep}${b_fg}${b_bg}${space}" slice_suffix="$space${b_sep_fg}" slice_joiner="${b_fg}${b_bg}${alt_sep}${space}" slice_empty_prefix="${b_fg}${b_bg}${space}"
@@ -95,7 +95,7 @@ function __promptline_left_prompt {
   slice_prefix="${a_bg}${sep}${a_fg}${a_bg}${space}" slice_suffix="$space${a_sep_fg}" slice_joiner="${a_fg}${a_bg}${alt_sep}${space}" slice_empty_prefix="${a_fg}${a_bg}${space}"
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
   # section "a" slices
-  __promptline_wrapper "$([[ -n ${ZSH_VERSION-} ]] && print %m || printf "%s" \\h)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+  __promptline_wrapper "$(if [[ -n ${ZSH_VERSION-} ]]; then print %m; elif [[ -n ${FISH_VERSION-} ]]; then hostname -s; else printf "%s" \\h; fi )" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "b" header
   slice_prefix="${b_bg}${sep}${b_fg}${b_bg}${space}" slice_suffix="$space${b_sep_fg}" slice_joiner="${b_fg}${b_bg}${alt_sep}${space}" slice_empty_prefix="${b_fg}${b_bg}${space}"
@@ -136,11 +136,13 @@ function __promptline_right_prompt {
   printf "%s" "$reset"
 }
 function __promptline {
-  local last_exit_code="$?"
+  local last_exit_code="${PROMPTLINE_LAST_EXIT_CODE:-$?}"
 
   local esc=$'[' end_esc=m
   if [[ -n ${ZSH_VERSION-} ]]; then
     local noprint='%{' end_noprint='%}'
+  elif [[ -n ${FISH_VERSION-} ]]; then
+    local noprint='' end_noprint=''
   else
     local noprint='\[' end_noprint='\]'
   fi
@@ -170,6 +172,12 @@ function __promptline {
   if [[ -n ${ZSH_VERSION-} ]]; then
     PROMPT="$(__promptline_left_prompt)"
     RPROMPT="$(__promptline_right_prompt)"
+  elif [[ -n ${FISH_VERSION-} ]]; then
+    if [[ -n "$1" ]]; then
+      [[ "$1" = "left" ]] && __promptline_left_prompt || __promptline_right_prompt
+    else
+      __promptline_ps1
+    fi
   else
     PS1="$(__promptline_ps1)"
   fi
@@ -179,6 +187,8 @@ if [[ -n ${ZSH_VERSION-} ]]; then
   if [[ ! ${precmd_functions[(r)__promptline]} == __promptline ]]; then
     precmd_functions+=(__promptline)
   fi
+elif [[ -n ${FISH_VERSION-} ]]; then
+  __promptline "$1"
 else
   if [[ ! "$PROMPT_COMMAND" == *__promptline* ]]; then
     PROMPT_COMMAND='__promptline;'$'\n'"$PROMPT_COMMAND"

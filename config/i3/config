@@ -25,7 +25,7 @@
 	set $runner rofi -show run
 	set $launcher j4-dmenu-desktop --dmenu="rofi -dmenu -p launch:"
 	set $terminal i3-sensible-terminal
-	set $tmux i3-sensible-terminal -x tmux -2 new-session -A -s
+	set $tmux i3-sensible-terminal -e tmux -2 new-session -A -s
 
 	# UI
 	set $borderWidth 8
@@ -441,9 +441,6 @@
 ################
 # APPS
 ################
-	# fix terminal borders
-	for_window [class="Terminator"] border normal $borderWidth
-
 	# dialogs
 	for_window [window_role="pop-up"] floating enable, move absolute center
 
