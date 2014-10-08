@@ -41,10 +41,6 @@
 
 		" UI
 			NeoBundle 'bling/vim-airline'
-			" NeoBundle 'nanotech/jellybeans.vim'
-			" NeoBundle 'tomasr/molokai'
-			" NeoBundle 'xoria256.vim'
-			" NeoBundle 'altercation/vim-colors-solarized'
 			NeoBundle 'chriskempson/base16-vim'
 			" sexy scrolling, with easing and animation
 			" NOTE: messes with mouse scrolling, which currently upsets me
@@ -101,8 +97,8 @@
 
 		" external
 			NeoBundle 'christoomey/vim-tmux-navigator'
-			" NeoBundle 'edkolev/tmuxline.vim'
-			" NeoBundle 'edkolev/promptline.vim'
+			NeoBundle 'edkolev/tmuxline.vim'
+			NeoBundle 'edkolev/promptline.vim'
 	" /PLUGINS
 
 	call neobundle#end()
@@ -162,15 +158,14 @@
 " THEME:
 """"""""""""""""
 	syntax enable
-	" set t_Co=256
+	set t_Co=256
 	set background=dark
 	" set background=light
 
 	" access colors present in 256 colorspace
 	let base16colorspace=256
-	" colorscheme base16-default
+	colorscheme base16-default
 	" colorscheme base16-google
-	colorscheme base16-solarized
 
 
 """"""""""""""""
@@ -639,8 +634,10 @@
 		" powerline symbols
 		let g:airline#extensions#tabline#enabled = 1
 		let g:airline_powerline_fonts   = 1
-		let g:airline_theme             = 'base16'
 		let g:airline_enable_branch     = 1
+
+		" this makes the base16 theme work
+		let g:airline#themes#base16#constant = 1
 
 		" if !exists('g:airline_symbols')
 		" 	let g:airline_symbols = {}
