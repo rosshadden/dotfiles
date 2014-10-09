@@ -179,22 +179,35 @@
 		let l:mode = (a:0 >= 1) ? a:1 : 0
 
 		let l:doOverride = (a:0 == 0 || a:1 != 0)
-
 		let l:prefixLong = '[' . a:name . ':' . l:mode . ']'
+
+		" map the long form of the prefix, [prefix:n]
 		execute 'map ' . l:prefixLong . ' <nop>'
 		if l:doOverride == 1
-			execute 'map ' . a:key . ' ' . l:prefixLong
+			execute 'map ' . a:key . ' ' . PressPrefix(l:prefixLong)
 		endif
 
 		if l:mode == 0
 			let l:prefix = '[' . a:name . ']'
 			execute 'map ' . l:prefix . ' <nop>'
-			execute 'map ' . l:prefixLong . ' ' . l:prefix
+			execute 'map ' . l:prefixLong . ' ' . PressPrefix(l:prefix)
 		endif
 
+		" map the short prefix, [prefix]
 		if l:doOverride == 0
-			execute 'map ' . l:prefix . ' ' . a:key
+			execute 'map ' . l:prefix . ' ' . PressPrefix(a:key)
 		endif
+	endfunction
+
+	function! GetPrefix(...)
+		if exists('w:prefix')
+			return w:prefix
+		end
+		return ''
+	endfunction
+
+	function! PressPrefix(prefix)
+		return ':execute "let w:prefix = \"' . a:prefix . '\""<cr>' . a:prefix
 	endfunction
 
 	" take me to your leader
@@ -213,6 +226,9 @@
 	" for grouped/corded mappings
 	call s:makePrefix('prefix', '<space>')
 	call s:makePrefix('prefix', '[prefix]<space>', 1)
+
+	" reset prefixes, and then escape like normal
+	execute 'noremap <esc> ' . PressPrefix('')
 
 	" expose the native mappings I've stolen
 		" TODO: abstract this a bit, perhaps a function that takes an array of keys to fix
@@ -633,8 +649,10 @@
 
 	" vim-airline:
 		" powerline symbols
-		let g:airline#extensions#tabline#enabled = 1
-		let g:airline_powerline_fonts   = 1
+		let g:airline_powerline_fonts = 1
+		" define and use my own 'prefix' mode, for showing the prefixes
+		call airline#parts#define_function('prefix', 'GetPrefix')
+		let g:airline_section_a = airline#section#create_left(['mode', 'prefix', 'paste', 'capslock', 'iminsert'])
 		let g:airline_enable_branch     = 1
 		let g:airline_theme = 'airlineish'
 
@@ -645,6 +663,41 @@
 		" 	let g:airline_symbols = {}
 		" endif
 		" let g:airline_symbols.space = "\ua0"
+
+		" extensions
+			" tabline
+			let g:airline#extensions#tabline#enabled = 1
+			" close 'button'
+			let g:airline#extensions#tabline#close_symbol = '✗'
+			" how tab numbers are calculated (0 for # of splits, 1 for tab #)
+			let g:airline#extensions#tabline#tab_nr_type = 1
+			" quick buffer switch
+			let g:airline#extensions#tabline#buffer_idx_mode = 1
+			nmap <leader>1 <Plug>AirlineSelectTab1
+			nmap <leader>2 <Plug>AirlineSelectTab2
+			nmap <leader>3 <Plug>AirlineSelectTab3
+			nmap <leader>4 <Plug>AirlineSelectTab4
+			nmap <leader>5 <Plug>AirlineSelectTab5
+			nmap <leader>6 <Plug>AirlineSelectTab6
+			nmap <leader>7 <Plug>AirlineSelectTab7
+			nmap <leader>8 <Plug>AirlineSelectTab8
+			nmap <leader>9 <Plug>AirlineSelectTab9
+
+			" promptline
+			let g:airline#extensions#promptline#enabled = 1
+			let airline#extensions#promptline#snapshot_file = '~/dotfiles/themes/promptline.sh'
+			" let airline#extensions#promptline#color_template = 'normal'
+			let airline#extensions#promptline#color_template = 'insert'
+			" let airline#extensions#promptline#color_template = 'visual'
+			" let airline#extensions#promptline#color_template = 'replace'
+
+			" tmuxline
+			let g:airline#extensions#tmuxline#enabled = 1
+			let airline#extensions#tmuxline#snapshot_file = '~/dotfiles/themes/tmuxline.conf'
+			let airline#extensions#tmuxline#color_template = 'normal'
+			" let airline#extensions#tmuxline#color_template = 'insert'
+			" let airline#extensions#tmuxline#color_template = 'visual'
+			" let airline#extensions#tmuxline#color_template = 'replace'
 
 	" vim-autoformat:
 		" format entire file

@@ -417,6 +417,15 @@
 
 
 ################
+# THEME
+################
+	client.focused #0088CC #0088CC #ffffff #dddddd
+	client.focused_inactive #333333 #333333 #888888 #292d2e
+	client.unfocused #333333 #333333 #888888 #292d2e
+	client.urgent #2f343a #900000 #ffffff #900000
+
+
+################
 # STATUSBAR
 ################
 	# Start i3bar to display a workspace bar (plus the system information i3status
@@ -424,11 +433,21 @@
 	bar {
 		status_command i3status
 		position top
+		workspace_buttons yes
+		mode dock
+		tray_output primary
 
 		font pango:FontAwesome 12
 
 		colors {
-			urgent_workspace #2f343a #d75f00 #ffffff
+			background #000000
+			statusline #ffffff
+			separator #875fd7
+
+			focused_workspace #2f343a #5f00af #ffffff
+			active_workspace #2f343a #5f00af #ffffff
+			inactive_workspace #2f343a #875fd7 #ffffff
+			urgent_workspace #2f343a #ff5f00 #ffffff
 		}
 	}
 
@@ -447,8 +466,8 @@
 	# qalculate
 	for_window [title="Qalculate!"] floating enable
 
-	# copyq, zeal
-	for_window [class="Copyq|zeal"] floating enable
+	# copyq, zeal, gpick
+	for_window [class="^Copyq|zeal|Gpick$"] floating enable
 
 	# chrome
 	assign [class="^Google-chrome.*$"] → $1

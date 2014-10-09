@@ -4,3 +4,5 @@ config/copyq/copyq-bak.conf
 config/copyq/copyq_tabs.ini
 Trash
 rc/.vifm/vifminfo
+themes/promptline.sh
+themes/tmuxline.conf
