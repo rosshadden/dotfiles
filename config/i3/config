@@ -458,8 +458,8 @@
 	for_window [class="nuvolaplayer"] move container to workspace $6
 
 	# finch
-	assign [title="finch"] → $10
-	for_window [title="finch"] move container to workspace $10
+	assign [title="^finch$"] → $10
+	for_window [title="^finch$"] move container to workspace $10
 
 
 ################
