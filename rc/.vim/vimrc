@@ -698,6 +698,7 @@
 			" let airline#extensions#tmuxline#color_template = 'insert'
 			" let airline#extensions#tmuxline#color_template = 'visual'
 			" let airline#extensions#tmuxline#color_template = 'replace'
+			let g:tmuxline_preset = 'crosshair'
 
 	" vim-autoformat:
 		" format entire file
@@ -774,5 +775,9 @@
 		xmap <silent> [camel]ie <Plug>CamelCaseMotion_ie
 
 	" vim-better-whitespace
+		" start disabled
+		let g:better_whitespace_enabled = 0
+
+		" easy toggles
 		map coW :ToggleWhitespace<cr>
 		map coS :ToggleStripWhitespaceOnSave<cr>

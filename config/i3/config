@@ -485,6 +485,3 @@
 # START
 ################
 	exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath
-
-	# turn off beeps
-	exec xset b off
