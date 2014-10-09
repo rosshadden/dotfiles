@@ -53,7 +53,18 @@
 ################
 # THEME
 ################
-	. $DOTS/themes/shell.sh
+	# base16 colors
+	if [ "${TERM%%-*}" = 'linux' ]; then
+		BASE16_SHELL="$DOTS/themes/vconsole.sh"
+	else
+		BASE16_SCHEME="chalk"
+		BASE16_VARIANT="dark"
+		BASE16_SHELL="$DOTS/themes/base16-shell/base16-$BASE16_SCHEME.$BASE16_VARIANT.sh"
+	fi
+	[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+
+	# airline prompt
+	. $DOTS/themes/promptline.sh
 
 
 ################
@@ -156,11 +167,3 @@
 
 	# expand .[TAB] and ..[TAB]
 	zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
-
-	# colors
-	# Base16 Shell
-	BASE16_SCHEME="google"
-	BASE16_VARIANT="dark"
-	BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.$BASE16_VARIANT.sh"
-	# BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.sh"
-	[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL

@@ -41,6 +41,7 @@
 
 		" UI
 			NeoBundle 'bling/vim-airline'
+			NeoBundle 'paranoida/vim-airlineish'
 			NeoBundle 'chriskempson/base16-vim'
 			" sexy scrolling, with easing and animation
 			" NOTE: messes with mouse scrolling, which currently upsets me
@@ -635,6 +636,7 @@
 		let g:airline#extensions#tabline#enabled = 1
 		let g:airline_powerline_fonts   = 1
 		let g:airline_enable_branch     = 1
+		let g:airline_theme = 'airlineish'
 
 		" this makes the base16 theme work
 		let g:airline#themes#base16#constant = 1

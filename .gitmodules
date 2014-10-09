@@ -22,3 +22,6 @@
 [submodule "config/awesome/awmni"]
 	path = config/awesome/awmni
 	url = git@github.com:rosshadden/awmni.git
+[submodule "themes/base16-shell"]
+	path = themes/base16-shell
+	url = git@github.com:chriskempson/base16-shell.git
