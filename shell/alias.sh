@@ -1,5 +1,5 @@
 alias copy='xsel -ib'
-alias paste='xsel -b'
+alias paste='xsel -ob'
 
 alias g='git'
 alias open='xdg-open'

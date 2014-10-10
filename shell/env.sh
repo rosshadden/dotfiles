@@ -38,7 +38,7 @@
 	export DEFAULT_USER=$USER
 
 	# sensible terminal
-	export TERMINAL=terminator
+	export TERMINAL=urxvt
 
 	# sensible pager
 	export PAGER="less -FRSX"
