@@ -95,6 +95,9 @@
 			NeoBundle 'thinca/vim-qfreplace'
 			" show trailing whitespace, and provide a command to clean it
 			NeoBundle 'ntpeters/vim-better-whitespace'
+			" sessions
+			NeoBundle 'xolox/vim-session'
+			NeoBundle 'xolox/vim-misc'
 
 		" external
 			NeoBundle 'christoomey/vim-tmux-navigator'
@@ -551,16 +554,16 @@
 
 		" open files
 			" flat
-			nmap [unite:0]f :Unite              -buffer-name=files -start-insert file directory file/new directory/new<cr>
-			nmap [unite:0]F :UniteWithBufferDir -buffer-name=files -start-insert file directory file/new directory/new<cr>
-			nmap [unite:1]f :Unite              -buffer-name=files -start-insert -auto-preview file directory file/new directory/new<cr>
-			nmap [unite:1]F :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file directory file/new directory/new<cr>
+			nmap [unite:0]f :Unite              -buffer-name=files -start-insert -no-split file directory file/new directory/new<cr>
+			nmap [unite:0]F :UniteWithBufferDir -buffer-name=files -start-insert -no-split file directory file/new directory/new<cr>
+			nmap [unite:1]f :Unite              -buffer-name=files -start-insert -no-split -auto-preview file directory file/new directory/new<cr>
+			nmap [unite:1]F :UniteWithBufferDir -buffer-name=files -start-insert -no-split -auto-preview file directory file/new directory/new<cr>
 
 			" recursive
-			nmap [unite:0]p :Unite              -buffer-name=files -start-insert file_rec/async:!<cr>
-			nmap [unite:0]P :UniteWithBufferDir -buffer-name=files -start-insert file_rec/async:!<cr>
-			nmap [unite:1]p :Unite              -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
-			nmap [unite:1]P :UniteWithBufferDir -buffer-name=files -start-insert -auto-preview file_rec/async:!<cr>
+			nmap [unite:0]p :Unite              -buffer-name=files -start-insert -no-split file_rec/async:!<cr>
+			nmap [unite:0]P :UniteWithBufferDir -buffer-name=files -start-insert -no-split file_rec/async:!<cr>
+			nmap [unite:1]p :Unite              -buffer-name=files -start-insert -no-split -auto-preview file_rec/async:!<cr>
+			nmap [unite:1]P :UniteWithBufferDir -buffer-name=files -start-insert -no-split -auto-preview file_rec/async:!<cr>
 
 		" search files
 			nmap [unite:0]g :Unite              grep:.<cr>
@@ -572,22 +575,22 @@
 
 		" current and recent
 			" most recently used (mru) files
-			nmap [unite:0]r :Unite              -buffer-name=recent file_mru<cr>
-			nmap [unite:0]R :UniteWithBufferDir -buffer-name=recent file_mru<cr>
-			nmap [unite:1]r :Unite              -buffer-name=recent -auto-preview file_mru<cr>
-			nmap [unite:1]R :UniteWithBufferDir -buffer-name=recent -auto-preview file_mru<cr>
+			nmap [unite:0]r :Unite              -buffer-name=recent -no-split file_mru<cr>
+			nmap [unite:0]R :UniteWithBufferDir -buffer-name=recent -no-split file_mru<cr>
+			nmap [unite:1]r :Unite              -buffer-name=recent -no-split -auto-preview file_mru<cr>
+			nmap [unite:1]R :UniteWithBufferDir -buffer-name=recent -no-split -auto-preview file_mru<cr>
 
 			" current buffers
-			nmap [unite:0]b :Unite              -buffer-name=buffers buffer<cr>
-			nmap [unite:0]B :UniteWithBufferDir -buffer-name=buffers buffer<cr>
-			nmap [unite:1]b :Unite              -buffer-name=buffers -auto-preview buffer<cr>
-			nmap [unite:1]B :UniteWithBufferDir -buffer-name=buffers -auto-preview buffer<cr>
+			nmap [unite:0]b :Unite              -buffer-name=buffers -no-split buffer<cr>
+			nmap [unite:0]B :UniteWithBufferDir -buffer-name=buffers -no-split buffer<cr>
+			nmap [unite:1]b :Unite              -buffer-name=buffers -no-split -auto-preview buffer<cr>
+			nmap [unite:1]B :UniteWithBufferDir -buffer-name=buffers -no-split -auto-preview buffer<cr>
 
 			" buffer, tab, or files
-			nmap [unite:0]a :Unite              -start-insert buffer tab file_mru directory_mru bookmark<cr>
-			nmap [unite:0]A :UniteWithBufferDir -start-insert buffer tab file_mru directory_mru bookmark<cr>
-			nmap [unite:1]a :Unite              -start-insert -auto-preview buffer tab file_mru directory_mru bookmark<cr>
-			nmap [unite:1]A :UniteWithBufferDir -start-insert -auto-preview buffer tab file_mru directory_mru bookmark<cr>
+			nmap [unite:0]a :Unite              -start-insert -no-split buffer tab file_mru directory_mru bookmark<cr>
+			nmap [unite:0]A :UniteWithBufferDir -start-insert -no-split buffer tab file_mru directory_mru bookmark<cr>
+			nmap [unite:1]a :Unite              -start-insert -no-split -auto-preview buffer tab file_mru directory_mru bookmark<cr>
+			nmap [unite:1]A :UniteWithBufferDir -start-insert -no-split -auto-preview buffer tab file_mru directory_mru bookmark<cr>
 
 		" current file
 			" outline
@@ -603,23 +606,23 @@
 			nmap [unite:1]L :UniteWithCursorWord -buffer-name=search -no-split -auto-preview -start-insert -auto-preview line<cr>
 
 			" changes
-			nmap [unite:0]k :Unite               -buffer-name=search change<cr>
-			nmap [unite:0]K :UniteWithCursorWord -buffer-name=search change<cr>
-			nmap [unite:1]k :Unite               -buffer-name=search -auto-preview change<cr>
-			nmap [unite:1]K :UniteWithCursorWord -buffer-name=search -auto-preview change<cr>
+			nmap [unite:0]k :Unite               -buffer-name=search -no-split change<cr>
+			nmap [unite:0]K :UniteWithCursorWord -buffer-name=search -no-split change<cr>
+			nmap [unite:1]k :Unite               -buffer-name=search -no-split -auto-preview change<cr>
+			nmap [unite:1]K :UniteWithCursorWord -buffer-name=search -no-split -auto-preview change<cr>
 
 		" misc
 			" do all the things
-			nmap [unite:0]<cr> :Unite -buffer-name=omni -start-insert source<cr>
-			nmap [unite:1]<cr> :Unite -buffer-name=omni -start-insert -auto-preview source<cr>
+			nmap [unite:0]<cr> :Unite -buffer-name=omni -no-split -start-insert source<cr>
+			nmap [unite:1]<cr> :Unite -buffer-name=omni -no-split -start-insert -auto-preview source<cr>
 
 			" yank stack
 			nmap [unite:0]y :Unite -buffer-name=yank history/yank<cr>
 			nmap [unite:1]y :Unite -buffer-name=yank -auto-preview history/yank<cr>
 
 			" command history
-			nmap [unite:0]; :Unite -buffer-name=commands -default-action=execute history/command command<cr>
-			nmap [unite:1]; :Unite -buffer-name=commands -default-action=execute -auto-preview history/command command<cr>
+			nmap [unite:0]; :Unite -buffer-name=commands -no-split -default-action=execute history/command command<cr>
+			nmap [unite:1]; :Unite -buffer-name=commands -no-split -default-action=execute -auto-preview history/command command<cr>
 
 			" repeat last entry
 			nmap [unite:0]. :UniteResume<cr>
@@ -781,3 +784,8 @@
 		" easy toggles
 		map coW :ToggleWhitespace<cr>
 		map coS :ToggleStripWhitespaceOnSave<cr>
+	
+	" vim-session
+		" opt-in
+		let g:session_autosave = 0
+		let g:session_autoload = 0

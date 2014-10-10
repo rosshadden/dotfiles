@@ -45,7 +45,7 @@ URxvt*urgentOnBell:                   true
 URxvt*visualBell:                     false
 ! URxvt*mapAlert:                       boolean
 ! URxvt*meta8:                          boolean
-! URxvt*mouseWheelScrollPage:           boolean
+URxvt*mouseWheelScrollPage:           true
 ! URxvt*tripleclickwords:               boolean
 ! URxvt*insecure:                       boolean
 ! URxvt*cursorUnderline:                boolean
@@ -150,9 +150,9 @@ URxvt*url-launcher:                   /usr/bin/xdg-open
 URxvt.clipboard.copycmd:  xsel -ib
 URxvt.clipboard.pastecmd: xsel -ob
 
-URxvt.keysym.M-c:   perl:clipboard:copy
-URxvt.keysym.M-v:   perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.Control-Shift-c:   perl:clipboard:copy
+URxvt.keysym.Control-Shift-v:   perl:clipboard:paste
+URxvt.keysym.Control-Shift-Meta-v: perl:clipboard:paste_escaped
 
 
 

@@ -91,7 +91,7 @@ set show-notes			= yes		# When non-bool passed as `--show-notes=...` (diff)
 #set blame-options		= -C -C -C	# User-defined options for `tig blame` (blame)
 
 # Misc
-set refresh-mode		= auto		# Enum: manual, auto, after-command, periodic
+set refresh-mode		= periodic		# Enum: manual, auto, after-command, periodic
 set refresh-interval		= 10		# Interval in seconds between refreshes
 set ignore-case			= no		# Ignore case when searching?
 set focus-child			= yes		# Move focus to child view when opened?
@@ -99,7 +99,7 @@ set horizontal-scroll		= 50%		# Number of columns to scroll as % of width
 set split-view-height		= 67%		# Height of the bottom view for horizontal splits
 set vertical-split		= auto		# Enum: horizontal, vertical, auto; Use auto to
 						# switch to horizontal split when width allows it
-set split-view-width		= 50%		# Width of right-most view for vertical splits
+set split-view-width		= 70%		# Width of right-most view for vertical splits
 set editor-line-number		= yes		# Automatically pass line number to editor? Used
 						# for opening file at specific line e.g. from a diff
 set mouse			= yes		# Enable mouse support?
@@ -206,9 +206,11 @@ bind generic	k	move-up
 bind generic	j	move-down
 bind generic	<PgDown> move-page-down
 bind generic	<C-D>	move-page-down
+bind generic	<C-F>	move-page-down
 bind generic	<Space>	move-page-down
 bind generic	<PgUp>	move-page-up
 bind generic	<C-U>	move-page-up
+bind generic	<C-B>	move-page-up
 bind generic	-	move-page-up
 bind generic	<Home>	move-first-line
 bind generic	<End>	move-last-line
