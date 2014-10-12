@@ -40,9 +40,11 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
-alias afk='light-locker-command -l'
+# lock session
+alias afk='i3lock --color=012345'
 
-alias reload='alias reload=". $HOME/.${SHELL}rc"'
+# reload shell config
+alias reload='. $HOME/.${0}rc'
 
 # Turn off caps lock
 alias shh="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"

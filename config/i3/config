@@ -22,10 +22,12 @@
 	set $return mode "default"
 
 	# default apps
-	set $runner rofi -show run
-	set $launcher j4-dmenu-desktop --dmenu="rofi -dmenu -p launch:"
+	set $chooseCommand rofi -show run
+	set $chooseWindow rofi -show window
+	set $chooseApp j4-dmenu-desktop --dmenu="rofi -dmenu -p launch:"
 	set $terminal i3-sensible-terminal
-	set $tmux i3-sensible-terminal -e tmux -2 new-session -A -s
+	set $tmux i3-sensible-terminal -e tmux -2
+	set $tmuxAttach i3-sensible-terminal -e tmux -2 new-session -A -s
 
 	# UI
 	set $borderWidth 8
@@ -60,13 +62,17 @@
 # BINDS
 ################
 	# open terminal
-	bindsym $mod+t exec $terminal
+	bindsym $mod+t exec $tmux
+	bindsym $mod+Shift+t exec $terminal
 
 	# open runner
-	bindsym $mod+r exec $runner
+	bindsym $mod+r exec $chooseCommand
+
+	# open window finder
+	bindsym $mod+w exec $chooseWindow
 
 	# open launcher
-	bindsym $mod+p exec --no-startup-id $launcher
+	bindsym $mod+p exec --no-startup-id $chooseApp
 
 	# lock screen
 	bindsym $mod+Delete exec i3lock --color=012345
@@ -300,22 +306,22 @@
 
 	mode "TMUX" {
 		# by name
-			bindsym Return exec i3-input -F 'exec $tmux %s' -P 'Session name: '; $return
+			bindsym Return exec i3-input -F 'exec $tmuxAttach %s' -P 'Session name: '; $return
 
 		# presets
-			bindsym grave exec $tmux 0; $return
-			bindsym 1 exec $tmux web; $return
-			bindsym 2 exec $tmux dev; $return
-			bindsym 3 exec $tmux sync; $return
-			bindsym 4 exec $tmux hack; $return
-			bindsym 5 exec $tmux files; $return
-			bindsym 6 exec $tmux media; $return
-			bindsym 7 exec $tmux games; $return
-			bindsym 8 exec $tmux 8; $return
-			bindsym 9 exec $tmux run; $return
-			bindsym 0 exec $tmux chat; $return
-			bindsym bracketleft exec $tmux 11; $return
-			bindsym bracketright exec $tmux 12; $return
+			bindsym grave exec $tmuxAttach 0; $return
+			bindsym 1 exec $tmuxAttach web; $return
+			bindsym 2 exec $tmuxAttach dev; $return
+			bindsym 3 exec $tmuxAttach sync; $return
+			bindsym 4 exec $tmuxAttach hack; $return
+			bindsym 5 exec $tmuxAttach files; $return
+			bindsym 6 exec $tmuxAttach media; $return
+			bindsym 7 exec $tmuxAttach games; $return
+			bindsym 8 exec $tmuxAttach 8; $return
+			bindsym 9 exec $tmuxAttach run; $return
+			bindsym 0 exec $tmuxAttach chat; $return
+			bindsym bracketleft exec $tmuxAttach 11; $return
+			bindsym bracketright exec $tmuxAttach 12; $return
 
 		# TODO: open preset for the current workspace
 
@@ -419,10 +425,11 @@
 ################
 # THEME
 ################
-	client.focused #0088CC #0088CC #ffffff #dddddd
-	client.focused_inactive #333333 #333333 #888888 #292d2e
-	client.unfocused #333333 #333333 #888888 #292d2e
-	client.urgent #2f343a #900000 #ffffff #900000
+	# class                 border  bg      text    indicator
+	client.focused          #00afff #0087ff #ffffff #dddddd
+	client.focused_inactive #666666 #151515 #ffffff #292d2e
+	client.unfocused        #666666 #151515 #ffffff #292d2e
+	client.urgent           #2f343a #900000 #ffffff #900000
 
 
 ################
@@ -440,14 +447,15 @@
 		font pango:FontAwesome 12
 
 		colors {
-			background #000000
+			background #151515
 			statusline #ffffff
 			separator #875fd7
 
-			focused_workspace #2f343a #5f00af #ffffff
-			active_workspace #2f343a #5f00af #ffffff
-			inactive_workspace #2f343a #875fd7 #ffffff
-			urgent_workspace #2f343a #ff5f00 #ffffff
+			# class            border  bg      text
+			focused_workspace  #875fd7 #5f00af #ffffff
+			inactive_workspace #151515 #151515 #ffffff
+			active_workspace   #5f00af #875fd7 #ffffff
+			urgent_workspace   #ffaf00 #ff5f00 #ffffff
 		}
 	}
 

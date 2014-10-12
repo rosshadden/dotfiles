@@ -1,0 +1,2 @@
+- get `<m-*>` bindings working in all cases (right now it doesn't when (in tmux && `v file`))
+- make zsh prompt change when in command mode

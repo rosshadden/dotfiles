@@ -70,7 +70,7 @@
 ################
 # PLUGINS
 ################
-	plugins=(battery extract git-extras node npm python nyan sublime vi-mode history-substring-search systemd zsh-syntax-highlighting fasd)
+	plugins=(battery extract git-extras node npm python nyan vi-mode history-substring-search systemd zsh-syntax-highlighting fasd)
 
 	. $ZSH/oh-my-zsh.sh
 	. $DOTS/shell/plugins/vim.zsh

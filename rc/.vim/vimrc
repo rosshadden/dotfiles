@@ -1,3 +1,5 @@
+let &termencoding = &encoding
+set encoding=utf-8
 """"""""""""""""
 " NEOBUNDLE:
 """"""""""""""""
@@ -30,7 +32,7 @@
 			NeoBundle 'ervandew/supertab'
 			" <tab>-complete in the search prompt
 			NeoBundle 'SearchComplete'
-			" let `/` and `?` use perl regex
+			" search with perl regex
 			NeoBundle 'othree/eregex.vim'
 
 		" navigation
@@ -157,6 +159,9 @@
 	" ignore in searches
 	set wildignore+=node_modules/**
 
+	" faster <esc> timeout
+	set ttimeoutlen=50
+
 
 """"""""""""""""
 " THEME:
@@ -175,6 +180,14 @@
 """"""""""""""""
 " MAPPINGS:
 """"""""""""""""
+	" fix meta-keys which generate <esc>a .. <esc>z
+	let c='a'
+	while c <= 'z'
+		exec "set <m-".c.">=\e".c
+		exec "set <m-".toupper(c).">=\e".toupper(c)
+		let c = nr2char(1+char2nr(c))
+	endw
+
 	" make prefixes
 	" TODO: automate the "mode" creation
 	function! s:makePrefix(name, key, ...)
@@ -231,7 +244,7 @@
 	call s:makePrefix('prefix', '[prefix]<space>', 1)
 
 	" reset prefixes, and then escape like normal
-	execute 'noremap <esc> ' . PressPrefix('')
+	" execute 'noremap <esc> ' . PressPrefix('')
 
 	" expose the native mappings I've stolen
 		" TODO: abstract this a bit, perhaps a function that takes an array of keys to fix
@@ -284,6 +297,7 @@
 	" [buffers]
 		" prefix
 		call s:makePrefix('buffers', '[prefix]b')
+		call s:makePrefix('buffers', '[buffers]b', 1)
 
 		" split buffer [h, j, k, l]
 		map [buffers]h :leftabove vnew<cr>
@@ -291,15 +305,28 @@
 		map [buffers]j :rightbelow new<cr>
 		map [buffers]k :leftabove new<cr>
 
+		" clone buffer [h, j, k, l]
+		map [buffers:1]h :leftabove vsplit<cr>
+		map [buffers:1]l :rightbelow vsplit<cr>
+		map [buffers:1]j :rightbelow split<cr>
+		map [buffers:1]k :leftabove split<cr>
+
 	" [windows]
 		" prefix
 		call s:makePrefix('windows', '[prefix]w')
+		call s:makePrefix('windows', '[windows]w', 1)
 
 		" split window [h, j, k, l]
 		map [windows]h :topleft vnew<cr>
 		map [windows]l :botright vnew<cr>
 		map [windows]j :botright new<cr>
 		map [windows]k :topleft new<cr>
+
+		" clone window [h, j, k, l]
+		map [windows:1]h :topleft vsplit<cr>
+		map [windows:1]l :botright vsplit<cr>
+		map [windows:1]j :botright split<cr>
+		map [windows:1]k :topleft split<cr>
 
 		" move window [H, J, K, L]
 		" NOTE: this is not expected, but all vim can natively do
@@ -320,28 +347,28 @@
 		call s:makePrefix('tabs', '[tabs]t', 1)
 
 		" new, at [n:+1]
-		map [tabs:0]n :<c-u>exe v:count."tabnew"<cr>
+		map [tabs]n :<c-u>exe v:count."tabnew"<cr>
 		" duplicate
-		map [tabs:0]d :tabnew %<cr>
+		map [tabs]d :tabnew %<cr>
 		" close
-		map [tabs:0]w :tabclose<cr>
-		map [tabs:0]W :tabclose!<cr>
+		map [tabs]w :tabclose<cr>
+		map [tabs]W :tabclose!<cr>
 		" close others
-		map [tabs:0]o :tabonly<cr>
-		map [tabs:0]O :tabonly!<cr>
+		map [tabs]o :tabonly<cr>
+		map [tabs]O :tabonly!<cr>
 
 		" NOTE: technically [tabs]g and [tabs]l are the same,
 		" though semantically the former is for absolute navigation and the latter for relative
 		" goto [n:+1]
-		map [tabs:0]g :<c-u>exe (v:count == 0) ? "tabnext" : "tabnext ".v:count1<cr>
+		map [tabs]g :<c-u>exe (v:count == 0) ? "tabnext" : "tabnext ".v:count1<cr>
 		" next [n:+1]
-		map [tabs:0]l :<c-u>exe (v:count == 0) ? "tabnext" : "tabnext ".v:count1<cr>
+		map [tabs]l :<c-u>exe (v:count == 0) ? "tabnext" : "tabnext ".v:count1<cr>
 		" previous [n::1]
-		map [tabs:0]h :<c-u>exe (v:count == 0) ? "tabprevious" : "tabprevious ".v:count1<cr>
+		map [tabs]h :<c-u>exe (v:count == 0) ? "tabprevious" : "tabprevious ".v:count1<cr>
 		" first
-		map [tabs:0]f :tabfirst<cr>
+		map [tabs]f :tabfirst<cr>
 		" last
-		map [tabs:0]F :tablast<cr>
+		map [tabs]F :tablast<cr>
 
 		" move [n:1] left
 		map [tabs:1]h :<c-u>exe "tabmove -".v:count1<cr>
@@ -656,7 +683,7 @@
 		" define and use my own 'prefix' mode, for showing the prefixes
 		call airline#parts#define_function('prefix', 'GetPrefix')
 		let g:airline_section_a = airline#section#create_left(['mode', 'prefix', 'paste', 'capslock', 'iminsert'])
-		let g:airline_enable_branch     = 1
+		let g:airline_enable_branch = 1
 		let g:airline_theme = 'airlineish'
 
 		" this makes the base16 theme work
@@ -671,7 +698,7 @@
 			" tabline
 			let g:airline#extensions#tabline#enabled = 1
 			" close 'button'
-			let g:airline#extensions#tabline#close_symbol = '✗'
+			let g:airline#extensions#tabline#close_symbol = 'â'
 			" how tab numbers are calculated (0 for # of splits, 1 for tab #)
 			let g:airline#extensions#tabline#tab_nr_type = 1
 			" quick buffer switch
@@ -693,6 +720,15 @@
 			let airline#extensions#promptline#color_template = 'insert'
 			" let airline#extensions#promptline#color_template = 'visual'
 			" let airline#extensions#promptline#color_template = 'replace'
+			" let g:promptline_preset = 'powerlineclone'
+			let g:promptline_preset = {
+				\'a' : [ promptline#slices#host(), '$USER' ],
+				\'b' : [ promptline#slices#cwd() ],
+				\'x' : [ promptline#slices#git_status() ],
+				\'y' : [ promptline#slices#vcs_branch() ],
+				\'z' : [ '%*' ],
+				\'warn' : [ promptline#slices#last_exit_code() ]
+			\ }
 
 			" tmuxline
 			let g:airline#extensions#tmuxline#enabled = 1
@@ -737,18 +773,6 @@
 		map <silent> <c-k> :TmuxNavigateUp<cr>
 		map <silent> <c-j> :TmuxNavigateDown<cr>
 		map <silent> <c-\> :TmuxNavigatePrevious<cr>
-
-		imap <silent> <m-h> <esc>:TmuxNavigateLeft<cr>
-		imap <silent> <m-l> <esc>:TmuxNavigateDown<cr>
-		imap <silent> <m-k> <esc>:TmuxNavigateUp<cr>
-		imap <silent> <m-j> <esc>:TmuxNavigateRight<cr>
-		imap <silent> <m-\> <esc>:TmuxNavigatePrevious<cr>
-
-		imap <silent> <c-h> <esc>:TmuxNavigateLeft<cr>
-		imap <silent> <c-l> <esc>:TmuxNavigateDown<cr>
-		imap <silent> <c-k> <esc>:TmuxNavigateUp<cr>
-		imap <silent> <c-j> <esc>:TmuxNavigateRight<cr>
-		imap <silent> <c-\> <esc>:TmuxNavigatePrevious<cr>
 
 	" vim-jsdoc
 		let g:jsdoc_default_mapping = 0
