@@ -43,6 +43,7 @@ a-h = window-prev
 a-c = window-close
 a-H = shift-left
 a-L = shift-right
+a-r = refresh-screen
 c-r = refresh-screen
 a-C = toggle-clipboard
 

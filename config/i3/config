@@ -5,16 +5,16 @@
 	set $alt Mod1
 
 	set $0 0
-	set $1 1: web
-	set $2 2: dev
-	set $3 3: sync
-	set $4 4: hack
-	set $5 5: files
-	set $6 6: media
-	set $7 7: games
+	set $1 1| web
+	set $2 2| dev
+	set $3 3| sync
+	set $4 4| hack
+	set $5 5| files
+	set $6 6| media
+	set $7 7| games
 	set $8 8
-	set $9 9: run
-	set $10 10: chat
+	set $9 9| run
+	set $10 10| chat
 	set $11 11
 	set $12 12
 
@@ -309,6 +309,7 @@
 			bindsym Return exec i3-input -F 'exec $tmuxAttach %s' -P 'Session name: '; $return
 
 		# presets
+			# TODO: make these dynamic from the workspace name
 			bindsym grave exec $tmuxAttach 0; $return
 			bindsym 1 exec $tmuxAttach web; $return
 			bindsym 2 exec $tmuxAttach dev; $return

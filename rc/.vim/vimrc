@@ -28,6 +28,8 @@ set encoding=utf-8
 		" enhancements
 			" let `.` repeat things like plugin mappings
 			NeoBundle 'tpope/vim-repeat'
+			" let `.` repeat things in visual mode
+			NeoBundle 'visualrepeat'
 			" <tab>-complete in insert mode
 			NeoBundle 'ervandew/supertab'
 			" <tab>-complete in the search prompt
@@ -58,6 +60,8 @@ set encoding=utf-8
 			NeoBundle 'mustache/vim-mustache-handlebars'
 			" jsdoc
 			NeoBundle 'heavenshell/vim-jsdoc'
+			" emmet
+			NeoBundle 'mattn/emmet-vim'
 			" i3 config
 			NeoBundle 'PotatoesMaster/i3-vim-syntax'
 			NeoBundle 'suan/vim-instant-markdown'
@@ -143,6 +147,10 @@ set encoding=utf-8
 	" Let arrow keys pass \n
 	set whichwrap=b,s,<,>,[,]
 
+	" better whitespace characters
+	set listchars=tab:»\ ,trail:·,nbsp:_,extends:>,precedes:<
+	" set listchars+=eol:¬
+
 	" folding
 	set foldmethod=indent
 	set foldlevelstart=128
@@ -159,10 +167,6 @@ set encoding=utf-8
 
 	" ignore in searches
 	set wildignore+=node_modules/**
-
-	" faster <esc> timeout
-	set ttimeoutlen=50
-
 
 """"""""""""""""
 " THEME:
@@ -340,7 +344,7 @@ set encoding=utf-8
 		call s:makePrefix('tabs', '[tabs]t', 1)
 
 		" new, at [n:+1]
-		map [tabs]n :<c-u>exe v:count."tabnew"<cr>
+		map [tabs]n :tabnew<cr>
 		" duplicate
 		map [tabs]d :tabnew %<cr>
 		" close
@@ -769,6 +773,8 @@ set encoding=utf-8
 
 	" vim-jsdoc
 		let g:jsdoc_default_mapping = 0
+		let g:jsdoc_allow_input_prompt = 1
+		let g:jsdoc_additional_descriptions = 1
 
 		autocmd FileType javascript
 			\ nmap <silent> <localleader>d <plug>(jsdoc)
@@ -806,3 +812,9 @@ set encoding=utf-8
 		" opt-in
 		let g:session_autosave = 0
 		let g:session_autoload = 0
+	
+	" emmet-vim
+		" only enable in NORMAL and VISUAL modes
+		let g:user_emmet_mode='nv'
+		" use <localleader>
+		let g:user_emmet_leader_key='-'

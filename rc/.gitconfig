@@ -88,11 +88,12 @@
 	i = in
 	o = out
 	r = remote
+	t = tag
+	m = merge
 	ch = checkout
 	co = checkout
 	rb = rebase
 	sh = show
-	t = tag
 [remote "origin"]
 	#fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
 [grep]
