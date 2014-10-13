@@ -1,2 +1,29 @@
-- get `<m-*>` bindings working in all cases (right now it doesn't when (in tmux && `v file`))
-- make zsh prompt change when in command mode
+- meta
+  - add a readme
+  - screenshots
+  - better organization of files and folders
+  - look into [stow](http://www.gnu.org/software/stow/) for symlink management
+  - symlink ./bin and ./lib to ~/bin and ~/lib, and update $PATH
+- install script
+  - anonymous install (no need for git ssh keys, no reference to me)
+  - uninstall
+  - reinstall
+  - maybe an update, which cleans up old stuff and does the new
+  - add X scripts
+- vim
+  - find or make a color scheme that fits my new palette
+  - customize airline colors so that visual mode isn't terrible. maybe a vibrant green
+  - fix `:TmuxNavigate*` when (in tmux && `v file`)
+  - tabs
+    - fix `[tabs]n`
+    - make `[tabs]H` and `[tabs]L` move tabs left/right
+    - make `[tabs]j` and `[tabs]k` go to first/last tab (or something else)
+    - make `[tabs]J` and `[tabs]K` move to first/last (or something else)
+- shell
+  - make use bash works, though why bother at this point since I haven't used it in years
+  - maybe just remove bash
+  - make zsh prompt change when in command mode
+- X
+  - add my .xprofile (or at least the common startup processes) to the repo
+- trim down as much fat as possible, like bash and other things I don't use
+- look into [these dotfiles](https://github.com/xero/dotfiles)

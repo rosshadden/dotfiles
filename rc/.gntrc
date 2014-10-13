@@ -38,22 +38,21 @@ small-button = true
 [GntEntry::remap]
 
 [GntWM::binding]
-c-l = window-next
-c-h = window-prev
-c-c = window-close
-c-C = window-close
-c-, = shift-left
-c-. = shift-right
+a-l = window-next
+a-h = window-prev
+a-c = window-close
+a-H = shift-left
+a-L = shift-right
 c-r = refresh-screen
 a-C = toggle-clipboard
 
 [GntWidget::binding]
 
 [Irssi::binding]
-c-l = move-right
-c-h = move-left
-c-j = move-down
-c-k = move-up
+a-l = move-right
+a-h = move-left
+a-j = move-down
+a-k = move-up
 
 [GntTree::binding]
 l = move-right

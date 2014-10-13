@@ -60,6 +60,7 @@ set encoding=utf-8
 			NeoBundle 'heavenshell/vim-jsdoc'
 			" i3 config
 			NeoBundle 'PotatoesMaster/i3-vim-syntax'
+			NeoBundle 'suan/vim-instant-markdown'
 
 		" integration
 			" git
@@ -180,14 +181,6 @@ set encoding=utf-8
 """"""""""""""""
 " MAPPINGS:
 """"""""""""""""
-	" fix meta-keys which generate <esc>a .. <esc>z
-	let c='a'
-	while c <= 'z'
-		exec "set <m-".c.">=\e".c
-		exec "set <m-".toupper(c).">=\e".toupper(c)
-		let c = nr2char(1+char2nr(c))
-	endw
-
 	" make prefixes
 	" TODO: automate the "mode" creation
 	function! s:makePrefix(name, key, ...)
