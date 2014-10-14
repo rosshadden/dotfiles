@@ -8,8 +8,19 @@ else
 	layout=`setxkbmap -query | grep "layout" | cut -f 6 -d ' ' | cut -f 2 -d ','`
 fi
 
-# note that the reason I switch layouts with `aoeu` -> qwerty and `asdf` -> dvorak
-# is because of the positions of the keys
+# NOTE: I switch layouts with `aoeu` -> qwerty and `asdf` -> dvorak
+# because of the positions of the keys
+
+# reset xcape
+function resetXcape {
+	pkill xcape
+	xcape
+}
+
+# load keyboard mappings
+function loadMap {
+	xmodmap $DOTS/X/.Xmodmap
+}
 
 if [[ $layout == "init" ]]; then
 	setxkbmap \
@@ -17,14 +28,16 @@ if [[ $layout == "init" ]]; then
 		-variant dvorak, \
 		-option \
 		-option grp_led:scroll \
-		-option caps:escape \
 		-option grp:sclk_toggle \
+		-option ctrl:nocaps \
 		-option compose:rctrl
-	# xmodmap $DOTS/X/.Xmodmap
+	loadMap
+	resetXcape
 elif [[ $layout == "aoeu" || $layout == "dvorak" ]]; then
 	# switch to dvorak
 	if [ $DISPLAY ]; then
 		setxkbmap -variant dvorak,
+		loadMap
 	else
 		loadkeys dvorak
 	fi
@@ -32,6 +45,7 @@ elif [[ $layout == "asdf" || $layout == "us" || $layout == "qwerty" ]]; then
 	# switch to qwerty
 	if [ $DISPLAY ]; then
 		setxkbmap -variant ,dvorak
+		loadMap
 	else
 		loadkeys us
 	fi
@@ -39,6 +53,7 @@ else
 	# switch to whatever was passed in
 	if [ $DISPLAY ]; then
 		setxkbmap $layout
+		loadMap
 	else
 		loadkeys $layout
 	fi

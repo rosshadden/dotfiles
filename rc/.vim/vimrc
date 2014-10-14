@@ -105,6 +105,8 @@ set encoding=utf-8
 			" sessions
 			NeoBundle 'xolox/vim-session'
 			NeoBundle 'xolox/vim-misc'
+			" retab spaces => tabs, and vice versa
+			NeoBundle 'rhlobo/vim-super-retab'
 
 		" external
 			NeoBundle 'christoomey/vim-tmux-navigator'

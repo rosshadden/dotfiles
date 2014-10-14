@@ -337,6 +337,8 @@ URxvt*iso14755_52: false
 
 !!!!!!!!!!!!!!!!
 
+URxvt.matcher.button: 1
+
 ! copy/pasta
 URxvt.keysym.C-C:   perl:clipboard:copy
 URxvt.keysym.C-V:   perl:clipboard:paste
