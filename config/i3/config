@@ -472,11 +472,9 @@
 	# dialogs
 	for_window [window_role="pop-up"] floating enable, move absolute center
 
-	# qalculate
-	for_window [title="Qalculate!"] floating enable
-
-	# copyq, zeal, gpick
+	# floating
 	for_window [class="^Copyq|zeal|Gpick$"] floating enable
+	for_window [title="Qalculate!"] floating enable
 
 	# chrome
 	assign [class="^Google-chrome.*$"] → $1
@@ -488,6 +486,9 @@
 	# finch
 	assign [title="^finch$"] → $10
 	for_window [title="^finch$"] move container to workspace $10
+
+	# copyq
+	bindsym $mod+y exec copyq toggle
 
 
 ################
