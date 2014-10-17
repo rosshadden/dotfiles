@@ -491,14 +491,14 @@
 	for_window [title="Qalculate!"] floating enable
 
 	# chrome
-	assign [class="^Google-chrome.*$"] → $1
+	assign [class="^Google-chrome.*$"] → $ws1
 
 	# nuvola
-	assign [class="nuvolaplayer"] → $6
+	assign [class="nuvolaplayer"] → $ws6
 	for_window [class="nuvolaplayer"] move container to workspace $ws6
 
 	# finch
-	assign [title="^finch$"] → $10
+	assign [title="^finch$"] → $ws10
 	for_window [title="^finch$"] move container to workspace $ws10
 
 	# copyq
