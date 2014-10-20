@@ -222,7 +222,7 @@ URxvt*scrollTtyKeypress: true
 ! URxvt*lineSpace: number
 
 ! True: handle Meta (Alt) + keypress to set the 8th bit. False: handle Meta (Alt) + keypress as an escape prefix [default].
-! URxvt*meta8: true
+URxvt*meta8: false
 
 ! True: the mouse wheel scrolls a page full. False: the mouse wheel scrolls five lines [default].
 ! URxvt*mouseWheelScrollPage: boolean

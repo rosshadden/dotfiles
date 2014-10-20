@@ -43,18 +43,11 @@ set encoding=utf-8
 		" motions
 			NeoBundle 'bkad/CamelCaseMotion'
 
-		" UI
-			NeoBundle 'bling/vim-airline'
-			NeoBundle 'paranoida/vim-airlineish'
-			NeoBundle 'chriskempson/base16-vim'
-			" sexy scrolling, with easing and animation
-			" NOTE: messes with mouse scrolling, which currently upsets me
-			" NeoBundle 'joeytwiddle/sexy_scroller.vim'
-
 		" languages
 			" autoformat support for multiple
 			NeoBundle 'Chiel92/vim-autoformat'
 			" js
+			NeoBundle 'pangloss/vim-javascript'
 			NeoBundle 'jelera/vim-javascript-syntax'
 			" hbs
 			NeoBundle 'mustache/vim-mustache-handlebars'
@@ -73,6 +66,14 @@ set encoding=utf-8
 			NeoBundle 'rking/ag.vim'
 			" LaTeX
 			NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
+
+		" UI
+			NeoBundle 'bling/vim-airline'
+			NeoBundle 'paranoida/vim-airlineish'
+			NeoBundle 'chriskempson/base16-vim'
+			" sexy scrolling, with easing and animation
+			" NOTE: messes with mouse scrolling, which currently upsets me
+			" NeoBundle 'joeytwiddle/sexy_scroller.vim'
 
 		" unite
 			NeoBundle 'Shougo/unite.vim'
@@ -181,7 +182,6 @@ set encoding=utf-8
 	" access colors present in 256 colorspace
 	let base16colorspace=256
 	colorscheme base16-default
-	" colorscheme base16-google
 
 
 """"""""""""""""
@@ -519,8 +519,10 @@ set encoding=utf-8
 				\ ' -g ""'
 		endif
 
+		" setting `vertical-preview` here doesn't work for some reason
 		call unite#custom#profile('default', 'context', {
 		\   'winheight': 24,
+		\   'vertical-preview': 1,
 		\ })
 
 		call unite#filters#matcher_default#use(['matcher_fuzzy'])
@@ -560,7 +562,9 @@ set encoding=utf-8
 			imap <buffer><expr> <c-t> unite#do_action('tabopen')
 
 			" toggle auto preview
-			nmap <buffer> <c-p> <plug>(unite_toggle_auto_preview)
+			map <buffer> P <plug>(unite_toggle_auto_preview)
+			map <buffer> <c-p> <plug>(unite_toggle_auto_preview)
+			imap <buffer> <c-p> <plug>(unite_toggle_auto_preview)
 
 			" exit
 			nmap <buffer> <esc> <plug>(unite_exit)
@@ -580,79 +584,75 @@ set encoding=utf-8
 
 		" open files
 			" flat
-			nmap [unite:0]f :Unite              -buffer-name=files -start-insert -no-split file directory file/new directory/new<cr>
-			nmap [unite:0]F :UniteWithBufferDir -buffer-name=files -start-insert -no-split file directory file/new directory/new<cr>
-			nmap [unite:1]f :Unite              -buffer-name=files -start-insert -no-split -auto-preview file directory file/new directory/new<cr>
-			nmap [unite:1]F :UniteWithBufferDir -buffer-name=files -start-insert -no-split -auto-preview file directory file/new directory/new<cr>
+			nmap [unite:0]f :Unite              -buffer-name=files -vertical-preview -toggle -start-insert file directory file/new directory/new<cr>
+			nmap [unite:0]F :UniteWithBufferDir -buffer-name=files -vertical-preview -toggle -start-insert file directory file/new directory/new<cr>
+			nmap [unite:1]f :Unite              -buffer-name=files -vertical-preview -toggle -start-insert -no-split file directory file/new directory/new<cr>
+			nmap [unite:1]F :UniteWithBufferDir -buffer-name=files -vertical-preview -toggle -start-insert -no-split file directory file/new directory/new<cr>
 
 			" recursive
-			nmap [unite:0]p :Unite              -buffer-name=files -start-insert -no-split file_rec/async:!<cr>
-			nmap [unite:0]P :UniteWithBufferDir -buffer-name=files -start-insert -no-split file_rec/async:!<cr>
-			nmap [unite:1]p :Unite              -buffer-name=files -start-insert -no-split -auto-preview file_rec/async:!<cr>
-			nmap [unite:1]P :UniteWithBufferDir -buffer-name=files -start-insert -no-split -auto-preview file_rec/async:!<cr>
+			nmap [unite:0]p :Unite              -buffer-name=files -vertical-preview -toggle -start-insert file_rec/async:!<cr>
+			nmap [unite:0]P :UniteWithBufferDir -buffer-name=files -vertical-preview -toggle -start-insert file_rec/async:!<cr>
+			nmap [unite:1]p :Unite              -buffer-name=files -vertical-preview -toggle -start-insert -no-split file_rec/async:!<cr>
+			nmap [unite:1]P :UniteWithBufferDir -buffer-name=files -vertical-preview -toggle -start-insert -no-split file_rec/async:!<cr>
 
 		" search files
-			nmap [unite:0]g :Unite              grep:.<cr>
-			nmap [unite:0]G :UniteWithBufferDir grep:.<cr>
-			nmap [unite:1]g :Unite              -auto-preview grep:.<cr>
-			nmap [unite:1]G :UniteWithBufferDir -auto-preview grep:.<cr>
+			nmap [unite:0]g :Unite              -vertical-preview -no-empty grep:.<cr>
+			nmap [unite:0]G :UniteWithBufferDir -vertical-preview -no-empty grep:.<cr>
+			nmap [unite:1]g :Unite              -vertical-preview -no-empty -no-split grep:.<cr>
+			nmap [unite:1]G :UniteWithBufferDir -vertical-preview -no-empty -no-split grep:.<cr>
 			" TODO: get something like this working:
 			" vmap [unite:0]g :UniteWithCursorWord grep:.<cr>
 
 		" current and recent
 			" most recently used (mru) files
-			nmap [unite:0]r :Unite              -buffer-name=recent -no-split file_mru<cr>
-			nmap [unite:0]R :UniteWithBufferDir -buffer-name=recent -no-split file_mru<cr>
-			nmap [unite:1]r :Unite              -buffer-name=recent -no-split -auto-preview file_mru<cr>
-			nmap [unite:1]R :UniteWithBufferDir -buffer-name=recent -no-split -auto-preview file_mru<cr>
+			nmap [unite:0]r :Unite              -buffer-name=recent -vertical-preview -toggle file_mru<cr>
+			nmap [unite:0]R :UniteWithBufferDir -buffer-name=recent -vertical-preview -toggle file_mru<cr>
+			nmap [unite:1]r :Unite              -buffer-name=recent -vertical-preview -toggle -no-split file_mru<cr>
+			nmap [unite:1]R :UniteWithBufferDir -buffer-name=recent -vertical-preview -toggle -no-split file_mru<cr>
 
 			" current buffers
-			nmap [unite:0]b :Unite              -buffer-name=buffers -no-split buffer<cr>
-			nmap [unite:0]B :UniteWithBufferDir -buffer-name=buffers -no-split buffer<cr>
-			nmap [unite:1]b :Unite              -buffer-name=buffers -no-split -auto-preview buffer<cr>
-			nmap [unite:1]B :UniteWithBufferDir -buffer-name=buffers -no-split -auto-preview buffer<cr>
+			nmap [unite:0]b :Unite              -buffer-name=buffers -vertical-preview -toggle buffer<cr>
+			nmap [unite:0]B :UniteWithBufferDir -buffer-name=buffers -vertical-preview -toggle buffer<cr>
+			nmap [unite:1]b :Unite              -buffer-name=buffers -vertical-preview -toggle -no-split buffer<cr>
+			nmap [unite:1]B :UniteWithBufferDir -buffer-name=buffers -vertical-preview -toggle -no-split buffer<cr>
 
 			" buffer, tab, or files
-			nmap [unite:0]a :Unite              -start-insert -no-split buffer tab file_mru directory_mru bookmark<cr>
-			nmap [unite:0]A :UniteWithBufferDir -start-insert -no-split buffer tab file_mru directory_mru bookmark<cr>
-			nmap [unite:1]a :Unite              -start-insert -no-split -auto-preview buffer tab file_mru directory_mru bookmark<cr>
-			nmap [unite:1]A :UniteWithBufferDir -start-insert -no-split -auto-preview buffer tab file_mru directory_mru bookmark<cr>
+			nmap [unite:0]a :Unite              -vertical-preview -start-insert buffer tab file_mru directory_mru bookmark<cr>
+			nmap [unite:0]A :UniteWithBufferDir -vertical-preview -start-insert buffer tab file_mru directory_mru bookmark<cr>
+			nmap [unite:1]a :Unite              -vertical-preview -start-insert -no-split buffer tab file_mru directory_mru bookmark<cr>
+			nmap [unite:1]A :UniteWithBufferDir -vertical-preview -start-insert -no-split buffer tab file_mru directory_mru bookmark<cr>
 
 		" current file
 			" outline
-			nmap [unite:0]o :Unite               -buffer-name=outline -no-split -auto-preview outline<cr>
-			nmap [unite:0]O :UniteWithCursorWord -buffer-name=outline -no-split -auto-preview outline<cr>
-			nmap [unite:1]o :Unite               -buffer-name=outline -no-split -auto-preview -auto-preview outline<cr>
-			nmap [unite:1]O :UniteWithCursorWord -buffer-name=outline -no-split -auto-preview -auto-preview outline<cr>
+			nmap [unite:0]o :Unite               -buffer-name=outline -vertical-preview -toggle -no-split outline<cr>
+			nmap [unite:0]O :UniteWithCursorWord -buffer-name=outline -vertical-preview -toggle -no-split outline<cr>
+			nmap [unite:1]o :Unite               -buffer-name=outline -vertical-preview -toggle -no-split -no-split outline<cr>
+			nmap [unite:1]O :UniteWithCursorWord -buffer-name=outline -vertical-preview -toggle -no-split -no-split outline<cr>
 
 			" line
-			nmap [unite:0]l :Unite               -buffer-name=search -no-split -auto-preview -start-insert line<cr>
-			nmap [unite:0]L :UniteWithCursorWord -buffer-name=search -no-split -auto-preview -start-insert line<cr>
-			nmap [unite:1]l :Unite               -buffer-name=search -no-split -auto-preview -start-insert -auto-preview line<cr>
-			nmap [unite:1]L :UniteWithCursorWord -buffer-name=search -no-split -auto-preview -start-insert -auto-preview line<cr>
+			nmap [unite:0]l :Unite               -buffer-name=search -vertical-preview -toggle -no-split -auto-preview -start-insert line<cr>
+			nmap [unite:0]L :UniteWithCursorWord -buffer-name=search -vertical-preview -toggle -no-split -auto-preview -start-insert line<cr>
 
 			" changes
-			nmap [unite:0]k :Unite               -buffer-name=search -no-split change<cr>
-			nmap [unite:0]K :UniteWithCursorWord -buffer-name=search -no-split change<cr>
-			nmap [unite:1]k :Unite               -buffer-name=search -no-split -auto-preview change<cr>
-			nmap [unite:1]K :UniteWithCursorWord -buffer-name=search -no-split -auto-preview change<cr>
+			nmap [unite:0]k :Unite               -buffer-name=search -vertical-preview -toggle -no-split -auto-preview change<cr>
+			nmap [unite:0]K :UniteWithCursorWord -buffer-name=search -vertical-preview -toggle -no-split -auto-preview change<cr>
 
 		" misc
 			" do all the things
-			nmap [unite:0]<cr> :Unite -buffer-name=omni -no-split -start-insert source<cr>
-			nmap [unite:1]<cr> :Unite -buffer-name=omni -no-split -start-insert -auto-preview source<cr>
+			nmap [unite:0]<cr> :Unite -buffer-name=omni -vertical-preview -toggle -start-insert source<cr>
+			nmap [unite:1]<cr> :Unite -buffer-name=omni -vertical-preview -toggle -start-insert -no-split source<cr>
 
 			" yank stack
-			nmap [unite:0]y :Unite -buffer-name=yank history/yank<cr>
-			nmap [unite:1]y :Unite -buffer-name=yank -auto-preview history/yank<cr>
+			nmap [unite:0]y :Unite -buffer-name=yank -vertical-preview -toggle history/yank<cr>
+			nmap [unite:1]y :Unite -buffer-name=yank -vertical-preview -toggle -no-split history/yank<cr>
 
 			" command history
-			nmap [unite:0]; :Unite -buffer-name=commands -no-split -default-action=execute history/command command<cr>
-			nmap [unite:1]; :Unite -buffer-name=commands -no-split -default-action=execute -auto-preview history/command command<cr>
+			nmap [unite:0]; :Unite -buffer-name=commands -vertical-preview -toggle -default-action=execute history/command command<cr>
+			nmap [unite:1]; :Unite -buffer-name=commands -vertical-preview -toggle -default-action=execute -no-split history/command command<cr>
 
 			" repeat last entry
 			nmap [unite:0]. :UniteResume<cr>
-			nmap [unite:1]. :UniteResume -auto-preview<cr>
+			nmap [unite:1]. :UniteResume -no-split
 
 	" NERDTree:
 		" show hidden files
