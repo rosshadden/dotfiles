@@ -25,6 +25,7 @@
   - make zsh prompt change when in command mode
 - X
   - add my .xprofile (or at least the common startup processes) to the repo
+  - make the fixmon scripts I have check monitors, so it works no matter what environment
 - trim down as much fat as possible, like bash and other things I don't use
 - look into [these dotfiles](https://github.com/xero/dotfiles)
 - make note of installed packages maybe? at least relevant ones like urxvt stuff

@@ -415,8 +415,8 @@ set encoding=utf-8
 		" clear highlighted search
 		nmap [leader:1]/ :nohlsearch<cr>
 		" search for selected word
-		vmap <leader>/ y/<c-r>"<cr>
-		vmap <leader>? y?<c-r>"<cr>
+		vmap <leader>/ "vy/<c-r>v
+		vmap <leader>? "vy?<c-r>v
 
 	" visual shifting (does not exit Visual mode)
 	vnoremap < <gv
