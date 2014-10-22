@@ -266,6 +266,9 @@ set encoding=utf-8
 	" shift is for sucks? (avoids :W style typos, or so I'm told)
 	map ; :
 
+	" U => redo [:redo]
+	map U :redo<cr>
+
 	" L-s => save [:update]
 	map <leader>s :update<cr>
 	" L-S => force save [:write]
@@ -279,12 +282,12 @@ set encoding=utf-8
 	" L-x => save and quit [:wq]
 	map <leader>x :wq<cr>
 
-	" U => redo [:redo]
-	map U :redo<cr>
-
 	" L-r => reload file [:edit]
 	map <leader>r :edit<cr>
 	map <leader>R :edit!<cr>
+
+	" L-. => repeat last command
+	map <leader>. @:
 
 	" insert/append
 		" tab
