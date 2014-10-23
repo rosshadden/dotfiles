@@ -29,8 +29,7 @@ if [[ $layout == "init" ]]; then
 		-option \
 		-option grp_led:scroll \
 		-option grp:sclk_toggle \
-		-option ctrl:nocaps \
-		-option compose:rctrl
+		-option ctrl:nocaps
 	loadMap
 	resetXcape
 elif [[ $layout == "aoeu" || $layout == "dvorak" ]]; then
