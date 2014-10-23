@@ -4,7 +4,7 @@
 	set $mod Mod4
 	set $alt Mod1
 
-	set $0 0
+	set $0 scratch
 	set $1 web
 	set $2 dev
 	set $3 sync
@@ -18,7 +18,7 @@
 	set $11 11
 	set $12 12
 
-	set $ws0 0
+	set $ws0 0| scratch
 	set $ws1 1| web
 	set $ws2 2| dev
 	set $ws3 3| sync

@@ -289,6 +289,14 @@ set encoding=utf-8
 	" L-. => repeat last command
 	map <leader>. @:
 
+	" add space
+		call s:makePrefix('space', '[prefix]s')
+		noremap [space]h i<space><esc>l
+		noremap [space]l i<space><esc>
+		" TODO: figure out native maps
+		map [space]j ]<space>
+		map [space]k [<space>
+
 	" insert/append
 		" tab
 		noremap <leader>it i<tab>
@@ -440,11 +448,8 @@ set encoding=utf-8
 	map <leader>p "+p
 	map <leader>P "+P
 
-	" grade-A prankster
-	noremap <up> <left>
-	noremap <down> <up>
-	noremap <left> <right>
-	noremap <right> <down>
+	" TODO: make a plugin or function that accepts any arbitrary motion
+	map [prefix]piw "_ciw<c-r>0<esc>
 
 	" CONSOLE
 		" :W => write with sudo
