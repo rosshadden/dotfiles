@@ -222,7 +222,7 @@ URxvt*scrollTtyKeypress: true
 ! URxvt*lineSpace: number
 
 ! True: handle Meta (Alt) + keypress to set the 8th bit. False: handle Meta (Alt) + keypress as an escape prefix [default].
-URxvt*meta8: false
+! URxvt*meta8: false
 
 ! True: the mouse wheel scrolls a page full. False: the mouse wheel scrolls five lines [default].
 ! URxvt*mouseWheelScrollPage: boolean
@@ -279,7 +279,7 @@ URxvt*meta8: false
 ! URxvt*insecure: boolean
 
 ! Set the key to be interpreted as the Meta key to: alt, meta, hyper, super, mod1, mod2, mod3, mod4, mod5; option -mod.
-! URxvt*modifier: mod1
+URxvt*modifier: mod1
 
 ! Specify the reply rxvt-unicode sends to the shell when an ENQ (control-E) character is passed through. It may contain escape values as described in the entry on keysym following.
 ! URxvt*answerbackString: string
