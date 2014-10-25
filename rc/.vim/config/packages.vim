@@ -44,6 +44,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" js
 		NeoBundle 'pangloss/vim-javascript'
 		NeoBundle 'jelera/vim-javascript-syntax'
+		" json
+		NeoBundle 'elzr/vim-json'
 		" hbs
 		NeoBundle 'mustache/vim-mustache-handlebars'
 		" jsdoc

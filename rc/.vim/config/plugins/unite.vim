@@ -53,8 +53,8 @@ function! s:uniteSettings()
 
 	" open in vertical split
 	map <buffer><expr> - unite#do_action('split')
-	map <buffer><expr> <c--> unite#do_action('split')
-	imap <buffer><expr> <c--> unite#do_action('split')
+	map <buffer><expr>  unite#do_action('split')
+	imap <buffer><expr>  unite#do_action('split')
 	" open in horizontal split
 	map <buffer><expr> s unite#do_action('vsplit')
 	map <buffer><expr> <c-s> unite#do_action('vsplit')

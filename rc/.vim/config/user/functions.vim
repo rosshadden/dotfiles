@@ -25,7 +25,6 @@ function! MakePrefix(name, key, ...)
 	endif
 endfunction
 
-
 function! GetPrefix(...)
 	if exists('w:prefix')
 		return w:prefix
@@ -33,7 +32,12 @@ function! GetPrefix(...)
 	return ''
 endfunction
 
-
 function! PressPrefix(prefix)
 	return ':execute "let w:prefix = \"' . a:prefix . '\""<cr>' . a:prefix
+endfunction
+
+
+" print project version from `package.json`
+function! GetVersion()
+	return 'hi'
 endfunction
