@@ -181,7 +181,11 @@
 	bindsym XF86AudioPlay exec "playerctl play-pause"
 	bindsym XF86AudioNext exec "playerctl next"
 	bindsym XF86AudioPrev exec "playerctl previous"
-	# TODO: screenshot
+
+	# screenshots
+	bindsym Print exec "~/bin/screenshot"
+	bindsym $alt+Print exec "~/bin/screenshot window"
+	bindsym Control+Shift+Print exec "~/bin/screenshot select"
 
 
 ################

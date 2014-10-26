@@ -1,18 +1,14 @@
-if has("autocmd")
+if has('autocmd')
 	filetype plugin on
 
 	augroup rcMain
-		au!
+		autocmd!
 
-		" Reload vimrc when edited (using :reload, defined above)
-		autocmd! BufWritePost vimrc source ~/.vim/vimrc
+		" Reload vimrc when edited (using :Reload, defined elsewhere)
+		autocmd! BufWritePost *.vim Reload
 
 		" Preserve cursor position
 		autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-		" Remove trailing whitespaces and \^M chars
-		" NOTE: removing in favor of vim-better-whitespace, for more control/knowledge
-		" autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1, map(getline(1, '$'), 'substitute(v:val, "\\s\\+$", "", "")'))
 
 		" turn on spell check in certain files, and move cursor to beginning of gitcommits
 		autocmd BufRead,BufNewFile *.md setlocal spell | set complete+=kspell

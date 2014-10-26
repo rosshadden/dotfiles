@@ -23,6 +23,8 @@ map <leader>x :wq<cr>
 " L-r => reload file [:edit]
 map <leader>r :edit<cr>
 map <leader>R :edit!<cr>
+" L-L-r => reload config [:Reload]
+map [leader:1]r :Reload<cr>
 
 " L-. => repeat last command
 map <leader>. @:
@@ -53,16 +55,3 @@ map <c-u> <c-g>u<c-u>
 
 " switch to alternate file
 map <leader>b <c-^>
-
-" pasting
-	" easier system clipboard
-	map <leader>y "+y
-	map <leader>Y "+Y
-	map <leader>p "+p
-	map <leader>P "+P
-
-	" paste without comments messing everything up
-	nnoremap cop :set invpaste<CR>
-
-	" TODO: make a plugin or function that accepts any arbitrary motion
-	map [prefix]piw "_ciw<c-r>0<esc>

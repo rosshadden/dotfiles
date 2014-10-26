@@ -78,6 +78,9 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'Shougo/unite-outline'
 		NeoBundle 'thinca/vim-unite-history'
 
+	" scripting
+		NeoBundle 'dbakker/vim-projectroot'
+
 	" utils
 		" sensible default settings
 		NeoBundle 'tpope/vim-sensible'

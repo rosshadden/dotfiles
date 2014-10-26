@@ -97,14 +97,6 @@ call MakePrefix('unite', '[unite]u', 1)
 	nmap [unite:1]p :Unite              -buffer-name=files -vertical-preview -toggle -start-insert -no-split file_rec/async:!<cr>
 	nmap [unite:1]P :UniteWithBufferDir -buffer-name=files -vertical-preview -toggle -start-insert -no-split file_rec/async:!<cr>
 
-" search files
-	nmap [unite:0]g :Unite              -vertical-preview -no-empty grep:.<cr>
-	nmap [unite:0]G :UniteWithBufferDir -vertical-preview -no-empty grep:.<cr>
-	nmap [unite:1]g :Unite              -vertical-preview -no-empty -no-split grep:.<cr>
-	nmap [unite:1]G :UniteWithBufferDir -vertical-preview -no-empty -no-split grep:.<cr>
-	" TODO: get something like this working:
-	" vmap [unite:0]g :UniteWithCursorWord grep:.<cr>
-
 " current and recent
 	" most recently used (mru) files
 	nmap [unite:0]r :Unite              -buffer-name=recent -vertical-preview -toggle file_mru<cr>
@@ -139,19 +131,36 @@ call MakePrefix('unite', '[unite]u', 1)
 	nmap [unite:0]k :Unite               -buffer-name=search -vertical-preview -toggle -no-split -auto-preview change<cr>
 	nmap [unite:0]K :UniteWithCursorWord -buffer-name=search -vertical-preview -toggle -no-split -auto-preview change<cr>
 
-" misc
-	" do all the things
-	nmap [unite:0]<cr> :Unite -buffer-name=omni -vertical-preview -toggle -start-insert source<cr>
-	nmap [unite:1]<cr> :Unite -buffer-name=omni -vertical-preview -toggle -start-insert -no-split source<cr>
+" search files
+	nmap [unite:0]g :Unite              -vertical-preview -no-empty grep:.<cr>
+	nmap [unite:0]G :UniteWithBufferDir -vertical-preview -no-empty grep:.<cr>
+	nmap [unite:1]g :Unite              -vertical-preview -no-empty -no-split grep:.<cr>
+	nmap [unite:1]G :UniteWithBufferDir -vertical-preview -no-empty -no-split grep:.<cr>
+	" TODO: get something like this working:
+	" vmap [unite:0]g :UniteWithCursorWord grep:.<cr>
 
-	" yank stack
-	nmap [unite:0]y :Unite -buffer-name=yank -vertical-preview -toggle history/yank<cr>
-	nmap [unite:1]y :Unite -buffer-name=yank -vertical-preview -toggle -no-split history/yank<cr>
+" do all the things
+nmap [unite:0]<cr> :Unite -buffer-name=omni -vertical-preview -toggle -start-insert source<cr>
+nmap [unite:1]<cr> :Unite -buffer-name=omni -vertical-preview -toggle -start-insert -no-split source<cr>
 
-	" command history
-	nmap [unite:0]; :Unite -buffer-name=commands -vertical-preview -toggle -default-action=execute history/command command<cr>
-	nmap [unite:1]; :Unite -buffer-name=commands -vertical-preview -toggle -default-action=execute -no-split history/command command<cr>
+" yank stack
+nmap [unite:0]y :Unite -buffer-name=yank -vertical-preview -toggle history/yank<cr>
+nmap [unite:1]y :Unite -buffer-name=yank -vertical-preview -toggle -no-split history/yank<cr>
 
-	" repeat last entry
-	nmap [unite:0]. :UniteResume<cr>
-	nmap [unite:1]. :UniteResume -no-split
+" command history
+nmap [unite:0]; :Unite -buffer-name=commands -vertical-preview -toggle -default-action=execute history/command command<cr>
+nmap [unite:1]; :Unite -buffer-name=commands -vertical-preview -toggle -default-action=edit history/command command<cr>
+
+" repeat last entry
+nmap [unite:0]. :UniteResume<cr>
+nmap [unite:1]. :UniteResume -no-split
+
+" metavim
+	" mappings
+	nmap [unite:0]m :Unite mapping<cr>
+
+" external
+	" exit
+	nmap [unite:0]x :Unite -default-action=sigterm process<cr>
+	nmap [unite:0]X :Unite -default-action=sigkill process<cr>
+	nmap [unite:1]x :Unite -default-action=sigint  process<cr>

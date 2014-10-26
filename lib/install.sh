@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# TODO: have params for CLI-only or X-supported (don't need to install awesomeWM on a server)
+# TODO: have params for CLI-only or X-supported (don't need to install i3 on a server)
 # TODO: make a cleanup process
 # TODO: possibly make a (generated?) manifest file, to make cleanup easier
 # TODO: break variables out, since I currently have to use them both here and in .zshrc
@@ -39,6 +39,11 @@
 		# remove the .zshrc installed by oh-my-zsh
 		rm $HOME/.zshrc
 	fi
+
+################
+# SCRIPTS
+################
+	ln -s $DOTS/{bin,lib} $HOME/
 
 ################
 # RC FILES
