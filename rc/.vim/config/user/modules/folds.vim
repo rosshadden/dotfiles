@@ -1,4 +1,4 @@
-set foldmethod=indent
+set foldmethod=syntax
 set foldlevelstart=128
 set foldcolumn=2
 
@@ -25,15 +25,20 @@ nmap [folds]7 :set foldlevel=7<cr>
 nmap [folds]8 :set foldlevel=8<cr>
 nmap [folds]9 :set foldlevel=9<cr>
 nmap [folds]0 :set foldlevel=128<cr>
-nmap [folds]z :call s:toggleFold()<cr>
+nmap [folds]z :call ToggleFold()<cr>
 
 let b:foldlevel=&l:foldlevel
-function! s:toggleFold()
-	if &l:foldmethod == 'indent'
+function! ToggleFold()
+	if &l:foldmethod == 'syntax'
+		set foldmethod=indent
+	elseif &l:foldmethod == 'indent'
 		set foldmethod=manual
 	else
-		set foldmethod=indent
+		set foldmethod=syntax
 	endif
+
+	echo 'Fold method set to "' . &foldmethod . '"'
+
 	" if &l:foldenable
 	" 	let b:foldlevel=&l:foldlevel
 	" 	set nofoldenable

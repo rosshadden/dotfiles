@@ -29,9 +29,9 @@ call unite#custom#profile('default', 'context', {
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#custom#source('buffer,file,file_rec,file_rec/async', 'sorters', ['sorter_length', 'sorter_rank'])
-call unite#custom#source('file_rec/async', 'ignore_globs', split(&wildignore, ','))
-call unite#custom#source('file_rec/async', 'converters', [])
-call unite#custom#source('file_rec/async', 'max_candidates', 24)
+call unite#custom#source('file_rec,file_rec/async', 'ignore_globs', split(&wildignore, ','))
+call unite#custom#source('file_rec,file_rec/async', 'converters', [])
+call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 24)
 " prettier output
 call unite#custom#source('buffer', 'converters', ['converter_file_directory'])
 
@@ -99,16 +99,16 @@ call MakePrefix('unite', '[unite]u', 1)
 
 " current and recent
 	" most recently used (mru) files
-	nmap [unite:0]r :Unite              -buffer-name=recent -vertical-preview -toggle file_mru<cr>
-	nmap [unite:0]R :UniteWithBufferDir -buffer-name=recent -vertical-preview -toggle file_mru<cr>
-	nmap [unite:1]r :Unite              -buffer-name=recent -vertical-preview -toggle -no-split file_mru<cr>
-	nmap [unite:1]R :UniteWithBufferDir -buffer-name=recent -vertical-preview -toggle -no-split file_mru<cr>
+	nmap [unite:0]r :Unite              -buffer-name=recent -vertical-preview -start-insert -toggle file_mru<cr>
+	nmap [unite:0]R :UniteWithBufferDir -buffer-name=recent -vertical-preview -start-insert -toggle file_mru<cr>
+	nmap [unite:1]r :Unite              -buffer-name=recent -vertical-preview -start-insert -toggle -no-split file_mru<cr>
+	nmap [unite:1]R :UniteWithBufferDir -buffer-name=recent -vertical-preview -start-insert -toggle -no-split file_mru<cr>
 
 	" current buffers
-	nmap [unite:0]b :Unite              -buffer-name=buffers -vertical-preview -toggle buffer<cr>
-	nmap [unite:0]B :UniteWithBufferDir -buffer-name=buffers -vertical-preview -toggle buffer<cr>
-	nmap [unite:1]b :Unite              -buffer-name=buffers -vertical-preview -toggle -no-split buffer<cr>
-	nmap [unite:1]B :UniteWithBufferDir -buffer-name=buffers -vertical-preview -toggle -no-split buffer<cr>
+	nmap [unite:0]b :Unite              -buffer-name=buffers -vertical-preview -start-insert -toggle buffer<cr>
+	nmap [unite:0]B :UniteWithBufferDir -buffer-name=buffers -vertical-preview -start-insert -toggle buffer<cr>
+	nmap [unite:1]b :Unite              -buffer-name=buffers -vertical-preview -start-insert -toggle -no-split buffer<cr>
+	nmap [unite:1]B :UniteWithBufferDir -buffer-name=buffers -vertical-preview -start-insert -toggle -no-split buffer<cr>
 
 	" buffer, tab, or files
 	nmap [unite:0]a :Unite              -vertical-preview -start-insert buffer tab file_mru directory_mru bookmark<cr>

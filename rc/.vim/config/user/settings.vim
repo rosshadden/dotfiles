@@ -4,6 +4,7 @@ set smartcase
 set ignorecase
 set hlsearch
 set cursorline
+set relativenumber
 
 " tabs! (not to be confused with tabs)
 set tabstop=4

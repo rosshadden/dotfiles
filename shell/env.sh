@@ -4,7 +4,7 @@
 	# global
 	export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin
 	# local
-	export PATH=$PATH:$DOTS/bin:$HOME/local/bin:$HOME/.local/bin
+	export PATH=$PATH:$HOME/bin:$HOME/local/bin
 	# ruby (if installed)
 	[[ -e /usr/bin/ruby ]] && export PATH="$PATH:`ruby -e 'puts Gem.user_dir'`/bin:$HOME/.rvm/bin"
 	# java (if installed)

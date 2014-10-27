@@ -19,6 +19,9 @@
     - make `[tabs]H` and `[tabs]L` move tabs left/right
     - make `[tabs]j` and `[tabs]k` go to first/last tab (or something else)
     - make `[tabs]J` and `[tabs]K` move to first/last (or something else)
+  - make "put in <motion>" function or plugin
+    - should definitely call it "Put in motion"
+  - make `[e` and `]e` keep the selection in visual mode
 - shell
   - make use bash works, though why bother at this point since I haven't used it in years
   - maybe just remove bash
