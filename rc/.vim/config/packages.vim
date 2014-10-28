@@ -67,10 +67,11 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	" UI
 		NeoBundle 'bling/vim-airline'
 		NeoBundle 'paranoida/vim-airlineish'
-		NeoBundle 'chriskempson/base16-vim'
 		" sexy scrolling, with easing and animation
 		" NOTE: messes with mouse scrolling, which currently upsets me
 		" NeoBundle 'joeytwiddle/sexy_scroller.vim'
+		" colors
+		NeoBundle 'chriskempson/base16-vim'
 
 	" unite
 		NeoBundle 'Shougo/unite.vim'

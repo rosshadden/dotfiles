@@ -2,13 +2,6 @@ set foldmethod=syntax
 set foldlevelstart=128
 set foldcolumn=2
 
-augroup rcFolds
-	" support both indent and manual folding
-	autocmd BufReadPre * setlocal foldmethod=indent
-	autocmd BufWinEnter * if (&foldmethod == 'indent' || &foldmethod == 'syntax') | setlocal foldmethod=manual | endif
-augroup END
-
-
 " prefix
 call MakePrefix('folds', '[prefix]z')
 
