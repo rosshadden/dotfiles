@@ -19,9 +19,5 @@ set mouse=a
 " Let arrow keys pass \n
 set whichwrap=b,s,<,>,[,]
 
-" better whitespace characters
-set listchars=tab:»\ ,trail:·,nbsp:_,extends:>,precedes:<
-" set listchars+=eol:¬
-
 " ignore in searches
 set wildignore+=node_modules/**

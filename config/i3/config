@@ -104,8 +104,8 @@
 	bindsym $mod+Shift+l move right
 
 	# previous/next workspace
-	bindsym $mod+b workspace prev
-	bindsym $mod+f workspace next
+	bindsym $mod+u workspace prev
+	bindsym $mod+d workspace next
 
 	# back to last workspace
 	bindsym $mod+Escape workspace back_and_forth
@@ -121,10 +121,6 @@
 	bindsym $mod+a layout tabbed
 	bindsym $mod+o layout stacking
 	bindsym $mod+e layout toggle split
-
-	# fullscreen
-	bindsym $mod+Shift+f fullscreen
-	bindsym $mod+Control+Shift+f fullscreen global
 
 	# switch to workspace
 	bindsym $mod+grave workspace $ws0
@@ -156,18 +152,25 @@
 	bindsym $mod+Shift+bracketleft move container to workspace $ws11
 	bindsym $mod+Shift+bracketright move container to workspace $ws12
 
+	# focus the parent/child container
+	bindsym $mod+z focus parent
+	bindsym $mod+Shift+z focus child
+
 	# move the currently focused window to the scratchpad
 	bindsym $mod+slash scratchpad show
 
 	# cycle through border styles
 	bindsym $mod+backslash border toggle
 
-	# reload the configuration file
-	bindsym $mod+Shift+r reload
-	# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-	bindsym $mod+Control+Shift+r restart
-	# exit i3 (logs you out of your X session)
-	bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+	# modes
+	bindsym $mod+comma mode "LEADER"
+	bindsym $mod+space mode "PREFIX"
+	bindsym $mod+m mode "MARK"
+	bindsym $mod+apostrophe mode "GOTO"
+	# TODO: [y] yank
+	# TODO: [p] paste
+	# TODO: [q], [@] macros
+	# TODO: [f] focus (or maybe [/])
 
 
 ################
@@ -197,6 +200,9 @@
 
 		# TODO: [W] kill with fire
 
+		# change focus between tiling / floating windows
+		bindsym space focus mode_toggle; $return
+
 		bindsym Return $return
 		bindsym Escape $return
 	}
@@ -205,7 +211,9 @@
 		bindsym l mode "LAYOUT"
 		bindsym m mode "MOUSE"
 		bindsym r mode "RESIZE"
+		bindsym i mode "I3"
 		bindsym t mode "TMUX"
+		bindsym a mode "APPS"
 
 		bindsym Return $return
 		bindsym Escape $return
@@ -322,6 +330,20 @@
 		bindsym Escape $return
 	}
 
+	mode "I3" {
+		# reload the configuration file
+		bindsym space reload; $return
+		# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+		bindsym r restart; $return
+		# exit i3 (logs you out of your X session)
+		bindsym q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"; $return
+		# lock screen
+		bindsym l exec i3lock --color=012345
+
+		bindsym Return $return
+		bindsym Escape $return
+	}
+
 	mode "TMUX" {
 		# by name
 			bindsym Return exec i3-input -F 'exec $tmuxAttach %s' -P 'Session name: '; $return
@@ -377,6 +399,7 @@
 		bindsym t layout toggle; $return
 		# toggle fullscreen
 		bindsym f fullscreen; $return
+		bindsym Shift+f fullscreen global; $return
 		# toggle [floating, tiled]
 		bindsym space floating toggle; $return
 
@@ -423,22 +446,15 @@
 		bindsym Escape $return
 	}
 
-	bindsym $mod+comma mode "LEADER"
-	bindsym $mod+space mode "PREFIX"
-	bindsym $mod+m mode "MARK"
-	bindsym $mod+apostrophe mode "GOTO"
+	mode "APPS" {
+		# copyq
+		bindsym c exec copyq toggle; $return
+		# zeal
+		bindsym z exec zeal; $return
 
-	# TODO: [y] yank
-	# TODO: [p] paste
-	# TODO: [q], [@] macros
-
-	# TODO: [f] focus (or maybe [/])
-	# change focus between tiling / floating windows
-	bindsym $mod+Shift+space focus mode_toggle
-
-	# focus the parent/child container
-	bindsym $mod+z focus parent
-	bindsym $mod+Shift+z focus child
+		bindsym Return $return
+		bindsym Escape $return
+	}
 
 
 ################
@@ -504,9 +520,6 @@
 	# finch
 	assign [title="^finch$"] → $ws10
 	for_window [title="^finch$"] move container to workspace $ws10
-
-	# copyq
-	bindsym $mod+y exec copyq toggle
 
 
 ################

@@ -9,4 +9,4 @@ let g:NERDTreeShowHidden = 1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " L-n => toggle NERDTreeTabs
-map <leader>N <plug>NERDTreeTabsToggle<cr>
+map <leader>t <plug>NERDTreeTabsToggle<cr>

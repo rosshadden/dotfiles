@@ -51,7 +51,7 @@ vnoremap > >gv
 map Q gq
 
 " set a break in undo, so CTRL-U in insert mode is less destructive
-map <c-u> <c-g>u<c-u>
+imap <c-u> <c-g>u<c-u>
 
 " switch to alternate file
 map <leader>b <c-^>

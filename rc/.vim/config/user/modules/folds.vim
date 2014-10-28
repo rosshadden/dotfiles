@@ -4,8 +4,8 @@ set foldcolumn=2
 
 augroup rcFolds
 	" support both indent and manual folding
-	au BufReadPre * setlocal foldmethod=indent
-	au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+	autocmd BufReadPre * setlocal foldmethod=indent
+	autocmd BufWinEnter * if (&foldmethod == 'indent' || &foldmethod == 'syntax') | setlocal foldmethod=manual | endif
 augroup END
 
 
