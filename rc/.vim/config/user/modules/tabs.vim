@@ -2,6 +2,21 @@
 call MakePrefix('tabs', '[prefix]t')
 call MakePrefix('tabs', '[tabs]t', 1)
 
+" fast tab switching
+map . :tabnext<cr>
+map , :tabprevious<cr>
+map ` :tabfirst<cr>
+map 1 1gt
+map 2 2gt
+map 3 3gt
+map 4 4gt
+map 5 5gt
+map 6 6gt
+map 7 7gt
+map 8 8gt
+map 9 9gt
+map 0 :tablast<cr>
+
 " new, at [n:+1]
 map [tabs]n :tabnew<cr>
 " duplicate

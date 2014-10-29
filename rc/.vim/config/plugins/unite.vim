@@ -153,7 +153,7 @@ nmap [unite:1]; :Unite -buffer-name=commands -vertical-preview -toggle -default-
 
 " repeat last entry
 nmap [unite:0]. :UniteResume<cr>
-nmap [unite:1]. :UniteResume -no-split
+nmap [unite:1]. :UniteResume -no-split<cr>
 
 " metavim
 	" mappings
