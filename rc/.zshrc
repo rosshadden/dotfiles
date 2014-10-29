@@ -54,10 +54,11 @@
 # THEME
 ################
 	# base16 colors
+	. $DOTS/themes/shell.sh
 	if [ "${TERM%%-*}" = 'linux' ]; then
 		BASE16_SHELL="$DOTS/themes/vconsole.sh"
 	else
-		BASE16_SCHEME="chalk"
+		BASE16_SCHEME="summerfruit"
 		BASE16_VARIANT="dark"
 		BASE16_SHELL="$DOTS/themes/base16-shell/base16-$BASE16_SCHEME.$BASE16_VARIANT.sh"
 	fi
