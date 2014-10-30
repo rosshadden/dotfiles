@@ -6,6 +6,8 @@ set hlsearch
 set cursorline
 set relativenumber
 
+set spell
+
 " tabs! (not to be confused with tabs)
 set tabstop=4
 set shiftwidth=4
