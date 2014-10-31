@@ -42,8 +42,8 @@ map [tabs]f :tabfirst<cr>
 map [tabs]F :tablast<cr>
 
 " move [n:1] left
-map [tabs:1]h :<c-u>exe "tabmove -".v:count1<cr>
+map [tabs]H :<c-u>exe "tabmove -".v:count1<cr>
 " move [n:1] right
-map [tabs:1]l :<c-u>exe "tabmove +".v:count1<cr>
+map [tabs]L :<c-u>exe "tabmove +".v:count1<cr>
 " move to [n:end]
-map [tabs:1]m :<c-u>exe "tabmove ".v:count<cr>
+map [tabs]m :<c-u>exe "tabmove ".v:count<cr>
