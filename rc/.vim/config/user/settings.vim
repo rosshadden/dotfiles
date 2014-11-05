@@ -8,6 +8,8 @@ set relativenumber
 
 set spell
 
+set colorcolumn=80,120
+
 " tabs! (not to be confused with tabs)
 set tabstop=4
 set shiftwidth=4
