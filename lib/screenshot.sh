@@ -18,6 +18,6 @@ fi
 url=`dropbox puburl $path`
 
 # copy the public url
-echo $url | xsel -ib
+echo -n $url | xsel -ib
 
 notify-send "Screenshot taken" "path: $path\n\nURL: $url\n\nURL copied to clipboard."

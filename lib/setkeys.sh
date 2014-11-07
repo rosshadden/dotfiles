@@ -14,7 +14,8 @@ fi
 # reset xcape
 function resetXcape {
 	pkill xcape
-	xcape
+	xcape -e 'Control_L=Escape;Alt_R=Control_L|space'
+	# xcape -e 'Caps_Lock=Escape;Alt_R=Control_L|space'
 }
 
 # load keyboard mappings
@@ -30,6 +31,7 @@ if [[ $layout == "init" ]]; then
 		-option grp_led:scroll \
 		-option grp:sclk_toggle \
 		-option ctrl:nocaps
+		# -option caps:ctrl_modifier
 	loadMap
 	resetXcape
 elif [[ $layout == "aoeu" || $layout == "dvorak" ]]; then
