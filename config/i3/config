@@ -1,10 +1,10 @@
 ################
 # VARIABLES
 ################
-	set $mod Mod4
+	set $super Mod4
 	set $alt Mod1
 
-	set $0 scratch
+	set $0 temp
 	set $1 web
 	set $2 dev
 	set $3 sync
@@ -18,7 +18,7 @@
 	set $11 11
 	set $12 12
 
-	set $ws0 0| scratch
+	set $ws0 0| temp
 	set $ws1 1| web
 	set $ws2 2| dev
 	set $ws3 3| sync
@@ -42,6 +42,7 @@
 	set $terminal i3-sensible-terminal
 	set $tmux i3-sensible-terminal -e tmux -2
 	set $tmuxAttach i3-sensible-terminal -e tmux -2 new-session -A -s
+	set $locker i3lock --color=012345
 
 	# UI
 	set $borderWidth 8
@@ -57,10 +58,10 @@
 	# is used in the bar {} block below.
 	font pango:Ubuntu Mono 12
 
-	workspace_auto_back_and_forth yes
+	workspace_auto_back_and_forth no
 
-	# Use Mouse+$mod to drag floating windows to their wanted position
-	floating_modifier $mod
+	# Use Mouse+$super to drag floating windows to their wanted position
+	floating_modifier $super
 
 	# Don't follow mouse focus
 	focus_follows_mouse no
@@ -76,97 +77,111 @@
 # BINDS
 ################
 	# open terminal
-	bindsym $mod+t exec $tmux
-	bindsym $mod+Shift+t exec $terminal
+	bindsym $super+t exec $tmux
+	bindsym $super+Shift+t exec $terminal
 
 	# open runner
-	bindsym $mod+r exec $chooseCommand
+	bindsym $super+r exec $chooseCommand
 
 	# open window finder
-	bindsym $mod+w exec $chooseWindow
+	bindsym $super+w exec $chooseWindow
 
 	# open launcher
-	bindsym $mod+p exec --no-startup-id $chooseApp
+	bindsym $super+p exec --no-startup-id $chooseApp
 
 	# lock screen
-	bindsym $mod+Delete exec i3lock --color=012345
+	bindsym $super+Delete exec $locker
 
 	# change focus
-	bindsym $mod+h focus left
-	bindsym $mod+j focus down
-	bindsym $mod+k focus up
-	bindsym $mod+l focus right
+	bindsym $super+h focus left
+	bindsym $super+j focus down
+	bindsym $super+k focus up
+	bindsym $super+l focus right
 
 	# move focused window
-	bindsym $mod+Shift+h move left
-	bindsym $mod+Shift+j move down
-	bindsym $mod+Shift+k move up
-	bindsym $mod+Shift+l move right
+	bindsym $super+Shift+h move left
+	bindsym $super+Shift+j move down
+	bindsym $super+Shift+k move up
+	bindsym $super+Shift+l move right
 
-	# previous/next workspace
-	bindsym $mod+u workspace prev
-	bindsym $mod+d workspace next
+	# focus left/right output
+	bindsym $super+u focus output left
+	bindsym $super+d focus output right
+
+	# move workspace to left/right output
+	bindsym $super+Shift+u move workspace to output left
+	bindsym $super+Shift+d move workspace to output right
+
+	# focus previous/next workspace
+	bindsym $super+b workspace prev
+	bindsym $super+f workspace next
+
+	# move window to previous/next workspace
+	bindsym $super+Shift+b move window to workspace prev
+	bindsym $super+Shift+f move window to workspace next
 
 	# back to last workspace
-	bindsym $mod+Escape workspace back_and_forth
-	bindsym $mod+Shift+Escape move container to workspace back_and_forth; workspace back_and_forth
+	bindsym $super+Escape workspace back_and_forth
+	bindsym $super+Shift+Escape move container to workspace back_and_forth; workspace back_and_forth
 
 	# split in horizontal orientation
-	bindsym $mod+s split horizontal
+	bindsym $super+s split horizontal
 
 	# split in vertical orientation
-	bindsym $mod+minus split vertical
+	bindsym $super+minus split vertical
 
 	# change container layout (stacked, tabbed, toggle split)
-	bindsym $mod+a layout tabbed
-	bindsym $mod+o layout stacking
-	bindsym $mod+e layout toggle split
+	bindsym $super+a layout tabbed
+	bindsym $super+o layout stacking
+	bindsym $super+e layout toggle split
 
 	# switch to workspace
-	bindsym $mod+grave workspace $ws0
-	bindsym $mod+1 workspace $ws1
-	bindsym $mod+2 workspace $ws2
-	bindsym $mod+3 workspace $ws3
-	bindsym $mod+4 workspace $ws4
-	bindsym $mod+5 workspace $ws5
-	bindsym $mod+6 workspace $ws6
-	bindsym $mod+7 workspace $ws7
-	bindsym $mod+8 workspace $ws8
-	bindsym $mod+9 workspace $ws9
-	bindsym $mod+0 workspace $ws10
-	bindsym $mod+bracketleft workspace $ws11
-	bindsym $mod+bracketright workspace $ws12
+	bindsym $super+grave workspace $ws0
+	bindsym $super+1 workspace $ws1
+	bindsym $super+2 workspace $ws2
+	bindsym $super+3 workspace $ws3
+	bindsym $super+4 workspace $ws4
+	bindsym $super+5 workspace $ws5
+	bindsym $super+6 workspace $ws6
+	bindsym $super+7 workspace $ws7
+	bindsym $super+8 workspace $ws8
+	bindsym $super+9 workspace $ws9
+	bindsym $super+0 workspace $ws10
+	bindsym $super+bracketleft workspace $ws11
+	bindsym $super+bracketright workspace $ws12
 
 	# move focused container to workspace
-	bindsym $mod+Shift+grave move container to workspace $ws0
-	bindsym $mod+Shift+1 move container to workspace $ws1
-	bindsym $mod+Shift+2 move container to workspace $ws2
-	bindsym $mod+Shift+3 move container to workspace $ws3
-	bindsym $mod+Shift+4 move container to workspace $ws4
-	bindsym $mod+Shift+5 move container to workspace $ws5
-	bindsym $mod+Shift+6 move container to workspace $ws6
-	bindsym $mod+Shift+7 move container to workspace $ws7
-	bindsym $mod+Shift+8 move container to workspace $ws8
-	bindsym $mod+Shift+9 move container to workspace $ws9
-	bindsym $mod+Shift+0 move container to workspace $ws10
-	bindsym $mod+Shift+bracketleft move container to workspace $ws11
-	bindsym $mod+Shift+bracketright move container to workspace $ws12
+	bindsym $super+Shift+grave move container to workspace $ws0
+	bindsym $super+Shift+1 move container to workspace $ws1
+	bindsym $super+Shift+2 move container to workspace $ws2
+	bindsym $super+Shift+3 move container to workspace $ws3
+	bindsym $super+Shift+4 move container to workspace $ws4
+	bindsym $super+Shift+5 move container to workspace $ws5
+	bindsym $super+Shift+6 move container to workspace $ws6
+	bindsym $super+Shift+7 move container to workspace $ws7
+	bindsym $super+Shift+8 move container to workspace $ws8
+	bindsym $super+Shift+9 move container to workspace $ws9
+	bindsym $super+Shift+0 move container to workspace $ws10
+	bindsym $super+Shift+bracketleft move container to workspace $ws11
+	bindsym $super+Shift+bracketright move container to workspace $ws12
 
 	# focus the parent/child container
-	bindsym $mod+z focus parent
-	bindsym $mod+Shift+z focus child
+	bindsym $super+z focus parent
+	bindsym $super+Shift+z focus child
 
+	# show scratchpad
+	bindsym $super+slash scratchpad show
 	# move the currently focused window to the scratchpad
-	bindsym $mod+slash scratchpad show
+	bindsym $super+Shift+slash move scratchpad
 
 	# cycle through border styles
-	bindsym $mod+backslash border toggle
+	bindsym $super+backslash border toggle
 
 	# modes
-	bindsym $mod+comma mode "LEADER"
-	bindsym $mod+space mode "PREFIX"
-	bindsym $mod+m mode "MARK"
-	bindsym $mod+apostrophe mode "GOTO"
+	bindsym $super+comma mode "LEADER"
+	bindsym $super+space mode "PREFIX"
+	bindsym $super+m mode "MARK"
+	bindsym $super+apostrophe mode "GOTO"
 	# TODO: [y] yank
 	# TODO: [p] paste
 	# TODO: [q], [@] macros
@@ -338,7 +353,7 @@
 		# exit i3 (logs you out of your X session)
 		bindsym q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"; $return
 		# lock screen
-		bindsym l exec i3lock --color=012345
+		bindsym l exec $locker
 
 		bindsym Return $return
 		bindsym Escape $return
@@ -450,6 +465,7 @@
 		# copyq
 		bindsym c exec copyq toggle; $return
 		# zeal
+		# TODO: figure out a way to toggle visibility, not just launch
 		bindsym z exec zeal; $return
 
 		bindsym Return $return
@@ -498,6 +514,7 @@
 ################
 # WORKSPACES
 ################
+	# TODO: handle the fact that different computers have different xrandr setups...
 
 
 ################
@@ -523,6 +540,10 @@
 
 
 ################
-# START
+# STARTUP
 ################
-	exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath
+	# wallpaper
+	exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath &
+
+	# autolock
+	exec --no-startup-id xautolock -time 10 -locker $locker &
