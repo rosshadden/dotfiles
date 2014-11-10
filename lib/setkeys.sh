@@ -20,7 +20,8 @@ function resetXcape {
 
 # load keyboard mappings
 function loadMap {
-	xmodmap $DOTS/X/.Xmodmap
+	[[ -f $DOTS/X/.Xmodmap ]] && xmodmap $DOTS/X/.Xmodmap
+	# [[ -f $DOTS/X/.Xkeymap ]] && xkbcomp $DOTS/X/.Xkeymap $DISPLAY
 }
 
 if [[ $layout == "init" ]]; then

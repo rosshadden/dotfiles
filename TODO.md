@@ -22,6 +22,9 @@
   - make "put in <motion>" function or plugin
     - should definitely call it "Put in motion"
   - make `[e` and `]e` keep the selection in visual mode
+- i3
+  - add a (preferably generated) help block for modes
+    - either automatically or on `?`
 - shell
   - make use bash works, though why bother at this point since I haven't used it in years
   - maybe just remove bash

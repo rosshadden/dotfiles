@@ -47,7 +47,7 @@
 	. $DOTS/shell/alias.sh
 	. $DOTS/shell/general.sh
 	. $DOTS/shell/functions.sh
-	[[ -e "$HOME/.local.sh" ]] && . $HOME/.local.sh
+	[[ -f "$HOME/.local.sh" ]] && . $HOME/.local.sh
 
 
 ################
@@ -62,7 +62,7 @@
 		BASE16_VARIANT="dark"
 		BASE16_SHELL="$DOTS/themes/base16-shell/base16-$BASE16_SCHEME.$BASE16_VARIANT.sh"
 	fi
-	[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+	[[ -f $BASE16_SHELL ]] && . $BASE16_SHELL
 
 	# airline prompt
 	. $DOTS/themes/promptline.sh

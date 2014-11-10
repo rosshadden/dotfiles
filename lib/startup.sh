@@ -4,11 +4,11 @@
 ################
 # UTILITIES
 ################
-	# composite manager
-	xcompmgr -cF &
-
 	# pulseaudio
 	pulseaudio --start &
+
+	# composite manager
+	xcompmgr -cF &
 
 
 ################
@@ -21,8 +21,11 @@
 ################
 # APPS
 ################
-	# dropbox
+	# Dropbox
 	dropboxd &
 
-	# copyQ
+	# CopyQ
 	copyq &
+
+	# Zeal
+	# zeal &
