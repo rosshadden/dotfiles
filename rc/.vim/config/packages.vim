@@ -78,6 +78,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'Shougo/neomru.vim'
 		NeoBundle 'Shougo/unite-outline'
 		NeoBundle 'thinca/vim-unite-history'
+		NeoBundle 'Shougo/tabpagebuffer.vim'
 
 	" scripting
 		NeoBundle 'dbakker/vim-projectroot'
