@@ -44,15 +44,15 @@ function! s:uniteSettings()
 	" always make `a` append to prompt
 	map <buffer> a <plug>(unite_append_enter)
 
-	" open in vertical split
-	map <buffer><expr> - unite#do_action('split')
-	map <buffer><expr>  unite#do_action('split')
-	imap <buffer><expr>  unite#do_action('split')
-	" open in horizontal split
+	" [s] open in horizontal split
 	map <buffer><expr> s unite#do_action('vsplit')
 	map <buffer><expr> <c-s> unite#do_action('vsplit')
 	imap <buffer><expr> <c-s> unite#do_action('vsplit')
-	" open in new tab (`t` is default in normal mode)
+	" [-] open in vertical split
+	map <buffer><expr> - unite#do_action('split')
+	map <buffer><expr>  unite#do_action('split')
+	imap <buffer><expr>  unite#do_action('split')
+	" [t] open in new tab (`t` is default in normal mode)
 	map <buffer><expr> <c-t> unite#do_action('tabopen')
 	imap <buffer><expr> <c-t> unite#do_action('tabopen')
 

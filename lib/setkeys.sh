@@ -3,9 +3,8 @@
 if [ "$#" -gt 0 ]; then
 	layout=$1
 else
-	# if no arguments passed, toggle between dvorak and qwerty
-	# TODO: the ability to toggle is broken for now, though easy to fix
-	layout=`setxkbmap -query | grep "layout" | cut -f 6 -d ' ' | cut -f 2 -d ','`
+	# if no arguments passed, act as a variant toggle
+	layout="toggle"
 fi
 
 # NOTE: I switch layouts with `aoeu` -> qwerty and `asdf` -> dvorak
@@ -15,6 +14,7 @@ fi
 function resetXcape {
 	pkill xcape
 	xcape -e 'Control_L=Escape;Alt_R=Control_L|space'
+	# TODO: the following is ideal, but depends on `caps:ctrl_modifier` working
 	# xcape -e 'Caps_Lock=Escape;Alt_R=Control_L|space'
 }
 
@@ -22,19 +22,30 @@ function resetXcape {
 function loadMap {
 	[[ -f $DOTS/X/.Xmodmap ]] && xmodmap $DOTS/X/.Xmodmap
 	# [[ -f $DOTS/X/.Xkeymap ]] && xkbcomp $DOTS/X/.Xkeymap $DISPLAY
+	return 0
 }
 
 if [[ $layout == "init" ]]; then
-	setxkbmap \
-		-layout us,us \
-		-variant dvorak, \
-		-option \
-		-option grp_led:scroll \
-		-option grp:sclk_toggle \
-		-option ctrl:nocaps
-		# -option caps:ctrl_modifier
-	loadMap
-	resetXcape
+	if [ $DISPLAY ]; then
+		setxkbmap \
+			-layout us,us \
+			-variant dvorak, \
+			-option \
+			-option grp_led:scroll \
+			-option grp:sclk_toggle \
+			-option keypad:pointerkeys \
+			-option ctrl:nocaps
+			# TODO: the following is ideal, but running `xmodmap` afterward breaks
+			# -option caps:ctrl_modifier
+		loadMap
+		resetXcape
+	else
+		loadkeys dvorak
+	fi
+elif [[ $layout == "toggle" ]]; then
+	if [ $DISPLAY ]; then
+		xdotool key ISO_Next_Group
+	fi
 elif [[ $layout == "aoeu" || $layout == "dvorak" ]]; then
 	# switch to dvorak
 	if [ $DISPLAY ]; then

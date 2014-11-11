@@ -188,7 +188,7 @@ filetype *.html,*.htm links,mozilla,uzbl-browser %f %i &
 " Object
 filetype *.o nm %f | less
 
-" Image
+" Images
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in feh}
         \ feh -FZ %d --start-at %d/%c 2>/dev/null
