@@ -60,7 +60,7 @@ function! s:uniteSettings()
 	map <buffer> P <plug>(unite_toggle_auto_preview)
 
 	" exit
-	" nmap <buffer> <esc> <plug>(unite_exit)
+	nmap <buffer> <esc> <plug>(unite_exit)
 
 	let unite = unite#get_current_unite()
 	if unite.profile_name ==# 'search'
@@ -108,14 +108,24 @@ call MakePrefix('unite', '[unite]u', 1)
 	vmap [unite:1]R :<c-u>execute ':UniteWithBufferDir -buffer-name=recent -toggle -no-split file_mru -input=' . GetVisualSelection()<cr>
 
 	" current buffers
-	nmap [unite:0]b :Unite              -buffer-name=buffers -toggle buffer_tab<cr>
-	nmap [unite:0]B :UniteWithBufferDir -buffer-name=buffers -toggle buffer_tab<cr>
-	nmap [unite:1]b :Unite              -buffer-name=buffers -toggle -no-split buffer_tab<cr>
-	nmap [unite:1]B :UniteWithBufferDir -buffer-name=buffers -toggle -no-split buffer_tab<cr>
-	vmap [unite:0]b :<c-u>execute ':Unite              -buffer-name=buffers -toggle buffer_tab -input=' . GetVisualSelection()<cr>
-	vmap [unite:0]B :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -toggle buffer_tab -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]b :<c-u>execute ':Unite              -buffer-name=buffers -toggle -no-split buffer_tab -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]B :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -toggle -no-split buffer_tab -input=' . GetVisualSelection()<cr>
+	nmap [unite:0]b :Unite              -buffer-name=buffers -toggle buffer<cr>
+	nmap [unite:0]B :UniteWithBufferDir -buffer-name=buffers -toggle buffer<cr>
+	nmap [unite:1]b :Unite              -buffer-name=buffers -toggle -no-split buffer<cr>
+	nmap [unite:1]B :UniteWithBufferDir -buffer-name=buffers -toggle -no-split buffer<cr>
+	vmap [unite:0]b :<c-u>execute ':Unite              -buffer-name=buffers -toggle buffer -input=' . GetVisualSelection()<cr>
+	vmap [unite:0]B :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -toggle buffer -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]b :<c-u>execute ':Unite              -buffer-name=buffers -toggle -no-split buffer -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]B :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -toggle -no-split buffer -input=' . GetVisualSelection()<cr>
+
+	" current... tabs? buffers?
+	nmap [unite:0]t :Unite              -buffer-name=buffers -toggle buffer_tab<cr>
+	nmap [unite:0]T :UniteWithBufferDir -buffer-name=buffers -toggle buffer_tab<cr>
+	nmap [unite:1]t :Unite              -buffer-name=buffers -toggle -no-split buffer_tab<cr>
+	nmap [unite:1]T :UniteWithBufferDir -buffer-name=buffers -toggle -no-split buffer_tab<cr>
+	vmap [unite:0]t :<c-u>execute ':Unite              -buffer-name=buffers -toggle buffer_tab -input=' . GetVisualSelection()<cr>
+	vmap [unite:0]T :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -toggle buffer_tab -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]t :<c-u>execute ':Unite              -buffer-name=buffers -toggle -no-split buffer_tab -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]T :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -toggle -no-split buffer_tab -input=' . GetVisualSelection()<cr>
 
 	" buffer, tab, or files
 	nmap [unite:0]a :Unite              buffer tab file_mru directory_mru bookmark<cr>

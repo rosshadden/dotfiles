@@ -1,7 +1,5 @@
 " line numbers
 set number
-set smartcase
-set ignorecase
 set hlsearch
 set cursorline
 set relativenumber

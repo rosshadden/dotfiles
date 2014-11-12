@@ -63,6 +63,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'rking/ag.vim'
 		" LaTeX
 		NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
+		" vifm
+		NeoBundle 'vifm/vifm.vim'
 
 	" UI
 		NeoBundle 'bling/vim-airline'

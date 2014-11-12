@@ -1,2 +1,2 @@
-" L-U => toggle gundu menu [:GunduToggle]
+" L-u => toggle gundu menu [:GunduToggle]
 map <leader>u :GundoToggle<cr>
