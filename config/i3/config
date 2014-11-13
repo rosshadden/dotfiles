@@ -528,7 +528,7 @@
 	for_window [title="Qalculate!"] floating enable
 
 	# chrome
-	assign [class="^Google-chrome.*$"] → $ws1
+	# assign [class="^Google-chrome.*$"] → $ws1
 
 	# nuvola
 	assign [class="nuvolaplayer"] → $ws6
