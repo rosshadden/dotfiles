@@ -361,7 +361,7 @@
 
 	mode "TMUX" {
 		# by name
-			bindsym Return exec i3-input -F 'exec $tmuxAttach %s' -P 'Session name: '; $return
+			bindsym Return exec i3-input -P 'Session name: ' -F 'exec $tmuxAttach %s'; $return
 
 		# presets
 			# TODO: make these dynamic from the workspace name
@@ -370,12 +370,12 @@
 			bindsym 2            workspace $ws2;  exec $tmuxAttach $2;  $return
 			bindsym 3            workspace $ws3;  exec $tmuxAttach $3;  $return
 			bindsym 4            workspace $ws4;  exec $tmuxAttach $4;  $return
-			bindsym 5            workspace $ws5;  exec $tmuxAttach $5;  $return
+			bindsym 5            workspace $ws5;  exec $tmuxAttach $5 'vifm';  $return
 			bindsym 6            workspace $ws6;  exec $tmuxAttach $6;  $return
 			bindsym 7            workspace $ws7;  exec $tmuxAttach $7;  $return
 			bindsym 8            workspace $ws8;  exec $tmuxAttach $8;  $return
 			bindsym 9            workspace $ws9;  exec $tmuxAttach $9;  $return
-			bindsym 0            workspace $ws10; exec $tmuxAttach $10; $return
+			bindsym 0            workspace $ws10; exec $tmuxAttach $10 'finch'; $return
 			bindsym bracketleft  workspace $ws11; exec $tmuxAttach $11; $return
 			bindsym bracketright workspace $ws12; exec $tmuxAttach $12; $return
 
@@ -506,8 +506,8 @@
 			focused_workspace  #875fd7 #5f00af #ffffff
 			inactive_workspace #151515 #151515 #ffffff
 			active_workspace   #5f00af #875fd7 #ffffff
-			urgent_workspace   #ffaf00 #ff5f00 #ffffff
-		}
+				urgent_workspace   #ffaf00 #ff5f00 #ffffff
+			}
 	}
 
 
