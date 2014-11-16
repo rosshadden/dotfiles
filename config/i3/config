@@ -136,7 +136,6 @@
 	bindsym $super+e layout toggle split
 
 	# switch to workspace
-	bindsym $super+grave workspace $ws0
 	bindsym $super+1 workspace $ws1
 	bindsym $super+2 workspace $ws2
 	bindsym $super+3 workspace $ws3
@@ -149,9 +148,9 @@
 	bindsym $super+0 workspace $ws10
 	bindsym $super+bracketleft workspace $ws11
 	bindsym $super+bracketright workspace $ws12
+	bindsym $super+grave workspace $ws0
 
 	# move focused container to workspace
-	bindsym $super+Shift+grave move container to workspace $ws0
 	bindsym $super+Shift+1 move container to workspace $ws1
 	bindsym $super+Shift+2 move container to workspace $ws2
 	bindsym $super+Shift+3 move container to workspace $ws3
@@ -164,6 +163,7 @@
 	bindsym $super+Shift+0 move container to workspace $ws10
 	bindsym $super+Shift+bracketleft move container to workspace $ws11
 	bindsym $super+Shift+bracketright move container to workspace $ws12
+	bindsym $super+Shift+grave move container to workspace $ws0
 
 	# focus the parent/child container
 	bindsym $super+z focus parent
@@ -506,8 +506,8 @@
 			focused_workspace  #875fd7 #5f00af #ffffff
 			inactive_workspace #151515 #151515 #ffffff
 			active_workspace   #5f00af #875fd7 #ffffff
-				urgent_workspace   #ffaf00 #ff5f00 #ffffff
-			}
+			urgent_workspace   #ffaf00 #ff5f00 #ffffff
+		}
 	}
 
 
