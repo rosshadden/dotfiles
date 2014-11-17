@@ -1,8 +1,16 @@
+# general
 *.dat
+
+# dots
+rc/.vifm/vifminfo
+rc/.vifm/vimfiles
+rc/.vifm/Trash
+
+# config
 config/copyq/copyq_geometry.ini
 config/copyq/copyq-bak.conf
 config/copyq/copyq_tabs.ini
-Trash
-rc/.vifm/vifminfo
+
+# themes
 themes/promptline.sh
 themes/tmuxline.conf

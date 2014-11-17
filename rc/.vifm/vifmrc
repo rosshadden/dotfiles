@@ -1,4 +1,8 @@
-" vim: filetype=vim :
+""""""""""""""""
+" SETTINGS
+""""""""""""""""
+
+" vim: filetype=vifm :
 " Sample configuration file for vifm (last updated: 27 Jun, 2013)
 " You can edit this file by hand.
 " The " character at the beginning of a line comments out the line.
@@ -8,10 +12,7 @@
 " This is the actual command used to start vi.  The default is vim.
 " If you would like to use another vi clone such Elvis or Vile
 " you will need to change this setting.
-
 set vicmd=vim
-" set vicmd=elvis\ -G\ termcap
-" set vicmd=vile
 
 " Trash Directory
 " The default is to move files that are deleted with dd or :d to
@@ -19,94 +20,97 @@ set vicmd=vim
 " files by deleting them and then using p to put the file in the new location.
 " I recommend not changing this until you are familiar with vifm.
 " This probably shouldn't be an option.
-
 set trash
 
 " This is how many directories to store in the directory history.
-
 set history=100
 
 " Follow links on l or Enter.
-
 set followlinks
 
 " With this option turned on you can run partially entered commands with
 " unambiguous beginning using :! (e.g. :!Te instead of :!Terminal or :!Te<tab>).
-
 set fastrun
 
 " Natural sort of (version) numbers within text.
-
 set sortnumbers
 
 " Maximum number of changes that can be undone.
-
-set undolevels=100
+set undolevels=1024
 
 " If you installed the vim.txt help file set vimhelp.
 " If would rather use a plain text help file set novimhelp.
-
 set novimhelp
 
 " If you would like to run an executable file when you
 " press return on the file name set this.
-
 set norunexec
 
-" Use KiB, MiB, ... instead of KB, MB, ...
-
+" More readible units
 set noiec
-
-" Selected color scheme
-
-colorscheme Default
 
 " The FUSE_HOME directory will be used as a root dir for all FUSE mounts.
 " Unless it exists with write/exec permissions set, vifm will attempt to
 " create it.
-
 set fusehome=/tmp/vifm_FUSE
 
 " Format for displaying time in file list. For example:
 " TIME_STAMP_FORMAT=%m/%d-%H:%M
 " See man date or man strftime for details.
-
 set timefmt=%m/%d\ %H:%M
 
 " Show list of matches on tab complition in command-line mode
-
 set wildmenu
 
-" Ignore case in search patterns unless it contains at least one uppercase
-" letter
+" Ignore case in search patterns unless it contains at least one uppercase letter
+" set ignorecase
+" set smartcase
 
-set ignorecase
-set smartcase
-
-" Don't highlight search results automatically
-
-set nohlsearch
+" Highlight search results automatically
+set hlsearch
 
 " Use increment searching (search while typing)
 set incsearch
 
 " Try to leave some space from cursor to upper/lower border in lists
-
 set scrolloff=4
 
 " Don't do to much requests to slow file systems
-
 set slowfs=curlftpfs
 
 " Set custom status line look
-
 set statusline="  %t%= %A %10u:%-7g %15s %20d  "
 
-" :mark mark /full/directory/path [filename]
+" What should be saved automatically between vifm runs
+" Like in previous versions of vifm
+" set vifminfo=options,filetypes,commands,bookmarks,dhistory,state,cs
+" Like in vi
+set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,phistory,fhistory,dirstack,registers,bookmarks
 
+
+""""""""""""""""
+" THEME
+""""""""""""""""
+
+" Selected color scheme
+" colorscheme Default
+colorscheme solarized-dark
+
+
+""""""""""""""""
+" MARKS
+""""""""""""""""
+
+" :mark mark /full/directory/path [filename]
 mark h ~/
+mark b ~/bin/
 mark d ~/dotfiles/
 mark D ~/Dropbox/
+
+
+""""""""""""""""
+" COMMANDS
+""""""""""""""""
 
 " :com[mand] command_name action
 " The following macros can be used in a command
@@ -126,6 +130,11 @@ command zip zip -r %f.zip %f
 command run !! ./%f
 command make !!make
 command vgrep vim "+grep %a"
+
+
+""""""""""""""""
+" FILETYPES
+""""""""""""""""
 
 " The file type is for the default programs to be used with
 " a file extension.
@@ -153,7 +162,7 @@ command vgrep vim "+grep %a"
 " You can also add %CLEAR if you want to clear screen before running FUSE
 " program.
 
-" Pdf
+" PDFs
 filetype *.pdf zathura %f,apvlv %f,xpdf %f
 fileview *.pdf pdftotext -nopgbrk %c -
 
@@ -171,7 +180,7 @@ filetype *.wav,*.mp3,*.flac,*.ogg,*.m4a
        \ mplayer %f,
 fileviewer *.mp3 mp3info
 
-" Video
+" Videos
 filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv
         \ {View using ffplay}
         \ ffplay -fs %c,
@@ -185,13 +194,17 @@ fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob
 " Web
 filetype *.html,*.htm links,mozilla,uzbl-browser %f %i &
 
-" Object
+" Objects
 filetype *.o nm %f | less
 
 " Images
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in feh}
         \ feh -FZ %d --start-at %d/%c 2>/dev/null
+        \ {View in sxiv}
+        \ sxiv,
+        \ {View in gpicview}
+        \ gpicview %c,
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm convert -identify %f -verbose /dev/null
 
 " MD5
@@ -265,47 +278,85 @@ fileview .*/,*/ tree %f
 " For Windows:
 " filetype * start, explorer
 
-" What should be saved automatically between vifm runs
-" Like in previous versions of vifm
-" set vifminfo=options,filetypes,commands,bookmarks,dhistory,state,cs
-" Like in vi
-set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
-    \phistory,fhistory,dirstack,registers,bookmarks
 
-" Sample mappings
+""""""""""""""""
+" MAPPINGS
+""""""""""""""""
 
+nmap ; :
 nmap s :shell<cr>
 nmap S :sort<cr>
-nmap w :view<cr>
 nmap o :!gvim --remote-tab-silent %f<cr>
 nmap O :!gvim %f<cr>
 
-" Open file in the background using its default program
-nmap gb :file &<cr>l
+" reload config
+nmap ,,r :source ~/.vifm/vifmrc<cr>
 
-" Yank current directory path into the clipboard
-nmap yd :!echo %d | xclip %i<cr>
-
-" Yank current file path into the clipboard
-nmap yf :!echo %c:p | xclip %i<cr>
-
-" Mappings for faster renaming
+" fast renaming shortcuts
 nmap I cw<c-a>
 nmap cc cw<c-u>
 nmap A cw<c-w>
 
-" Opening console in current directory
-nmap ,t :!xterm &<cr>
 
-" Opening vim to edit .vifmrc
+" PANES
+unmap <space>
+
+" switch panes
+nmap ,b <c-w>w
+" navigate panes
+nmap j <c-w>j
+nmap k <c-w>k
+nmap h <c-w>h
+nmap l <c-w>l
+" split panes
+nmap <space>bj :split<cr><c-w>j
+nmap <space>bk :split<cr><c-w>k
+nmap <space>bh :vsplit<cr><c-w>h
+nmap <space>bl :vsplit<cr><c-w>l
+" show only one pane
+nmap <space>bo :only<cr>
+
+
+" FILES
+
+" open-with menu
+nmap ,f :file<cr>
+vmap ,f :file<cr>
+
+
+" TOGGLES
+
+" show file previews
+nmap cop :view<cr>
+" toggle wrap
+nmap cow :set wrap!<cr>
+
+
+" CLIPBOARD
+
+" yank current directory path into the clipboard
+nmap yd :!echo -n %d | xsel -ib<cr>
+" yank current file path into the clipboard
+nmap yf :!echo -n %c:p | xsel -ib<cr>
+
+
+" MISC
+
+" opening console in current directory
+nmap ,t :!i3-sensible-terminal &<cr>
+
+
+" TO BE VETTED
+
+" opening vim to edit .vifmrc
 nmap ,c :execute ':!vim $MYVIFMRC' | restart<cr>
-" Opening gvim to edit .vifmrc
+" opening gvim to edit .vifmrc
 nmap ,C :!gvim --remote-tab-silent $MYVIFMRC &<cr>
 
-" Toggle wrap setting on ,w key
-nmap ,w :set wrap!<cr>
+" open file in the background using its default program
+nmap gb :file &<cr>l
 
-" Example of standard two-panel file managers mappings
+" standard two-panel file managers mappings
 nmap <f3> :!less %f<cr>
 nmap <f4> :edit<cr>
 nmap <f5> :copy<cr>
