@@ -78,14 +78,14 @@ call MakePrefix('unite', '[unite]u', 1)
 
 " open files
 	" flat
-	nmap [unite:0]f :Unite -buffer-name=files -toggle -unique file directory file/new directory/new<cr>
-	nmap [unite:0]F :UniteWithBufferDir -buffer-name=files -toggle -unique file directory file/new directory/new<cr>
-	nmap [unite:1]f :Unite -buffer-name=files -toggle -unique -no-split file directory file/new directory/new<cr>
-	nmap [unite:1]F :UniteWithBufferDir -buffer-name=files -toggle -unique -no-split file directory file/new directory/new<cr>
-	vmap [unite:0]f :<c-u>execute ':Unite -buffer-name=files -toggle -unique file directory file/new directory/new -input=' . GetVisualSelection()<cr>
-	vmap [unite:0]F :<c-u>execute ':UniteWithBufferDir -buffer-name=files -toggle -unique file directory file/new directory/new -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]f :<c-u>execute ':Unite -buffer-name=files -toggle -unique -no-split file directory file/new directory/new -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]F :<c-u>execute ':UniteWithBufferDir -buffer-name=files -toggle -unique -no-split file directory file/new directory/new -input=' . GetVisualSelection()<cr>
+	nmap [unite:0]f :Unite -buffer-name=files -toggle -unique directory file file/new directory/new<cr>
+	nmap [unite:0]F :UniteWithBufferDir -buffer-name=files -toggle -unique directory file file/new directory/new<cr>
+	nmap [unite:1]f :Unite -buffer-name=files -toggle -unique -no-split directory file file/new directory/new<cr>
+	nmap [unite:1]F :UniteWithBufferDir -buffer-name=files -toggle -unique -no-split directory file file/new directory/new<cr>
+	vmap [unite:0]f :<c-u>execute ':Unite -buffer-name=files -toggle -unique directory file file/new directory/new -input=' . GetVisualSelection()<cr>
+	vmap [unite:0]F :<c-u>execute ':UniteWithBufferDir -buffer-name=files -toggle -unique directory file file/new directory/new -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]f :<c-u>execute ':Unite -buffer-name=files -toggle -unique -no-split directory file file/new directory/new -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]F :<c-u>execute ':UniteWithBufferDir -buffer-name=files -toggle -unique -no-split directory file file/new directory/new -input=' . GetVisualSelection()<cr>
 
 	" recursive
 	nmap [unite:0]p :Unite              -buffer-name=files -toggle file_rec/async:!<cr>
