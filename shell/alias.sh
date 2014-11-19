@@ -7,7 +7,6 @@ alias ross-git-merge="git checkout master && git merge dev && git checkout dev &
 alias suspend="dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"
 alias l='ls -lah'
 alias du='du -h'
-alias tree="ls -R | grep \":$\" | sed -e 's/:$//' -e 's/[^-][^\/]*\//----/g' -e 's/^/   /' -e 's/-/|/'"
 
 # get full path of file or dir
 alias path="readlink -f"

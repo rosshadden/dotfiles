@@ -133,170 +133,33 @@ command vgrep vim "+grep %a"
 
 
 """"""""""""""""
-" FILETYPES
-""""""""""""""""
-
-" The file type is for the default programs to be used with
-" a file extension.
-" :filetype pattern1,pattern2 defaultprogram,program2
-" :fileviewer pattern1,pattern2 consoleviewer
-" The other programs for the file type can be accessed with the :file command
-" The command macros %f, %F, %d, %F may be used in the commands.
-" The %a macro is ignored.  To use a % you must put %%.
-
-" For automated FUSE mounts, you must register an extension with :file[x]type
-" in one of following formats:
-"
-" :filetype extensions FUSE_MOUNT|some_mount_command using %SOURCE_FILE and %DESTINATION_DIR variables
-" %SOURCE_FILE and %DESTINATION_DIR are filled in by vifm at runtime.
-" A sample line might look like this:
-" :filetype *.zip,*.jar,*.war,*.ear FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR
-"
-" :filetype extensions FUSE_MOUNT2|some_mount_command using %PARAM and %DESTINATION_DIR variables
-" %PARAM and %DESTINATION_DIR are filled in by vifm at runtime.
-" A sample line might look like this:
-" :filetype *.ssh FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR
-" %PARAM value is filled from the first line of file (whole line).
-" Example first line for SshMount filetype: root@127.0.0.1:/
-"
-" You can also add %CLEAR if you want to clear screen before running FUSE
-" program.
-
-" PDFs
-filetype *.pdf zathura %f,apvlv %f,xpdf %f
-fileview *.pdf pdftotext -nopgbrk %c -
-
-" PostScript
-filextype *.ps,*.ps.gz gv %c %i &
-
-" Djvu
-filextype *.djvu apvlv %f
-
-" Audio
-filetype *.wav,*.mp3,*.flac,*.ogg,*.m4a
-       \ {Play using ffplay}
-       \ ffplay %c,
-       \ {Play using MPlayer}
-       \ mplayer %f,
-fileviewer *.mp3 mp3info
-
-" Videos
-filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv
-        \ {View using ffplay}
-        \ ffplay -fs %c,
-        \ {View using Dragon}
-        \ dragon %f,
-        \ {View using mplayer}
-        \ mplayer %f,
-fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob
-         \ ffprobe -pretty %c 2>&1
-
-" Web
-filetype *.html,*.htm links,mozilla,uzbl-browser %f %i &
-
-" Objects
-filetype *.o nm %f | less
-
-" Images
-filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-        \ {View in feh}
-        \ feh -FZ %d --start-at %d/%c 2>/dev/null
-        \ {View in sxiv}
-        \ sxiv,
-        \ {View in gpicview}
-        \ gpicview %c,
-fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm convert -identify %f -verbose /dev/null
-
-" MD5
-filetype *.md5
-       \ {Check MD5 hash sum}
-       \ md5sum -c %f,
-
-" FuseZipMount
-filetype *.zip,*.jar,*.war,*.ear
-       \ {Mount with fuse-zip}
-       \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
-       \ {View contents}
-       \ zip -sf %c | less,
-       \ tar -xf %c,
-fileviewer *.zip,*.jar,*.war,*.ear zip -sf %c
-
-" ArchiveMount
-filetype *.tar.bz2,*.tbz2,*.tgz,*.tar.gz
-       \ {Mount with archivemount}
-       \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
-fileviewer *.tgz,*.tar.gz tar -tzf %c
-fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
-
-" Rar2FsMount
-filetype *.rar
-       \ {Mount with rar2fs}
-       \ FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR,
-
-" IsoMount
-filetype *.iso
-       \ {Mount with fuseiso}
-       \ FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR,
-
-" SshMount
-filetype *.ssh
-       \ {Mount with sshfs}
-       \ FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR,
-
-" FtpMount
-filetype *.ftp
-       \ {Mount with curlftpfs}
-       \ FUSE_MOUNT2|curlftpfs -o ftp_port=-,,disable_eprt %PARAM %DESTINATION_DIR,
-
-" Fuse7z
-filetype *.7z
-       \ {Mount with fuse-7z}
-       \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
-
-" Office files
-filextype *.doc,*.docx,*.xls,*.xlsx libreoffice %f &
-fileview *.docx, docx2txt.pl %f -
-
-" Qt projects
-filextype *.pro qtcreator %f &
-
-" Directories
-filextype */
-        \ {View in thunar}
-        \ Thunar %f &,
-fileview .*/,*/ tree %f
-
-" Open all other files with default system programs (you can also remove all
-" :file[x]type commands above to ensure they don't interfere with system-wide
-" settings).  By default all unknown files are opened with 'vi[x]cmd'
-" uncommenting one of lines below will result in ignoring 'vi[x]cmd' option
-" for unknown file types.
-" For *nix:
-" filetype * xdg-open
-" For OS X:
-" filetype * open
-" For Windows:
-" filetype * start, explorer
-
-
-""""""""""""""""
 " MAPPINGS
 """"""""""""""""
 
+" MISC
+
 nmap ; :
 nmap s :shell<cr>
+
+" sort
 nmap S :sort<cr>
-nmap o :!gvim --remote-tab-silent %f<cr>
-nmap O :!gvim %f<cr>
+
+" refresh view
+nmap ,r R
 
 " reload config
 nmap ,,r :source ~/.vifm/vifmrc<cr>
+
+" opening console in current directory
+nmap ,t :!i3-sensible-terminal &<cr>
+
+" quit
+nmap ,w :q<cr>
 
 " fast renaming shortcuts
 nmap I cw<c-a>
 nmap cc cw<c-u>
 nmap A cw<c-w>
-
 
 " PANES
 unmap <space>
@@ -316,13 +179,11 @@ nmap <space>bl :vsplit<cr><c-w>l
 " show only one pane
 nmap <space>bo :only<cr>
 
-
 " FILES
 
 " open-with menu
 nmap ,f :file<cr>
 vmap ,f :file<cr>
-
 
 " TOGGLES
 
@@ -331,20 +192,12 @@ nmap cop :view<cr>
 " toggle wrap
 nmap cow :set wrap!<cr>
 
-
 " CLIPBOARD
 
 " yank current directory path into the clipboard
 nmap yd :!echo -n %d | xsel -ib<cr>
 " yank current file path into the clipboard
 nmap yf :!echo -n %c:p | xsel -ib<cr>
-
-
-" MISC
-
-" opening console in current directory
-nmap ,t :!i3-sensible-terminal &<cr>
-
 
 " TO BE VETTED
 
@@ -363,3 +216,102 @@ nmap <f5> :copy<cr>
 nmap <f6> :move<cr>
 nmap <f7> :mkdir<space>
 nmap <f8> :delete<cr>
+
+
+""""""""""""""""
+" FILETYPES
+""""""""""""""""
+" DIRECTORIES
+
+filextype */
+	 \ {SpaceFM}
+		 \ spacefm %f &,
+fileviewer .*/,*/
+	\ ls -sAh %f
+
+" MEDIA
+
+" audio
+filetype *.wav,*.mp3,*.flac,*.ogg,*.m4a
+	\ {Play using ffplay}
+		\ ffplay,
+	\ {Play using MPlayer}
+		\ mplayer %f,
+fileviewer *.mp3
+	\ mp3info
+
+" videos
+filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv
+	 \ {VLC}
+		 \ vlc &,
+	 \ {ffplay}
+		 \ ffplay -fs,
+fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob
+	  \ vlc
+" fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob
+	  " \ ffprobe -pretty %c 2>&1
+
+" images
+filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+	 \ {View in feh}
+		 \ feh -FZ %d --start-at %d/%c 2>/dev/null
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+	\ convert -identify %f -verbose /dev/null
+
+" web
+filextype *.html,*.htm
+	\ chrome,
+	\ google-chrome,
+	\ google-chrome-unstable,
+	\ firefox,
+filetype *.html,*.htm
+	\ links,
+
+" DOCS
+
+" general
+filextype *.doc,*.docx,*.xls,*.xlsx
+	\ {LibreOffice}
+		\ libreoffice %f &
+fileviewer *.docx,
+	\ docx2txt.pl %f -
+
+" PDFs
+filetype *.pdf
+	\ zathura %f,
+	\ apvlv %f,
+	\ xpdf %f
+fileviewer *.pdf
+	\ pdftotext -nopgbrk %c -
+
+" ARCHIVES
+
+fileviewer *.tgz,*.tar.gz
+	\ tar -tzf
+fileviewer *.tar.bz2,*.tbz2
+	\ tar -tjf
+
+filetype *.rar
+	\ {extract}
+		\ unrar x,
+
+filetype *.zip,*.jar,*.war,*.ear
+	\ {view contents}
+		\ zip -sf %c | less,
+		\ tar -xf,
+fileviewer *.zip,*.jar,*.war,*.ear
+	\ zip -sf
+" fileviewer *.zip,*.jar,*.war,*.ear
+" 	\ unzip -l
+
+" MISC
+
+" MD5
+filetype *.md5
+	\ {Check MD5 hash sum}
+		\ md5sum -c %f,
+
+" DEFAULTS
+
+filetype *
+	\ xdg-open
