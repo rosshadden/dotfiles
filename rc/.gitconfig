@@ -34,66 +34,74 @@
 	untracked = cyan
 
 [alias]
-	# natives
-	diff = diff --word-diff
-	grep = grep -Ii
+	# SHORTHAND
 
-	# dynamic
+	a = add
+	b = branch
+	c = commit
+	d = diff --word-diff
+	f = fetch
+	i = in
+	m = merge
+	o = out
+	r = remote
+	s = status -sb
+	t = tag
+	ch = checkout
+	co = checkout
+	rb = rebase
+	sh = show
+
+	# SEARCHING
+	g = grep -I --ignore-case --line-number --heading --break
+
+	# DYNAMIC
+
 	in = "!sh -c 'git pull ${1-origin} ${2-$(git pwd)}' -"
 	out = "!sh -c 'git push ${1-origin} ${2-$(git pwd)}' -"
 	sync = "!git in && git out"
 
-	# unix metaphor
-	ls = ls-files
-	cat = log -u --word-diff
-	pwd = rev-parse --abbrev-ref HEAD
-	find = "!git ls-files | grep -i"
+	# METAPHORS
 
-	# logging
+	# list file names
+	find = ls-files
+	# list files
+	ls = ls-files
+	# current branch
+	pwd = rev-parse --abbrev-ref HEAD
+	# get recent commits on a file
+	tail = log --patch --word-diff
+
+	# LOGGING
+
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -n64
 	lgs = "!git lg --stat"
-	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat -n32
-	lawg = log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\"
-	lawg-new = "!sh -c 'git --no-pager log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\" origin/$(git pwd)..$(git pwd)' -"
-	# new = "!sh -c 'git log $1@{1}..$1@{0} "$@"' -"
 	new = "!git lg HEAD..FETCH_HEAD"
 	news = "!git lgs HEAD..FETCH_HEAD"
+	lawg = log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\"
+	lawg-new = "!sh -c 'git --no-pager log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\" origin/$(git pwd)..$(git pwd)' -"
 
-	# utility
+	# UTILITY
+
+	amend = commit --amend -C HEAD
 	sb = !ls .git/refs/remotes/*/$(git pwd) | cut -d/ -f4,5 | xargs git show-branch $(git pwd)
+	scrap = "!sh -c 'git reset --hard ${1-HEAD}' -"
 	track = update-index --no-assume-unchanged
+	unstage = reset HEAD --
 	untrack = update-index --assume-unchanged
 
-	# shortcuts
+	# DIFFS
+
 	df = diff --word-diff
 	staged = diff --staged --word-diff
-	unstage = reset HEAD --
-	scrap = "!sh -c 'git reset --hard ${1-HEAD}' -"
-	amend = commit --amend
-	g = grep --break --heading --line-number
-	s = status -sb
 
-	# stash
+	# STASH
+
 	sl = stash list
 	ss = stash save
 	sa = "!sh -c 'git stash apply stash@{$1}' -"
 	sp = "!sh -c 'git stash pop stash@{$1}' -"
 	sd = "!sh -c 'git stash drop stash@{$1}' -"
-
-	# alias
-	a = add
-	b = branch
-	c = commit
-	f = fetch
-	i = in
-	o = out
-	r = remote
-	t = tag
-	m = merge
-	ch = checkout
-	co = checkout
-	rb = rebase
-	sh = show
 [remote "origin"]
 	#fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
 [grep]
