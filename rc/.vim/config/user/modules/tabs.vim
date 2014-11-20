@@ -20,7 +20,7 @@ map 0 :tablast<cr>
 " new, at [n:+1]
 map [tabs]n :tabnew<cr>
 " duplicate
-map [tabs]d :tabnew %<cr>
+map [tabs:1]n :tabnew %<cr>
 " close
 map [tabs]w :tabclose<cr>
 map [tabs]W :tabclose!<cr>

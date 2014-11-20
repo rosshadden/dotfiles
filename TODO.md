@@ -1,37 +1,55 @@
 - meta
-  - add a readme
-  - screenshots
-  - better organization of files and folders
-  - look into [stow](http://www.gnu.org/software/stow/) for symlink management
-  - symlink ./bin and ./lib to ~/bin and ~/lib, and update $PATH
-- install script
-  - anonymous install (no need for git ssh keys, no reference to me)
-  - uninstall
-  - reinstall
-  - maybe an update, which cleans up old stuff and does the new
-  - add X scripts
+	- add a readme
+		- list dependencies and other relevant installed packages
+		- screenshots
+	- better organization of files and folders
+	- look into [stow](http://www.gnu.org/software/stow/) for symlink management
+	- trim down as much fat as possible, like bash and other things I don't use
+	- look into [these dotfiles](https://github.com/xero/dotfiles)
+	- set up a grunt workflow
+		- `install` - installs things, makes links, etc.
+			- migrate current install script
+			- anonymous install (no need for git ssh keys, no reference to me)
+		- `config` - generates config files, like `i3`
+		- `reinstall`
+		- `update` - cleans up old stuff and does the new
+		- `remove`/`uninstall`/`cleanup`
 - vim
-  - find or make a color scheme that fits my new palette
-  - customize airline colors so that visual mode isn't terrible. maybe a vibrant green
-  - fix `:TmuxNavigate*` when (in tmux && `v file`)
-  - tabs
-    - fix `[tabs]n`
-    - make `[tabs]H` and `[tabs]L` move tabs left/right
-    - make `[tabs]j` and `[tabs]k` go to first/last tab (or something else)
-    - make `[tabs]J` and `[tabs]K` move to first/last (or something else)
-  - make "put in <motion>" function or plugin
-    - should definitely call it "Put in motion"
-  - make `[e` and `]e` keep the selection in visual mode
+	- customize airline colors so that visual mode isn't terrible. maybe a vibrant green
+	- fix `:TmuxNavigate*` when (in tmux && `v file`)
+	- tabs
+		- make `[tabs]j` and `[tabs]k` go to first/last tab (or something else)
+		- make `[tabs]J` and `[tabs]K` move to first/last (or something else)
+	- make "put in <motion>" function or plugin
+		- should definitely call it "Put in motion"
+	- make `[e` and `]e` keep the selection in visual mode
 - i3
-  - add a (preferably generated) help block for modes
-    - either automatically or on `?`
+	- add a (preferably generated) help block for modes
+		- either automatically or on `?`
+	- generate config, via grunt task outlined above
+	- implement project system
 - shell
-  - make use bash works, though why bother at this point since I haven't used it in years
-  - maybe just remove bash
-  - make zsh prompt change when in command mode
+	- make sure bash works, though why bother at this point since I haven't used it in years
+	- maybe just remove bash
+	- make zsh prompt [change when in command mode](https://github.com/edkolev/promptline.vim/issues/10)
+	- explore using nodejs (with [shelljs](https://github.com/arturadib/shelljs)) for shell scripts
 - X
-  - add my .xprofile (or at least the common startup processes) to the repo
-  - make the fixmon scripts I have check monitors, so it works no matter what environment
-- trim down as much fat as possible, like bash and other things I don't use
-- look into [these dotfiles](https://github.com/xero/dotfiles)
-- make note of installed packages maybe? at least relevant ones like urxvt stuff
+	- fixmon
+		- make the fixmon scripts I have check monitors, so it works no matter which environment
+		- fix when using integrated card
+- tmux
+	- vet corded mappings more
+	- explore `command-prompt` possibilities
+	- explore `choose-*` possibilities
+		- `choose-client`
+		- `choose-list`
+			- join project from project system, outlined above
+		- `choose-session`
+			- list of sessions to link to (linked windows/layouts but not focus)
+		- `choose-tree`
+		- `choose-window`
+- omnibar
+	- create a nodejs wrapper around `rofi`, with a plugin system
+- misc
+	- make tropes/mappings consistent across programs
+	- only run `xcape` over CapsLock, not Control_L
