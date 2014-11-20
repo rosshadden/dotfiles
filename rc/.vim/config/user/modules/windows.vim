@@ -21,6 +21,10 @@ map [windows]L <c-w>L
 map [windows]J <c-w>J
 map [windows]K <c-w>K
 
+" close window
+map [windows]c :close<cr>
+map [windows]C :close!<cr>
+
 " move window to a new tab
 map [windows]t <c-w>T
 

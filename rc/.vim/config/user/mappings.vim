@@ -7,18 +7,28 @@ map ; :
 " U => redo [:redo]
 map U :redo<cr>
 
+" write
+" L-w => write [:write]
+map <leader>w :write<cr>
+" L-W => force save [:write!]
+map <leader>W :write!<cr>
+
+" save
 " L-s => save [:update]
 map <leader>s :update<cr>
 " L-S => force save [:write]
-map <leader>S :write<cr>
+map <leader>S :update!<cr>
 
-" L-w => quit [:quit]
-map <leader>w :quit<cr>
-" L-W => force quit [:quit!]
-map <leader>W :quit!<cr>
+" close
+" L-c => quit [:quit]
+map <leader>c :quit<cr>
+" L-C => force quit [:quit!]
+map <leader>C :quit!<cr>
 
 " L-x => save and quit [:wq]
 map <leader>x :wq<cr>
+" L-X => force save and quit [:wq!]
+map <leader>X :wq!<cr>
 
 " L-r => reload file [:edit]
 map <leader>r :edit<cr>

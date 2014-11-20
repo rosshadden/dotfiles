@@ -19,11 +19,17 @@ map 0 :tablast<cr>
 
 " new, at [n:+1]
 map [tabs]n :tabnew<cr>
+
 " duplicate
 map [tabs:1]n :tabnew %<cr>
+
 " close
+map [tabs]c :tabclose<cr>
+map [tabs]C :tabclose!<cr>
+" TODO: ease off
 map [tabs]w :tabclose<cr>
 map [tabs]W :tabclose!<cr>
+
 " close others
 map [tabs]o :tabonly<cr>
 map [tabs]O :tabonly!<cr>
@@ -43,7 +49,9 @@ map [tabs]F :tablast<cr>
 
 " move [n:1] left
 map [tabs]H :<c-u>exe "tabmove -".v:count1<cr>
+
 " move [n:1] right
 map [tabs]L :<c-u>exe "tabmove +".v:count1<cr>
+
 " move to [n:end]
 map [tabs]m :<c-u>exe "tabmove ".v:count<cr>
