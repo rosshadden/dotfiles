@@ -1,5 +1,30 @@
+""""""""""""""""
+" SETTINGS
+""""""""""""""""
+
 let g:unite_source_history_yank_enable = 1
 let g:unite_force_overwrite_statusline = 0
+let g:unite_matcher_fuzzy_max_input_length = 32
+
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#custom#source('buffer,file,file_rec,file_rec/async', 'sorters', ['sorter_selecta'])
+call unite#custom#source('file_rec,file_rec/async', 'ignore_globs', split(&wildignore, ','))
+call unite#custom#source('file_rec,file_rec/async', 'converters', [])
+call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 32)
+" prettier output
+call unite#custom#source('buffer', 'converters', ['converter_file_directory'])
+
+call unite#custom#profile('default', 'context', {
+	\ 'winheight': 32,
+	\ 'start_insert': 1,
+	\ 'auto_preview': 0,
+	\ 'vertical_preview': 1,
+\ })
+
+
+""""""""""""""""
+" EXTERNAL
+""""""""""""""""
 
 " ack >> grep
 if executable('ack')
@@ -11,33 +36,16 @@ endif
 " ag > ack
 if executable('ag')
 	let g:unite_source_grep_command = 'ag'
-	let g:unite_source_grep_default_opts = '--nogroup --nocolor --column --hidden'
+	let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden --column'
 	let g:unite_source_grep_recursive_opt = ''
-	let g:unite_source_rec_async_command = 'ag' .
-		\ ' --follow' .
-		\ ' --nocolor' .
-		\ ' --nogroup' .
-		\ ' --hidden' .
-		\ ' --ignore ".git"' .
-		\ ' -g ""'
+	let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --hidden --follow --ignore ".git" -g ""'
 endif
 
-" setting `vertical-preview` here doesn't work for some reason
-call unite#custom#profile('default', 'context', {
-\   'winheight': 24,
-\   'vertical-preview': 1,
-\   'start_insert': 1,
-\ })
 
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#custom#source('buffer,file,file_rec,file_rec/async', 'sorters', ['sorter_rank', 'sorter_length'])
-call unite#custom#source('file_rec,file_rec/async', 'ignore_globs', split(&wildignore, ','))
-call unite#custom#source('file_rec,file_rec/async', 'converters', [])
-call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 24)
-" prettier output
-call unite#custom#source('buffer', 'converters', ['converter_file_directory'])
+""""""""""""""""
+" ACTIONS
+""""""""""""""""
 
-" in-buffer settings
 function! s:uniteSettings()
 	" let b:SuperTabDisabled = 1
 
@@ -61,6 +69,7 @@ function! s:uniteSettings()
 
 	" exit
 	nmap <buffer> <esc> <plug>(unite_exit)
+
 	imap <buffer> <tab> <plug>SuperTabForward
 
 	let unite = unite#get_current_unite()
@@ -72,61 +81,70 @@ function! s:uniteSettings()
 endfunction
 autocmd FileType unite call s:uniteSettings()
 
+
+""""""""""""""""
+" MAPPINGS
+""""""""""""""""
+
 " prefix
 call MakePrefix('unite', '[prefix]u')
 call MakePrefix('unite', '[unite]u', 1)
 
 " open files
+	call unite#custom#profile('files', 'context', {
+		\ 'unique': 1,
+	\ })
+
 	" flat
-	nmap [unite:0]f :Unite -buffer-name=files -toggle -vertical-preview -unique directory file file/new directory/new<cr>
-	nmap [unite:0]F :UniteWithBufferDir -buffer-name=files -toggle -vertical-preview -unique directory file file/new directory/new<cr>
-	nmap [unite:1]f :Unite -buffer-name=files -toggle -vertical-preview -unique -no-split directory file file/new directory/new<cr>
-	nmap [unite:1]F :UniteWithBufferDir -buffer-name=files -toggle -vertical-preview -unique -no-split directory file file/new directory/new<cr>
-	vmap [unite:0]f :<c-u>execute ':Unite -buffer-name=files -toggle -vertical-preview -unique directory file file/new directory/new -input=' . GetVisualSelection()<cr>
-	vmap [unite:0]F :<c-u>execute ':UniteWithBufferDir -buffer-name=files -toggle -vertical-preview -unique directory file file/new directory/new -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]f :<c-u>execute ':Unite -buffer-name=files -toggle -vertical-preview -unique -no-split directory file file/new directory/new -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]F :<c-u>execute ':UniteWithBufferDir -buffer-name=files -toggle -vertical-preview -unique -no-split directory file file/new directory/new -input=' . GetVisualSelection()<cr>
+	nmap [unite:0]f :Unite -buffer-name=files directory file file/new directory/new<cr>
+	nmap [unite:0]F :UniteWithBufferDir -buffer-name=files directory file file/new directory/new<cr>
+	nmap [unite:1]f :Unite -buffer-name=files -no-split directory file file/new directory/new<cr>
+	nmap [unite:1]F :UniteWithBufferDir -buffer-name=files -no-split directory file file/new directory/new<cr>
+	vmap [unite:0]f :<c-u>execute ':Unite -buffer-name=files directory file file/new directory/new -input=' . GetVisualSelection()<cr>
+	vmap [unite:0]F :<c-u>execute ':UniteWithBufferDir -buffer-name=files directory file file/new directory/new -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]f :<c-u>execute ':Unite -buffer-name=files -no-split directory file file/new directory/new -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]F :<c-u>execute ':UniteWithBufferDir -buffer-name=files -no-split directory file file/new directory/new -input=' . GetVisualSelection()<cr>
 
 	" recursive
-	nmap [unite:0]p :Unite              -buffer-name=files -toggle -vertical-preview file_rec/async:!<cr>
-	nmap [unite:0]P :UniteWithBufferDir -buffer-name=files -toggle -vertical-preview file_rec/async:!<cr>
-	nmap [unite:1]p :Unite              -buffer-name=files -toggle -vertical-preview -no-split file_rec/async:!<cr>
-	nmap [unite:1]P :UniteWithBufferDir -buffer-name=files -toggle -vertical-preview -no-split file_rec/async:!<cr>
-	vmap [unite:0]p :<c-u>execute ':Unite              -buffer-name=files -toggle -vertical-preview file_rec/async -input=' . GetVisualSelection():!<cr>
-	vmap [unite:0]P :<c-u>execute ':UniteWithBufferDir -buffer-name=files -toggle -vertical-preview file_rec/async -input=' . GetVisualSelection():!<cr>
-	vmap [unite:1]p :<c-u>execute ':Unite              -buffer-name=files -toggle -vertical-preview -no-split file_rec/async -input=' . GetVisualSelection():!<cr>
-	vmap [unite:1]P :<c-u>execute ':UniteWithBufferDir -buffer-name=files -toggle -vertical-preview -no-split file_rec/async -input=' . GetVisualSelection():!<cr>
+	nmap [unite:0]p :Unite              -buffer-name=files file_rec/async:!<cr>
+	nmap [unite:0]P :UniteWithBufferDir -buffer-name=files file_rec/async:!<cr>
+	nmap [unite:1]p :Unite              -buffer-name=files -no-split file_rec/async:!<cr>
+	nmap [unite:1]P :UniteWithBufferDir -buffer-name=files -no-split file_rec/async:!<cr>
+	vmap [unite:0]p :<c-u>execute ':Unite              -buffer-name=files file_rec/async -input=' . GetVisualSelection():!<cr>
+	vmap [unite:0]P :<c-u>execute ':UniteWithBufferDir -buffer-name=files file_rec/async -input=' . GetVisualSelection():!<cr>
+	vmap [unite:1]p :<c-u>execute ':Unite              -buffer-name=files -no-split file_rec/async -input=' . GetVisualSelection():!<cr>
+	vmap [unite:1]P :<c-u>execute ':UniteWithBufferDir -buffer-name=files -no-split file_rec/async -input=' . GetVisualSelection():!<cr>
 
 " current and recent
 	" most recently used (mru) files
-	nmap [unite:0]r :Unite              -buffer-name=recent -toggle -vertical-preview file_mru<cr>
-	nmap [unite:0]R :UniteWithBufferDir -buffer-name=recent -toggle -vertical-preview file_mru<cr>
-	nmap [unite:1]r :Unite              -buffer-name=recent -toggle -vertical-preview -no-split file_mru<cr>
-	nmap [unite:1]R :UniteWithBufferDir -buffer-name=recent -toggle -vertical-preview -no-split file_mru<cr>
-	vmap [unite:0]r :<c-u>execute ':Unite              -buffer-name=recent -toggle -vertical-preview file_mru -input=' . GetVisualSelection()<cr>
-	vmap [unite:0]R :<c-u>execute ':UniteWithBufferDir -buffer-name=recent -toggle -vertical-preview file_mru -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]r :<c-u>execute ':Unite              -buffer-name=recent -toggle -vertical-preview -no-split file_mru -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]R :<c-u>execute ':UniteWithBufferDir -buffer-name=recent -toggle -vertical-preview -no-split file_mru -input=' . GetVisualSelection()<cr>
+	nmap [unite:0]r :Unite              -buffer-name=recent file_mru<cr>
+	nmap [unite:0]R :UniteWithBufferDir -buffer-name=recent file_mru<cr>
+	nmap [unite:1]r :Unite              -buffer-name=recent -no-split file_mru<cr>
+	nmap [unite:1]R :UniteWithBufferDir -buffer-name=recent -no-split file_mru<cr>
+	vmap [unite:0]r :<c-u>execute ':Unite              -buffer-name=recent file_mru -input=' . GetVisualSelection()<cr>
+	vmap [unite:0]R :<c-u>execute ':UniteWithBufferDir -buffer-name=recent file_mru -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]r :<c-u>execute ':Unite              -buffer-name=recent -no-split file_mru -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]R :<c-u>execute ':UniteWithBufferDir -buffer-name=recent -no-split file_mru -input=' . GetVisualSelection()<cr>
 
 	" current buffers
-	nmap [unite:0]b :Unite              -buffer-name=buffers -toggle -vertical-preview buffer<cr>
-	nmap [unite:0]B :UniteWithBufferDir -buffer-name=buffers -toggle -vertical-preview buffer<cr>
-	nmap [unite:1]b :Unite              -buffer-name=buffers -toggle -vertical-preview -no-split buffer<cr>
-	nmap [unite:1]B :UniteWithBufferDir -buffer-name=buffers -toggle -vertical-preview -no-split buffer<cr>
-	vmap [unite:0]b :<c-u>execute ':Unite              -buffer-name=buffers -toggle -vertical-preview buffer -input=' . GetVisualSelection()<cr>
-	vmap [unite:0]B :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -toggle -vertical-preview buffer -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]b :<c-u>execute ':Unite              -buffer-name=buffers -toggle -vertical-preview -no-split buffer -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]B :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -toggle -vertical-preview -no-split buffer -input=' . GetVisualSelection()<cr>
+	nmap [unite:0]b :Unite              -buffer-name=buffers buffer<cr>
+	nmap [unite:0]B :UniteWithBufferDir -buffer-name=buffers buffer<cr>
+	nmap [unite:1]b :Unite              -buffer-name=buffers -no-split buffer<cr>
+	nmap [unite:1]B :UniteWithBufferDir -buffer-name=buffers -no-split buffer<cr>
+	vmap [unite:0]b :<c-u>execute ':Unite              -buffer-name=buffers buffer -input=' . GetVisualSelection()<cr>
+	vmap [unite:0]B :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers buffer -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]b :<c-u>execute ':Unite              -buffer-name=buffers -no-split buffer -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]B :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -no-split buffer -input=' . GetVisualSelection()<cr>
 
 	" current... tabs? buffers?
-	nmap [unite:0]t :Unite              -buffer-name=buffers -toggle -vertical-preview buffer_tab<cr>
-	nmap [unite:0]T :UniteWithBufferDir -buffer-name=buffers -toggle -vertical-preview buffer_tab<cr>
-	nmap [unite:1]t :Unite              -buffer-name=buffers -toggle -vertical-preview -no-split buffer_tab<cr>
-	nmap [unite:1]T :UniteWithBufferDir -buffer-name=buffers -toggle -vertical-preview -no-split buffer_tab<cr>
-	vmap [unite:0]t :<c-u>execute ':Unite              -buffer-name=buffers -toggle -vertical-preview buffer_tab -input=' . GetVisualSelection()<cr>
-	vmap [unite:0]T :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -toggle -vertical-preview buffer_tab -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]t :<c-u>execute ':Unite              -buffer-name=buffers -toggle -vertical-preview -no-split buffer_tab -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]T :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -toggle -vertical-preview -no-split buffer_tab -input=' . GetVisualSelection()<cr>
+	nmap [unite:0]t :Unite              -buffer-name=buffers buffer_tab<cr>
+	nmap [unite:0]T :UniteWithBufferDir -buffer-name=buffers buffer_tab<cr>
+	nmap [unite:1]t :Unite              -buffer-name=buffers -no-split buffer_tab<cr>
+	nmap [unite:1]T :UniteWithBufferDir -buffer-name=buffers -no-split buffer_tab<cr>
+	vmap [unite:0]t :<c-u>execute ':Unite              -buffer-name=buffers buffer_tab -input=' . GetVisualSelection()<cr>
+	vmap [unite:0]T :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers buffer_tab -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]t :<c-u>execute ':Unite              -buffer-name=buffers -no-split buffer_tab -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]T :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -no-split buffer_tab -input=' . GetVisualSelection()<cr>
 
 	" buffer, tab, or files
 	nmap [unite:0]a :Unite              buffer tab file_mru directory_mru bookmark<cr>
@@ -139,58 +157,82 @@ call MakePrefix('unite', '[unite]u', 1)
 	vmap [unite:1]A :<c-u>execute ':UniteWithBufferDir -no-split buffer tab file_mru directory_mru bookmark -input=' . GetVisualSelection()<cr>
 
 " current file
+	call unite#custom#profile('outline', 'context', {
+		\ 'start_insert': 0,
+		\ 'auto_preview': 1,
+	\ })
+
 	" outline
-	nmap [unite:0]o :Unite               -buffer-name=outline -no-start-insert -toggle -vertical-preview -no-split outline<cr>
-	nmap [unite:0]O :UniteWithCursorWord -buffer-name=outline -no-start-insert -toggle -vertical-preview -no-split outline<cr>
-	nmap [unite:1]o :Unite               -buffer-name=outline -no-start-insert -toggle -vertical-preview -no-split -no-split outline<cr>
-	nmap [unite:1]O :UniteWithCursorWord -buffer-name=outline -no-start-insert -toggle -vertical-preview -no-split -no-split outline<cr>
-	vmap [unite:0]o :<c-u>execute ':Unite               -buffer-name=outline -no-start-insert -toggle -vertical-preview -no-split outline -input=' . GetVisualSelection()<cr>
-	vmap [unite:0]O :<c-u>execute ':UniteWithCursorWord -buffer-name=outline -no-start-insert -toggle -vertical-preview -no-split outline -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]o :<c-u>execute ':Unite               -buffer-name=outline -no-start-insert -toggle -vertical-preview -no-split -no-split outline -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]O :<c-u>execute ':UniteWithCursorWord -buffer-name=outline -no-start-insert -toggle -vertical-preview -no-split -no-split outline -input=' . GetVisualSelection()<cr>
+	nmap [unite:0]o :Unite               -buffer-name=outline outline<cr>
+	nmap [unite:0]O :UniteWithCursorWord -buffer-name=outline outline<cr>
+	nmap [unite:1]o :Unite               -buffer-name=outline -no-split outline<cr>
+	nmap [unite:1]O :UniteWithCursorWord -buffer-name=outline -no-split outline<cr>
+	vmap [unite:0]o :<c-u>execute ':Unite               -buffer-name=outline outline -input=' . GetVisualSelection()<cr>
+	vmap [unite:0]O :<c-u>execute ':UniteWithCursorWord -buffer-name=outline outline -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]o :<c-u>execute ':Unite               -buffer-name=outline -no-split outline -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]O :<c-u>execute ':UniteWithCursorWord -buffer-name=outline -no-split outline -input=' . GetVisualSelection()<cr>
 
 	" line
-	nmap [unite:0]l :Unite               -buffer-name=search -toggle -vertical-preview -no-split -auto-preview line<cr>
-	nmap [unite:0]L :UniteWithCursorWord -buffer-name=search -toggle -vertical-preview -no-split -auto-preview line<cr>
-	vmap [unite:0]l :<c-u>execute ':Unite               -buffer-name=search -toggle -vertical-preview -no-split -auto-preview line -input=' . GetVisualSelection()<cr>
-	vmap [unite:0]L :<c-u>execute ':UniteWithCursorWord -buffer-name=search -toggle -vertical-preview -no-split -auto-preview line -input=' . GetVisualSelection()<cr>
+	call unite#custom#profile('line', 'context', {
+		\ 'auto_preview': 1,
+		\ 'split': 0,
+	\ })
+	nmap [unite:0]l :Unite               -buffer-name=line line<cr>
+	nmap [unite:0]L :UniteWithCursorWord -buffer-name=line line<cr>
+	vmap [unite:0]l :<c-u>execute ':Unite               -buffer-name=line line -input=' . GetVisualSelection()<cr>
+	vmap [unite:0]L :<c-u>execute ':UniteWithCursorWord -buffer-name=line line -input=' . GetVisualSelection()<cr>
 
 	" changes
-	nmap [unite:0]k :Unite               -buffer-name=search -no-start-insert -toggle -vertical-preview -no-split -auto-preview change<cr>
-	nmap [unite:0]K :UniteWithCursorWord -buffer-name=search -no-start-insert -toggle -vertical-preview -no-split -auto-preview change<cr>
-	vmap [unite:0]k :<c-u>execute ':Unite               -buffer-name=search -no-start-insert -toggle -vertical-preview -no-split -auto-preview change -input=' . GetVisualSelection()<cr>
-	vmap [unite:0]K :<c-u>execute ':UniteWithCursorWord -buffer-name=search -no-start-insert -toggle -vertical-preview -no-split -auto-preview change -input=' . GetVisualSelection()<cr>
+	call unite#custom#profile('changes', 'context', {
+		\ 'auto_preview': 1,
+		\ 'split': 0,
+		\ 'start_insert': 0,
+	\ })
+	nmap [unite:0]k :Unite               -buffer-name=changes change<cr>
+	nmap [unite:0]K :UniteWithCursorWord -buffer-name=changes change<cr>
+	vmap [unite:0]k :<c-u>execute ':Unite               -buffer-name=changes change -input=' . GetVisualSelection()<cr>
+	vmap [unite:0]K :<c-u>execute ':UniteWithCursorWord -buffer-name=changes change -input=' . GetVisualSelection()<cr>
 
 " search files
-	nmap [unite:0]g :Unite              -no-start-insert -no-empty grep:.<cr>
-	nmap [unite:0]G :UniteWithBufferDir -no-start-insert -no-empty grep:.<cr>
-	nmap [unite:1]g :Unite              -no-start-insert -no-empty -no-split grep:.<cr>
-	nmap [unite:1]G :UniteWithBufferDir -no-start-insert -no-empty -no-split grep:.<cr>
-	vmap [unite:0]g :<c-u>execute ':Unite              -no-start-insert -no-empty grep:. -input=' . GetVisualSelection()<cr>
-	vmap [unite:0]G :<c-u>execute ':UniteWithBufferDir -no-start-insert -no-empty grep:. -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]g :<c-u>execute ':Unite              -no-start-insert -no-empty -no-split grep:. -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]G :<c-u>execute ':UniteWithBufferDir -no-start-insert -no-empty -no-split grep:. -input=' . GetVisualSelection()<cr>
+	call unite#custom#profile('find', 'context', {
+		\ 'start_insert': 0,
+		\ 'empty': 0,
+	\ })
+	nmap [unite:0]g :Unite              -buffer-name=find grep:.<cr>
+	nmap [unite:0]G :UniteWithBufferDir -buffer-name=find grep:.<cr>
+	nmap [unite:1]g :Unite              -buffer-name=find -no-split grep:.<cr>
+	nmap [unite:1]G :UniteWithBufferDir -buffer-name=find -no-split grep:.<cr>
+	vmap [unite:0]g :<c-u>execute ':Unite              -buffer-name=find grep:. -input=' . GetVisualSelection()<cr>
+	vmap [unite:0]G :<c-u>execute ':UniteWithBufferDir -buffer-name=find grep:. -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]g :<c-u>execute ':Unite              -buffer-name=find -no-split grep:. -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]G :<c-u>execute ':UniteWithBufferDir -buffer-name=find -no-split grep:. -input=' . GetVisualSelection()<cr>
 
 " do all the things
-nmap [unite:0]<cr> :Unite -buffer-name=omni -toggle -vertical-preview source<cr>
-nmap [unite:1]<cr> :Unite -buffer-name=omni -toggle -vertical-preview -no-split source<cr>
-vmap [unite:0]<cr> :<c-u>execute ':Unite -buffer-name=omni -toggle -vertical-preview source -input=' . GetVisualSelection()<cr>
-vmap [unite:1]<cr> :<c-u>execute ':Unite -buffer-name=omni -toggle -vertical-preview -no-split source -input=' . GetVisualSelection()<cr>
+nmap [unite:0]<cr> :Unite -buffer-name=omni source<cr>
+nmap [unite:1]<cr> :Unite -buffer-name=omni -no-split source<cr>
+vmap [unite:0]<cr> :<c-u>execute ':Unite -buffer-name=omni source -input=' . GetVisualSelection()<cr>
+vmap [unite:1]<cr> :<c-u>execute ':Unite -buffer-name=omni -no-split source -input=' . GetVisualSelection()<cr>
 
 " vim
 	" yank stack
-	nmap [unite:0]y :Unite -buffer-name=yank -no-start-insert -toggle -vertical-preview history/yank<cr>
-	nmap [unite:1]y :Unite -buffer-name=yank -no-start-insert -toggle -vertical-preview -no-split history/yank<cr>
-	vmap [unite:0]y :<c-u>execute ':Unite -buffer-name=yank -no-start-insert -toggle -vertical-preview history/yank -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]y :<c-u>execute ':Unite -buffer-name=yank -no-start-insert -toggle -vertical-preview -no-split history/yank -input=' . GetVisualSelection()<cr>
+	call unite#custom#profile('yank', 'context', {
+		\ 'start_insert': 0,
+	\ })
+	nmap [unite:0]y :Unite -buffer-name=yank history/yank<cr>
+	nmap [unite:1]y :Unite -buffer-name=yank -no-split history/yank<cr>
+	vmap [unite:0]y :<c-u>execute ':Unite -buffer-name=yank history/yank -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]y :<c-u>execute ':Unite -buffer-name=yank -no-split history/yank -input=' . GetVisualSelection()<cr>
 
 	" command history
-	nmap [unite:0]; :Unite -buffer-name=commands -no-start-insert -toggle -default-action=execute history/command command<cr>
-	nmap [unite:1]; :Unite -buffer-name=commands -no-start-insert -toggle -vertical-preview -default-action=edit history/command command<cr>
-	vmap [unite:0]; :<c-u>execute ':Unite -buffer-name=commands -no-start-insert -toggle -vertical-preview -default-action=execute history/command command -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]; :<c-u>execute ':Unite -buffer-name=commands -no-start-insert -toggle -vertical-preview -default-action=edit history/command command -input=' . GetVisualSelection()<cr>
+	call unite#custom#profile('commands', 'context', {
+		\ 'start_insert': 0,
+	\ })
+	nmap [unite:0]; :Unite -buffer-name=commands -default-action=execute history/command command<cr>
+	nmap [unite:1]; :Unite -buffer-name=commands -default-action=edit history/command command<cr>
+	vmap [unite:0]; :<c-u>execute ':Unite -buffer-name=commands -default-action=execute history/command command -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]; :<c-u>execute ':Unite -buffer-name=commands -default-action=edit history/command command -input=' . GetVisualSelection()<cr>
 
-" repeat last entry
+" resume last buffer
 nmap [unite:0]. :UniteResume -no-start-insert<cr>
 nmap [unite:1]. :UniteResume -no-start-insert -no-split<cr>
 vmap [unite:0]. :<c-u>execute ':UniteResume -no-start-insert -input=' . GetVisualSelection()<cr>

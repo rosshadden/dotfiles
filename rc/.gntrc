@@ -1,39 +1,20 @@
-[Finch]
-mouse = 1
-color-available = green; black
-color-away = blue; black
-color-idle = gray; black
-color-offline = red; black
-color-message-sent = cyan; default
-color-message-received = red; default
-color-message-highlight = black; green
-color-message-action = yellow; default
-color-timestamp = blue; default
-#See below for details on color
-# To use some custom window-manager
-#wm = /usr/lib/gnt/s.so
-wm = /usr/lib/gnt/irssi.so
+################
+# SETTINGS
+################
 
 [general]
-shadow = 0
-# There is experimental mouse support
 mouse = 1
-# Remember window-positions based on the titles (on by default)
+# wm = /usr/lib/gnt/s.so
+wm = /usr/lib/gnt/irssi.so
+shadow = 0
+mouse = 1
 remember_position = 1
-# Use borderless one-line high buttons
 small-button = true
 
-## Workspaces are created simply by adding Workspace-X groups as follows:
-#[Workspace-1]
-#name = blist
-## window-names specifies that windows with these semi-colon separated names are placed into this workspace
-#window-names = buddylist;debug-window
-#
-#[Workspace-2]
-#name = IM
-#window-names = conversation-window
-## window-titles specifies that windows with these semi-colon separated titles are placed into this workspace. These are matched as substrings. Window titles take precedence over names.
-#window-titles = Preferences;Pounce
+
+################
+# MAPPINGS
+################
 
 [GntEntry::remap]
 
@@ -41,8 +22,6 @@ small-button = true
 a-l = window-next
 a-h = window-prev
 a-c = window-close
-a-H = shift-left
-a-L = shift-right
 a-r = refresh-screen
 c-r = refresh-screen
 a-C = toggle-clipboard
@@ -61,6 +40,10 @@ h = move-left
 j = move-down
 k = move-up
 
+
+################
+# COLORS
+################
 
 [colors]
 # The RGB values range in [0, 1000]
@@ -83,3 +66,13 @@ text = red; darkgray
 disabled = gray; black
 urgent = green; black
 
+[Finch]
+color-available = green; black
+color-away = blue; black
+color-idle = gray; black
+color-offline = red; black
+color-message-sent = cyan; default
+color-message-received = red; default
+color-message-highlight = black; green
+color-message-action = yellow; default
+color-timestamp = blue; default

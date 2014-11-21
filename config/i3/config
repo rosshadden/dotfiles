@@ -211,6 +211,8 @@
 ################
 	mode "LEADER" {
 		# close focused window
+		bindsym c kill; $return
+		# TODO: phase out
 		bindsym w kill; $return
 
 		# TODO: [W] kill with fire

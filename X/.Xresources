@@ -84,7 +84,7 @@ URxvt*depth: 32
 ! Use the specified colour for the colour value n, where 0-7 corresponds to low-intensity (normal) colours and 8-15 corresponds to high-intensity (bold = bright foreground, blink = bright background) colours. The
 ! URxvt*colorn: colour
 
-! 
+!
 ! URxvt*colorBD: colour
 
 ! Use the specified colour to display bold or italic characters when the foreground colour is the default. If font styles are not available (Compile styles) and this option is unset, reverse video is used instead.
@@ -140,7 +140,7 @@ URxvt*font: xft:Ubuntu Mono derivative Powerline:size=12
 
 ! URxvt*boldFont: fontlist
 
-! 
+!
 ! URxvt*italicFont: fontlist
 
 ! The font list to use for displaying bold, italic or bold italic characters, respectively.
@@ -257,7 +257,7 @@ URxvt*scrollTtyKeypress: true
 ! The characters used as delimiters for double-click word selection (whitespace delimiting is added automatically if resource is given).
 ! URxvt*cutchars: string
 
-! 
+!
 ! URxvt*{|}
 
 ! OverTheSpot, OffTheSpot, Root; option -pt.
@@ -317,7 +317,7 @@ URxvt*perl-ext-common: default,matcher,clipboard,font-size
 ! URxvt*selection-autotransform.idx: perl-transform
 
 ! Sets the hotkey that starts the incremental scrollback buffer search (default: "M-s").
-! URxvt*searchable-scrollback: keysym
+URxvt*searchable-scrollback: M-S-S
 
 ! Specifies the program to be started with a URL argument. Used by the "selection-popup" and "matcher" perl extensions.
 URxvt*url-launcher: /usr/bin/xdg-open
