@@ -1,12 +1,15 @@
+" prefix
+call MakePrefix('copypasta', '[prefix]c')
+
 " easier system clipboard
-map <leader>y "+y
-map <leader>Y "+Y
-map <leader>p "+p
-map <leader>P "+P
-map <leader>d "+d
-map <leader>D "+D
-map <leader>c "+c
-map <leader>C "+C
+map [copypasta]y "+y
+map [copypasta]Y "+Y
+map [copypasta]p "+p
+map [copypasta]P "+P
+map [copypasta]d "+d
+map [copypasta]D "+D
+map [copypasta]c "+c
+map [copypasta]C "+C
 
 " paste without comments mucking everything up
 nnoremap cop :set invpaste<CR>
