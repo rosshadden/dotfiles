@@ -2,14 +2,26 @@
 # SETTINGS
 ################
 
-[general]
+[Finch]
+# mouse
 mouse = 1
+# window manager
 # wm = /usr/lib/gnt/s.so
 wm = /usr/lib/gnt/irssi.so
+# UI
 shadow = 0
-mouse = 1
 remember_position = 1
 small-button = true
+# colors
+color-available = green; black
+color-away = blue; black
+color-idle = gray; black
+color-offline = red; black
+color-message-sent = cyan; default
+color-message-received = red; default
+color-message-highlight = black; green
+color-message-action = yellow; default
+color-timestamp = blue; default
 
 
 ################
@@ -65,14 +77,3 @@ titled = white; gray
 text = red; darkgray
 disabled = gray; black
 urgent = green; black
-
-[Finch]
-color-available = green; black
-color-away = blue; black
-color-idle = gray; black
-color-offline = red; black
-color-message-sent = cyan; default
-color-message-received = red; default
-color-message-highlight = black; green
-color-message-action = yellow; default
-color-timestamp = blue; default

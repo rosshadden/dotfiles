@@ -39,13 +39,6 @@ map [leader:1]r :Reload<cr>
 " L-. => repeat last command
 map <leader>. @:
 
-" insert/append
-	" tab
-	noremap <leader>it i<tab>
-	noremap <leader>i<tab> i<tab>
-	noremap <leader>at a<tab>
-	noremap <leader>a<tab> a<tab>
-
 " searching
 	" clear highlighted search
 	nmap [leader:1]/ :nohlsearch<cr>

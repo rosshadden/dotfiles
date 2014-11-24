@@ -1,5 +1,5 @@
-# general
-*.dat
+# meta
+node_modules
 
 # dots
 rc/.vifm/vifminfo
@@ -14,3 +14,6 @@ config/copyq/copyq_tabs.ini
 # themes
 themes/promptline.sh
 themes/tmuxline.conf
+
+# general
+*.dat

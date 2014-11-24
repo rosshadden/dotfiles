@@ -1,0 +1,33 @@
+{
+  "name": "dotfiles",
+  "version": "0.5.0",
+  "description": "Ross' dotfiles of epic awesomeness +10",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rosshadden/dotfiles.git"
+  },
+  "keywords": [
+    "dotfiles",
+    "i3",
+    "vim",
+    "tmux",
+    "urxvt",
+    "arch",
+    "linux"
+  ],
+  "author": "Ross Hadden",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rosshadden/dotfiles/issues"
+  },
+  "homepage": "https://github.com/rosshadden/dotfiles",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "load-grunt-config": "^0.16.0",
+    "shelljs": "^0.3.0"
+  }
+}
