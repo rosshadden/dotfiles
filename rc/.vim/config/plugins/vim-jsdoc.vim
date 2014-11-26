@@ -3,4 +3,4 @@ let g:jsdoc_allow_input_prompt = 1
 let g:jsdoc_additional_descriptions = 1
 
 autocmd FileType javascript
-	\ nmap <silent> <localleader>d <plug>(jsdoc)
+	\ nmap <silent> <localleader>D <plug>(jsdoc)

@@ -130,7 +130,7 @@ set mouse-scroll		= 3		# Number of lines to scroll via the mouse
 #   %(remote)		The current remote name.
 #   %(tag)		The current tag name.
 #   %(stash)		The current stash name.
-#   %(directory)	The current directory path in the tree view; 
+#   %(directory)	The current directory path in the tree view;
 #			empty for the root directory.
 #   %(file)		The currently selected file.
 #   %(ref)		The reference given to blame or HEAD if undefined.
@@ -207,7 +207,6 @@ bind generic	j	move-down
 bind generic	<PgDown> move-page-down
 bind generic	<C-D>	move-page-down
 bind generic	<C-F>	move-page-down
-bind generic	<Space>	move-page-down
 bind generic	<PgUp>	move-page-up
 bind generic	<C-U>	move-page-up
 bind generic	<C-B>	move-page-up
@@ -261,6 +260,15 @@ bind generic	:	prompt			# Open the prompt
 bind generic	<C-L>	screen-redraw		# Redraw the screen
 bind generic	z	stop-loading		# Stop all loading views
 bind generic	v	show-version		# Show Tig version
+
+# Mine
+bind generic ; prompt
+bind generic x !@sh -c "echo -n %(commit) | xsel -ib"
+bind generic <esc>i !git in
+bind generic <esc>o !git out
+bind generic <esc>s !git sync
+bind generic <esc>f !git fetch -p
+
 
 # Colors
 # ------
