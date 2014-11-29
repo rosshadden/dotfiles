@@ -1,0 +1,51 @@
+" config file for https://github.com/1995eaton/chromium-vim
+
+""""""""""""""""
+" SETTINGS
+""""""""""""""""
+
+set nosmoothscroll
+
+let mapleader = ","
+let barposition = "bottom"
+let highlight = "#ffff00"
+let activehighlight = "#ff9632"
+let hintcharacters = "aoeuidhtns"
+
+
+" SEARCHING
+
+let completionengines = ["google", "amazon"]
+let searchalias g = 'google'
+let searchalias a = 'amazon'
+
+
+""""""""""""""""
+" MAPPINGS
+""""""""""""""""
+
+map ; :
+
+" scrolling
+map <C-u> scrollPageUp
+map <C-d> scrollPageDown
+map <C-b> scrollFullPageUp
+map <C-f> scrollFullPageDown
+
+" tabs
+map <A-,> previousTab
+map <A-.> nextTab
+map D closeTab
+map u lastClosedTab
+map <Space>tn :tabnew<Space>
+
+map i goToInput
+map a goToInput
+
+map <Leader>r reloadTab
+map <Leader>R reloadTabUncached
+
+map <Leader><Leader>r :chrome://restart
+map <Leader><Leader>R :chrome://restart<CR>
+
+map <Space>b<Space> :buffer<Space>
