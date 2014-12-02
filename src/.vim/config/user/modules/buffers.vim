@@ -7,6 +7,12 @@ set splitright
 call MakePrefix('buffers', '[prefix]b')
 call MakePrefix('buffers', '[buffers]b', 1)
 
+" navigation
+map j <c-w>j
+map k <c-w>k
+map h <c-w>h
+map l <c-w>l
+
 " split buffer [h, j, k, l]
 map [buffers]j :rightbelow new<cr>
 map [buffers]k :leftabove new<cr>
@@ -22,6 +28,3 @@ map [buffers:1]l :rightbelow vsplit<cr>
 " close buffer
 map [buffers]c :bdelete<cr>
 map [buffers]C :bdelete!<cr>
-" TODO: ease off
-map [buffers]w :bdelete<cr>
-map [buffers]W :bdelete!<cr>

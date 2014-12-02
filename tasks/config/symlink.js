@@ -15,7 +15,7 @@ module.exports = {
 		}, {
 			expand: true,
 			cwd: 'src/',
-			src: ['.vim', '.vifm'],
+			src: ['bin', 'lib', '.vim', '.vifm'],
 			dest: process.env.HOME + '/',
 			dot: true,
 		}]

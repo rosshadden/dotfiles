@@ -76,6 +76,13 @@
 ################
 # BINDS
 ################
+	# close focused window
+	bindsym $super+c kill
+	# TODO: [C] kill with fire
+
+	# change focus between tiling / floating windows
+	bindsym $super+Tab focus mode_toggle
+
 	# open terminal
 	bindsym $super+t exec $tmux
 	bindsym $super+Shift+t exec $terminal
@@ -178,7 +185,6 @@
 	bindsym $super+backslash border toggle
 
 	# modes
-	bindsym $super+comma mode "LEADER"
 	bindsym $super+space mode "PREFIX"
 	bindsym $super+m mode "MARK"
 	bindsym $super+apostrophe mode "GOTO"
@@ -209,28 +215,21 @@
 ################
 # MODES
 ################
-	mode "LEADER" {
-		# close focused window
-		bindsym c kill; $return
-		# TODO: phase out
-		bindsym w kill; $return
-
-		# TODO: [W] kill with fire
-
-		# change focus between tiling / floating windows
-		bindsym space focus mode_toggle; $return
-
-		bindsym Return $return
-		bindsym Escape $return
-	}
-
 	mode "PREFIX" {
 		bindsym l mode "LAYOUT"
+		bindsym b mode "BUFFER"
 		bindsym m mode "MOUSE"
 		bindsym r mode "RESIZE"
 		bindsym i mode "I3"
 		bindsym t mode "TMUX"
 		bindsym a mode "APPS"
+
+		bindsym Return $return
+		bindsym Escape $return
+	}
+
+	mode "BUFFER" {
+		bindsym c kill; $return
 
 		bindsym Return $return
 		bindsym Escape $return

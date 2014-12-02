@@ -2,9 +2,11 @@
 call MakePrefix('tabs', '[prefix]t')
 call MakePrefix('tabs', '[tabs]t', 1)
 
-" fast tab switching
-map . :tabnext<cr>
-map , :tabprevious<cr>
+" relative navigation
+map n :tabnext<cr>
+map p :tabprevious<cr>
+
+" fast tab navigation
 map ` :tabfirst<cr>
 map 1 1gt
 map 2 2gt
@@ -42,10 +44,6 @@ map [tabs]g :<c-u>exe (v:count == 0) ? "tabnext" : "tabnext ".v:count1<cr>
 map [tabs]l :<c-u>exe (v:count == 0) ? "tabnext" : "tabnext ".v:count1<cr>
 " previous [n::1]
 map [tabs]h :<c-u>exe (v:count == 0) ? "tabprevious" : "tabprevious ".v:count1<cr>
-" first
-map [tabs]f :tabfirst<cr>
-" last
-map [tabs]F :tablast<cr>
 
 " move [n:1] left
 map [tabs]H :<c-u>exe "tabmove -".v:count1<cr>

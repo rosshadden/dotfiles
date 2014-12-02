@@ -54,7 +54,6 @@
 # THEME
 ################
 	# base16 colors
-	. $DOTS/themes/shell.sh
 	if [ "${TERM%%-*}" = 'linux' ]; then
 		BASE16_SHELL="$DOTS/themes/vconsole.sh"
 	else
@@ -63,6 +62,7 @@
 		BASE16_SHELL="$DOTS/themes/base16-shell/base16-$BASE16_SCHEME.$BASE16_VARIANT.sh"
 	fi
 	[[ -f $BASE16_SHELL ]] && . $BASE16_SHELL
+	. $DOTS/themes/shell.sh
 
 	# airline prompt
 	. $DOTS/themes/promptline.sh

@@ -33,10 +33,8 @@ color-timestamp = blue; default
 [GntWM::binding]
 a-l = window-next
 a-h = window-prev
-a-. = window-next
-a-, = window-prev
-a-> = shift-right
-a-< = shift-left
+a-N = shift-right
+a-P = shift-left
 a-c = window-close
 a-r = refresh-screen
 c-r = refresh-screen

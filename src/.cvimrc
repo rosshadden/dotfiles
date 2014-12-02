@@ -27,15 +27,18 @@ let searchalias a = 'amazon'
 map ; :
 
 " scrolling
-map <C-u> scrollPageUp
 map <C-d> scrollPageDown
-map <C-b> scrollFullPageUp
+map <C-u> scrollPageUp
 map <C-f> scrollFullPageDown
+map <C-b> scrollFullPageUp
 
 " tabs
-map <A-,> previousTab
-map <A-.> nextTab
+map <A-l> nextTab
+imap <A-l> nextTab
+map <A-h> previousTab
+imap <A-h> previousTab
 map D closeTab
+map <Leader>c closeTab
 map u lastClosedTab
 map <Space>tn :tabnew<Space>
 
