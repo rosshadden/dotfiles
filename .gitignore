@@ -1,15 +1,11 @@
 # meta
-node_modules
-
-# dots
-rc/.vifm/vifminfo
-rc/.vifm/vimfiles
-rc/.vifm/Trash
+node_modules/
+dist/
 
 # config
-config/copyq/copyq_geometry.ini
-config/copyq/copyq-bak.conf
-config/copyq/copyq_tabs.ini
+src/.config/copyq/copyq_geometry.ini
+src/.config/copyq/copyq-bak.conf
+src/.config/copyq/copyq_tabs.ini
 
 # themes
 themes/promptline.sh

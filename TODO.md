@@ -3,14 +3,14 @@
 		- list dependencies and other relevant installed packages
 		- screenshots
 	- better organization of files and folders
-	- look into [stow](http://www.gnu.org/software/stow/) for symlink management
-	- trim down as much fat as possible, like bash and other things I don't use
+	- trim down as much fat as possible, such as things I don't use anymore
 	- look into [these dotfiles](https://github.com/xero/dotfiles)
 	- set up a grunt workflow
+		- use [stow](http://www.gnu.org/software/stow/) for symlink management
 		- `install` - installs things, makes links, etc.
 			- migrate current install script
 			- anonymous install (no need for git ssh keys, no reference to me)
-		- `config` - generates config files, like `i3`
+		- `compile`/`config` - generates config files, like `i3`
 		- `reinstall`
 		- `update` - cleans up old stuff and does the new
 		- `remove`/`uninstall`/`cleanup`
@@ -32,11 +32,12 @@
 	- make sure bash works, though why bother at this point since I haven't used it in years
 	- maybe just remove bash
 	- make zsh prompt [change when in command mode](https://github.com/edkolev/promptline.vim/issues/10)
-	- explore using nodejs (with [shelljs](https://github.com/arturadib/shelljs)) for shell scripts
 - X
 	- fixmon
 		- make the fixmon scripts I have check monitors, so it works no matter which environment
 		- fix when using integrated card
+			- need to make an isDedicated check
+			- need to make the script only do what it does in "init" if isDedicated
 - tmux
 	- vet corded mappings more
 	- explore `command-prompt` possibilities
@@ -48,8 +49,25 @@
 			- list of sessions to link to (linked windows/layouts but not focus)
 		- `choose-tree`
 		- `choose-window`
-- omnibar
-	- create a nodejs wrapper around `rofi`, with a plugin system
+- Owmni
+	- client-agnostic back-end, which should work with GUIs and terminals alike
+	- clients
+		- rofi
+		- selecta
+		- tmux
+	- plugins
+		- git
+			- `git branch | cut -c 3- | owmni <blah blah> | xargs git checkout`
+		- i3
+		- apps
+		- media
+		- computer
+		- projects
+		- windows
+		- finch
+			- maybe initiate IMs?
+		- email (mutt?)
+		- grunt
 - misc
 	- make tropes/mappings consistent across programs
 	- only run `xcape` over CapsLock, not Control_L
