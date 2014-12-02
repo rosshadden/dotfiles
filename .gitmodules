@@ -1,9 +1,9 @@
 [submodule "shell/plugins/opp.zsh"]
 	path = shell/plugins/opp.zsh
 	url = https://github.com/hchbaw/opp.zsh.git
-[submodule "rc/.vim/bundle/neobundle.vim"]
-	path = rc/.vim/bundle/neobundle.vim
-	url = https://github.com/Shougo/neobundle.vim.git
 [submodule "themes/base16-shell"]
 	path = themes/base16-shell
 	url = https://github.com/chriskempson/base16-shell.git
+[submodule "src/.vim/bundle/neobundle.vim"]
+	path = src/.vim/bundle/neobundle.vim
+	url = https://github.com/Shougo/neobundle.vim

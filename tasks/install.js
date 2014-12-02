@@ -1,3 +1,3 @@
 module.exports = function(grunt) {
-	grunt.registerTask('install', ['copy', 'symlink']);
+	grunt.registerTask('install', ['symlink']);
 };

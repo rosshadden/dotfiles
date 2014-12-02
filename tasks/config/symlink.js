@@ -7,14 +7,14 @@ module.exports = {
 	main: {
 		files: [{
 			expand: true,
-			cwd: 'dist/',
+			cwd: 'src/',
 			src: ['*', '!.cvimrc', '!.vromerc'],
 			dest: process.env.HOME + '/',
 			dot: true,
 			filter: 'isFile',
 		}, {
 			expand: true,
-			cwd: 'dist/',
+			cwd: 'src/',
 			src: ['.vim', '.vifm'],
 			dest: process.env.HOME + '/',
 			dot: true,
@@ -23,7 +23,7 @@ module.exports = {
 
 	config: {
 		expand: true,
-		cwd: 'dist/.config',
+		cwd: 'src/.config',
 		src: ['*'],
 		dest: process.env.HOME + '/.config/',
 	}
