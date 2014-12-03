@@ -4,13 +4,14 @@
 " SETTINGS
 """"""""""""""""
 
-set nosmoothscroll
-
 let mapleader = ","
-let barposition = "bottom"
-let highlight = "#ffff00"
-let activehighlight = "#ff9632"
-let hintcharacters = "aoeuidhtns"
+set nosmartcase
+set noignorecase
+
+
+" TABS
+
+set defaultnewtabpage
 
 
 " SEARCHING
@@ -20,35 +21,67 @@ let searchalias g = 'google'
 let searchalias a = 'amazon'
 
 
+" LINKS
+
+set linkanimations
+
+
+" SCROLLING
+
+" set nosmoothscroll
+let scrollduration=10
+
+
+" META
+
+set autoupdategist
+let hintcharacters = "aoeuidhtns"
+
+
+" UI
+
+let barposition = "bottom"
+let highlight = "#00afff"
+let activehighlight = "#0087ff"
+
+
 """"""""""""""""
 " MAPPINGS
 """"""""""""""""
 
 map ; :
 
-" scrolling
+map i goToInput
+map a goToInput
+
+
+" SCROLLING
+
 map <C-d> scrollPageDown
 map <C-u> scrollPageUp
 map <C-f> scrollFullPageDown
 map <C-b> scrollFullPageUp
 
-" tabs
-map <A-l> nextTab
-imap <A-l> nextTab
-map <A-h> previousTab
-imap <A-h> previousTab
+
+" TABS
+
+map <A-n> nextTab
+imap <A-n> nextTab
+map <A-p> previousTab
+imap <A-p> previousTab
 map D closeTab
 map <Leader>c closeTab
 map u lastClosedTab
 map <Space>tn :tabnew<Space>
 
-map i goToInput
-map a goToInput
-
 map <Leader>r reloadTab
 map <Leader>R reloadTabUncached
 
+map <Space>b<Space> :buffer<Space>
+
+
+" CHROME
+
 map <Leader><Leader>r :chrome://restart
 map <Leader><Leader>R :chrome://restart<CR>
-
-map <Space>b<Space> :buffer<Space>
+map <Space>v<Space> toggleCVim
