@@ -1,2 +1,2 @@
-let &termencoding = &encoding
-set encoding=utf-8
+" let &termencoding = &encoding
+" set encoding=utf-8
