@@ -3,21 +3,21 @@ call MakePrefix('tabs', '[prefix]t')
 call MakePrefix('tabs', '[tabs]t', 1)
 
 " relative navigation
-map n :tabnext<cr>
-map p :tabprevious<cr>
+nmap n :tabnext<cr>
+nmap p :tabprevious<cr>
 
 " fast tab navigation
-map ` :tabfirst<cr>
-map 1 1gt
-map 2 2gt
-map 3 3gt
-map 4 4gt
-map 5 5gt
-map 6 6gt
-map 7 7gt
-map 8 8gt
-map 9 9gt
-map 0 :tablast<cr>
+nmap ` :tabfirst<cr>
+nmap 1 1gt
+nmap 2 2gt
+nmap 3 3gt
+nmap 4 4gt
+nmap 5 5gt
+nmap 6 6gt
+nmap 7 7gt
+nmap 8 8gt
+nmap 9 9gt
+nmap 0 :tablast<cr>
 
 " new, at [n:+1]
 map [tabs]n :tabnew<cr>

@@ -8,10 +8,10 @@ call MakePrefix('buffers', '[prefix]b')
 call MakePrefix('buffers', '[buffers]b', 1)
 
 " navigation
-map j <c-w>j
-map k <c-w>k
-map h <c-w>h
-map l <c-w>l
+nmap j <c-w>j
+nmap k <c-w>k
+nmap h <c-w>h
+nmap l <c-w>l
 
 " split buffer [h, j, k, l]
 map [buffers]j :rightbelow new<cr>
