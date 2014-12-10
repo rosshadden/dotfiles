@@ -157,7 +157,7 @@ bind generic	l	view-log
 bind generic	t	view-tree
 bind generic	f	view-blob
 bind generic	b	view-blame
-bind generic	r	view-refs
+bind generic	R	view-refs
 bind generic	p	view-pager
 bind generic	h	view-help
 bind generic	s	view-status
@@ -177,7 +177,7 @@ bind generic	<C-P>	previous
 bind generic	K	previous
 bind generic	,	parent			# Move to parent
 bind generic	<Tab>	view-next		# Move focus to the next view
-bind generic	R	refresh			# Reload and refresh view
+bind generic	r	refresh			# Reload and refresh view
 bind generic	<F5>	refresh
 bind generic	O	maximize		# Maximize the current view
 bind generic	q	view-close		# Close the current view

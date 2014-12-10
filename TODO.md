@@ -2,7 +2,8 @@
 	- add a readme
 		- list dependencies and other relevant installed packages
 		- screenshots
-	- better organization of files and folders
+	- ~~better organization of files and folders~~
+		- it's much better now, but `texmf`, `shell`, and `themes` need to move
 	- trim down as much fat as possible, such as things I don't use anymore
 	- look into [these dotfiles](https://github.com/xero/dotfiles)
 	- set up a grunt workflow
@@ -23,21 +24,23 @@
 	- make "put in <motion>" function or plugin
 		- should definitely call it "Put in motion"
 	- make `[e` and `]e` keep the selection in visual mode
+	- unite
+		- make a mapping or mode for finding files not in the repo
+		- abstract making 4-8 mappings per concept
+		- better previews
+			- possibly a dynamic vertical/horizontal choice
 - i3
 	- add a (preferably generated) help block for modes
 		- either automatically or on `?`
 	- generate config, via grunt task outlined above
 	- implement project system
+	- become more familiar with the other layouts (tabs and stacks)
 - shell
-	- make sure bash works, though why bother at this point since I haven't used it in years
-	- maybe just remove bash
+	- make sure bash works, even though I haven't used it in years
 	- make zsh prompt [change when in command mode](https://github.com/edkolev/promptline.vim/issues/10)
 - X
 	- fixmon
 		- make the fixmon scripts I have check monitors, so it works no matter which environment
-		- fix when using integrated card
-			- need to make an isDedicated check
-			- need to make the script only do what it does in "init" if isDedicated
 - tmux
 	- vet corded mappings more
 	- explore `command-prompt` possibilities
@@ -50,11 +53,12 @@
 		- `choose-tree`
 		- `choose-window`
 - Owmni
-	- client-agnostic back-end, which should work with GUIs and terminals alike
+	- client-agnostic back-end, which should work with X and terminals alike
 	- clients
 		- rofi
 		- selecta
 		- tmux
+		- dmenu
 	- plugins
 		- git
 			- `git branch | cut -c 3- | owmni <blah blah> | xargs git checkout`
@@ -71,3 +75,4 @@
 - misc
 	- make tropes/mappings consistent across programs
 	- only run `xcape` over CapsLock, not Control_L
+		- for some reason this doesn't work as expected, though I'm not sure why

@@ -39,7 +39,7 @@
 	a = add
 	b = branch
 	c = commit
-	d = diff --word-diff
+	d = diff
 	f = fetch
 	i = in
 	m = merge

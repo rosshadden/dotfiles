@@ -45,7 +45,7 @@
 	set $locker i3lock --color=012345
 
 	# UI
-	set $borderWidth 8
+	set $borderWidth 1
 
 	# paths
 	set $wallpaperPath ~/Dropbox/media/images/wallpaper
@@ -67,8 +67,10 @@
 	focus_follows_mouse no
 
 	# window borders
-	new_window normal $borderWidth
-	new_float pixel $borderWidth
+	# new_window normal $borderWidth
+	new_window 1pixel
+	# new_float pixel $borderWidth
+	new_float 1pixel
 
 	mouse_warping none
 
@@ -176,9 +178,6 @@
 	# move the currently focused window to the scratchpad
 	bindsym $super+Shift+slash move scratchpad
 
-	# cycle through border styles
-	bindsym $super+backslash border toggle
-
 	# modes
 	bindsym $super+space mode "PREFIX"
 	bindsym $super+m mode "MARK"
@@ -223,12 +222,14 @@
 		bindsym Escape $return
 	}
 
+
 	mode "BUFFER" {
 		bindsym c kill; $return
 
 		bindsym Return $return
 		bindsym Escape $return
 	}
+
 
 	mode "MARK" {
 		# by name
@@ -281,6 +282,7 @@
 			bindsym Return $return
 			bindsym Escape $return
 	}
+
 
 	mode "GOTO" {
 		# by name
@@ -341,6 +343,7 @@
 		bindsym Escape $return
 	}
 
+
 	mode "I3" {
 		# reload the configuration file
 		bindsym space reload; $return
@@ -354,6 +357,7 @@
 		bindsym Return $return
 		bindsym Escape $return
 	}
+
 
 	mode "TMUX" {
 		# by name
@@ -381,6 +385,7 @@
 		bindsym Escape $return
 	}
 
+
 	mode "RESIZE" {
 		# shrink the window’s width
 		bindsym h resize shrink width 10 px or 10 ppt
@@ -394,6 +399,7 @@
 		bindsym Return $return
 		bindsym Escape $return
 	}
+
 
 	mode "LAYOUT" {
 		bindsym grave layout default; $return
@@ -414,9 +420,26 @@
 		# toggle [floating, tiled]
 		bindsym space floating toggle; $return
 
+		# borders
+		bindsym b mode "BORDER"
+
 		bindsym Return $return
 		bindsym Escape $return
 	}
+
+
+	mode "BORDER" {
+		# cycle through border styles
+		bindsym space border toggle; $return
+
+		bindsym 1 border normal; $return
+		bindsym 2 border 1pixel; $return
+		bindsym 3 border none; $return
+
+		bindsym Return $return
+		bindsym Escape $return
+	}
+
 
 	mode "MOUSE" {
 		# movement
@@ -456,6 +479,7 @@
 		bindsym Return $return
 		bindsym Escape $return
 	}
+
 
 	mode "APPS" {
 		# copyq
