@@ -1,10 +1,11 @@
 ################
 # BINS
 ################
-	# global
-	export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin
+
 	# local
-	export PATH=$PATH:$HOME/bin:$HOME/local/bin
+	export PATH=$HOME/bin:$HOME/local/bin
+	# global
+	export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin
 	# ruby (if installed)
 	[[ -e /usr/bin/ruby ]] && export PATH="$PATH:`ruby -e 'puts Gem.user_dir'`/bin:$HOME/.rvm/bin"
 	# java (if installed)
@@ -16,6 +17,7 @@
 ################
 # PATHS
 ################
+
 	# java
 	export JAVA_HOME=/usr/lib/jvm/default-java
 	# android
@@ -28,12 +30,14 @@
 ################
 # DEFAULTS
 ################
+
 	export EDITOR=vim
 
 
 ################
 # MISC
 ################
+
 	# used by some zsh themes (ex: agnoster)
 	export DEFAULT_USER=$USER
 

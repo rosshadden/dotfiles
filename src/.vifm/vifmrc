@@ -103,9 +103,10 @@ colorscheme solarized-dark
 
 " :mark mark /full/directory/path [filename]
 mark h ~/
-mark b ~/bin/
-mark d ~/dotfiles/
-mark D ~/Dropbox/
+mark d ~/downloads/browser/
+mark D /media/main/downloads/stream
+mark m /media/main/
+mark v /media/main/video/
 
 
 """"""""""""""""
