@@ -29,7 +29,7 @@ set linkanimations
 " SCROLLING
 
 " set nosmoothscroll
-let scrollduration=10
+" let scrollduration=10
 
 
 " META

@@ -31,6 +31,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'SearchComplete'
 		" search with perl regex
 		NeoBundle 'othree/eregex.vim'
+		" dim inactive windows
+		NeoBundle 'blueyed/vim-diminactive'
 
 	" navigation
 		NeoBundle 'Lokaltog/vim-easymotion'

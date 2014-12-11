@@ -45,7 +45,7 @@
 	set $locker i3lock --color=012345
 
 	# UI
-	set $borderWidth 1
+	set $borderWidth 2
 
 	# paths
 	set $wallpaperPath ~/Dropbox/media/images/wallpaper
@@ -67,10 +67,8 @@
 	focus_follows_mouse no
 
 	# window borders
-	# new_window normal $borderWidth
-	new_window 1pixel
-	# new_float pixel $borderWidth
-	new_float 1pixel
+	new_window pixel $borderWidth
+	new_float pixel $borderWidth
 
 	mouse_warping none
 
