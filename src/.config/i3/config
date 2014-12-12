@@ -42,10 +42,11 @@
 	set $terminal i3-sensible-terminal
 	set $tmux i3-sensible-terminal -e tmux -2
 	set $tmuxAttach i3-sensible-terminal -e tmux -2 new-session -A -s
-	set $locker i3lock --color=012345
+	set $locker i3lock --color=5f00af
 
 	# UI
 	set $borderWidth 2
+	set $borderFloatingWidth 4
 
 	# paths
 	set $wallpaperPath ~/Dropbox/media/images/wallpaper
@@ -68,7 +69,7 @@
 
 	# window borders
 	new_window pixel $borderWidth
-	new_float pixel $borderWidth
+	new_float pixel $borderFloatingWidth
 
 	mouse_warping none
 

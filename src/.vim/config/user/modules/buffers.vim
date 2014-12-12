@@ -27,4 +27,6 @@ map [buffers:1]l :rightbelow vsplit<cr>
 
 " close buffer
 map [buffers]c :bdelete<cr>
+nmap c :bdelete<cr>
 map [buffers]C :bdelete!<cr>
+nmap C :bdelete!<cr>

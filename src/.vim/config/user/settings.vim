@@ -9,7 +9,8 @@ set spell
 set colorcolumn=80,120
 
 " timeout
-set timeout timeoutlen=500 ttimeoutlen=50
+" set timeout timeoutlen=500 ttimeoutlen=50
+set timeout timeoutlen=1000 ttimeoutlen=-1
 
 " tabs! (not to be confused with tabs)
 set tabstop=4

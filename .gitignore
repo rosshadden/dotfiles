@@ -4,6 +4,8 @@ dist/
 
 # apps
 src/.vifm/vifminfo
+src/.vifm/vimfiles
+src/.vifm/Trash
 src/.config/copyq/copyq_geometry.ini
 src/.config/copyq/copyq-bak.conf
 src/.config/copyq/copyq_tabs.ini

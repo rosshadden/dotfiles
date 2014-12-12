@@ -15,43 +15,51 @@
 		- `reinstall`
 		- `update` - cleans up old stuff and does the new
 		- `remove`/`uninstall`/`cleanup`
-- vim
-	- customize airline colors so that visual mode isn't terrible. maybe a vibrant green
-	- fix `:TmuxNavigate*` when (in tmux && `v file`)
-	- tabs
-		- make `[tabs]j` and `[tabs]k` go to first/last tab (or something else)
-		- make `[tabs]J` and `[tabs]K` move to first/last (or something else)
-	- make "put in <motion>" function or plugin
-		- should definitely call it "Put in motion"
-	- make `[e` and `]e` keep the selection in visual mode
-	- unite
-		- make a mapping or mode for finding files not in the repo
-		- abstract making 4-8 mappings per concept
-		- better previews
-			- possibly a dynamic vertical/horizontal choice
-- i3
-	- add a (preferably generated) help block for modes
-		- either automatically or on `?`
-	- generate config, via grunt task outlined above
-	- implement project system
-	- become more familiar with the other layouts (tabs and stacks)
+- apps
+	- vim
+		- customize airline colors so that visual mode isn't terrible. maybe a vibrant green
+		- fix `:TmuxNavigate*` when (in tmux && `v file`)
+		- tabs
+			- make `[tabs]j` and `[tabs]k` go to first/last tab (or something else)
+			- make `[tabs]J` and `[tabs]K` move to first/last (or something else)
+		- make "put in <motion>" function or plugin
+			- should definitely call it "Put in motion"
+		- make `[e` and `]e` keep the selection in visual mode
+		- unite
+			- make a mapping or mode for finding files not in the repo
+			- abstract making 4-8 mappings per concept
+			- better previews
+				- possibly a dynamic vertical/horizontal choice
+	- i3
+		- add a (preferably generated) help block for modes
+			- either automatically or on `?`
+		- generate config, via grunt task outlined above
+		- implement project system
+		- become more familiar with the other layouts (tabs and stacks)
+	- tmux
+		- vet corded mappings more
+		- explore `command-prompt` possibilities
+		- explore `choose-*` possibilities
+			- `choose-client`
+			- `choose-list`
+				- join project from project system, outlined above
+			- `choose-session`
+				- list of sessions to link to (linked windows/layouts but not focus)
+			- `choose-tree`
+			- `choose-window`
+	- copyq
+		- integrate into workflow
+		- get more use out of tabs
+			- make yanking in vim store items in &vim
+			- make images save in &images
+			- make URLs save in &URLs
+		- make it use my dotfiles color scheme
 - shell
 	- make sure bash works, even though I haven't used it in years
 	- make zsh prompt [change when in command mode](https://github.com/edkolev/promptline.vim/issues/10)
 - X
 	- fixmon
 		- make the fixmon scripts I have check monitors, so it works no matter which environment
-- tmux
-	- vet corded mappings more
-	- explore `command-prompt` possibilities
-	- explore `choose-*` possibilities
-		- `choose-client`
-		- `choose-list`
-			- join project from project system, outlined above
-		- `choose-session`
-			- list of sessions to link to (linked windows/layouts but not focus)
-		- `choose-tree`
-		- `choose-window`
 - Owmni
 	- client-agnostic back-end, which should work with X and terminals alike
 	- clients
