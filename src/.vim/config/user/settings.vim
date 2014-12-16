@@ -4,6 +4,10 @@ set hlsearch
 set cursorline
 " set relativenumber
 
+" smart case
+set smartcase
+set ignorecase
+
 set spell
 
 set colorcolumn=80,120

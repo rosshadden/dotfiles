@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+
+# TODO: Clean up entire script
+
 if [ "$#" -gt 0 ]; then
 	layout=$1
 else
@@ -13,15 +16,15 @@ fi
 # reset xcape
 function resetXcape {
 	pkill xcape
-	xcape -e 'Control_L=Escape;Alt_R=Super_L|space'
-	# TODO: the following is ideal, but depends on `caps:ctrl_modifier` working
+	xcape -e 'Control_L=Escape;Alt_L=Control_L|space;Alt_R=Super_L|space'
+	# TODO: the following is more ideal, but depends on `caps:ctrl_modifier` working
 	# xcape -e 'Caps_Lock=Escape;Alt_R=Control_L|space'
 }
 
 # load keyboard mappings
 function loadMap {
-	[[ -f $DOTS/X/.Xmodmap ]] && xmodmap $DOTS/X/.Xmodmap
-	# [[ -f $DOTS/X/.Xkeymap ]] && xkbcomp $DOTS/X/.Xkeymap $DISPLAY
+	[[ -f $DOTS/src/.Xmodmap ]] && xmodmap $DOTS/src/.Xmodmap
+	# [[ -f $DOTS/src/.Xkeymap ]] && xkbcomp $DOTS/src/.Xkeymap $DISPLAY
 	return 0
 }
 

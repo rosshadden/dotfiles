@@ -5,8 +5,7 @@
 """"""""""""""""
 
 let mapleader = ","
-set nosmartcase
-set noignorecase
+
 set cncpcompletion
 
 

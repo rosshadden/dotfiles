@@ -36,7 +36,7 @@ let g:airline#themes#base16#constant = 1
 
 	" promptline
 	let g:airline#extensions#promptline#enabled = 1
-	let airline#extensions#promptline#snapshot_file = '~/dotfiles/themes/promptline.sh'
+	let airline#extensions#promptline#snapshot_file = '~/dotfiles/src/themes/promptline.sh'
 	" let airline#extensions#promptline#color_template = 'normal'
 	let airline#extensions#promptline#color_template = 'insert'
 	" let airline#extensions#promptline#color_template = 'visual'
@@ -53,7 +53,7 @@ let g:airline#themes#base16#constant = 1
 
 	" tmuxline
 	let g:airline#extensions#tmuxline#enabled = 1
-	let airline#extensions#tmuxline#snapshot_file = '~/dotfiles/themes/tmuxline.conf'
+	let airline#extensions#tmuxline#snapshot_file = '~/dotfiles/src/themes/tmuxline.conf'
 	let airline#extensions#tmuxline#color_template = 'normal'
 	" let airline#extensions#tmuxline#color_template = 'insert'
 	" let airline#extensions#tmuxline#color_template = 'visual'

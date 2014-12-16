@@ -2,8 +2,6 @@
 	- add a readme
 		- list dependencies and other relevant installed packages
 		- screenshots
-	- ~~better organization of files and folders~~
-		- it's much better now, but `texmf`, `shell`, and `themes` need to move
 	- trim down as much fat as possible, such as things I don't use anymore
 	- look into [these dotfiles](https://github.com/xero/dotfiles)
 	- set up a grunt workflow
@@ -11,6 +9,9 @@
 		- `install` - installs things, makes links, etc.
 			- migrate current install script
 			- anonymous install (no need for git ssh keys, no reference to me)
+			- have params for CLI-only or X-supported (don't need to install i3 on a server)
+			- possibly make a (generated?) manifest file, to make cleanup easier
+			- support anonymous installs, where things like .gitconfig wouldn't be installed
 		- `compile`/`config` - generates config files, like `i3`
 		- `reinstall`
 		- `update` - cleans up old stuff and does the new

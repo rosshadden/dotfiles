@@ -63,8 +63,8 @@ set timefmt=%m/%d\ %H:%M
 set wildmenu
 
 " Ignore case in search patterns unless it contains at least one uppercase letter
-" set ignorecase
-" set smartcase
+set ignorecase
+set smartcase
 
 " Highlight search results automatically
 set hlsearch

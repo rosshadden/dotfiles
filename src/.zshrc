@@ -1,6 +1,8 @@
 ################
 # VARIABLES
 ################
+
+	# TODO: breakout.exe
 	# dots
 	export DOTS=$HOME/dotfiles
 	# oh-my-zsh
@@ -8,10 +10,16 @@
 	# dropbox
 	export DB=$HOME/Dropbox
 
+	# shell dir
+	shellDir=$DOTS/src/shell
+	# themes dir
+	themeDir=$DOTS/src/themes
+
 
 ################
 # OPTIONS
 ################
+
 	# command correction
 	setopt correct
 
@@ -19,21 +27,10 @@
 ################
 # CONFIG
 ################
+
 	ZSH_THEME="agnoster"
 
-	# use case-sensitive completion
-	# CASE_SENSITIVE="true"
-
-	# auto-update checks
-	# DISABLE_AUTO_UPDATE="true"
-
-	# disable colors in ls
-	# DISABLE_LS_COLORS="true"
-
-	# disable autosetting terminal title.
-	# DISABLE_AUTO_TITLE="true"
-
-	# red dots displayed while waiting for completion
+	# dots displayed while waiting for completion
 	COMPLETION_WAITING_DOTS="true"
 
 	# better zsh correction prompt
@@ -43,46 +40,49 @@
 ################
 # MODULES
 ################
-	. $DOTS/shell/env.sh
-	. $DOTS/shell/alias.sh
-	. $DOTS/shell/general.sh
-	. $DOTS/shell/functions.sh
-	[[ -f "$HOME/.local.sh" ]] && . $HOME/.local.sh
+
+	. $shellDir/env.sh
+	. $shellDir/alias.sh
+	. $shellDir/general.sh
+	. $shellDir/functions.sh
 
 
 ################
 # THEME
 ################
+
 	# base16 colors
 	if [ "${TERM%%-*}" = 'linux' ]; then
-		BASE16_SHELL="$DOTS/themes/vconsole.sh"
+		BASE16_SHELL="$themeDir/vconsole.sh"
 	else
 		BASE16_SCHEME="summerfruit"
 		BASE16_VARIANT="dark"
-		BASE16_SHELL="$DOTS/themes/base16-shell/base16-$BASE16_SCHEME.$BASE16_VARIANT.sh"
+		BASE16_SHELL="$themeDir/base16-shell/base16-$BASE16_SCHEME.$BASE16_VARIANT.sh"
 	fi
 	[[ -f $BASE16_SHELL ]] && . $BASE16_SHELL
-	. $DOTS/themes/shell.sh
+	. $themeDir/shell.sh
 
 	# airline prompt
-	. $DOTS/themes/promptline.sh
+	. $themeDir/promptline.sh
 
 
 ################
 # PLUGINS
 ################
+
 	plugins=(battery extract git-extras node npm python nyan vi-mode history-substring-search systemd zsh-syntax-highlighting fasd)
 
 	. $ZSH/oh-my-zsh.sh
-	. $DOTS/shell/plugins/vim.zsh
-	. $DOTS/shell/plugins/tmuxinator.zsh
-	. $DOTS/shell/plugins/opp.zsh/opp.zsh
-	. $DOTS/shell/plugins/opp.zsh/opp/*.zsh
+	. $shellDir/plugins/vim.zsh
+	. $shellDir/plugins/tmuxinator.zsh
+	. $shellDir/plugins/opp.zsh/opp.zsh
+	. $shellDir/plugins/opp.zsh/opp/*.zsh
 
 
 ################
 # TERMINAL
 ################
+
 	# fix shift-tab in completion menus
 	bindkey '^[[Z' reverse-menu-complete
 

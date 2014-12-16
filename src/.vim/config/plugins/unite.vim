@@ -15,7 +15,7 @@ call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 32)
 call unite#custom#source('buffer', 'converters', ['converter_file_directory'])
 
 call unite#custom#profile('default', 'context', {
-	\ 'winheight': 32,
+	\ 'winheight': 20,
 	\ 'start_insert': 1,
 	\ 'auto_preview': 0,
 	\ 'vertical_preview': 1,

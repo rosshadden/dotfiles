@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO: have params for CLI-only or X-supported (don't need to install i3 on a server)
-# TODO: make a cleanup process
-# TODO: possibly make a (generated?) manifest file, to make cleanup easier
-# TODO: break variables out, since I currently have to use them both here and in .zshrc
-# TODO: support anonymous installs, where things like .gitconfig wouldn't be installed
-# TODO: vet [http://www.gnu.org/software/stow/](GNU stow) as a symlink organization tool
 
 ################
 # VARIABLES

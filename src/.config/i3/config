@@ -496,7 +496,7 @@
 # THEME
 ################
 	# class                 border  bg      text    indicator
-	client.focused          #5f00af #875fd7 #ffffff #dddddd
+	client.focused          #5f00af #875fd7 #ffffff #5f00af
 	client.focused_inactive #666666 #151515 #ffffff #292d2e
 	client.unfocused        #666666 #151515 #ffffff #292d2e
 	client.urgent           #ffaf00 #ff5f00 #ffffff #900000
