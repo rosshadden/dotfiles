@@ -11,8 +11,8 @@ src/.config/copyq/copyq-bak.conf
 src/.config/copyq/copyq_tabs.ini
 
 # themes
-themes/promptline.sh
-themes/tmuxline.conf
+src/themes/promptline.sh
+src/themes/tmuxline.conf
 
 # general
 *.dat
