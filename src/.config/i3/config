@@ -404,8 +404,17 @@
 		bindsym grave layout default; $return
 		bindsym 1 layout tabbed; $return
 		bindsym 2 layout stacking; $return
-		bindsym 3 layout splitv; $return
-		bindsym 4 layout splith; $return
+		bindsym 3 layout splith; $return
+		bindsym 4 layout splitv; $return
+
+		# split down
+		bindsym j split vertical; $return
+		# split up (but really down)
+		bindsym k split vertical; $return
+		# split left (but really right)
+		bindsym h split horizontal; $return
+		# split right
+		bindsym l split horizontal; $return
 
 		# toggle [stacking, tabbed, splith, splitv]
 		bindsym a layout toggle all; $return

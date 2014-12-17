@@ -2,8 +2,8 @@
 # SETTINGS
 ################
 
-gtk-theme-name = "BlackFate"
-gtk-key-theme-name = "Emacs"
+gtk-theme-name = "FlatStudioDark"
+# gtk-key-theme-name = "Emacs"
 gtk-font-name = "Ubuntu Mono 12"
 
 
@@ -20,7 +20,7 @@ style "main" {
 
 
 # everything ever
-widget "*" style "main"
+# widget "*" style "main"
 
 
 ################
@@ -37,11 +37,6 @@ binding "gtk-vi-text-entry" {
 	bind "<ctrl>b" { "move-cursor" (display-lines, -5, 0) }
 	bind "<ctrl>e" { "move-cursor" (display-lines, -1, 0) }
 	bind "<ctrl>y" { "move-cursor" (display-lines, 1, 0) }
-
-	bind "j" { "move-cursor" (display-lines, 1, 0) }
-	bind "k" { "move-cursor" (display-lines, -1, 0) }
-	bind "l" { "move-cursor" (logical-positions, 1, 0) }
-	bind "h" { "move-cursor" (logical-positions, -1, 0) }
 
 	bind "<ctrl>h" { "delete-from-cursor" (chars, -1) }
 	bind "<ctrl>u" { "delete-from-cursor" (paragraph-ends, -1) }

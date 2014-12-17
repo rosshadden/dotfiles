@@ -2,7 +2,7 @@
 set number
 set hlsearch
 set cursorline
-" set relativenumber
+set relativenumber
 
 " smart case
 set smartcase
