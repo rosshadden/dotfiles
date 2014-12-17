@@ -1,0 +1,80 @@
+################
+# SETTINGS
+################
+
+gtk-theme-name = "BlackFate"
+gtk-key-theme-name = "Emacs"
+gtk-font-name = "Ubuntu Mono 12"
+
+
+################
+# STYLES
+################
+
+# Create a style called "inverted" where the text and base (the base color behind the widget) are the reverse of typical.
+style "main" {
+	text[NORMAL] = "#d0d0d0"
+	base[NORMAL] = "#151515"
+	bg[NORMAL] = "#202020"
+}
+
+
+# everything ever
+widget "*" style "main"
+
+
+################
+# MAPPINGS
+################
+
+# A key-binding set for vi-like key-bindings
+# (from http://vim.wikia.com/wiki/Vi_key_bindings_in_gtk)
+
+binding "gtk-vi-text-entry" {
+	bind "<ctrl>d" { "move-cursor" (display-lines, 5, 0) }
+	bind "<ctrl>f" { "move-cursor" (display-lines, 5, 0) }
+	bind "<ctrl>u" { "move-cursor" (display-lines, -5, 0) }
+	bind "<ctrl>b" { "move-cursor" (display-lines, -5, 0) }
+	bind "<ctrl>e" { "move-cursor" (display-lines, -1, 0) }
+	bind "<ctrl>y" { "move-cursor" (display-lines, 1, 0) }
+
+	bind "j" { "move-cursor" (display-lines, 1, 0) }
+	bind "k" { "move-cursor" (display-lines, -1, 0) }
+	bind "l" { "move-cursor" (logical-positions, 1, 0) }
+	bind "h" { "move-cursor" (logical-positions, -1, 0) }
+
+	bind "<ctrl>h" { "delete-from-cursor" (chars, -1) }
+	bind "<ctrl>u" { "delete-from-cursor" (paragraph-ends, -1) }
+	bind "<ctrl>w" { "delete-from-cursor" (word-ends, -1) }
+}
+
+binding "gtk-vi-tree-view" {
+	bind "j" { "move-cursor" (display-lines, 1) }
+	bind "k" { "move-cursor" (display-lines, -1) }
+	bind "l" { "move-cursor" (logical-positions, 1) }
+	bind "h" { "move-cursor" (logical-positions, -1) }
+}
+
+class "GtkEntry" binding "gtk-vi-text-entry"
+class "GtkTextView" binding "gtk-vi-text-entry"
+class "GtkTreeView" binding "gtk-vi-tree-view"
+
+
+################
+# APPS
+################
+
+# pidgin
+	binding "mappings" {
+		# Ctrl-v to paste as plain text
+		bind "<ctrl>v" { "paste" ("text") }
+
+		# Ctrl-Shift-v for normal 'Paste'
+		bind "<ctrl><shift>v" { "paste" ("html") }
+	}
+
+	widget "*pidgin_conv_entry" binding "mappings"
+
+	# This lets you edit your Pidgin key bindings from within Pidgin,
+	# by hovering over a menu item and hitting a key combo.
+	gtk-can-change-accels = 1
