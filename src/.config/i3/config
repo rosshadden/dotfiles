@@ -85,8 +85,8 @@
 	bindsym $super+Tab focus mode_toggle
 
 	# open terminal
-	bindsym $super+t exec $tmux
-	bindsym $super+Shift+t exec $terminal
+	bindsym $super+t exec $terminal
+	bindsym $super+Shift+t exec $tmux
 
 	# open runner
 	bindsym $super+r exec $chooseCommand
