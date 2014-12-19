@@ -11,8 +11,8 @@ if has('autocmd')
 		autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 		" turn on spell check in certain files, and move cursor to beginning of gitcommits
-		autocmd BufRead,BufNewFile *.md setlocal spell | set complete+=kspell
-		autocmd FileType gitcommit setlocal spell | set complete+=kspell | call cursor(1, 1)
+		autocmd BufRead,BufNewFile *.md setlocal spell | setlocal complete+=kspell
+		autocmd FileType gitcommit setlocal spell | setlocal complete+=kspell | call cursor(1, 1)
 
 		" syntax highlighting
 		autocmd BufNewFile,BufReadPost *.md set filetype=markdown
