@@ -137,14 +137,14 @@ call MakePrefix('unite', '[unite]u', 1)
 	vmap [unite:1]B :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -no-split -no-vertical-preview buffer -input=' . GetVisualSelection()<cr>
 
 	" current... tabs? buffers?
-	nmap [unite:0]t :Unite              -buffer-name=buffers buffer_tab<cr>
-	nmap [unite:0]T :UniteWithBufferDir -buffer-name=buffers buffer_tab<cr>
-	nmap [unite:1]t :Unite              -buffer-name=buffers -no-split -no-vertical-preview buffer_tab<cr>
-	nmap [unite:1]T :UniteWithBufferDir -buffer-name=buffers -no-split -no-vertical-preview buffer_tab<cr>
-	vmap [unite:0]t :<c-u>execute ':Unite              -buffer-name=buffers buffer_tab -input=' . GetVisualSelection()<cr>
-	vmap [unite:0]T :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers buffer_tab -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]t :<c-u>execute ':Unite              -buffer-name=buffers -no-split -no-vertical-preview buffer_tab -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]T :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -no-split -no-vertical-preview buffer_tab -input=' . GetVisualSelection()<cr>
+	nmap [unite:0]t :Unite              -buffer-name=buffers tab buffer_tab<cr>
+	nmap [unite:0]T :UniteWithBufferDir -buffer-name=buffers tab buffer_tab<cr>
+	nmap [unite:1]t :Unite              -buffer-name=buffers -no-split -no-vertical-preview tab buffer_tab<cr>
+	nmap [unite:1]T :UniteWithBufferDir -buffer-name=buffers -no-split -no-vertical-preview tab buffer_tab<cr>
+	vmap [unite:0]t :<c-u>execute ':Unite              -buffer-name=buffers tab buffer_tab -input=' . GetVisualSelection()<cr>
+	vmap [unite:0]T :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers tab buffer_tab -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]t :<c-u>execute ':Unite              -buffer-name=buffers -no-split -no-vertical-preview tab buffer_tab -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]T :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -no-split -no-vertical-preview tab buffer_tab -input=' . GetVisualSelection()<cr>
 
 	" buffer, tab, or files
 	nmap [unite:0]a :Unite              buffer tab file_mru directory_mru bookmark<cr>
