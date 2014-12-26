@@ -54,7 +54,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'mattn/emmet-vim'
 		" i3 config
 		NeoBundle 'PotatoesMaster/i3-vim-syntax'
-		NeoBundle 'suan/vim-instant-markdown'
+		" stylus
+		NeoBundle 'wavded/vim-stylus'
 
 	" integration
 		" git
@@ -65,6 +66,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 		" vifm
 		NeoBundle 'vifm/vifm.vim'
+		" markdown
+		NeoBundle 'suan/vim-instant-markdown'
 
 	" UI
 		NeoBundle 'bling/vim-airline'

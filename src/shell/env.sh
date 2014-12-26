@@ -47,5 +47,8 @@
 	# sensible pager
 	export PAGER="less -FRSX"
 
+	# big-ass search history
+	export HISTSIZE=65536
+
 	# enable XON/XOFF flow control
 	stty -ixon
