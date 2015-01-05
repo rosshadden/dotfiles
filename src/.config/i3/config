@@ -59,6 +59,7 @@
 	# is used in the bar {} block below.
 	font pango:Ubuntu Mono 12
 
+	workspace_layout stacking
 	workspace_auto_back_and_forth no
 
 	# Use Mouse+$super to drag floating windows to their wanted position

@@ -2,7 +2,7 @@
 set listchars=tab:»\ ,trail:·,nbsp:_,extends:>,precedes:<
 
 " enable whitespace characters
-set list
+" set list
 
 
 " prefix
