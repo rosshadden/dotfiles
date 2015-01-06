@@ -27,6 +27,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'visualrepeat'
 		" <tab>-complete in insert mode
 		NeoBundle 'ervandew/supertab'
+		" NeoBundle 'Shougo/neocomplete.vim'
 		" <tab>-complete in the search prompt
 		NeoBundle 'SearchComplete'
 		" search with perl regex

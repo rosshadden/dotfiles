@@ -29,3 +29,6 @@
 
 	# Zeal
 	# zeal &
+
+	# cvim external editor
+	~/lib/cvim-server.py &

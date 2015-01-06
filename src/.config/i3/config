@@ -25,12 +25,12 @@
 	set $ws4 4| hack
 	set $ws5 5| files
 	set $ws6 6| media
-	set $ws7 7| games
+	set $ws7 7| games
 	set $ws8 8
 	set $ws9 9| run
 	set $ws10 10| chat
 	set $ws11 11
-	set $ws12 12
+	set $ws12 12| monitor
 
 	# return to the default mode
 	set $return mode "default"

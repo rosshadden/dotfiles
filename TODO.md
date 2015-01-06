@@ -71,6 +71,7 @@
 	- plugins
 		- git
 			- `git branch | cut -c 3- | owmni <blah blah> | xargs git checkout`
+			- `git branch -r | cut -c 10- | selecta | xargs git checkout`
 		- i3
 		- apps
 		- media

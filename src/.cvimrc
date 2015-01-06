@@ -46,8 +46,8 @@ let searchalias a = 'amazon'
 
 
 " BLACKLIST
-"
-" let blacklists = ["*://localhost/*"]
+
+let blacklists = ["http://localhost/*"]
 
 
 """"""""""""""""
@@ -83,6 +83,11 @@ map <Leader>r reloadTab
 map <Leader>R reloadTabUncached
 
 map <Space>b<Space> :buffer<Space>
+
+
+" INPUT
+
+imap <C-o> editWithVim
 
 
 " CHROME
