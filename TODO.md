@@ -31,6 +31,7 @@
 			- abstract making 4-8 mappings per concept
 			- better previews
 				- possibly a dynamic vertical/horizontal choice
+		- [use snippets](https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db)
 	- i3
 		- add a (preferably generated) help block for modes
 			- either automatically or on `?`

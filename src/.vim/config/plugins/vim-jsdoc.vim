@@ -7,4 +7,4 @@ let g:jsdoc_return_description      = 1 " 1
 let g:jsdoc_default_mapping         = 0 " 1
 
 autocmd FileType javascript
-	\ nmap <silent> <localleader>D <plug>(jsdoc)
+	\ nmap <silent> <localleader>C <plug>(jsdoc)

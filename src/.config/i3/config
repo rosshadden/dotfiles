@@ -218,7 +218,7 @@
 		bindsym t mode "TMUX"
 		bindsym a mode "APPS"
 
-		bindsym Return $return
+		bindsym $super+space $return
 		bindsym Escape $return
 	}
 
@@ -226,14 +226,14 @@
 	mode "BUFFER" {
 		bindsym c kill; $return
 
-		bindsym Return $return
+		bindsym $super+space $return
 		bindsym Escape $return
 	}
 
 
 	mode "MARK" {
 		# by name
-			bindsym Return exec i3-input -F 'mark %s' -P 'Mark name: '; $return
+			bindsym space exec i3-input -F 'mark %s' -P 'Mark name: '; $return
 
 		# by number
 			bindsym grave mark mark-0; $return
@@ -279,14 +279,14 @@
 			bindsym z mark mark-z; $return
 
 		# exit
-			bindsym Return $return
+			bindsym $super+space $return
 			bindsym Escape $return
 	}
 
 
 	mode "GOTO" {
 		# by name
-			bindsym Return exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '; $return
+			bindsym space exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '; $return
 
 		# by number
 			bindsym grave [con_mark="mark-0"] focus; $return
@@ -339,7 +339,7 @@
 			bindsym f [class="(?i)terminal" title="vifm"] focus; $return
 			bindsym w [class="(?i)chrome"] focus; $return
 
-		bindsym Return $return
+		bindsym $super+space $return
 		bindsym Escape $return
 	}
 
@@ -354,14 +354,14 @@
 		# lock screen
 		bindsym l exec $locker
 
-		bindsym Return $return
+		bindsym $super+space $return
 		bindsym Escape $return
 	}
 
 
 	mode "TMUX" {
 		# by name
-			bindsym Return exec i3-input -P 'Session name: ' -F 'exec $tmuxAttach %s'; $return
+			bindsym space exec i3-input -P 'Session name: ' -F 'exec $tmuxAttach %s'; $return
 
 		# presets
 			# TODO: make these dynamic from the workspace name
@@ -381,7 +381,7 @@
 
 		# TODO: open preset for the current workspace
 
-		bindsym Return $return
+		bindsym $super+space $return
 		bindsym Escape $return
 	}
 
@@ -396,7 +396,7 @@
 		# grow the window’s height
 		bindsym l resize grow width 10 px or 10 ppt
 
-		bindsym Return $return
+		bindsym $super+space $return
 		bindsym Escape $return
 	}
 
@@ -432,7 +432,7 @@
 		# borders
 		bindsym b mode "BORDER"
 
-		bindsym Return $return
+		bindsym $super+space $return
 		bindsym Escape $return
 	}
 
@@ -445,7 +445,7 @@
 		bindsym 2 border 1pixel; $return
 		bindsym 3 border none; $return
 
-		bindsym Return $return
+		bindsym $super+space $return
 		bindsym Escape $return
 	}
 
@@ -485,7 +485,7 @@
 			# wheel down
 			bindsym f exec $(xdotool click 5)
 
-		bindsym Return $return
+		bindsym $super+space $return
 		bindsym Escape $return
 	}
 
@@ -497,7 +497,7 @@
 		# TODO: figure out a way to toggle visibility, not just launch
 		bindsym z exec zeal; $return
 
-		bindsym Return $return
+		bindsym $super+space $return
 		bindsym Escape $return
 	}
 
