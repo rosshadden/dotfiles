@@ -168,3 +168,44 @@
 
 	# expand .[TAB] and ..[TAB]
 	zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
+
+
+# CURSOR
+
+# TODO: breakout.exe
+prefix=""
+suffix=""
+
+if [ $TMUX ]; then
+	prefix="\033Ptmux;\033"
+	suffix="\033\\"
+fi
+
+zle-keymap-select () {
+	if [ "$TERM" != "linux" ]; then
+		if [ $KEYMAP = vicmd ]; then
+			# NORMAL
+			# color
+			echo -ne "${prefix}\033]12;gray\007${suffix}"
+			# shape
+			echo -ne "${prefix}\033[2 q${suffix}"
+		else
+			# INSERT
+			# color
+			echo -ne "${prefix}\033]12;cyan\007${suffix}"
+			# shape
+			echo -ne "${prefix}\033[4 q${suffix}"
+		fi
+	fi
+};
+zle -N zle-keymap-select
+
+zle-line-init () {
+	# RESET
+	zle -K viins
+	# color
+	echo -ne "${prefix}\033]12;cyan\007${suffix}"
+	# shape
+	echo -ne "${prefix}\033[4 q${suffix}"
+};
+zle -N zle-line-init

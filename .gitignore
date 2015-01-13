@@ -3,7 +3,7 @@ node_modules/
 dist/
 
 # apps
-src/.vifm/vifminfo
+src/.vifm/vifminfo*
 src/.vifm/vimfiles
 src/.vifm/Trash
 src/.config/copyq/copyq_geometry.ini

@@ -139,12 +139,15 @@ URxvt*colorUL: #4682b4
 URxvt*font: xft:Ubuntu Mono derivative Powerline:size=12
 
 ! URxvt*boldFont: fontlist
+URxvt*boldFont: xft:Ubuntu Mono derivative Powerline:size=12:style=Bold
 
 !
 ! URxvt*italicFont: fontlist
+URxvt*italicFont: xft:Ubuntu Mono derivative Powerline:size=12:style=Italic
 
 ! The font list to use for displaying bold, italic or bold italic characters, respectively.
 ! URxvt*boldItalicFont: fontlist
+URxvt*boldItalicFont: xft:Ubuntu Mono derivative Powerline:size=12:style=Bold Italic
 
 ! When font styles are not enabled, or this option is enabled (True, option -is, the default), bold/blink font styles imply high intensity foreground/background colours. Disabling this option (False, option +is) disables
 ! URxvt*intensityStyles: boolean
@@ -231,10 +234,10 @@ URxvt*scrollTtyKeypress: true
 ! URxvt*pastableTabs: boolean
 
 ! True: blink the cursor. False: do not blink the cursor [default]; option -bc.
-! URxvt*cursorBlink: boolean
+URxvt*cursorBlink: false
 
 ! True: Make the cursor underlined. False: Make the cursor a box [default]; option -uc.
-! URxvt*cursorUnderline: boolean
+URxvt*cursorUnderline: false
 
 ! True: blank the pointer when a key is pressed or after a set number of seconds of inactivity. False: the pointer is always visible [default].
 ! URxvt*pointerBlank: boolean
