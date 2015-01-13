@@ -7,7 +7,7 @@
 [merge]
 	tool = diffconflicts
 [mergetool "diffconflicts"]
-	cmd = diffconflicts gvim $BASE $LOCAL $REMOTE $MERGED
+	cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
 	trustExitCode = true
 	keepBackup = false
 [mergetool "subl"]

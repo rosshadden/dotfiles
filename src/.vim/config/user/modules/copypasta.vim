@@ -3,7 +3,9 @@ call MakePrefix('copypasta', '[prefix]c')
 
 " easier system clipboard
 map [copypasta]y "+y
+map <c-c> "+y
 map [copypasta]Y "+Y
+map <c-s-c> "+Y
 map [copypasta]p "+p
 map [copypasta]P "+P
 map [copypasta]d "+d
