@@ -194,7 +194,7 @@ zle-keymap-select () {
 			# color
 			echo -ne "${prefix}\033]12;cyan\007${suffix}"
 			# shape
-			echo -ne "${prefix}\033[4 q${suffix}"
+			echo -ne "${prefix}\033[5 q${suffix}"
 		fi
 	fi
 };
@@ -206,6 +206,6 @@ zle-line-init () {
 	# color
 	echo -ne "${prefix}\033]12;cyan\007${suffix}"
 	# shape
-	echo -ne "${prefix}\033[4 q${suffix}"
+	echo -ne "${prefix}\033[5 q${suffix}"
 };
 zle -N zle-line-init

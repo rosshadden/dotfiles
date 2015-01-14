@@ -50,7 +50,7 @@ autocmd VimLeave * execute 'silent !echo -ne "' . s:prefixCode . '\033]12;gray\0
 	" 6 -> solid vertical bar
 
 " insert (underscore)
-let &t_SI .= "\<Esc>\<Esc>[4 q"
+let &t_SI .= "\<Esc>\<Esc>[5 q"
 
 " normal (block)
 let &t_EI .= "\<Esc>\<Esc>[2 q"
