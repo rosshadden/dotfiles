@@ -155,6 +155,7 @@ nmap ,,r :source ~/.vifm/vifmrc<cr>
 nmap ,t :!i3-sensible-terminal &<cr>
 
 " quit
+nmap q :q<cr>
 nmap ,w :q<cr>
 
 " fast renaming shortcuts

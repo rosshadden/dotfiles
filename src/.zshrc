@@ -192,7 +192,7 @@ zle-keymap-select () {
 		else
 			# INSERT
 			# color
-			echo -ne "${prefix}\033]12;cyan\007${suffix}"
+			echo -ne "${prefix}\033]12;magenta\007${suffix}"
 			# shape
 			echo -ne "${prefix}\033[5 q${suffix}"
 		fi
@@ -204,7 +204,7 @@ zle-line-init () {
 	# RESET
 	zle -K viins
 	# color
-	echo -ne "${prefix}\033]12;cyan\007${suffix}"
+	echo -ne "${prefix}\033]12;magenta\007${suffix}"
 	# shape
 	echo -ne "${prefix}\033[5 q${suffix}"
 };

@@ -1,4 +1,4 @@
-" keep cursor colum when JK motion
+" use same column for j/k motions
 let g:EasyMotion_startofline = 0
 
 " use uppercase target labels and type as a lower case

@@ -8,8 +8,8 @@ if exists('$TMUX')
 	let s:tmuxPrefix = "\<Esc>Ptmux;\<Esc>"
 	let s:tmuxSuffix = "\<Esc>\\"
 
-	let s:prefixCode .= "\033Ptmux;\033"
-	let s:suffixCode .= "\033\\"
+	" let s:prefixCode .= "\033Ptmux;\033"
+	" let s:suffixCode .= "\033\\"
 endif
 
 
@@ -27,11 +27,11 @@ endif
 " COLOR
 
 " insert
-let &t_SI .= "\<Esc>]12;cyan\x7"
+let &t_SI .= "\<Esc>]12;magenta\x7"
 
 " normal
 let &t_EI .= "\<Esc>]12;gray\x7"
-execute 'silent !echo -ne "' . s:prefixCode . '\033]12;gray\007' . s:suffixCode . '"'
+" execute 'silent !echo -ne "' . s:prefixCode . '\033]12;gray\007' . s:suffixCode . '"'
 
 " reset
 autocmd FocusGained * execute 'silent !echo -ne "' . s:prefixCode . '\033]12;gray\007' . s:suffixCode . '"'
