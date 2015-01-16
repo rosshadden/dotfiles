@@ -28,13 +28,22 @@ map [tabs:1]n :tabnew %<cr>
 " close
 map [tabs]c :tabclose<cr>
 map [tabs]C :tabclose!<cr>
-" TODO: ease off
-map [tabs]w :tabclose<cr>
-map [tabs]W :tabclose!<cr>
 
 " close others
 map [tabs]o :tabonly<cr>
 map [tabs]O :tabonly!<cr>
+
+" write all
+map [tabs]w :tabdo write<cr>
+map [tabs]W :tabdo write!<cr>
+
+" update all
+map [tabs]s :tabdo update<cr>
+map [tabs]S :tabdo update!<cr>
+
+" reload all
+map [tabs]r :tabdo edit<cr>
+map [tabs]R :tabdo edit!<cr>
 
 " NOTE: technically [tabs]g and [tabs]l are the same,
 " though semantically the former is for absolute navigation and the latter for relative

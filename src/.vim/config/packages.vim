@@ -92,8 +92,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'dbakker/vim-projectroot'
 
 	" utils
-		" Splash screen replacement
-		NeoBundle 'mhinz/vim-startify'
 		" sensible default settings
 		NeoBundle 'tpope/vim-sensible'
 		" auto-detuct indent settings

@@ -5,7 +5,7 @@ let g:EasyMotion_startofline = 0
 let g:EasyMotion_use_upper = 1
 
 " prefer the home row
-let g:EasyMotion_keys = 'ASONETUHIDPGCRYFLJBWMK;XVZQ'
+let g:EasyMotion_keys = 'AOEUIDHTN-,.PYFGCRL;QJKXBMWVZS'
 
 " jump to first search result with `<enter>`
 let g:EasyMotion_enter_jump_first = 1

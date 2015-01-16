@@ -2,7 +2,6 @@
 set number
 set hlsearch
 set cursorline
-set relativenumber
 
 " smart case
 set smartcase
@@ -23,6 +22,12 @@ set shiftwidth=4
 
 " turn off auto-textwrap (vim-sensible turns it on)
 set textwidth=0
+
+" disable splash screen
+set shortmess=atI
+
+" add the g flag to search/replace by default
+set gdefault
 
 " simple mouse support
 set mouse=a
