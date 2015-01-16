@@ -493,9 +493,9 @@
 	mode "APPS" {
 		# copyq
 		bindsym c exec copyq toggle; $return
+
 		# zeal
-		# TODO: figure out a way to toggle visibility, not just launch
-		bindsym z exec zeal; $return
+		bindsym z exec $(xdotool key "ctrl+alt+super+shift+End"); $return
 
 		bindsym $super+space $return
 		bindsym Escape $return
@@ -557,14 +557,16 @@
 	for_window [title="Qalculate!"] floating enable
 
 	# chrome
-	# assign [class="^Google-chrome.*$"] → $ws1
+	assign [class="^Google-chrome" window_role="browser"] → $ws1
 
-	# nuvola
-	assign [class="nuvolaplayer"] → $ws6
-	for_window [class="nuvolaplayer"] move container to workspace $ws6
+	# music
+	assign [class="(nuvolaplayer|Spotify)"] → $ws6
+	for_window [class="(nuvolaplayer|Spotify)"] move container to workspace $ws6
 
-	# finch
+	# chat
+	assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $ws10
 	assign [title="^finch$"] → $ws10
+	for_window [class="Pidgin" window_role="(buddy_list|conversation)"] move container to workspace $ws10
 	for_window [title="^finch$"] move container to workspace $ws10
 
 

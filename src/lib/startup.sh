@@ -28,7 +28,7 @@
 	copyq &
 
 	# Zeal
-	# zeal &
+	zeal &
 
 	# cvim external editor
 	~/lib/cvim-server.py &

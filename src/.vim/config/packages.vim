@@ -45,6 +45,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" js
 		NeoBundle 'pangloss/vim-javascript'
 		NeoBundle 'jelera/vim-javascript-syntax'
+		" js AST
+		NeoBundle 'marijnh/tern_for_vim'
 		" json
 		NeoBundle 'elzr/vim-json'
 		" hbs
@@ -57,18 +59,18 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'PotatoesMaster/i3-vim-syntax'
 		" stylus
 		NeoBundle 'wavded/vim-stylus'
+		" LaTeX
+		NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
+		" markdown
+		NeoBundle 'suan/vim-instant-markdown'
 
 	" integration
 		" git
 		NeoBundle 'tpope/vim-fugitive'
 		" ag, the silver searcher
 		NeoBundle 'rking/ag.vim'
-		" LaTeX
-		NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 		" vifm
 		NeoBundle 'vifm/vifm.vim'
-		" markdown
-		NeoBundle 'suan/vim-instant-markdown'
 
 	" UI
 		NeoBundle 'bling/vim-airline'
