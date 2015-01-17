@@ -10,7 +10,7 @@ set ignorecase
 set spell
 set spelllang=en_us
 
-set colorcolumn=80,120
+set colorcolumn=120
 
 " timeout
 " set timeout timeoutlen=500 ttimeoutlen=50

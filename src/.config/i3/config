@@ -32,6 +32,12 @@
 	set $ws11 11
 	set $ws12 12| monitor
 
+	set $macro1 XF86Tools
+	set $macro2 XF86Launch5
+	set $macro3 XF86Launch6
+	set $macro4 XF86Launch7
+	set $macro5 XF86Launch8
+
 	# return to the default mode
 	set $return mode "default"
 
@@ -100,6 +106,7 @@
 
 	# lock screen
 	bindsym $super+Delete exec $locker
+	bindsym $macro5 exec $locker
 
 	# change focus
 	bindsym $super+h focus left
