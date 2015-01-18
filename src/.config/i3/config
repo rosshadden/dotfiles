@@ -458,6 +458,18 @@
 
 
 	mode "MOUSE" {
+		# buttons
+			# left
+			bindsym space exec $(xdotool click 1)
+			# middle
+			bindsym m exec $(xdotool click 2)
+			# right
+			bindsym Shift+space exec $(xdotool click 3)
+			# wheel up
+			bindsym b exec $(xdotool click 4)
+			# wheel down
+			bindsym f exec $(xdotool click 5)
+
 		# movement
 			# slow
 			bindsym $alt+h exec $(xdotool mousemove_relative -- -4  0)
@@ -480,18 +492,6 @@
 			bindsym Control+j exec $(xdotool mousemove_relative --    0  512)
 			bindsym Control+k exec $(xdotool mousemove_relative --    0 -512)
 
-		# buttons
-			# left
-			bindsym space exec $(xdotool click 1)
-			# middle
-			bindsym m exec $(xdotool click 2)
-			# right
-			bindsym Shift+space exec $(xdotool click 3)
-			# wheel up
-			bindsym b exec $(xdotool click 4)
-			# wheel down
-			bindsym f exec $(xdotool click 5)
-
 		bindsym $super+space $return
 		bindsym Escape $return
 	}
@@ -502,7 +502,7 @@
 		bindsym c exec copyq toggle; $return
 
 		# zeal
-		bindsym z exec $(xdotool key "ctrl+alt+super+shift+End"); $return
+		bindsym --release z exec $(xdotool key --clearmodifiers "ctrl+alt+super+shift+End"); $return
 
 		bindsym $super+space $return
 		bindsym Escape $return

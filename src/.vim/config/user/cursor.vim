@@ -33,6 +33,11 @@ let &t_SI .= "\<Esc>]12;magenta\x7"
 let &t_EI .= "\<Esc>]12;gray\x7"
 " execute 'silent !echo -ne "' . s:prefixCode . '\033]12;gray\007' . s:suffixCode . '"'
 
+if exists('$TMUX')
+	let &t_SI .= "\<Esc>"
+	let &t_EI .= "\<Esc>"
+endif
+
 " reset
 autocmd FocusGained * execute 'silent !echo -ne "' . s:prefixCode . '\033]12;gray\007' . s:suffixCode . '"'
 autocmd VimLeave * execute 'silent !echo -ne "' . s:prefixCode . '\033]12;gray\007' . s:suffixCode . '"'
@@ -50,10 +55,10 @@ autocmd VimLeave * execute 'silent !echo -ne "' . s:prefixCode . '\033]12;gray\0
 	" 6 -> solid vertical bar
 
 " insert (underscore)
-let &t_SI .= "\<Esc>\<Esc>[5 q"
+let &t_SI .= "\<Esc>[5 q"
 
 " normal (block)
-let &t_EI .= "\<Esc>\<Esc>[2 q"
+let &t_EI .= "\<Esc>[2 q"
 
 " reset
 autocmd FocusGained * execute 'silent !echo -ne "' . s:prefixCode . '\033[2 q' . s:suffixCode . '"'

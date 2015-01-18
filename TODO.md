@@ -1,11 +1,13 @@
 - meta
-	- add a readme
+	- README
 		- list dependencies and other relevant installed packages
 		- screenshots
 	- trim down as much fat as possible, such as things I don't use anymore
 	- look into [these dotfiles](https://github.com/xero/dotfiles)
-	- set up a grunt workflow
+	- return to a non-grunt workflow (or at least a fallback)
 		- use [stow](http://www.gnu.org/software/stow/) for symlink management
+		- fallback to symlinks
+	- ~~set up a grunt workflow~~
 		- `install` - installs things, makes links, etc.
 			- migrate current install script
 			- anonymous install (no need for git ssh keys, no reference to me)
@@ -18,20 +20,23 @@
 		- `remove`/`uninstall`/`cleanup`
 - apps
 	- vim
+		- [use snippets](https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db)
 		- customize airline colors so that visual mode isn't terrible. maybe a vibrant green
-		- fix `:TmuxNavigate*` when (in tmux && `v file`)
+		- fix `:TmuxNavigate*`
+			- when (in tmux && `v file`)
+			- when doing merge conflicts
 		- tabs
 			- make `[tabs]j` and `[tabs]k` go to first/last tab (or something else)
 			- make `[tabs]J` and `[tabs]K` move to first/last (or something else)
 		- make "put in <motion>" function or plugin
 			- should definitely call it "Put in motion"
-		- make `[e` and `]e` keep the selection in visual mode
 		- unite
 			- make a mapping or mode for finding files not in the repo
 			- abstract making 4-8 mappings per concept
 			- better previews
 				- possibly a dynamic vertical/horizontal choice
-		- [use snippets](https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db)
+		- make `[e` and `]e` keep the selection in visual mode
+			- this is less important since I figured out `.` repeats it correctly
 	- i3
 		- add a (preferably generated) help block for modes
 			- either automatically or on `?`
@@ -56,9 +61,10 @@
 			- make images save in &images
 			- make URLs save in &URLs
 		- make it use my dotfiles color scheme
+	- zeal
+		- integrate into workflow
 - shell
 	- make sure bash works, even though I haven't used it in years
-	- make zsh prompt [change when in command mode](https://github.com/edkolev/promptline.vim/issues/10)
 - X
 	- fixmon
 		- make the fixmon scripts I have check monitors, so it works no matter which environment
@@ -74,7 +80,11 @@
 			- `git branch | cut -c 3- | owmni <blah blah> | xargs git checkout`
 			- `git branch -r | cut -c 10- | selecta | xargs git checkout`
 		- i3
+		- zeal
 		- apps
+			- open
+			- kill
+			- switch (like `rofi` currently does)
 		- media
 		- computer
 		- projects
