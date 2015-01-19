@@ -26,12 +26,14 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" let `.` repeat things in visual mode
 		NeoBundle 'visualrepeat'
 		" <tab>-complete in insert mode
-		NeoBundle 'ervandew/supertab'
-		" NeoBundle 'Shougo/neocomplete.vim'
+		" NeoBundle 'ervandew/supertab'
+		NeoBundle 'Shougo/neocomplete.vim'
 		" <tab>-complete in the search prompt
 		NeoBundle 'SearchComplete'
 		" search with perl regex
 		NeoBundle 'othree/eregex.vim'
+		" readline-style insersion
+		NeoBundle 'tpope/vim-rsi'
 
 	" navigation
 		NeoBundle 'Lokaltog/vim-easymotion'
@@ -63,6 +65,11 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 		" markdown
 		NeoBundle 'suan/vim-instant-markdown'
+
+	" features
+		" snippets
+		NeoBundle 'Shougo/neosnippet.vim'
+		NeoBundle 'Shougo/neosnippet-snippets'
 
 	" integration
 		" git
