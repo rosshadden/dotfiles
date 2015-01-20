@@ -69,7 +69,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	" features
 		" snippets
 		NeoBundle 'Shougo/neosnippet.vim'
-		NeoBundle 'Shougo/neosnippet-snippets'
+		NeoBundle 'honza/vim-snippets'
 
 	" integration
 		" git

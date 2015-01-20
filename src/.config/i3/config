@@ -491,6 +491,8 @@
 			bindsym Control+l exec $(xdotool mousemove_relative --  512    0)
 			bindsym Control+j exec $(xdotool mousemove_relative --    0  512)
 			bindsym Control+k exec $(xdotool mousemove_relative --    0 -512)
+			# top-left
+			bindsym $macro1 exec $(xdotool mousemove -- 0 0); $return
 
 		bindsym $super+space $return
 		bindsym Escape $return

@@ -8,8 +8,8 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#max_list = 64
 
 " <TAB>: completion.
-inoremap <expr><tab>  pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr><s-tab>  pumvisible() ? "\<c-p>" : "\<s-tab>"
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 " fix backspace
 inoremap <expr><c-h> neocomplete#smart_close_popup()."\<c-h>"
