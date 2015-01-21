@@ -37,6 +37,7 @@
 				- possibly a dynamic vertical/horizontal choice
 		- make `[e` and `]e` keep the selection in visual mode
 			- this is less important since I figured out `.` repeats it correctly
+		- [figure out analytics](http://www.drbunsen.org/vim-croquet/)
 	- i3
 		- add a (preferably generated) help block for modes
 			- either automatically or on `?`
@@ -44,6 +45,7 @@
 		- implement project system
 		- become more familiar with the other layouts (tabs and stacks)
 	- tmux
+		- [vet plugins](https://github.com/tmux-plugins)
 		- vet corded mappings more
 		- explore `command-prompt` possibilities
 		- explore `choose-*` possibilities
@@ -68,6 +70,8 @@
 - X
 	- fixmon
 		- make the fixmon scripts I have check monitors, so it works no matter which environment
+	- look into existing `.Xresources` themes
+		- http://www.noobslab.com/
 - Owmni
 	- client-agnostic back-end, which should work with X and terminals alike
 	- clients

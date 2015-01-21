@@ -4,6 +4,9 @@ let g:EasyMotion_startofline = 0
 " use uppercase target labels and type as a lower case
 let g:EasyMotion_use_upper = 1
 
+" use smart case
+let g:EasyMotion_smartcase = 1
+
 " prefer the home row
 let g:EasyMotion_keys = 'AOEUIDHTN-,.PYFGCRL;QJKXBMWVZS'
 
@@ -12,7 +15,7 @@ let g:EasyMotion_enter_jump_first = 1
 
 
 " prefix
-map <leader>f <plug>(easymotion-prefix)
+map [prefix]e <plug>(easymotion-prefix)
 
 " vim-sneak
 nmap s <plug>(easymotion-s2)
