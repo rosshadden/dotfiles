@@ -39,11 +39,11 @@
 			- this is less important since I figured out `.` repeats it correctly
 		- [figure out analytics](http://www.drbunsen.org/vim-croquet/)
 	- i3
+		- make `<prefix>n` and `<prefix>p` navigate tags on a single screen, instead of globally
 		- add a (preferably generated) help block for modes
 			- either automatically or on `?`
-		- generate config, via grunt task outlined above
-		- implement project system
-		- become more familiar with the other layouts (tabs and stacks)
+		- generate config
+		- implement project system (probably more of a thing for owmni)
 	- tmux
 		- [vet plugins](https://github.com/tmux-plugins)
 		- vet corded mappings more
