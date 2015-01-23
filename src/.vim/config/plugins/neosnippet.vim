@@ -1,5 +1,5 @@
 " use vim-snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+" let g:neosnippet#snippets_directory = '~/.vim/bundle/vim-snippets/snippets'
 
 imap <c-s> <plug>(neosnippet_expand_or_jump)
 smap <c-s> <plug>(neosnippet_expand_or_jump)

@@ -4,6 +4,7 @@
 		- screenshots
 	- trim down as much fat as possible, such as things I don't use anymore
 	- look into [these dotfiles](https://github.com/xero/dotfiles)
+- build
 	- return to a non-grunt workflow (or at least a fallback)
 		- use [stow](http://www.gnu.org/software/stow/) for symlink management
 		- fallback to symlinks
@@ -18,6 +19,7 @@
 		- `reinstall`
 		- `update` - cleans up old stuff and does the new
 		- `remove`/`uninstall`/`cleanup`
+	- clone `tpm` (tmux plugin manager) and other dependencies
 - apps
 	- vim
 		- [use snippets](https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db)

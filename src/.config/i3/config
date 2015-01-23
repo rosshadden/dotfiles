@@ -140,12 +140,6 @@
 	bindsym $super+Escape workspace back_and_forth
 	bindsym $super+Shift+Escape move container to workspace back_and_forth; workspace back_and_forth
 
-	# split in horizontal orientation
-	bindsym $super+s split horizontal
-
-	# split in vertical orientation
-	bindsym $super+minus split vertical
-
 	# switch to workspace
 	bindsym $super+1 workspace $ws1
 	bindsym $super+2 workspace $ws2
@@ -181,9 +175,9 @@
 	bindsym $super+Shift+z focus child
 
 	# show scratchpad
-	bindsym $super+slash scratchpad show
+	bindsym $super+s scratchpad show
 	# move the currently focused window to the scratchpad
-	bindsym $super+Shift+slash move scratchpad
+	bindsym $super+Shift+s move scratchpad
 
 	# modes
 	bindsym $super+space mode "PREFIX"
@@ -394,14 +388,31 @@
 
 
 	mode "RESIZE" {
-		# shrink the window’s width
-		bindsym h resize shrink width 10 px or 10 ppt
-		# grow the window’s width
-		bindsym j resize grow height 10 px or 10 ppt
-		# shrink the window’s height
-		bindsym k resize shrink height 10 px or 10 ppt
-		# grow the window’s height
-		bindsym l resize grow width 10 px or 10 ppt
+		# small
+		bindsym $alt+h resize shrink width 1 px or 1 ppt
+		bindsym $alt+j resize grow height 1 px or 1 ppt
+		bindsym $alt+k resize shrink height 1 px or 1 ppt
+		bindsym $alt+l resize grow width 1 px or 1 ppt
+		# medium
+		bindsym h resize shrink width 4 px or 4 ppt
+		bindsym j resize grow height 4 px or 4 ppt
+		bindsym k resize shrink height 4 px or 4 ppt
+		bindsym l resize grow width 4 px or 4 ppt
+		# large
+		bindsym Shift+h resize shrink width 16 px or 16 ppt
+		bindsym Shift+j resize grow height 16 px or 16 ppt
+		bindsym Shift+k resize shrink height 16 px or 16 ppt
+		bindsym Shift+l resize grow width 16 px or 16 ppt
+		# bigger
+		bindsym Control+h resize shrink width 64 px or 64 ppt
+		bindsym Control+j resize grow height 64 px or 64 ppt
+		bindsym Control+k resize shrink height 64 px or 64 ppt
+		bindsym Control+l resize grow width 64 px or 64 ppt
+		# extreme
+		bindsym Control+Shift+h resize shrink width 256 px or 256 ppt
+		bindsym Control+Shift+j resize grow height 256 px or 256 ppt
+		bindsym Control+Shift+k resize shrink height 256 px or 256 ppt
+		bindsym Control+Shift+l resize grow width 256 px or 256 ppt
 
 		bindsym $super+space $return
 		bindsym Escape $return
@@ -500,8 +511,11 @@
 
 
 	mode "APPS" {
-		# copyq
-		bindsym c exec copyq toggle; $return
+		# clipboard manager
+		bindsym y exec copyq toggle; $return
+
+		# calculator
+		bindsym c exec qalculate-gtk; $return
 
 		# zeal
 		bindsym --release z exec $(xdotool key --clearmodifiers "ctrl+alt+super+shift+End"); $return

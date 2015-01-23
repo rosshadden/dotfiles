@@ -69,7 +69,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	" features
 		" snippets
 		NeoBundle 'Shougo/neosnippet.vim'
-		NeoBundle 'honza/vim-snippets'
+		NeoBundle 'Shougo/neosnippet-snippets'
+		" NeoBundle 'honza/vim-snippets'
 
 	" integration
 		" git
@@ -125,6 +126,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'xolox/vim-misc'
 		" retab spaces => tabs, and vice versa
 		NeoBundle 'rhlobo/vim-super-retab'
+		" context-filetype awareness
+		NeoBundle 'Shougo/context_filetype.vim'
 
 	" external
 		NeoBundle 'christoomey/vim-tmux-navigator'
