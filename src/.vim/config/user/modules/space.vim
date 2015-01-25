@@ -1,9 +1,9 @@
 " better whitespace characters
 set listchars=tab:»\ ,trail:·,nbsp:_,extends:>,precedes:<
 
-" enable whitespace characters
-" set list
-
+set linebreak
+set breakindent
+let &showbreak = "... "
 
 " prefix
 call MakePrefix('space', '[prefix]s')

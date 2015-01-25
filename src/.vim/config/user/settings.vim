@@ -1,15 +1,15 @@
 " line numbers
 set number
 set hlsearch
-set cursorline
+set cursorline cursorcolumn
 
-" smart case
-set smartcase
-set ignorecase
+" casing
+set smartcase ignorecase
 
-set spell
-set spelllang=en_us
+" spelling
+set spell spelllang=en_us
 
+" add visible stop column
 set colorcolumn=120
 
 " timeout
@@ -22,6 +22,10 @@ set shiftwidth=4
 
 " turn off auto-textwrap (vim-sensible turns it on)
 set textwidth=0
+set wrapmargin=0
+
+" let buffers exist in the background
+set hidden
 
 " disable splash screen
 set shortmess=atI

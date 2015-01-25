@@ -63,6 +63,8 @@ map a goToInput
 
 " SCROLLING
 
+map <C-e> scrollDown
+map <C-y> scrollUp
 map <C-d> scrollPageDown
 map <C-u> scrollPageUp
 map <C-f> scrollFullPageDown
