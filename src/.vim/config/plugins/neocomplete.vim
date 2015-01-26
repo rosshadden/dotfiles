@@ -7,6 +7,9 @@ let g:neocomplete#enable_smart_case = 1
 " max candidates
 let g:neocomplete#max_list = 64
 
+" disable fuzzy completion
+let g:neocomplete#enable_fuzzy_completion = 0
+
 " <TAB>: completion.
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"

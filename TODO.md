@@ -40,20 +40,17 @@
 		- make `[e` and `]e` keep the selection in visual mode
 			- this is less important since I figured out `.` repeats it correctly
 		- [figure out analytics](http://www.drbunsen.org/vim-croquet/)
+		- make unite-spelling integration
 	- i3
 		- make `<prefix>n` and `<prefix>p` navigate tags on a single screen, instead of globally
-		- add a (preferably generated) help block for modes
-			- either automatically or on `?`
+		- add a (preferably generated) help block for modes, on `?`
 		- generate config
 		- implement project system (probably more of a thing for owmni)
 	- tmux
 		- [vet plugins](https://github.com/tmux-plugins)
-		- vet corded mappings more
 		- explore `command-prompt` possibilities
 		- explore `choose-*` possibilities
 			- `choose-client`
-			- `choose-list`
-				- join project from project system, outlined above
 			- `choose-session`
 				- list of sessions to link to (linked windows/layouts but not focus)
 			- `choose-tree`

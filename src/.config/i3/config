@@ -227,7 +227,7 @@
 	mode "BUFFER" {
 		bindsym c kill; $return
 
-		bindsym $super+space $return
+		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
 	}
 
@@ -280,7 +280,7 @@
 			bindsym z mark mark-z; $return
 
 		# exit
-			bindsym $super+space $return
+			bindsym $super+space mode "PREFIX"
 			bindsym Escape $return
 	}
 
@@ -340,7 +340,7 @@
 			bindsym f [class="(?i)terminal" title="vifm"] focus; $return
 			bindsym w [class="(?i)chrome"] focus; $return
 
-		bindsym $super+space $return
+		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
 	}
 
@@ -355,7 +355,7 @@
 		# lock screen
 		bindsym l exec $locker
 
-		bindsym $super+space $return
+		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
 	}
 
@@ -382,7 +382,7 @@
 
 		# TODO: open preset for the current workspace
 
-		bindsym $super+space $return
+		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
 	}
 
@@ -414,7 +414,7 @@
 		bindsym Control+Shift+k resize shrink height 256 px or 256 ppt
 		bindsym Control+Shift+l resize grow width 256 px or 256 ppt
 
-		bindsym $super+space $return
+		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
 	}
 
@@ -450,7 +450,7 @@
 		# borders
 		bindsym b mode "BORDER"
 
-		bindsym $super+space $return
+		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
 	}
 
@@ -463,7 +463,7 @@
 		bindsym 2 border 1pixel; $return
 		bindsym 3 border none; $return
 
-		bindsym $super+space $return
+		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
 	}
 
@@ -505,7 +505,7 @@
 			# top-left
 			bindsym $macro1 exec $(xdotool mousemove -- 0 0); $return
 
-		bindsym $super+space $return
+		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
 	}
 
@@ -520,7 +520,7 @@
 		# zeal
 		bindsym --release z exec $(xdotool key --clearmodifiers "ctrl+alt+super+shift+End"); $return
 
-		bindsym $super+space $return
+		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
 	}
 

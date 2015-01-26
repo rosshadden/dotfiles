@@ -6,3 +6,6 @@ transpiles
 transpiling
 chainable
 composable
+plugin
+middleware
+JavaScript

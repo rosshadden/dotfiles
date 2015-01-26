@@ -19,11 +19,17 @@ nmap 8 8gt
 nmap 9 9gt
 nmap 0 :tablast<cr>
 
-" new, at [n:+1]
+" new
 map [tabs]n :tabnew<cr>
+map [tabs]N :$tabnew<cr>
+map [tabs]p :-tabnew<cr>
+map [tabs]P :0tabnew<cr>
 
 " duplicate
 map [tabs:1]n :tabnew %<cr>
+map [tabs:1]N :$tabnew %<cr>
+map [tabs:1]p :-tabnew %<cr>
+map [tabs:1]P :0tabnew %<cr>
 
 " close
 map [tabs]c :tabclose<cr>
