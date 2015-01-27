@@ -1,7 +1,7 @@
 " line numbers
 set number
 set hlsearch
-set cursorline cursorcolumn
+set cursorline
 
 " casing
 set smartcase ignorecase

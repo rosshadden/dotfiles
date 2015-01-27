@@ -211,6 +211,8 @@
 # MODES
 ################
 	mode "PREFIX" {
+		bindsym m mode "MARK"
+		bindsym apostrophe mode "GOTO"
 		bindsym l mode "LAYOUT"
 		bindsym b mode "BUFFER"
 		bindsym m mode "MOUSE"
@@ -286,8 +288,13 @@
 
 
 	mode "GOTO" {
+		# by symbol
+			bindsym space [urgent=latest] focus; $return
+			bindsym apostrophe [urgent=latest] focus; $return
+			bindsym $super+apostrophe [urgent=latest] focus; $return
+
 		# by name
-			bindsym space exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '; $return
+			bindsym Return exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '; $return
 
 		# by number
 			bindsym grave [con_mark="mark-0"] focus; $return
@@ -331,9 +338,6 @@
 			bindsym x [con_mark="mark-x"] focus; $return
 			bindsym y [con_mark="mark-y"] focus; $return
 			bindsym z [con_mark="mark-z"] focus; $return
-
-		# by symbol
-			bindsym apostrophe [urgent=latest] focus; $return
 
 		# by app
 			bindsym c [class="(?i)terminal" title="finch"] focus; $return
@@ -404,15 +408,15 @@
 		bindsym Shift+k resize shrink height 16 px or 16 ppt
 		bindsym Shift+l resize grow width 16 px or 16 ppt
 		# bigger
-		bindsym Control+h resize shrink width 64 px or 64 ppt
-		bindsym Control+j resize grow height 64 px or 64 ppt
-		bindsym Control+k resize shrink height 64 px or 64 ppt
-		bindsym Control+l resize grow width 64 px or 64 ppt
+		bindsym Control+h resize shrink width 32 px or 32 ppt
+		bindsym Control+j resize grow height 32 px or 32 ppt
+		bindsym Control+k resize shrink height 32 px or 32 ppt
+		bindsym Control+l resize grow width 32 px or 32 ppt
 		# extreme
-		bindsym Control+Shift+h resize shrink width 256 px or 256 ppt
-		bindsym Control+Shift+j resize grow height 256 px or 256 ppt
-		bindsym Control+Shift+k resize shrink height 256 px or 256 ppt
-		bindsym Control+Shift+l resize grow width 256 px or 256 ppt
+		bindsym Control+Shift+h resize shrink width 64 px or 64 ppt
+		bindsym Control+Shift+j resize grow height 64 px or 64 ppt
+		bindsym Control+Shift+k resize shrink height 64 px or 64 ppt
+		bindsym Control+Shift+l resize grow width 64 px or 64 ppt
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
