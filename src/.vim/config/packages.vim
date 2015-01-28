@@ -39,7 +39,14 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'Lokaltog/vim-easymotion'
 
 	" motions
+		" custom text objects
+		NeoBundle 'kana/vim-textobj-user'
+		" lines
+		NeoBundle 'kana/vim-textobj-line'
+		" camelCase
 		NeoBundle 'bkad/CamelCaseMotion'
+		" function arguments
+		NeoBundle 'vim-scripts/argtextobj.vim'
 
 	" languages
 		" autoformat support for multiple
