@@ -48,31 +48,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" function arguments
 		NeoBundle 'vim-scripts/argtextobj.vim'
 
-	" languages
-		" autoformat support for multiple
-		NeoBundle 'Chiel92/vim-autoformat'
-		" js
-		NeoBundle 'pangloss/vim-javascript'
-		NeoBundle 'jelera/vim-javascript-syntax'
-		" js AST
-		NeoBundle 'marijnh/tern_for_vim'
-		" json
-		NeoBundle 'elzr/vim-json'
-		" hbs
-		NeoBundle 'mustache/vim-mustache-handlebars'
-		" jsdoc
-		NeoBundle 'heavenshell/vim-jsdoc'
-		" emmet
-		NeoBundle 'mattn/emmet-vim'
-		" i3 config
-		NeoBundle 'PotatoesMaster/i3-vim-syntax'
-		" stylus
-		NeoBundle 'wavded/vim-stylus'
-		" LaTeX
-		NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
-		" markdown
-		NeoBundle 'suan/vim-instant-markdown'
-
 	" features
 		" snippets
 		NeoBundle 'Shougo/neosnippet.vim'
@@ -95,6 +70,32 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" NeoBundle 'joeytwiddle/sexy_scroller.vim'
 		" colors
 		NeoBundle 'chriskempson/base16-vim'
+
+	" languages
+		" autoformat support for multiple
+		NeoBundle 'Chiel92/vim-autoformat'
+		" js
+		" NeoBundle 'pangloss/vim-javascript'
+		" NeoBundleLazy 'jelera/vim-javascript-syntax', { 'autoload': { 'filetypes': ['javascript'] } }
+		NeoBundle 'jelera/vim-javascript-syntax'
+		" js AST
+		NeoBundle 'marijnh/tern_for_vim'
+		" json
+		NeoBundleLazy 'elzr/vim-json', { 'autoload': { 'filetypes': ['json'] } }
+		" hbs
+		NeoBundle 'mustache/vim-mustache-handlebars'
+		" jsdoc
+		NeoBundleLazy 'heavenshell/vim-jsdoc', { 'autoload': { 'filetypes': ['javascript'] } }
+		" emmet
+		NeoBundle 'mattn/emmet-vim'
+		" i3 config
+		NeoBundle 'PotatoesMaster/i3-vim-syntax'
+		" stylus
+		NeoBundle 'wavded/vim-stylus'
+		" LaTeX
+		NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
+		" markdown
+		NeoBundleLazy 'suan/vim-instant-markdown', { 'autoload': { 'filetypes': ['markdown'] } }
 
 	" unite
 		NeoBundle 'Shougo/unite.vim'

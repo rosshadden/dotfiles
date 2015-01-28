@@ -211,7 +211,6 @@
 # MODES
 ################
 	mode "PREFIX" {
-		bindsym m mode "MARK"
 		bindsym apostrophe mode "GOTO"
 		bindsym l mode "LAYOUT"
 		bindsym b mode "BUFFER"

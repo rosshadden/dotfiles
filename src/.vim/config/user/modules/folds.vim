@@ -31,12 +31,4 @@ function! ToggleFold()
 	endif
 
 	echo 'Fold method set to "' . &foldmethod . '"'
-
-	" if &l:foldenable
-	" 	let b:foldlevel=&l:foldlevel
-	" 	set nofoldenable
-	" else
-	" 	set foldenable
-	" 	set foldlevel = b:foldlevel
-	" endif
 endfunction

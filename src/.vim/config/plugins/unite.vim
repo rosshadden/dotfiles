@@ -233,15 +233,17 @@ vmap [unite:1]<cr> :<c-u>execute ':Unite -buffer-name=omni -no-vertical-preview 
 	vmap [unite:1]; :<c-u>execute ':Unite -buffer-name=commands -default-action=edit history/command command -input=' . GetVisualSelection()<cr>
 
 " resume last buffer
-nmap [unite:0]. :UniteResume -no-start-insert -no-split -vertical-preview -split<cr>
-vmap [unite:0]. :<c-u>execute ':UniteResume -no-start-insert -no-split -vertical-preview -split -input=' . GetVisualSelection()<cr>
-nmap [unite:1]. :UniteResume -no-start-insert -no-vertical-preview<cr>
+nmap [unite:0]. :UniteResume -no-start-insert -no-split -vertical-preview<cr>
+vmap [unite:0]. :<c-u>execute ':UniteResume -no-start-insert -no-split -vertical-preview -input=' . GetVisualSelection()<cr>
+nmap [unite:1]. :UniteResume -no-start-insert -split -no-vertical-preview<cr>
 vmap [unite:1]. :<c-u>execute ':UniteResume -no-start-insert -no-vertical-preview -input=' . GetVisualSelection()<cr>
 
 " metavim
 	" mappings
-	nmap [unite:0]m :Unite mapping<cr>
-	vmap [unite:0]m :<c-u>execute ':Unite mapping -input=' . GetVisualSelection()<cr>
+	nmap [unite:0]m :Unite -no-split mapping<cr>
+	vmap [unite:0]m :<c-u>execute ':Unite -no-split mapping -input=' . GetVisualSelection()<cr>
+	nmap [unite:1]m :Unite mapping<cr>
+	vmap [unite:1]m :<c-u>execute ':Unite mapping -input=' . GetVisualSelection()<cr>
 
 " external
 	" exit
