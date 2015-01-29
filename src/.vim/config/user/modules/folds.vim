@@ -18,7 +18,7 @@ nmap [folds]7 :set foldlevel=7<cr>
 nmap [folds]8 :set foldlevel=8<cr>
 nmap [folds]9 :set foldlevel=9<cr>
 nmap [folds]0 :set foldlevel=128<cr>
-nmap [folds]z :call ToggleFold()<cr>
+nmap coz :call ToggleFold()<cr>
 
 let b:foldlevel=&l:foldlevel
 function! ToggleFold()
