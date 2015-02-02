@@ -12,12 +12,12 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundleFetch 'Shougo/neobundle.vim'
 
 	NeoBundle 'Shougo/vimproc.vim', {
-	\ 'build' : {
-	\     'windows' : 'tools\\update-dll-mingw',
-	\     'cygwin' : 'make -f make_cygwin.mak',
-	\     'mac' : 'make -f make_mac.mak',
-	\     'unix' : 'make -f make_unix.mak',
-	\    },
+		\ 'build' : {
+			\ 'windows' : 'tools\\update-dll-mingw',
+			\ 'cygwin' : 'make -f make_cygwin.mak',
+			\ 'mac' : 'make -f make_mac.mak',
+			\ 'unix' : 'make -f make_unix.mak',
+		\ }
 	\ }
 
 	" enhancements
@@ -53,6 +53,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'Shougo/neosnippet.vim'
 		NeoBundle 'Shougo/neosnippet-snippets'
 		" NeoBundle 'honza/vim-snippets'
+		" delimiter closing
+		NeoBundle 'Raimondi/delimitMate'
 
 	" integration
 		" git
@@ -70,22 +72,23 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" NeoBundle 'joeytwiddle/sexy_scroller.vim'
 		" colors
 		NeoBundle 'chriskempson/base16-vim'
+		" indent guides
+		NeoBundle 'nathanaelkane/vim-indent-guides'
 
 	" languages
 		" autoformat support for multiple
 		NeoBundle 'Chiel92/vim-autoformat'
 		" js
-		" NeoBundle 'pangloss/vim-javascript'
-		" NeoBundleLazy 'jelera/vim-javascript-syntax', { 'autoload': { 'filetypes': ['javascript'] } }
-		NeoBundle 'jelera/vim-javascript-syntax'
+		NeoBundleLazy 'jelera/vim-javascript-syntax', { 'autoload': { 'filetypes': 'javascript' } }
+		" NeoBundleLazy 'pangloss/vim-javascript', { 'autoload': { 'filetypes': 'javascript' } }
 		" js AST
-		NeoBundle 'marijnh/tern_for_vim'
+		NeoBundleLazy 'marijnh/tern_for_vim', { 'autoload': { 'filetypes': 'javascript' } }
 		" json
-		NeoBundleLazy 'elzr/vim-json', { 'autoload': { 'filetypes': ['json'] } }
+		NeoBundleLazy 'elzr/vim-json', { 'autoload': { 'filetypes': 'json' } }
 		" hbs
 		NeoBundle 'mustache/vim-mustache-handlebars'
 		" jsdoc
-		NeoBundleLazy 'heavenshell/vim-jsdoc', { 'autoload': { 'filetypes': ['javascript'] } }
+		NeoBundleLazy 'heavenshell/vim-jsdoc', { 'autoload': { 'filetypes': 'javascript' } }
 		" emmet
 		NeoBundle 'mattn/emmet-vim'
 		" i3 config
@@ -95,7 +98,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" LaTeX
 		NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 		" markdown
-		NeoBundleLazy 'suan/vim-instant-markdown', { 'autoload': { 'filetypes': ['markdown'] } }
+		NeoBundleLazy 'suan/vim-instant-markdown', { 'autoload': { 'filetypes': 'markdown' } }
 
 	" unite
 		NeoBundle 'Shougo/unite.vim'

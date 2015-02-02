@@ -20,7 +20,7 @@ nmap [folds]9 :set foldlevel=9<cr>
 nmap [folds]0 :set foldlevel=128<cr>
 nmap coz :call ToggleFold()<cr>
 
-let b:foldlevel=&l:foldlevel
+let b:foldlevel = &l:foldlevel
 function! ToggleFold()
 	if &l:foldmethod == 'syntax'
 		set foldmethod=indent

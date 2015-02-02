@@ -1,5 +1,5 @@
 if has('autocmd')
-	filetype plugin on
+	filetype plugin indent on
 
 	augroup rcMain
 		autocmd!

@@ -58,3 +58,6 @@ imap <c-u> <c-g>u<c-u>
 
 " switch to alternate file
 map <leader>b <c-^>
+
+" newline + indent
+imap <c-c> <cr><esc>O

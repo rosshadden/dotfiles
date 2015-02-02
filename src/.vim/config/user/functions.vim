@@ -47,21 +47,3 @@ function! GetVisualSelection()
 	let lines[0] = lines[0][col1 - 1:]
 	return join(lines, "\n")
 endfunction
-
-
-" print project version from `package.json` before/after cursor
-function! PrintVersion(direction)
-	let l:root = ProjectRootGuess()
-	let l:package = join(readfile(l:root . '/package.json'), "\n")
-
-	" let l:version = substitute(l:package, 'version', 'AOEU', '')
-	let l:version = matchlist(l:package, '\c"version":\s*"\([0-9.]\+\)",')[1]
-
-	" paste the version at the cursor
-	" TODO: figure out why it jumps the cursor to the BOF
-	execute 'normal! ' . a:direction . l:version . ''
-endfunction
-
-autocmd FileType javascript
-	\ map <localleader>v :execute PrintVersion('i')<cr> |
-	\ map <localleader>V :execute PrintVersion('a')<cr>
