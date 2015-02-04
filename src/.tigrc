@@ -254,20 +254,38 @@ bind generic	$	:toggle commit-title-overflow
 # bind generic	???	:toggle vertical-split	# Toggle vertical split
 bind generic	%	:toggle file-filter
 
+
 # Misc
+
 bind generic	e	edit			# Open in editor
 bind generic	:	prompt			# Open the prompt
 bind generic	<C-L>	screen-redraw		# Redraw the screen
 bind generic	z	stop-loading		# Stop all loading views
 bind generic	v	show-version		# Show Tig version
 
+
 # Mine
+
 bind generic ; prompt
-bind generic x !@sh -c "echo -n %(commit) | xsel -ib"
 bind generic <esc>i !git in
 bind generic <esc>o !git out
 bind generic <esc>s !git sync
-bind generic <esc>f !git fetch -p
+bind generic <esc>f !git fetch -p --tags
+
+# checkout local branch
+bind generic <esc>b !@sh -c "git branch -r | cut -c 3- | selecta | xargs git checkout"
+
+# checkout remote branch
+bind generic <esc>B !@sh -c "git branch -r | cut -c 10- | selecta | xargs git checkout"
+
+# delete local branch
+bind generic <esc>d !@sh -c "git branch | cut -c 3- | selecta | xargs git branch -d"
+
+# delete remote branch
+bind generic <esc>D !@sh -c "git branch | cut -c 10- | selecta | xargs git delete-branch"
+
+# copy commit hash to clipboard
+bind generic x !@sh -c "echo -n %(commit) | xsel -ib"
 
 
 # Colors

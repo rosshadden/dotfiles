@@ -43,6 +43,7 @@
 		- make unite-spelling integration
 	- i3
 		- make `<prefix>n` and `<prefix>p` navigate tags on a single screen, instead of globally
+		- make `alt+tab` functionality
 		- add a (preferably generated) help block for modes, on `?`
 		- generate config
 		- implement project system (probably more of a thing for owmni)

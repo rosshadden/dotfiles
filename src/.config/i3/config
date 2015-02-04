@@ -179,6 +179,9 @@
 	# move the currently focused window to the scratchpad
 	bindsym $super+Shift+s move scratchpad
 
+	# fix mouse on laptop
+	bindsym $macro1 exec $(xdotool mousemove -- 0 0); $return
+
 	# modes
 	bindsym $super+space mode "PREFIX"
 	bindsym $super+m mode "MARK"
