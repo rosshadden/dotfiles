@@ -273,7 +273,7 @@ bind generic <esc>s !git sync
 bind generic <esc>f !git fetch -p --tags
 
 # checkout local branch
-bind generic <esc>b !@sh -c "git branch -r | cut -c 3- | selecta | xargs git checkout"
+bind generic <esc>b !@sh -c "git branch | cut -c 3- | selecta | xargs git checkout"
 
 # checkout remote branch
 bind generic <esc>B !@sh -c "git branch -r | cut -c 10- | selecta | xargs git checkout"
@@ -283,6 +283,12 @@ bind generic <esc>d !@sh -c "git branch | cut -c 3- | selecta | xargs git branch
 
 # delete remote branch
 bind generic <esc>D !@sh -c "git branch | cut -c 10- | selecta | xargs git delete-branch"
+
+# merge local branch
+bind generic <esc>m !@sh -c "git branch | cut -c 3- | selecta | xargs git merge"
+
+# merge remote branch
+bind generic <esc>M !@sh -c "git branch -r | cut -c 3- | selecta | xargs git merge"
 
 # copy commit hash to clipboard
 bind generic x !@sh -c "echo -n %(commit) | xsel -ib"

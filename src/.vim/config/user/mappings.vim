@@ -40,11 +40,12 @@ map [leader:1]r :Reload<cr>
 map <leader>. @:
 
 " searching
-	" clear highlighted search
+	" toggle highlighted search
 	nmap [leader:1]/ :nohlsearch<cr>
+	nmap co/ :set hlsearch!<cr>
 	" search for selected word
-	vmap <leader>/ "vy/<c-r>v
-	vmap <leader>? "vy?<c-r>v
+	vmap / "vy/<c-r>v
+	vmap ? "vy?<c-r>v
 
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
