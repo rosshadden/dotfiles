@@ -21,12 +21,13 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	\ }
 
 	" enhancements
+		" load local .lvimrc files
+		NeoBundle 'embear/vim-localvimrc'
 		" let `.` repeat things like plugin mappings
 		NeoBundle 'tpope/vim-repeat'
 		" let `.` repeat things in visual mode
 		NeoBundle 'visualrepeat'
-		" <tab>-complete in insert mode
-		" NeoBundle 'ervandew/supertab'
+		" completions in insert mode
 		NeoBundle 'Shougo/neocomplete.vim'
 		" <tab>-complete in the search prompt
 		NeoBundle 'SearchComplete'
@@ -67,9 +68,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	" UI
 		NeoBundle 'bling/vim-airline'
 		NeoBundle 'paranoida/vim-airlineish'
-		" sexy scrolling, with easing and animation
-		" NOTE: messes with mouse scrolling, which currently upsets me
-		" NeoBundle 'joeytwiddle/sexy_scroller.vim'
 		" colors
 		NeoBundle 'chriskempson/base16-vim'
 		" indent guides
@@ -106,6 +104,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'Shougo/unite-outline'
 		NeoBundle 'thinca/vim-unite-history'
 		NeoBundle 'Shougo/tabpagebuffer.vim'
+		NeoBundle 'kopischke/unite-spell-suggest'
 
 	" scripting
 		NeoBundle 'dbakker/vim-projectroot'

@@ -73,12 +73,15 @@ case $namespace in
 	;;
 
 	window)
-		keys="Space n N c C"
+		keys="h l Space n N c C"
 
 		if [ -z $action ]; then
 			bind
 		else
 			case $action in
+				h) tmux previous-window ;;
+				l) tmux next-window ;;
+
 				Space) tmux choose-window ;;
 
 				n) tmux new-window -a ;;

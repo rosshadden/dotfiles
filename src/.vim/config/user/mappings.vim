@@ -62,3 +62,6 @@ map <leader>b <c-^>
 
 " newline + indent
 imap <c-c> <cr><esc>O
+
+" build
+map <localleader><space> :silent make\|redraw!\|cc<cr>

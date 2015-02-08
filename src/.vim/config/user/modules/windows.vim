@@ -2,6 +2,10 @@
 call MakePrefix('windows', '[prefix]w')
 call MakePrefix('windows', '[windows]w', 1)
 
+" navigation
+nmap [windows]n :wnext<cr>
+nmap [windows]p :wprevious<cr>
+
 " split window [h, j, k, l]
 map [windows]h :topleft vnew<cr>
 map [windows]l :botright vnew<cr>

@@ -47,8 +47,6 @@ endif
 """"""""""""""""
 
 function! s:uniteSettings()
-	" let b:SuperTabDisabled = 1
-
 	" always make `a` append to prompt
 	map <buffer> a <plug>(unite_append_enter)
 
@@ -65,12 +63,10 @@ function! s:uniteSettings()
 	imap <buffer><expr> <c-t> unite#do_action('tabopen')
 
 	" toggle auto preview
-	map <buffer> P <plug>(unite_toggle_auto_preview)
+	map <buffer> P p<plug>(unite_toggle_auto_preview)
 
 	" exit
 	nmap <buffer> <esc> <plug>(unite_exit)
-
-	imap <buffer> <tab> <plug>SuperTabForward
 
 	let unite = unite#get_current_unite()
 	if unite.profile_name ==# 'search'
@@ -93,6 +89,7 @@ call MakePrefix('unite', '[unite]u', 1)
 " open files
 	call unite#custom#profile('files', 'context', {
 		\ 'unique': 1,
+		\ 'candidate_icon': '>',
 	\ })
 
 	" flat
@@ -193,6 +190,18 @@ call MakePrefix('unite', '[unite]u', 1)
 	vmap [unite:0]k :<c-u>execute ':Unite               -buffer-name=changes change -input=' . GetVisualSelection()<cr>
 	vmap [unite:0]K :<c-u>execute ':UniteWithCursorWord -buffer-name=changes change -input=' . GetVisualSelection()<cr>
 
+	" spelling
+	call unite#custom#profile('spelling', 'context', {
+		\ 'auto_preview': 1,
+		\ 'start_insert': 0,
+	\ })
+	nmap [unite:0]s :Unite               -buffer-name=spelling spell_suggest<cr>
+	nmap [unite:0]S :UniteWithCursorWord -buffer-name=spelling spell_suggest<cr>
+	nmap [unite:1]s :Unite               -buffer-name=spelling -force-immediately spell_suggest<cr>
+	nmap [unite:1]S :UniteWithCursorWord -buffer-name=spelling -force-immediately spell_suggest<cr>
+	vmap [unite:0]s :<c-u>execute ':Unite               -buffer-name=spelling spell_suggest -input=' . GetVisualSelection()<cr>
+	vmap [unite:0]S :<c-u>execute ':UniteWithCursorWord -buffer-name=spelling spell_suggest -input=' . GetVisualSelection()<cr>
+
 " search files
 	call unite#custom#profile('find', 'context', {
 		\ 'start_insert': 0,
@@ -200,12 +209,12 @@ call MakePrefix('unite', '[unite]u', 1)
 	\ })
 	nmap [unite:0]g :Unite              -buffer-name=find -no-split grep:.<cr>
 	nmap [unite:0]G :UniteWithBufferDir -buffer-name=find -no-split grep:.<cr>
-	nmap [unite:1]g :Unite              -buffer-name=find -no-vertical-preview grep:.<cr>
-	nmap [unite:1]G :UniteWithBufferDir -buffer-name=find -no-vertical-preview grep:.<cr>
+	nmap [unite:1]g :Unite              -buffer-name=find -no-vertical-preview grep<cr>
+	nmap [unite:1]G :UniteWithBufferDir -buffer-name=find -no-vertical-preview grep<cr>
 	vmap [unite:0]g :<c-u>execute ':Unite              -buffer-name=find -no-split grep:. -input=' . GetVisualSelection()<cr>
 	vmap [unite:0]G :<c-u>execute ':UniteWithBufferDir -buffer-name=find -no-split grep:. -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]g :<c-u>execute ':Unite              -buffer-name=find -no-vertical-preview grep:. -input=' . GetVisualSelection()<cr>
-	vmap [unite:1]G :<c-u>execute ':UniteWithBufferDir -buffer-name=find -no-vertical-preview grep:. -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]g :<c-u>execute ':Unite              -buffer-name=find -no-vertical-preview grep -input=' . GetVisualSelection()<cr>
+	vmap [unite:1]G :<c-u>execute ':UniteWithBufferDir -buffer-name=find -no-vertical-preview grep -input=' . GetVisualSelection()<cr>
 
 " do all the things
 nmap [unite:0]<cr> :Unite -buffer-name=omni -no-split source<cr>

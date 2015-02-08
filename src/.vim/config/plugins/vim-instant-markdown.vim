@@ -2,4 +2,4 @@
 let g:instant_markdown_autostart = 0
 
 
-map <localleader>m :InstantMarkdownPreview<cr>
+map <localleader>p :InstantMarkdownPreview<cr>
