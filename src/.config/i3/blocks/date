@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-date "+ %A, %B %d, %G"
+# date "+ %A, %B %d, %G"
+date "+ %Y-%m-%d"

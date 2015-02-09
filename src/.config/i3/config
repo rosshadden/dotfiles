@@ -567,7 +567,7 @@
 		mode dock
 		tray_output primary
 
-		font pango:DejaVu Sans Mono 12
+		font pango:DejaVu Sans Mono 10
 		# font pango:FontAwesome 12
 
 		status_command i3blocks -c $HOME/.config/i3/i3blocks.conf

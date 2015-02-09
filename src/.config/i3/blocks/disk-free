@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Prints information about a specified mount point
+
+FS="$(df -h $BLOCK_INSTANCE | sed -n '2 p')"; FS=($FS)
+echo ' '${FS[5]} ${FS[4]}
+
+if [ ${FS[4]%?} -ge 90 ]; then
+    echo
+    echo '#47a8e9'
+fi
