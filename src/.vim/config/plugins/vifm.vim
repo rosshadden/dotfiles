@@ -1,4 +1,4 @@
-call MakePrefix('vifm', '[prefix]v')
+call MakePrefix('vifm', '[prefix]V')
 
 map [vifm]o :EditVifm<cr>
 map [vifm]e :EditVifm<cr>

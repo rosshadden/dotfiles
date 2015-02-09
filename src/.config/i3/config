@@ -1,6 +1,7 @@
 ################
 # VARIABLES
 ################
+
 	set $super Mod4
 	set $alt Mod1
 
@@ -61,6 +62,7 @@
 ################
 # OPTIONS
 ################
+
 	# Font for window titles. Will also be used by the bar unless a different font
 	# is used in the bar {} block below.
 	font pango:Ubuntu Mono 12
@@ -84,6 +86,7 @@
 ################
 # BINDS
 ################
+
 	# close focused window
 	bindsym $super+c kill
 	# TODO: [C] kill with fire
@@ -195,6 +198,7 @@
 ################
 # MEDIA
 ################
+
 	# volume
 	bindsym XF86AudioRaiseVolume exec "pulseaudio-ctl up"
 	bindsym XF86AudioLowerVolume exec "pulseaudio-ctl down"
@@ -213,6 +217,7 @@
 ################
 # MODES
 ################
+
 	mode "PREFIX" {
 		bindsym apostrophe mode "GOTO"
 		bindsym l mode "LAYOUT"
@@ -222,6 +227,8 @@
 		bindsym i mode "I3"
 		bindsym t mode "TMUX"
 		bindsym a mode "APPS"
+
+		bindsym Shift+p mode "PIDGIN"
 
 		bindsym $super+space $return
 		bindsym Escape $return
@@ -531,9 +538,18 @@
 	}
 
 
+	mode "PIDGIN" {
+		bindsym space exec python3 ~/lib/purple.py | sort | rofi -dmenu -p "IM:" | xargs -I$ python3 ~/lib/purple.py "$"; $return
+
+		bindsym $super+space mode "PREFIX"
+		bindsym Escape $return
+	}
+
+
 ################
 # THEME
 ################
+
 	# class                 border  bg      text    indicator
 	client.focused          #5f00af #875fd7 #ffffff #5f00af
 	client.focused_inactive #666666 #151515 #ffffff #292d2e
@@ -544,16 +560,17 @@
 ################
 # STATUSBAR
 ################
-	# Start i3bar to display a workspace bar (plus the system information i3status
-	# finds out, if available)
+
 	bar {
-		status_command i3status
 		position top
 		workspace_buttons yes
 		mode dock
 		tray_output primary
 
-		font pango:FontAwesome 12
+		font pango:DejaVu Sans Mono 12
+		# font pango:FontAwesome 12
+
+		status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
 
 		colors {
 			background #151515
@@ -572,12 +589,14 @@
 ################
 # WORKSPACES
 ################
+
 	# TODO: handle the fact that different computers have different xrandr setups...
 
 
 ################
 # APPS
 ################
+
 	# dialogs
 	for_window [window_role="pop-up"] floating enable, move absolute center
 
@@ -602,6 +621,7 @@
 ################
 # STARTUP
 ################
+
 	# wallpaper
 	exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath &
 

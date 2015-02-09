@@ -10,6 +10,12 @@ endfunction
 
 
 augroup markdown
+	" syntax highlighting
+	autocmd BufNewFile,BufRead *.md set filetype=markdown
+
+	" spell check
+	autocmd FileType markdown setlocal spell | setlocal complete+=kspell
+
 	" compile to pdf
 	autocmd FileType markdown
 		\ map <localleader>c :call CompileMarkdown(expand('%:p'))<cr> |

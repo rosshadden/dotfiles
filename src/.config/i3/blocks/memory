@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Grabs and prints information about RAM
+
+exec 6< /proc/meminfo
+read a total b <&6
+read a free b <&6
+
+MEM=$((100 * (total-free) / total ))
+
+echo ' '$MEM'%'
+
+if [ $MEM -ge 80 ]; then
+    echo '#47a8e9'
+fi

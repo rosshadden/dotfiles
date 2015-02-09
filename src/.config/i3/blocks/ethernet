@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Grabs and prints information about the ethernet network
+
+read connection < /sys/class/net/enp0s25/operstate
+
+if [ "$connection" != "down" ]; then
+    prev="$(grep enp0s25 /proc/net/dev)"; prev=($prev)
+    sleep 1
+    curr="$(grep enp0s25 /proc/net/dev)"; curr=($curr)
+
+    down=' '"$(echo "(${curr[2]}-${prev[2]})/1024" | bc)"'kB/s'
+    up=' '"$(echo "(${curr[10]}-${prev[10]})/1024" | bc)"'kB/s'
+    ipaddr="$(ip addr show enp0s25 | perl -n -e'/inet (.+)\// && print $1')"
+
+    echo '' $down $up $enp0s25
+fi

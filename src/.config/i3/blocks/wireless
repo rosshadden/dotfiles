@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Grabs and prints information about the wifi network
+
+read etho_connection < /sys/class/net/enp0s25/operstate
+read connection < /sys/class/net/wlp2s0/operstate
+
+if [[ "$etho_connection" == "down" && "$connection" != "down" ]]; then
+    essid=$(iwconfig wlp3s0 | sed -n 's/.*ESSID:"\(.*\)".*/ \1/p')
+    iwmax=$(iwconfig wlp3s0 | sed -n 's/ *Link Quality=.*\/\([0-9]*\).*/\1/p')
+    iwcur=$(iwconfig wlp3s0 | sed -n 's/ *Link Quality=\([0-9]*\)\/.*/\1/p')
+    ipaddr="$(ip addr show wlp5s0 | perl -n -e'/inet (.+)\// && print $1')"
+
+    prev="$(grep wlp3s0 /proc/net/dev)"; prev=($prev)
+    sleep 1
+    curr="$(grep wlp3s0 /proc/net/dev)"; curr=($curr)
+    down=' '"$(echo "(${curr[2]}-${prev[2]})/1024" | bc)"'kB/s'
+    up=' '"$(echo "(${curr[10]}-${prev[10]})/1024" | bc)"'kB/s'
+
+    iwpct=$((iwcur * 100 / iwmax))
+    echo $essid $iwpct% $down $up $ipaddr
+
+    if [ $iwpct -le 10 ]; then
+        echo
+        echo '#47a8e9'
+    fi
+fi

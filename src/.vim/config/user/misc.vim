@@ -8,17 +8,12 @@ if has('autocmd')
 		autocmd! BufWritePost *.vim Reload
 
 		" Preserve cursor position
-		autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+		autocmd BufRead * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
-		" turn on spell check in certain files, and move cursor to beginning of gitcommits
-		autocmd BufRead,BufNewFile *.md setlocal spell | setlocal complete+=kspell
+		" turn on spell check in git commits, and move cursor to beginning of gitcommits
 		autocmd FileType gitcommit setlocal spell | setlocal complete+=kspell | call cursor(1, 1)
 
-		" syntax highlighting
-		autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
-		" default to shell script syntax
-		autocmd BufNewFile,BufRead * if &syntax == '' | set syntax=sh | endif
-		autocmd BufNewFile,BufRead * if &filetype == '' | set filetype=sh | endif
+		" read things as shell scripts
+		autocmd BufNewFile,BufReadPost *.conf set filetype=sh
 	augroup END
 endif

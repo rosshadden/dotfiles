@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Grabs and prints information about the weather (in Cincinnati) from accuweather.com
+
+URL='http://www.accuweather.com/en/us/cincinnati-oh/45212/weather-forecast/350126'
+SITE="$(curl -s "$URL")"
+
+weather="$(echo "$SITE" | awk -F\' '/acm_RecentLocationsCarousel\.push/{print $14 }'| head -1)"
+temp="$(echo "$SITE" | awk -F\' '/acm_RecentLocationsCarousel\.push/{print $12"°" }'| head -1)"
+
+if [[ $weather == *thunder* || $weather == *Thunder* ]]; then
+    echo ' '$temp
+else
+    if [[ $weather == *rain* || $weather == *Rain* ]]; then
+        echo ' '$temp
+    else
+        if [[ $weather == *cloud* || $weather == *Cloud* ]]; then
+            echo ' '$temp
+        else
+            echo ' '$temp
+        fi
+    fi
+fi
