@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+keys get
+
+
+case $BLOCK_BUTTON in
+    # right click, toggle key variant
+    3) keys toggle && pkill -RTMIN+10 i3blocks ;;
+
+    # scroll up, change to dvorak
+    4) keys dvorak && pkill -RTMIN+10 i3blocks ;;
+
+    # scroll down, change to qwerty
+    5) keys qwerty && pkill -RTMIN+10 i3blocks ;;
+esac

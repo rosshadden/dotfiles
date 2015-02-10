@@ -10,40 +10,45 @@ getVolume() {
 
 isMuted() {
     test=`amixer get Master | grep "Playback [0-9]* \[" | head -1 | sed -n 's/^[^:]*: Playback [0-9]* \[\([0-9]*\)%\] \[\([a-z]*\)\]/\2/p'`
-    if [[ $test == 'on' ]]; then
-        return 1
-    else
-        return 0
-    fi
+    [[ $test != 'on' ]]
 }
 
 
+vol=`getVolume`
+
+if [ $vol -eq 0 ]; then
+    icon=
+else
+    if [ $vol -le 34 ]; then
+        icon=
+    else
+        icon=
+    fi
+fi
+
+echo "$icon $vol%"
+
 if isMuted; then
-    echo "  MUTE"
     echo
     echo "#ff0000"
-else
-    vol=`getVolume`
-
-    if [ $vol -eq 0 ]; then
-        echo " $vol%"
-    else
-        if [ $vol -le 34 ]; then
-            echo " $vol%"
-        else
-            echo " $vol%"
-        fi
-    fi
 fi
 
 
 case $BLOCK_BUTTON in
-    # right click, mute/unmute
+    # right click
+    # mute/unmute
     3) pulseaudio-ctl mute ;;
 
-    # scroll up, increase
+    # scroll up
+    # raise volume
     4) pulseaudio-ctl up ;;
 
-    # scroll down, decrease
+    # scroll down
+    # lower volume
     5) pulseaudio-ctl down ;;
 esac
+
+
+if [[ $BLOCK_BUTTON ]]; then
+    pkill -RTMIN+10 i3blocks
+fi

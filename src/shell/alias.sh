@@ -49,8 +49,8 @@ alias reload='. $HOME/.`echo $0 | sed "s:-::"`rc'
 alias shh="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
 
 # toggle dvorak/qwerty
-alias aoeu='setkeys qwerty'
-alias asdf='setkeys dvorak'
+alias aoeu='keys qwerty'
+alias asdf='keys dvorak'
 
 # fasd
 alias j='fasd_cd -d'

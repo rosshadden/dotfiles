@@ -199,10 +199,12 @@
 # MEDIA
 ################
 
+	set $refreshI3 pkill -RTMIN+10 i3blocks
+
 	# volume
-	bindsym XF86AudioRaiseVolume exec "pulseaudio-ctl up"
-	bindsym XF86AudioLowerVolume exec "pulseaudio-ctl down"
-	bindsym XF86AudioMute exec "pulseaudio-ctl mute"
+	bindsym XF86AudioRaiseVolume exec "pulseaudio-ctl up; $refreshI3"
+	bindsym XF86AudioLowerVolume exec "pulseaudio-ctl down; $refreshI3"
+	bindsym XF86AudioMute exec "pulseaudio-ctl mute; $refreshI3"
 	# playback
 	bindsym XF86AudioPlay exec "playerctl play-pause"
 	bindsym XF86AudioNext exec "playerctl next"

@@ -1,17 +1,19 @@
 #!/usr/bin/env bash
 
-
 # TODO: Clean up entire script
 
+
 if [ "$#" -gt 0 ]; then
-	layout=$1
+	action=$1
 else
-	# if no arguments passed, act as a variant toggle
-	layout="toggle"
+	# if no arguments passed, act as a getter
+	action="get"
 fi
+
 
 # NOTE: I switch layouts with `aoeu` -> qwerty and `asdf` -> dvorak
 # because of the positions of the keys
+
 
 # reset xcape
 function resetXcape {
@@ -21,6 +23,7 @@ function resetXcape {
 	# xcape -e 'Caps_Lock=Escape;Alt_R=Control_L|space'
 }
 
+
 # load keyboard mappings
 function loadMap {
 	[[ -f $DOTS/src/.Xmodmap ]] && xmodmap $DOTS/src/.Xmodmap
@@ -28,7 +31,8 @@ function loadMap {
 	return 0
 }
 
-if [[ $layout == "init" ]]; then
+
+if [[ $action == "init" ]]; then
 	if [ $DISPLAY ]; then
 		setxkbmap \
 			-layout us,us \
@@ -45,11 +49,17 @@ if [[ $layout == "init" ]]; then
 	else
 		loadkeys dvorak
 	fi
-elif [[ $layout == "toggle" ]]; then
+elif [[ $action == "get" ]]; then
+	if [ $DISPLAY ]; then
+		variant=`setxkbmap -query | awk '/variant/{print $2}' | cut -d ',' -f 1`
+		[[ $variant == "" ]] && variant=qwerty
+		echo $variant
+	fi
+elif [[ $action == "toggle" ]]; then
 	if [ $DISPLAY ]; then
 		xdotool key ISO_Next_Group
 	fi
-elif [[ $layout == "aoeu" || $layout == "dvorak" ]]; then
+elif [[ $action == "aoeu" || $action == "dvorak" ]]; then
 	# switch to dvorak
 	if [ $DISPLAY ]; then
 		setxkbmap -variant dvorak,
@@ -57,7 +67,7 @@ elif [[ $layout == "aoeu" || $layout == "dvorak" ]]; then
 	else
 		loadkeys dvorak
 	fi
-elif [[ $layout == "asdf" || $layout == "us" || $layout == "qwerty" ]]; then
+elif [[ $action == "asdf" || $action == "us" || $action == "qwerty" ]]; then
 	# switch to qwerty
 	if [ $DISPLAY ]; then
 		setxkbmap -variant ,dvorak
@@ -66,11 +76,5 @@ elif [[ $layout == "asdf" || $layout == "us" || $layout == "qwerty" ]]; then
 		loadkeys us
 	fi
 else
-	# switch to whatever was passed in
-	if [ $DISPLAY ]; then
-		setxkbmap $layout
-		loadMap
-	else
-		loadkeys $layout
-	fi
+	echo "Not a valid command.  Since I'm too lazy to make help text for this, you have to look in the source code."
 fi

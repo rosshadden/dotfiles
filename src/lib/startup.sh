@@ -15,7 +15,7 @@
 # CONFIG
 ################
 	# keyboard
-	~/bin/setkeys init
+	~/bin/keys init
 
 
 ################
