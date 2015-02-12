@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-keys get
+$HOME/bin/keys get
 
 
 case $BLOCK_BUTTON in

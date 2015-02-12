@@ -8,8 +8,9 @@ read a free b <&6
 
 MEM=$((100 * (total-free) / total ))
 
-echo ' '$MEM'%'
+
+echo "$MEM%"
 
 if [ $MEM -ge 80 ]; then
-    echo '#47a8e9'
+    echo '#ff0000'
 fi

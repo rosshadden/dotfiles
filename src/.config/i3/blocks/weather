@@ -8,16 +8,20 @@ SITE="$(curl -s "$URL")"
 weather="$(echo "$SITE" | awk -F\' '/acm_RecentLocationsCarousel\.push/{print $14 }'| head -1)"
 temp="$(echo "$SITE" | awk -F\' '/acm_RecentLocationsCarousel\.push/{print $12"°" }'| head -1)"
 
+
 if [[ $weather == *thunder* || $weather == *Thunder* ]]; then
-    echo ' '$temp
+    icon=""
 else
     if [[ $weather == *rain* || $weather == *Rain* ]]; then
-        echo ' '$temp
+        icon=""
     else
         if [[ $weather == *cloud* || $weather == *Cloud* ]]; then
-            echo ' '$temp
+            icon=""
         else
-            echo ' '$temp
+            icon=""
         fi
     fi
 fi
+
+
+echo "$icon $temp"
