@@ -11,14 +11,19 @@ album=`playerctl metadata album`
 state=`playerctl status`
 
 
+if [[ $state == "Playing" ]]; then state=""; fi
+if [[ $state == "Paused" ]]; then state=""; fi
+if [[ $state == "Stopped" ]]; then state=""; fi
+
+
 isPlaying() {
-    [[ $state == "Playing" ]]
+    [[ $state == "" ]]
 }
 
 
 if isPlaying; then echo -n "  "; fi
 
-echo "$artist - $title, $album [$state]"
+echo "$artist - $title, $album $state"
 
 if ! isPlaying; then
     echo
