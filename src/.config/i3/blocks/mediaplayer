@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# exit if no player found
+# Exit if no player found
 players=`playerctl -l`
 if [[ ! $players ]]; then exit 0; fi
 
@@ -8,24 +8,36 @@ if [[ ! $players ]]; then exit 0; fi
 artist=`playerctl metadata artist`
 title=`playerctl metadata title`
 album=`playerctl metadata album`
-state=`playerctl status`
+status=`playerctl status`
 
 
-if [[ $state == "Playing" ]]; then state=""; fi
-if [[ $state == "Paused" ]]; then state=""; fi
-if [[ $state == "Stopped" ]]; then state=""; fi
+# Handle when nothing is playing
+if [[ ! $title ]]; then
+    echo "Nothing playing"
+    exit 0
+fi
+
+
+# Determine which status icon to use
+declare -A icons
+icons=( ["Playing"]="" ["Paused"]="" ["Stopped"]="" )
+icon=${icons[$status]}
 
 
 isPlaying() {
-    [[ $state == "" ]]
+    [[ $status == "Playing" ]]
 }
 
 
+# Add an icon if playing
 if isPlaying; then echo -n "  "; fi
 
-echo "$artist - $title, $album $state"
 
+echo "$artist - $title, $album $icon"
+echo "$artist - $title $icon"
+
+
+# Use a different color if not playing
 if ! isPlaying; then
-    echo
     echo "#fff000"
 fi

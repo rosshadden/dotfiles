@@ -8,4 +8,5 @@ echo ' '${FS[5]} ${FS[4]}
 if [ ${FS[4]%?} -ge 90 ]; then
     echo
     echo '#47a8e9'
+    exit 33
 fi

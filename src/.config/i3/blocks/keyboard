@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-$HOME/bin/keys get
+layout=`$HOME/bin/keys get`
+
+echo $layout
+echo ${layout:0:1}
 
 
 case $BLOCK_BUTTON in

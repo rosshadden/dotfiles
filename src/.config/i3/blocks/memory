@@ -13,4 +13,5 @@ echo "$MEM%"
 
 if [ $MEM -ge 80 ]; then
     echo '#ff0000'
+    exit 33
 fi

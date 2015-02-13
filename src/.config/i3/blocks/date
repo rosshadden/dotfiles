@@ -2,3 +2,4 @@
 
 # date "+ %A, %B %d, %G"
 date "+ %Y-%m-%d"
+date "+ %m-%d"

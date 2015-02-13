@@ -1,3 +1,13 @@
 #!/usr/bin/env bash
 
-echo "TODO: check for yaourt updates"
+# Refresh package lists
+yaourt -Syy
+
+
+arch=$(yaourt -Qu | wc -l)
+aurToo=$(yaourt -Qua | wc -l)
+aur=$(echo "$aurToo - $arch" | bc)
+
+
+echo "ARCH: $arch, AUR: $aur"
+echo "$arch/$aur"

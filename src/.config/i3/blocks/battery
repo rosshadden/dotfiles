@@ -2,19 +2,21 @@
 
 # Grabs and prints information about the battery (if present)
 
-if [ "$(acpi)" != "" ]; then
-    state=$(acpi | sed -n 's/Battery [0-9]: \([A-Z]\).*, .*/\1/p')
-    chg=$(acpi | sed -n 's/Battery [0-9]:.*, \([0-9]\{1,3\}\)%.*/\1/p')
+if [ "$(acpi)" == "" ]; then exit 0; fi
 
-    if [ "$state" = "C" ]; then
-        echo  ' '$chg'%'
+
+state=$(acpi | sed -n 's/Battery [0-9]: \([A-Z]\).*, .*/\1/p')
+chg=$(acpi | sed -n 's/Battery [0-9]:.*, \([0-9]\{1,3\}\)%.*/\1/p')
+
+
+if [ "$state" = "C" ]; then
+    echo  ' '$chg'%'
+else
+    if [ $chg -le 10 ]; then
+        echo ' '$chg'%'
+        echo
+        echo '#47a8e9'
     else
-        if [ $chg -le 10 ]; then
-            echo ' '$chg'%'
-            echo
-            echo '#47a8e9'
-        else
-            echo ' '$chg'%'
-        fi
+        echo ' '$chg'%'
     fi
 fi

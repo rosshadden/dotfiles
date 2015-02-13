@@ -199,16 +199,16 @@
 # MEDIA
 ################
 
-	set $refreshI3 pkill -RTMIN+10 i3blocks
+	set $refreshI3Media pkill -RTMIN+11 i3blocks
 
 	# volume
-	bindsym XF86AudioRaiseVolume exec "pulseaudio-ctl up; $refreshI3"
-	bindsym XF86AudioLowerVolume exec "pulseaudio-ctl down; $refreshI3"
-	bindsym XF86AudioMute exec "pulseaudio-ctl mute; $refreshI3"
+	bindsym XF86AudioRaiseVolume exec "pulseaudio-ctl up; $refreshI3Media"
+	bindsym XF86AudioLowerVolume exec "pulseaudio-ctl down; $refreshI3Media"
+	bindsym XF86AudioMute exec "pulseaudio-ctl mute; $refreshI3Media"
 	# playback
-	bindsym XF86AudioPlay exec "playerctl play-pause"
-	bindsym XF86AudioNext exec "playerctl next"
-	bindsym XF86AudioPrev exec "playerctl previous"
+	bindsym XF86AudioPlay exec "playerctl play-pause; $refreshI3Media"
+	bindsym XF86AudioNext exec "playerctl next; $refreshI3Media"
+	bindsym XF86AudioPrev exec "playerctl previous; $refreshI3Media"
 
 	# screenshots
 	bindsym Print exec "~/bin/screenshot"
