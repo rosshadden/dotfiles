@@ -33,7 +33,7 @@ isPlaying() {
 if isPlaying; then echo -n "  "; fi
 
 
-echo "$artist - $title, $album $icon"
+echo "$album: $artist - $title $icon"
 echo "$artist - $title $icon"
 
 

@@ -7,3 +7,6 @@
 [submodule "src/.vim/bundle/neobundle.vim"]
 	path = src/.vim/bundle/neobundle.vim
 	url = https://github.com/Shougo/neobundle.vim
+[submodule "src/.config/i3/i3-blocks-contrib"]
+	path = src/.config/i3/i3-blocks-contrib
+	url = git@github.com:acleverpun/i3-blocks-contrib.git
