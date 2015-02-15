@@ -1,8 +1,11 @@
 {
+	"in_process_packages":
+	[
+	],
 	"installed_packages":
 	[
 		"BracketHighlighter",
-		"Dust.js",
+		"DustBuster",
 		"EasyDiff",
 		"Emmet",
 		"FileDiffs",
@@ -20,6 +23,7 @@
 		"Sass",
 		"SideBarEnhancements",
 		"Stylus",
+		"sublime-xpath",
 		"SublimeLinter",
 		"SublimeLinter-csslint",
 		"SublimeLinter-html-tidy",
@@ -37,5 +41,9 @@
 		"UnicodeMath",
 		"Unity3D",
 		"Vintageous"
+	],
+	"repositories":
+	[
+		"https://github.com/rosshadden/sublime-xpath.git"
 	]
 }

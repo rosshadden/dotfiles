@@ -4,7 +4,7 @@ let g:airline_powerline_fonts = 1
 call airline#parts#define_function('prefix', 'GetPrefix')
 " let g:airline_section_a = airline#section#create_left(['mode', 'prefix', 'paste', 'capslock', 'iminsert'])
 let g:airline_section_a = airline#section#create_left(['mode', 'paste', 'capslock', 'iminsert'])
-let g:airline_enable_branch = 1
+let g:airline#extensions#branch#enabled = 1
 let g:airline_theme = 'airlineish'
 
 " this makes the base16 theme work
@@ -46,7 +46,6 @@ let g:airline#themes#base16#constant = 1
 		\'a' : [ promptline#slices#host(), '$USER' ],
 		\'b' : [ promptline#slices#cwd() ],
 		\'x' : [ promptline#slices#git_status() ],
-		\'y' : [ promptline#slices#vcs_branch() ],
 		\'z' : [ '%*' ],
 		\'warn' : [ promptline#slices#last_exit_code() ]
 	\ }

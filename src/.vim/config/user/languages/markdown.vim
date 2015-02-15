@@ -5,6 +5,7 @@ function! CompileMarkdown(files)
 
 	let l:cmd = 'pandoc' . l:options . a:files
 
+	write
 	execute '!' . l:cmd
 endfunction
 
