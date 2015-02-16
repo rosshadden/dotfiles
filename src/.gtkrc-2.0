@@ -4,7 +4,7 @@
 
 gtk-theme-name = "FlatStudioDark"
 # gtk-key-theme-name = "Emacs"
-gtk-font-name = "Ubuntu Mono 12"
+gtk-font-name = "Fantasque Sans Mono 12"
 
 
 ################

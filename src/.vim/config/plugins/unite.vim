@@ -62,11 +62,12 @@ function! s:uniteSettings()
 	map <buffer><expr> <c-t> unite#do_action('tabopen')
 	imap <buffer><expr> <c-t> unite#do_action('tabopen')
 
+	" select next/previous lines just like insert mode
+	nmap <buffer> <c-n> <plug>(unite_loop_cursor_down)
+	nmap <buffer> <c-p> <plug>(unite_loop_cursor_up)
+
 	" toggle auto preview
 	map <buffer> P p<plug>(unite_toggle_auto_preview)
-
-	" exit
-	nmap <buffer> <esc> <plug>(unite_exit)
 
 	let unite = unite#get_current_unite()
 	if unite.profile_name ==# 'search'

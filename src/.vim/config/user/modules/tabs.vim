@@ -39,22 +39,13 @@ map [tabs]C :tabclose!<cr>
 map [tabs]o :tabonly<cr>
 map [tabs]O :tabonly!<cr>
 
-" write all
-map [tabs]w :tabdo write<cr>
-map [tabs]W :tabdo write!<cr>
-
-" update all
-map [tabs]s :tabdo update<cr>
-map [tabs]S :tabdo update!<cr>
-
-" reload all
-map [tabs]r :tabdo edit<cr>
-map [tabs]R :tabdo edit!<cr>
-
 " NOTE: technically [tabs]g and [tabs]l are the same,
 " though semantically the former is for absolute navigation and the latter for relative
 " goto [n:+1]
 map [tabs]g :<c-u>exe (v:count == 0) ? "tabnext" : "tabnext ".v:count1<cr>
+" move to [n:end]
+map [tabs]m :<c-u>exe "tabmove ".v:count<cr>
+
 " next [n:+1]
 map [tabs]l :<c-u>exe (v:count == 0) ? "tabnext" : "tabnext ".v:count1<cr>
 " previous [n::1]
@@ -62,9 +53,5 @@ map [tabs]h :<c-u>exe (v:count == 0) ? "tabprevious" : "tabprevious ".v:count1<c
 
 " move [n:1] left
 map [tabs]H :<c-u>exe "tabmove -".v:count1<cr>
-
 " move [n:1] right
 map [tabs]L :<c-u>exe "tabmove +".v:count1<cr>
-
-" move to [n:end]
-map [tabs]m :<c-u>exe "tabmove ".v:count<cr>

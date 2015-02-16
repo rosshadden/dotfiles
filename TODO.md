@@ -1,11 +1,13 @@
 - meta
 	- README
 		- list dependencies and other relevant installed packages
+		- explain my environment (vim, i3, tmux, arch linux, etc)
 		- screenshots
 	- trim down as much fat as possible, such as things I don't use anymore
 	- look into [these dotfiles](https://github.com/xero/dotfiles)
 - build
 	- return to a non-grunt workflow (or at least a fallback)
+		- maybe a `Makefile`
 		- use [stow](http://www.gnu.org/software/stow/) for symlink management
 		- fallback to symlinks
 	- ~~set up a grunt workflow~~
@@ -23,15 +25,9 @@
 - apps
 	- vim
 		- [use snippets](https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db)
-		- customize airline colors so that visual mode isn't terrible. maybe a vibrant green
-		- fix `:TmuxNavigate*`
-			- when (in tmux && `v file`)
-			- when doing merge conflicts
-		- tabs
-			- make `[tabs]j` and `[tabs]k` go to first/last tab (or something else)
-			- make `[tabs]J` and `[tabs]K` move to first/last (or something else)
+		- customize airline colors so that visual mode isn't terrible. maybe a vibrant green?
 		- make "put in <motion>" function or plugin
-			- should definitely call it "Put in motion"
+			- definitely call it "Put in motion"
 		- unite
 			- make a mapping or mode for finding files not in the repo
 			- abstract making 4-8 mappings per concept
@@ -40,13 +36,10 @@
 		- make `[e` and `]e` keep the selection in visual mode
 			- this is less important since I figured out `.` repeats it correctly
 		- [figure out analytics](http://www.drbunsen.org/vim-croquet/)
-		- make unite-spelling integration
 	- i3
-		- make `<prefix>n` and `<prefix>p` navigate tags on a single screen, instead of globally
 		- make `alt+tab` functionality
-		- add a (preferably generated) help block for modes, on `?`
-		- generate config
-		- implement project system (probably more of a thing for owmni)
+		- break out modes into separate files
+			- add a generated help notification for each mode, on `?`
 	- tmux
 		- [vet plugins](https://github.com/tmux-plugins)
 		- explore `command-prompt` possibilities
@@ -65,6 +58,7 @@
 		- make it use my dotfiles color scheme
 	- zeal
 		- integrate into workflow
+		- figure out wtf keeps going wrong with the i3 shortcut, and fix it
 - shell
 	- change the color of the zsh prompt or something, to make it more obvious
 		- when logged in as "root"
@@ -73,14 +67,15 @@
 - X
 	- fixmon
 		- make the fixmon scripts I have check monitors, so it works no matter which environment
+	- figure out a way to run scripts based on boot params
+		- namely, allow booting into different xorg-swap modes
 	- look into existing `.Xresources` themes
 		- http://www.noobslab.com/
-- Owmni
+- Owmni / Awmni
 	- client-agnostic back-end, which should work with X and terminals alike
 	- clients
 		- rofi
 		- selecta
-		- tmux
 		- dmenu
 	- plugins
 		- git
@@ -91,13 +86,16 @@
 		- apps
 			- open
 			- kill
-			- switch (like `rofi` currently does)
+			- switch to (like `rofi` currently does)
 		- media
 		- computer
 		- projects
+			- open tmux panes on certain workspaces, etc
 		- windows
-		- finch
-			- maybe initiate IMs?
+		- pidgin / finch
+			- initiate IMs
+			- switch to opened IMs
+			- send a message
 		- email (mutt?)
 		- grunt
 - misc

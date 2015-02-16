@@ -23,14 +23,14 @@
 	set $ws1 1| web
 	set $ws2 2| dev
 	set $ws3 3| sync
-	set $ws4 4| hack
+	set $ws4 4| hack
 	set $ws5 5| files
 	set $ws6 6| media
 	set $ws7 7| games
-	set $ws8 8
+	set $ws8 8|
 	set $ws9 9| run
-	set $ws10 10| chat
-	set $ws11 11
+	set $ws10 10| chat
+	set $ws11 11|
 	set $ws12 12| monitor
 
 	set $macro1 XF86Tools
@@ -45,11 +45,12 @@
 	# default apps
 	set $chooseCommand rofi -show run
 	set $chooseWindow rofi -show window
-	set $chooseApp j4-dmenu-desktop --dmenu="rofi -dmenu -p launch:"
+	set $chooseApp j4-dmenu-desktop --dmenu='rofi -dmenu -p launch:'
 	set $terminal i3-sensible-terminal
 	set $tmux i3-sensible-terminal -e tmux -2
 	set $tmuxAttach i3-sensible-terminal -e tmux -2 new-session -A -s
 	set $locker i3lock --color=5f00af
+	set $locker2 i3lock-wrapper
 
 	# UI
 	set $borderWidth 2
@@ -65,7 +66,7 @@
 
 	# Font for window titles. Will also be used by the bar unless a different font
 	# is used in the bar {} block below.
-	font pango:Ubuntu Mono 12
+	font pango:Fantasque Sans Mono, DejaVu Sans Mono 12
 
 	workspace_layout stacking
 	workspace_auto_back_and_forth no
@@ -109,7 +110,8 @@
 
 	# lock screen
 	bindsym $super+Delete exec $locker
-	bindsym $macro5 exec $locker
+	bindsym $macro4 exec $locker
+	bindsym $macro5 exec $locker2
 
 	# change focus
 	bindsym $super+h focus left
@@ -131,9 +133,13 @@
 	bindsym $super+Shift+u move workspace to output left
 	bindsym $super+Shift+d move workspace to output right
 
+	# focus previous/next workspace on current output
+	bindsym $super+n workspace next_on_output
+	bindsym $super+p workspace prev_on_output
+
 	# focus previous/next workspace
-	bindsym $super+n workspace next
-	bindsym $super+p workspace prev
+	bindsym $super+Shift+n workspace next
+	bindsym $super+Shift+p workspace prev
 
 	# move window to previous/next workspace
 	bindsym $super+Shift+b move window to workspace prev
@@ -367,8 +373,10 @@
 		bindsym r restart; $return
 		# exit i3 (logs you out of your X session)
 		bindsym q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"; $return
+
 		# lock screen
-		bindsym l exec $locker
+		bindsym l exec $locker2; $return
+		bindsym Shift+l exec $locker; $return
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
@@ -569,8 +577,7 @@
 		mode dock
 		tray_output primary
 
-		font pango:DejaVu Sans Mono 10
-		# font pango:FontAwesome 12
+		font pango:Fantasque Sans Mono, DejaVu Sans Mono 12
 
 		status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
 
