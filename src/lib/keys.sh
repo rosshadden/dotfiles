@@ -38,9 +38,10 @@ if [[ $action == "init" ]]; then
 			-layout us,us \
 			-variant dvorak, \
 			-option \
-			-option grp_led:scroll \
-			-option grp:sclk_toggle \
+			-option grp_led:caps \
+			-option grp:shifts_toggle \
 			-option keypad:pointerkeys \
+			-option compose:sclk \
 			-option ctrl:nocaps
 			# TODO: the following is ideal, but running `xmodmap` afterward breaks
 			# -option caps:ctrl_modifier

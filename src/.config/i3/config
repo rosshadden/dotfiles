@@ -109,9 +109,8 @@
 	bindsym $super+o exec --no-startup-id $chooseApp
 
 	# lock screen
-	bindsym $super+Delete exec $locker
-	bindsym $macro4 exec $locker
 	bindsym $macro5 exec $locker2
+	bindsym Shift+$macro5 exec $locker
 
 	# change focus
 	bindsym $super+h focus left

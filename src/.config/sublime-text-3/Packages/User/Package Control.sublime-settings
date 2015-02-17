@@ -5,6 +5,7 @@
 	"installed_packages":
 	[
 		"BracketHighlighter",
+		"ChannelRepositoryTools",
 		"DustBuster",
 		"EasyDiff",
 		"Emmet",
@@ -23,7 +24,6 @@
 		"Sass",
 		"SideBarEnhancements",
 		"Stylus",
-		"sublime-xpath",
 		"SublimeLinter",
 		"SublimeLinter-csslint",
 		"SublimeLinter-html-tidy",
