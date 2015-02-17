@@ -50,7 +50,7 @@
 	set $tmux i3-sensible-terminal -e tmux -2
 	set $tmuxAttach i3-sensible-terminal -e tmux -2 new-session -A -s
 	set $locker i3lock --color=5f00af
-	set $locker2 i3lock-wrapper
+	set $locker2 escrotum /tmp/lockscreen.png && i3lock -i /tmp/lockscreen.png
 
 	# UI
 	set $borderWidth 2
@@ -109,8 +109,8 @@
 	bindsym $super+o exec --no-startup-id $chooseApp
 
 	# lock screen
-	bindsym $macro5 exec $locker2
-	bindsym Shift+$macro5 exec $locker
+	bindsym $macro5 exec $locker
+	bindsym Shift+$macro5 exec $locker2
 
 	# change focus
 	bindsym $super+h focus left
@@ -374,8 +374,8 @@
 		bindsym q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"; $return
 
 		# lock screen
-		bindsym l exec $locker2; $return
-		bindsym Shift+l exec $locker; $return
+		bindsym l exec $locker; $return
+		bindsym Shift+l exec $locker2; $return
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
@@ -540,7 +540,7 @@
 		bindsym c exec qalculate-gtk; $return
 
 		# zeal
-		bindsym --release z exec $(xdotool key --clearmodifiers "ctrl+alt+super+shift+End"); $return
+		bindsym --release z exec $(xdotool key --clearmodifiers "alt+super+shift+Z"); $return
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
@@ -576,7 +576,7 @@
 		mode dock
 		tray_output primary
 
-		font pango:Fantasque Sans Mono, DejaVu Sans Mono 12
+		font pango:Fantasque Sans Mono, DejaVu Sans Mono 11
 
 		status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
 
@@ -609,7 +609,7 @@
 	for_window [window_role="pop-up"] floating enable, move absolute center
 
 	# floating
-	for_window [class="^Copyq|zeal|Gpick$"] floating enable
+	for_window [class="^Copyq|Zeal|Gpick$"] floating enable
 	for_window [title="Qalculate!"] floating enable
 
 	# chrome

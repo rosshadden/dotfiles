@@ -35,6 +35,7 @@
 				- possibly a dynamic vertical/horizontal choice
 		- make `[e` and `]e` keep the selection in visual mode
 			- this is less important since I figured out `.` repeats it correctly
+		- make a <localleader> bind to open the session of the current project
 		- [figure out analytics](http://www.drbunsen.org/vim-croquet/)
 	- i3
 		- make `alt+tab` functionality
