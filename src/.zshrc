@@ -31,7 +31,7 @@
 	ZSH_THEME="agnoster"
 
 	# dots displayed while waiting for completion
-	COMPLETION_WAITING_DOTS="true"
+	# COMPLETION_WAITING_DOTS="true"
 
 	# better zsh correction prompt
 	SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color? ([y]es, [n]o, [a]bort, [e]dit) "
@@ -77,6 +77,25 @@
 	. $shellDir/plugins/tmuxinator.zsh
 	. $shellDir/plugins/opp.zsh/opp.zsh
 	. $shellDir/plugins/opp.zsh/opp/*.zsh
+
+
+	# zsh-autosuggestions
+
+	source $DOTS/plugins/zsh-autosuggestions/autosuggestions.zsh
+
+	# Enable autosuggestions automatically
+	zle-line-init() {
+	    zle autosuggest-start
+	}
+
+	zle -N zle-line-init
+
+	# expand
+	bindkey '^f' vi-forward-blank-word
+
+	# use ctrl+t to toggle autosuggestions(hopefully this wont be needed as
+	# zsh-autosuggestions is designed to be unobtrusive)
+	bindkey '^T' autosuggest-toggle
 
 
 ################
