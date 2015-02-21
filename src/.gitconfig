@@ -3,7 +3,6 @@
 	email = rosshadden@gmail.com
 [core]
 	editor = vim
-	excludesfile = /home/ross/dotfiles/git/.gitignore-global
 [merge]
 	tool = diffconflicts
 [mergetool]

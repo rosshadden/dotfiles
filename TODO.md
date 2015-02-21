@@ -33,6 +33,7 @@
 			- abstract making 4-8 mappings per concept
 			- better previews
 				- possibly a dynamic vertical/horizontal choice
+			- vim-session integration
 		- make `[e` and `]e` keep the selection in visual mode
 			- this is less important since I figured out `.` repeats it correctly
 		- make a <localleader> bind to open the session of the current project

@@ -18,8 +18,7 @@ let g:EasyMotion_enter_jump_first = 1
 map [prefix]e <plug>(easymotion-prefix)
 
 " vim-sneak
-nmap s <plug>(easymotion-s2)
-nmap S <plug>(easymotion-t2)
+nmap S <plug>(easymotion-s2)
 
 " Replace Vim default search
 " TODO: doesn't work?

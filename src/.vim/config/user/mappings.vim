@@ -64,4 +64,4 @@ map <leader>b <c-^>
 imap <c-c> <cr><esc>O
 
 " build
-map <localleader><space> :silent make\|redraw!\|cc<cr>
+map <localleader><space> :call Make()<cr>:cc<cr>

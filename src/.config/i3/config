@@ -118,11 +118,27 @@
 	bindsym $super+k focus up
 	bindsym $super+l focus right
 
-	# move focused window
+	# move focused window/container
 	bindsym $super+Shift+h move left
 	bindsym $super+Shift+j move down
 	bindsym $super+Shift+k move up
 	bindsym $super+Shift+l move right
+
+	# focus next/previous workspace on current output
+	bindsym $super+n workspace next_on_output
+	bindsym $super+p workspace prev_on_output
+
+	# move container to next/previous workspace
+	bindsym $super+Shift+n move to workspace next_on_output
+	bindsym $super+Shift+p move to workspace prev_on_output
+
+	# focus next/previous workspace
+	bindsym $super+f workspace next
+	bindsym $super+b workspace prev
+
+	# move window to next/previous workspace
+	bindsym $super+Shift+f move to workspace next
+	bindsym $super+Shift+b move to workspace prev
 
 	# focus left/right output
 	bindsym $super+u focus output left
@@ -132,21 +148,9 @@
 	bindsym $super+Shift+u move workspace to output left
 	bindsym $super+Shift+d move workspace to output right
 
-	# focus previous/next workspace on current output
-	bindsym $super+n workspace next_on_output
-	bindsym $super+p workspace prev_on_output
-
-	# focus previous/next workspace
-	bindsym $super+Shift+n workspace next
-	bindsym $super+Shift+p workspace prev
-
-	# move window to previous/next workspace
-	bindsym $super+Shift+b move window to workspace prev
-	bindsym $super+Shift+f move window to workspace next
-
 	# back to last workspace
 	bindsym $super+Escape workspace back_and_forth
-	bindsym $super+Shift+Escape move container to workspace back_and_forth; workspace back_and_forth
+	bindsym $super+Shift+Escape move to workspace back_and_forth; workspace back_and_forth
 
 	# switch to workspace
 	bindsym $super+1 workspace $ws1
