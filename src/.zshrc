@@ -48,6 +48,14 @@
 
 
 ################
+# MAPPINGS
+################
+
+	# fix shift-tab in completion menus
+	bindkey '^[[Z' reverse-menu-complete
+
+
+################
 # THEME
 ################
 
@@ -75,7 +83,8 @@
 	. $ZSH/oh-my-zsh.sh
 	. $shellDir/plugins/vim.zsh
 	. $shellDir/plugins/tmuxinator.zsh
-	. $shellDir/plugins/opp.zsh/opp.zsh
+	# . $shellDir/plugins/opp.zsh/opp.zsh
+	. $HOME/dev/forks/opp.zsh/opp.zsh
 	. $shellDir/plugins/opp.zsh/opp/*.zsh
 
 
@@ -101,9 +110,6 @@
 ################
 # TERMINAL
 ################
-
-	# fix shift-tab in completion menus
-	bindkey '^[[Z' reverse-menu-complete
 
 	# Make special keys work
 		# create a zkbd compatible hash;

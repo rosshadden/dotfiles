@@ -15,7 +15,7 @@ fi
 
 # TODO: only do this if dropbox is passed as an argument
 # generate public url
-url=`dropbox puburl $path`
+url=`dropbox-cli puburl $path`
 
 # copy the public url
 echo -n $url | xsel -ib

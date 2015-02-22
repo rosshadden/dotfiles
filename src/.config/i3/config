@@ -211,9 +211,9 @@
 	set $refreshI3Media pkill -RTMIN+11 i3blocks
 
 	# volume
-	bindsym XF86AudioRaiseVolume exec "pulseaudio-ctl up; $refreshI3Media"
-	bindsym XF86AudioLowerVolume exec "pulseaudio-ctl down; $refreshI3Media"
-	bindsym XF86AudioMute exec "pulseaudio-ctl mute; $refreshI3Media"
+	bindsym XF86AudioRaiseVolume exec "ponymix increase 5; $refreshI3Media"
+	bindsym XF86AudioLowerVolume exec "ponymix decrease 5; $refreshI3Media"
+	bindsym XF86AudioMute exec "ponymix toggle; $refreshI3Media"
 	# playback
 	bindsym XF86AudioPlay exec "playerctl play-pause; $refreshI3Media"
 	bindsym XF86AudioNext exec "playerctl next; $refreshI3Media"
@@ -231,13 +231,14 @@
 
 	mode "PREFIX" {
 		bindsym apostrophe mode "GOTO"
-		bindsym l mode "LAYOUT"
-		bindsym b mode "BUFFER"
-		bindsym m mode "MOUSE"
-		bindsym r mode "RESIZE"
-		bindsym i mode "I3"
-		bindsym t mode "TMUX"
 		bindsym a mode "APPS"
+		bindsym b mode "BUFFER"
+		bindsym i mode "I3"
+		bindsym l mode "LAYOUT"
+		bindsym m mode "MEDIA"
+		bindsym r mode "RESIZE"
+		bindsym t mode "TMUX"
+		bindsym Shift+m mode "MOUSE"
 
 		bindsym Shift+p mode "PIDGIN"
 
@@ -530,6 +531,33 @@
 			bindsym Control+k exec $(xdotool mousemove_relative --    0 -512)
 			# top-left
 			bindsym $macro1 exec $(xdotool mousemove -- 0 0); $return
+
+		bindsym $super+space mode "PREFIX"
+		bindsym Escape $return
+	}
+
+
+	mode "MEDIA" {
+		# volume
+		bindsym k exec "ponymix increase 5; $refreshI3Media"
+		bindsym j exec "ponymix decrease 5; $refreshI3Media"
+		bindsym m exec "ponymix toggle; $refreshI3Media"; $return
+		bindsym Shift+k exec "ponymix increase 10; $refreshI3Media"
+		bindsym Shift+j exec "ponymix decrease 10; $refreshI3Media"
+		bindsym Shift+m exec "ponymix toggle; $refreshI3Media"
+
+		# playback
+		bindsym space exec "playerctl play-pause; $refreshI3Media"; $return
+		bindsym l exec "playerctl next; $refreshI3Media"; $return
+		bindsym h exec "playerctl previous; $refreshI3Media"; $return
+		bindsym Shift+space exec "playerctl play-pause; $refreshI3Media"
+		bindsym Shift+l exec "playerctl next; $refreshI3Media"
+		bindsym Shift+h exec "playerctl previous; $refreshI3Media"
+
+		# screenshots
+		bindsym y exec "~/bin/screenshot"; $return
+		bindsym $alt+y exec "~/bin/screenshot window"; $return
+		bindsym Shift+y exec "~/bin/screenshot select"; $return
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
