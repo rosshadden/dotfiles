@@ -5,7 +5,7 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 
 " max candidates
-let g:neocomplete#max_list = 64
+let g:neocomplete#max_list = 32
 
 " disable fuzzy completion
 let g:neocomplete#enable_fuzzy_completion = 0
@@ -15,8 +15,8 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 " fix backspace
-inoremap <expr><c-h> neocomplete#smart_close_popup()."\<c-h>"
-inoremap <expr><bs> neocomplete#smart_close_popup()."\<c-h>"
+inoremap <expr><c-h> neocomplete#smart_close_popup() . "\<c-h>"
+inoremap <expr><bs> neocomplete#smart_close_popup() . "\<c-h>"
 
 " Enable omni completion.
 augroup omnicomplete

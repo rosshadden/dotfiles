@@ -138,8 +138,11 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'rhlobo/vim-super-retab'
 		" context-filetype awareness
 		NeoBundle 'Shougo/context_filetype.vim'
+		" async commands
+		NeoBundle 'tpope/vim-dispatch'
 
 	" external
+		NeoBundle 'tmux-plugins/vim-tmux'
 		NeoBundle 'christoomey/vim-tmux-navigator'
 		NeoBundle 'edkolev/tmuxline.vim'
 		NeoBundle 'edkolev/promptline.vim'

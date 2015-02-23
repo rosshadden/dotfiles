@@ -47,9 +47,3 @@ function! GetVisualSelection()
 	let lines[0] = lines[0][col1 - 1:]
 	return join(lines, "\n")
 endfunction
-
-
-function! Make()
-	silent make
-	redraw!
-endfunction
