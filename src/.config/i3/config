@@ -540,15 +540,15 @@
 	mode "MEDIA" {
 		# volume
 		bindsym k exec "ponymix increase 5; $refreshI3Media"; $return
-		bindsym Up exec "ponymix increase 5; $refreshI3Media"; $return
 		bindsym j exec "ponymix decrease 5; $refreshI3Media"; $return
-		bindsym Down exec "ponymix decrease 5; $refreshI3Media"; $return
 		bindsym m exec "ponymix toggle; $refreshI3Media"; $return
+		bindsym Up exec "ponymix increase 5; $refreshI3Media"
+		bindsym Down exec "ponymix decrease 5; $refreshI3Media"
 		bindsym Shift+k exec "ponymix increase 5; $refreshI3Media"
-		bindsym Shift+Up exec "ponymix increase 5; $refreshI3Media"
 		bindsym Shift+j exec "ponymix decrease 5; $refreshI3Media"
-		bindsym Shift+Down exec "ponymix decrease 5; $refreshI3Media"
 		bindsym Shift+m exec "ponymix toggle; $refreshI3Media"
+		bindsym Shift+Up exec "ponymix increase 10; $refreshI3Media"
+		bindsym Shift+Down exec "ponymix decrease 10; $refreshI3Media"
 
 		# playback
 		bindsym space exec "playerctl play-pause; $refreshI3Media"; $return
