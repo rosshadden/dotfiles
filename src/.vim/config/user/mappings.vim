@@ -54,15 +54,6 @@ vnoremap > >gv
 " use Q for formatting, not Ex mode
 map Q gq
 
-" set a break in undo, so CTRL-U in insert mode is less destructive
-imap <c-u> <c-g>u<c-u>
-
-" switch to alternate file
-map <leader>b <c-^>
-
-" newline + indent
-imap <c-c> <cr><esc>O
-
 " build
 map <localleader><space> :Make<cr>:cc<cr>
 map <localleader><localleader><space> :Make!<cr>:cc<cr>

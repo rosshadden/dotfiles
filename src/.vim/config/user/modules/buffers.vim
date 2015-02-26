@@ -10,6 +10,10 @@ call MakePrefix('buffers', '[prefix]b')
 call MakePrefix('buffers', '[buffers]b', 1)
 
 
+" switch to alternate buffer
+map <leader>b <c-^>
+
+
 " navigation
 
 nmap j <c-w>j
