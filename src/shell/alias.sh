@@ -1,9 +1,6 @@
 alias copy='xsel -ib'
 alias paste='xsel -ob'
 
-alias g='git'
-alias open='xdg-open'
-alias ross-git-merge="git checkout master && git merge dev && git checkout dev && git push origin dev && git push origin master"
 alias suspend="dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"
 alias l='ls -lah'
 alias du='du -h'
@@ -11,7 +8,22 @@ alias du='du -h'
 # get full path of file or dir
 alias path="readlink -f"
 
-# editing
+
+################
+# APPS
+################
+
+alias open='xdg-open'
+
+# git
+alias g='git'
+alias tigs='tig status'
+
+
+################
+# EDITING
+################
+
 alias e='$EDITOR'
 alias se='sudo $EDITOR'
 
@@ -19,6 +31,7 @@ alias tmux='tmux -2'
 alias t='tmux'
 alias ta='tmux new-session -A -s'
 alias tl='tmux list-sessions'
+
 
 # Making these symlinks instead so sudo may benefit.
 # alias Y="yaourt"
@@ -55,4 +68,3 @@ alias asdf='keys dvorak'
 # fasd
 alias j='fasd_cd -d'
 alias jj='fasd_cd -d -i'
-
