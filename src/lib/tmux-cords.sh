@@ -8,6 +8,9 @@ bind() {
 	for key in $keys; do
 		tmux bind -n $key run "~/lib/tmux-cords.sh $namespace $key"
 	done
+
+	# allow exiting with escape
+	tmux bind -n Escape run "~/lib/tmux-cords.sh $namespace Escape"
 }
 
 
@@ -15,6 +18,8 @@ unbind() {
 	for key in $keys; do
 		tmux unbind -n $key
 	done
+
+	tmux unbind -n Escape
 }
 
 
@@ -24,6 +29,7 @@ getSession() {
 
 
 case $namespace in
+
 	session)
 		keys="Space n N c C d D"
 
@@ -46,6 +52,7 @@ case $namespace in
 			unbind
 		fi
 	;;
+
 
 	buffer)
 		keys="j k h l J K H L c C"
@@ -72,6 +79,7 @@ case $namespace in
 		fi
 	;;
 
+
 	window)
 		keys="h l Space n N c C"
 
@@ -94,4 +102,5 @@ case $namespace in
 			unbind
 		fi
 	;;
+
 esac
