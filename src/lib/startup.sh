@@ -24,7 +24,7 @@
 ################
 
 	# Dropbox
-	dropbox-ctl start
+	dropbox-cli start
 
 	# CopyQ
 	copyq &
