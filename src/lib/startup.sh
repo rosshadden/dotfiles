@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-
 ################
 # UTILITIES
 ################
+
 	# pulseaudio
 	pulseaudio --start &
 
@@ -14,6 +14,7 @@
 ################
 # CONFIG
 ################
+
 	# keyboard
 	~/bin/keys init
 
@@ -21,8 +22,9 @@
 ################
 # APPS
 ################
+
 	# Dropbox
-	dropboxd &
+	dropbox-ctl start
 
 	# CopyQ
 	copyq &
