@@ -48,6 +48,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'bkad/CamelCaseMotion'
 		" function arguments
 		NeoBundle 'vim-scripts/argtextobj.vim'
+		" refer to multiple text wrappers with `b`
+		NeoBundle 'rhysd/vim-textobj-anyblock'
 
 	" features
 		" snippets
@@ -60,8 +62,11 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	" integration
 		" git
 		NeoBundle 'tpope/vim-fugitive'
+		NeoBundle 'airblade/vim-gitgutter'
 		" ag, the silver searcher
 		NeoBundle 'rking/ag.vim'
+		" file managers and terminals
+		NeoBundle 'justinmk/vim-gtfo'
 		" vifm
 		NeoBundle 'vifm/vifm.vim'
 
@@ -96,7 +101,9 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" LaTeX
 		NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 		" markdown
-		NeoBundleLazy 'suan/vim-instant-markdown', { 'autoload': { 'filetypes': 'markdown' } }
+		NeoBundle 'godlygeek/tabular'
+		NeoBundleLazy 'plasticboy/vim-markdown', { 'autoload': { 'filetypes': [ 'markdown', 'mkd' ] } }
+		NeoBundleLazy 'suan/vim-instant-markdown', { 'autoload': { 'filetypes': [ 'markdown', 'mkd' ] } }
 
 	" unite
 		NeoBundle 'Shougo/unite.vim'

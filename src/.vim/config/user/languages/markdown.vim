@@ -17,7 +17,7 @@ endfunction
 
 augroup markdown
 	" syntax highlighting
-	autocmd BufNewFile,BufRead *.md set filetype=markdown
+	" autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 	" spell check
 	autocmd FileType markdown setlocal spell | setlocal complete+=kspell
