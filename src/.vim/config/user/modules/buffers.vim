@@ -46,6 +46,5 @@ nmap [buffers:1]l :rightbelow vsplit<cr>
 
 " close buffer
 
-nmap c :bdelete<cr>
 nmap [buffers]c :bdelete<cr>
 nmap [buffers]C :bdelete!<cr>

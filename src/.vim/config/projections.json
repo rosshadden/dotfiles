@@ -1,0 +1,31 @@
+{
+	"app/adapters/*.js": {
+		"command": "adapter"
+	},
+	"app/javascripts/router.js": {
+		"command": "ini"
+	},
+	"app/javascripts/models/*.js": {
+		"command": "model",
+		"template": "App.%S = DS.Model.extend({"
+	},
+	"app/javascripts/views/*.js": {
+		"command": "view",
+		"template": "App.%SView = Ember.View.extend({"
+	},
+	"app/javascripts/controllers/*.js": {
+		"command": "controller",
+		"template": "App.%SController = Ember.Controller.extend({"
+	},
+	"app/javascripts/routes/*.js": {
+		"command": "route",
+		"template": "App.%SRoute = Ember.Route.extend({"
+	},
+	"app/javascripts/mixins/*.js": {
+		"command": "mixin",
+		"template": "App.%S = Ember.Mixin.create({"
+	},
+	"app/javascripts/templates/*.js.emblem": {
+		"command": "template"
+	}
+}

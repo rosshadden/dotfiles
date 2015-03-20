@@ -116,6 +116,9 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	" scripting
 		NeoBundle 'dbakker/vim-projectroot'
 
+	" projects
+		NeoBundle 'tpope/vim-projectionist'
+
 	" utils
 		" sensible default settings
 		NeoBundle 'tpope/vim-sensible'
