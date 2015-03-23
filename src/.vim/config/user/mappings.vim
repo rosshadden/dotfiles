@@ -19,17 +19,7 @@ map <leader>s :update<cr>
 " L-S => force save [:write]
 map <leader>S :update!<cr>
 
-" close
-" L-c => quit [:quit]
-map <leader>c :quit<cr>
-" L-C => force quit [:quit!]
-map <leader>C :quit!<cr>
-
-" L-x => save and quit [:wq]
-map <leader>x :wq<cr>
-" L-X => force save and quit [:wq!]
-map <leader>X :wq!<cr>
-
+" reload
 " L-r => reload file [:edit]
 map <leader>r :edit<cr>
 map <leader>R :edit!<cr>

@@ -63,8 +63,10 @@
 		- figure out wtf keeps going wrong with the i3 shortcut, and fix it
 - shell
 	- change the color of the zsh prompt or something, to make it more obvious
+		- when in command mode vs. insert mode
 		- when logged in as "root"
 		- when on remote computers
+	- either remove the switching between block and beam cursors, or improve it
 	- make sure bash works, even though I haven't used it in years
 - X
 	- fixmon

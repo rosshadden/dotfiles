@@ -42,14 +42,22 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	" motions
 		" custom text objects
 		NeoBundle 'kana/vim-textobj-user'
-		" lines
+		" lines [il, al]
 		NeoBundle 'kana/vim-textobj-line'
+		" indents [ii, ai]
+		NeoBundle 'kana/vim-textobj-indent'
+		" entire buffer [ie, ae]
+		NeoBundle 'kana/vim-textobj-entire'
+		" variable segment [iv, av]
+		NeoBundle 'Julian/vim-textobj-variable-segment'
+		" function arguments [ia, aa]
+		NeoBundle 'vim-scripts/argtextobj.vim'
+		" refer to multiple text wrappers [ib, ab]
+		NeoBundle 'rhysd/vim-textobj-anyblock'
+		" pasted text [gb]
+		NeoBundle 'saaguero/vim-textobj-pastedtext'
 		" camelCase
 		NeoBundle 'bkad/CamelCaseMotion'
-		" function arguments
-		NeoBundle 'vim-scripts/argtextobj.vim'
-		" refer to multiple text wrappers with `b`
-		NeoBundle 'rhysd/vim-textobj-anyblock'
 
 	" features
 		" snippets
@@ -117,7 +125,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'dbakker/vim-projectroot'
 
 	" projects
-		NeoBundle 'tpope/vim-projectionist'
+		NeoBundle 'dsawardekar/portkey'
+		NeoBundle 'dsawardekar/ember.vim'
 
 	" utils
 		" sensible default settings
@@ -127,10 +136,12 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'tpope/vim-surround'
 		" comment mappings
 		NeoBundle 'tpope/vim-commentary'
-		" settings toggles and symmetrical before/after mappings
-		NeoBundle 'tpope/vim-unimpaired'
+		NeoBundle 'scrooloose/nerdcommenter'
+		" file tree for people that like file trees
 		NeoBundle 'scrooloose/nerdtree'
 		NeoBundle 'jistr/vim-nerdtree-tabs'
+		" settings toggles and symmetrical before/after mappings
+		NeoBundle 'tpope/vim-unimpaired'
 		" visualized undo tree
 		NeoBundle 'sjl/gundo.vim'
 		" better multiple-cursor functionality
