@@ -34,8 +34,6 @@
 			- better previews
 				- possibly a dynamic vertical/horizontal choice
 			- vim-session integration
-		- make `[e` and `]e` keep the selection in visual mode
-			- this is less important since I figured out `.` repeats it correctly
 		- make a <localleader> bind to open the session of the current project
 		- [figure out analytics](http://www.drbunsen.org/vim-croquet/)
 	- i3
@@ -79,12 +77,12 @@
 	- client-agnostic back-end, which should work with X and terminals alike
 	- clients
 		- rofi
-		- selecta
+		- pick / selecta
 		- dmenu
 	- plugins
 		- git
 			- `git branch | cut -c 3- | owmni <blah blah> | xargs git checkout`
-			- `git branch -r | cut -c 10- | selecta | xargs git checkout`
+			- `git branch -r | cut -c 10- | pick | xargs git checkout`
 		- i3
 		- zeal
 		- apps

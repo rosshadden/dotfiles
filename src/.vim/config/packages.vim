@@ -111,7 +111,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" markdown
 		NeoBundle 'godlygeek/tabular'
 		NeoBundleLazy 'plasticboy/vim-markdown', { 'autoload': { 'filetypes': [ 'markdown', 'mkd' ] } }
-		NeoBundleLazy 'suan/vim-instant-markdown', { 'autoload': { 'filetypes': [ 'markdown', 'mkd' ] } }
+		" NeoBundleLazy 'suan/vim-instant-markdown', { 'autoload': { 'filetypes': [ 'markdown', 'mkd' ] } }
+		NeoBundle 'suan/vim-instant-markdown'
 
 	" unite
 		NeoBundle 'Shougo/unite.vim'
