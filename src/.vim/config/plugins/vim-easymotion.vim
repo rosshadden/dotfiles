@@ -1,5 +1,5 @@
 " use same column for j/k motions
-let g:EasyMotion_startofline = 1
+let g:EasyMotion_startofline = 0
 
 " use uppercase target labels and type as a lower case
 let g:EasyMotion_use_upper = 1
