@@ -17,22 +17,36 @@ endfunction
 " open applicable session
 function! OpenSession(...)
 	let l:cmd = 'OpenSession'
+
 	if a:0 >= 1
-		l:cmd .= ' '
-		l:cmd .= a:1
+		let l:cmd .= ' ' . a:1
 	endif
+
+	execute l:cmd
 endfunction
 
 
 " save applicable session
 function! SaveSession(...)
-	execute 'SaveSession ' . a:1
+	let l:cmd = 'SaveSession'
+
+	if a:0 >= 1
+		let l:cmd .= ' ' . a:1
+	endif
+
+	execute l:cmd
 endfunction
 
 
 " delete applicable session
 function! DeleteSession(...)
-	execute 'DeleteSession ' . a:1
+	let l:cmd = 'DeleteSession'
+
+	if a:0 >= 1
+		let l:cmd .= ' ' . a:1
+	endif
+
+	execute l:cmd
 endfunction
 
 

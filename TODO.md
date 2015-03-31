@@ -1,7 +1,7 @@
 - meta
 	- README
 		- list dependencies and other relevant installed packages
-		- explain my environment (vim, i3, tmux, arch linux, etc)
+		- explain my environment (vim, i3, tmux, arch linux, etc.)
 		- screenshots
 	- trim down as much fat as possible, such as things I don't use anymore
 	- look into [these dotfiles](https://github.com/xero/dotfiles)
@@ -25,7 +25,7 @@
 - apps
 	- vim
 		- [use snippets](https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db)
-		- customize airline colors so that visual mode isn't terrible. maybe a vibrant green?
+		- customize airline colors so that visual mode isn't terrible. Maybe a vibrant green?
 		- make "put in <motion>" function or plugin
 			- definitely call it "Put in motion"
 		- unite
