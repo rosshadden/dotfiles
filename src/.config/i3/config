@@ -649,7 +649,7 @@
 	for_window [window_role="pop-up"] floating enable, move absolute center
 
 	# floating
-	for_window [class="^Copyq|Zeal|Gpick$"] floating enable
+	for_window [class="^Copyq|Gpick$"] floating enable
 	for_window [title="Qalculate!"] floating enable
 
 	# chrome

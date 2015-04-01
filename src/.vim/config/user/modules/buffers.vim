@@ -48,3 +48,5 @@ nmap [buffers:1]l :rightbelow vsplit<cr>
 
 nmap [buffers]c :bdelete<cr>
 nmap [buffers]C :bdelete!<cr>
+nmap [buffers:1]c :bufdo bdelete<cr>
+nmap [buffers:1]C :bufdo bdelete!<cr>

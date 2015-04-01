@@ -67,6 +67,9 @@
 		- when on remote computers
 	- either remove the switching between block and beam cursors, or improve it
 	- make sure bash works, even though I haven't used it in years
+	- revisit aliases
+		- like `h`
+		- introduce `ls -1`
 - X
 	- fixmon
 		- make the fixmon scripts I have check monitors, so it works no matter which environment
