@@ -40,6 +40,7 @@
 		- make `alt+tab` functionality
 		- break out modes into separate files
 			- add a generated help notification for each mode, on `?`
+		- add clipboard management
 	- tmux
 		- [vet plugins](https://github.com/tmux-plugins)
 		- explore `command-prompt` possibilities

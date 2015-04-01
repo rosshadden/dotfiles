@@ -2,6 +2,9 @@
 let g:session_autosave = 'yes'
 let g:session_autoload = 'no'
 
+" don't restore help windows
+set sessionoptions-=help
+
 
 """"""""""""""""
 " FUNCTIONS
@@ -22,7 +25,7 @@ function! OpenSession(...)
 		let l:cmd .= ' ' . a:1
 	endif
 
-	execute l:cmd
+	execute '"' . l:cmd . '"'
 endfunction
 
 
@@ -34,7 +37,7 @@ function! SaveSession(...)
 		let l:cmd .= ' ' . a:1
 	endif
 
-	execute l:cmd
+	execute '"' . l:cmd . '"'
 endfunction
 
 
@@ -46,7 +49,7 @@ function! DeleteSession(...)
 		let l:cmd .= ' ' . a:1
 	endif
 
-	execute l:cmd
+	execute '"' . l:cmd . '"'
 endfunction
 
 
