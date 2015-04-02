@@ -165,6 +165,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 	" external
 		NeoBundle 'tmux-plugins/vim-tmux'
+		NeoBundle 'tmux-plugins/vim-tmux-focus-events'
 		NeoBundle 'christoomey/vim-tmux-navigator'
 		NeoBundle 'edkolev/tmuxline.vim'
 		NeoBundle 'edkolev/promptline.vim'
