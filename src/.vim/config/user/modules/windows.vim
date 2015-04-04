@@ -1,3 +1,8 @@
+" vim-windowswap
+" prevent default bindings
+let g:windowswap_map_keys = 0
+
+
 " prefix
 call MakePrefix('windows', '[prefix]w')
 call MakePrefix('windows', '[windows]w', 1)
@@ -34,3 +39,9 @@ map [windows]t <c-w>T
 
 " close all other windows
 map [windows]o <c-w>O
+
+
+" vim-windowswap
+nnoremap <silent> [windows]Y :call WindowSwap#MarkWindowSwap()<CR>
+nnoremap <silent> [windows]P :call WindowSwap#DoWindowSwap()<CR>
+nnoremap <silent> [windows]S :call WindowSwap#EasyWindowSwap()<CR>

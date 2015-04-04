@@ -28,19 +28,33 @@
 		- customize airline colors so that visual mode isn't terrible. Maybe a vibrant green?
 		- make "put in <motion>" function or plugin
 			- definitely call it "Put in motion"
-		- unite
-			- make a mapping or mode for finding files not in the repo
-			- abstract making 4-8 mappings per concept
-			- better previews
-				- possibly a dynamic vertical/horizontal choice
-			- vim-session integration
 		- make a <localleader> bind to open the session of the current project
 		- [figure out analytics](http://www.drbunsen.org/vim-croquet/)
+		- figure out a way to reload/update buffers automatically
+			- changed files
+			- deleted files
+			- moved files
+		- modes
+			- ember
+			- vifm
+				- https://github.com/vifm/vifm/issues/60 and https://github.com/vifm/vifm/issues/79
+			- unite
+				- make a mapping or mode for finding files not in the repo
+				- abstract making 4-8 mappings per concept
+				- better previews
+					- possibly a dynamic vertical/horizontal choice
+				- vim-session integration
+		- consider migrating to its own repo
+		- organize modules such that there's no separation between (most) plugins and user modules
+			- `vim-windowswap` in `window`
+			- `vim-fugitive` and `vim-gitgutter` in `git`
 	- i3
 		- make `alt+tab` functionality
 		- break out modes into separate files
 			- add a generated help notification for each mode, on `?`
 		- add clipboard management
+		- layouts
+			- pidgin
 	- tmux
 		- [vet plugins](https://github.com/tmux-plugins)
 		- explore `command-prompt` possibilities
@@ -60,6 +74,11 @@
 	- zeal
 		- integrate into workflow
 		- figure out wtf keeps going wrong with the i3 shortcut, and fix it
+	- vifm
+		- revisit binds
+		- add specific configs, launched with `-c "source /path/to/config"`
+			- tmux
+			- vim
 - shell
 	- change the color of the zsh prompt or something, to make it more obvious
 		- when in command mode vs. insert mode
