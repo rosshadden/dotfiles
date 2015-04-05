@@ -45,7 +45,7 @@
 	# default apps
 	set $chooseCommand rofi -show run -sidebar-mode
 	set $chooseWindow rofi -show window -sidebar-mode
-	set $chooseApp j4-dmenu-desktop --dmenu='rofi -dmenu -p launch:'
+	set $chooseApp j4-dmenu-desktop --dmenu='rofi -dmenu -p "launch:"'
 	set $terminal i3-sensible-terminal
 	set $tmux i3-sensible-terminal -e tmux -2
 	set $tmuxAttach i3-sensible-terminal -e tmux -2 new-session -A -s
