@@ -1,3 +1,7 @@
+# system
+.flagged
+
+# vim
 *.swp
 *.swo
 portkey.json
