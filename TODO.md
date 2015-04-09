@@ -48,6 +48,7 @@
 		- organize modules such that there's no separation between (most) plugins and user modules
 			- `vim-windowswap` in `window`
 			- `vim-fugitive` and `vim-gitgutter` in `git`
+		- figure out why reloading vimrc makes exiting insert mode laggy
 	- i3
 		- make `alt+tab` functionality
 		- break out modes into separate files
