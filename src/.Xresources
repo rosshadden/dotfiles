@@ -350,6 +350,8 @@ URxvt.keysym.C-V:   perl:clipboard:paste
 URxvt.keysym.C-A-V: perl:clipboard:paste_escaped
 
 ! font size
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 URxvt.keysym.C-Up:     perl:font-size:increase
 URxvt.keysym.C-Down:   perl:font-size:decrease
 URxvt.keysym.C-S-Up:   perl:font-size:incglobal

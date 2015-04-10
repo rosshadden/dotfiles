@@ -219,6 +219,9 @@
 	bindsym XF86AudioNext exec "playerctl next; $refreshI3Media"
 	bindsym XF86AudioPrev exec "playerctl previous; $refreshI3Media"
 
+	# touchscreen
+	bindsym XF86TouchpadToggle exec "~/lib/touchpad-toggle.sh"
+
 	# screenshots
 	bindsym Print exec "~/bin/screenshot"
 	bindsym $alt+Print exec "~/bin/screenshot window"
@@ -237,6 +240,7 @@
 		bindsym l mode "LAYOUT"
 		bindsym m mode "MEDIA"
 		bindsym r mode "RESIZE"
+		bindsym s mode "SYSTEM"
 		bindsym t mode "TMUX"
 		bindsym Shift+m mode "MOUSE"
 
@@ -408,6 +412,20 @@
 			bindsym bracketright workspace $ws12; exec $tmuxAttach $12; $return
 
 		# TODO: open preset for the current workspace
+
+		bindsym $super+space mode "PREFIX"
+		bindsym Escape $return
+	}
+
+
+	mode "SYSTEM" {
+		bindsym r exec "reboot"; $return
+		bindsym p exec "poweroff"; $return
+
+		bindsym k exec xbacklight -inc 20; $return
+		bindsym j exec xbacklight -dec 20; $return
+		bindsym Shift+k exec xbacklight -inc 20
+		bindsym Shift+j exec xbacklight -dec 20
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
