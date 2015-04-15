@@ -264,7 +264,9 @@ bind generic	z	stop-loading		# Stop all loading views
 bind generic	v	show-version		# Show Tig version
 
 
-# Mine
+################
+# CUSTOM
+################
 
 bind generic ; prompt
 bind generic <esc>i !git in
@@ -292,6 +294,10 @@ bind generic <esc>M !@sh -c "git merge $(git branch -r | cut -c 3- | selecta)"
 
 # copy commit hash to clipboard
 bind generic x !@sh -c "echo -n %(commit) | xsel -ib"
+
+# amend commit
+bind status a !git amend -e
+bind status A !git amend
 
 
 # Colors
