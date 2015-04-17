@@ -56,6 +56,9 @@
 		- add clipboard management
 		- layouts
 			- pidgin
+		- get current tag
+			- open tmux session for current tag
+		- universalize the media increments and whatnot
 	- tmux
 		- [vet plugins](https://github.com/tmux-plugins)
 		- explore `command-prompt` possibilities

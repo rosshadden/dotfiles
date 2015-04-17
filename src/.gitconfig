@@ -51,14 +51,18 @@
 	rb = rebase
 	sh = show
 
+
 	# SEARCHING
+
 	g = grep -I --ignore-case --line-number --heading --break
+
 
 	# DYNAMIC
 
 	in = "!sh -c 'git pull ${1-origin} ${2-$(git pwd)}' -"
 	out = "!sh -c 'git push ${1-origin} ${2-$(git pwd)}' -"
 	sync = "!git in && git out"
+
 
 	# METAPHORS
 
@@ -70,6 +74,9 @@
 	pwd = rev-parse --abbrev-ref HEAD
 	# get recent commits on a file
 	tail = log --patch --word-diff
+	# remote URL
+	wget = "!git remote -v | head -1 | awk -p '{ print $2 }'"
+
 
 	# LOGGING
 
@@ -80,6 +87,7 @@
 	lawg = log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\"
 	lawg-new = "!sh -c 'git --no-pager log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\" origin/$(git pwd)..$(git pwd)' -"
 
+
 	# UTILITY
 
 	amend = commit --amend -C HEAD
@@ -89,10 +97,12 @@
 	unstage = reset HEAD --
 	untrack = update-index --assume-unchanged
 
+
 	# DIFFS
 
 	df = diff --word-diff
 	staged = diff --staged --word-diff
+
 
 	# STASH
 

@@ -558,30 +558,42 @@
 
 	mode "MEDIA" {
 		# volume
+
 		bindsym k exec "ponymix increase 5; $refreshI3Media"; $return
 		bindsym j exec "ponymix decrease 5; $refreshI3Media"; $return
 		bindsym m exec "ponymix toggle; $refreshI3Media"; $return
 		bindsym Up exec "ponymix increase 5; $refreshI3Media"
 		bindsym Down exec "ponymix decrease 5; $refreshI3Media"
+
 		bindsym Shift+k exec "ponymix increase 5; $refreshI3Media"
 		bindsym Shift+j exec "ponymix decrease 5; $refreshI3Media"
 		bindsym Shift+m exec "ponymix toggle; $refreshI3Media"
 		bindsym Shift+Up exec "ponymix increase 10; $refreshI3Media"
 		bindsym Shift+Down exec "ponymix decrease 10; $refreshI3Media"
 
+		bindsym Control+k exec "ponymix set-volume 100; $refreshI3Media"; $return
+		bindsym Control+j exec "ponymix set-volume 0; $refreshI3Media"; $return
+		bindsym Control+Shift+k exec "ponymix set-volume 100; $refreshI3Media"
+		bindsym Control+Shift+j exec "ponymix set-volume 0; $refreshI3Media"
+
+
 		# playback
+
 		bindsym space exec "playerctl play-pause; $refreshI3Media"; $return
 		bindsym l exec "playerctl next; $refreshI3Media"; $return
 		bindsym Right exec "playerctl next; $refreshI3Media"; $return
 		bindsym h exec "playerctl previous; $refreshI3Media"; $return
 		bindsym Left exec "playerctl previous; $refreshI3Media"; $return
+
 		bindsym Shift+space exec "playerctl play-pause; $refreshI3Media"
 		bindsym Shift+l exec "playerctl next; $refreshI3Media"
 		bindsym Shift+Right exec "playerctl next; $refreshI3Media"
 		bindsym Shift+h exec "playerctl previous; $refreshI3Media"
 		bindsym Shift+Left exec "playerctl previous; $refreshI3Media"
 
+
 		# screenshots
+
 		bindsym y exec "~/bin/screenshot"; $return
 		bindsym $alt+y exec "~/bin/screenshot window"; $return
 		bindsym Shift+y exec "~/bin/screenshot select"; $return

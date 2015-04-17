@@ -77,6 +77,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'justinmk/vim-gtfo'
 		" vifm
 		NeoBundle 'vifm/vifm.vim'
+		" taskwarrior
+		NeoBundle 'farseer90718/vim-taskwarrior'
 
 	" UI
 		NeoBundle 'bling/vim-airline'
@@ -110,10 +112,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 		" markdown
 		NeoBundle 'godlygeek/tabular'
-		NeoBundleLazy 'plasticboy/vim-markdown', { 'autoload': { 'filetypes': [ 'markdown', 'mkd' ] } }
-		" NeoBundleLazy 'suan/vim-instant-markdown', { 'autoload': { 'filetypes': [ 'markdown', 'mkd' ] } }
 		NeoBundle 'suan/vim-instant-markdown'
-		" pandoc
 		NeoBundle 'vim-pandoc/vim-pandoc'
 		NeoBundle 'vim-pandoc/vim-pandoc-syntax'
 
