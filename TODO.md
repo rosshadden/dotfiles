@@ -23,6 +23,9 @@
 		- `remove`/`uninstall`/`cleanup`
 	- clone `tpm` (tmux plugin manager) and other dependencies
 - apps
+	- git
+		- reasses aliases
+			- check out [Rob's](https://github.com/rjhilgefort/dotfiles/blob/master/.gitconfig) (tags, branches, remotes, etc., for lists)
 	- vim
 		- [use snippets](https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db)
 		- customize airline colors so that visual mode isn't terrible. Maybe a vibrant green?
@@ -83,6 +86,8 @@
 		- add specific configs, launched with `-c "source /path/to/config"`
 			- tmux
 			- vim
+	- taskwarrior
+		- make an `systemctl` auto-sync script
 - shell
 	- change the color of the zsh prompt or something, to make it more obvious
 		- when in command mode vs. insert mode

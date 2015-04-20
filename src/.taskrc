@@ -28,3 +28,8 @@ include /usr/share/doc/task/rc/dark-violets-256.theme
 #include /usr/share/doc/task/rc/solarized-dark-256.theme
 #include /usr/share/doc/task/rc/solarized-light-256.theme
 #include /usr/share/doc/task/rc/no-color.theme
+taskd.server=freecinc.com:53589
+taskd.key=\/home\/ross\/.task\/freecinc_6955a752.key.pem
+taskd.certificate=\/home\/ross\/.task\/freecinc_6955a752.cert.pem
+taskd.ca=\/home\/ross\/.task\/freecinc_6955a752.ca.pem
+taskd.credentials=FreeCinc\/freecinc_6955a752\/0fc9ef07-7c6b-4d67-8f01-4f80e7854ca1
