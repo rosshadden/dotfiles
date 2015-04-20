@@ -39,7 +39,7 @@
 	b = branch
 	c = commit
 	d = diff
-	f = fetch
+	f = fetch -p --tags
 	i = in
 	m = merge
 	o = out

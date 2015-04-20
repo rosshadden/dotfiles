@@ -1,0 +1,8 @@
+# easy-mode commands
+map ;=:
+
+# easy-mode quitting
+map q=Q
+
+# sync tasks
+map s=:!r task sync<Return>
