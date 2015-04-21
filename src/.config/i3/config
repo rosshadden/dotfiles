@@ -408,7 +408,7 @@
 			bindsym 7            workspace $ws7;  exec $tmuxAttach $7;  $return
 			bindsym 8            workspace $ws8;  exec $tmuxAttach $8;  $return
 			bindsym 9            workspace $ws9;  exec $tmuxAttach $9;  $return
-			bindsym 0            workspace $ws10; exec $tmuxAttach $10 'finch'; $return
+			bindsym 0            workspace $ws10; exec $tmuxAttach $10; $return
 			bindsym bracketleft  workspace $ws11; exec $tmuxAttach $11; $return
 			bindsym bracketright workspace $ws12; exec $tmuxAttach $12; $return
 

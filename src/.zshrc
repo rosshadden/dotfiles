@@ -101,9 +101,11 @@
 
 	# expand
 	bindkey '^f' vi-forward-blank-word
+	bindkey '^[f' vi-forward-char
+	bindkey '^b' vi-backward-blank-word
+	bindkey '^[b' vi-backward-char
 
-	# use ctrl+t to toggle autosuggestions(hopefully this wont be needed as
-	# zsh-autosuggestions is designed to be unobtrusive)
+	# ctrl+t: toggle autosuggestions
 	bindkey '^T' autosuggest-toggle
 
 
