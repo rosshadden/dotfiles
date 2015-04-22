@@ -92,13 +92,6 @@
 
 	source $DOTS/plugins/zsh-autosuggestions/autosuggestions.zsh
 
-	# Enable autosuggestions automatically
-	zle-line-init() {
-	    zle autosuggest-start
-	}
-
-	zle -N zle-line-init
-
 	# expand
 	bindkey '^f' vi-forward-blank-word
 	bindkey '^[f' vi-forward-char
@@ -227,6 +220,9 @@ zle-keymap-select () {
 };
 zle -N zle-keymap-select
 
+
+# INIT
+
 zle-line-init () {
 	# RESET
 	zle -K viins
@@ -234,5 +230,8 @@ zle-line-init () {
 	echo -ne "${prefix}\033]12;magenta\007${suffix}"
 	# shape
 	echo -ne "${prefix}\033[5 q${suffix}"
+
+	# Enable autosuggestions automatically
+	zle autosuggest-start
 };
 zle -N zle-line-init

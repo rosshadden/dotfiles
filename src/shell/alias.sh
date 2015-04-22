@@ -33,8 +33,9 @@ alias tl='tmux list-sessions'
 
 alias t='task'
 
+# Shortcuts
+alias Y="yaourt"
 # Making these symlinks instead so sudo may benefit.
-# alias Y="yaourt"
 # alias P="pacman"
 # alias S="systemctl"
 
