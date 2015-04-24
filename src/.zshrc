@@ -83,8 +83,7 @@
 	. $ZSH/oh-my-zsh.sh
 	. $shellDir/plugins/vim.zsh
 	. $shellDir/plugins/tmuxinator.zsh
-	# . $shellDir/plugins/opp.zsh/opp.zsh
-	. $HOME/dev/forks/opp.zsh/opp.zsh
+	. $shellDir/plugins/opp.zsh/opp.zsh
 	. $shellDir/plugins/opp.zsh/opp/*.zsh
 
 
