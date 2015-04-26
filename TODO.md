@@ -66,6 +66,7 @@
 			- open tmux session for current tag
 		- universalize the media/resize/move increments and whatnot
 			- make sure there are mappings for both big and small increments
+		- locally override settings (namely font size)
 	- tmux
 		- [vet plugins](https://github.com/tmux-plugins)
 		- explore `command-prompt` possibilities

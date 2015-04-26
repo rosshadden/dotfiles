@@ -519,7 +519,7 @@
 			# left
 			bindsym space exec $(xdotool click 1)
 			# middle
-			bindsym m exec $(xdotool click 2)
+			bindsym $alt+space exec $(xdotool click 2)
 			# right
 			bindsym Shift+space exec $(xdotool click 3)
 			# wheel up
