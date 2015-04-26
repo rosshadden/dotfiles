@@ -24,7 +24,7 @@
 	- clone `tpm` (tmux plugin manager) and other dependencies
 - apps
 	- git
-		- reasses aliases
+		- reassess aliases
 			- check out [Rob's](https://github.com/rjhilgefort/dotfiles/blob/master/.gitconfig) (tags, branches, remotes, etc., for lists)
 	- vim
 		- [use snippets](https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db)
@@ -33,10 +33,11 @@
 			- definitely call it "Put in motion"
 		- make a <localleader> bind to open the session of the current project
 		- [figure out analytics](http://www.drbunsen.org/vim-croquet/)
-		- figure out a way to reload/update buffers automatically
-			- changed files
-			- deleted files
-			- moved files
+		- I _think_ this might be working now that I included `tmux-plugins/vim-tmux-focus-events`
+			- ~~figure out a way to reload/update buffers automatically~~
+				- ~~changed files~~
+				- ~~deleted files~~
+				- ~~moved files~~
 		- modes
 			- ember
 			- vifm
@@ -51,7 +52,9 @@
 		- organize modules such that there's no separation between (most) plugins and user modules
 			- `vim-windowswap` in `window`
 			- `vim-fugitive` and `vim-gitgutter` in `git`
-		- figure out why reloading vimrc makes exiting insert mode laggy
+		- Raws, Private Investigator
+			- figure out why reloading vimrc makes exiting insert mode laggy
+			- figure out why `[s` lags
 	- i3
 		- make `alt+tab` functionality
 		- break out modes into separate files
@@ -61,7 +64,8 @@
 			- pidgin
 		- get current tag
 			- open tmux session for current tag
-		- universalize the media increments and whatnot
+		- universalize the media/resize/move increments and whatnot
+			- make sure there are mappings for both big and small increments
 	- tmux
 		- [vet plugins](https://github.com/tmux-plugins)
 		- explore `command-prompt` possibilities
@@ -87,7 +91,7 @@
 			- tmux
 			- vim
 	- taskwarrior
-		- make an `systemctl` auto-sync script
+		- make a `systemctl` auto-sync script
 - shell
 	- change the color of the zsh prompt or something, to make it more obvious
 		- when in command mode vs. insert mode
@@ -132,7 +136,9 @@
 			- send a message
 		- email (mutt?)
 		- grunt
+- system
+	- only run `xcape` over `CapsLock`, not `Control_L`
+		- for some reason this doesn't work as expected, though I'm not sure why
+	- make monitors not enter standby when WE'RE WATCHING A SHOW, FOR CRYING OUT LOUD
 - misc
 	- make tropes/mappings consistent across programs
-	- only run `xcape` over CapsLock, not Control_L
-		- for some reason this doesn't work as expected, though I'm not sure why

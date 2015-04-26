@@ -18,3 +18,6 @@ map [space]k [<space>
 map [space]s [space]h[space]l
 " vertical
 map [space]v [space]j[space]k
+
+" delete proceeding whitespace
+imap <s-bs> <esc>d?\S?e1<cr>i

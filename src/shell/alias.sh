@@ -26,6 +26,8 @@ alias tigs='tig status'
 
 alias e='$EDITOR'
 alias se='sudo $EDITOR'
+alias eg='gvim'
+alias seg='sudo gvim'
 
 alias tmux='tmux -2'
 alias ta='tmux new-session -A -s'
@@ -69,3 +71,14 @@ alias asdf='keys dvorak'
 # fasd
 alias j='fasd_cd -d'
 alias jj='fasd_cd -d -i'
+
+
+################
+# SUFFIX
+################
+
+# clone git URLs
+alias -s git='git clone'
+
+# open PDFs
+alias -s pdf=evince

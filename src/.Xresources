@@ -61,7 +61,7 @@
 *.terminal: urxvt
 
 *font: Fantasque Sans Mono 16
-*faceName: xft:Fantasque Sans Mono:pixelsize=18,xft:DejaVu Sans Mono:pixelsize=18
+*faceName: xft:Fantasque Sans Mono:pixelsize=18, xft:DejaVu Sans Mono:pixelsize=18
 
 
 !!!!!!!!!!!!!!!!

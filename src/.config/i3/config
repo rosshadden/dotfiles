@@ -605,6 +605,7 @@
 
 	mode "APPS" {
 		# clipboard manager
+		# TODO: move to scratchpad
 		bindsym y exec copyq toggle; $return
 
 		# calculator
