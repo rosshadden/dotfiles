@@ -3,7 +3,7 @@ node_modules/
 dist/
 
 # apps
-src/.vim/spell/en.utf-8.spl
+src/.vim/spell/*.spl
 src/.vifm/vifminfo*
 src/.vifm/vimfiles
 src/.vifm/Trash
