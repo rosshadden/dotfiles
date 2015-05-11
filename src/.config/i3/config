@@ -428,6 +428,16 @@
 		bindsym Shift+k exec xbacklight -inc 20
 		bindsym Shift+j exec xbacklight -dec 20
 
+		bindsym Control+k exec xbacklight -inc 80; $return
+		bindsym Control+j exec xbacklight -dec 80; $return
+		bindsym Control+Shift+k exec xbacklight -inc 80
+		bindsym Control+Shift+j exec xbacklight -dec 80
+
+		bindsym $alt+k exec xbacklight -inc 5; $return
+		bindsym $alt+j exec xbacklight -dec 5; $return
+		bindsym $alt+Shift+k exec xbacklight -inc 5
+		bindsym $alt+Shift+j exec xbacklight -dec 5
+
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
 	}

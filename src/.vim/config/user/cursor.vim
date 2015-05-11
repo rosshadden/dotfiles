@@ -27,11 +27,11 @@ endif
 " COLOR
 
 " insert
-let &t_SI .= "\<Esc>]12;magenta\x7"
+let &t_SI .= "\<Esc>]12;DeepSkyBlue2\x7"
 
 " normal
-let &t_EI .= "\<Esc>]12;gray\x7"
-" execute 'silent !echo -ne "' . s:prefixCode . '\033]12;gray\007' . s:suffixCode . '"'
+let &t_EI .= "\<Esc>]12;MediumPurple3\x7"
+" execute 'silent !echo -ne "' . s:prefixCode . '\033]12;MediumPurple3\007' . s:suffixCode . '"'
 
 if exists('$TMUX')
 	let &t_SI .= "\<Esc>"
@@ -39,8 +39,8 @@ if exists('$TMUX')
 endif
 
 " reset
-autocmd FocusGained * execute 'silent !echo -ne "' . s:prefixCode . '\033]12;gray\007' . s:suffixCode . '"'
-autocmd VimLeave * execute 'silent !echo -ne "' . s:prefixCode . '\033]12;gray\007' . s:suffixCode . '"'
+autocmd FocusGained * execute 'silent !echo -ne "' . s:prefixCode . '\033]12;MediumPurple3\007' . s:suffixCode . '"'
+autocmd VimLeave * execute 'silent !echo -ne "' . s:prefixCode . '\033]12;MediumPurple3\007' . s:suffixCode . '"'
 
 
 " SHAPE
@@ -55,7 +55,7 @@ autocmd VimLeave * execute 'silent !echo -ne "' . s:prefixCode . '\033]12;gray\0
 	" 6 -> solid vertical bar
 
 " insert (underscore)
-let &t_SI .= "\<Esc>[5 q"
+let &t_SI .= "\<Esc>[2 q"
 
 " normal (block)
 let &t_EI .= "\<Esc>[2 q"
