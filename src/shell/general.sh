@@ -13,16 +13,24 @@ man() {
 	man "$@"
 }
 
-if [ -f /usr/local/bin/vimpager ]; then
-	export PAGER=/usr/local/bin/vimpager
+
+# make `history` have timestamps
+export HIST_STAMPS=yyyy-mm-dd
+
+
+blah=$(isCommand vimpager)
+goo=$?
+if [[ $goo == 0 ]]; then
+	export PAGER=vimpager
 	alias less=$PAGER
 	alias zless=$PAGER
 fi
+
 
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-x' edit-command-line
 
+
 # init fasd
 eval "$(fasd --init auto)"
-

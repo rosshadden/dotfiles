@@ -47,8 +47,8 @@ SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color? ([y]es, [n]
 
 . $shellDir/env.sh
 . $shellDir/alias.sh
-. $shellDir/general.sh
 . $shellDir/functions.sh
+. $shellDir/general.sh
 
 
 ################
@@ -190,7 +190,7 @@ bindkey -M isearch "^R" history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-pattern-search-forward
 
 # Fish-like syntax highlighting
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets cursor)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=red'
 
@@ -209,22 +209,23 @@ if [ $TMUX ]; then
 	suffix="\033\\"
 fi
 
-set-prompt() {}
+set-prompt() {
+	color=$1
+	shape=$2
+
+	# color
+	echo -ne "${prefix}\033]12;$color\007${suffix}"
+
+	# shape
+	echo -ne "${prefix}\033[$shape q${suffix}"
+}
 
 zle-keymap-select() {
 	if [ "$TERM" != "linux" ]; then
 		if [ $KEYMAP = vicmd ]; then
-			# NORMAL
-			# color
-			echo -ne "${prefix}\033]12;${colors[command]}\007${suffix}"
-			# shape
-			echo -ne "${prefix}\033[2 q${suffix}"
+			set-prompt $colors[command] 2
 		else
-			# INSERT
-			# color
-			echo -ne "${prefix}\033]12;${colors[insert]}\007${suffix}"
-			# shape
-			echo -ne "${prefix}\033[2 q${suffix}"
+			set-prompt $colors[insert] 2
 		fi
 	fi
 };
@@ -236,12 +237,9 @@ zle -N zle-keymap-select
 zle-line-init () {
 	# RESET
 	zle -K viins
-	# color
-	echo -ne "${prefix}\033]12;${colors[insert]}\007${suffix}"
-	# shape
-	echo -ne "${prefix}\033[2 q${suffix}"
+	set-prompt $colors[insert] 2
 
 	# Enable autosuggestions automatically
-	zle autosuggest-start
+	# zle autosuggest-start
 };
 zle -N zle-line-init

@@ -140,6 +140,9 @@
 - system
 	- only run `xcape` over `CapsLock`, not `Control_L`
 		- for some reason this doesn't work as expected, though I'm not sure why
-	- make monitors not enter standby when WE'RE WATCHING A SHOW, FOR CRYING OUT LOUD
+	- monitors
+		- make monitors not enter standby when WE'RE WATCHING A SHOW, FOR CRYING OUT LOUD
+		- make ziptop monitors work on boot
+		- handle hot-plugging monitors
 - misc
 	- make tropes/mappings consistent across programs
