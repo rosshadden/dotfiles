@@ -15,10 +15,6 @@ shellDir=$DOTS/src/shell
 # themes dir
 themeDir=$DOTS/src/themes
 
-typeset -A colors
-colors[insert]=DeepSkyBlue2
-colors[command]=MediumPurple3
-
 
 ################
 # OPTIONS
@@ -46,6 +42,7 @@ SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color? ([y]es, [n]
 ################
 
 . $shellDir/env.sh
+. $shellDir/colors.sh
 . $shellDir/alias.sh
 . $shellDir/functions.sh
 . $shellDir/general.sh
@@ -199,33 +196,14 @@ zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(
 
 
 # CURSOR
-
 # TODO: breakout.exe
-prefix=""
-suffix=""
-
-if [ $TMUX ]; then
-	prefix="\033Ptmux;\033"
-	suffix="\033\\"
-fi
-
-set-prompt() {
-	color=$1
-	shape=$2
-
-	# color
-	echo -ne "${prefix}\033]12;$color\007${suffix}"
-
-	# shape
-	echo -ne "${prefix}\033[$shape q${suffix}"
-}
 
 zle-keymap-select() {
 	if [ "$TERM" != "linux" ]; then
 		if [ $KEYMAP = vicmd ]; then
-			set-prompt $colors[command] 2
+			set-prompt $colors[command2] 2
 		else
-			set-prompt $colors[insert] 2
+			set-prompt $colors[insert2] 2
 		fi
 	fi
 };
@@ -237,7 +215,7 @@ zle -N zle-keymap-select
 zle-line-init () {
 	# RESET
 	zle -K viins
-	set-prompt $colors[insert] 2
+	set-prompt $colors[insert2] 2
 
 	# Enable autosuggestions automatically
 	# zle autosuggest-start

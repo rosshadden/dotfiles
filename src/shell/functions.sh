@@ -10,6 +10,26 @@ isCommand() {
 }
 
 
+set-prompt() {
+	local color=$1
+	local shape=$2
+
+	local prefix=""
+	local suffix=""
+
+	if [ $TMUX ]; then
+		local prefix="\033Ptmux;\033"
+		local suffix="\033\\"
+	fi
+
+	# color
+	echo -ne "${prefix}\033]12;$color\007${suffix}"
+
+	# shape
+	echo -ne "${prefix}\033[$shape q${suffix}"
+}
+
+
 countdown() {
 	date1=$((`date +%s` + $1));
 	while [ "$date1" -ne `date +%s` ]; do
