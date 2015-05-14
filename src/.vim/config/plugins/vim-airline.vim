@@ -15,8 +15,11 @@ let g:airline#themes#base16#constant = 1
 " endif
 " let g:airline_symbols.space = "\ua0"
 
+
 " extensions
+
 	" tabline
+
 	let g:airline#extensions#tabline#enabled = 1
 	" close 'button'
 	let g:airline#extensions#tabline#close_symbol = 'â'
@@ -34,27 +37,34 @@ let g:airline#themes#base16#constant = 1
 	nmap <leader>8 <Plug>AirlineSelectTab8
 	nmap <leader>9 <Plug>AirlineSelectTab9
 
+
 	" promptline
+
 	let g:airline#extensions#promptline#enabled = 1
 	let airline#extensions#promptline#snapshot_file = '~/dotfiles/src/themes/promptline.sh'
+
 	" let airline#extensions#promptline#color_template = 'normal'
 	let airline#extensions#promptline#color_template = 'insert'
 	" let airline#extensions#promptline#color_template = 'visual'
 	" let airline#extensions#promptline#color_template = 'replace'
-	" let g:promptline_preset = 'powerlineclone'
+
 	let g:promptline_preset = {
-		\'a' : [ promptline#slices#host(), '$USER' ],
+		\'a' : [ promptline#slices#host({ 'only_if_ssh': 1 }), '$USER' ],
 		\'b' : [ promptline#slices#cwd() ],
+		\'warn' : [ promptline#slices#last_exit_code() ],
 		\'x' : [ promptline#slices#git_status() ],
+		\'y' : [ '$(git rev-parse --short HEAD)', promptline#slices#vcs_branch() ],
 		\'z' : [ '%*' ],
-		\'warn' : [ promptline#slices#last_exit_code() ]
 	\ }
 
+
 	" tmuxline
+
 	let g:airline#extensions#tmuxline#enabled = 1
 	let airline#extensions#tmuxline#snapshot_file = '~/dotfiles/src/themes/tmuxline.conf'
+	let g:tmuxline_preset = 'crosshair'
+
 	let airline#extensions#tmuxline#color_template = 'normal'
 	" let airline#extensions#tmuxline#color_template = 'insert'
 	" let airline#extensions#tmuxline#color_template = 'visual'
 	" let airline#extensions#tmuxline#color_template = 'replace'
-	let g:tmuxline_preset = 'crosshair'

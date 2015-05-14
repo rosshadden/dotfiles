@@ -16,3 +16,6 @@
 [submodule "plugins/zsh-syntax-highlighting"]
 	path = plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "src/themes/base16-builder"]
+	path = src/themes/base16-builder
+	url = git@github.com:chriskempson/base16-builder.git

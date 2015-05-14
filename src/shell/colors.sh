@@ -1,7 +1,7 @@
 typeset -A colors
 
-colors[command]="#5F00AF"
-colors[command2]="#875FD7"
+colors[normal]="#5F00AF"
+colors[normal2]="#875FD7"
 
 colors[insert]="#0087FF"
 colors[insert2]="#00AFFF"

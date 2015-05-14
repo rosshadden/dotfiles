@@ -120,16 +120,16 @@ URxvt*colorUL: #4682b4
 ! URxvt*skipScroll: boolean
 
 ! Fade the text by the given percentage when focus is lost; option -fade.
-! URxvt*fading: number
+URxvt*fading: 0
 
 ! Fade to this colour, when fading is used (see fading:). The default colour is black; option -fadecolor.
-! URxvt*fadeColor: colour
+! URxvt*fadeColor: #333333
 
 ! Set the application icon pixmap; option -icon.
 ! URxvt*iconFile: file
 
 ! Use the specified colour for the scrollbar [default #B2B2B2].
-! URxvt*scrollColor: colour
+URxvt*scrollColor: #333333
 
 ! Use the specified colour for the scrollbars trough area [default #969696]. Only relevant for rxvt (non XTerm/NeXT) scrollbar.
 ! URxvt*troughColor: colour
@@ -179,13 +179,14 @@ URxvt*visualBell: false
 ! URxvt*print-pipe: string
 
 ! Set scrollbar style to rxvt, plain, next or xterm. plain is the authors favourite.
+!URxvt*scrollstyle: plain
 URxvt*scrollstyle: plain
 
 ! Set the scrollbar width in pixels.
-! URxvt*thickness: number
+URxvt*thickness: 1
 
 ! True: enable the scrollbar [default]; option -sb. False: disable the scrollbar; option +sb.
-! URxvt*scrollBar: boolean
+URxvt*scrollBar: false
 
 ! True: place the scrollbar on the right of the window; option -sr.  False: place the scrollbar on the left of the window; option +sr.
 URxvt*scrollBar_right: true

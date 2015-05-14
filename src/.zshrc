@@ -28,8 +28,6 @@ setopt correct
 # CONFIG
 ################
 
-ZSH_THEME="agnoster"
-
 # dots displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
 
@@ -60,18 +58,27 @@ bindkey '^[[Z' reverse-menu-complete
 # THEME
 ################
 
+# NOTE: overwritten below
+ZSH_THEME="agnoster"
+
+
 # base16 colors
 if [ "${TERM%%-*}" = 'linux' ]; then
-	BASE16_SHELL="$themeDir/vconsole.sh"
+	BASE16_TYPE="vconsole"
 else
-	BASE16_SCHEME="summerfruit"
-	BASE16_VARIANT="dark"
-	BASE16_SHELL="$themeDir/base16-shell/base16-$BASE16_SCHEME.$BASE16_VARIANT.sh"
+	BASE16_TYPE="shell"
 fi
+
+BASE16_SCHEME="pop"
+BASE16_VARIANT="dark"
+BASE16_DIR="$themeDir/base16-builder/output/$BASE16_TYPE"
+BASE16_SHELL="$BASE16_DIR/base16-$BASE16_SCHEME.$BASE16_VARIANT.sh"
+
 [[ -f $BASE16_SHELL ]] && . $BASE16_SHELL
-. $themeDir/shell.sh
+
 
 # airline prompt
+
 . $themeDir/promptline.sh
 
 
@@ -195,19 +202,37 @@ ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=red'
 zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
 
 
-# CURSOR
+# VI-MODE
 # TODO: breakout.exe
 
+vim_ins_mode="INSERT"
+vim_cmd_mode="NORMAL"
+vim_mode=$vim_ins_mode
+
 zle-keymap-select() {
+	vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+	__promptline
+	zle reset-prompt
+
 	if [ "$TERM" != "linux" ]; then
 		if [ $KEYMAP = vicmd ]; then
-			set-prompt $colors[command2] 2
+			set-prompt $colors[normal2] 2
 		else
 			set-prompt $colors[insert2] 2
 		fi
 	fi
 };
 zle -N zle-keymap-select
+
+function zle-line-finish {
+	vim_mode=$vim_ins_mode
+}
+zle -N zle-line-finish
+
+function TRAPINT() {
+	vim_mode=$vim_ins_mode
+	return $(( 128 + $1 ))
+}
 
 
 # INIT
