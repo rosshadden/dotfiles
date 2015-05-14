@@ -58,6 +58,9 @@ bindkey '^[[Z' reverse-menu-complete
 # THEME
 ################
 
+local BASE16_TYPE BASE16_VARIANT BASE16_DIR BASE16_SHELL
+
+
 # NOTE: overwritten below
 ZSH_THEME="agnoster"
 
@@ -69,10 +72,10 @@ else
 	BASE16_TYPE="shell"
 fi
 
-BASE16_SCHEME="pop"
+THEME="pop"
 BASE16_VARIANT="dark"
 BASE16_DIR="$themeDir/base16-builder/output/$BASE16_TYPE"
-BASE16_SHELL="$BASE16_DIR/base16-$BASE16_SCHEME.$BASE16_VARIANT.sh"
+BASE16_SHELL="$BASE16_DIR/base16-$THEME.$BASE16_VARIANT.sh"
 
 [[ -f $BASE16_SHELL ]] && . $BASE16_SHELL
 
