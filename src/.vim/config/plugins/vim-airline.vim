@@ -53,7 +53,7 @@ let g:airline#themes#base16#constant = 1
 		\'b' : [ promptline#slices#cwd() ],
 		\'warn' : [ promptline#slices#last_exit_code() ],
 		\'x' : [ promptline#slices#git_status() ],
-		\'y' : [ '$(git rev-parse --short HEAD)', promptline#slices#vcs_branch() ],
+		\'y' : [ '$(git rev-parse --short HEAD 2>/dev/null)', promptline#slices#vcs_branch() ],
 		\'z' : [ '%*' ],
 	\ }
 
