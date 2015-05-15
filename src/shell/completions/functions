@@ -1,0 +1,10 @@
+#compdef yaourt
+typeset -A opt_args
+ 
+_localaur () { compadd $(ls /var/aur/) ; }
+_yaourt() {    
+        '_localaur'
+          }
+ 
+ 
+_yaourt "$@"

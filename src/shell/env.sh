@@ -19,12 +19,14 @@
 ################
 
 	# java
-	export JAVA_HOME=/usr/lib/jvm/default-java
+	export JAVA_HOME=/usr/lib/jvm/default
 	# android
 	export ANDROID_HOME=/opt/android-sdk
 	export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64
 	# atom plugins
 	export ATOM_REPOS_HOME=$DB/dev/forks
+
+	fpath=($DOTS/src/shell/completions/functions $fpath)
 
 
 ################

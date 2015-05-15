@@ -58,9 +58,6 @@ bindkey '^[[Z' reverse-menu-complete
 # THEME
 ################
 
-local BASE16_TYPE BASE16_VARIANT BASE16_DIR BASE16_SHELL
-
-
 # NOTE: overwritten below
 ZSH_THEME="agnoster"
 
@@ -89,7 +86,7 @@ BASE16_SHELL="$BASE16_DIR/base16-$THEME.$BASE16_VARIANT.sh"
 # PLUGINS
 ################
 
-plugins=(battery extract git-extras node npm python nyan vi-mode history-substring-search systemd zsh-syntax-highlighting fasd)
+plugins=(archlinux battery extract git-extras node npm python nyan vi-mode history-substring-search systemd zsh-syntax-highlighting fasd)
 
 . $ZSH/oh-my-zsh.sh
 . $shellDir/plugins/vim.zsh
