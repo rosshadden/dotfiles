@@ -192,9 +192,6 @@
 	# move the currently focused window to the scratchpad
 	bindsym $super+Shift+s move scratchpad
 
-	# fix mouse on laptop
-	bindsym $macro1 exec $(xdotool mousemove -- 0 0); $return
-
 	# modes
 	bindsym $super+space mode "PREFIX"
 	bindsym $super+m mode "MARK"
@@ -472,6 +469,8 @@
 		bindsym Control+Shift+k resize shrink height 64 px or 64 ppt
 		bindsym Control+Shift+l resize grow width 64 px or 64 ppt
 
+		bindsym space move right; resize shrink width 36 px or 36 ppt
+
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
 	}
@@ -701,21 +700,21 @@
 
 	# music
 	assign [class="(nuvolaplayer|Spotify)"] → $ws6
-	for_window [class="(nuvolaplayer|Spotify)"] move container to workspace $ws6
 
 	# chat
 	assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $ws10
 	assign [title="^finch$"] → $ws10
-	for_window [class="Pidgin" window_role="(buddy_list|conversation)"] move container to workspace $ws10
-	for_window [title="^finch$"] move container to workspace $ws10
 
 
 ################
 # STARTUP
 ################
 
+	# layouts
+	exec --no-startup-id "i3-msg 'workspace $ws10; append_layout ~/.config/i3/layouts/workspace-10.json'"
+
 	# wallpaper
-	exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath &
+	exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath
 
 	# autolock
-	exec --no-startup-id xautolock -time 10 -locker $locker &
+	exec --no-startup-id xautolock -time 10 -locker $locker

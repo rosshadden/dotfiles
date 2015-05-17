@@ -60,8 +60,6 @@
 		- break out modes into separate files
 			- add a generated help notification for each mode, on `?`
 		- add clipboard management
-		- layouts
-			- pidgin
 		- get current tag
 			- open tmux session for current tag
 		- universalize the media/resize/move increments and whatnot
