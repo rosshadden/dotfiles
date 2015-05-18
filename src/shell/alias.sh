@@ -1,7 +1,7 @@
 alias copy='xsel -ib'
 alias paste='xsel -ob'
 
-alias suspend="dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"
+# alias suspend="dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"
 alias l='ls -lah'
 alias du='du -h'
 
@@ -16,6 +16,7 @@ alias path="readlink -f"
 alias open='xdg-open'
 
 # git
+# TODO: breakout.exe into a git module
 alias g='git'
 alias tigs='tig status'
 
@@ -29,9 +30,13 @@ alias se='sudo $EDITOR'
 alias eg='gvim'
 alias seg='sudo gvim'
 
+# TODO: breakout.exe into a tmux module
 alias tmux='tmux -2'
-alias ta='tmux new-session -A -s'
 alias tl='tmux list-sessions'
+alias ta='tmux new-session -A -s'
+tj() {
+	tmux new-session -t $1 -s $1-$2
+}
 
 alias t='task'
 

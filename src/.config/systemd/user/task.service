@@ -1,0 +1,8 @@
+[Unit]
+Description=Sync taskwarrior
+
+[Service]
+ExecStart=/usr/bin/task sync
+
+[Install]
+WantedBy=multi-user.target

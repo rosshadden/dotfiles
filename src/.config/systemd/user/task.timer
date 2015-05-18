@@ -1,0 +1,9 @@
+[Unit]
+Description=Sync taskwarrior on boot and every 2 hours
+
+[Timer]
+OnBootSec=15 minutes
+OnUnitActiveSec=2 hours
+
+[Install]
+WantedBy=timers.target

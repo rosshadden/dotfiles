@@ -65,8 +65,8 @@
 		- universalize the media/resize/move increments and whatnot
 			- make sure there are mappings for both big and small increments
 		- locally override settings (namely font size)
+		- integrate `tmux-project`
 	- tmux
-		- [vet plugins](https://github.com/tmux-plugins)
 		- explore `command-prompt` possibilities
 		- explore `choose-*` possibilities
 			- `choose-client`
@@ -74,6 +74,8 @@
 				- list of sessions to link to (linked windows/layouts but not focus)
 			- `choose-tree`
 			- `choose-window`
+		- load projects
+		- figure out why vim has weird issues when attaching a certain way
 	- copyq
 		- integrate into workflow
 		- get more use out of tabs
@@ -89,8 +91,6 @@
 		- add specific configs, launched with `-c "source /path/to/config"`
 			- tmux
 			- vim
-	- taskwarrior
-		- make a `systemctl` auto-sync script
 - shell
 	- change the color of the zsh prompt or something, to make it more obvious
 		- when in command mode vs. insert mode
@@ -101,6 +101,11 @@
 	- revisit aliases
 		- like `h`
 		- introduce `ls -1`
+	- make modules instead of a file for aliases and a file for functions
+	- use `local` variables
+	- (yank to clipboard)[http://unix.stackexchange.com/questions/25765/pasting-from-clipboard-to-vi-enabled-zsh-or-bash-shell]
+- arch
+	- sync custom systemd units somewhere
 - X
 	- fixmon
 		- make the fixmon scripts I have check monitors, so it works no matter which environment
