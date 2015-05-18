@@ -81,6 +81,9 @@ set slowfs=curlftpfs
 " Set custom status line look
 set statusline="  %t%= %A %10u:%-7g %15s %20d  "
 
+" Integrate with tmux
+screen
+
 " What should be saved automatically between vifm runs
 " Like in previous versions of vifm
 " set vifminfo=options,filetypes,commands,bookmarks,dhistory,state,cs

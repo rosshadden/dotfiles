@@ -5,12 +5,6 @@ A collection of dotfiles and scripts that I use between computers.
 See the [TODO](TODO.md) for things I have in mind.
 
 
-## Dependencies
-
-- Node.js (I'm going to remove this dependency)
-- grunt (I'm going to remove this dependency)
-
-
 ## My environment
 
 - Arch Linux
@@ -18,3 +12,13 @@ See the [TODO](TODO.md) for things I have in mind.
 - vim
 - zsh
 - tmux
+
+
+## Dependencies
+
+- `nodejs` (I'm going to remove this dependency)
+- `npm` (I'm going to remove this dependency)
+- `grunt-cli` (I'm going to remove this dependency)
+- `tmux`
+	- `urlview`
+	- `fpp`
