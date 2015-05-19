@@ -237,6 +237,7 @@
 		bindsym i mode "I3"
 		bindsym l mode "LAYOUT"
 		bindsym m mode "MEDIA"
+		bindsym p mode "PROJECTS"
 		bindsym r mode "RESIZE"
 		bindsym s mode "SYSTEM"
 		bindsym t mode "TMUX"
@@ -608,6 +609,14 @@
 		bindsym y exec "~/bin/screenshot"; $return
 		bindsym $alt+y exec "~/bin/screenshot window"; $return
 		bindsym Shift+y exec "~/bin/screenshot select"; $return
+
+		bindsym $super+space mode "PREFIX"
+		bindsym Escape $return
+	}
+
+
+	mode "PROJECTS" {
+		bindsym space exec i3-input -P 'Open project: ' -F 'exec ~/bin/tmux-project %s'; $return
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return

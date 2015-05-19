@@ -66,6 +66,7 @@
 			- make sure there are mappings for both big and small increments
 		- locally override settings (namely font size)
 		- integrate `tmux-project`
+		- dynmaic font size
 	- tmux
 		- explore `command-prompt` possibilities
 		- explore `choose-*` possibilities
@@ -101,16 +102,14 @@
 	- revisit aliases
 		- like `h`
 		- introduce `ls -1`
-	- make modules instead of a file for aliases and a file for functions
+	- modularize `.zshrc`
+		- make semantic modules instead of a file for aliases and a file for functions
 	- use `local` variables
 	- (yank to clipboard)[http://unix.stackexchange.com/questions/25765/pasting-from-clipboard-to-vi-enabled-zsh-or-bash-shell]
-- arch
-	- sync custom systemd units somewhere
 - X
 	- fixmon
 		- make the fixmon scripts I have check monitors, so it works no matter which environment
-	- figure out a way to run scripts based on boot params
-		- namely, allow booting into different xorg-swap modes
+	- modularize `.Xresources`
 	- look into existing `.Xresources` themes
 		- http://www.noobslab.com/
 - Owmni / Awmni
