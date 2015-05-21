@@ -41,9 +41,9 @@ tmux new-window -d -t $project -c $path -n run
 
 # immunize
 # TODO: WHY??!?!?
-tmux send-keys -t $project:dev 'zsh' ENTER
-tmux send-keys -t $project:sync 'zsh' ENTER
-tmux send-keys -t $project:run 'zsh' ENTER
+tmux send-keys -t $project:dev 'reload' ENTER
+tmux send-keys -t $project:sync 'reload' ENTER
+tmux send-keys -t $project:run 'reload' ENTER
 
 # run commands
 tmux send-keys -t $project:dev 'vim' ENTER

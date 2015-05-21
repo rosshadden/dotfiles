@@ -135,7 +135,7 @@
 	# current branch
 	pwd = rev-parse --abbrev-ref HEAD
 	# get recent commits on a file
-	tail = log --patch --word-diff
+	tail = log --patch
 	# make dir and add `.gitkeep`
 	mkdir = "!sh -c 'mkdir $1; touch $1/.gitkeep' -"
 	man = help

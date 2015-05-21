@@ -81,7 +81,7 @@ case $namespace in
 
 
 	window)
-		keys="h l Space n N c C"
+		keys="h l Space n p c C"
 
 		if [ -z $action ]; then
 			bind
@@ -93,7 +93,7 @@ case $namespace in
 				Space) tmux choose-window ;;
 
 				n) tmux new-window -a ;;
-				N) tmux new-window -a; tmux swap-window -t -1 ;;
+				p) tmux new-window -a; tmux swap-window -t -1 ;;
 
 				c) tmux confirm kill-window ;;
 				C) tmux kill-window ;;

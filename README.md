@@ -22,3 +22,8 @@ See the [TODO](TODO.md) for things I have in mind.
 - `tmux`
 	- `urlview`
 	- `fpp`
+- `pidgin`
+	- `gtk-theme-flatstudio`
+- `tig`
+- `selecta`
+- `pick`

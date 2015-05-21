@@ -73,6 +73,9 @@
 			- `choose-window`
 		- load projects
 		- figure out why vim has weird issues when attaching a certain way
+			- colors one way
+			- pane navigation the other
+		- figure out the "pane is dead" thing
 	- tig
 		- spend time making it even more useful
 	- copyq
@@ -90,6 +93,13 @@
 		- add specific configs, launched with `-c "source /path/to/config"`
 			- tmux
 			- vim
+	- tig
+		- mappings
+			- scrap
+			- stash / pop
+				- per file
+				- all
+			- checkout tags
 - shell
 	- change the color of the zsh prompt or something, to make it more obvious
 		- when in command mode vs. insert mode
