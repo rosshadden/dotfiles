@@ -571,23 +571,22 @@
 	mode "MEDIA" {
 		# volume
 
+		bindsym m exec "ponymix toggle; $refreshI3Media"; $return
 		bindsym k exec "ponymix increase 5; $refreshI3Media"; $return
 		bindsym j exec "ponymix decrease 5; $refreshI3Media"; $return
-		bindsym m exec "ponymix toggle; $refreshI3Media"; $return
-		bindsym Up exec "ponymix increase 5; $refreshI3Media"
-		bindsym Down exec "ponymix decrease 5; $refreshI3Media"
+		bindsym Up exec "ponymix increase 10; $refreshI3Media"; $return
+		bindsym Down exec "ponymix decrease 10; $refreshI3Media"; $return
+		bindsym Control+k exec "ponymix increase 20; $refreshI3Media"; $return
+		bindsym Control+j exec "ponymix decrease 20; $refreshI3Media"; $return
 
+
+		bindsym Shift+m exec "ponymix toggle; $refreshI3Media"
 		bindsym Shift+k exec "ponymix increase 5; $refreshI3Media"
 		bindsym Shift+j exec "ponymix decrease 5; $refreshI3Media"
-		bindsym Shift+m exec "ponymix toggle; $refreshI3Media"
 		bindsym Shift+Up exec "ponymix increase 10; $refreshI3Media"
 		bindsym Shift+Down exec "ponymix decrease 10; $refreshI3Media"
-
-		bindsym Control+k exec "ponymix set-volume 100; $refreshI3Media"; $return
-		bindsym Control+j exec "ponymix set-volume 0; $refreshI3Media"; $return
-		bindsym Control+Shift+k exec "ponymix set-volume 100; $refreshI3Media"
-		bindsym Control+Shift+j exec "ponymix set-volume 0; $refreshI3Media"
-
+		bindsym Control+Shift+k exec "ponymix increase 20; $refreshI3Media"
+		bindsym Control+Shift+j exec "ponymix decrease 20; $refreshI3Media"
 
 		# playback
 

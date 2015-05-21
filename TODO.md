@@ -1,7 +1,6 @@
 - meta
 	- README
 		- list dependencies and other relevant installed packages
-		- explain my environment (vim, i3, tmux, arch linux, etc.)
 		- screenshots
 	- trim down as much fat as possible, such as things I don't use anymore
 	- look into [these dotfiles](https://github.com/xero/dotfiles)
@@ -23,9 +22,6 @@
 		- `remove`/`uninstall`/`cleanup`
 	- clone `tpm` (tmux plugin manager) and other dependencies
 - apps
-	- git
-		- reassess aliases
-			- check out [Rob's](https://github.com/rjhilgefort/dotfiles/blob/master/.gitconfig) (tags, branches, remotes, etc., for lists)
 	- vim
 		- [use snippets](https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db)
 		- customize airline colors so that visual mode isn't terrible. Maybe a vibrant green?
@@ -77,6 +73,8 @@
 			- `choose-window`
 		- load projects
 		- figure out why vim has weird issues when attaching a certain way
+	- tig
+		- spend time making it even more useful
 	- copyq
 		- integrate into workflow
 		- get more use out of tabs

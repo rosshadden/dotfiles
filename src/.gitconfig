@@ -1,38 +1,94 @@
 [user]
+
 	name = Ross Hadden
 	email = rosshadden@gmail.com
+
+
 [core]
+
 	editor = vim
-[merge]
+
+
+[push]
+
+	default = simple
+
+
+[grep]
+
+	extendRegexp = true
+	lineNumber = true
+
+
+[diff]
+
 	tool = diffconflicts
-[mergetool]
-	keepBackup = false
-[mergetool "diffconflicts"]
+
+
+
+[difftool "diffconflicts"]
+
 	cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
 	trustExitCode = true
-[mergetool "subl"]
+
+
+[difftool "subl"]
+
 	cmd = subl -w $MERGED
 	trustExitCode = false
-[color]
-	ui = true
-	branch = auto
-	diff = auto
-	status = auto
+
+
+[merge]
+
+	tool = diffconflicts
+
+
+[mergetool]
+
+	keepBackup = false
+
+
+[mergetool "diffconflicts"]
+
+	cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+	trustExitCode = true
+
+
+[mergetool "subl"]
+
+	cmd = subl -w $MERGED
+	trustExitCode = false
+
+
+[remote "origin"]
+
+	#fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+
+
 [color "branch"]
+
 	current = red reverse
 	local = blue
 	remote = green
+
+
 [color "diff"]
+
 	meta = yellow bold
 	frag = magenta bold
 	old = red bold
 	new = green bold
+
+
 [color "status"]
+
 	added = yellow
 	changed = green
 	untracked = cyan
 
+
 [alias]
+
 	# SHORTHAND
 
 	a = add
@@ -46,75 +102,89 @@
 	r = remote
 	s = status -sb
 	t = tag
-	ch = checkout
+	cl = clone --recursive
 	co = checkout
 	rb = rebase
 	sh = show
 
 
-	# SEARCHING
-
-	g = grep -I --ignore-case --line-number --heading --break
-
-
-	# DYNAMIC
+	# SYNCING
 
 	in = "!sh -c 'git pull ${1-origin} ${2-$(git pwd)}' -"
 	out = "!sh -c 'git push ${1-origin} ${2-$(git pwd)}' -"
 	sync = "!git in && git out"
 
 
-	# METAPHORS
+	# PLURALITY
+
+	tags = tag -l
+	branches = branch -r
+	branches-merged = branch --merged
+	branches-unmerged = branch --no-merged
+	remotes = remote -v
+
+
+	# UNIX METAPHORS
 
 	# list file names
 	find = ls-files
 	# list files
 	ls = ls-files
+	# checkout branch, making a new one if not present
+	cd = "!sh -c 'git checkout $1 2> /dev/null || git checkout -b $1' -"
 	# current branch
 	pwd = rev-parse --abbrev-ref HEAD
 	# get recent commits on a file
 	tail = log --patch --word-diff
-	# remote URL
-	wget = "!git remote -v | head -1 | awk -p '{ print $2 }'"
+	# make dir and add `.gitkeep`
+	mkdir = "!sh -c 'mkdir $1; touch $1/.gitkeep' -"
+	man = help
+	cat = cat-file
 
 
-	# LOGGING
-
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -n64
-	lgs = "!git lg --stat"
-	new = "!git lg HEAD..FETCH_HEAD"
-	news = "!git lgs HEAD..FETCH_HEAD"
-	lawg = log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\"
-	lawg-new = "!sh -c 'git --no-pager log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\" origin/$(git pwd)..$(git pwd)' -"
-
-
-	# UTILITY
+	# UTILITIES
 
 	amend = commit --amend -C HEAD
-	sb = !ls .git/refs/remotes/*/$(git pwd) | cut -d/ -f4,5 | xargs git show-branch $(git pwd)
 	scrap = "!sh -c 'git reset --hard ${1-HEAD}' -"
-	track = update-index --no-assume-unchanged
+	# unstage file
 	unstage = reset HEAD --
+	# track file
+	track = update-index --no-assume-unchanged
+	# untrack file
 	untrack = update-index --assume-unchanged
+	# remote URL
+	url = "!git remote -v | head -1 | gawk '{ print $2 }'"
+	# show current branch commits
+	sb = !ls .git/refs/remotes/*/$(git pwd) | cut -d/ -f4,5 | xargs git show-branch $(git pwd)
+	# delete local branches that are already merged into HEAD
+	clip = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
 
-	# DIFFS
+	# DIFFING
 
 	df = diff --word-diff
 	staged = diff --staged --word-diff
 
 
-	# STASH
+	# SEARCHING
+
+	ag = grep -I --ignore-case --line-number --heading --break
+
+
+	# STASHING
 
 	sl = stash list
 	ss = stash save
 	sa = "!sh -c 'git stash apply stash@{$1}' -"
 	sp = "!sh -c 'git stash pop stash@{$1}' -"
 	sd = "!sh -c 'git stash drop stash@{$1}' -"
-[remote "origin"]
-	#fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
-[grep]
-	extendRegexp = true
-	lineNumber = true
-[push]
-	default = simple
+
+
+	# LOGGING
+
+	lg = log --graph --abbrev-commit --date=relative -n64 --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	lgs = "!git lg --stat"
+	new = "!git lg HEAD..FETCH_HEAD"
+	news = "!git lgs HEAD..FETCH_HEAD"
+	report = log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\"
+	report-new = "!sh -c 'git --no-pager log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\" origin/$(git pwd)..$(git pwd)' -"
