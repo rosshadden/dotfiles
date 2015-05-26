@@ -706,12 +706,13 @@
 	# chrome
 	assign [class="^Google-chrome" window_role="browser"] → $ws1
 
-	# music
-	assign [class="(nuvolaplayer|Spotify)"] → $ws6
-
 	# chat
 	assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $ws10
 	assign [title="^finch$"] → $ws10
+
+	# media
+	assign [class="(nuvolaplayer|Spotify|Popcorntime)"] → $ws6
+	for_window [class="vlc"] border none
 
 
 ################

@@ -1,14 +1,16 @@
 - meta
+	- trim down as much fat as possible, such as things I don't use anymore
+	- look into [these dotfiles](https://github.com/xero/dotfiles) for sexiness
 	- README
 		- list dependencies and other relevant installed packages
 		- screenshots
-	- trim down as much fat as possible, such as things I don't use anymore
-	- look into [these dotfiles](https://github.com/xero/dotfiles)
 - build
 	- return to a non-grunt workflow (or at least a fallback)
 		- maybe a `Makefile`
-		- use [stow](http://www.gnu.org/software/stow/) for symlink management
-		- fallback to symlinks
+		- maybe use [stow](http://www.gnu.org/software/stow/) for symlink management
+			- probably not, since it's another dependency
+			- if so, fallback to symlinks
+	- clone `tpm` (tmux plugin manager) and other dependencies
 	- ~~set up a grunt workflow~~
 		- `install` - installs things, makes links, etc.
 			- migrate current install script
@@ -20,50 +22,54 @@
 		- `reinstall`
 		- `update` - cleans up old stuff and does the new
 		- `remove`/`uninstall`/`cleanup`
-	- clone `tpm` (tmux plugin manager) and other dependencies
 - apps
 	- vim
-		- [use snippets](https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db)
-		- customize airline colors so that visual mode isn't terrible. Maybe a vibrant green?
 		- make "put in <motion>" function or plugin
 			- definitely call it "Put in motion"
+		- organize modules such that there's no separation between (most) plugins and user modules
+			- `vim-windowswap` in `window`
+			- `vim-fugitive` and `vim-gitgutter` in `git`
+		- [use snippets](https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db)
+			- or make my own, like I did for sublime
 		- make a <localleader> bind to open the session of the current project
+		- modes
+			- ember
+			- vifm
+				- https://github.com/vifm/vifm/issues/60 and https://github.com/vifm/vifm/issues/79
+			- unite
+				- better previews
+					- possibly a dynamic vertical/horizontal choice
+				- make a mapping or mode for finding files not in the repo
+				- abstract making 4-8 mappings per concept
+				- vim-session integration
+		- Raws, Private Investigator
+			- figure out why reloading vimrc makes exiting insert mode laggy
+			- figure out why `[s` lags
+		- consider migrating to its own repo
 		- [figure out analytics](http://www.drbunsen.org/vim-croquet/)
 		- I _think_ this might be working now that I included `tmux-plugins/vim-tmux-focus-events`
 			- ~~figure out a way to reload/update buffers automatically~~
 				- ~~changed files~~
 				- ~~deleted files~~
 				- ~~moved files~~
-		- modes
-			- ember
-			- vifm
-				- https://github.com/vifm/vifm/issues/60 and https://github.com/vifm/vifm/issues/79
-			- unite
-				- make a mapping or mode for finding files not in the repo
-				- abstract making 4-8 mappings per concept
-				- better previews
-					- possibly a dynamic vertical/horizontal choice
-				- vim-session integration
-		- consider migrating to its own repo
-		- organize modules such that there's no separation between (most) plugins and user modules
-			- `vim-windowswap` in `window`
-			- `vim-fugitive` and `vim-gitgutter` in `git`
-		- Raws, Private Investigator
-			- figure out why reloading vimrc makes exiting insert mode laggy
-			- figure out why `[s` lags
 	- i3
-		- make `alt+tab` functionality
+		- locally override settings (namely font size)
+		- get current tag
+			- open tmux session for current tag
 		- break out modes into separate files
 			- add a generated help notification for each mode, on `?`
 		- add clipboard management
-		- get current tag
-			- open tmux session for current tag
 		- universalize the media/resize/move increments and whatnot
 			- make sure there are mappings for both big and small increments
-		- locally override settings (namely font size)
 		- integrate `tmux-project`
-		- dynmaic font size
+		- make `alt+tab` functionality
+			- supposedly this is not possible
 	- tmux
+		- figure out the "pane is dead" thing
+		- figure out why vim has weird issues when attaching a certain way
+			- colors vs. pane navigation
+		- improve projects
+			- make a "kill" or "clean" project, which kills tmux sessions
 		- explore `command-prompt` possibilities
 		- explore `choose-*` possibilities
 			- `choose-client`
@@ -71,11 +77,6 @@
 				- list of sessions to link to (linked windows/layouts but not focus)
 			- `choose-tree`
 			- `choose-window`
-		- load projects
-		- figure out why vim has weird issues when attaching a certain way
-			- colors one way
-			- pane navigation the other
-		- figure out the "pane is dead" thing
 	- tig
 		- spend time making it even more useful
 	- copyq
@@ -100,31 +101,34 @@
 				- per file
 				- all
 			- checkout tags
+				- the main checkout bind should probably just support tags too
 - shell
-	- change the color of the zsh prompt or something, to make it more obvious
-		- when in command mode vs. insert mode
-		- when logged in as "root"
-		- when on remote computers
-	- either remove the switching between block and beam cursors, or improve it
-	- make sure bash works, even though I haven't used it in years
+	- modularize `.zshrc`
+		- make semantic modules instead of a file for aliases and a file for functions
 	- revisit aliases
 		- like `h`
 		- introduce `ls -1`
-	- modularize `.zshrc`
-		- make semantic modules instead of a file for aliases and a file for functions
 	- use `local` variables
+		- like why the hell don't they work like the Internet says they should?
 	- (yank to clipboard)[http://unix.stackexchange.com/questions/25765/pasting-from-clipboard-to-vi-enabled-zsh-or-bash-shell]
+	- make cursor changes update when focus changes (between tmux panes with vim and zsh)
+	- make sure bash works, even though I haven't used it in years
 - X
-	- fixmon
-		- make the fixmon scripts I have check monitors, so it works no matter which environment
 	- modularize `.Xresources`
 	- look into existing `.Xresources` themes
 		- http://www.noobslab.com/
+- system
+	- only run `xcape` over `CapsLock`, not `Control_L`
+		- for some reason this doesn't work as expected, though I'm not sure why
+	- monitors
+		- handle hot-plugging monitors
+		- make monitors not enter standby when WE'RE WATCHING A SHOW, FOR CRYING OUT LOUD
 - Owmni / Awmni
 	- client-agnostic back-end, which should work with X and terminals alike
 	- clients
 		- rofi
-		- pick / selecta
+		- selecta
+		- pick
 		- dmenu
 	- plugins
 		- git
@@ -147,12 +151,5 @@
 			- send a message
 		- email (mutt?)
 		- grunt
-- system
-	- only run `xcape` over `CapsLock`, not `Control_L`
-		- for some reason this doesn't work as expected, though I'm not sure why
-	- monitors
-		- make monitors not enter standby when WE'RE WATCHING A SHOW, FOR CRYING OUT LOUD
-		- make ziptop monitors work on boot
-		- handle hot-plugging monitors
 - misc
 	- make tropes/mappings consistent across programs
