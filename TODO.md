@@ -66,9 +66,12 @@
 			- supposedly this is not possible
 	- tmux
 		- figure out the "pane is dead" thing
-		- figure out why vim has weird issues when attaching a certain way
-			- colors vs. pane navigation
 		- improve projects
+			- figure out why vim has weird issues when attaching a certain way
+				- colors vs. pane navigation
+				- try out an existing project loader, which may solve the above
+			- make `tmux-project` support joining a single session (with same windows)
+				- using [flags](http://www.bahmanm.com/blogs/command-line-options-how-to-parse-in-bash-using-getopt)
 			- make a "kill" or "clean" project, which kills tmux sessions
 		- explore `command-prompt` possibilities
 		- explore `choose-*` possibilities
@@ -102,6 +105,8 @@
 				- all
 			- checkout tags
 				- the main checkout bind should probably just support tags too
+	- spacefm
+		- plugins
 - shell
 	- modularize `.zshrc`
 		- make semantic modules instead of a file for aliases and a file for functions

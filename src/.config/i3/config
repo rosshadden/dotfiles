@@ -616,6 +616,7 @@
 
 	mode "PROJECTS" {
 		bindsym space exec i3-input -P 'Open project: ' -F 'exec ~/bin/tmux-project %s'; $return
+		bindsym Shift+space exec i3-input -P 'Open project: ' -F 'exec ~/bin/tmux-project %s'; $return
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
