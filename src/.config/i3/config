@@ -381,10 +381,6 @@
 		# exit i3 (logs you out of your X session)
 		bindsym q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"; $return
 
-		# lock screen
-		bindsym l exec $locker; $return
-		bindsym Shift+l exec $locker2; $return
-
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
 	}
@@ -422,6 +418,10 @@
 		bindsym p exec "poweroff"; $return
 		bindsym s exec "systemctl suspend"; $return
 		bindsym h exec "systemctl hybernate"; $return
+
+		# lock screen
+		bindsym l exec $locker; $return
+		bindsym Shift+l exec $locker2; $return
 
 		bindsym k exec xbacklight -inc 20; $return
 		bindsym j exec xbacklight -dec 20; $return
