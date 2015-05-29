@@ -24,6 +24,7 @@ See the [TODO](TODO.md) for things I have in mind.
 	- `fpp`
 - `pidgin`
 	- `gtk-theme-flatstudio`
+	- `python-dbus`
 - `tig`
 - `selecta`
 - `pick`
