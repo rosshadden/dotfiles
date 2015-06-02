@@ -31,4 +31,7 @@ augroup javascript
 	autocmd FileType javascript
 		\ map <localleader>v :execute PrintVersion('i')<cr> |
 		\ map <localleader>V :execute PrintVersion('a')<cr>
+
+	" React
+	autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx | normal coL
 augroup END

@@ -237,11 +237,12 @@
 		bindsym i mode "I3"
 		bindsym l mode "LAYOUT"
 		bindsym m mode "MEDIA"
+		bindsym Shift+m mode "MOUSE"
 		bindsym p mode "PROJECTS"
 		bindsym r mode "RESIZE"
+		bindsym Shift+r mode "MOVE"
 		bindsym s mode "SYSTEM"
 		bindsym t mode "TMUX"
-		bindsym Shift+m mode "MOUSE"
 
 		bindsym Shift+p mode "PIDGIN"
 
@@ -477,6 +478,38 @@
 	}
 
 
+	mode "MOVE" {
+		# small
+		bindsym $alt+h move left 1 px
+		bindsym $alt+j move down 1 px
+		bindsym $alt+k move up 1 px
+		bindsym $alt+l move right 1 px
+		# medium
+		bindsym h move left 4 px
+		bindsym j move down 4 px
+		bindsym k move up 4 px
+		bindsym l move right 4 px
+		# large
+		bindsym Shift+h move left 16 px
+		bindsym Shift+j move down 16 px
+		bindsym Shift+k move up 16 px
+		bindsym Shift+l move right 16 px
+		# bigger
+		bindsym Control+h move left 32 px
+		bindsym Control+j move down 32 px
+		bindsym Control+k move up 32 px
+		bindsym Control+l move right 32 px
+		# extreme
+		bindsym Control+Shift+h move left 64 px
+		bindsym Control+Shift+j move down 64 px
+		bindsym Control+Shift+k move up 64 px
+		bindsym Control+Shift+l move right 64 px
+
+		bindsym $super+space mode "PREFIX"
+		bindsym Escape $return
+	}
+
+
 	mode "LAYOUT" {
 		bindsym grave layout default; $return
 		bindsym 1 layout tabbed; $return
@@ -629,6 +662,7 @@
 		bindsym y exec copyq toggle; $return
 
 		# calculator
+		# TODO: move to scratchpad
 		bindsym c exec qalculate-gtk; $return
 
 		# zeal

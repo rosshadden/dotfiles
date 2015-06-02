@@ -65,8 +65,8 @@
 		- make `alt+tab` functionality
 			- supposedly this is not possible
 	- tmux
-		- figure out the "pane is dead" thing
 		- improve projects
+			- figure out the "pane is dead" thing
 			- figure out why vim has weird issues when attaching a certain way
 				- colors vs. pane navigation
 				- try out an existing project loader, which may solve the above

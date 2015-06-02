@@ -94,6 +94,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" js
 		NeoBundleLazy 'jelera/vim-javascript-syntax', { 'autoload': { 'filetypes': 'javascript' } }
 		" NeoBundleLazy 'pangloss/vim-javascript', { 'autoload': { 'filetypes': 'javascript' } }
+		NeoBundleLazy 'mxw/vim-jsx', { 'autoload': { 'filetypes': 'javascript.jsx' } }
 		" js AST
 		NeoBundleLazy 'marijnh/tern_for_vim', { 'autoload': { 'filetypes': 'javascript' } }
 		" json

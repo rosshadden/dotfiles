@@ -47,8 +47,7 @@ let searchalias a = 'amazon'
 
 " BLACKLIST
 
-" TODO: THIS DOES NOT WORK RIGHT
-" let blacklists = ["http://localhost/*"]
+let blacklists = ["https://play.google.com/music/*", "https://music.google.com/*"]
 
 
 """"""""""""""""
