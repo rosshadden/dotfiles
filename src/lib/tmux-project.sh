@@ -10,13 +10,13 @@ path=${path:-.}
 # TODO: possibly breakout.exe tmux pieces into a file and source it?
 
 # make detached session
-unset TMUX
-tmux new-session -d -s $project -c $path -n dev
+# unset TMUX
+# tmux new-session -d -s $project -c $path -n dev
+tmuxp load project.yaml
 
 # populate detached session from layout
 : '
 	- windows
-		- maybe even name them and turn off the auto-name
 	- panes
 '
 
@@ -26,30 +26,18 @@ tmux new-session -d -s $project -c $path -n dev
 		- PRO: this would handle arbitrary non-preallocated projects
 		- http://spin.atomicobject.com/2015/03/08/dev-project-workspace-tmux/
 		- https://wiki.archlinux.org/index.php/Tmux#Clients_simultaneously_interacting_with_various_windows_of_a_session
-	- [tmuxinator](https://github.com/tmuxinator/tmuxinator)
 	- [tmuxifier](https://github.com/jimeh/tmuxifier)
-	- [teamocil](https://github.com/remiprev/teamocil)
 	- [tmuxp](https://github.com/tony/tmuxp)
+	- ~~[tmuxinator](https://github.com/tmuxinator/tmuxinator)~~
+	- ~~[teamocil](https://github.com/remiprev/teamocil)~~
 '
 
 # configure session
+tmux rename-session -t project $project
 tmux set -t $project set-remain-on-exit on
 
-# open windows
-tmux new-window -d -t $project -c $path -n sync
-tmux new-window -d -t $project -c $path -n run
-
-# immunize
-# TODO: WHY??!?!?
-tmux send-keys -t $project:dev 'reload' ENTER
-tmux send-keys -t $project:sync 'reload' ENTER
-tmux send-keys -t $project:run 'reload' ENTER
-
-# run commands
-tmux send-keys -t $project:dev 'vim' ENTER
-tmux send-keys -t $project:sync 'tig' ENTER
-
 # open clients on workspaces (possibly specified per-project)
+# TODO: [make optional](http://www.bahmanm.com/blogs/command-line-options-how-to-parse-in-bash-using-getopt)
 : '
 	- project-dev
 	- project-sync
@@ -57,6 +45,8 @@ tmux send-keys -t $project:sync 'tig' ENTER
 	- project-files(?)
 	- project-run
 '
+
+exit 0
 
 tmux new-session -d -t $project -s $project-dev
 tmux select-window -t $project-dev:dev

@@ -90,7 +90,6 @@ plugins=(archlinux battery extract git-extras node npm python nyan vi-mode histo
 
 . $ZSH/oh-my-zsh.sh
 . $shellDir/plugins/vim.zsh
-. $shellDir/plugins/tmuxinator.zsh
 . $shellDir/plugins/opp.zsh/opp.zsh
 . $shellDir/plugins/opp.zsh/opp/*.zsh
 
@@ -103,6 +102,11 @@ source $DOTS/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # zsh-autosuggestions
 
 source $DOTS/plugins/zsh-autosuggestions/autosuggestions.zsh
+
+
+# tmuxp
+
+source tmuxp.zsh
 
 # expand
 bindkey '^f' vi-forward-blank-word
