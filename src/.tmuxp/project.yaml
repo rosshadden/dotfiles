@@ -5,14 +5,9 @@ windows:
     panes:
       - vim
   - window_name: sync
-    layout: main-vertical
     options:
-      main-pane-width: 170
     panes:
-      - shell_command:
-        - tig
-        focus: True
-      -
+      - tig
   - window_name: run
     panes:
       -

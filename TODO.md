@@ -98,6 +98,10 @@
 			- tmux
 			- vim
 	- tig
+		- get `pick` working
+		- make either `pick` or `selecta` support direct user input
+			- https://github.com/thoughtbot/pick/issues/58
+			- https://github.com/garybernhardt/selecta/issues/64
 		- mappings
 			- scrap
 			- stash / pop

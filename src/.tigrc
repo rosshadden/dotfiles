@@ -92,17 +92,17 @@ set show-notes			= yes		# When non-bool passed as `--show-notes=...` (diff)
 
 # Misc
 set refresh-mode		= periodic		# Enum: manual, auto, after-command, periodic
-set refresh-interval		= 10		# Interval in seconds between refreshes
+set refresh-interval	= 10		# Interval in seconds between refreshes
 set ignore-case			= no		# Ignore case when searching?
 set focus-child			= yes		# Move focus to child view when opened?
-set horizontal-scroll		= 50%		# Number of columns to scroll as % of width
-set split-view-height		= 67%		# Height of the bottom view for horizontal splits
+set horizontal-scroll	= 50%		# Number of columns to scroll as % of width
+set split-view-height	= 80%		# Height of the bottom view for horizontal splits
 set vertical-split		= auto		# Enum: horizontal, vertical, auto; Use auto to
 						# switch to horizontal split when width allows it
-set split-view-width		= 70%		# Width of right-most view for vertical splits
-set editor-line-number		= yes		# Automatically pass line number to editor? Used
-						# for opening file at specific line e.g. from a diff
-set mouse			= yes		# Enable mouse support?
+set split-view-width	= 80%		# Width of right-most view for vertical splits
+set editor-line-number	= yes		# Automatically pass line number to editor? Used
+									# for opening file at specific line e.g. from a diff
+set mouse				= yes		# Enable mouse support?
 set mouse-scroll		= 3		# Number of lines to scroll via the mouse
 
 # User-defined commands
@@ -274,11 +274,11 @@ bind generic <esc>o !git out
 bind generic <esc>s !git sync
 bind generic <esc>f !git fetch -p --tags
 
-# checkout local branch
-bind generic <esc>b !@sh -c "git checkout $(gg branches --select)"
+# checkout/create local branch
+bind generic <esc>c !@sh -c "git cd $(gg branches --select)"
 
-# checkout remote branch
-bind generic <esc>B !@sh -c "git checkout $(gg branches -r --select)"
+# checkout/create remote branch
+bind generic <esc>C !@sh -c "git cd $(gg branches -r --select)"
 
 # delete local branch
 bind generic <esc>d !@sh -c "git branch -d $(gg branches --select)"

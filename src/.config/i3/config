@@ -657,16 +657,19 @@
 
 
 	mode "APPS" {
-		# clipboard manager
+		# clipboard manager -- copyq
 		# TODO: move to scratchpad
 		bindsym y exec copyq toggle; $return
 
-		# calculator
+		# calculator -- Qalc
 		# TODO: move to scratchpad
 		bindsym c exec qalculate-gtk; $return
 
-		# zeal
-		bindsym --release z exec $(xdotool key --clearmodifiers "alt+super+shift+Z"); $return
+		# password manager -- KeePassX
+		bindsym k exec keepassx; $return
+
+		# documentation -- zeal
+		bindsym --release d exec $(xdotool key --clearmodifiers "alt+super+shift+Z"); $return
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return

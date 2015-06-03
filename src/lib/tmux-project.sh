@@ -12,7 +12,7 @@ path=${path:-.}
 # make detached session
 # unset TMUX
 # tmux new-session -d -s $project -c $path -n dev
-tmuxp load project.yaml
+tmuxp load -d project.yaml
 
 # populate detached session from layout
 : '
@@ -46,6 +46,7 @@ tmux set -t $project set-remain-on-exit on
 	- project-run
 '
 
+tmux attach-session -t $project
 exit 0
 
 tmux new-session -d -t $project -s $project-dev
