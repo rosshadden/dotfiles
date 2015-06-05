@@ -274,6 +274,8 @@ bind generic <esc>o !git out
 bind generic <esc>s !git sync
 bind generic <esc>f !git fetch -p --tags
 
+bind generic <esc>b !gg branches --select
+
 # checkout/create local branch
 bind generic <esc>c !@sh -c "git cd $(gg branches --select)"
 

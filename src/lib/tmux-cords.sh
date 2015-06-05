@@ -30,6 +30,7 @@ getSession() {
 
 case $namespace in
 
+	# sessions
 	session)
 		keys="Space n N c C d D r"
 
@@ -61,7 +62,8 @@ case $namespace in
 	;;
 
 
-	window)
+	# windows
+	tab)
 		keys="Space h l n p c C r"
 
 		if [ -z $action ]; then
@@ -76,8 +78,8 @@ case $namespace in
 				l) tmux next-window ;;
 
 				# new
-				n) tmux new-window -a ;;
-				p) tmux new-window -a; tmux swap-window -t -1 ;;
+				n) tmux new-window -a -c "#{pane_current_path}" ;;
+				p) tmux new-window -a -c "#{pane_current_path}"; tmux swap-window -t -1 ;;
 
 				# close
 				c) tmux confirm kill-window ;;
@@ -92,6 +94,7 @@ case $namespace in
 	;;
 
 
+	# panes
 	buffer)
 		keys="j k h l J K H L c C"
 
