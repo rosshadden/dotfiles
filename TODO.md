@@ -66,9 +66,8 @@
 			- supposedly this is not possible
 	- tmux
 		- improve projects
-			- figure out the "pane is dead" thing
 			- figure out why vim has weird issues when attaching a certain way
-				- colors vs. pane navigation
+				- colors vs titles (pane navigation)
 				- try out an existing project loader, which may solve the above
 			- make `tmux-project` support joining a single session (with same windows)
 				- using [flags](http://www.bahmanm.com/blogs/command-line-options-how-to-parse-in-bash-using-getopt)
