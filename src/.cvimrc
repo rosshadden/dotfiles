@@ -36,6 +36,7 @@ let hintcharacters = "aoeuidhtns"
 let barposition = "bottom"
 let highlight = "#00afff"
 let activehighlight = "#0087ff"
+set autohidecursor
 
 
 " SEARCHING
@@ -47,7 +48,7 @@ let searchalias a = 'amazon'
 
 " BLACKLIST
 
-let blacklists = ["https://play.google.com/music/*", "https://music.google.com/*"]
+let blacklists = []
 
 
 """"""""""""""""
@@ -58,6 +59,8 @@ map ; :
 
 map i goToInput
 map a goToInput
+
+unmap <Space>
 
 
 " SCROLLING
@@ -79,12 +82,9 @@ imap <A-p> previousTab
 map D closeTab
 map <Leader>c closeTab
 map u lastClosedTab
-map <Space>tn :tabnew<Space>
 
 map <Leader>r reloadTab
 map <Leader>R reloadTabUncached
-
-map <Space>b<Space> :buffer<Space>
 
 
 " INPUT
@@ -96,4 +96,3 @@ imap <C-o> editWithVim
 
 map <Leader><Leader>r :chrome://restart
 map <Leader><Leader>R :chrome://restart<CR>
-map <Space>v<Space> toggleCVim
