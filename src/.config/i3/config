@@ -278,20 +278,34 @@
 			bindsym bracketleft mark mark-11; $return
 			bindsym bracketright mark mark-12; $return
 
+			bindsym Shift+grave unmark mark-0; $return
+			bindsym Shift+1 unmark mark-1; $return
+			bindsym Shift+2 unmark mark-2; $return
+			bindsym Shift+3 unmark mark-3; $return
+			bindsym Shift+4 unmark mark-4; $return
+			bindsym Shift+5 unmark mark-5; $return
+			bindsym Shift+6 unmark mark-6; $return
+			bindsym Shift+7 unmark mark-7; $return
+			bindsym Shift+8 unmark mark-8; $return
+			bindsym Shift+9 unmark mark-9; $return
+			bindsym Shift+0 unmark mark-10; $return
+			bindsym Shift+bracketleft unmark mark-11; $return
+			bindsym Shift+bracketright unmark mark-12; $return
+
 		# by letter
 			bindsym a mark mark-a; $return
 			bindsym b mark mark-b; $return
-			bindsym c mark mark-c; $return
+			# bindsym c mark mark-c; $return
 			bindsym d mark mark-d; $return
-			bindsym e mark mark-e; $return
-			bindsym f mark mark-f; $return
+			# bindsym e mark mark-e; $return
+			# bindsym f mark mark-f; $return
 			bindsym g mark mark-g; $return
 			bindsym h mark mark-h; $return
 			bindsym i mark mark-i; $return
 			bindsym j mark mark-j; $return
 			bindsym k mark mark-k; $return
 			bindsym l mark mark-l; $return
-			bindsym m mark mark-m; $return
+			# bindsym m mark mark-m; $return
 			bindsym n mark mark-n; $return
 			bindsym o mark mark-o; $return
 			bindsym p mark mark-p; $return
@@ -300,11 +314,46 @@
 			bindsym s mark mark-s; $return
 			bindsym t mark mark-t; $return
 			bindsym u mark mark-u; $return
-			bindsym v mark mark-v; $return
-			bindsym w mark mark-w; $return
+			# bindsym v mark mark-v; $return
+			# bindsym w mark mark-w; $return
 			bindsym x mark mark-x; $return
 			bindsym y mark mark-y; $return
 			bindsym z mark mark-z; $return
+
+			bindsym Shift+a unmark mark-a; $return
+			bindsym Shift+b unmark mark-b; $return
+			# bindsym Shift+c unmark mark-c; $return
+			bindsym Shift+d unmark mark-d; $return
+			# bindsym Shift+e unmark mark-e; $return
+			# bindsym Shift+f unmark mark-f; $return
+			bindsym Shift+g unmark mark-g; $return
+			bindsym Shift+h unmark mark-h; $return
+			bindsym Shift+i unmark mark-i; $return
+			bindsym Shift+j unmark mark-j; $return
+			bindsym Shift+k unmark mark-k; $return
+			bindsym Shift+l unmark mark-l; $return
+			# bindsym Shift+m unmark mark-m; $return
+			bindsym Shift+n unmark mark-n; $return
+			bindsym Shift+o unmark mark-o; $return
+			bindsym Shift+p unmark mark-p; $return
+			bindsym Shift+q unmark mark-q; $return
+			bindsym Shift+r unmark mark-r; $return
+			bindsym Shift+s unmark mark-s; $return
+			bindsym Shift+t unmark mark-t; $return
+			bindsym Shift+u unmark mark-u; $return
+			# bindsym Shift+v unmark mark-v; $return
+			# bindsym Shift+w unmark mark-w; $return
+			bindsym Shift+x unmark mark-x; $return
+			bindsym Shift+y unmark mark-y; $return
+			bindsym Shift+z unmark mark-z; $return
+
+		# reserved
+			bindsym c exec notify-send "Reserved: chat"; $return
+			bindsym e exec notify-send "Reserved: editor"; $return
+			bindsym f exec notify-send "Reserved: files"; $return
+			bindsym m exec notify-send "Reserved: music"; $return
+			bindsym v exec notify-send "Reserved: video"; $return
+			bindsym w exec notify-send "Reserved: web"; $return
 
 		# exit
 			bindsym $super+space mode "PREFIX"
@@ -341,7 +390,7 @@
 			bindsym b [con_mark="mark-b"] focus; $return
 			# bindsym c [con_mark="mark-c"] focus; $return
 			bindsym d [con_mark="mark-d"] focus; $return
-			bindsym e [con_mark="mark-e"] focus; $return
+			# bindsym e [con_mark="mark-e"] focus; $return
 			# bindsym f [con_mark="mark-f"] focus; $return
 			bindsym g [con_mark="mark-g"] focus; $return
 			bindsym h [con_mark="mark-h"] focus; $return
@@ -349,7 +398,7 @@
 			bindsym j [con_mark="mark-j"] focus; $return
 			bindsym k [con_mark="mark-k"] focus; $return
 			bindsym l [con_mark="mark-l"] focus; $return
-			bindsym m [con_mark="mark-m"] focus; $return
+			# bindsym m [con_mark="mark-m"] focus; $return
 			bindsym n [con_mark="mark-n"] focus; $return
 			bindsym o [con_mark="mark-o"] focus; $return
 			bindsym p [con_mark="mark-p"] focus; $return
@@ -358,16 +407,25 @@
 			bindsym s [con_mark="mark-s"] focus; $return
 			bindsym t [con_mark="mark-t"] focus; $return
 			bindsym u [con_mark="mark-u"] focus; $return
-			bindsym v [con_mark="mark-v"] focus; $return
+			# bindsym v [con_mark="mark-v"] focus; $return
 			# bindsym w [con_mark="mark-w"] focus; $return
 			bindsym x [con_mark="mark-x"] focus; $return
 			bindsym y [con_mark="mark-y"] focus; $return
 			bindsym z [con_mark="mark-z"] focus; $return
 
 		# by app
-			bindsym c [class="(?i)terminal" title="finch"] focus; $return
-			bindsym f [class="(?i)terminal" title="vifm"] focus; $return
-			bindsym w [class="(?i)chrome"] focus; $return
+			# chat
+			bindsym c [title="(Buddy List|finch)"] focus; $return
+			# editor
+			bindsym e [class="URxvt" title="VIM"] focus; $return
+			# files
+			bindsym f [class="URxvt" title="vifm"] focus; $return
+			# music
+			bindsym m [title="(?i)music"] focus; $return
+			# video
+			bindsym v [class="vlc"] focus; $return
+			# web
+			bindsym w [class="Google-chrome"] focus; $return
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return

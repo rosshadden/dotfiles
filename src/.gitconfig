@@ -122,6 +122,7 @@
 	branches-merged = branch --merged
 	branches-unmerged = branch --no-merged
 	remotes = remote -v
+	submodules = "!git submodule status | gawk '{ print ($2 " " $3) }' | column -t"
 
 
 	# UNIX METAPHORS

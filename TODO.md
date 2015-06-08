@@ -45,6 +45,7 @@
 		- Raws, Private Investigator
 			- figure out why reloading vimrc makes exiting insert mode laggy
 			- figure out why `[s` lags
+		- sync sessions
 		- consider migrating to its own repo
 		- [figure out analytics](http://www.drbunsen.org/vim-croquet/)
 		- I _think_ this might be working now that I included `tmux-plugins/vim-tmux-focus-events`
@@ -110,6 +111,8 @@
 				- the main checkout bind should probably just support tags too
 	- spacefm
 		- plugins
+	- cvim
+		- vet using local script
 - shell
 	- modularize `.zshrc`
 		- make semantic modules instead of a file for aliases and a file for functions
