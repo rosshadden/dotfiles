@@ -4,6 +4,14 @@ set splitbelow
 set splitright
 
 
+function! CleanEmptyBuffers()
+	let buffers = filter(range(0, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val)<0')
+	if !empty(buffers)
+		exe 'bw '.join(buffers, ' ')
+	endif
+endfunction
+
+
 " prefix
 
 call MakePrefix('buffers', '[prefix]b')
@@ -50,3 +58,7 @@ nmap [buffers]c :bdelete<cr>
 nmap [buffers]C :bdelete!<cr>
 nmap [buffers:1]c :bufdo bdelete<cr>
 nmap [buffers:1]C :bufdo bdelete!<cr>
+
+
+" delete all empty buffers
+nmap [buffers]r :call CleanEmptyBuffers()<cr>

@@ -41,3 +41,6 @@ set whichwrap=b,s,<,>,[,]
 
 " ignore in searches
 set wildignore+=node_modules/**
+
+" prevent omnicomplete preview window
+set completeopt-=preview
