@@ -212,13 +212,34 @@
 	bindsym XF86AudioRaiseVolume exec "ponymix increase 5; $refreshI3Media"
 	bindsym XF86AudioLowerVolume exec "ponymix decrease 5; $refreshI3Media"
 	bindsym XF86AudioMute exec "ponymix toggle; $refreshI3Media"
+	bindsym XF86AudioMicMute exec "ponymix toggle; $refreshI3Media"
+
 	# playback
 	bindsym XF86AudioPlay exec "playerctl play-pause; $refreshI3Media"
 	bindsym XF86AudioNext exec "playerctl next; $refreshI3Media"
 	bindsym XF86AudioPrev exec "playerctl previous; $refreshI3Media"
 
+	# brightness
+	bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+	bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+
+	bindsym XF86Display exec ~/local/bin/mon
+
+	bindsym XF86Tools exec ~/local/bin/mon
+
+	bindsym XF86Search exec --no-startup-id google-chrome-unstable
+
+	# app launcher
+	bindsym XF86LaunchA exec --no-startup-id $chooseApp
+
+	# file explorer
+	bindsym XF86Explorer exec vifm
+
 	# touchscreen
 	bindsym XF86TouchpadToggle exec "~/lib/touchpad-toggle.sh"
+
+	# web browser
+	bindsym XF86HomePage exec --no-startup-id google-chrome-unstable
 
 	# screenshots
 	bindsym Print exec "~/bin/screenshot"
