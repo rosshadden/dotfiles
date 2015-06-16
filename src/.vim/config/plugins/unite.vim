@@ -191,6 +191,17 @@ call MakePrefix('unite', '[unite]u', 1)
 	vmap [unite:0]k :<c-u>execute ':Unite               -buffer-name=changes change -input=' . GetVisualSelection()<cr>
 	vmap [unite:0]K :<c-u>execute ':UniteWithCursorWord -buffer-name=changes change -input=' . GetVisualSelection()<cr>
 
+	" jump list
+	call unite#custom#profile('jump', 'context', {
+		\ 'auto_preview': 1,
+		\ 'split': 0,
+		\ 'start_insert': 0,
+	\ })
+	nmap [unite:0]j :Unite               -buffer-name=jump jump<cr>
+	nmap [unite:0]J :UniteWithCursorWord -buffer-name=jump jump<cr>
+	vmap [unite:0]j :<c-u>execute ':Unite               -buffer-name=jump jump -input=' . GetVisualSelection()<cr>
+	vmap [unite:0]J :<c-u>execute ':UniteWithCursorWord -buffer-name=jump jump -input=' . GetVisualSelection()<cr>
+
 	" spelling
 	call unite#custom#profile('spelling', 'context', {
 		\ 'auto_preview': 1,

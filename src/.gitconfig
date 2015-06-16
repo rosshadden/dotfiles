@@ -118,7 +118,7 @@
 
 	# PLURALITY
 
-	tags = tag -l
+	tags = "!git tag -l | sort -V"
 	branches = branch -r
 	branches-merged = branch --merged
 	branches-unmerged = branch --no-merged

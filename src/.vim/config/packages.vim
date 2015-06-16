@@ -63,7 +63,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" snippets
 		NeoBundle 'Shougo/neosnippet.vim'
 		NeoBundle 'Shougo/neosnippet-snippets'
-		" NeoBundle 'honza/vim-snippets'
 		" delimiter closing
 		NeoBundle 'Raimondi/delimitMate'
 
@@ -91,12 +90,14 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	" languages
 		" autoformat support for multiple
 		NeoBundle 'Chiel92/vim-autoformat'
+
 		" js
-		NeoBundleLazy 'jelera/vim-javascript-syntax', { 'autoload': { 'filetypes': 'javascript' } }
-		" NeoBundleLazy 'pangloss/vim-javascript', { 'autoload': { 'filetypes': 'javascript' } }
-		NeoBundleLazy 'mxw/vim-jsx', { 'autoload': { 'filetypes': 'javascript.jsx' } }
-		" js AST
+		NeoBundleLazy 'othree/yajs.vim', { 'autoload': { 'filetypes': 'javascript' } }
+		NeoBundleLazy 'othree/javascript-libraries-syntax.vim', { 'autoload': { 'filetypes': 'javascript' } }
+		" folding
+		" AST
 		NeoBundleLazy 'marijnh/tern_for_vim', { 'autoload': { 'filetypes': 'javascript' } }
+
 		" json
 		NeoBundleLazy 'elzr/vim-json', { 'autoload': { 'filetypes': 'json' } }
 		" hbs

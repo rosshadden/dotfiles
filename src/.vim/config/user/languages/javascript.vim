@@ -1,3 +1,7 @@
+" set libraries for othree/javascript-libraries-syntax
+let g:used_javascript_libs = 'jquery,underscore'
+
+
 " print project version from `package.json` before/after cursor
 function! PrintVersion(direction)
 	let l:root = ProjectRootGuess()
@@ -25,7 +29,7 @@ augroup javascript
 
 	" insert section comment
 	autocmd FileType javascript
-		\ nmap <localleader>cs o////////////////<esc>yypO// <esc>
+		\ nmap <localleader>cs o<esc>16i/<esc>yypO// <esc>
 
 	" print version
 	autocmd FileType javascript
