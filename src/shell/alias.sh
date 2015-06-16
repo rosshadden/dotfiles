@@ -77,6 +77,9 @@ alias asdf='keys dvorak'
 alias j='fasd_cd -d'
 alias jj='fasd_cd -d -i'
 
+# get public ip
+alias wimi='curl ipecho.net/plain; echo'
+
 
 ################
 # SUFFIX

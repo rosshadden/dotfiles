@@ -831,6 +831,9 @@
 	assign [class="(nuvolaplayer|Spotify|Popcorntime)"] → $ws6
 	for_window [class="vlc"] border none
 
+	# games
+	for_window [title="Dota 2"] border none
+
 
 ################
 # STARTUP
