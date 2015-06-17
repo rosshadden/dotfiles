@@ -18,7 +18,7 @@ call unite#custom#profile('default', 'context', {
 	\ 'winheight': 20,
 	\ 'start_insert': 1,
 	\ 'auto_preview': 0,
-	\ 'vertical_preview': 1,
+	\ 'vertical_preview': 0,
 \ })
 
 

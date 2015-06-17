@@ -1,4 +1,5 @@
 # Settings
+# TODO: reorganize to group by mode, like stash
 # --------
 # Most of these settings can be toggleable, either via the toggle-*
 # actions or via the option menu (bound to `o` by default).
@@ -142,7 +143,9 @@ set mouse-scroll		= 3		# Number of lines to scroll via the mouse
 
 bind main	C	?git cherry-pick %(commit)
 bind status	C	!git commit
+bind stash	A	?git stash apply %(stash)
 bind stash	P	?git stash pop %(stash)
+bind stash	S	?git stash save
 bind stash	!	?git stash drop %(stash)
 bind refs	C	?git checkout %(branch)
 bind refs	!	?git branch -D %(branch)
@@ -151,20 +154,19 @@ bind refs	!	?git branch -D %(branch)
 # ---------------
 
 # View switching
-bind generic	m	view-main
-bind generic	d	view-diff
-bind generic	l	view-log
-bind generic	t	view-tree
-bind generic	f	view-blob
-bind generic	b	view-blame
-bind generic	R	view-refs
-bind generic	p	view-pager
-bind generic	h	view-help
-bind generic	s	view-status
-bind generic	S	view-status		# Compat binding to avoid going crazy!
-bind generic	c	view-stage
-bind generic	y	view-stash
-bind generic	g	view-grep
+bind generic R view-refs
+bind generic b view-blame
+bind generic c view-stage
+bind generic d view-diff
+bind generic f view-blob
+bind generic g view-grep
+bind generic h view-help
+bind generic l view-log
+bind generic m view-main
+bind generic p view-pager
+bind generic s view-status
+bind generic t view-tree
+bind generic y view-stash
 
 # View manipulation
 bind generic	<Enter>	enter			# Enter and open selected entry
