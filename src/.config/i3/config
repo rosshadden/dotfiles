@@ -13,7 +13,7 @@
 	set $5 files
 	set $6 media
 	set $7 games
-	set $8 8
+	set $8 literature
 	set $9 run
 	set $10 chat
 	set $11 11
@@ -27,7 +27,7 @@
 	set $ws5 5| files
 	set $ws6 6| media
 	set $ws7 7| games
-	set $ws8 8|
+	set $ws8 8| literature
 	set $ws9 9| run
 	set $ws10 10| chat
 	set $ws11 11|
@@ -223,9 +223,9 @@
 	bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 	bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
-	bindsym XF86Display exec ~/local/bin/mon
+	# bindsym XF86Display exec ~/local/bin/mon
 
-	bindsym XF86Tools exec ~/local/bin/mon
+	# bindsym XF86Tools exec ~/local/bin/mon
 
 	bindsym XF86Search exec --no-startup-id google-chrome-unstable
 
