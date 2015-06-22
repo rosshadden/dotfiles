@@ -82,6 +82,7 @@
 			- `choose-window`
 	- tig
 		- spend time making it even more useful
+		- investigate [wiki binds](https://github.com/jonas/tig/wiki/Bindings)
 	- copyq
 		- integrate into workflow
 		- get more use out of tabs
