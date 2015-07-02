@@ -100,6 +100,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 		" json
 		NeoBundleLazy 'elzr/vim-json', { 'autoload': { 'filetypes': 'json' } }
+		" html5
+		NeoBundleLazy 'othree/html5.vim', { 'autoload': { 'filetypes': 'html' } }
 		" hbs
 		NeoBundle 'mustache/vim-mustache-handlebars'
 		" jsdoc

@@ -4,33 +4,40 @@
 # UTILITIES
 ################
 
-	# pulseaudio
-	pulseaudio --start &
+# pulseaudio
+pulseaudio --start &
 
-	# composite manager
-	xcompmgr -cF &
+# composite manager
+xcompmgr -cF &
 
 
 ################
 # CONFIG
 ################
 
-	# keyboard
-	~/bin/keys init
+# keyboard
+~/bin/keys init
 
 
 ################
 # APPS
 ################
 
-	# Dropbox
-	dropbox-cli start
+# Dropbox
+dropbox-cli start
 
-	# CopyQ
-	copyq &
+# CopyQ
+copyq &
 
-	# Zeal
-	zeal &
+# Zeal
+zeal &
 
-	# cvim external editor
-	~/lib/cvim-server.py &
+# cvim external editor
+~/lib/cvim-server.py &
+
+
+################
+# APPS
+################
+
+mkdir /tmp/aoeu
