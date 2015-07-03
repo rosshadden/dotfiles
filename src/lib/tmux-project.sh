@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 
 # @depends `fasd`
+# @depends `fasd_cd`
 
 project=${1:-$(basename $PWD)}
 path=${2:-$(fasd -d $project)}
 path=${path:-.}
+
+
+# start in target dir
+cd $path
 
 
 # TODO: possibly breakout.exe tmux pieces into a file and source it?

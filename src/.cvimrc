@@ -1,10 +1,18 @@
 " config file for https://github.com/1995eaton/chromium-vim
 
 """"""""""""""""
+" META
+""""""""""""""""
+
+set localconfig
+let configpath = '/home/ross/.cvimrc'
+
+
+""""""""""""""""
 " SETTINGS
 """"""""""""""""
 
-let mapleader = ","
+let mapleader = ','
 
 set cncpcompletion
 
@@ -17,6 +25,7 @@ set defaultnewtabpage
 " LINKS
 
 set linkanimations
+let hintcharacters = 'aoeuidhtns'
 
 
 " SCROLLING
@@ -25,23 +34,17 @@ set linkanimations
 " let scrollduration=10
 
 
-" META
-
-set autoupdategist
-let hintcharacters = "aoeuidhtns"
-
-
 " UI
 
-let barposition = "bottom"
-let highlight = "#00afff"
-let activehighlight = "#0087ff"
+let barposition = 'bottom'
+let highlight = '#00afff'
+let activehighlight = '#0087ff'
 set autohidecursor
 
 
 " SEARCHING
 
-let completionengines = ["google", "amazon"]
+let completionengines = ['google', 'amazon']
 let searchalias g = 'google'
 let searchalias a = 'amazon'
 
