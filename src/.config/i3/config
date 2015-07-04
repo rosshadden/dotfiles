@@ -826,6 +826,7 @@
 	# chat
 	assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $ws10
 	assign [title="^finch$"] → $ws10
+	assign [title="^plaidchat$"] → $ws10
 
 	# media
 	assign [class="(nuvolaplayer|Spotify|Popcorntime)"] → $ws6

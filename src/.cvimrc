@@ -25,7 +25,7 @@ set defaultnewtabpage
 " LINKS
 
 set linkanimations
-let hintcharacters = 'aoeuidhtns'
+let hintcharacters = 'aoeusnthidkbpg'
 
 
 " SCROLLING
