@@ -16,9 +16,9 @@ See the [TODO](TODO.md) for things I have in mind.
 
 ## Dependencies
 
-- `nodejs` (I'm going to remove this dependency)
-- `npm` (I'm going to remove this dependency)
-- `grunt-cli` (I'm going to remove this dependency)
+- `nodejs`*
+- `npm`*
+- `grunt-cli`*
 - `tmux`
 	- `urlview`
 	- `fpp`
@@ -26,5 +26,6 @@ See the [TODO](TODO.md) for things I have in mind.
 	- `gtk-theme-flatstudio`
 	- `python-dbus`
 - `tig`
-- `selecta`
 - `pick`
+
+> \*: I'm going to remove this dependency

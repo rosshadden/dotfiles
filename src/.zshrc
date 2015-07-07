@@ -96,12 +96,12 @@ plugins=(archlinux battery extract git-extras node npm python nyan vi-mode histo
 
 # zsh-syntax-highlighting
 
-source $DOTS/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $shellDir/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 # zsh-autosuggestions
 
-source $DOTS/plugins/zsh-autosuggestions/autosuggestions.zsh
+source $shellDir/plugins/zsh-autosuggestions/autosuggestions.zsh
 
 
 # tmuxp
