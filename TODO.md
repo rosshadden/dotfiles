@@ -94,6 +94,7 @@
 		- integrate into workflow
 		- figure out wtf keeps going wrong with the i3 shortcut, and fix it
 	- vifm
+		- add bind to essentially run `fasd`
 		- revisit binds
 		- add specific configs, launched with `-c "source /path/to/config"`
 			- tmux
