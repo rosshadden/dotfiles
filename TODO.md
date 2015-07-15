@@ -66,6 +66,7 @@
 		- break out modes into separate files
 			- add a generated help notification for each mode, on `?`
 		- add clipboard management
+		- vet focusing new tags after moving windows to them
 		- universalize the media/resize/move increments and whatnot
 			- make sure there are mappings for both big and small increments
 		- integrate `tmux-project`

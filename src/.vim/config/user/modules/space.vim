@@ -8,6 +8,7 @@ let &showbreak = "... "
 " prefix
 call MakePrefix('space', '[prefix]s')
 
+" up, down, left, right
 noremap [space]h i<space><esc>l
 noremap [space]l a<space><esc>h
 " TODO: figure out native maps, instead of relying on vim-unimpaired
@@ -18,6 +19,3 @@ map [space]k [<space>
 map [space]s [space]h[space]l
 " vertical
 map [space]v [space]j[space]k
-
-" delete proceeding whitespace
-imap <s-bs> <esc>d?\S?e1<cr>i

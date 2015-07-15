@@ -6,7 +6,11 @@ alias l='ls -lah'
 alias du='du -h'
 
 # get full path of file or dir
-alias path="readlink -f"
+alias path='readlink -f'
+
+# echo previous command
+# because I keep typing `k` on accident when forgetting I'm in copy-mode
+alias k='fc -ln -1'
 
 
 ################
