@@ -54,6 +54,12 @@
 				- ~~deleted files~~
 				- ~~moved files~~
 	- i3
+		- blocks
+			- disks
+				- combine all disks into one
+				- show all mounted disks (parse `lsblk`)
+				- scroll to cycle
+				- maintains state
 		- locally override settings (namely font size)
 		- get current tag
 			- open tmux session for current tag
