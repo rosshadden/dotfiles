@@ -147,6 +147,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" file tree for people that like file trees
 		NeoBundle 'scrooloose/nerdtree'
 		NeoBundle 'jistr/vim-nerdtree-tabs'
+		NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 		" settings toggles and symmetrical before/after mappings
 		NeoBundle 'tpope/vim-unimpaired'
 		" visualized undo tree
