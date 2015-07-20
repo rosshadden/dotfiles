@@ -27,7 +27,6 @@ function resetXcape {
 # load keyboard mappings
 function loadMap {
 	[[ -f $DOTS/src/.Xmodmap ]] && xmodmap $DOTS/src/.Xmodmap
-	# [[ -f $DOTS/src/.Xkeymap ]] && xkbcomp $DOTS/src/.Xkeymap $DISPLAY
 	return 0
 }
 

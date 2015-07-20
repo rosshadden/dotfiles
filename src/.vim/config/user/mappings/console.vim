@@ -9,3 +9,5 @@ command! CWD lcd %:p:h
 
 " diff unsaved changes
 command! DiffChanges vert new | set bt=nofile | r ++edit # | 0d_ | diffthis | wincmd p | diffthis
+
+command! FixSettings call FixSettings()

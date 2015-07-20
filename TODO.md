@@ -24,14 +24,17 @@
 		- `remove`/`uninstall`/`cleanup`
 - apps
 	- vim
-		- make "put in <motion>" function or plugin
-			- definitely call it "Put in motion"
 		- organize modules such that there's no separation between (most) plugins and user modules
 			- `vim-windowswap` in `window`
 			- `vim-fugitive` and `vim-gitgutter` in `git`
+		- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
 		- [use snippets](https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db)
 			- or make my own, like I did for sublime
 		- make a <localleader> bind to open the session of the current project
+		- plugins
+			- make "put in <motion>" function or plugin
+				- definitely call it "Put in motion"
+			- [fix easymotion](https://github.com/easymotion/vim-easymotion/issues/228)
 		- modes
 			- ember
 			- vifm
@@ -47,12 +50,7 @@
 			- figure out why `[s` lags
 		- sync sessions
 		- consider migrating to its own repo
-		- [figure out analytics](http://www.drbunsen.org/vim-croquet/)
-		- I _think_ this might be working now that I included `tmux-plugins/vim-tmux-focus-events`
-			- ~~figure out a way to reload/update buffers automatically~~
-				- ~~changed files~~
-				- ~~deleted files~~
-				- ~~moved files~~
+		- [look into analytics](http://www.drbunsen.org/vim-croquet/)
 	- i3
 		- blocks
 			- disks
@@ -91,6 +89,7 @@
 		- spend time making it even more useful
 		- investigate [wiki binds](https://github.com/jonas/tig/wiki/Bindings)
 	- copyq
+		- fix
 		- integrate into workflow
 		- get more use out of tabs
 			- make yanking in vim store items in &vim
@@ -123,18 +122,22 @@
 	- cvim
 		- vet using local script
 - shell
-	- modularize `.zshrc`
-		- make semantic modules instead of a file for aliases and a file for functions
+	- refactor `.zshrc`
+		- modularize
+			- make semantic modules instead of a file for aliases and a file for functions (for example)
+		- look into [built-in functions](https://github.com/zsh-users/zsh/tree/master/Functions/Zle)
+		- look into [better status indicator](http://ivyl.0xcafe.eu/2013/02/03/refining-zsh/#vi_mode_status_indicator)
 	- revisit aliases
-		- like `h`
+		- like `h` and co.
 		- introduce `ls -1`
 	- use `local` variables
 		- like why the hell don't they work like the Internet says they should?
-	- (yank to clipboard)[http://unix.stackexchange.com/questions/25765/pasting-from-clipboard-to-vi-enabled-zsh-or-bash-shell]
+	- [yank to clipboard](http://unix.stackexchange.com/questions/25765/pasting-from-clipboard-to-vi-enabled-zsh-or-bash-shell)
 	- make cursor changes update when focus changes (between tmux panes with vim and zsh)
 	- make sure bash works, even though I haven't used it in years
 - X
 	- modularize `.Xresources`
+	- use something better than `grp:shifts_toggle` in `keys`
 	- look into existing `.Xresources` themes
 		- http://www.noobslab.com/
 - system

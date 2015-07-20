@@ -83,29 +83,24 @@ BASE16_SHELL="$BASE16_DIR/base16-$THEME.$BASE16_VARIANT.sh"
 
 
 ################
+# FEATURES
+################
+
+. $shellDir/features.zsh
+
+
+################
 # PLUGINS
 ################
 
-plugins=(archlinux battery extract git-extras node npm python nyan vi-mode history-substring-search systemd zsh-syntax-highlighting fasd)
+plugins=(archlinux battery extract git-extras node npm python nyan history-substring-search systemd fasd)
 
 . $ZSH/oh-my-zsh.sh
 . $shellDir/plugins/vim.zsh
-. $shellDir/plugins/opp.zsh/opp.zsh
-. $shellDir/plugins/opp.zsh/opp/*.zsh
-
-
-# zsh-syntax-highlighting
-
-source $shellDir/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-
-# zsh-autosuggestions
-
-source $shellDir/plugins/zsh-autosuggestions/autosuggestions.zsh
-
+# . $shellDir/plugins/opp.zsh/opp.zsh
+# . $shellDir/plugins/opp.zsh/opp/*.zsh
 
 # tmuxp
-
 source tmuxp.zsh
 
 # expand
@@ -162,12 +157,6 @@ bindkey '^T' autosuggest-toggle
 		zle -N zle-line-finish
 	fi
 
-# enhanced <m-.> and <m-m> argument completion
-# http://chneukirchen.org/blog/archive/2013/03/10-fresh-zsh-tricks-you-may-not-know.html
-autoload -Uz copy-earlier-word
-zle -N copy-earlier-word
-bindkey "^[m" copy-earlier-word
-
 # vi-mode
 	KEYTIMEOUT=1
 
@@ -196,11 +185,6 @@ zle -N _history-incremental-preserving-pattern-search-backward
 bindkey "^R" _history-incremental-preserving-pattern-search-backward
 bindkey -M isearch "^R" history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-pattern-search-forward
-
-# Fish-like syntax highlighting
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
-ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=red'
 
 # expand .[TAB] and ..[TAB]
 zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
