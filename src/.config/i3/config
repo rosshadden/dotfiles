@@ -109,6 +109,13 @@
 	# open launcher
 	bindsym $super+o exec --no-startup-id $chooseApp
 
+	# fix keys
+	# TODO: this does not work
+	bindsym $macro1 exec ~/bin/keys init
+
+	# fix monitors
+	bindsym $macro2 exec ~/local/lib/mon.sh
+
 	# lock screen
 	bindsym $macro5 exec $locker
 	bindsym Shift+$macro5 exec $locker2
@@ -209,10 +216,9 @@
 	set $refreshI3Media pkill -RTMIN+11 i3blocks
 
 	# volume
-	bindsym XF86AudioRaiseVolume exec "ponymix increase 5; $refreshI3Media"
-	bindsym XF86AudioLowerVolume exec "ponymix decrease 5; $refreshI3Media"
-	bindsym XF86AudioMute exec "ponymix toggle; $refreshI3Media"
-	bindsym XF86AudioMicMute exec "ponymix toggle; $refreshI3Media"
+	bindsym XF86AudioRaiseVolume exec "~/bin/config volume +5; $refreshI3Media"
+	bindsym XF86AudioLowerVolume exec "~/bin/config volume -5; $refreshI3Media"
+	bindsym XF86AudioMute exec "~/bin/config volume !; $refreshI3Media"
 
 	# playback
 	bindsym XF86AudioPlay exec "playerctl play-pause; $refreshI3Media"
@@ -220,12 +226,18 @@
 	bindsym XF86AudioPrev exec "playerctl previous; $refreshI3Media"
 
 	# brightness
-	bindsym XF86MonBrightnessUp exec xbacklight -inc 5
-	bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+	bindsym XF86MonBrightnessUp exec ~/bin/config brightness +5
+	bindsym XF86MonBrightnessDown exec ~/bin/config brightness -5
 
-	# bindsym XF86Display exec ~/local/bin/mon
+	# toggle touchpad
+	bindsym XF86AudioMicMute exec "~/bin/config touchpad !"
 
-	# bindsym XF86Tools exec ~/local/bin/mon
+	# fix monitors
+	bindsym XF86Display exec ~/local/bin/mon
+
+	# fix keys
+	# NOTE: this points to the same thing as $macro1
+	bindsym XF86Tools exec ~/bin/keys init
 
 	bindsym XF86Search exec --no-startup-id google-chrome-unstable
 
@@ -236,7 +248,7 @@
 	bindsym XF86Explorer exec vifm
 
 	# touchscreen
-	bindsym XF86TouchpadToggle exec "~/lib/touchpad-toggle.sh"
+	bindsym XF86TouchpadToggle exec "~/bin/config touchpad !"
 
 	# web browser
 	bindsym XF86HomePage exec --no-startup-id google-chrome-unstable
@@ -503,20 +515,20 @@
 		bindsym l exec $locker; $return
 		bindsym Shift+l exec $locker2; $return
 
-		bindsym k exec xbacklight -inc 20; $return
-		bindsym j exec xbacklight -dec 20; $return
-		bindsym Shift+k exec xbacklight -inc 20
-		bindsym Shift+j exec xbacklight -dec 20
+		bindsym k exec ~/bin/config brightness +20; $return
+		bindsym j exec ~/bin/config brightness -20; $return
+		bindsym Shift+k exec ~/bin/config brightness +20
+		bindsym Shift+j exec ~/bin/config brightness -20
 
-		bindsym Control+k exec xbacklight -inc 80; $return
-		bindsym Control+j exec xbacklight -dec 80; $return
-		bindsym Control+Shift+k exec xbacklight -inc 80
-		bindsym Control+Shift+j exec xbacklight -dec 80
+		bindsym Control+k exec ~/bin/config brightness +80; $return
+		bindsym Control+j exec ~/bin/config brightness -80; $return
+		bindsym Control+Shift+k exec ~/bin/config brightness +80
+		bindsym Control+Shift+j exec ~/bin/config brightness -80
 
-		bindsym $alt+k exec xbacklight -inc 5; $return
-		bindsym $alt+j exec xbacklight -dec 5; $return
-		bindsym $alt+Shift+k exec xbacklight -inc 5
-		bindsym $alt+Shift+j exec xbacklight -dec 5
+		bindsym $alt+k exec ~/bin/config brightness +5; $return
+		bindsym $alt+j exec ~/bin/config brightness -5; $return
+		bindsym $alt+Shift+k exec ~/bin/config brightness +5
+		bindsym $alt+Shift+j exec ~/bin/config brightness -5
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
@@ -672,8 +684,6 @@
 			bindsym Control+l exec $(xdotool mousemove_relative --  512    0)
 			bindsym Control+j exec $(xdotool mousemove_relative --    0  512)
 			bindsym Control+k exec $(xdotool mousemove_relative --    0 -512)
-			# top-left
-			bindsym $macro1 exec $(xdotool mousemove -- 0 0); $return
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
@@ -683,22 +693,22 @@
 	mode "MEDIA" {
 		# volume
 
-		bindsym m exec "ponymix toggle; $refreshI3Media"; $return
-		bindsym k exec "ponymix increase 5; $refreshI3Media"; $return
-		bindsym j exec "ponymix decrease 5; $refreshI3Media"; $return
-		bindsym Up exec "ponymix increase 10; $refreshI3Media"; $return
-		bindsym Down exec "ponymix decrease 10; $refreshI3Media"; $return
-		bindsym Control+k exec "ponymix increase 20; $refreshI3Media"; $return
-		bindsym Control+j exec "ponymix decrease 20; $refreshI3Media"; $return
+		bindsym m exec "~/bin/config volume !; $refreshI3Media"; $return
+		bindsym k exec "~/bin/config volume +5; $refreshI3Media"; $return
+		bindsym j exec "~/bin/config volume -5; $refreshI3Media"; $return
+		bindsym Up exec "~/bin/config volume +10; $refreshI3Media"; $return
+		bindsym Down exec "~/bin/config volume -10; $refreshI3Media"; $return
+		bindsym Control+k exec "~/bin/config volume +20; $refreshI3Media"; $return
+		bindsym Control+j exec "~/bin/config volume -20; $refreshI3Media"; $return
 
 
-		bindsym Shift+m exec "ponymix toggle; $refreshI3Media"
-		bindsym Shift+k exec "ponymix increase 5; $refreshI3Media"
-		bindsym Shift+j exec "ponymix decrease 5; $refreshI3Media"
-		bindsym Shift+Up exec "ponymix increase 10; $refreshI3Media"
-		bindsym Shift+Down exec "ponymix decrease 10; $refreshI3Media"
-		bindsym Control+Shift+k exec "ponymix increase 20; $refreshI3Media"
-		bindsym Control+Shift+j exec "ponymix decrease 20; $refreshI3Media"
+		bindsym Shift+m exec "~/bin/config volume !; $refreshI3Media"
+		bindsym Shift+k exec "~/bin/config volume +5; $refreshI3Media"
+		bindsym Shift+j exec "~/bin/config volume -5; $refreshI3Media"
+		bindsym Shift+Up exec "~/bin/config volume +10; $refreshI3Media"
+		bindsym Shift+Down exec "~/bin/config volume -10; $refreshI3Media"
+		bindsym Control+Shift+k exec "~/bin/config volume +20; $refreshI3Media"
+		bindsym Control+Shift+j exec "~/bin/config volume -20; $refreshI3Media"
 
 		# playback
 

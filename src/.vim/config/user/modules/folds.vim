@@ -3,7 +3,7 @@ set foldlevelstart=128
 set foldcolumn=0
 
 " prefix
-call MakePrefix('folds', '[prefix]f')
+call MakePrefix('folds', '[prefix]F')
 
 nmap [folds]` :set foldlevel=0<cr>
 nmap [folds]1 :set foldlevel=1<cr>

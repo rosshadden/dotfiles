@@ -16,6 +16,17 @@ map [copypasta]C "+C
 " paste without comments mucking everything up
 nnoremap cop :set invpaste<CR>
 
-" paste motion
+" put in <motion>
 " TODO: make a plugin or function that accepts any arbitrary motion
 map [prefix]piw "_ciw<c-r>0<esc>
+map [prefix]piW "_ciW<c-r>0<esc>
+map [prefix]pi' "_ci'<c-r>0<esc>
+map [prefix]pi" "_ci"<c-r>0<esc>
+map [prefix]pi( "_ci(<c-r>0<esc>
+map [prefix]pi) "_ci)<c-r>0<esc>
+map [prefix]pi{ "_ci{<c-r>0<esc>
+map [prefix]pi} "_ci}<c-r>0<esc>
+map [prefix]pi[ "_ci[<c-r>0<esc>
+map [prefix]pi] "_ci]<c-r>0<esc>
+map [prefix]pib "_cib<c-r>0<esc>
+map [prefix]pil "_cil<c-r>0<esc>

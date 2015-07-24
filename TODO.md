@@ -35,6 +35,8 @@
 			- make "put in <motion>" function or plugin
 				- definitely call it "Put in motion"
 			- [fix easymotion](https://github.com/easymotion/vim-easymotion/issues/228)
+			- remove redundant or unused plugins
+				- I have two commenting plugins, with overlapping but not identical features
 		- modes
 			- ember
 			- vifm
@@ -58,11 +60,14 @@
 				- show all mounted disks (parse `lsblk`)
 				- scroll to cycle
 				- maintains state
+		- modes
+			- settings
+				- toggle wifi, bluetooth
+			- break out modes into separate files
+				- add a generated help notification for each mode, on `?`
 		- locally override settings (namely font size)
 		- get current tag
 			- open tmux session for current tag
-		- break out modes into separate files
-			- add a generated help notification for each mode, on `?`
 		- add clipboard management
 		- vet focusing new tags after moving windows to them
 		- universalize the media/resize/move increments and whatnot
