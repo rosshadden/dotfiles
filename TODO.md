@@ -31,6 +31,8 @@
 		- [use snippets](https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db)
 			- or make my own, like I did for sublime
 		- make a <localleader> bind to open the session of the current project
+		- make a motion for "in/around array/object element"
+			- something that could delete not just a thing, but the preceding comma
 		- plugins
 			- make "put in <motion>" function or plugin
 				- definitely call it "Put in motion"
@@ -47,6 +49,8 @@
 				- make a mapping or mode for finding files not in the repo
 				- abstract making 4-8 mappings per concept
 				- vim-session integration
+			- vimfiler
+				- [add git status icons](https://github.com/Shougo/vimfiler.vim/issues/308)
 		- Raws, Private Investigator
 			- figure out why reloading vimrc makes exiting insert mode laggy
 			- figure out why `[s` lags
@@ -98,6 +102,8 @@
 			- https://github.com/thoughtbot/pick/issues/58
 			- https://github.com/garybernhardt/selecta/issues/64
 		- mappings
+			- make h/l go left/right
+				- bind the current h/l to something else
 			- scrap
 			- stash / pop
 				- per file

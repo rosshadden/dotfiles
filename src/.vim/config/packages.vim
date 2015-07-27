@@ -35,6 +35,10 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'othree/eregex.vim'
 		" readline-style insersion
 		NeoBundle 'tpope/vim-rsi'
+		" let <c-a>/<c-x> increment dates
+		NeoBundle 'tpope/vim-speeddating'
+		" let <c-a>/<c-x> toggle certain words
+		NeoBundle 'mjbrownie/swapit'
 
 	" navigation
 		NeoBundle 'Lokaltog/vim-easymotion'
@@ -96,7 +100,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'Chiel92/vim-autoformat'
 
 		" js
-		NeoBundleLazy 'othree/yajs.vim', { 'autoload': { 'filetypes': 'javascript' } }
+		NeoBundleLazy 'othree/yajs.vim', { 'rev': 'fold', 'autoload': { 'filetypes': 'javascript' } }
 		NeoBundleLazy 'othree/javascript-libraries-syntax.vim', { 'autoload': { 'filetypes': 'javascript' } }
 		" folding
 		" AST
