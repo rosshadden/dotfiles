@@ -66,6 +66,10 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" delimiter closing
 		NeoBundle 'Raimondi/delimitMate'
 
+	" file explorer
+		" file trees for people that like file trees
+		NeoBundle 'Shougo/vimfiler.vim'
+
 	" integration
 		" git
 		NeoBundle 'tpope/vim-fugitive'
@@ -127,6 +131,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'thinca/vim-unite-history'
 		NeoBundle 'Shougo/tabpagebuffer.vim'
 		NeoBundle 'kopischke/unite-spell-suggest'
+		NeoBundle 'Shougo/neossh.vim'
 
 	" scripting
 		NeoBundle 'dbakker/vim-projectroot'
@@ -144,10 +149,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" comment mappings
 		NeoBundle 'tpope/vim-commentary'
 		NeoBundle 'scrooloose/nerdcommenter'
-		" file tree for people that like file trees
-		NeoBundle 'scrooloose/nerdtree'
-		NeoBundle 'jistr/vim-nerdtree-tabs'
-		NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 		" settings toggles and symmetrical before/after mappings
 		NeoBundle 'tpope/vim-unimpaired'
 		" visualized undo tree

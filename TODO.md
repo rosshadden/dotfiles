@@ -23,7 +23,7 @@
 		- `update` - cleans up old stuff and does the new
 		- `remove`/`uninstall`/`cleanup`
 - apps
-	- vim
+	- `vim`
 		- organize modules such that there's no separation between (most) plugins and user modules
 			- `vim-windowswap` in `window`
 			- `vim-fugitive` and `vim-gitgutter` in `git`
@@ -53,7 +53,7 @@
 		- sync sessions
 		- consider migrating to its own repo
 		- [look into analytics](http://www.drbunsen.org/vim-croquet/)
-	- i3
+	- `i3`
 		- blocks
 			- disks
 				- combine all disks into one
@@ -75,7 +75,7 @@
 		- integrate `tmux-project`
 		- make `alt+tab` functionality
 			- supposedly this is not possible
-	- tmux
+	- `tmux`
 		- improve projects
 			- figure out why vim has weird issues when attaching a certain way
 				- colors vs titles (pane navigation)
@@ -90,27 +90,9 @@
 				- list of sessions to link to (linked windows/layouts but not focus)
 			- `choose-tree`
 			- `choose-window`
-	- tig
+	- `tig`
 		- spend time making it even more useful
 		- investigate [wiki binds](https://github.com/jonas/tig/wiki/Bindings)
-	- copyq
-		- fix
-		- integrate into workflow
-		- get more use out of tabs
-			- make yanking in vim store items in &vim
-			- make images save in &images
-			- make URLs save in &URLs
-		- make it use my dotfiles color scheme
-	- zeal
-		- integrate into workflow
-		- figure out wtf keeps going wrong with the i3 shortcut, and fix it
-	- vifm
-		- add bind to essentially run `fasd`
-		- revisit binds
-		- add specific configs, launched with `-c "source /path/to/config"`
-			- tmux
-			- vim
-	- tig
 		- get `pick` working
 		- make either `pick` or `selecta` support direct user input
 			- https://github.com/thoughtbot/pick/issues/58
@@ -122,9 +104,26 @@
 				- all
 			- checkout tags
 				- the main checkout bind should probably just support tags too
-	- spacefm
+	- `copyq`
+		- fix
+		- integrate into workflow
+		- get more use out of tabs
+			- make yanking in vim store items in &vim
+			- make images save in &images
+			- make URLs save in &URLs
+		- make it use my dotfiles color scheme
+	- `zeal`
+		- integrate into workflow
+		- figure out wtf keeps going wrong with the i3 shortcut, and fix it
+	- `vifm`
+		- add bind to essentially run `fasd`
+		- revisit binds
+		- add specific configs, launched with `-c "source /path/to/config"`
+			- tmux
+			- vim
+	- `spacefm`
 		- plugins
-	- cvim
+	- `cvim`
 		- vet using local script
 - shell
 	- refactor `.zshrc`
@@ -145,6 +144,8 @@
 	- use something better than `grp:shifts_toggle` in `keys`
 	- look into existing `.Xresources` themes
 		- http://www.noobslab.com/
+- `urxvt`
+	- get unicode fonts working
 - system
 	- only run `xcape` over `CapsLock`, not `Control_L`
 		- for some reason this doesn't work as expected, though I'm not sure why

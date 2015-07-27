@@ -237,7 +237,7 @@
 
 	# fix keys
 	# NOTE: this points to the same thing as $macro1
-	bindsym XF86Tools exec ~/bin/keys init
+	# bindsym XF86Tools exec ~/bin/keys init
 
 	bindsym XF86Search exec --no-startup-id google-chrome-unstable
 
@@ -641,9 +641,9 @@
 		# cycle through border styles
 		bindsym space border toggle; $return
 
-		bindsym 1 border normal; $return
-		bindsym 2 border 1pixel; $return
-		bindsym 3 border none; $return
+		bindsym 0 border none; $return
+		bindsym 1 border 1pixel; $return
+		bindsym 2 border normal; $return
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return

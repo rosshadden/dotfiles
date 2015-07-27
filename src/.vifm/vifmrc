@@ -23,7 +23,7 @@ set vicmd=vim
 set trash
 
 " This is how many directories to store in the directory history.
-set history=100
+set history=512
 
 " Follow links on l or Enter.
 set followlinks
@@ -57,7 +57,7 @@ set fusehome=/tmp/vifm_FUSE
 " Format for displaying time in file list. For example:
 " TIME_STAMP_FORMAT=%m/%d-%H:%M
 " See man date or man strftime for details.
-set timefmt=%m/%d\ %H:%M
+set timefmt=%Y-%m-%d\ %H:%M
 
 " Show list of matches on tab complition in command-line mode
 set wildmenu
@@ -200,6 +200,13 @@ nmap <space>bo :only<cr>
 " open-with menu
 nmap ,f :file<cr>
 vmap ,f :file<cr>
+
+" vifm.vim intergation
+nmap oc :EditVim<cr>
+nmap ot :TabVim<cr>
+nmap os :VsplitVim<cr>
+nmap o- :SplitVim<cr>
+
 
 " TOGGLES
 

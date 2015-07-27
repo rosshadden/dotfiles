@@ -47,20 +47,18 @@ endif
 """"""""""""""""
 
 function! s:uniteSettings()
-	" always make `a` append to prompt
+	" RESET
+
+	unmap <buffer> <space>
+
+
+	" PROMPT
+
+	" append to prompt
 	map <buffer> a <plug>(unite_append_enter)
 
-	" [s] open in horizontal split
-	map <buffer><expr> s unite#do_action('vsplit')
-	map <buffer><expr> <c-s> unite#do_action('vsplit')
-	imap <buffer><expr> <c-s> unite#do_action('vsplit')
-	" [-] open in vertical split
-	map <buffer><expr> - unite#do_action('split')
-	map <buffer><expr>  unite#do_action('split')
-	imap <buffer><expr>  unite#do_action('split')
-	" [t] open in new tab (`t` is default in normal mode)
-	map <buffer><expr> <c-t> unite#do_action('tabopen')
-	imap <buffer><expr> <c-t> unite#do_action('tabopen')
+
+	" LIST
 
 	" select next/previous lines just like insert mode
 	nmap <buffer> <c-n> <plug>(unite_loop_cursor_down)
@@ -69,13 +67,54 @@ function! s:uniteSettings()
 	" toggle auto preview
 	map <buffer> P p<plug>(unite_toggle_auto_preview)
 
+
+	" CANDIDATES
+
+	" toggle selected
+	map <buffer> t <plug>(unite_toggle_mark_current_candidate)
+	map <buffer> T <plug>(unite_toggle_mark_current_candidate_up)
+	vmap <buffer> t <plug>(unite_toggle_mark_selected_candidates)
+
 	let unite = unite#get_current_unite()
 	if unite.profile_name ==# 'search'
 		nmap <silent><buffer><expr> r unite#do_action('replace')
 	else
 		nmap <silent><buffer><expr> r unite#do_action('rename')
 	endif
+
+
+	" OPEN
+
+	" choose
+	map <buffer><expr> oc unite#do_action('choose')
+
+	" open without closing unite
+	map <buffer><expr> op unite#do_action('persist_open')
+
+	" open in new tab
+	map <buffer><expr> ot unite#do_action('tabopen')
+
+	" open in horizontal split
+	map <buffer><expr> os unite#do_action('vsplit')
+	map <buffer><expr> ol unite#do_action('right')
+	map <buffer><expr> oh unite#do_action('left')
+
+	" open in vertical split
+	map <buffer><expr> o- unite#do_action('split')
+	map <buffer><expr> oj unite#do_action('below')
+	map <buffer><expr> ok unite#do_action('above')
+
+	" open or switch to existing
+	map <buffer><expr> o<space><space> unite#do_action('switch')
+	map <buffer><expr> o<space>t unite#do_action('tabswitch')
+	map <buffer><expr> o<space>s unite#do_action('vsplitswitch')
+	map <buffer><expr> o<space>- unite#do_action('splitswitch')
+
+	" open `vimfiler`
+	map <buffer><expr> of unite#do_action('vimfiler')
+	map <buffer><expr> oF unite#do_action('tabvimfiler')
 endfunction
+
 autocmd FileType unite call s:uniteSettings()
 
 

@@ -9,7 +9,7 @@ path=${path:-.}
 
 
 # start in target dir
-cd $path
+[[ $1 ]] && cd $path
 
 
 # TODO: possibly breakout.exe tmux pieces into a file and source it?

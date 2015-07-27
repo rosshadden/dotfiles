@@ -79,11 +79,13 @@ map <C-b> scrollFullPageUp
 " TABS
 
 map <A-n> nextTab
-imap <A-n> nextTab
 map <A-p> previousTab
+imap <A-n> nextTab
 imap <A-p> previousTab
+
 map D closeTab
-map <Leader>c closeTab
+map <Space>bc closeTab
+
 map u lastClosedTab
 
 map <Leader>r reloadTab
