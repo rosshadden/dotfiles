@@ -204,8 +204,12 @@ vmap ,f :file<cr>
 " vifm.vim intergation
 nmap oc :EditVim<cr>
 nmap ot :TabVim<cr>
-nmap os :VsplitVim<cr>
 nmap o- :SplitVim<cr>
+nmap oj :SplitVim<cr>
+nmap ok :SplitVim<cr>
+nmap os :VsplitVim<cr>
+nmap ol :VsplitVim<cr>
+nmap oh :VsplitVim<cr>
 
 
 " TOGGLES

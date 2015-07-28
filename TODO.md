@@ -39,6 +39,7 @@
 			- [fix easymotion](https://github.com/easymotion/vim-easymotion/issues/228)
 			- remove redundant or unused plugins
 				- I have two commenting plugins, with overlapping but not identical features
+			- [zeal](https://github.com/KabbAmine/zeavim.vim)
 		- modes
 			- ember
 			- vifm

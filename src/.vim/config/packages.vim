@@ -44,20 +44,18 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'Lokaltog/vim-easymotion'
 
 	" motions
+		" many useful text objects
+		NeoBundle 'wellle/targets.vim'
 		" custom text objects
 		NeoBundle 'kana/vim-textobj-user'
-		" lines [il, al]
-		NeoBundle 'kana/vim-textobj-line'
 		" indents [ii, ai]
 		NeoBundle 'kana/vim-textobj-indent'
+		" lines [il, al]
+		NeoBundle 'kana/vim-textobj-line'
 		" entire buffer [ie, ae]
 		NeoBundle 'kana/vim-textobj-entire'
 		" variable segment [iv, av]
 		NeoBundle 'Julian/vim-textobj-variable-segment'
-		" function arguments [ia, aa]
-		NeoBundle 'vim-scripts/argtextobj.vim'
-		" refer to multiple text wrappers [ib, ab]
-		NeoBundle 'rhysd/vim-textobj-anyblock'
 		" pasted text [gb]
 		NeoBundle 'saaguero/vim-textobj-pastedtext'
 		" camelCase
@@ -94,6 +92,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'chriskempson/base16-vim'
 		" indent guides
 		NeoBundle 'nathanaelkane/vim-indent-guides'
+		" resize windows
+		NeoBundle 'talek/obvious-resize'
 
 	" languages
 		" autoformat support for multiple
@@ -176,6 +176,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'tpope/vim-dispatch'
 		" swap windows
 		NeoBundle 'wesQ3/vim-windowswap'
+		" language-aware line splits/joins
+		NeoBundle 'AndrewRadev/splitjoin.vim'
 
 	" external
 		NeoBundle 'tmux-plugins/vim-tmux'
