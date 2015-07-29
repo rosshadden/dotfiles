@@ -1,15 +1,16 @@
 # meta
-node_modules/
 dist/
+node_modules/
 
 # apps
-src/.vim/spell/*.spl
+src/.config/copyq/copyq-bak.conf
+src/.config/copyq/copyq_geometry.ini
+src/.config/copyq/copyq_tabs.ini
+src/.config/systemd/user/timers.target.wants/task.timer
+src/.vifm/Trash
 src/.vifm/vifminfo*
 src/.vifm/vimfiles
-src/.vifm/Trash
-src/.config/copyq/copyq_geometry.ini
-src/.config/copyq/copyq-bak.conf
-src/.config/copyq/copyq_tabs.ini
+src/.vim/spell/*.spl
 
 # themes
 src/themes/promptline.sh

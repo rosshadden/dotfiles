@@ -1,3 +1,7 @@
+""""""""""""""""
+" MAPPINGS
+""""""""""""""""
+
 " expose the native mappings I've stolen
 " TODO: abstract this a bit, perhaps a function that takes an array of keys to fix
 " TODO: independent of above, maybe I should fix all keys, instead of maintaining a list

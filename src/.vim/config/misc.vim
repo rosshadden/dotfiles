@@ -5,7 +5,7 @@ if has('autocmd')
 		autocmd!
 
 		" Reload vimrc when edited (using :Reload, defined elsewhere)
-		autocmd! BufWritePost *.vim Reload
+		" autocmd! BufWritePost *.vim Reload
 
 		" Preserve cursor position
 		autocmd BufRead * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif

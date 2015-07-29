@@ -155,6 +155,7 @@ command vgrep vim "+grep %a"
 
 nmap ; :
 nmap s :shell<cr>
+nmap U <c-r>
 
 " sort
 nmap S :sort<cr>

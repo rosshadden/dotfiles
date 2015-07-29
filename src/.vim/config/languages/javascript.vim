@@ -1,6 +1,14 @@
+""""""""""""""""
+" SETTINGS
+""""""""""""""""
+
 " set libraries for othree/javascript-libraries-syntax
 let g:used_javascript_libs = 'jquery,underscore'
 
+
+""""""""""""""""
+" FUNCTIONS
+""""""""""""""""
 
 " print project version from `package.json` before/after cursor
 function! PrintVersion(direction)
@@ -15,6 +23,10 @@ function! PrintVersion(direction)
 	execute 'normal! ' . a:direction . l:version . ''
 endfunction
 
+
+""""""""""""""""
+" MAPPINGS
+""""""""""""""""
 
 augroup javascript
 	" fixes a weird thing where vim things some js files are `sh`
@@ -39,3 +51,20 @@ augroup javascript
 	" React
 	autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx | normal coL
 augroup END
+
+
+""""""""""""""""
+" PLUGINS
+""""""""""""""""
+
+" vim-jsdoc
+
+let g:jsdoc_allow_input_prompt      = 1 " 0
+let g:jsdoc_input_description       = 1 " 1
+let g:jsdoc_additional_descriptions = 0 " 0
+let g:jsdoc_return                  = 1 " 1
+let g:jsdoc_return_type             = 1 " 1
+let g:jsdoc_return_description      = 1 " 1
+let g:jsdoc_default_mapping         = 0 " 1
+
+autocmd FileType javascript nmap <silent> <localleader>C <plug>(jsdoc)

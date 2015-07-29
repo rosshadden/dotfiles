@@ -1,6 +1,11 @@
+""""""""""""""""
+" PLUGINS
+""""""""""""""""
+
+" vim-gitgutter
+
 " don't map keys
 let g:gitgutter_map_keys = 0
-
 
 " go to next/prev changed hunk
 nmap ]H <plug>GitGutterNextHunk

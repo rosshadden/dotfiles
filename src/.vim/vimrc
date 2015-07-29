@@ -1,11 +1,17 @@
-" Initialize
+" initialize
 runtime! config/init.vim
 
-" Load packages
+" load packages
 runtime! config/packages.vim
 
-" Load user config
-runtime! config/user/**/*.vim
+" load settings
+runtime! config/functions.vim
+runtime! config/prefixes.vim
+runtime! config/settings.vim
+runtime! config/mappings.vim
+runtime! config/misc.vim
 
-" Load plugin config
+" load modules
+runtime! config/modules/**/*.vim
+runtime! config/languages/**/*.vim
 runtime! config/plugins/**/*.vim

@@ -24,15 +24,10 @@
 		- `remove`/`uninstall`/`cleanup`
 - apps
 	- `vim`
-		- organize modules such that there's no separation between (most) plugins and user modules
-			- `vim-windowswap` in `window`
-			- `vim-fugitive` and `vim-gitgutter` in `git`
 		- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
 		- [use snippets](https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db)
 			- or make my own, like I did for sublime
 		- make a <localleader> bind to open the session of the current project
-		- make a motion for "in/around array/object element"
-			- something that could delete not just a thing, but the preceding comma
 		- plugins
 			- make "put in <motion>" function or plugin
 				- definitely call it "Put in motion"
@@ -54,10 +49,9 @@
 				- make mappings
 				- [add git status icons](https://github.com/Shougo/vimfiler.vim/issues/308)
 		- Raws, Private Investigator
-			- figure out why reloading vimrc makes exiting insert mode laggy
 			- figure out why `[s` lags
-		- sync sessions
-		- consider migrating to its own repo
+			- figure out why reloading vimrc makes exiting insert mode laggy
+		- sync sessions?
 		- [look into analytics](http://www.drbunsen.org/vim-croquet/)
 	- `i3`
 		- blocks
@@ -81,6 +75,7 @@
 		- integrate `tmux-project`
 		- make `alt+tab` functionality
 			- supposedly this is not possible
+			- could possibly prefix navigation options with `mL`, and make `alt+tab` run `"L`
 	- `tmux`
 		- improve projects
 			- figure out why vim has weird issues when attaching a certain way
@@ -89,6 +84,8 @@
 			- make `tmux-project` support joining a single session (with same windows)
 				- using [flags](http://www.bahmanm.com/blogs/command-line-options-how-to-parse-in-bash-using-getopt)
 			- make a "kill" or "clean" project, which kills tmux sessions
+		- Raws, Private Investigator
+			- figure out why exiting one session switches to another
 		- explore `command-prompt` possibilities
 		- explore `choose-*` possibilities
 			- `choose-client`

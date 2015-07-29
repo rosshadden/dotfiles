@@ -97,8 +97,6 @@ plugins=(archlinux battery extract git-extras node npm python nyan history-subst
 
 . $ZSH/oh-my-zsh.sh
 . $shellDir/plugins/vim.zsh
-# . $shellDir/plugins/opp.zsh/opp.zsh
-# . $shellDir/plugins/opp.zsh/opp/*.zsh
 
 # tmuxp
 source tmuxp.zsh

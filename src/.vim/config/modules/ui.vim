@@ -1,3 +1,17 @@
+syntax enable
+set t_Co=256
+set background=dark
+" set background=light
+
+" access colors present in 256 colorspace
+let base16colorspace=256
+colorscheme base16-default
+
+
+""""""""""""""""
+" VIM-AIRLINE
+""""""""""""""""
+
 " powerline symbols
 let g:airline_powerline_fonts = 1
 " define and use my own 'prefix' mode, for showing the prefixes

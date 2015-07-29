@@ -1,7 +1,15 @@
+""""""""""""""""
+" SETTINGS
+""""""""""""""""
+
 " vim-windowswap
 " prevent default bindings
 let g:windowswap_map_keys = 0
 
+
+""""""""""""""""
+" MAPPINGS
+""""""""""""""""
 
 " prefix
 call MakePrefix('windows', '[prefix]w')
@@ -42,11 +50,14 @@ map [windows]t <c-w>T
 map [windows]o <c-w>O
 
 
+""""""""""""""""
+" PLUGINS
+""""""""""""""""
+
 " vim-windowswap
 nnoremap <silent> [windows]Y :call WindowSwap#MarkWindowSwap()<CR>
 nnoremap <silent> [windows]P :call WindowSwap#DoWindowSwap()<CR>
 nnoremap <silent> [windows]S :call WindowSwap#EasyWindowSwap()<CR>
-
 
 " obvious-resize
 let g:obvious_resize_default = 10
