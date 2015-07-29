@@ -177,7 +177,9 @@ nmap I cw<c-a>
 nmap cc cw<c-u>
 nmap A cw<c-w>
 
+
 " PANES
+
 unmap <space>
 
 " switch panes
@@ -195,11 +197,15 @@ nmap <space>bl :vsplit<cr><c-w>l
 " show only one pane
 nmap <space>bo :only<cr>
 
+
 " FILES
 
 " open-with menu
 nmap ,f :file<cr>
 vmap ,f :file<cr>
+
+" preview
+nmap ,p :!gloobus-preview %c:p<cr>
 
 " vifm.vim intergation
 nmap oc :EditVim<cr>
@@ -219,12 +225,16 @@ nmap cop :view<cr>
 " toggle wrap
 nmap cow :set wrap!<cr>
 
+
 " CLIPBOARD
 
-" yank current directory path into the clipboard
+" copy selected file path
+nmap yp :!echo -n %c:p | xsel -ib<cr>
+" copy selected filename
+nmap yf :!echo -n %c | xsel -ib<cr>
+" copy current directory
 nmap yd :!echo -n %d | xsel -ib<cr>
-" yank current file path into the clipboard
-nmap yf :!echo -n %c:p | xsel -ib<cr>
+
 
 " TO BE VETTED
 
@@ -248,6 +258,7 @@ nmap <f8> :delete<cr>
 """"""""""""""""
 " FILETYPES
 """"""""""""""""
+
 " DIRECTORIES
 
 filextype */
@@ -255,6 +266,7 @@ filextype */
 		 \ spacefm %f %i &,
 fileviewer .*/,*/
 	\ ls -sAh %f
+
 
 " MEDIA
 
@@ -296,6 +308,7 @@ filextype *.html,*.htm
 filetype *.html,*.htm
 	\ links,
 
+
 " DOCS
 
 " general
@@ -312,6 +325,7 @@ filetype *.pdf
 	\ xpdf %f
 fileviewer *.pdf
 	\ pdftotext -nopgbrk %c -
+
 
 " ARCHIVES
 
@@ -339,6 +353,7 @@ fileviewer *.zip,*.jar,*.war,*.ear
 filetype *.md5
 	\ {Check MD5 hash sum}
 		\ md5sum -c %f,
+
 
 " DEFAULTS
 

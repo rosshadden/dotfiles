@@ -51,6 +51,7 @@
 				- abstract making 4-8 mappings per concept
 				- vim-session integration
 			- vimfiler
+				- make mappings
 				- [add git status icons](https://github.com/Shougo/vimfiler.vim/issues/308)
 		- Raws, Private Investigator
 			- figure out why reloading vimrc makes exiting insert mode laggy
