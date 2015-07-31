@@ -19,19 +19,19 @@
 	set $11 11
 	set $12 12
 
-	set $ws0 0| temp
-	set $ws1 1| web
-	set $ws2 2| dev
-	set $ws3 3| sync
-	set $ws4 4| hack
-	set $ws5 5| files
-	set $ws6 6| media
-	set $ws7 7| games
-	set $ws8 8| literature
-	set $ws9 9| run
-	set $ws10 10| chat
+	set $wsTemp 0| temp
+	set $wsWeb 1| web
+	set $wsDev 2| dev
+	set $wsSync 3| sync
+	set $wsHack 4| hack
+	set $wsFiles 5| files
+	set $wsMedia 6| media
+	set $wsGames 7| games
+	set $wsLiterature 8| literature
+	set $wsRun 9| run
+	set $wsChat 10| chat
 	set $ws11 11|
-	set $ws12 12| monitor
+	set $wsMonitor 12| monitor
 
 	set $macro1 XF86Tools
 	set $macro2 XF86Launch5
@@ -65,9 +65,7 @@
 # OPTIONS
 ################
 
-	# Font for window titles. Will also be used by the bar unless a different font
-	# is used in the bar {} block below.
-	font pango:Fantasque Sans Mono, DejaVu Sans Mono 14
+	font pango:Fantasque Sans Mono, Icons 14
 
 	workspace_layout stacking
 	workspace_auto_back_and_forth no
@@ -161,34 +159,34 @@
 	bindsym $super+Shift+Escape move to workspace back_and_forth; workspace back_and_forth
 
 	# switch to workspace
-	bindsym $super+1 workspace $ws1
-	bindsym $super+2 workspace $ws2
-	bindsym $super+3 workspace $ws3
-	bindsym $super+4 workspace $ws4
-	bindsym $super+5 workspace $ws5
-	bindsym $super+6 workspace $ws6
-	bindsym $super+7 workspace $ws7
-	bindsym $super+8 workspace $ws8
-	bindsym $super+9 workspace $ws9
-	bindsym $super+0 workspace $ws10
+	bindsym $super+1 workspace $wsWeb
+	bindsym $super+2 workspace $wsDev
+	bindsym $super+3 workspace $wsSync
+	bindsym $super+4 workspace $wsHack
+	bindsym $super+5 workspace $wsFiles
+	bindsym $super+6 workspace $wsMedia
+	bindsym $super+7 workspace $wsGames
+	bindsym $super+8 workspace $wsLiterature
+	bindsym $super+9 workspace $wsRun
+	bindsym $super+0 workspace $wsChat
 	bindsym $super+bracketleft workspace $ws11
-	bindsym $super+bracketright workspace $ws12
-	bindsym $super+grave workspace $ws0
+	bindsym $super+bracketright workspace $wsMonitor
+	bindsym $super+grave workspace $wsTemp
 
 	# move focused container to workspace
-	bindsym $super+Shift+1 move container to workspace $ws1
-	bindsym $super+Shift+2 move container to workspace $ws2
-	bindsym $super+Shift+3 move container to workspace $ws3
-	bindsym $super+Shift+4 move container to workspace $ws4
-	bindsym $super+Shift+5 move container to workspace $ws5
-	bindsym $super+Shift+6 move container to workspace $ws6
-	bindsym $super+Shift+7 move container to workspace $ws7
-	bindsym $super+Shift+8 move container to workspace $ws8
-	bindsym $super+Shift+9 move container to workspace $ws9
-	bindsym $super+Shift+0 move container to workspace $ws10
+	bindsym $super+Shift+1 move container to workspace $wsWeb
+	bindsym $super+Shift+2 move container to workspace $wsDev
+	bindsym $super+Shift+3 move container to workspace $wsSync
+	bindsym $super+Shift+4 move container to workspace $wsHack
+	bindsym $super+Shift+5 move container to workspace $wsFiles
+	bindsym $super+Shift+6 move container to workspace $wsMedia
+	bindsym $super+Shift+7 move container to workspace $wsGames
+	bindsym $super+Shift+8 move container to workspace $wsLiterature
+	bindsym $super+Shift+9 move container to workspace $wsRun
+	bindsym $super+Shift+0 move container to workspace $wsChat
 	bindsym $super+Shift+bracketleft move container to workspace $ws11
-	bindsym $super+Shift+bracketright move container to workspace $ws12
-	bindsym $super+Shift+grave move container to workspace $ws0
+	bindsym $super+Shift+bracketright move container to workspace $wsMonitor
+	bindsym $super+Shift+grave move container to workspace $wsTemp
 
 	# focus the parent/child container
 	bindsym $super+z focus parent
@@ -484,19 +482,19 @@
 
 		# presets
 			# TODO: make these dynamic from the workspace name
-			bindsym grave        workspace $ws0;  exec $tmuxAttach $0;  $return
-			bindsym 1            workspace $ws1;  exec $tmuxAttach $1;  $return
-			bindsym 2            workspace $ws2;  exec $tmuxAttach $2;  $return
-			bindsym 3            workspace $ws3;  exec $tmuxAttach $3;  $return
-			bindsym 4            workspace $ws4;  exec $tmuxAttach $4;  $return
-			bindsym 5            workspace $ws5;  exec $tmuxAttach $5 'vifm';  $return
-			bindsym 6            workspace $ws6;  exec $tmuxAttach $6;  $return
-			bindsym 7            workspace $ws7;  exec $tmuxAttach $7;  $return
-			bindsym 8            workspace $ws8;  exec $tmuxAttach $8;  $return
-			bindsym 9            workspace $ws9;  exec $tmuxAttach $9;  $return
-			bindsym 0            workspace $ws10; exec $tmuxAttach $10; $return
+			bindsym grave        workspace $wsTemp;  exec $tmuxAttach $0;  $return
+			bindsym 1            workspace $wsWeb;  exec $tmuxAttach $1;  $return
+			bindsym 2            workspace $wsDev;  exec $tmuxAttach $2;  $return
+			bindsym 3            workspace $wsSync;  exec $tmuxAttach $3;  $return
+			bindsym 4            workspace $wsHack;  exec $tmuxAttach $4;  $return
+			bindsym 5            workspace $wsFiles;  exec $tmuxAttach $5 'vifm';  $return
+			bindsym 6            workspace $wsMedia;  exec $tmuxAttach $6;  $return
+			bindsym 7            workspace $wsGames;  exec $tmuxAttach $7;  $return
+			bindsym 8            workspace $wsLiterature;  exec $tmuxAttach $8;  $return
+			bindsym 9            workspace $wsRun;  exec $tmuxAttach $9;  $return
+			bindsym 0            workspace $wsChat; exec $tmuxAttach $10; $return
 			bindsym bracketleft  workspace $ws11; exec $tmuxAttach $11; $return
-			bindsym bracketright workspace $ws12; exec $tmuxAttach $12; $return
+			bindsym bracketright workspace $wsMonitor; exec $tmuxAttach $12; $return
 
 		# TODO: open preset for the current workspace
 
@@ -794,8 +792,6 @@
 		mode dock
 		tray_output primary
 
-		font pango:Fantasque Sans Mono, DejaVu Sans Mono 14
-
 		status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
 
 		colors {
@@ -831,19 +827,22 @@
 	for_window [title="Qalculate!"] floating enable
 
 	# chrome
-	assign [class="^Google-chrome" window_role="browser"] → $ws1
+	assign [class="^Google-chrome" window_role="browser"] → $wsWeb
 
 	# chat
-	assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $ws10
-	assign [title="^finch$"] → $ws10
-	assign [title="^plaidchat$"] → $ws10
+	assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $wsChat
+	assign [title="^finch$"] → $wsChat
+	assign [title="^plaidchat$"] → $wsChat
 
 	# media
-	assign [class="(nuvolaplayer|Spotify|Popcorntime)"] → $ws6
+	assign [class="(nuvolaplayer|Spotify|Popcorntime)"] → $wsMedia
 	for_window [class="vlc"] border none
 
 	# games
 	for_window [title="Dota 2"] border none
+
+	# literature
+	assign [title="Google Keep"] → $wsLiterature
 
 
 ################
@@ -851,7 +850,7 @@
 ################
 
 	# layouts
-	exec --no-startup-id "i3-msg 'workspace $ws10; append_layout ~/.config/i3/layouts/workspace-10.json'"
+	exec --no-startup-id "i3-msg 'workspace $wsChat; append_layout ~/.config/i3/layouts/workspace-10.json'"
 
 	# wallpaper
 	exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath

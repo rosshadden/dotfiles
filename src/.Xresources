@@ -12,11 +12,25 @@
 *.opacity: 100
 *.terminal: urxvt
 
-*font: Fantasque Sans Mono 12
-*faceName: xft:Fantasque Sans Mono:size=12, xft:DejaVu Sans Mono:size=12
-
 Xcursor.theme: Polar
 Xcursor.size: 48
+
+
+!!!!!!!!!!!!!!!!
+!! FONTS
+!!!!!!!!!!!!!!!!
+
+*font: Fantasque Sans Mono 12
+*faceName: Fantasque Sans Mono 12
+*boldFont: Fantasque Sans Mono Bold 12
+*italicFont: Fantasque Sans Mono Italic 12
+*boldItalicFont: Fantasque Sans Mono Bold Italic 12
+
+URxvt*font: xft:Fantasque Sans Mono:size=12
+URxvt*faceName: xft:Fantasque Sans Mono:size=12
+URxvt*boldFont: xft:Fantasque Sans Mono:size=12:style=Bold
+URxvt*italicFont: xft:Fantasque Sans Mono:size=12:style=Italic
+URxvt*boldItalicFont: xft:Fantasque Sans Mono:size=12:style=Bold Italic
 
 
 !!!!!!!!!!!!!!!!
@@ -93,18 +107,18 @@ URxvt*scrollColor: #333333
 ! URxvt*borderColor: colour
 
 ! Select the fonts to be used. This is a comma separated list of font names that are checked in order when trying to find glyphs for characters. The first font defines the cell size for characters; other fonts might be
-URxvt*font: xft:Fantasque Sans Mono:size=12,xft:DejaVu Sans Mono:size=12
+! URxvt*font: xft:Fantasque Sans Mono:size=12,xft:DejaVu Sans Mono:size=12
 
 ! URxvt*boldFont: fontlist
-URxvt*boldFont: xft:Fantasque Sans Mono:size=12:style=Bold,xft:DejaVu Sans Mono:size=12:style=Bold
+! URxvt*boldFont: xft:Fantasque Sans Mono:size=12:style=Bold,xft:DejaVu Sans Mono:size=12:style=Bold
 
 !
 ! URxvt*italicFont: fontlist
-URxvt*italicFont: xft:Fantasque Sans Mono:size=12:style=Italic,xft:DejaVu Sans Mono:size=12:style=Italic
+! URxvt*italicFont: xft:Fantasque Sans Mono:size=12:style=Italic,xft:DejaVu Sans Mono:size=12:style=Italic
 
 ! The font list to use for displaying bold, italic or bold italic characters, respectively.
 ! URxvt*boldItalicFont: fontlist
-URxvt*boldItalicFont: xft:Fantasque Sans Mono:size=12:style=Bold Italic,xft:DejaVu Sans Mono:size=12:style=Bold Italic
+! URxvt*boldItalicFont: xft:Fantasque Sans Mono:size=12:style=Bold Italic,xft:DejaVu Sans Mono:size=12:style=Bold Italic
 
 ! When font styles are not enabled, or this option is enabled (True, option -is, the default), bold/blink font styles imply high intensity foreground/background colours. Disabling this option (False, option +is) disables
 ! URxvt*intensityStyles: boolean
