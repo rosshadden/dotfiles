@@ -205,6 +205,10 @@ nmap <space>bo :only<cr>
 nmap ,f :file<cr>
 vmap ,f :file<cr>
 
+" create files/folders
+nmap O :mkdir<space>
+nmap o :touch<space>
+
 " preview
 nmap ,p :!gloobus-preview %c:p<cr>
 

@@ -29,5 +29,8 @@ See the [TODO](TODO.md) for things I have in mind.
 - [`pick`](https://github.com/thoughtbot/pick)
 - [`vifm`](https://github.com/vifm/vifm)
 	- [`gloobus-preview`](https://launchpad.net/gloobus-preview)
+- fonts
+	- `ttf-fantasque-sans` - main font
+	- `ttf-font-icons` - mix of non-overlapping fonts from Font Awesome and Ionicons
 
 > \*: I'm going to remove this dependency

@@ -12,25 +12,25 @@
 	set $4 hack
 	set $5 files
 	set $6 media
-	set $7 games
-	set $8 literature
+	set $7 literature
+	set $8 games
 	set $9 run
 	set $10 chat
-	set $11 11
-	set $12 12
+	set $11 lab
+	set $12 monitor
 
 	set $wsTemp 0| temp
 	set $wsWeb 1| web
 	set $wsDev 2| dev
 	set $wsSync 3| sync
-	set $wsHack 4| hack
+	set $wsHack 4| hack
 	set $wsFiles 5| files
 	set $wsMedia 6| media
-	set $wsGames 7| games
-	set $wsLiterature 8| literature
-	set $wsRun 9| run
+	set $wsLiterature 7| literature
+	set $wsGames 8| games
+	set $wsRun 9| run
 	set $wsChat 10| chat
-	set $ws11 11|
+	set $ws11 11| lab
 	set $wsMonitor 12| monitor
 
 	set $macro1 XF86Tools
@@ -826,23 +826,23 @@
 	for_window [class="^Copyq|Gpick|Pavucontrol$"] floating enable
 	for_window [title="Qalculate!"] floating enable
 
-	# chrome
+	# web
 	assign [class="^Google-chrome" window_role="browser"] → $wsWeb
+
+	# media
+	assign [class="(nuvolaplayer|Spotify|Popcorntime|Vlc)"] → $wsMedia
+	for_window [class="Vlc"] border none
+
+	# literature
+	assign [title="Google Keep"] → $wsLiterature
+
+	# games
+	for_window [title="Dota 2"] border none
 
 	# chat
 	assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $wsChat
 	assign [title="^finch$"] → $wsChat
 	assign [title="^plaidchat$"] → $wsChat
-
-	# media
-	assign [class="(nuvolaplayer|Spotify|Popcorntime)"] → $wsMedia
-	for_window [class="vlc"] border none
-
-	# games
-	for_window [title="Dota 2"] border none
-
-	# literature
-	assign [title="Google Keep"] → $wsLiterature
 
 
 ################
