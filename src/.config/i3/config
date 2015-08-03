@@ -165,8 +165,8 @@
 	bindsym $super+4 workspace $wsHack
 	bindsym $super+5 workspace $wsFiles
 	bindsym $super+6 workspace $wsMedia
-	bindsym $super+7 workspace $wsGames
-	bindsym $super+8 workspace $wsLiterature
+	bindsym $super+7 workspace $wsLiterature
+	bindsym $super+8 workspace $wsGames
 	bindsym $super+9 workspace $wsRun
 	bindsym $super+0 workspace $wsChat
 	bindsym $super+bracketleft workspace $ws11
@@ -180,8 +180,8 @@
 	bindsym $super+Shift+4 move container to workspace $wsHack
 	bindsym $super+Shift+5 move container to workspace $wsFiles
 	bindsym $super+Shift+6 move container to workspace $wsMedia
-	bindsym $super+Shift+7 move container to workspace $wsGames
-	bindsym $super+Shift+8 move container to workspace $wsLiterature
+	bindsym $super+Shift+7 move container to workspace $wsLiterature
+	bindsym $super+Shift+8 move container to workspace $wsGames
 	bindsym $super+Shift+9 move container to workspace $wsRun
 	bindsym $super+Shift+0 move container to workspace $wsChat
 	bindsym $super+Shift+bracketleft move container to workspace $ws11
@@ -489,8 +489,8 @@
 			bindsym 4            workspace $wsHack;  exec $tmuxAttach $4;  $return
 			bindsym 5            workspace $wsFiles;  exec $tmuxAttach $5 'vifm';  $return
 			bindsym 6            workspace $wsMedia;  exec $tmuxAttach $6;  $return
-			bindsym 7            workspace $wsGames;  exec $tmuxAttach $7;  $return
-			bindsym 8            workspace $wsLiterature;  exec $tmuxAttach $8;  $return
+			bindsym 7            workspace $wsLiterature;  exec $tmuxAttach $7;  $return
+			bindsym 8            workspace $wsGames;  exec $tmuxAttach $8;  $return
 			bindsym 9            workspace $wsRun;  exec $tmuxAttach $9;  $return
 			bindsym 0            workspace $wsChat; exec $tmuxAttach $10; $return
 			bindsym bracketleft  workspace $ws11; exec $tmuxAttach $11; $return
