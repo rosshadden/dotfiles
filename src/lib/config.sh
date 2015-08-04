@@ -23,56 +23,76 @@ config() {
 normalizeValue() {
 	local value=$1
 
-	[[ $value == '!' ]] && local value='toggle'
+	[[ $value == "!" ]] && local value="toggle"
 
 	echo $value
 }
 
 value=$(normalizeValue $value)
 
-if [[ $setting == 'volume' ]]; then
+if [[ $setting == "volume" ]]; then
 	if [[ ! $value ]]; then
 		ponymix get-volume
-	else
-		[[ $value == 'on' ]] && value='unmute'
-		[[ $value == 'off' ]] && value='mute'
-
-		if [[ ${value:0:1} == '+' ]]; then
-			ponymix increase ${value:1}
-		elif [[ ${value:0:1} == '-' ]]; then
-			ponymix decrease ${value:1}
-		elif [[ 'toggle mute unmute' =~ $value ]]; then
-			ponymix toggle
-		else
-			ponymix set-volume $value
-		fi
+		exit 0
 	fi
-elif [[ $setting == 'brightness' ]]; then
+
+	[[ $value == "on" ]] && value="unmute"
+	[[ $value == "off" ]] && value="mute"
+
+	if [[ ${value:0:1} == "+" ]]; then
+		ponymix increase ${value:1}
+	elif [[ ${value:0:1} == "-" ]]; then
+		ponymix decrease ${value:1}
+	elif [[ "toggle mute unmute" =~ $value ]]; then
+		ponymix toggle
+	else
+		ponymix set-volume $value
+	fi
+elif [[ $setting == "brightness" ]]; then
 	if [[ ! $value ]]; then
 		xbacklight -get
-	else
-		if [[ ${value:0:1} == '+' ]]; then
-			xbacklight -inc ${value:1}
-		elif [[ ${value:0:1} == '-' ]]; then
-			xbacklight -dec ${value:1}
-		else
-			xbacklight -set $value
-		fi
+		exit 0
 	fi
-elif [[ $setting == 'touchpad' ]]; then
+
+	if [[ ${value:0:1} == "+" ]]; then
+		xbacklight -inc ${value:1}
+	elif [[ ${value:0:1} == "-" ]]; then
+		xbacklight -dec ${value:1}
+	else
+		xbacklight -set $value
+	fi
+elif [[ $setting == "touchpad" ]]; then
 	if [[ ! $value ]]; then
 		synclient -l | grep "TouchpadOff .*=.*0"
-	else
-		if [[ $value == 'toggle' ]]; then
-			if [[ $(synclient -l | grep "TouchpadOff .*=.*0") ]]; then
-				config touchpad 'off'
-			else
-				config touchpad 'on'
-			fi
-		elif [[ $value == 'on' ]]; then
-			synclient TouchpadOff=0;
-		elif [[ $value == 'off' ]]; then
-			synclient TouchpadOff=1;
-		fi
+		exit 0
 	fi
+
+	if [[ $value == "toggle" ]]; then
+		if [[ $(synclient -l | grep "TouchpadOff .*=.*0") ]]; then
+			config touchpad "off"
+		else
+			config touchpad "on"
+		fi
+	elif [[ $value == "on" ]]; then
+		synclient TouchpadOff=0;
+	elif [[ $value == "off" ]]; then
+		synclient TouchpadOff=1;
+	fi
+elif [[ $setting == "dpi" ]]; then
+	dpi=$(xrdb -query | grep dpi | awk '{ print $2 }');
+
+	if [[ ! $value ]]; then
+		echo $dpi
+		exit 0
+	fi
+
+	# TODO: use [real arguments](http://www.bahmanm.com/blogs/command-line-options-how-to-parse-in-bash-using-getopt)
+	# TODO: trim trailing decimals
+	if [[ $value == "--scale" ]]; then
+		echo "$dpi / 96" | bc -l
+	fi
+elif [[ $setting == "wifi" ]]; then
+	echo "$setting is not yet supported"
+elif [[ $setting == "bluetooth" ]]; then
+	echo "$setting is not yet supported"
 fi
