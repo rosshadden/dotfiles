@@ -50,6 +50,11 @@ function! s:uniteSettings()
 	" RESET
 
 	unmap <buffer> <space>
+	unmap <buffer> <c-h>
+	unmap <buffer> <c-l>
+	unmap <buffer> <c-k>
+	iunmap <buffer> <c-h>
+	iunmap <buffer> <c-l>
 
 
 	" PROMPT
@@ -70,7 +75,7 @@ function! s:uniteSettings()
 
 	" CANDIDATES
 
-	" toggle selected
+	" select
 	map <buffer> t <plug>(unite_toggle_mark_current_candidate)
 	map <buffer> T <plug>(unite_toggle_mark_current_candidate_up)
 	vmap <buffer> t <plug>(unite_toggle_mark_selected_candidates)
@@ -105,7 +110,7 @@ function! s:uniteSettings()
 	map <buffer><expr> ok unite#do_action('above')
 
 	" open or switch to existing
-	map <buffer><expr> o<space><space> unite#do_action('switch')
+	map <buffer><expr> o<space>c unite#do_action('switch')
 	map <buffer><expr> o<space>t unite#do_action('tabswitch')
 	map <buffer><expr> o<space>s unite#do_action('vsplitswitch')
 	map <buffer><expr> o<space>- unite#do_action('splitswitch')
