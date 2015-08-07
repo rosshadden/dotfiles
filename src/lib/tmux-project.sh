@@ -7,6 +7,8 @@
 # @depends `i3-msg`
 
 # TODO: [handle options](http://www.bahmanm.com/blogs/command-line-options-how-to-parse-in-bash-using-getopt)
+# TODO: make a "kill" or "clean" project, which kills tmux sessions
+# TODO: support "filling" current session, instead of making a new session
 
 project=${1:-$(basename $PWD)}
 path=${2:-$(fasd -d $project)}

@@ -174,19 +174,19 @@
 	bindsym $super+grave workspace $wsTemp
 
 	# move focused container to workspace
-	bindsym $super+Shift+1 move container to workspace $wsWeb
-	bindsym $super+Shift+2 move container to workspace $wsDev
-	bindsym $super+Shift+3 move container to workspace $wsSync
-	bindsym $super+Shift+4 move container to workspace $wsHack
-	bindsym $super+Shift+5 move container to workspace $wsFiles
-	bindsym $super+Shift+6 move container to workspace $wsMedia
-	bindsym $super+Shift+7 move container to workspace $wsLiterature
-	bindsym $super+Shift+8 move container to workspace $wsGames
-	bindsym $super+Shift+9 move container to workspace $wsRun
-	bindsym $super+Shift+0 move container to workspace $wsChat
-	bindsym $super+Shift+bracketleft move container to workspace $ws11
-	bindsym $super+Shift+bracketright move container to workspace $wsMonitor
-	bindsym $super+Shift+grave move container to workspace $wsTemp
+	bindsym $super+Shift+1 move container to workspace $wsWeb; workspace $wsWeb
+	bindsym $super+Shift+2 move container to workspace $wsDev; workspace $wsDev
+	bindsym $super+Shift+3 move container to workspace $wsSync; workspace $wsSync
+	bindsym $super+Shift+4 move container to workspace $wsHack; workspace $wsHack
+	bindsym $super+Shift+5 move container to workspace $wsFiles; workspace $wsFiles
+	bindsym $super+Shift+6 move container to workspace $wsMedia; workspace $wsMedia
+	bindsym $super+Shift+7 move container to workspace $wsLiterature; workspace $wsLiterature
+	bindsym $super+Shift+8 move container to workspace $wsGames; workspace $wsGames
+	bindsym $super+Shift+9 move container to workspace $wsRun; workspace $wsRun
+	bindsym $super+Shift+0 move container to workspace $wsChat; workspace $wsChat
+	bindsym $super+Shift+bracketleft move container to workspace $ws11; workspace $ws11
+	bindsym $super+Shift+bracketright move container to workspace $wsMonitor; workspace $wsMonitor
+	bindsym $super+Shift+grave move container to workspace $wsTemp; workspace $wsTemp
 
 	# focus the parent/child container
 	bindsym $super+z focus parent
@@ -735,8 +735,8 @@
 
 
 	mode "PROJECTS" {
-		bindsym space exec i3-input -P 'Open project: ' -F 'exec ~/bin/tmux-project %s'; $return
-		bindsym Shift+space exec i3-input -P 'Open project: ' -F 'exec ~/bin/tmux-project %s'; $return
+		bindsym space exec i3-input -P 'Open project: ' -F 'exec ~/bin/tp %s'; $return
+		bindsym Shift+space exec i3-input -P 'Open project: ' -F 'exec ~/bin/tp %s'; $return
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
@@ -821,10 +821,9 @@
 
 	# dialogs
 	for_window [window_role="pop-up"] floating enable, move absolute center
-
-	# floating
-	for_window [class="^Copyq|Gpick|Pavucontrol$"] floating enable
 	for_window [title="Qalculate!"] floating enable
+	for_window [class="^Gpick|Pavucontrol$"] floating enable
+	for_window [class="^Copyq$"] border pixel 0, floating enable
 
 	# web
 	assign [class="^Google-chrome" window_role="browser"] → $wsWeb

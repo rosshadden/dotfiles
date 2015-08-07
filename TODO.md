@@ -2,7 +2,6 @@
 	- trim down as much fat as possible, such as things I don't use anymore
 	- look into [these dotfiles](https://github.com/xero/dotfiles) for sexiness
 	- README
-		- list dependencies and other relevant installed packages
 		- screenshots
 - build
 	- return to a non-grunt workflow (or at least a fallback)
@@ -24,17 +23,17 @@
 		- `remove`/`uninstall`/`cleanup`
 - apps
 	- `vim`
+		- change prefix maps so as to not interfere with `[` mappings
 		- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
 		- [use snippets](https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db)
 			- or make my own, like I did for sublime
-		- make a <localleader> bind to open the session of the current project
 		- plugins
-			- make "put in <motion>" function or plugin
-				- definitely call it "Put in motion"
+			- make "put in <motion>" plugin
 			- [fix easymotion](https://github.com/easymotion/vim-easymotion/issues/228)
 			- remove redundant or unused plugins
 				- I have two commenting plugins, with overlapping but not identical features
 			- [zeal](https://github.com/KabbAmine/zeavim.vim)
+		- make a <localleader> bind to open the session of the current project
 		- modes
 			- ember
 			- vifm
@@ -44,24 +43,17 @@
 					- possibly a dynamic vertical/horizontal choice
 				- make a mapping or mode for finding files not in the repo
 				- abstract making 4-8 mappings per concept
+				- vet mappings per concept, as some do weird things (`[unite:1]g`)
 				- vim-session integration
 			- vimfiler
 				- make mappings
 				- [add git status icons](https://github.com/Shougo/vimfiler.vim/issues/308)
 		- Raws, Private Investigator
-			- figure out why `[s` lags
 			- figure out why reloading vimrc makes exiting insert mode laggy
-		- sync sessions?
 		- [look into analytics](http://www.drbunsen.org/vim-croquet/)
 	- `i3`
-		- blocks
-			- disks
-				- combine all disks into one
-				- show all mounted disks (parse `lsblk`)
-				- scroll to cycle
-				- maintains state
 		- modes
-			- settings
+			- config
 				- toggle wifi, bluetooth
 			- break out modes into separate files
 				- add a generated help notification for each mode, on `?`
@@ -69,37 +61,20 @@
 		- get current tag
 			- open tmux session for current tag
 		- add clipboard management
-		- vet focusing new tags after moving windows to them
 		- universalize the media/resize/move increments and whatnot
 			- make sure there are mappings for both big and small increments
-		- integrate `tmux-project`
+		- integrate `tp`
 		- make `alt+tab` functionality
 			- supposedly this is not possible
 			- could possibly prefix navigation options with `mL`, and make `alt+tab` run `"L`
 	- `tmux`
-		- improve projects
-			- figure out why vim has weird issues when attaching a certain way
-				- colors vs titles (pane navigation)
-				- try out an existing project loader, which may solve the above
-			- make `tmux-project` support joining a single session (with same windows)
-				- using [flags](http://www.bahmanm.com/blogs/command-line-options-how-to-parse-in-bash-using-getopt)
-			- make a "kill" or "clean" project, which kills tmux sessions
 		- Raws, Private Investigator
-			- figure out why exiting one session switches to another
-		- explore `command-prompt` possibilities
-		- explore `choose-*` possibilities
-			- `choose-client`
-			- `choose-session`
-				- list of sessions to link to (linked windows/layouts but not focus)
-			- `choose-tree`
-			- `choose-window`
+			- figure out why exiting one session sometimes switches to another
+		- use `choose-session` to pick a session to link current session to
 	- `tig`
 		- spend time making it even more useful
+		- universalize mappings
 		- investigate [wiki binds](https://github.com/jonas/tig/wiki/Bindings)
-		- get `pick` working
-		- make either `pick` or `selecta` support direct user input
-			- https://github.com/thoughtbot/pick/issues/58
-			- https://github.com/garybernhardt/selecta/issues/64
 		- mappings
 			- make h/l go left/right
 				- bind the current h/l to something else
@@ -110,13 +85,8 @@
 			- checkout tags
 				- the main checkout bind should probably just support tags too
 	- `copyq`
-		- fix
-		- integrate into workflow
-		- get more use out of tabs
-			- make yanking in vim store items in &vim
-			- make images save in &images
-			- make URLs save in &URLs
-		- make it use my dotfiles color scheme
+		- make it use my dotfiles theme
+		- figure out why URLs are duplicated
 	- `zeal`
 		- integrate into workflow
 		- figure out wtf keeps going wrong with the i3 shortcut, and fix it
