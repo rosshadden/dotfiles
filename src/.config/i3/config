@@ -829,7 +829,8 @@
 	assign [class="^Google-chrome" window_role="browser"] → $wsWeb
 
 	# media
-	assign [class="(nuvolaplayer|Spotify|Popcorntime|Vlc)"] → $wsMedia
+	assign [class="(nuvolaplayer|Spotify|Vlc)"] → $wsMedia
+	assign [title="Popcorn Time"] → $wsMedia
 	for_window [class="Vlc"] border none
 
 	# literature

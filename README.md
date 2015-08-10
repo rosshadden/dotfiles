@@ -12,6 +12,7 @@ See the [TODO](TODO.md) for things I have in mind.
 - vim
 - zsh
 - tmux
+- urxvt
 
 
 ## Dependencies
