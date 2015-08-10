@@ -25,8 +25,6 @@
 	- `vim`
 		- change prefix maps so as to not interfere with `[` mappings
 		- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
-		- [use snippets](https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db)
-			- or make my own, like I did for sublime
 		- plugins
 			- make "put in <motion>" plugin
 			- [fix easymotion](https://github.com/easymotion/vim-easymotion/issues/228)

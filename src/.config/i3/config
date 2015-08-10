@@ -43,9 +43,9 @@
 	set $return mode "default"
 
 	# default apps
-	set $chooseCommand rofi -show run -sidebar-mode
-	set $chooseWindow rofi -show window -sidebar-mode
-	set $chooseApp j4-dmenu-desktop --dmenu='rofi -dmenu -p "launch:"'
+	set $chooseCommand rofi -show run -sidebar-mode -i
+	set $chooseWindow rofi -show window -sidebar-mode -i
+	set $chooseApp j4-dmenu-desktop --dmenu='rofi -dmenu -p "launch:" -i'
 	set $terminal i3-sensible-terminal
 	set $run i3-sensible-terminal -e
 	set $tmux i3-sensible-terminal -e tmux -2
@@ -764,7 +764,7 @@
 
 
 	mode "PIDGIN" {
-		bindsym space exec python3 ~/lib/purple.py | sort | rofi -dmenu -p "IM:" | xargs -I$ python3 ~/lib/purple.py "$"; $return
+		bindsym space exec python3 ~/lib/purple.py | sort | rofi -dmenu -p "IM:" -i | xargs -I$ python3 ~/lib/purple.py "$"; $return
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
