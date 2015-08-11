@@ -63,7 +63,10 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 	" operators
 		NeoBundle 'kana/vim-operator-user'
+		" put in <motion> *mutters under breath*
 		NeoBundle 'kana/vim-operator-replace'
+		" sort
+		NeoBundle 'christoomey/vim-sort-motion'
 
 	" features
 		" snippets
@@ -88,6 +91,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'vifm/vifm.vim'
 		" taskwarrior
 		NeoBundle 'farseer90718/vim-taskwarrior'
+		" zeal
+		NeoBundle 'KabbAmine/zeavim.vim'
 
 	" UI
 		NeoBundle 'bling/vim-airline'

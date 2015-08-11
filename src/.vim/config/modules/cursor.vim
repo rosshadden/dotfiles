@@ -38,10 +38,6 @@ if exists('$TMUX')
 	let &t_EI .= "\<Esc>"
 endif
 
-" reset
-autocmd FocusGained * execute 'silent !echo -ne "' . s:prefixCode . '\033]12;MediumPurple3\007' . s:suffixCode . '"'
-autocmd VimLeave * execute 'silent !echo -ne "' . s:prefixCode . '\033]12;MediumPurple3\007' . s:suffixCode . '"'
-
 
 " SHAPE
 
@@ -60,10 +56,6 @@ let &t_SI .= "\<Esc>[2 q"
 " normal (block)
 let &t_EI .= "\<Esc>[2 q"
 
-" reset
-autocmd FocusGained * execute 'silent !echo -ne "' . s:prefixCode . '\033[2 q' . s:suffixCode . '"'
-autocmd VimLeave * execute 'silent !echo -ne "' . s:prefixCode . '\033[2 q' . s:suffixCode . '"'
-
 
 " SUFFIX
 
@@ -73,9 +65,24 @@ if exists('$TMUX')
 endif
 
 
+" RESET
+
+augroup cursor
+	autocmd!
+	autocmd FocusGained *
+		\ execute 'silent !echo -ne "' . s:prefixCode . '\033]12;MediumPurple3\007' . s:suffixCode . '"' |
+		\ execute 'silent !echo -ne "' . s:prefixCode . '\033[2 q' . s:suffixCode . '"'
+	autocmd VimLeave *
+		\ execute 'silent !echo -ne "' . s:prefixCode . '\033]12;MediumPurple3\007' . s:suffixCode . '"' |
+		\ execute 'silent !echo -ne "' . s:prefixCode . '\033[2 q' . s:suffixCode . '"'
+augroup END
+
+
 """"""""""""""""
-" VIM-MULTIPLE-CURSORS
+" PLUGINS
 """"""""""""""""
+
+" vim-multiple-cursors
 
 " Make multiple cursors fast with neocomplete
 

@@ -1,8 +1,6 @@
 """"""""""""""""
-" PLUGINS
+" SETTINGS
 """"""""""""""""
-
-" vim-easymotion
 
 " use same column for j/k motions
 let g:EasyMotion_startofline = 0
@@ -15,13 +13,19 @@ let g:EasyMotion_keys = 'AOEUIDHTN-,.PYFGCRL;QJKXBMWVZS'
 " jump to first search result with `<enter>`
 let g:EasyMotion_enter_jump_first = 1
 
+
+""""""""""""""""
+" MAPPINGS
+""""""""""""""""
+
 " prefix
+call MakePrefix('camel', '<:prefix>C')
 map <:prefix>e <plug>(easymotion-prefix)
 
 " vim-sneak
 nmap S <plug>(easymotion-s2)
 
-" Replace Vim default search
+" Replace default search
 " TODO: doesn't work?
 " map  / <Plug>(easymotion-sn)
 " omap / <Plug>(easymotion-tn)
@@ -33,11 +37,6 @@ map <leader>l <plug>(easymotion-lineforward)
 map <leader>j <plug>(easymotion-j)
 map <leader>k <plug>(easymotion-k)
 map <leader>h <plug>(easymotion-linebackward)
-
-
-" camelcasemotion
-
-call MakePrefix('camel', '<:prefix>C')
 
 map <silent> <:camel>w <plug>CamelCaseMotion_w
 map <silent> <:camel>b <plug>CamelCaseMotion_b

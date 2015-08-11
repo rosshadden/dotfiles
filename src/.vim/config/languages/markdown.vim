@@ -1,3 +1,7 @@
+""""""""""""""""
+" FUNCTIONS
+""""""""""""""""
+
 function! CompileMarkdown(files)
 	let l:dir = expand("%:h:t")
 	if l:dir == "."
@@ -15,9 +19,21 @@ function! CompileMarkdown(files)
 endfunction
 
 
+""""""""""""""""
+" SETTINGS
+""""""""""""""""
+
+" vim-instant-markdown
+" disable autostart
+let g:instant_markdown_autostart = 0
+
+
+""""""""""""""""
+" MAPPINGS
+""""""""""""""""
+
 augroup markdown
-	" syntax highlighting
-	" autocmd BufNewFile,BufRead *.md set filetype=markdown
+	autocmd!
 
 	" spell check
 	autocmd FileType markdown setlocal spell | setlocal complete+=kspell
@@ -26,16 +42,7 @@ augroup markdown
 	autocmd FileType markdown
 		\ noremap <localleader>c :call CompileMarkdown(expand("%:p"))<cr> |
 		\ noremap <localleader>C :call CompileMarkdown("*.md")<cr>
+
+	" vim-instant-markdown
+	autocmd FileType markdown noremap <localleader>p :InstantMarkdownPreview<cr>
 augroup END
-
-
-""""""""""""""""
-" PLUGINS
-""""""""""""""""
-
-" vim-instant-markdown
-
-" disable autostart
-let g:instant_markdown_autostart = 0
-
-noremap <localleader>p :InstantMarkdownPreview<cr>

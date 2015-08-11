@@ -5,6 +5,16 @@
 " set libraries for othree/javascript-libraries-syntax
 let g:used_javascript_libs = 'jquery,underscore'
 
+" vim-jsdoc
+
+let g:jsdoc_allow_input_prompt      = 1 " 0
+let g:jsdoc_input_description       = 1 " 1
+let g:jsdoc_additional_descriptions = 0 " 0
+let g:jsdoc_return                  = 1 " 1
+let g:jsdoc_return_type             = 1 " 1
+let g:jsdoc_return_description      = 1 " 1
+let g:jsdoc_default_mapping         = 0 " 1
+
 
 """"""""""""""""
 " FUNCTIONS
@@ -29,6 +39,8 @@ endfunction
 """"""""""""""""
 
 augroup javascript
+	autocmd!
+
 	" fixes a weird thing where vim things some js files are `sh`
 	autocmd BufNewFile,BufRead *.js set filetype=javascript
 
@@ -37,23 +49,6 @@ augroup javascript
 		\ map <localleader>v :execute PrintVersion('i')<cr> |
 		\ map <localleader>V :execute PrintVersion('a')<cr>
 
-	" React
-	autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx | normal coL
+	" jsdoc
+	autocmd FileType javascript nmap <silent> <localleader>C <plug>(jsdoc)
 augroup END
-
-
-""""""""""""""""
-" PLUGINS
-""""""""""""""""
-
-" vim-jsdoc
-
-let g:jsdoc_allow_input_prompt      = 1 " 0
-let g:jsdoc_input_description       = 1 " 1
-let g:jsdoc_additional_descriptions = 0 " 0
-let g:jsdoc_return                  = 1 " 1
-let g:jsdoc_return_type             = 1 " 1
-let g:jsdoc_return_description      = 1 " 1
-let g:jsdoc_default_mapping         = 0 " 1
-
-autocmd FileType javascript nmap <silent> <localleader>C <plug>(jsdoc)

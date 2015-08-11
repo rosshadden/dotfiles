@@ -3,6 +3,8 @@ dist/
 node_modules/
 
 # apps
+src/.config/copyq/.copyq_m
+src/.config/copyq/.copyq_s
 src/.config/copyq/copyq-bak.conf
 src/.config/copyq/copyq_geometry.ini
 src/.config/copyq/copyq_tabs.ini

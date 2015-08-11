@@ -51,8 +51,8 @@ endif
 " MAPPINGS
 """"""""""""""""
 
-call MakePrefix('explorer', '<:prefix>e')
 call MakePrefix('files', '<:prefix>f')
+call MakePrefix('explorer', '<:prefix>F')
 
 noremap <leader>f :VimFilerExplorer<cr>
 noremap <leader>F :VimFilerExplorer -toggle -find<cr>
@@ -126,4 +126,7 @@ function! s:settings()
 	map <buffer> zf <plug>(vimfiler_toggle_visible_ignore_files)
 endfunction
 
-autocmd FileType vimfiler call s:settings()
+augroup files
+	autocmd!
+	autocmd FileType vimfiler call s:settings()
+augroup END

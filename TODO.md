@@ -25,10 +25,9 @@
 	- `vim`
 		- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
 		- plugins
-			- [fix easymotion](https://github.com/easymotion/vim-easymotion/issues/228)
+			- [fix easymotion with tabs](https://github.com/easymotion/vim-easymotion/issues/228)
 			- remove redundant or unused plugins
 				- I have two commenting plugins, with overlapping but not identical features
-			- [zeal](https://github.com/KabbAmine/zeavim.vim)
 		- make a <localleader> bind to open the session of the current project
 		- modes
 			- ember
@@ -42,7 +41,6 @@
 				- vet mappings per concept, as some do weird things (`<:unite:1>g`)
 				- vim-session integration
 			- vimfiler
-				- make mappings
 				- [add git status icons](https://github.com/Shougo/vimfiler.vim/issues/308)
 			- document the modes
 		- Raws, Private Investigator

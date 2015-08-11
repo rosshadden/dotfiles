@@ -23,7 +23,7 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
 endif
 
 " Enable omni completion.
-augroup omnicomplete
+augroup completion
 	autocmd!
 	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags

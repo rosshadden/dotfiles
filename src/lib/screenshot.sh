@@ -1,10 +1,22 @@
 #!/usr/bin/env bash
 
+################
+# Take screenshots and copy path to clipboard.
+# Optionally move to public Dropbox folder and copy public URL.
+#
+# Dependencies:
+# - escrotum
+# - [dropbox-cli]
+# - [dunstify]
+################
+
 action=$1
 
-file=`date +'%Y-%m-%d-%T.png'`
+file=$(date +'%Y-%m-%d-%T.png')
 # TODO: read this from an env variable
-path=~/Dropbox/Public/media/images/ss/$file
+path=/tmp/ss/$file
+mkdir -p $path
+path=$path/$file
 
 # take screenshot
 if [[ $action == 'select' || $action == 'window' ]]; then
@@ -13,11 +25,23 @@ else
 	escrotum $path
 fi
 
-# TODO: only do this if dropbox is passed as an argument
-# generate public url
-url=`dropbox-cli puburl $path`
+# copy the path
+echo -n "$path" | xsel -ib
 
-# copy the public url
-echo -n $url | xsel -ib
+ss=$(dunstify -A dropbox,dropbox "Screenshot taken" "path: $path\n\nPath copied to clipboard.")
 
-notify-send "Screenshot taken" "path: $path\n\nURL: $url\n\nURL copied to clipboard."
+if [[ $ss == 'dropbox' ]]; then
+	# TODO: read this from an env variable
+	dbPath=~/Dropbox/Public/media/images/ss/$file
+
+	mv $path $dbPath
+
+	# TODO: only do this if dropbox is passed as an argument
+	# generate public url
+	url=$(dropbox-cli puburl $dbPath)
+
+	# copy the public url
+	echo -n "$url" | xsel -ib
+
+	dunstify "Screenshot taken" "path: $dbPath\n\nURL: $url\n\nURL copied to clipboard."
+fi

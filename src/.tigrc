@@ -295,7 +295,7 @@ bind generic <esc>m !gg branches 'git merge'
 bind generic <esc>M !gg branches -rf 'git merge'
 
 # copy commit hash to clipboard
-bind generic x !@sh -c "echo -n %(commit) | xsel -ib"
+bind generic Y !@sh -c "echo -n %(commit) | xsel -ib"
 
 # amend commit
 bind status a !git amend -e

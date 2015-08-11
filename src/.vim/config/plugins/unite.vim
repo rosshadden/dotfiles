@@ -120,7 +120,10 @@ function! s:uniteSettings()
 	map <buffer><expr> oF unite#do_action('tabvimfiler')
 endfunction
 
-autocmd FileType unite call s:uniteSettings()
+augroup unite
+	autocmd!
+	autocmd FileType unite call s:uniteSettings()
+augroup END
 
 
 """"""""""""""""
