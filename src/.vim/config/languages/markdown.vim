@@ -24,8 +24,8 @@ augroup markdown
 
 	" compile to pdf
 	autocmd FileType markdown
-		\ map <localleader>c :call CompileMarkdown(expand("%:p"))<cr> |
-		\ map <localleader>C :call CompileMarkdown("*.md")<cr>
+		\ noremap <localleader>c :call CompileMarkdown(expand("%:p"))<cr> |
+		\ noremap <localleader>C :call CompileMarkdown("*.md")<cr>
 augroup END
 
 
@@ -38,4 +38,4 @@ augroup END
 " disable autostart
 let g:instant_markdown_autostart = 0
 
-map <localleader>p :InstantMarkdownPreview<cr>
+noremap <localleader>p :InstantMarkdownPreview<cr>

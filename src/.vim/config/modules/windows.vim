@@ -17,37 +17,37 @@ call MakePrefix('windows', '<:windows>w', 1)
 call MakePrefix('resize', '<:prefix>r')
 
 " navigation
-nmap <:windows>n :wnext<cr>
-nmap <:windows>p :wprevious<cr>
+nnoremap <:windows>n :wnext<cr>
+nnoremap <:windows>p :wprevious<cr>
 
 " split window [h, j, k, l]
-map <:windows>j :botright new<cr>
-map <:windows>k :topleft new<cr>
-map <:windows>h :topleft vnew<cr>
-map <:windows>l :botright vnew<cr>
+noremap <:windows>j :botright new<cr>
+noremap <:windows>k :topleft new<cr>
+noremap <:windows>h :topleft vnew<cr>
+noremap <:windows>l :botright vnew<cr>
 
 " clone window [h, j, k, l]
-map <:windows:1>j :botright split<cr>
-map <:windows:1>k :topleft split<cr>
-map <:windows:1>h :topleft vsplit<cr>
-map <:windows:1>l :botright vsplit<cr>
+noremap <:windows:1>j :botright split<cr>
+noremap <:windows:1>k :topleft split<cr>
+noremap <:windows:1>h :topleft vsplit<cr>
+noremap <:windows:1>l :botright vsplit<cr>
 
 " move window [H, J, K, L]
 " NOTE: this is not expected, but all vim can natively do
-map <:windows>J <c-w>J
-map <:windows>K <c-w>K
-map <:windows>H <c-w>H
-map <:windows>L <c-w>L
+noremap <:windows>J <c-w>J
+noremap <:windows>K <c-w>K
+noremap <:windows>H <c-w>H
+noremap <:windows>L <c-w>L
 
 " close window
-map <:windows>c :close<cr>
-map <:windows>C :close!<cr>
+noremap <:windows>c :close<cr>
+noremap <:windows>C :close!<cr>
 
 " move window to a new tab
-map <:windows>t <c-w>T
+noremap <:windows>t <c-w>T
 
 " close all other windows
-map <:windows>o <c-w>O
+noremap <:windows>o <c-w>O
 
 
 """"""""""""""""

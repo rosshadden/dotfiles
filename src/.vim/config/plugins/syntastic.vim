@@ -8,4 +8,4 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 
-map coL :SyntasticToggleMode<cr>
+noremap coL :SyntasticToggleMode<cr>

@@ -39,5 +39,5 @@ map <:space>s <:space>h<:space>l
 map <:space>v <:space>j<:space>k
 
 " easy toggles
-map coW :ToggleWhitespace<cr>
-map coS :ToggleStripWhitespaceOnSave<cr>
+noremap coW :ToggleWhitespace<cr>
+noremap coS :ToggleStripWhitespaceOnSave<cr>

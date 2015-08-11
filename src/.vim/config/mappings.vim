@@ -1,49 +1,49 @@
 " fix Y
-map Y y$
+noremap Y y$
 
 " shift is for sucks? (avoids :W style typos, or so I'm told)
-map ; :
+noremap ; :
 
 " U => redo [:redo]
-map U :redo<cr>
+noremap U :redo<cr>
 
 " write
 " L-w => write [:write]
-map <leader>w :write<cr>
+noremap <leader>w :write<cr>
 " L-W => force save [:write!]
-map <leader>W :write!<cr>
+noremap <leader>W :write!<cr>
 
 " save
 " L-s => save [:update]
-map <leader>s :update<cr>
+noremap <leader>s :update<cr>
 " L-S => force save [:write]
-map <leader>S :update!<cr>
+noremap <leader>S :update!<cr>
 
 " reload
 " L-r => reload file [:edit]
-map <leader>r :edit<cr>
-map <leader>R :edit!<cr>
+noremap <leader>r :edit<cr>
+noremap <leader>R :edit!<cr>
 " L-L-r => reload config [:Reload]
-map <:leader:1>r :Reload<cr>
+noremap <:leader:1>r :Reload<cr>
 
 " L-. => repeat last command
-map <leader>. @:
+noremap <leader>. @:
 
 " searching
 	" toggle highlighted search
-	nmap <:leader:1>/ :nohlsearch<cr>
-	nmap co/ :set hlsearch!<cr>
+	nnoremap <:leader:1>/ :nohlsearch<cr>
+	nnoremap co/ :set hlsearch!<cr>
 	" search for selected word
-	vmap / "vy/<c-r>v
-	vmap ? "vy?<c-r>v
+	vnoremap / "vy/<c-r>v
+	vnoremap ? "vy?<c-r>v
 
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
 
 " use Q for formatting, not Ex mode
-map Q gq
+noremap Q gq
 
 " build
-map <localleader><space> :Make<cr>:cc<cr>
-map <localleader><localleader><space> :Make!<cr>:cc<cr>
+noremap <localleader><space> :Make<cr>:cc<cr>
+noremap <localleader><localleader><space> :Make!<cr>:cc<cr>
