@@ -24,14 +24,14 @@ map <leader>S :update!<cr>
 map <leader>r :edit<cr>
 map <leader>R :edit!<cr>
 " L-L-r => reload config [:Reload]
-map [leader:1]r :Reload<cr>
+map <:leader:1>r :Reload<cr>
 
 " L-. => repeat last command
 map <leader>. @:
 
 " searching
 	" toggle highlighted search
-	nmap [leader:1]/ :nohlsearch<cr>
+	nmap <:leader:1>/ :nohlsearch<cr>
 	nmap co/ :set hlsearch!<cr>
 	" search for selected word
 	vmap / "vy/<c-r>v

@@ -16,7 +16,7 @@ let g:EasyMotion_keys = 'AOEUIDHTN-,.PYFGCRL;QJKXBMWVZS'
 let g:EasyMotion_enter_jump_first = 1
 
 " prefix
-map [prefix]e <plug>(easymotion-prefix)
+map <:prefix>e <plug>(easymotion-prefix)
 
 " vim-sneak
 nmap S <plug>(easymotion-s2)
@@ -37,15 +37,15 @@ map <leader>h <plug>(easymotion-linebackward)
 
 " camelcasemotion
 
-call MakePrefix('camel', '[prefix]C')
+call MakePrefix('camel', '<:prefix>C')
 
-map <silent> [camel]w <plug>CamelCaseMotion_w
-map <silent> [camel]b <plug>CamelCaseMotion_b
-map <silent> [camel]e <plug>CamelCaseMotion_e
+map <silent> <:camel>w <plug>CamelCaseMotion_w
+map <silent> <:camel>b <plug>CamelCaseMotion_b
+map <silent> <:camel>e <plug>CamelCaseMotion_e
 
-omap <silent> [camel]iw <plug>CamelCaseMotion_iw
-xmap <silent> [camel]iw <plug>CamelCaseMotion_iw
-omap <silent> [camel]ib <plug>CamelCaseMotion_ib
-xmap <silent> [camel]ib <plug>CamelCaseMotion_ib
-omap <silent> [camel]ie <plug>CamelCaseMotion_ie
-xmap <silent> [camel]ie <plug>CamelCaseMotion_ie
+omap <silent> <:camel>iw <plug>CamelCaseMotion_iw
+xmap <silent> <:camel>iw <plug>CamelCaseMotion_iw
+omap <silent> <:camel>ib <plug>CamelCaseMotion_ib
+xmap <silent> <:camel>ib <plug>CamelCaseMotion_ib
+omap <silent> <:camel>ie <plug>CamelCaseMotion_ie
+xmap <silent> <:camel>ie <plug>CamelCaseMotion_ie

@@ -12,10 +12,10 @@ nmap ]H <plug>GitGutterNextHunk
 nmap [H <plug>GitGutterPrevHunk
 
 " preview changed hunk
-nmap [prefix]Hp <plug>GitGutterPreviewHunk
+nmap <:prefix>Hp <plug>GitGutterPreviewHunk
 
 " stage changed hunk
-nmap [prefix]Hs <plug>GitGutterStageHunk
+nmap <:prefix>Hs <plug>GitGutterStageHunk
 
 " revert changed hunk
-nmap [prefix]Hr <plug>GitGutterRevertHunk
+nmap <:prefix>Hr <plug>GitGutterRevertHunk

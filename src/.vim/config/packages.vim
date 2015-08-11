@@ -61,6 +61,10 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" camelCase
 		NeoBundle 'bkad/CamelCaseMotion'
 
+	" operators
+		NeoBundle 'kana/vim-operator-user'
+		NeoBundle 'kana/vim-operator-replace'
+
 	" features
 		" snippets
 		NeoBundle 'Shougo/neosnippet.vim'

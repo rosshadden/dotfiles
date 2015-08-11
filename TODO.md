@@ -23,10 +23,8 @@
 		- `remove`/`uninstall`/`cleanup`
 - apps
 	- `vim`
-		- change prefix maps so as to not interfere with `[` mappings
 		- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
 		- plugins
-			- make "put in <motion>" plugin
 			- [fix easymotion](https://github.com/easymotion/vim-easymotion/issues/228)
 			- remove redundant or unused plugins
 				- I have two commenting plugins, with overlapping but not identical features
@@ -41,11 +39,12 @@
 					- possibly a dynamic vertical/horizontal choice
 				- make a mapping or mode for finding files not in the repo
 				- abstract making 4-8 mappings per concept
-				- vet mappings per concept, as some do weird things (`[unite:1]g`)
+				- vet mappings per concept, as some do weird things (`<:unite:1>g`)
 				- vim-session integration
 			- vimfiler
 				- make mappings
 				- [add git status icons](https://github.com/Shougo/vimfiler.vim/issues/308)
+			- document the modes
 		- Raws, Private Investigator
 			- figure out why reloading vimrc makes exiting insert mode laggy
 		- [look into analytics](http://www.drbunsen.org/vim-croquet/)

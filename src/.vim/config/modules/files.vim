@@ -51,40 +51,40 @@ endif
 " MAPPINGS
 """"""""""""""""
 
-call MakePrefix('explorer', '[prefix]e')
-call MakePrefix('files', '[prefix]f')
+call MakePrefix('explorer', '<:prefix>e')
+call MakePrefix('files', '<:prefix>f')
 
 map <leader>f :VimFilerExplorer<cr>
 map <leader>F :VimFilerExplorer -toggle -find<cr>
 
-map [files]f :VimFiler<cr>
-map [files]F :VimFilerBufferDir<cr>
+map <:files>f :VimFiler<cr>
+map <:files>F :VimFilerBufferDir<cr>
 
-map [files]t :VimFilerTab<cr>
+map <:files>t :VimFilerTab<cr>
 
-map [files]j :VimFilerSplit -create -horizontal -direction=rightbelow<cr>
-map [files]k :VimFilerSplit -create -horizontal -direction=leftabove<cr>
-map [files]h :VimFilerSplit -create -direction=leftabove<cr>
-map [files]l :VimFilerSplit -create -direction=rightbelow<cr>
+map <:files>j :VimFilerSplit -create -horizontal -direction=rightbelow<cr>
+map <:files>k :VimFilerSplit -create -horizontal -direction=leftabove<cr>
+map <:files>h :VimFilerSplit -create -direction=leftabove<cr>
+map <:files>l :VimFilerSplit -create -direction=rightbelow<cr>
 
-map [files]J :VimFilerBufferDir -create -split -horizontal -direction=rightbelow<cr>
-map [files]K :VimFilerBufferDir -create -split -horizontal -direction=leftabove<cr>
-map [files]H :VimFilerBufferDir -create -split -direction=leftabove<cr>
-map [files]L :VimFilerBufferDir -create -split -direction=rightbelow<cr>
+map <:files>J :VimFilerBufferDir -create -split -horizontal -direction=rightbelow<cr>
+map <:files>K :VimFilerBufferDir -create -split -horizontal -direction=leftabove<cr>
+map <:files>H :VimFilerBufferDir -create -split -direction=leftabove<cr>
+map <:files>L :VimFilerBufferDir -create -split -direction=rightbelow<cr>
 
-map [explorer]<space> :EditVifm<cr>
+map <:explorer><space> :EditVifm<cr>
 
-map [explorer]t :TabVifm<cr>
+map <:explorer>t :TabVifm<cr>
 
-map [explorer]s :VsplitVifm<cr>
-map [explorer]h :VsplitVifm<cr>
-map [explorer]l :VsplitVifm<cr>
+map <:explorer>s :VsplitVifm<cr>
+map <:explorer>h :VsplitVifm<cr>
+map <:explorer>l :VsplitVifm<cr>
 
-map [explorer]- :SplitVifm<cr>
-map [explorer]j :SplitVifm<cr>
-map [explorer]k :SplitVifm<cr>
+map <:explorer>- :SplitVifm<cr>
+map <:explorer>j :SplitVifm<cr>
+map <:explorer>k :SplitVifm<cr>
 
-map [explorer]d :DiffVifm<cr>
+map <:explorer>d :DiffVifm<cr>
 
 
 """"""""""""""""

@@ -62,8 +62,8 @@ endfunction
 """"""""""""""""
 
 " prefix
-call MakePrefix('session', '[prefix]S')
+call MakePrefix('session', '<:prefix>S')
 
-nmap <expr>[session]<space> OpenSession()
+nmap <expr><:session><space> OpenSession()
 
-nmap <expr>[session]o OpenSession(GetSessionName())
+nmap <expr><:session>o OpenSession(GetSessionName())
