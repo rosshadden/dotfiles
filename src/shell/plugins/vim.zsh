@@ -3,8 +3,11 @@
 
 # Original from oh-my-zsh plugins.
 
+KEYTIMEOUT=1
+
+
 function zle-line-init zle-keymap-select {
-  zle reset-prompt
+	zle reset-prompt
 }
 
 # zle -N zle-line-init
@@ -12,18 +15,13 @@ zle -N zle-keymap-select
 
 bindkey -v
 
-bindkey '^k' vi-cmd-mode # <C-k> for going to command mode
+bindkey -M vicmd ' ' execute-named-cmd # Space for command line mode
 
-bindkey -M vicmd ' ' execute-named-cmd # Space for command line mode
+# TODO: make everything work in tmux
 
-# Bind expected keys.
 # DEL
-bindkey "\e[3~" delete-char
-bindkey -M vicmd "\e[3~" delete-char
-bindkey -M viins "\e[3~" delete-char
-#bindkey "^e[3~" delete-word
-#bindkey -M vicmd "^e[3~" delete-word
-#bindkey -M viins "^e[3~" delete-word
+bindkey -M main -M vicmd -M viins '\e[3^' delete-word
+bindkey -M main -M vicmd -M viins '\e[33~' backward-kill-word
 # HOME
 bindkey '\e[1~' vi-beginning-of-line
 bindkey '\eOH' vi-beginning-of-line
@@ -31,24 +29,14 @@ bindkey '\eOH' vi-beginning-of-line
 bindkey '\e[4~' vi-end-of-line
 bindkey '\eOF' vi-end-of-line
 
-# More betterer input
-#bindkey -M viins 'jj' vi-cmd-mode
-bindkey "^?" backward-delete-char
-bindkey "^W" backward-kill-word
-
 bindkey -M viins '^o' vi-backward-kill-word
 
-bindkey -M vicmd 'yy' vi-yank-whole-line
 bindkey -M vicmd 'Y' vi-yank-eol
 
-bindkey -M vicmd 'y.' vi-yank-whole-line
-bindkey -M vicmd 'c.' vi-change-whole-line
-bindkey -M vicmd 'd.' kill-whole-line
-
-bindkey -M vicmd 'u' undo
+# redo
 bindkey -M vicmd 'U' redo
 
-bindkey -M vicmd 'H' run-help
+# `man` page of base command
 bindkey -M viins '\eh' run-help
 
 bindkey -M vicmd 'k' history-substring-search-up
@@ -60,22 +48,32 @@ bindkey '^n' history-substring-search-down
 bindkey -M vicmd '\-' vi-repeat-find
 bindkey -M vicmd '_' vi-rev-repeat-find
 
-bindkey -M viins '\e.' insert-last-word
-bindkey -M vicmd '\e.' insert-last-word
+bindkey -M vicmd -M viins '\e.' insert-last-word
 
 bindkey -M viins '^a' beginning-of-line
 bindkey -M viins '^e' end-of-line
 
-# if mode indicator wasn't setup by theme, define default
-if [[ "$MODE_INDICATOR" == "" ]]; then
-  MODE_INDICATOR="%{$fg_bold[blue]%}<%{$fg[red]%}<<%{$reset_color%}"
-fi
+# <space> to expand history expansion
+bindkey ' ' magic-space
 
-function vi_mode_prompt_info() {
-  echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
+# history substring searching
+bindkey -M vicmd -M viins 'R' history-incremental-pattern-search-backward
+
+# enhanced <c-r>
+# http://chneukirchen.org/blog/archive/2013/03/10-fresh-zsh-tricks-you-may-not-know.html
+autoload -Uz narrow-to-region
+function _history-incremental-preserving-pattern-search-backward {
+	local state
+	MARK=CURSOR  # magick, else multiple ^R don't work
+	narrow-to-region -p "$LBUFFER${BUFFER:+>>}" -P "${BUFFER:+<<}$RBUFFER" -S state
+	zle end-of-history
+	zle history-incremental-pattern-search-backward
+	narrow-to-region -R state
 }
+zle -N _history-incremental-preserving-pattern-search-backward
+bindkey "^R" _history-incremental-preserving-pattern-search-backward
+bindkey -M isearch "^R" history-incremental-pattern-search-backward
+bindkey "^S" history-incremental-pattern-search-forward
 
-# define right prompt, if it wasn't defined by a theme
-if [[ "$RPS1" == "" && "$RPROMPT" == "" ]]; then
-  RPS1='$(vi_mode_prompt_info)'
-fi
+# expand .[TAB] and ..[TAB]
+zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'

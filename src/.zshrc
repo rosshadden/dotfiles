@@ -78,7 +78,6 @@ BASE16_SHELL="$BASE16_DIR/base16-$THEME.$BASE16_VARIANT.sh"
 
 
 # airline prompt
-
 . $themeDir/promptline.sh
 
 
@@ -101,6 +100,7 @@ plugins=(archlinux battery extract git-extras node npm python nyan history-subst
 # tmuxp
 source tmuxp.zsh
 
+# TODO: move to standalone file, merged with shell/plugins/vim.zsh
 # expand
 bindkey '^f' vi-forward-blank-word
 bindkey '^[f' vi-forward-char
@@ -154,38 +154,6 @@ bindkey '^T' autosuggest-toggle
 		zle -N zle-line-init
 		zle -N zle-line-finish
 	fi
-
-# vi-mode
-	KEYTIMEOUT=1
-
-	# redo
-	bindkey -M vicmd 'U' redo
-	# history substring searching
-	bindkey -M viins 'R' history-incremental-pattern-search-backward
-	bindkey -M vicmd 'R' history-incremental-pattern-search-backward
-	# default <space> is pretty frustrating when I bump it
-	bindkey -M vicmd ' ' vi-forward-char
-	# <space> to expand history expansion
-	bindkey ' ' magic-space
-
-# enhanced <c-r>
-# http://chneukirchen.org/blog/archive/2013/03/10-fresh-zsh-tricks-you-may-not-know.html
-autoload -Uz narrow-to-region
-function _history-incremental-preserving-pattern-search-backward {
-	local state
-	MARK=CURSOR  # magick, else multiple ^R don't work
-	narrow-to-region -p "$LBUFFER${BUFFER:+>>}" -P "${BUFFER:+<<}$RBUFFER" -S state
-	zle end-of-history
-	zle history-incremental-pattern-search-backward
-	narrow-to-region -R state
-}
-zle -N _history-incremental-preserving-pattern-search-backward
-bindkey "^R" _history-incremental-preserving-pattern-search-backward
-bindkey -M isearch "^R" history-incremental-pattern-search-backward
-bindkey "^S" history-incremental-pattern-search-forward
-
-# expand .[TAB] and ..[TAB]
-zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
 
 
 # VI-MODE
