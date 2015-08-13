@@ -33,10 +33,15 @@ nmap S <plug>(easymotion-s2)
 " map  N <Plug>(easymotion-prev)
 
 " better long-distance travel
-map <leader>l <plug>(easymotion-lineforward)
 map <leader>j <plug>(easymotion-j)
 map <leader>k <plug>(easymotion-k)
 map <leader>h <plug>(easymotion-linebackward)
+map <leader>l <plug>(easymotion-lineforward)
+
+map <leader>J <plug>(easymotion-sol-j)
+map <leader>K <plug>(easymotion-sol-k)
+map <leader>H <plug>(easymotion-linebackward)
+map <leader>L <plug>(easymotion-lineforward)
 
 map <silent> <:camel>w <plug>CamelCaseMotion_w
 map <silent> <:camel>b <plug>CamelCaseMotion_b

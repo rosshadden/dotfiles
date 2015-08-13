@@ -1,3 +1,15 @@
+""""""""""""""""
+" SETTINGS
+""""""""""""""""
+
+" tabs! (not to be confused with tabs)
+set tabstop=4 shiftwidth=4
+
+
+""""""""""""""""
+" MAPPINGS
+""""""""""""""""
+
 " prefix
 call MakePrefix('tabs', '<:prefix>t')
 call MakePrefix('tabs', '<:tabs>t', 1)

@@ -5,13 +5,7 @@ runtime! config/init.vim
 runtime! config/packages.vim
 
 " load settings
-runtime! config/functions.vim
-runtime! config/prefixes.vim
-runtime! config/settings.vim
-runtime! config/mappings.vim
-runtime! config/misc.vim
+runtime! config/functions.vim config/prefixes.vim config/settings.vim config/mappings.vim config/misc.vim
 
 " load modules
-runtime! config/modules/**/*.vim
-runtime! config/languages/**/*.vim
-runtime! config/plugins/**/*.vim
+runtime! config/modules/**/*.vim config/languages/**/*.vim config/plugins/**/*.vim

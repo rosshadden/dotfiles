@@ -826,7 +826,7 @@
 	for_window [class="^Copyq$"] border pixel 0, floating enable
 
 	# web
-	assign [class="^Google-chrome" window_role="browser"] → $wsWeb
+	assign [class="^google-chrome" window_role="browser"] → $wsWeb
 
 	# media
 	assign [class="(nuvolaplayer|Spotify|Vlc)"] → $wsMedia

@@ -1,5 +1,16 @@
-" TODO: cleanup the tmux-vs-not differences
+""""""""""""""""
+" SETTINGS
+""""""""""""""""
 
+" highlight cursor line
+set cursorline
+
+
+""""""""""""""""
+" FUNCTIONS
+""""""""""""""""
+
+" TODO: cleanup the tmux-vs-not differences
 
 let s:prefixCode = ""
 let s:suffixCode = ""

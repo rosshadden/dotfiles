@@ -24,10 +24,6 @@
 - apps
 	- `vim`
 		- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
-		- plugins
-			- [fix easymotion with tabs](https://github.com/easymotion/vim-easymotion/issues/228)
-			- remove redundant or unused plugins
-				- I have two commenting plugins, with overlapping but not identical features
 		- make a <localleader> bind to open the session of the current project
 		- modes
 			- ember
@@ -48,8 +44,9 @@
 			- vimfiler
 				- [add git status icons](https://github.com/Shougo/vimfiler.vim/issues/308)
 			- document the modes
-		- Raws, Private Investigator
-			- figure out why reloading vimrc makes exiting insert mode laggy
+		- plugins
+			- remove redundant or unused plugins
+				- I have two commenting plugins, with overlapping but not identical features
 		- [look into analytics](http://www.drbunsen.org/vim-croquet/)
 	- `i3`
 		- modes
@@ -71,6 +68,8 @@
 		- Raws, Private Investigator
 			- figure out why exiting one session sometimes switches to another
 		- use `choose-session` to pick a session to link current session to
+	- `git`
+		- make an alias for `git reset --hard origin/<branch>`
 	- `tig`
 		- spend time making it even more useful
 		- universalize mappings
