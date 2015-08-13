@@ -14,7 +14,7 @@ action=$1
 
 file=$(date +'%Y-%m-%d-%T.png')
 # TODO: read this from an env variable
-path=/tmp/ss/$file
+path=/tmp/ss
 mkdir -p $path
 path=$path/$file
 
@@ -28,7 +28,7 @@ fi
 # copy the path
 echo -n "$path" | xsel -ib
 
-ss=$(dunstify -A dropbox,dropbox "Screenshot taken" "path: $path\n\nPath copied to clipboard.")
+ss=$(dunstify -A dropbox,dropbox "Screenshot taken" "path: $path\nPath copied to clipboard.")
 
 if [[ $ss == 'dropbox' ]]; then
 	# TODO: read this from an env variable
@@ -43,5 +43,5 @@ if [[ $ss == 'dropbox' ]]; then
 	# copy the public url
 	echo -n "$url" | xsel -ib
 
-	dunstify "Screenshot taken" "path: $dbPath\n\nURL: $url\n\nURL copied to clipboard."
+	dunstify "Screenshot taken" "path: $dbPath\nURL: $url\nURL copied to clipboard."
 fi

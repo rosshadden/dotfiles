@@ -8,6 +8,31 @@ let g:windowswap_map_keys = 0
 
 
 """"""""""""""""
+" FUNCTIONS
+""""""""""""""""
+
+" Zoom / Restore window.
+function! s:ZoomToggle() abort
+	if exists('t:zoomed') && t:zoomed
+		exec t:zoom_winrestcmd
+		let t:zoomed = 0
+	else
+		let t:zoom_winrestcmd = winrestcmd()
+		resize
+		vertical resize
+		let t:zoomed = 1
+	endif
+endfunction
+
+
+""""""""""""""""
+" COMMANDS
+""""""""""""""""
+
+command! ZoomToggle call s:ZoomToggle()
+
+
+""""""""""""""""
 " MAPPINGS
 """"""""""""""""
 
@@ -48,6 +73,9 @@ noremap <:windows>t <c-w>T
 
 " close all other windows
 noremap <:windows>o <c-w>O
+
+" zoom
+nnoremap <silent> <:windows>z :ZoomToggle<CR>
 
 
 """"""""""""""""

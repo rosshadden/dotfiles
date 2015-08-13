@@ -31,6 +31,11 @@
 		- make a <localleader> bind to open the session of the current project
 		- modes
 			- ember
+			- diff
+				- :LineDiff
+				- :DiffChanges
+				- :git diff
+				- :DiffVifm
 			- vifm
 				- https://github.com/vifm/vifm/issues/60 and https://github.com/vifm/vifm/issues/79
 			- unite
@@ -90,6 +95,7 @@
 		- revisit binds
 		- add specific configs, launched with `-c "source /path/to/config"`
 			- tmux
+				- make explorer open files in vim instance
 			- vim
 	- `spacefm`
 		- plugins

@@ -21,8 +21,8 @@ let g:vimfiler_expand_jump_to_first_child = 0
 " let g:vimfiler_safe_mode_by_default = 0
 
 " ignore
-" TODO: see if this can be dynamic, based on .gitignore or wildignore
-let g:vimfiler_ignore_pattern = '^\%(\.git\|node_modules\)$'
+let g:vimfiler_ignore_pattern = '^\%(\.git\)$'
+" let g:vimfiler_ignore_filters = ['matcher_ignore_pattern', 'matcher_ignore_files']
 
 " preview command
 let g:vimfiler_quick_look_command = 'gloobus-preview'
