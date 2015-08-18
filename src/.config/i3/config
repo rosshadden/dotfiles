@@ -844,6 +844,9 @@
 	assign [title="^finch$"] → $wsChat
 	assign [title="^plaidchat$"] → $wsChat
 
+	# monitor
+	assign [class="robomongo"] → $wsMonitor
+
 
 ################
 # STARTUP
