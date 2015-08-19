@@ -25,7 +25,10 @@
 	- `vim`
 		- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
 		- make a <localleader> bind to open the session of the current project
+		- snippets
+			- `foo = require('foo');`
 		- modes
+			- rename 'vim' mode to 'app' or 'main' or something
 			- ember
 			- diff
 				- :LineDiff

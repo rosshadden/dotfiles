@@ -38,6 +38,10 @@ map <:space>s <:space>h<:space>l
 " vertical
 map <:space>v <:space>j<:space>k
 
+" convert between tabs and spaces
+map <:space>t :Space2Tab<cr>
+map <:space>T :Tab2Space<cr>
+
 " easy toggles
 noremap coW :ToggleWhitespace<cr>
 noremap coS :ToggleStripWhitespaceOnSave<cr>
