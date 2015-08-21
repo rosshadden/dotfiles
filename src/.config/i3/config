@@ -710,17 +710,17 @@
 
 		# playback
 
-		bindsym space exec "playerctl play-pause; $refreshI3Media"; $return
-		bindsym l exec "playerctl next; $refreshI3Media"; $return
-		bindsym Right exec "playerctl next; $refreshI3Media"; $return
-		bindsym h exec "playerctl previous; $refreshI3Media"; $return
-		bindsym Left exec "playerctl previous; $refreshI3Media"; $return
+		bindsym space exec $(xdotool key XF86AudioPlay); $return
+		bindsym l exec $(xdotool key XF86AudioNext); $return
+		bindsym Right exec $(xdotool key XF86AudioNext); $return
+		bindsym h exec $(xdotool key XF86AudioPrev); $return
+		bindsym Left exec $(xdotool key XF86AudioPrev); $return
 
-		bindsym Shift+space exec "playerctl play-pause; $refreshI3Media"
-		bindsym Shift+l exec "playerctl next; $refreshI3Media"
-		bindsym Shift+Right exec "playerctl next; $refreshI3Media"
-		bindsym Shift+h exec "playerctl previous; $refreshI3Media"
-		bindsym Shift+Left exec "playerctl previous; $refreshI3Media"
+		bindsym Shift+space exec $(xdotool key XF86AudioPlay)
+		bindsym Shift+l exec $(xdotool key XF86AudioNext)
+		bindsym Shift+Right exec $(xdotool key XF86AudioNext)
+		bindsym Shift+h exec $(xdotool key XF86AudioPrev)
+		bindsym Shift+Left exec $(xdotool key XF86AudioPrev)
 
 
 		# screenshots
@@ -831,7 +831,9 @@
 	# media
 	assign [class="(nuvolaplayer|Spotify|Vlc)"] → $wsMedia
 	assign [title="Popcorn Time"] → $wsMedia
+	assign [title="Google Play Music" window_role="pop-up"] → $wsMedia
 	for_window [class="Vlc"] border none
+	for_window [title="Google Play Music" window_role="pop-up"] floating disable
 
 	# literature
 	assign [title="Google Keep"] → $wsLiterature

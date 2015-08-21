@@ -16,7 +16,7 @@ call unite#custom#source('buffer', 'converters', ['converter_file_directory'])
 
 call unite#custom#profile('default', 'context', {
 	\ 'winheight': 20,
-	\ 'start_insert': 1,
+	\ 'start_insert': 0,
 	\ 'auto_preview': 0,
 	\ 'vertical_preview': 0,
 \ })
@@ -137,6 +137,7 @@ call MakePrefix('unite', '<:unite>u', 1)
 
 " open files
 	call unite#custom#profile('files', 'context', {
+		\ 'start_insert': 1,
 		\ 'unique': 1,
 		\ 'candidate_icon': '>',
 	\ })
@@ -193,18 +194,17 @@ call MakePrefix('unite', '<:unite>u', 1)
 	vnoremap <:unite:1>T :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -no-vertical-preview tab buffer_tab -input=' . GetVisualSelection()<cr>
 
 	" buffer, tab, or files
-	nnoremap <:unite:0>a :Unite              -no-split buffer tab file_mru directory_mru bookmark<cr>
-	nnoremap <:unite:0>A :UniteWithBufferDir -no-split buffer tab file_mru directory_mru bookmark<cr>
-	nnoremap <:unite:1>a :Unite              -no-vertical-preview buffer tab file_mru directory_mru bookmark<cr>
-	nnoremap <:unite:1>A :UniteWithBufferDir -no-vertical-preview buffer tab file_mru directory_mru bookmark<cr>
-	vnoremap <:unite:0>a :<c-u>execute ':Unite              -no-split buffer tab file_mru directory_mru bookmark -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:0>A :<c-u>execute ':UniteWithBufferDir -no-split buffer tab file_mru directory_mru bookmark -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>a :<c-u>execute ':Unite              -no-vertical-preview buffer tab file_mru directory_mru bookmark -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>A :<c-u>execute ':UniteWithBufferDir -no-vertical-preview buffer tab file_mru directory_mru bookmark -input=' . GetVisualSelection()<cr>
+	nnoremap <:unite:0>a :Unite              -buffer-name=buffers -no-split buffer tab file_mru directory_mru bookmark<cr>
+	nnoremap <:unite:0>A :UniteWithBufferDir -buffer-name=buffers -no-split buffer tab file_mru directory_mru bookmark<cr>
+	nnoremap <:unite:1>a :Unite              -buffer-name=buffers -no-vertical-preview buffer tab file_mru directory_mru bookmark<cr>
+	nnoremap <:unite:1>A :UniteWithBufferDir -buffer-name=buffers -no-vertical-preview buffer tab file_mru directory_mru bookmark<cr>
+	vnoremap <:unite:0>a :<c-u>execute ':Unite              -buffer-name=buffers -no-split buffer tab file_mru directory_mru bookmark -input=' . GetVisualSelection()<cr>
+	vnoremap <:unite:0>A :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -no-split buffer tab file_mru directory_mru bookmark -input=' . GetVisualSelection()<cr>
+	vnoremap <:unite:1>a :<c-u>execute ':Unite              -buffer-name=buffers -no-vertical-preview buffer tab file_mru directory_mru bookmark -input=' . GetVisualSelection()<cr>
+	vnoremap <:unite:1>A :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -no-vertical-preview buffer tab file_mru directory_mru bookmark -input=' . GetVisualSelection()<cr>
 
 " current file
 	call unite#custom#profile('outline', 'context', {
-		\ 'start_insert': 1,
 		\ 'auto_preview': 1,
 	\ })
 
@@ -232,7 +232,6 @@ call MakePrefix('unite', '<:unite>u', 1)
 	call unite#custom#profile('changes', 'context', {
 		\ 'auto_preview': 1,
 		\ 'split': 0,
-		\ 'start_insert': 0,
 	\ })
 	nnoremap <:unite:0>k :Unite               -buffer-name=changes change<cr>
 	nnoremap <:unite:0>K :UniteWithCursorWord -buffer-name=changes change<cr>
@@ -243,7 +242,6 @@ call MakePrefix('unite', '<:unite>u', 1)
 	call unite#custom#profile('jump', 'context', {
 		\ 'auto_preview': 1,
 		\ 'split': 0,
-		\ 'start_insert': 0,
 	\ })
 	nnoremap <:unite:0>j :Unite               -buffer-name=jump jump<cr>
 	nnoremap <:unite:0>J :UniteWithCursorWord -buffer-name=jump jump<cr>
@@ -253,7 +251,6 @@ call MakePrefix('unite', '<:unite>u', 1)
 	" spelling
 	call unite#custom#profile('spelling', 'context', {
 		\ 'auto_preview': 1,
-		\ 'start_insert': 0,
 	\ })
 	nnoremap <:unite:0>s :Unite               -buffer-name=spelling spell_suggest<cr>
 	nnoremap <:unite:0>S :UniteWithCursorWord -buffer-name=spelling spell_suggest<cr>
@@ -264,7 +261,6 @@ call MakePrefix('unite', '<:unite>u', 1)
 
 " search files
 	call unite#custom#profile('find', 'context', {
-		\ 'start_insert': 0,
 		\ 'empty': 0,
 	\ })
 	nnoremap <:unite:0>g :Unite              -buffer-name=find -no-split grep:.<cr>
@@ -284,18 +280,12 @@ vnoremap <:unite:1><cr> :<c-u>execute ':Unite -buffer-name=omni -no-vertical-pre
 
 " vim
 	" yank stack
-	call unite#custom#profile('yank', 'context', {
-		\ 'start_insert': 0,
-	\ })
 	nnoremap <:unite:0>y :Unite -buffer-name=yank -no-split history/yank<cr>
 	vnoremap <:unite:0>y :<c-u>execute ':Unite -buffer-name=yank -no-split history/yank -input=' . GetVisualSelection()<cr>
 	nnoremap <:unite:1>y :Unite -buffer-name=yank -no-vertical-preview history/yank<cr>
 	vnoremap <:unite:1>y :<c-u>execute ':Unite -buffer-name=yank -no-vertical-preview history/yank -input=' . GetVisualSelection()<cr>
 
 	" command history
-	call unite#custom#profile('commands', 'context', {
-		\ 'start_insert': 0,
-	\ })
 	nnoremap <:unite:0>; :Unite -buffer-name=commands -default-action=execute history/command command<cr>
 	vnoremap <:unite:0>; :<c-u>execute ':Unite -buffer-name=commands -default-action=execute history/command command -input=' . GetVisualSelection()<cr>
 	nnoremap <:unite:1>; :Unite -buffer-name=commands -default-action=edit history/command command<cr>

@@ -19,8 +19,9 @@ let g:EasyMotion_enter_jump_first = 1
 """"""""""""""""
 
 " prefix
-call MakePrefix('camel', '<:prefix>C')
+call MakePrefix('easymotion', '<:prefix>e')
 map <:prefix>e <plug>(easymotion-prefix)
+call MakePrefix('camel', '<:prefix>C')
 
 " vim-sneak
 nmap S <plug>(easymotion-s2)
@@ -33,15 +34,14 @@ nmap S <plug>(easymotion-s2)
 " map  N <Plug>(easymotion-prev)
 
 " better long-distance travel
-map <leader>j <plug>(easymotion-j)
-map <leader>k <plug>(easymotion-k)
-map <leader>h <plug>(easymotion-linebackward)
-map <leader>l <plug>(easymotion-lineforward)
-
-map <leader>J <plug>(easymotion-sol-j)
-map <leader>K <plug>(easymotion-sol-k)
-map <leader>H <plug>(easymotion-linebackward)
-map <leader>L <plug>(easymotion-lineforward)
+map <:prefix>ej <plug>(easymotion-j)
+map <:prefix>ek <plug>(easymotion-k)
+map <:prefix>eh <plug>(easymotion-linebackward)
+map <:prefix>el <plug>(easymotion-lineforward)
+map <:prefix>eJ <plug>(easymotion-sol-j)
+map <:prefix>eK <plug>(easymotion-sol-k)
+map <:prefix>eH <plug>(easymotion-linebackward)
+map <:prefix>eL <plug>(easymotion-lineforward)
 
 map <silent> <:camel>w <plug>CamelCaseMotion_w
 map <silent> <:camel>b <plug>CamelCaseMotion_b
