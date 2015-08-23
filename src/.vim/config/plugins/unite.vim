@@ -7,7 +7,7 @@ let g:unite_force_overwrite_statusline = 0
 let g:unite_matcher_fuzzy_max_input_length = 32
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#custom#source('buffer,file,file_rec,file_rec/async', 'sorters', ['sorter_selecta'])
+call unite#custom#source('buffer,file,file_rec,file_rec/async', 'sorters', ['sorter_rank'])
 call unite#custom#source('file_rec,file_rec/async', 'ignore_globs', split(&wildignore, ','))
 call unite#custom#source('file_rec,file_rec/async', 'converters', [])
 call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 32)
@@ -26,20 +26,18 @@ call unite#custom#profile('default', 'context', {
 " EXTERNAL
 """"""""""""""""
 
-" ack >> grep
-if executable('ack')
-	let g:unite_source_grep_command = 'ack'
-	let g:unite_source_grep_default_opts = '-i --no-heading --no-color -k -H'
-	let g:unite_source_grep_recursive_opt = ''
-	let g:unite_source_rec_async_command = ['ack', '-f', '--nofilter']
-endif
-
-" ag > ack
 if executable('ag')
+	" ag > ack
 	let g:unite_source_grep_command = 'ag'
 	let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden --column'
 	let g:unite_source_grep_recursive_opt = ''
 	let g:unite_source_rec_async_command = ['ag', '--follow', '--hidden', '--nocolor', '--nogroup', '--ignore', '.git', '-g', '']
+elseif executable('ack')
+	" ack >> grep
+	let g:unite_source_grep_command = 'ack'
+	let g:unite_source_grep_default_opts = '-i --no-heading --no-color -k -H'
+	let g:unite_source_grep_recursive_opt = ''
+	let g:unite_source_rec_async_command = ['ack', '-f', '--nofilter']
 endif
 
 
@@ -50,10 +48,10 @@ endif
 function! s:uniteSettings()
 	" RESET
 
-	unmap <buffer> <space>
-	unmap <buffer> <c-h>
-	unmap <buffer> <c-l>
-	unmap <buffer> <c-k>
+	nunmap <buffer> <space>
+	nunmap <buffer> <c-h>
+	nunmap <buffer> <c-l>
+	nunmap <buffer> <c-k>
 	iunmap <buffer> <c-h>
 	iunmap <buffer> <c-l>
 
@@ -61,64 +59,93 @@ function! s:uniteSettings()
 	" PROMPT
 
 	" append to prompt
-	map <buffer> a <plug>(unite_append_enter)
+	nmap <buffer><expr> a unite#smart_map('a', '<plug>(unite_append_enter)')
 
 
 	" LIST
+
+	" go back
+	nmap <buffer><expr> h unite#smart_map('h', '<plug>(unite_exit)')
+	imap <buffer><expr> h unite#smart_map('h', '<plug>(unite_exit)')
+	nmap <buffer><expr> H unite#smart_map('H', '<plug>(unite_exit_all)')
+	imap <buffer><expr> H unite#smart_map('H', '<plug>(unite_exit_all)')
 
 	" select next/previous lines just like insert mode
 	nmap <buffer> <c-n> <plug>(unite_loop_cursor_down)
 	nmap <buffer> <c-p> <plug>(unite_loop_cursor_up)
 
-	" toggle auto preview
-	map <buffer> P p<plug>(unite_toggle_auto_preview)
+	" toggle previews
+	nnoremap <buffer><expr> p unite#smart_map('p', unite#do_action('preview'))
+	inoremap <buffer><expr> p unite#smart_map('p', unite#do_action('preview'))
+	nmap <buffer><expr> P unite#smart_map('P', 'p<plug>(unite_toggle_auto_preview)')
 
 
 	" CANDIDATES
 
 	" select
-	map <buffer> t <plug>(unite_toggle_mark_current_candidate)
-	map <buffer> T <plug>(unite_toggle_mark_current_candidate_up)
+	nmap <buffer><expr> t unite#smart_map('t', '<plug>(unite_toggle_mark_current_candidate)')
+	imap <buffer><expr> t unite#smart_map('t', '<plug>(unite_toggle_mark_current_candidate)')
+	nmap <buffer><expr> T unite#smart_map('T', '<plug>(unite_toggle_mark_current_candidate_up)')
+	imap <buffer><expr> T unite#smart_map('T', '<plug>(unite_toggle_mark_current_candidate_up)')
 	vmap <buffer> t <plug>(unite_toggle_mark_selected_candidates)
+
+	" quick match
+	imap <buffer><expr> x unite#smart_map('x', '<plug>(unite_quick_match_jump)')
 
 	let unite = unite#get_current_unite()
 	if unite.profile_name ==# 'search'
-		nmap <silent><buffer><expr> r unite#do_action('replace')
+		nnoremap <silent><buffer><expr> r unite#do_action('replace')
 	else
-		nmap <silent><buffer><expr> r unite#do_action('rename')
+		nnoremap <silent><buffer><expr> r unite#do_action('rename')
 	endif
 
 
 	" OPEN
+	" TODO: make all of the OPEN mappings work in insert mode, with `smart_map`
+
+	" default
+	nnoremap <buffer><expr> l unite#smart_map('l', unite#do_action('default'))
+	inoremap <buffer><expr> l unite#smart_map('l', unite#do_action('default'))
 
 	" choose
-	map <buffer><expr> oc unite#do_action('choose')
+	nnoremap <buffer><expr> oc unite#do_action('choose')
 
 	" open without closing unite
-	map <buffer><expr> op unite#do_action('persist_open')
+	nnoremap <buffer><expr> op unite#do_action('persist_open')
 
 	" open in new tab
-	map <buffer><expr> ot unite#do_action('tabopen')
+	nnoremap <buffer><expr> ot unite#do_action('tabopen')
 
 	" open in horizontal split
-	map <buffer><expr> os unite#do_action('vsplit')
-	map <buffer><expr> ol unite#do_action('right')
-	map <buffer><expr> oh unite#do_action('left')
+	nnoremap <buffer><expr> os unite#do_action('vsplit')
+	nnoremap <buffer><expr> ol unite#do_action('right')
+	nnoremap <buffer><expr> oh unite#do_action('left')
 
 	" open in vertical split
-	map <buffer><expr> o- unite#do_action('split')
-	map <buffer><expr> oj unite#do_action('below')
-	map <buffer><expr> ok unite#do_action('above')
+	nnoremap <buffer><expr> o- unite#do_action('split')
+	nnoremap <buffer><expr> oj unite#do_action('below')
+	nnoremap <buffer><expr> ok unite#do_action('above')
 
 	" open or switch to existing
-	map <buffer><expr> o<space>c unite#do_action('switch')
-	map <buffer><expr> o<space>t unite#do_action('tabswitch')
-	map <buffer><expr> o<space>s unite#do_action('vsplitswitch')
-	map <buffer><expr> o<space>- unite#do_action('splitswitch')
+	nnoremap <buffer><expr> o<space>c unite#do_action('switch')
+	nnoremap <buffer><expr> o<space>t unite#do_action('tabswitch')
+	nnoremap <buffer><expr> o<space>s unite#do_action('vsplitswitch')
+	nnoremap <buffer><expr> o<space>- unite#do_action('splitswitch')
 
 	" open `vimfiler`
-	map <buffer><expr> of unite#do_action('vimfiler')
-	map <buffer><expr> oF unite#do_action('tabvimfiler')
+	nnoremap <buffer><expr> of unite#do_action('vimfiler')
+	nnoremap <buffer><expr> oF unite#do_action('tabvimfiler')
+
+
+	" SETTINGS
+
+	" toggle fuzzy matching
+	" TODO: does not work
+	nnoremap <buffer><expr> cof unite#mappings#set_current_matchers(
+		\ empty(unite#mappings#get_current_matchers())
+		\ ? ['matcher_fuzzy']
+		\ : []
+	\ )
 endfunction
 
 augroup unite

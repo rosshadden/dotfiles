@@ -71,8 +71,6 @@
 		- Raws, Private Investigator
 			- figure out why exiting one session sometimes switches to another
 		- use `choose-session` to pick a session to link current session to
-	- `git`
-		- make an alias for `git reset --hard origin/<branch>`
 	- `tig`
 		- spend time making it even more useful
 		- universalize mappings
@@ -134,9 +132,10 @@
 	- client-agnostic back-end, which should work with X and terminals alike
 	- clients
 		- rofi
-		- selecta
 		- pick
+		- selecta
 		- dmenu
+		- unite.vim
 	- plugins
 		- git
 			- `git branch | cut -c 3- | owmni <blah blah> | xargs git checkout`
@@ -144,11 +143,20 @@
 		- i3
 		- zeal
 		- apps
-			- open
+			- open (`.desktop` files)
+			- run (`/usr/bin`, etc., or maybe everything in `$PATH`)
 			- kill
-			- switch to (like `rofi` currently does)
+			- switch-to (like `rofi`'s window mode)
 		- media
 		- computer
+		- fasd
+		- files
+			- recursive list of files
+				- all
+				- respecting .gitignore
+			- files in current folder
+				- all
+				- respecting .gitignore
 		- projects
 			- open tmux panes on certain workspaces, etc
 		- windows

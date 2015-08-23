@@ -833,7 +833,7 @@
 	assign [title="Popcorn Time"] → $wsMedia
 	assign [title="Google Play Music" window_role="pop-up"] → $wsMedia
 	for_window [class="Vlc"] border none
-	for_window [title="Google Play Music" window_role="pop-up"] floating disable
+	for_window [title="Google Play Music" window_role="pop-up"] floating disable, move to workspace $wsMedia
 
 	# literature
 	assign [title="Google Keep"] → $wsLiterature

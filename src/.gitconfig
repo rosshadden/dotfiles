@@ -88,7 +88,6 @@
 
 
 [alias]
-
 	# SHORTHAND
 
 	a = add
@@ -134,7 +133,7 @@
 	ls = ls-files
 	# checkout branch, making a new one if not present
 	cd = "!sh -c 'git checkout $1 2> /dev/null || git checkout -b $1' -"
-	# current branch
+	# get current branch
 	pwd = rev-parse --abbrev-ref HEAD
 	# get recent commits on a file
 	tail = log --patch
@@ -144,12 +143,19 @@
 	cat = cat-file
 
 
+	# STATE
+
+	# scrap all changed (tracked) files
+	scrap = "!sh -c 'git reset --hard ${1-HEAD}' -"
+	# reset to remote branch
+	burn = "!sh -c 'git reset --hard ${1-origin}/$(git pwd)' -"
+	# unstage file
+	unstage = reset HEAD --
+
+
 	# UTILITIES
 
 	amend = commit --amend -C HEAD
-	scrap = "!sh -c 'git reset --hard ${1-HEAD}' -"
-	# unstage file
-	unstage = reset HEAD --
 	# track file
 	track = update-index --no-assume-unchanged
 	# untrack file
@@ -157,9 +163,9 @@
 	# remote URL
 	url = "!git remote -v | head -1 | gawk '{ print $2 }'"
 	# show current branch commits
-	sb = !ls .git/refs/remotes/*/$(git pwd) | cut -d/ -f4,5 | xargs git show-branch $(git pwd)
+	sb = "!ls .git/refs/remotes/*/$(git pwd) | cut -d/ -f4,5 | xargs git show-branch $(git pwd)"
 	# delete local branches that are already merged into HEAD
-	clip = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+	shear = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
 
 	# DIFFING

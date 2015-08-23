@@ -20,13 +20,16 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		\ }
 	\ }
 
+	" libraries
+		NeoBundle 'vim-scripts/ingo-library'
+		NeoBundle 'kana/vim-textobj-user'
+		NeoBundle 'kana/vim-operator-user'
+
 	" enhancements
-		" load local .lvimrc files
-		NeoBundle 'embear/vim-localvimrc'
 		" let `.` repeat things like plugin mappings
 		NeoBundle 'tpope/vim-repeat'
 		" let `.` repeat things in visual mode
-		NeoBundle 'visualrepeat'
+		NeoBundle 'vim-scripts/visualrepeat'
 		" completions in insert mode
 		NeoBundle 'Shougo/neocomplete.vim'
 		" <tab>-complete in the search prompt
@@ -39,15 +42,14 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'tpope/vim-speeddating'
 		" let <c-a>/<c-x> toggle certain words
 		NeoBundle 'mjbrownie/swapit'
-
-	" navigation
-		NeoBundle 'Lokaltog/vim-easymotion'
+		" load local .lvimrc files
+		NeoBundle 'embear/vim-localvimrc'
 
 	" motions
+		" gahdlike navigation
+		NeoBundle 'Lokaltog/vim-easymotion'
 		" many useful text objects
 		NeoBundle 'wellle/targets.vim'
-		" custom text objects
-		NeoBundle 'kana/vim-textobj-user'
 		" indents [ii, ai]
 		NeoBundle 'kana/vim-textobj-indent'
 		" lines [il, al]
@@ -62,7 +64,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'bkad/CamelCaseMotion'
 
 	" operators
-		NeoBundle 'kana/vim-operator-user'
 		" put in <motion> *mutters under breath*
 		NeoBundle 'kana/vim-operator-replace'
 		" sort
@@ -75,7 +76,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" delimiter closing
 		NeoBundle 'Raimondi/delimitMate'
 
-	" file explorer
+	" files
 		" file trees for people that like file trees
 		NeoBundle 'Shougo/vimfiler.vim'
 
