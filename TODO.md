@@ -4,31 +4,26 @@
 	- README
 		- screenshots
 - build
-	- return to a non-grunt workflow (or at least a fallback)
-		- maybe a `Makefile`
-		- maybe use [stow](http://www.gnu.org/software/stow/) for symlink management
-			- probably not, since it's another dependency
-			- if so, fallback to symlinks
+	- vet using a `Makefile`
 	- clone `tpm` (tmux plugin manager) and other dependencies
-	- ~~set up a grunt workflow~~
-		- `install` - installs things, makes links, etc.
-			- migrate current install script
-			- anonymous install (no need for git ssh keys, no reference to me)
-			- have params for CLI-only or X-supported (don't need to install i3 on a server)
-			- possibly make a (generated?) manifest file, to make cleanup easier
-			- support anonymous installs, where things like .gitconfig wouldn't be installed
-		- `compile`/`config` - generates config files, like `i3`
-		- `reinstall`
-		- `update` - cleans up old stuff and does the new
-		- `remove`/`uninstall`/`cleanup`
+	- support arguments
+		- anonymous install
+			- no git ssh keys
+			- no reference to me
+			- no .gitconfig
+		- CLI-only, non-X mode (no need to install i3 things on a server, for example)
+	- possibly make a (generated?) manifest file, to make cleanup easier
+- docs
+	- meta (kind of pun), as in keyboard layout, remapped keys, etc.
+	- vim setup
+	- git aliases
+	- i3 workflow
+	- tig workflow
+	- vifm workflow
 - apps
 	- `vim`
 		- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
-		- make a <localleader> bind to open the session of the current project
-		- snippets
-			- `foo = require('foo');`
 		- modes
-			- rename 'vim' mode to 'app' or 'main' or something
 			- ember
 			- diff
 				- :LineDiff
@@ -37,16 +32,18 @@
 				- :DiffVifm
 			- vifm
 				- https://github.com/vifm/vifm/issues/60 and https://github.com/vifm/vifm/issues/79
+			- sessions
+				- fix and/or make stuff that actually works
 			- unite
 				- better previews
 					- possibly a dynamic vertical/horizontal choice
 				- make a mapping or mode for finding files not in the repo
 				- abstract making 4-8 mappings per concept
-				- vet mappings per concept, as some do weird things (`<:unite:1>g`)
+				- vet the alternate mappings per concept, as some do weird things (`<:unite:1>g`)
 				- vim-session integration
+					- or wait for [this](https://github.com/xolox/vim-session/pull/126)
 			- vimfiler
 				- [add git status icons](https://github.com/Shougo/vimfiler.vim/issues/308)
-			- document the modes
 		- plugins
 			- remove redundant or unused plugins
 				- I have two commenting plugins, with overlapping but not identical features

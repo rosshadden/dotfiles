@@ -78,6 +78,7 @@ function! s:uniteSettings()
 	nnoremap <buffer><expr> p unite#smart_map('p', unite#do_action('preview'))
 	inoremap <buffer><expr> p unite#smart_map('p', unite#do_action('preview'))
 	nmap <buffer><expr> P unite#smart_map('P', 'p<plug>(unite_toggle_auto_preview)')
+	imap <buffer><expr> P unite#smart_map('P', 'p<plug>(unite_toggle_auto_preview)')
 
 
 	" CANDIDATES
@@ -101,7 +102,6 @@ function! s:uniteSettings()
 
 
 	" OPEN
-	" TODO: make all of the OPEN mappings work in insert mode, with `smart_map`
 
 	" default
 	nnoremap <buffer><expr> l unite#smart_map('l', unite#do_action('default'))
@@ -280,11 +280,8 @@ call MakePrefix('unite', '<:unite>u', 1)
 		\ 'auto_preview': 1,
 	\ })
 	nnoremap <:unite:0>s :Unite               -buffer-name=spelling spell_suggest<cr>
-	nnoremap <:unite:0>S :UniteWithCursorWord -buffer-name=spelling spell_suggest<cr>
 	nnoremap <:unite:1>s :Unite               -buffer-name=spelling -force-immediately spell_suggest<cr>
-	nnoremap <:unite:1>S :UniteWithCursorWord -buffer-name=spelling -force-immediately spell_suggest<cr>
 	vnoremap <:unite:0>s :<c-u>execute ':Unite               -buffer-name=spelling spell_suggest -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:0>S :<c-u>execute ':UniteWithCursorWord -buffer-name=spelling spell_suggest -input=' . GetVisualSelection()<cr>
 
 " search files
 	call unite#custom#profile('find', 'context', {

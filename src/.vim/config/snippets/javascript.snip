@@ -1,42 +1,6 @@
-# UTIL
-
-snippet console-log
-alias cl log
-options head
-	console.log(${1:'${3:$2\}', ${2\}});
-
-snippet console-info
-alias ci info
-options head
-	console.info(${1:'${3:$2\}', ${2\}});
-
-snippet console-warn
-alias cw warn
-options head
-	console.warn(${1:'${3:$2\}', ${2\}});
-
-snippet console-error
-alias ce error
-options head
-	console.error(${1:'${3:$2\}', ${2\}});
-
-snippet console-trace
-alias ct trace
-options head
-	console.trace(${1:'${3:$2\}', ${2\}});
-
-snippet console-dir
-alias cd dir
-options head
-	console.dir(${1:'${3:$2\}', ${2\}});
-
-snippet debug
-alias d
-options head
-	debugger;
-
-
+################
 # COLLECTIONS
+################
 
 snippet forEach
 alias each
@@ -84,3 +48,58 @@ options word
 
 		return $1;
 	}, ${4:\{\}});${0}
+
+
+################
+# NODE
+################
+
+snippet require
+alias r req
+options head
+	${1} = require('${2:$1}');${0}
+
+
+################
+# LOGS
+################
+
+snippet console-log
+alias cl log
+options head
+	console.log(${1:'${3:$2\}', ${2\}});
+
+snippet console-info
+alias ci info
+options head
+	console.info(${1:'${3:$2\}', ${2\}});
+
+snippet console-warn
+alias cw warn
+options head
+	console.warn(${1:'${3:$2\}', ${2\}});
+
+snippet console-error
+alias ce error
+options head
+	console.error(${1:'${3:$2\}', ${2\}});
+
+snippet console-trace
+alias ct trace
+options head
+	console.trace(${1:'${3:$2\}', ${2\}});
+
+snippet console-dir
+alias cd dir
+options head
+	console.dir(${1:'${3:$2\}', ${2\}});
+
+
+################
+# DEBUG
+################
+
+snippet debug
+alias d
+options head
+	debugger;
