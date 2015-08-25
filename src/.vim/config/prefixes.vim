@@ -6,7 +6,7 @@ call MakePrefix('leader', '<:leader><leader>', 1)
 
 " localleader
 " for filetype-specific mappings
-let maplocalleader='-'
+let maplocalleader='_'
 call MakePrefix('localleader', '<localleader>')
 call MakePrefix('localleader', '<:localleader><localleader>', 1)
 

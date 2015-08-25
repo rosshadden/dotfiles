@@ -19,12 +19,8 @@ let g:EasyMotion_enter_jump_first = 1
 """"""""""""""""
 
 " prefix
-call MakePrefix('easymotion', '<:prefix>e')
-map <:prefix>e <plug>(easymotion-prefix)
+map - <plug>(easymotion-prefix)
 call MakePrefix('camel', '<:prefix>C')
-
-" vim-sneak
-nmap S <plug>(easymotion-s2)
 
 " Replace default search
 " TODO: doesn't work?
@@ -33,15 +29,18 @@ nmap S <plug>(easymotion-s2)
 " map  n <Plug>(easymotion-next)
 " map  N <Plug>(easymotion-prev)
 
+nmap -- <plug>(easymotion-s)
+nmap -_ <plug>(easymotion-s2)
+
 " better long-distance travel
-map <:prefix>ej <plug>(easymotion-j)
-map <:prefix>ek <plug>(easymotion-k)
-map <:prefix>eh <plug>(easymotion-linebackward)
-map <:prefix>el <plug>(easymotion-lineforward)
-map <:prefix>eJ <plug>(easymotion-sol-j)
-map <:prefix>eK <plug>(easymotion-sol-k)
-map <:prefix>eH <plug>(easymotion-linebackward)
-map <:prefix>eL <plug>(easymotion-lineforward)
+map -j <plug>(easymotion-j)
+map -k <plug>(easymotion-k)
+map -h <plug>(easymotion-linebackward)
+map -l <plug>(easymotion-lineforward)
+map -J <plug>(easymotion-sol-j)
+map -K <plug>(easymotion-sol-k)
+map -H <plug>(easymotion-linebackward)
+map -L <plug>(easymotion-lineforward)
 
 map <silent> <:camel>w <plug>CamelCaseMotion_w
 map <silent> <:camel>b <plug>CamelCaseMotion_b

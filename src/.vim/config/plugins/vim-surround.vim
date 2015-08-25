@@ -1,5 +1,4 @@
-" |s| => |ys|
 nmap s ys
+nmap S yS
 
-" |vs| => |vS|
 vmap s S

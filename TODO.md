@@ -35,6 +35,10 @@
 			- sessions
 				- fix and/or make stuff that actually works
 			- unite
+				- mapping to select first result automatically
+					- spelling
+					- recent
+					- NOTE: that's really all that makes sense...
 				- better previews
 					- possibly a dynamic vertical/horizontal choice
 				- make a mapping or mode for finding files not in the repo
