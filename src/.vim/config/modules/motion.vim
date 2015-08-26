@@ -22,15 +22,16 @@ let g:EasyMotion_enter_jump_first = 1
 map - <plug>(easymotion-prefix)
 call MakePrefix('camel', '<:prefix>C')
 
-" Replace default search
-" TODO: doesn't work?
-" map  / <Plug>(easymotion-sn)
-" omap / <Plug>(easymotion-tn)
-" map  n <Plug>(easymotion-next)
-" map  N <Plug>(easymotion-prev)
-
+" sneaking
 nmap -- <plug>(easymotion-s)
 nmap -_ <plug>(easymotion-s2)
+
+" searching
+map  -/ <plug>(easymotion-sn)
+omap -/ <plug>(easymotion-tn)
+
+" repeating motions
+map  -. <plug>(easymotion-repeat)
 
 " better long-distance travel
 map -j <plug>(easymotion-j)

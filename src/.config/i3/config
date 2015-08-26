@@ -504,10 +504,10 @@
 
 
 	mode "SYSTEM" {
-		bindsym r exec "reboot"; $return
-		bindsym p exec "poweroff"; $return
-		bindsym s exec "systemctl suspend"; $return
-		bindsym h exec "systemctl hybernate"; $return
+		bindsym Shift+r exec "reboot"; $return
+		bindsym Shift+p exec "poweroff"; $return
+		bindsym Shift+s exec "systemctl suspend"; $return
+		bindsym Shift+h exec "systemctl hybernate"; $return
 
 		# lock screen
 		bindsym l exec $locker; $return
