@@ -24,14 +24,18 @@ zle -N add-surround surround
 zle -N change-surround surround
 bindkey -a cs change-surround
 bindkey -a ds delete-surround
-bindkey -a ys add-surround
-bindkey -M visual S add-surround
+bindkey -a s add-surround
+bindkey -M visual s add-surround
 
 # enhanced <m-.> and <m-m> argument completion
 # http://chneukirchen.org/blog/archive/2013/03/10-fresh-zsh-tricks-you-may-not-know.html
 autoload -Uz copy-earlier-word
 zle -N copy-earlier-word
 bindkey "^[m" copy-earlier-word
+
+# smart-insert-last-word
+# TODO: requires zsh 5.1
+zle -N insert-last-word smart-insert-last-word
 
 # edit command externally
 autoload -Uz edit-command-line
@@ -41,12 +45,27 @@ bindkey '\C-x\C-x' edit-command-line
 # NORMAL
 bindkey -a '\C-x\C-x' edit-command-line
 
-# # zsh-syntax-highlighting
-# source $shellDir/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# predict-on
+autoload -Uz predict-on
+zle -N predict-on
+zle -N predict-off
+bindkey '^[t' predict-on
+bindkey '^[T' predict-off
+
+# url-quote-magic
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
+
+
+################
+# PLUGINS
+################
+
+# zsh-syntax-highlighting
+source $shellDir/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# TODO: pending https://github.com/zsh-users/zsh-syntax-highlighting/issues/165
 # ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-# ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
-# ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=red'
-
-
-# zsh-autosuggestions
-source $shellDir/plugins/zsh-autosuggestions/autosuggestions.zsh
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(brackets)
+ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=red'

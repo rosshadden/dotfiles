@@ -107,9 +107,6 @@ bindkey '^[f' vi-forward-char
 bindkey '^b' vi-backward-blank-word
 bindkey '^[b' vi-backward-char
 
-# ctrl+t: toggle autosuggestions
-bindkey '^T' autosuggest-toggle
-
 
 ################
 # TERMINAL

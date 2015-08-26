@@ -4,9 +4,6 @@
 [submodule "src/.config/i3/i3-blocks-contrib"]
 	path = src/.config/i3/i3-blocks-contrib
 	url = git@github.com:acleverpun/i3-blocks-contrib.git
-[submodule "plugins/zsh-autosuggestions"]
-	path = src/shell/plugins/zsh-autosuggestions
-	url = https://github.com/tarruda/zsh-autosuggestions.git
 [submodule "plugins/zsh-syntax-highlighting"]
 	path = src/shell/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
