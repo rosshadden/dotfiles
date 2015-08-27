@@ -6,6 +6,7 @@
 - build
 	- vet using a `Makefile`
 	- clone `tpm` (tmux plugin manager) and other dependencies
+	- call `./src/lib/update.sh` from systemd service
 	- support arguments
 		- anonymous install
 			- no git ssh keys
