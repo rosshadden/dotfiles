@@ -35,7 +35,7 @@ bindkey "^[m" copy-earlier-word
 
 # smart-insert-last-word
 # TODO: requires zsh 5.1
-zle -N insert-last-word smart-insert-last-word
+# zle -N insert-last-word smart-insert-last-word
 
 # edit command externally
 autoload -Uz edit-command-line

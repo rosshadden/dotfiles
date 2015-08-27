@@ -29,7 +29,7 @@ call unite#custom#profile('default', 'context', {
 if executable('ag')
 	" ag > ack
 	let g:unite_source_grep_command = 'ag'
-	let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden --column'
+	let g:unite_source_grep_default_opts = '--hidden --vimgrep'
 	let g:unite_source_grep_recursive_opt = ''
 	let g:unite_source_rec_async_command = ['ag', '--follow', '--hidden', '--nocolor', '--nogroup', '--ignore', '.git', '-g', '']
 elseif executable('ack')
@@ -95,9 +95,9 @@ function! s:uniteSettings()
 
 	let unite = unite#get_current_unite()
 	if unite.profile_name ==# 'search'
-		nnoremap <silent><buffer><expr> r unite#do_action('replace')
+		nnoremap <silent><buffer><expr> r unite#smart_map('r', unite#do_action('replace'))
 	else
-		nnoremap <silent><buffer><expr> r unite#do_action('rename')
+		nnoremap <silent><buffer><expr> r unite#smart_map('r', unite#do_action('rename'))
 	endif
 
 
