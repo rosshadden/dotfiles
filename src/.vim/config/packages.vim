@@ -48,6 +48,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'mjbrownie/swapit'
 		" load local .lvimrc files
 		NeoBundle 'embear/vim-localvimrc'
+		" highlight :s
+		NeoBundle 'osyo-manga/vim-over'
 
 	" motions
 		" gahdlike navigation

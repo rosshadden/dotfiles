@@ -25,6 +25,7 @@
 	- `vim`
 		- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
 		- modes
+			- integrate unite with each mode
 			- ember
 			- diff
 				- :LineDiff

@@ -91,6 +91,7 @@ function! s:uniteSettings()
 	vmap <buffer> t <plug>(unite_toggle_mark_selected_candidates)
 
 	" quick match
+	nmap <buffer> x <plug>(unite_quick_match_jump)
 	imap <buffer><expr> x unite#smart_map('x', '<plug>(unite_quick_match_jump)')
 
 	let unite = unite#get_current_unite()
@@ -170,14 +171,14 @@ call MakePrefix('unite', '<:unite>u', 1)
 	\ })
 
 	" flat
-	nnoremap <:unite:0>f :Unite -buffer-name=files -no-split directory file file/new directory/new<cr>
-	nnoremap <:unite:0>F :UniteWithBufferDir -buffer-name=files -no-split directory file file/new directory/new<cr>
-	nnoremap <:unite:1>f :Unite -buffer-name=files -no-vertical-preview directory file file/new directory/new<cr>
-	nnoremap <:unite:1>F :UniteWithBufferDir -buffer-name=files -no-vertical-preview directory file file/new directory/new<cr>
-	vnoremap <:unite:0>f :<c-u>execute ':Unite -buffer-name=files -no-split directory file file/new directory/new -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:0>F :<c-u>execute ':UniteWithBufferDir -buffer-name=files -no-split directory file file/new directory/new -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>f :<c-u>execute ':Unite -buffer-name=files -no-vertical-preview directory file file/new directory/new -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>F :<c-u>execute ':UniteWithBufferDir -buffer-name=files -no-vertical-preview directory file file/new directory/new -input=' . GetVisualSelection()<cr>
+	nnoremap <:unite:0>f :Unite -buffer-name=files -no-split directory file/async file/new directory/new<cr>
+	nnoremap <:unite:0>F :UniteWithBufferDir -buffer-name=files -no-split directory file/async file/new directory/new<cr>
+	nnoremap <:unite:1>f :Unite -buffer-name=files -no-vertical-preview directory file/async file/new directory/new<cr>
+	nnoremap <:unite:1>F :UniteWithBufferDir -buffer-name=files -no-vertical-preview directory file/async file/new directory/new<cr>
+	vnoremap <:unite:0>f :<c-u>execute ':Unite -buffer-name=files -no-split directory file/async file/new directory/new -input=' . GetVisualSelection()<cr>
+	vnoremap <:unite:0>F :<c-u>execute ':UniteWithBufferDir -buffer-name=files -no-split directory file/async file/new directory/new -input=' . GetVisualSelection()<cr>
+	vnoremap <:unite:1>f :<c-u>execute ':Unite -buffer-name=files -no-vertical-preview directory file/async file/new directory/new -input=' . GetVisualSelection()<cr>
+	vnoremap <:unite:1>F :<c-u>execute ':UniteWithBufferDir -buffer-name=files -no-vertical-preview directory file/async file/new directory/new -input=' . GetVisualSelection()<cr>
 
 	" recursive
 	nnoremap <:unite:0>p :Unite              -buffer-name=files -no-split file_rec/async:!<cr>

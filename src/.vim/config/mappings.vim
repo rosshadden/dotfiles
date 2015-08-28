@@ -1,8 +1,10 @@
 " fix Y
 noremap Y y$
 
-" shift is for sucks? (avoids :W style typos, or so I'm told)
+" shift is for sucks!
 noremap ; :
+noremap <leader>; :OverCommandLine<cr>
+noremap <leader>: :OverCommandLine<cr>
 
 " U => redo [:redo]
 noremap U :redo<cr>
