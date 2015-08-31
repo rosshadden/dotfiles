@@ -60,16 +60,17 @@ class "GtkTreeView" binding "gtk-vi-tree-view"
 ################
 
 # pidgin
-	binding "mappings" {
-		# Ctrl-v to paste as plain text
-		bind "<ctrl>v" { "paste" ("text") }
 
-		# Ctrl-Shift-v for normal 'Paste'
-		bind "<ctrl><shift>v" { "paste" ("html") }
-	}
+binding "mappings" {
+	# Ctrl-v to paste as plain text
+	bind "<ctrl>v" { "paste" ("text") }
 
-	widget "*pidgin_conv_entry" binding "mappings"
+	# Ctrl-Shift-v for normal 'Paste'
+	bind "<ctrl><shift>v" { "paste" ("html") }
+}
 
-	# This lets you edit your Pidgin key bindings from within Pidgin,
-	# by hovering over a menu item and hitting a key combo.
-	gtk-can-change-accels = 1
+widget "*pidgin_conv_entry" binding "mappings"
+
+# This lets you edit your Pidgin key bindings from within Pidgin,
+# by hovering over a menu item and hitting a key combo.
+gtk-can-change-accels = 1
