@@ -2,6 +2,8 @@ set foldmethod=syntax
 set foldlevelstart=128
 set foldcolumn=0
 
+highlight Folded ctermfg=3
+
 " prefix
 call MakePrefix('folds', '<:prefix>z')
 

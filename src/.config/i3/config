@@ -92,7 +92,7 @@
 	bindsym $super+Shift+c exec $run xkill
 
 	# change focus between tiling / floating windows
-	bindsym $super+Tab focus mode_toggle
+	bindsym $super+Escape focus mode_toggle
 
 	# open terminal
 	bindsym $super+t exec $terminal
@@ -155,8 +155,8 @@
 	bindsym $super+Shift+d move workspace to output right
 
 	# back to last workspace
-	bindsym $super+Escape workspace back_and_forth
-	bindsym $super+Shift+Escape move to workspace back_and_forth; workspace back_and_forth
+	bindsym $super+Tab workspace back_and_forth
+	bindsym $super+Shift+Tab move to workspace back_and_forth; workspace back_and_forth
 
 	# switch to workspace
 	bindsym $super+1 workspace $wsWeb

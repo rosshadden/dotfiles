@@ -63,8 +63,8 @@ nnoremap <:buffers>r :call CleanEmptyBuffers()<cr>
 " PROMPTS
 
 " current buffers
-nnoremap <:buffers>b :Unite              -buffer-name=buffers buffer<cr>
-nnoremap <:buffers>B :UniteWithBufferDir -buffer-name=buffers buffer<cr>
+nnoremap <:buffers>s :Unite              -buffer-name=buffers buffer<cr>
+nnoremap <:buffers>S :UniteWithBufferDir -buffer-name=buffers buffer<cr>
 
 " current... tabs? buffers?
 nnoremap <:buffers>t :Unite              -buffer-name=buffers tab buffer_tab<cr>

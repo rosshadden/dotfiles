@@ -50,9 +50,10 @@
 			- vimfiler
 				- [add git status icons](https://github.com/Shougo/vimfiler.vim/issues/308)
 		- plugins
-			- stardust
+			- pluginify my modes
 			- remove redundant or unused plugins
 				- I have two commenting plugins, with overlapping but not identical features
+		- add mapping when searching to jump to the result but clear the highlighting
 		- [look into analytics](http://www.drbunsen.org/vim-croquet/)
 	- `i3`
 		- modes
