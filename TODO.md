@@ -25,7 +25,6 @@
 	- `vim`
 		- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
 		- modes
-			- integrate unite with each mode
 			- ember
 			- diff
 				- :LineDiff
@@ -51,6 +50,7 @@
 			- vimfiler
 				- [add git status icons](https://github.com/Shougo/vimfiler.vim/issues/308)
 		- plugins
+			- stardust
 			- remove redundant or unused plugins
 				- I have two commenting plugins, with overlapping but not identical features
 		- [look into analytics](http://www.drbunsen.org/vim-croquet/)

@@ -16,6 +16,7 @@ call unite#custom#source('buffer', 'converters', ['converter_file_directory'])
 
 call unite#custom#profile('default', 'context', {
 	\ 'winheight': 20,
+	\ 'split': 0,
 	\ 'start_insert': 0,
 	\ 'auto_preview': 0,
 	\ 'vertical_preview': 0,
@@ -55,16 +56,15 @@ function! s:uniteSettings()
 	iunmap <buffer> <c-h>
 	iunmap <buffer> <c-l>
 
-
 	" PROMPT
 
 	" append to prompt
 	nmap <buffer><expr> a unite#smart_map('a', '<plug>(unite_append_enter)')
 
-
 	" LIST
 
 	" go back
+	nmap <buffer><expr> <bs> unite#smart_map('<bs>', '<plug>(unite_exit)')
 	nmap <buffer><expr> h unite#smart_map('h', '<plug>(unite_exit)')
 	imap <buffer><expr> h unite#smart_map('h', '<plug>(unite_exit)')
 	nmap <buffer><expr> H unite#smart_map('H', '<plug>(unite_exit_all)')
@@ -79,7 +79,6 @@ function! s:uniteSettings()
 	inoremap <buffer><expr> p unite#smart_map('p', unite#do_action('preview'))
 	nmap <buffer><expr> P unite#smart_map('P', 'p<plug>(unite_toggle_auto_preview)')
 	imap <buffer><expr> P unite#smart_map('P', 'p<plug>(unite_toggle_auto_preview)')
-
 
 	" CANDIDATES
 
@@ -100,7 +99,6 @@ function! s:uniteSettings()
 	else
 		nnoremap <silent><buffer><expr> r unite#smart_map('r', unite#do_action('rename'))
 	endif
-
 
 	" OPEN
 
@@ -137,7 +135,6 @@ function! s:uniteSettings()
 	nnoremap <buffer><expr> of unite#do_action('vimfiler')
 	nnoremap <buffer><expr> oF unite#do_action('tabvimfiler')
 
-
 	" SETTINGS
 
 	" toggle fuzzy matching
@@ -163,177 +160,65 @@ augroup END
 call MakePrefix('unite', '<:prefix>u')
 call MakePrefix('unite', '<:unite>u', 1)
 
-" open files
-	call unite#custom#profile('files', 'context', {
-		\ 'start_insert': 1,
-		\ 'unique': 1,
-		\ 'candidate_icon': '>',
-	\ })
-
-	" flat
-	nnoremap <:unite:0>f :Unite -buffer-name=files -no-split directory file/async file/new directory/new<cr>
-	nnoremap <:unite:0>F :UniteWithBufferDir -buffer-name=files -no-split directory file/async file/new directory/new<cr>
-	nnoremap <:unite:1>f :Unite -buffer-name=files -no-vertical-preview directory file/async file/new directory/new<cr>
-	nnoremap <:unite:1>F :UniteWithBufferDir -buffer-name=files -no-vertical-preview directory file/async file/new directory/new<cr>
-	vnoremap <:unite:0>f :<c-u>execute ':Unite -buffer-name=files -no-split directory file/async file/new directory/new -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:0>F :<c-u>execute ':UniteWithBufferDir -buffer-name=files -no-split directory file/async file/new directory/new -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>f :<c-u>execute ':Unite -buffer-name=files -no-vertical-preview directory file/async file/new directory/new -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>F :<c-u>execute ':UniteWithBufferDir -buffer-name=files -no-vertical-preview directory file/async file/new directory/new -input=' . GetVisualSelection()<cr>
-
-	" recursive
-	nnoremap <:unite:0>p :Unite              -buffer-name=files -no-split file_rec/async:!<cr>
-	nnoremap <:unite:0>P :UniteWithBufferDir -buffer-name=files -no-split file_rec/async:!<cr>
-	nnoremap <:unite:1>p :Unite              -buffer-name=files -no-vertical-preview file_rec/async:!<cr>
-	nnoremap <:unite:1>P :UniteWithBufferDir -buffer-name=files -no-vertical-preview file_rec/async:!<cr>
-	vnoremap <:unite:0>p :<c-u>execute ':Unite              -buffer-name=files -no-split file_rec/async -input=' . GetVisualSelection():!<cr>
-	vnoremap <:unite:0>P :<c-u>execute ':UniteWithBufferDir -buffer-name=files -no-split file_rec/async -input=' . GetVisualSelection():!<cr>
-	vnoremap <:unite:1>p :<c-u>execute ':Unite              -buffer-name=files -no-vertical-preview file_rec/async -input=' . GetVisualSelection():!<cr>
-	vnoremap <:unite:1>P :<c-u>execute ':UniteWithBufferDir -buffer-name=files -no-vertical-preview file_rec/async -input=' . GetVisualSelection():!<cr>
-
-" current and recent
-	" most recently used (mru) files
-	nnoremap <:unite:0>r :Unite              -buffer-name=recent -no-split file_mru<cr>
-	nnoremap <:unite:0>R :UniteWithBufferDir -buffer-name=recent -no-split file_mru<cr>
-	nnoremap <:unite:1>r :Unite              -buffer-name=recent -no-vertical-preview file_mru<cr>
-	nnoremap <:unite:1>R :UniteWithBufferDir -buffer-name=recent -no-vertical-preview file_mru<cr>
-	vnoremap <:unite:0>r :<c-u>execute ':Unite              -buffer-name=recent -no-split file_mru -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:0>R :<c-u>execute ':UniteWithBufferDir -buffer-name=recent -no-split file_mru -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>r :<c-u>execute ':Unite              -buffer-name=recent -no-vertical-preview file_mru -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>R :<c-u>execute ':UniteWithBufferDir -buffer-name=recent -no-vertical-preview file_mru -input=' . GetVisualSelection()<cr>
-
-	" current buffers
-	nnoremap <:unite:0>b :Unite              -buffer-name=buffers -no-split buffer<cr>
-	nnoremap <:unite:0>B :UniteWithBufferDir -buffer-name=buffers -no-split buffer<cr>
-	nnoremap <:unite:1>b :Unite              -buffer-name=buffers -no-vertical-preview buffer<cr>
-	nnoremap <:unite:1>B :UniteWithBufferDir -buffer-name=buffers -no-vertical-preview buffer<cr>
-	vnoremap <:unite:0>b :<c-u>execute ':Unite              -buffer-name=buffers -no-split buffer -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:0>B :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -no-split buffer -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>b :<c-u>execute ':Unite              -buffer-name=buffers -no-vertical-preview buffer -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>B :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -no-vertical-preview buffer -input=' . GetVisualSelection()<cr>
-
-	" current... tabs? buffers?
-	nnoremap <:unite:0>t :Unite              -buffer-name=buffers -no-split tab buffer_tab<cr>
-	nnoremap <:unite:0>T :UniteWithBufferDir -buffer-name=buffers -no-split tab buffer_tab<cr>
-	nnoremap <:unite:1>t :Unite              -buffer-name=buffers -no-vertical-preview tab buffer_tab<cr>
-	nnoremap <:unite:1>T :UniteWithBufferDir -buffer-name=buffers -no-vertical-preview tab buffer_tab<cr>
-	vnoremap <:unite:0>t :<c-u>execute ':Unite              -buffer-name=buffers -no-split tab buffer_tab -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:0>T :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -no-split tab buffer_tab -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>t :<c-u>execute ':Unite              -buffer-name=buffers -no-vertical-preview tab buffer_tab -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>T :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -no-vertical-preview tab buffer_tab -input=' . GetVisualSelection()<cr>
-
-	" buffer, tab, or files
-	nnoremap <:unite:0>a :Unite              -buffer-name=buffers -no-split buffer tab file_mru directory_mru bookmark<cr>
-	nnoremap <:unite:0>A :UniteWithBufferDir -buffer-name=buffers -no-split buffer tab file_mru directory_mru bookmark<cr>
-	nnoremap <:unite:1>a :Unite              -buffer-name=buffers -no-vertical-preview buffer tab file_mru directory_mru bookmark<cr>
-	nnoremap <:unite:1>A :UniteWithBufferDir -buffer-name=buffers -no-vertical-preview buffer tab file_mru directory_mru bookmark<cr>
-	vnoremap <:unite:0>a :<c-u>execute ':Unite              -buffer-name=buffers -no-split buffer tab file_mru directory_mru bookmark -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:0>A :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -no-split buffer tab file_mru directory_mru bookmark -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>a :<c-u>execute ':Unite              -buffer-name=buffers -no-vertical-preview buffer tab file_mru directory_mru bookmark -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>A :<c-u>execute ':UniteWithBufferDir -buffer-name=buffers -no-vertical-preview buffer tab file_mru directory_mru bookmark -input=' . GetVisualSelection()<cr>
-
 " current file
 	call unite#custom#profile('outline', 'context', {
 		\ 'auto_preview': 1,
 	\ })
 
 	" outline
-	nnoremap <:unite:0>o :Unite               -buffer-name=outline -no-split outline<cr>
-	nnoremap <:unite:0>O :UniteWithCursorWord -buffer-name=outline -no-split outline<cr>
-	nnoremap <:unite:1>o :Unite               -buffer-name=outline -no-vertical-preview outline<cr>
-	nnoremap <:unite:1>O :UniteWithCursorWord -buffer-name=outline -no-vertical-preview outline<cr>
-	vnoremap <:unite:0>o :<c-u>execute ':Unite               -buffer-name=outline -no-split outline -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:0>O :<c-u>execute ':UniteWithCursorWord -buffer-name=outline -no-split outline -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>o :<c-u>execute ':Unite               -buffer-name=outline -no-vertical-preview outline -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>O :<c-u>execute ':UniteWithCursorWord -buffer-name=outline -no-vertical-preview outline -input=' . GetVisualSelection()<cr>
+	nnoremap <:unite>o :Unite               -buffer-name=outline outline<cr>
+	nnoremap <:unite>O :UniteWithCursorWord -buffer-name=outline outline<cr>
 
 	" line
 	call unite#custom#profile('line', 'context', {
 		\ 'auto_preview': 1,
 		\ 'split': 0,
 	\ })
-	nnoremap <:unite:0>l :Unite               -buffer-name=line line<cr>
-	nnoremap <:unite:0>L :UniteWithCursorWord -buffer-name=line line<cr>
-	vnoremap <:unite:0>l :<c-u>execute ':Unite               -buffer-name=line line -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:0>L :<c-u>execute ':UniteWithCursorWord -buffer-name=line line -input=' . GetVisualSelection()<cr>
+	nnoremap <:unite>l :Unite               -buffer-name=line line<cr>
+	nnoremap <:unite>L :UniteWithCursorWord -buffer-name=line line<cr>
 
 	" changes
 	call unite#custom#profile('changes', 'context', {
 		\ 'auto_preview': 1,
 		\ 'split': 0,
 	\ })
-	nnoremap <:unite:0>k :Unite               -buffer-name=changes change<cr>
-	nnoremap <:unite:0>K :UniteWithCursorWord -buffer-name=changes change<cr>
-	vnoremap <:unite:0>k :<c-u>execute ':Unite               -buffer-name=changes change -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:0>K :<c-u>execute ':UniteWithCursorWord -buffer-name=changes change -input=' . GetVisualSelection()<cr>
+	nnoremap <:unite>k :Unite               -buffer-name=changes change<cr>
+	nnoremap <:unite>K :UniteWithCursorWord -buffer-name=changes change<cr>
 
 	" jump list
 	call unite#custom#profile('jump', 'context', {
 		\ 'auto_preview': 1,
 		\ 'split': 0,
 	\ })
-	nnoremap <:unite:0>j :Unite               -buffer-name=jump jump<cr>
-	nnoremap <:unite:0>J :UniteWithCursorWord -buffer-name=jump jump<cr>
-	vnoremap <:unite:0>j :<c-u>execute ':Unite               -buffer-name=jump jump -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:0>J :<c-u>execute ':UniteWithCursorWord -buffer-name=jump jump -input=' . GetVisualSelection()<cr>
+	nnoremap <:unite>j :Unite               -buffer-name=jump jump<cr>
+	nnoremap <:unite>J :UniteWithCursorWord -buffer-name=jump jump<cr>
 
 	" spelling
 	call unite#custom#profile('spelling', 'context', {
 		\ 'auto_preview': 1,
 	\ })
-	nnoremap <:unite:0>s :Unite               -buffer-name=spelling spell_suggest<cr>
+	nnoremap <:unite>s :Unite               -buffer-name=spelling spell_suggest<cr>
 	nnoremap <:unite:1>s :Unite               -buffer-name=spelling -force-immediately spell_suggest<cr>
-	vnoremap <:unite:0>s :<c-u>execute ':Unite               -buffer-name=spelling spell_suggest -input=' . GetVisualSelection()<cr>
 
 " search files
 	call unite#custom#profile('find', 'context', {
 		\ 'empty': 0,
 	\ })
-	nnoremap <:unite:0>g :Unite              -buffer-name=find -no-split grep:.<cr>
-	nnoremap <:unite:0>G :UniteWithBufferDir -buffer-name=find -no-split grep:.<cr>
-	nnoremap <:unite:1>g :Unite              -buffer-name=find -no-vertical-preview grep<cr>
-	nnoremap <:unite:1>G :UniteWithBufferDir -buffer-name=find -no-vertical-preview grep<cr>
-	vnoremap <:unite:0>g :<c-u>execute ':Unite              -buffer-name=find -no-split grep:. -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:0>G :<c-u>execute ':UniteWithBufferDir -buffer-name=find -no-split grep:. -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>g :<c-u>execute ':Unite              -buffer-name=find -no-vertical-preview grep -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>G :<c-u>execute ':UniteWithBufferDir -buffer-name=find -no-vertical-preview grep -input=' . GetVisualSelection()<cr>
+	nnoremap <:unite>g :Unite              -buffer-name=find grep:.<cr>
+	nnoremap <:unite>G :UniteWithBufferDir -buffer-name=find grep:.<cr>
 
 " do all the things
-nnoremap <:unite:0><cr> :Unite -buffer-name=omni -no-split source<cr>
-vnoremap <:unite:0><cr> :<c-u>execute ':Unite -buffer-name=omni -no-split source -input=' . GetVisualSelection()<cr>
-nnoremap <:unite:1><cr> :Unite -buffer-name=omni -no-vertical-preview source<cr>
-vnoremap <:unite:1><cr> :<c-u>execute ':Unite -buffer-name=omni -no-vertical-preview source -input=' . GetVisualSelection()<cr>
-
-" vim
-	" yank stack
-	nnoremap <:unite:0>y :Unite -buffer-name=yank -no-split history/yank<cr>
-	vnoremap <:unite:0>y :<c-u>execute ':Unite -buffer-name=yank -no-split history/yank -input=' . GetVisualSelection()<cr>
-	nnoremap <:unite:1>y :Unite -buffer-name=yank -no-vertical-preview history/yank<cr>
-	vnoremap <:unite:1>y :<c-u>execute ':Unite -buffer-name=yank -no-vertical-preview history/yank -input=' . GetVisualSelection()<cr>
-
-	" command history
-	nnoremap <:unite:0>; :Unite -buffer-name=commands -default-action=execute history/command command<cr>
-	vnoremap <:unite:0>; :<c-u>execute ':Unite -buffer-name=commands -default-action=execute history/command command -input=' . GetVisualSelection()<cr>
-	nnoremap <:unite:1>; :Unite -buffer-name=commands -default-action=edit history/command command<cr>
-	vnoremap <:unite:1>; :<c-u>execute ':Unite -buffer-name=commands -default-action=edit history/command command -input=' . GetVisualSelection()<cr>
+nnoremap <:unite><cr> :Unite -buffer-name=omni source<cr>
 
 " resume last buffer
-nnoremap <:unite:0>. :UniteResume -no-start-insert -no-split -vertical-preview<cr>
-vnoremap <:unite:0>. :<c-u>execute ':UniteResume -no-start-insert -no-split -vertical-preview -input=' . GetVisualSelection()<cr>
-nnoremap <:unite:1>. :UniteResume -no-start-insert -split -no-vertical-preview<cr>
-vnoremap <:unite:1>. :<c-u>execute ':UniteResume -no-start-insert -no-vertical-preview -input=' . GetVisualSelection()<cr>
+nnoremap <:unite>. :UniteResume -no-start-insert -vertical-preview<cr>
 
 " metavim
 	" mappings
-	nnoremap <:unite:0>m :Unite -no-split mapping<cr>
-	vnoremap <:unite:0>m :<c-u>execute ':Unite -no-split mapping -input=' . GetVisualSelection()<cr>
-	nnoremap <:unite:1>m :Unite mapping<cr>
-	vnoremap <:unite:1>m :<c-u>execute ':Unite mapping -input=' . GetVisualSelection()<cr>
+	nnoremap <:unite>m :Unite mapping<cr>
 
 " external
 	" exit
-	nnoremap <:unite:0>x :Unite -default-action=sigterm process<cr>
-	nnoremap <:unite:0>X :Unite -default-action=sigkill process<cr>
+	nnoremap <:unite>x :Unite -default-action=sigterm process<cr>
+	nnoremap <:unite>X :Unite -default-action=sigkill process<cr>
 	nnoremap <:unite:1>x :Unite -default-action=sigint  process<cr>
-	vnoremap <:unite:0>x :<c-u>execute ':Unite -default-action=sigterm process -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:0>X :<c-u>execute ':Unite -default-action=sigkill process -input=' . GetVisualSelection()<cr>
-	vnoremap <:unite:1>x :<c-u>execute ':Unite -default-action=sigint  process -input=' . GetVisualSelection()<cr>

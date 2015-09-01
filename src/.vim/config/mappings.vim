@@ -31,13 +31,13 @@ noremap <:leader:1>r :Reload<cr>
 " L-. => repeat last command
 noremap <leader>. @:
 
-" searching
-	" toggle highlighted search
-	nnoremap <:leader:1>/ :nohlsearch<cr>
-	nnoremap co/ :set hlsearch!<cr>
-	" search for selected word
-	vnoremap / "vy/<c-r>v
-	vnoremap ? "vy?<c-r>v
+" SEARCHING
+" toggle highlighted search
+nnoremap <:leader:1>/ :nohlsearch<cr>
+nnoremap co/ :set hlsearch!<cr>
+" search for selected word
+vnoremap / "vy/<c-r>v
+vnoremap ? "vy?<c-r>v
 
 " visual shifting (does not exit Visual mode)
 vnoremap < <gv
