@@ -84,7 +84,6 @@ imap <A-n> nextTab
 imap <A-p> previousTab
 
 map D closeTab
-map <Space>bc closeTab
 
 map u lastClosedTab
 
@@ -101,12 +100,3 @@ imap <C-o> editWithVim
 
 map <Leader><Leader>r :chrome://restart
 map <Leader><Leader>R :chrome://restart<CR>
-
-
-""""""""""""""""
-" SITES
-""""""""""""""""
-
-site '*://play.google.com/music/*' {
-	unmap <Space>
-}

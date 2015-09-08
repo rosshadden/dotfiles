@@ -92,7 +92,7 @@
 	bindsym $super+Shift+c exec $run xkill
 
 	# change focus between tiling / floating windows
-	bindsym $super+Escape focus mode_toggle
+	bindsym $super+backslash focus mode_toggle
 
 	# open terminal
 	bindsym $super+t exec $terminal
@@ -135,16 +135,16 @@
 	bindsym $super+p workspace prev_on_output
 
 	# move container to next/previous workspace
-	bindsym $super+Shift+n move to workspace next_on_output
-	bindsym $super+Shift+p move to workspace prev_on_output
+	bindsym $super+Shift+n move to workspace next_on_output; workspace next_on_output
+	bindsym $super+Shift+p move to workspace prev_on_output; workspace prev_on_output
 
 	# focus next/previous workspace
 	bindsym $super+f workspace next
 	bindsym $super+b workspace prev
 
 	# move window to next/previous workspace
-	bindsym $super+Shift+f move to workspace next
-	bindsym $super+Shift+b move to workspace prev
+	bindsym $super+Shift+f move to workspace next; workspace next
+	bindsym $super+Shift+b move to workspace prev; workspace prev
 
 	# focus left/right output
 	bindsym $super+u focus output left
