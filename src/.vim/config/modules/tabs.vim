@@ -3,7 +3,7 @@
 """"""""""""""""
 
 " tabs! (not to be confused with tabs)
-set tabstop=4 shiftwidth=4
+set tabstop=2 shiftwidth=2
 
 
 """"""""""""""""
