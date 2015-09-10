@@ -48,8 +48,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'mjbrownie/swapit'
 		" load local .lvimrc files
 		NeoBundle 'embear/vim-localvimrc'
-		" highlight :s
-		NeoBundle 'osyo-manga/vim-over'
 
 	" motions
 		" gahdlike navigation
@@ -58,7 +56,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'wellle/targets.vim'
 		" indents [ii, ai]
 		NeoBundle 'kana/vim-textobj-indent'
-		" lines [il, al]
+		" lines [ir, ar]
 		NeoBundle 'kana/vim-textobj-line'
 		" entire buffer [ie, ae]
 		NeoBundle 'kana/vim-textobj-entire'

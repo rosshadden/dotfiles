@@ -2,6 +2,8 @@
 " SETTINGS
 """"""""""""""""
 
+" vim-easymotion
+
 " use same column for j/k motions
 let g:EasyMotion_startofline = 0
 " use uppercase target labels and type as a lower case
@@ -12,6 +14,9 @@ let g:EasyMotion_smartcase = 1
 let g:EasyMotion_keys = 'AOEUIDHTN-,.PYFGCRL;QJKXBMWVZS'
 " jump to first search result with `<enter>`
 let g:EasyMotion_enter_jump_first = 1
+
+" vim-textobj-line
+let g:textobj_line_no_default_key_mappings = 1
 
 
 """"""""""""""""
@@ -59,3 +64,6 @@ omap <silent> <:camel>ib <plug>CamelCaseMotion_ib
 xmap <silent> <:camel>ib <plug>CamelCaseMotion_ib
 omap <silent> <:camel>ie <plug>CamelCaseMotion_ie
 xmap <silent> <:camel>ie <plug>CamelCaseMotion_ie
+
+omap ir <plug>(textobj-line-i)
+omap ar <plug>(textobj-line-a)
