@@ -6,11 +6,11 @@ let g:unite_source_history_yank_enable = 1
 let g:unite_force_overwrite_statusline = 0
 let g:unite_matcher_fuzzy_max_input_length = 32
 
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#custom#source('buffer,file,file_rec,file_rec/async', 'sorters', ['sorter_selecta'])
 call unite#custom#source('file_rec,file_rec/async', 'ignore_globs', split(&wildignore, ','))
 call unite#custom#source('file_rec,file_rec/async', 'converters', [])
 call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 32)
+
 " prettier output
 call unite#custom#source('buffer', 'converters', ['converter_file_directory'])
 
@@ -138,7 +138,6 @@ function! s:uniteSettings()
 	" SETTINGS
 
 	" toggle fuzzy matching
-	" TODO: does not work
 	nnoremap <buffer><expr> cof unite#mappings#set_current_matchers(
 		\ empty(unite#mappings#get_current_matchers())
 		\ ? ['matcher_fuzzy']
