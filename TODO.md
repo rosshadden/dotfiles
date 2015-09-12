@@ -68,9 +68,6 @@
 		- universalize the media/resize/move increments and whatnot
 			- make sure there are mappings for both big and small increments
 		- integrate `tp`
-		- make `alt+tab` functionality
-			- supposedly this is not possible
-			- could possibly prefix navigation options with `mL`, and make `alt+tab` run `"L`
 	- `tmux`
 		- Raws, Private Investigator
 			- figure out why exiting one session sometimes switches to another

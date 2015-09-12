@@ -92,20 +92,20 @@
 	bindsym $super+Shift+c exec $run xkill
 
 	# change focus between tiling / floating windows
-	bindsym $super+backslash focus mode_toggle
+	bindsym $super+backslash mark LAST; focus mode_toggle
 
 	# open terminal
-	bindsym $super+t exec $terminal
-	bindsym $super+Shift+t exec $tmux
+	bindsym $super+t mark LAST; exec $terminal
+	bindsym $super+Shift+t mark LAST; exec $tmux
 
 	# open runner
-	bindsym $super+r exec $chooseCommand
+	bindsym $super+r mark LAST; exec $chooseCommand
 
 	# open window finder
-	bindsym $super+w exec $chooseWindow
+	bindsym $super+w mark LAST; exec $chooseWindow
 
 	# open launcher
-	bindsym $super+o exec --no-startup-id $chooseApp
+	bindsym $super+o mark LAST; exec --no-startup-id $chooseApp
 
 	# fix keys
 	# TODO: this does not work
@@ -119,10 +119,10 @@
 	bindsym Shift+$macro5 exec $locker2
 
 	# change focus
-	bindsym $super+h focus left
-	bindsym $super+j focus down
-	bindsym $super+k focus up
-	bindsym $super+l focus right
+	bindsym $super+h mark LAST; focus left
+	bindsym $super+j mark LAST; focus down
+	bindsym $super+k mark LAST; focus up
+	bindsym $super+l mark LAST; focus right
 
 	# move focused window/container
 	bindsym $super+Shift+h move left
@@ -131,47 +131,50 @@
 	bindsym $super+Shift+l move right
 
 	# focus next/previous workspace on current output
-	bindsym $super+n workspace next_on_output
-	bindsym $super+p workspace prev_on_output
+	bindsym $super+n mark LAST; workspace next_on_output
+	bindsym $super+p mark LAST; workspace prev_on_output
 
 	# move container to next/previous workspace
 	bindsym $super+Shift+n move to workspace next_on_output; workspace next_on_output
 	bindsym $super+Shift+p move to workspace prev_on_output; workspace prev_on_output
 
 	# focus next/previous workspace
-	bindsym $super+f workspace next
-	bindsym $super+b workspace prev
+	bindsym $super+f mark LAST; workspace next
+	bindsym $super+b mark LAST; workspace prev
 
 	# move window to next/previous workspace
 	bindsym $super+Shift+f move to workspace next; workspace next
 	bindsym $super+Shift+b move to workspace prev; workspace prev
 
 	# focus left/right output
-	bindsym $super+u focus output left
-	bindsym $super+d focus output right
+	bindsym $super+u mark LAST; focus output left
+	bindsym $super+d mark LAST; focus output right
 
 	# move workspace to left/right output
 	bindsym $super+Shift+u move workspace to output left
 	bindsym $super+Shift+d move workspace to output right
 
+	# previous container
+	bindsym $super+Tab mark TEMP1; [con_mark="LAST"] focus; [con_mark="TEMP1"] mark LAST
+
 	# back to last workspace
-	bindsym $super+Tab workspace back_and_forth
-	bindsym $super+Shift+Tab move to workspace back_and_forth; workspace back_and_forth
+	bindsym $super+Escape workspace back_and_forth
+	bindsym $super+Shift+Escape move to workspace back_and_forth; workspace back_and_forth
 
 	# switch to workspace
-	bindsym $super+1 workspace $wsWeb
-	bindsym $super+2 workspace $wsDev
-	bindsym $super+3 workspace $wsSync
-	bindsym $super+4 workspace $wsHack
-	bindsym $super+5 workspace $wsFiles
-	bindsym $super+6 workspace $wsMedia
-	bindsym $super+7 workspace $wsLiterature
-	bindsym $super+8 workspace $wsGames
-	bindsym $super+9 workspace $wsRun
-	bindsym $super+0 workspace $wsChat
-	bindsym $super+bracketleft workspace $ws11
-	bindsym $super+bracketright workspace $wsMonitor
-	bindsym $super+grave workspace $wsTemp
+	bindsym $super+1 mark LAST; workspace $wsWeb
+	bindsym $super+2 mark LAST; workspace $wsDev
+	bindsym $super+3 mark LAST; workspace $wsSync
+	bindsym $super+4 mark LAST; workspace $wsHack
+	bindsym $super+5 mark LAST; workspace $wsFiles
+	bindsym $super+6 mark LAST; workspace $wsMedia
+	bindsym $super+7 mark LAST; workspace $wsLiterature
+	bindsym $super+8 mark LAST; workspace $wsGames
+	bindsym $super+9 mark LAST; workspace $wsRun
+	bindsym $super+0 mark LAST; workspace $wsChat
+	bindsym $super+bracketleft mark LAST; workspace $ws11
+	bindsym $super+bracketright mark LAST; workspace $wsMonitor
+	bindsym $super+grave mark LAST; workspace $wsTemp
 
 	# move focused container to workspace
 	bindsym $super+Shift+1 move container to workspace $wsWeb; workspace $wsWeb
@@ -189,11 +192,11 @@
 	bindsym $super+Shift+grave move container to workspace $wsTemp; workspace $wsTemp
 
 	# focus the parent/child container
-	bindsym $super+z focus parent
-	bindsym $super+Shift+z focus child
+	bindsym $super+z mark LAST; focus parent
+	bindsym $super+Shift+z mark LAST; focus child
 
 	# show scratchpad
-	bindsym $super+s scratchpad show
+	bindsym $super+s mark LAST; scratchpad show
 	# move the currently focused window to the scratchpad
 	bindsym $super+Shift+s move scratchpad
 
@@ -295,88 +298,88 @@
 			bindsym space exec i3-input -F 'mark %s' -P 'Mark name: '; $return
 
 		# by number
-			bindsym grave mark mark-0; $return
-			bindsym 1 mark mark-1; $return
-			bindsym 2 mark mark-2; $return
-			bindsym 3 mark mark-3; $return
-			bindsym 4 mark mark-4; $return
-			bindsym 5 mark mark-5; $return
-			bindsym 6 mark mark-6; $return
-			bindsym 7 mark mark-7; $return
-			bindsym 8 mark mark-8; $return
-			bindsym 9 mark mark-9; $return
-			bindsym 0 mark mark-10; $return
-			bindsym bracketleft mark mark-11; $return
-			bindsym bracketright mark mark-12; $return
+			bindsym grave mark 0; $return
+			bindsym 1 mark 1; $return
+			bindsym 2 mark 2; $return
+			bindsym 3 mark 3; $return
+			bindsym 4 mark 4; $return
+			bindsym 5 mark 5; $return
+			bindsym 6 mark 6; $return
+			bindsym 7 mark 7; $return
+			bindsym 8 mark 8; $return
+			bindsym 9 mark 9; $return
+			bindsym 0 mark 10; $return
+			bindsym bracketleft mark 11; $return
+			bindsym bracketright mark 12; $return
 
-			bindsym Shift+grave unmark mark-0; $return
-			bindsym Shift+1 unmark mark-1; $return
-			bindsym Shift+2 unmark mark-2; $return
-			bindsym Shift+3 unmark mark-3; $return
-			bindsym Shift+4 unmark mark-4; $return
-			bindsym Shift+5 unmark mark-5; $return
-			bindsym Shift+6 unmark mark-6; $return
-			bindsym Shift+7 unmark mark-7; $return
-			bindsym Shift+8 unmark mark-8; $return
-			bindsym Shift+9 unmark mark-9; $return
-			bindsym Shift+0 unmark mark-10; $return
-			bindsym Shift+bracketleft unmark mark-11; $return
-			bindsym Shift+bracketright unmark mark-12; $return
+			bindsym Shift+grave unmark 0; $return
+			bindsym Shift+1 unmark 1; $return
+			bindsym Shift+2 unmark 2; $return
+			bindsym Shift+3 unmark 3; $return
+			bindsym Shift+4 unmark 4; $return
+			bindsym Shift+5 unmark 5; $return
+			bindsym Shift+6 unmark 6; $return
+			bindsym Shift+7 unmark 7; $return
+			bindsym Shift+8 unmark 8; $return
+			bindsym Shift+9 unmark 9; $return
+			bindsym Shift+0 unmark 10; $return
+			bindsym Shift+bracketleft unmark 11; $return
+			bindsym Shift+bracketright unmark 12; $return
 
 		# by letter
-			bindsym a mark mark-a; $return
-			bindsym b mark mark-b; $return
-			# bindsym c mark mark-c; $return
-			bindsym d mark mark-d; $return
-			# bindsym e mark mark-e; $return
-			# bindsym f mark mark-f; $return
-			bindsym g mark mark-g; $return
-			bindsym h mark mark-h; $return
-			bindsym i mark mark-i; $return
-			bindsym j mark mark-j; $return
-			bindsym k mark mark-k; $return
-			bindsym l mark mark-l; $return
-			# bindsym m mark mark-m; $return
-			bindsym n mark mark-n; $return
-			bindsym o mark mark-o; $return
-			bindsym p mark mark-p; $return
-			bindsym q mark mark-q; $return
-			bindsym r mark mark-r; $return
-			bindsym s mark mark-s; $return
-			bindsym t mark mark-t; $return
-			bindsym u mark mark-u; $return
-			# bindsym v mark mark-v; $return
-			# bindsym w mark mark-w; $return
-			bindsym x mark mark-x; $return
-			bindsym y mark mark-y; $return
-			bindsym z mark mark-z; $return
+			bindsym a mark A; $return
+			bindsym b mark B; $return
+			# bindsym c mark C; $return
+			bindsym d mark D; $return
+			# bindsym e mark E; $return
+			# bindsym f mark F; $return
+			bindsym g mark G; $return
+			bindsym h mark H; $return
+			bindsym i mark I; $return
+			bindsym j mark J; $return
+			bindsym k mark K; $return
+			bindsym l mark L; $return
+			# bindsym m mark M; $return
+			bindsym n mark N; $return
+			bindsym o mark O; $return
+			bindsym p mark P; $return
+			bindsym q mark Q; $return
+			bindsym r mark R; $return
+			bindsym s mark S; $return
+			bindsym t mark T; $return
+			bindsym u mark U; $return
+			# bindsym v mark V; $return
+			# bindsym w mark W; $return
+			bindsym x mark X; $return
+			bindsym y mark Y; $return
+			bindsym z mark Z; $return
 
-			bindsym Shift+a unmark mark-a; $return
-			bindsym Shift+b unmark mark-b; $return
-			# bindsym Shift+c unmark mark-c; $return
-			bindsym Shift+d unmark mark-d; $return
-			# bindsym Shift+e unmark mark-e; $return
-			# bindsym Shift+f unmark mark-f; $return
-			bindsym Shift+g unmark mark-g; $return
-			bindsym Shift+h unmark mark-h; $return
-			bindsym Shift+i unmark mark-i; $return
-			bindsym Shift+j unmark mark-j; $return
-			bindsym Shift+k unmark mark-k; $return
-			bindsym Shift+l unmark mark-l; $return
-			# bindsym Shift+m unmark mark-m; $return
-			bindsym Shift+n unmark mark-n; $return
-			bindsym Shift+o unmark mark-o; $return
-			bindsym Shift+p unmark mark-p; $return
-			bindsym Shift+q unmark mark-q; $return
-			bindsym Shift+r unmark mark-r; $return
-			bindsym Shift+s unmark mark-s; $return
-			bindsym Shift+t unmark mark-t; $return
-			bindsym Shift+u unmark mark-u; $return
-			# bindsym Shift+v unmark mark-v; $return
-			# bindsym Shift+w unmark mark-w; $return
-			bindsym Shift+x unmark mark-x; $return
-			bindsym Shift+y unmark mark-y; $return
-			bindsym Shift+z unmark mark-z; $return
+			bindsym Shift+a unmark A; $return
+			bindsym Shift+b unmark B; $return
+			# bindsym Shift+c unmark C; $return
+			bindsym Shift+d unmark D; $return
+			# bindsym Shift+e unmark E; $return
+			# bindsym Shift+f unmark F; $return
+			bindsym Shift+g unmark G; $return
+			bindsym Shift+h unmark H; $return
+			bindsym Shift+i unmark I; $return
+			bindsym Shift+j unmark J; $return
+			bindsym Shift+k unmark K; $return
+			bindsym Shift+l unmark L; $return
+			# bindsym Shift+m unmark M; $return
+			bindsym Shift+n unmark N; $return
+			bindsym Shift+o unmark O; $return
+			bindsym Shift+p unmark P; $return
+			bindsym Shift+q unmark Q; $return
+			bindsym Shift+r unmark R; $return
+			bindsym Shift+s unmark S; $return
+			bindsym Shift+t unmark T; $return
+			bindsym Shift+u unmark U; $return
+			# bindsym Shift+v unmark V; $return
+			# bindsym Shift+w unmark W; $return
+			bindsym Shift+x unmark X; $return
+			bindsym Shift+y unmark Y; $return
+			bindsym Shift+z unmark Z; $return
 
 		# reserved
 			bindsym c exec notify-send "Reserved: chat"; $return
@@ -394,69 +397,69 @@
 
 	mode "GOTO" {
 		# by symbol
-			bindsym space [urgent=latest] focus; $return
-			bindsym apostrophe [urgent=latest] focus; $return
-			bindsym $super+apostrophe [urgent=latest] focus; $return
+			bindsym space mark LAST; [urgent=latest] focus; $return
+			bindsym apostrophe mark LAST; [urgent=latest] focus; $return
+			bindsym $super+apostrophe mark LAST; [urgent=latest] focus; $return
 
 		# by name
-			bindsym Return exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '; $return
+			bindsym Return exec i3-input -F 'mark LAST; [con_mark=%s] focus' -P 'Go to mark: '; $return
 
 		# by number
-			bindsym grave [con_mark="mark-0"] focus; $return
-			bindsym 1 [con_mark="mark-1"] focus; $return
-			bindsym 2 [con_mark="mark-2"] focus; $return
-			bindsym 3 [con_mark="mark-3"] focus; $return
-			bindsym 4 [con_mark="mark-4"] focus; $return
-			bindsym 5 [con_mark="mark-5"] focus; $return
-			bindsym 6 [con_mark="mark-6"] focus; $return
-			bindsym 7 [con_mark="mark-7"] focus; $return
-			bindsym 8 [con_mark="mark-8"] focus; $return
-			bindsym 9 [con_mark="mark-9"] focus; $return
-			bindsym 0 [con_mark="mark-10"] focus; $return
-			bindsym bracketleft [con_mark="mark-11"] focus; $return
-			bindsym bracketright [con_mark="mark-12"] focus; $return
+			bindsym grave mark LAST; [con_mark="0"] focus; $return
+			bindsym 1 mark LAST; [con_mark="1"] focus; $return
+			bindsym 2 mark LAST; [con_mark="2"] focus; $return
+			bindsym 3 mark LAST; [con_mark="3"] focus; $return
+			bindsym 4 mark LAST; [con_mark="4"] focus; $return
+			bindsym 5 mark LAST; [con_mark="5"] focus; $return
+			bindsym 6 mark LAST; [con_mark="6"] focus; $return
+			bindsym 7 mark LAST; [con_mark="7"] focus; $return
+			bindsym 8 mark LAST; [con_mark="8"] focus; $return
+			bindsym 9 mark LAST; [con_mark="9"] focus; $return
+			bindsym 0 mark LAST; [con_mark="10"] focus; $return
+			bindsym bracketleft mark LAST; [con_mark="11"] focus; $return
+			bindsym bracketright mark LAST; [con_mark="12"] focus; $return
 
 		# by letter
-			bindsym a [con_mark="mark-a"] focus; $return
-			bindsym b [con_mark="mark-b"] focus; $return
-			# bindsym c [con_mark="mark-c"] focus; $return
-			bindsym d [con_mark="mark-d"] focus; $return
-			# bindsym e [con_mark="mark-e"] focus; $return
-			# bindsym f [con_mark="mark-f"] focus; $return
-			bindsym g [con_mark="mark-g"] focus; $return
-			bindsym h [con_mark="mark-h"] focus; $return
-			bindsym i [con_mark="mark-i"] focus; $return
-			bindsym j [con_mark="mark-j"] focus; $return
-			bindsym k [con_mark="mark-k"] focus; $return
-			bindsym l [con_mark="mark-l"] focus; $return
-			# bindsym m [con_mark="mark-m"] focus; $return
-			bindsym n [con_mark="mark-n"] focus; $return
-			bindsym o [con_mark="mark-o"] focus; $return
-			bindsym p [con_mark="mark-p"] focus; $return
-			bindsym q [con_mark="mark-q"] focus; $return
-			bindsym r [con_mark="mark-r"] focus; $return
-			bindsym s [con_mark="mark-s"] focus; $return
-			bindsym t [con_mark="mark-t"] focus; $return
-			bindsym u [con_mark="mark-u"] focus; $return
-			# bindsym v [con_mark="mark-v"] focus; $return
-			# bindsym w [con_mark="mark-w"] focus; $return
-			bindsym x [con_mark="mark-x"] focus; $return
-			bindsym y [con_mark="mark-y"] focus; $return
-			bindsym z [con_mark="mark-z"] focus; $return
+			bindsym a mark LAST; [con_mark="A"] focus; $return
+			bindsym b mark LAST; [con_mark="B"] focus; $return
+			# bindsym c mark LAST; [con_mark="C"] focus; $return
+			bindsym d mark LAST; [con_mark="D"] focus; $return
+			# bindsym e mark LAST; [con_mark="E"] focus; $return
+			# bindsym f mark LAST; [con_mark="F"] focus; $return
+			bindsym g mark LAST; [con_mark="G"] focus; $return
+			bindsym h mark LAST; [con_mark="H"] focus; $return
+			bindsym i mark LAST; [con_mark="I"] focus; $return
+			bindsym j mark LAST; [con_mark="J"] focus; $return
+			bindsym k mark LAST; [con_mark="K"] focus; $return
+			bindsym l mark LAST; [con_mark="L"] focus; $return
+			# bindsym m mark LAST; [con_mark="M"] focus; $return
+			bindsym n mark LAST; [con_mark="N"] focus; $return
+			bindsym o mark LAST; [con_mark="O"] focus; $return
+			bindsym p mark LAST; [con_mark="P"] focus; $return
+			bindsym q mark LAST; [con_mark="Q"] focus; $return
+			bindsym r mark LAST; [con_mark="R"] focus; $return
+			bindsym s mark LAST; [con_mark="S"] focus; $return
+			bindsym t mark LAST; [con_mark="T"] focus; $return
+			bindsym u mark LAST; [con_mark="U"] focus; $return
+			# bindsym v mark LAST; [con_mark="V"] focus; $return
+			# bindsym w mark LAST; [con_mark="W"] focus; $return
+			bindsym x mark LAST; [con_mark="X"] focus; $return
+			bindsym y mark LAST; [con_mark="Y"] focus; $return
+			bindsym z mark LAST; [con_mark="Z"] focus; $return
 
 		# by app
 			# chat
-			bindsym c [title="(Buddy List|finch)"] focus; $return
+			bindsym c mark LAST; [title="(Buddy List|finch)"] focus; $return
 			# editor
-			bindsym e [class="URxvt" title="VIM"] focus; $return
+			bindsym e mark LAST; [class="URxvt" title="VIM"] focus; $return
 			# files
-			bindsym f [class="URxvt" title="vifm"] focus; $return
+			bindsym f mark LAST; [class="URxvt" title="vifm"] focus; $return
 			# music
-			bindsym m [title="(?i)music"] focus; $return
+			bindsym m mark LAST; [title="(?i)music"] focus; $return
 			# video
-			bindsym v [class="vlc"] focus; $return
+			bindsym v mark LAST; [class="vlc"] focus; $return
 			# web
-			bindsym w [class="Google-chrome"] focus; $return
+			bindsym w mark LAST; [class="Google-chrome"] focus; $return
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
@@ -482,19 +485,19 @@
 
 		# presets
 			# TODO: make these dynamic from the workspace name
-			bindsym grave        workspace $wsTemp;  exec $tmuxAttach $0;  $return
-			bindsym 1            workspace $wsWeb;  exec $tmuxAttach $1;  $return
-			bindsym 2            workspace $wsDev;  exec $tmuxAttach $2;  $return
-			bindsym 3            workspace $wsSync;  exec $tmuxAttach $3;  $return
-			bindsym 4            workspace $wsHack;  exec $tmuxAttach $4;  $return
-			bindsym 5            workspace $wsFiles;  exec $tmuxAttach $5 'vifm';  $return
-			bindsym 6            workspace $wsMedia;  exec $tmuxAttach $6;  $return
-			bindsym 7            workspace $wsLiterature;  exec $tmuxAttach $7;  $return
-			bindsym 8            workspace $wsGames;  exec $tmuxAttach $8;  $return
-			bindsym 9            workspace $wsRun;  exec $tmuxAttach $9;  $return
-			bindsym 0            workspace $wsChat; exec $tmuxAttach $10; $return
-			bindsym bracketleft  workspace $ws11; exec $tmuxAttach $11; $return
-			bindsym bracketright workspace $wsMonitor; exec $tmuxAttach $12; $return
+			bindsym grave        mark LAST; workspace $wsTemp;  exec $tmuxAttach $0;  $return
+			bindsym 1            mark LAST; workspace $wsWeb;  exec $tmuxAttach $1;  $return
+			bindsym 2            mark LAST; workspace $wsDev;  exec $tmuxAttach $2;  $return
+			bindsym 3            mark LAST; workspace $wsSync;  exec $tmuxAttach $3;  $return
+			bindsym 4            mark LAST; workspace $wsHack;  exec $tmuxAttach $4;  $return
+			bindsym 5            mark LAST; workspace $wsFiles;  exec $tmuxAttach $5 'vifm';  $return
+			bindsym 6            mark LAST; workspace $wsMedia;  exec $tmuxAttach $6;  $return
+			bindsym 7            mark LAST; workspace $wsLiterature;  exec $tmuxAttach $7;  $return
+			bindsym 8            mark LAST; workspace $wsGames;  exec $tmuxAttach $8;  $return
+			bindsym 9            mark LAST; workspace $wsRun;  exec $tmuxAttach $9;  $return
+			bindsym 0            mark LAST; workspace $wsChat; exec $tmuxAttach $10; $return
+			bindsym bracketleft  mark LAST; workspace $ws11; exec $tmuxAttach $11; $return
+			bindsym bracketright mark LAST; workspace $wsMonitor; exec $tmuxAttach $12; $return
 
 		# TODO: open preset for the current workspace
 
@@ -746,17 +749,14 @@
 	mode "APPS" {
 		# clipboard manager -- copyq
 		# TODO: move to scratchpad
-		bindsym y exec copyq toggle; $return
+		bindsym y mark LAST; exec copyq toggle; $return
 
 		# calculator -- Qalc
 		# TODO: move to scratchpad
-		bindsym c exec qalculate-gtk; $return
-
-		# password manager -- KeePassX
-		bindsym k exec keepassx; $return
+		bindsym c mark LAST; exec qalculate-gtk; $return
 
 		# documentation -- zeal
-		bindsym --release d exec $(xdotool key --clearmodifiers "alt+super+shift+Z"); $return
+		bindsym --release d mark LAST; exec $(xdotool key --clearmodifiers "alt+super+shift+Z"); $return
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
@@ -764,7 +764,7 @@
 
 
 	mode "PIDGIN" {
-		bindsym space exec python3 ~/lib/purple.py | sort | rofi -dmenu -p "IM:" -i | xargs -I$ python3 ~/lib/purple.py "$"; $return
+		bindsym space mark LAST; exec python3 ~/lib/purple.py | sort | rofi -dmenu -p "IM:" -i | xargs -I$ python3 ~/lib/purple.py "$"; $return
 
 		bindsym $super+space mode "PREFIX"
 		bindsym Escape $return
