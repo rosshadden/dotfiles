@@ -16,8 +16,8 @@ call MakePrefix('files', '<:prefix>f')
 call MakePrefix('files', '<:files>f', 1)
 
 " flat
-nnoremap <:files>s :Unite -buffer-name=files directory file/async file/new directory/new<cr>
-nnoremap <:files>S :UniteWithBufferDir -buffer-name=files directory file/async file/new directory/new<cr>
+nnoremap <:files>s :Unite -buffer-name=files directory file file/new directory/new<cr>
+nnoremap <:files>S :UniteWithBufferDir -buffer-name=files directory file file/new directory/new<cr>
 
 " recursive
 nnoremap <:files>r :Unite              -buffer-name=files -start-insert file_rec/async:!<cr>
