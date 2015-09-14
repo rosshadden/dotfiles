@@ -155,7 +155,7 @@
 	bindsym $super+Shift+d move workspace to output right
 
 	# previous container
-	bindsym $super+Tab mark TEMP1; [con_mark="LAST"] focus; [con_mark="TEMP1"] mark LAST
+	bindsym $super+Tab mark TEMP; [con_mark="LAST"] focus; [con_mark="TEMP"] mark LAST
 
 	# back to last workspace
 	bindsym $super+Escape workspace back_and_forth

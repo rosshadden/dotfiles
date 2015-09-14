@@ -78,10 +78,8 @@ map <C-b> scrollFullPageUp
 
 " TABS
 
-map <A-n> nextTab
-map <A-p> previousTab
-imap <A-n> nextTab
-imap <A-p> previousTab
+map $ lastTab
+map 0 firstTab
 
 map D closeTab
 
@@ -89,6 +87,7 @@ map u lastClosedTab
 
 map <Leader>r reloadTab
 map <Leader>R reloadTabUncached
+map <Leader><Leader>r reloadAllTabs
 
 
 " INPUT
@@ -96,7 +95,11 @@ map <Leader>R reloadTabUncached
 imap <C-o> editWithVim
 
 
+" LINKS
+
+map gS :viewsource&<CR>
+
+
 " CHROME
 
-map <Leader><Leader>r :chrome://restart
 map <Leader><Leader>R :chrome://restart<CR>
