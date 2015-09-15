@@ -35,6 +35,8 @@
 				- https://github.com/vifm/vifm/issues/60 and https://github.com/vifm/vifm/issues/79
 			- sessions
 				- fix and/or make stuff that actually works
+			- tabs
+				- add last-tab mappings (alt-tab (pun!))
 			- unite
 				- mapping to select first result automatically
 					- spelling
@@ -68,6 +70,7 @@
 		- universalize the media/resize/move increments and whatnot
 			- make sure there are mappings for both big and small increments
 		- integrate `tp`
+		- integrate dunst
 	- `tmux`
 		- Raws, Private Investigator
 			- figure out why exiting one session sometimes switches to another

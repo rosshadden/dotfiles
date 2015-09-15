@@ -7,6 +7,18 @@ set tabstop=2 shiftwidth=2
 
 
 """"""""""""""""
+" FUNCTIONS
+""""""""""""""""
+
+let g:lastTab = 1
+
+augroup javascript
+	autocmd!
+	autocmd TabLeave * let g:lastTab = tabpagenr()
+augroup END
+
+
+""""""""""""""""
 " MAPPINGS
 """"""""""""""""
 
@@ -30,6 +42,10 @@ nnoremap 7 7gt
 nnoremap 8 8gt
 nnoremap 9 9gt
 nnoremap 0 :tablast<cr>
+
+" alt-tab (pun)
+" TODO: figure out how to map things to alt-tab
+nnoremap <tab> :exe 'tabnext' . g:lastTab<cr>
 
 " new
 noremap <:tabs>n :tabnew<cr>
