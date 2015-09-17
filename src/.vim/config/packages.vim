@@ -135,7 +135,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" autoformat support for multiple
 		NeoBundle 'Chiel92/vim-autoformat'
 		" js
-		NeoBundleLazy 'othree/yajs.vim', { 'rev': 'fold', 'autoload': { 'filetypes': 'javascript' } }
+		NeoBundleLazy 'othree/yajs.vim', { 'autoload': { 'filetypes': 'javascript' } }
 		NeoBundleLazy 'othree/javascript-libraries-syntax.vim', { 'autoload': { 'filetypes': 'javascript' } }
 		NeoBundleLazy 'marijnh/tern_for_vim', { 'autoload': { 'filetypes': 'javascript' } }
 		" json
@@ -156,7 +156,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 		" markdown
 		NeoBundle 'godlygeek/tabular'
-		NeoBundle 'suan/vim-instant-markdown'
+		NeoBundle 'shime/vim-livedown'
 		NeoBundle 'vim-pandoc/vim-pandoc'
 		NeoBundle 'vim-pandoc/vim-pandoc-syntax'
 

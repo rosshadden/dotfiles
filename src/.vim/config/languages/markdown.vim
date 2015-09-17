@@ -44,5 +44,5 @@ augroup markdown
 		\ noremap <localleader>C :call CompileMarkdown("*.md")<cr>
 
 	" vim-instant-markdown
-	autocmd FileType markdown noremap <localleader>p :InstantMarkdownPreview<cr>
+	autocmd FileType markdown noremap <localleader>p :LivedownToggle<cr>
 augroup END
