@@ -1,5 +1,8 @@
 " newline + indent
-inoremap <c-c><enter> <cr><esc>O
+inoremap <c-c><cr> <cr><esc>O
+
+" pad cursor with spaces
+inoremap <c-c><space> <space><space><left>
 
 " delete adjacent pairs
 inoremap <c-c><bs> <bs><del>

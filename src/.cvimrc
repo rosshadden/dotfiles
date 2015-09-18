@@ -81,6 +81,9 @@ map <C-b> scrollFullPageUp
 map $ lastTab
 map 0 firstTab
 
+" alt-tab (pun)
+map <A-Tab> lastUsedTab
+
 map D closeTab
 
 map u lastClosedTab
@@ -97,9 +100,4 @@ imap <C-o> editWithVim
 
 " LINKS
 
-map gS :viewsource&<CR>
-
-
-" CHROME
-
-map <Leader><Leader>R :chrome://restart<CR>
+map gS :viewsource!<CR>
