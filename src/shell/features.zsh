@@ -34,8 +34,8 @@ zle -N copy-earlier-word
 bindkey "^[m" copy-earlier-word
 
 # smart-insert-last-word
-# TODO: requires zsh 5.1
-# zle -N insert-last-word smart-insert-last-word
+autoload -Uz smart-insert-last-word
+zle -N insert-last-word smart-insert-last-word
 
 # edit command externally
 autoload -Uz edit-command-line
@@ -65,7 +65,5 @@ zle -N bracketed-paste bracketed-paste-magic
 
 # zsh-syntax-highlighting
 source $shellDir/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# TODO: pending https://github.com/zsh-users/zsh-syntax-highlighting/issues/165
-# ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(brackets)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=red'

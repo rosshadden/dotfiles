@@ -8,7 +8,8 @@ src/.config/copyq/.copyq_s
 src/.config/copyq/copyq-bak.conf
 src/.config/copyq/copyq_geometry.ini
 src/.config/copyq/copyq_tabs.ini
-src/.config/systemd/user/timers.target.wants/task.timer
+src/.config/systemd/user/timers.target.wants
+src/.config/systemd/user/default.target.wants
 src/.vifm/Trash
 src/.vifm/vifminfo*
 src/.vifm/vimfiles
