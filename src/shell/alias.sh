@@ -37,7 +37,23 @@ alias seg="sudo gvim"
 # TODO: breakout.exe into a tmux module
 alias tmux="tmux -2"
 alias tl="tmux list-sessions"
-alias ta="tmux new-session -A -s"
+
+##
+# attach to existing session, or create new
+#
+# @param {String} [1] - Session name.
+#   Defaults to name of current directory.
+#
+ta() {
+	tmux new-session -A -s ${1-$(basename $(pwd))}
+}
+
+##
+# create a new session, joining in to an existing one
+#
+# @param {String} 1 - Existing session
+# @param {String} 2 - New session
+#
 tj() {
 	tmux new-session -t $1 -s $1-$2
 }
@@ -67,8 +83,15 @@ alias .....="cd ../../../.."
 # lock session
 alias afk="i3lock --color=012345"
 
+##
+# Get current shell
+#
+# @return {String} - Current shell
+#
+alias getShell="ps -o fname --no-headers $$"
+
 # reload shell config
-alias reload=". $HOME/.`echo $0 | sed "s:-::"`rc"
+alias reload=". $HOME/.$(getShell)rc"
 
 # Turn off caps lock
 alias shh="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"

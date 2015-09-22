@@ -21,16 +21,15 @@ let g:jsdoc_default_mapping         = 0 " 1
 """"""""""""""""
 
 " print project version from `package.json` before/after cursor
-function! PrintVersion(direction)
+function! PrintVersion(command)
 	let l:root = ProjectRootGuess()
 	let l:package = join(readfile(l:root . '/package.json'), "\n")
 
-	" let l:version = substitute(l:package, 'version', 'AOEU', '')
 	let l:version = matchlist(l:package, '\c"version":\s*"\([0-9.]\+\)",')[1]
 
 	" paste the version at the cursor
 	" TODO: figure out why it jumps the cursor to the BOF
-	execute 'normal! ' . a:direction . l:version . ''
+	execute 'normal! ' . a:command . l:version . ''
 endfunction
 
 
@@ -46,8 +45,8 @@ augroup javascript
 
 	" print version
 	autocmd FileType javascript
-		\ map <localleader>v :execute PrintVersion('i')<cr> |
-		\ map <localleader>V :execute PrintVersion('a')<cr>
+		\ map <localleader>v :execute PrintVersion('a')<cr> |
+		\ map <localleader>V :execute PrintVersion('i')<cr>
 
 	" jsdoc
 	autocmd FileType javascript nmap <silent> <localleader>C <plug>(jsdoc)

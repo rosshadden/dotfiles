@@ -39,16 +39,19 @@ SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color? ([y]es, [n]
 # MODULES
 ################
 
-. $shellDir/env.sh
-. $shellDir/colors.sh
-. $shellDir/alias.sh
-. $shellDir/functions.sh
-. $shellDir/general.sh
+source $shellDir/env.sh
+source $shellDir/colors.sh
+source $shellDir/alias.sh
+source $shellDir/functions.sh
+source $shellDir/general.sh
 
 
 ################
 # MAPPINGS
 ################
+
+# fix shift-tab in completion menus
+bindkey -a '	' menu-expand-or-complete
 
 # fix shift-tab in completion menus
 bindkey '^[[Z' reverse-menu-complete

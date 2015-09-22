@@ -70,6 +70,7 @@
 		- integrate `tp`
 		- integrate dunst
 	- `tmux`
+		- put session name in title, making sure it doesn't break navigation things
 		- Raws, Private Investigator
 			- figure out why exiting one session sometimes switches to another
 		- use `choose-session` to pick a session to link current session to
