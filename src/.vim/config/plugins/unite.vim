@@ -196,15 +196,15 @@ call MakePrefix('unite', '<:unite>u', 1)
 	call unite#custom#profile('spelling', 'context', {
 		\ 'auto_preview': 1,
 	\ })
-	nnoremap <:unite>s :Unite               -buffer-name=spelling spell_suggest<cr>
-	nnoremap <:unite:1>s :Unite               -buffer-name=spelling -force-immediately spell_suggest<cr>
+	nnoremap <:unite>s :Unite   -buffer-name=spelling spell_suggest<cr>
+	nnoremap <:unite:1>s :Unite -buffer-name=spelling -force-immediately spell_suggest<cr>
 
 " search files
-	call unite#custom#profile('find', 'context', {
-		\ 'empty': 0,
-	\ })
-	nnoremap <:unite>g :Unite              -buffer-name=find grep:.<cr>
-	nnoremap <:unite>G :UniteWithBufferDir -buffer-name=find grep:.<cr>
+call unite#custom#profile('find', 'context', {
+	\ 'empty': 0,
+\ })
+nnoremap <:unite>g :Unite              -buffer-name=find grep:.<cr>
+nnoremap <:unite>G :UniteWithBufferDir -buffer-name=find grep:.<cr>
 
 " do all the things
 nnoremap <:unite><cr> :Unite -buffer-name=omni source<cr>
@@ -218,6 +218,6 @@ nnoremap <:unite>. :UniteResume -no-start-insert -vertical-preview<cr>
 
 " external
 	" exit
-	nnoremap <:unite>x :Unite -default-action=sigterm process<cr>
-	nnoremap <:unite>X :Unite -default-action=sigkill process<cr>
+	nnoremap <:unite>x :Unite   -default-action=sigterm process<cr>
+	nnoremap <:unite>X :Unite   -default-action=sigkill process<cr>
 	nnoremap <:unite:1>x :Unite -default-action=sigint  process<cr>

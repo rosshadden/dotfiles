@@ -35,15 +35,11 @@
 				- https://github.com/vifm/vifm/issues/60 and https://github.com/vifm/vifm/issues/79
 			- sessions
 				- fix and/or make stuff that actually works
+			- files
+				- make a mapping or mode for finding files not in the repo
 			- unite
-				- mapping to select first result automatically
-					- spelling
-					- recent
-					- NOTE: that's really all that makes sense...
 				- better previews
 					- possibly a dynamic vertical/horizontal choice
-				- make a mapping or mode for finding files not in the repo
-				- abstract making 4-8 mappings per concept
 				- vet the alternate mappings per concept, as some do weird things (`<:unite:1>g`)
 				- vim-session integration
 					- or wait for [this](https://github.com/xolox/vim-session/pull/126)
@@ -54,11 +50,8 @@
 			- remove redundant or unused plugins
 				- I have two commenting plugins, with overlapping but not identical features
 		- add mapping when searching to jump to the result but clear the highlighting
-		- [look into analytics](http://www.drbunsen.org/vim-croquet/)
 	- `i3`
 		- modes
-			- config
-				- toggle wifi, bluetooth
 			- break out modes into separate files
 				- add a generated help notification for each mode, on `?`
 		- locally override settings (namely font size)
