@@ -40,7 +40,7 @@ set $macro4 XF86Launch7
 set $macro5 XF86Launch8
 
 # return to the default mode
-set $return mode 'default'
+set $return mode "default"
 
 # default apps
 set $chooseCommand rofi -show run -sidebar-mode -i
