@@ -20,6 +20,8 @@ See the [TODO](TODO.md) for things I have in mind.
 - [`nodejs`*](https://nodejs.org/)
 - [`npm`*](https://www.npmjs.com/)
 - [`grunt-cli`*](http://gruntjs.com/)
+- [`vim`](http://www.vim.org/)
+	- [`livedown`](https://github.com/shime/vim-livedown) - Live previews of markdown files in vim.
 - [`tmux`](https://github.com/tmux/tmux)
 	- [`urlview`](https://github.com/sigpipe/urlview)
 	- [`fpp`](https://github.com/facebook/PathPicker)
@@ -34,4 +36,4 @@ See the [TODO](TODO.md) for things I have in mind.
 	- `ttf-fantasque-sans` - main font
 	- `ttf-font-icons` - mix of non-overlapping fonts from Font Awesome and Ionicons
 
-> \*: I'm going to remove this dependency
+> \*: I'm going to remove these dependencies
