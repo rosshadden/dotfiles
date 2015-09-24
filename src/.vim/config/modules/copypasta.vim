@@ -2,11 +2,9 @@
 call MakePrefix('clipboard', '<:prefix>c')
 call MakePrefix('put', '<:prefix>p')
 
-" copy selected text
-vnoremap <c-c> "+y
-
 " easy ref to system clipboard
 nnoremap <c-c> "+
+vnoremap <c-c> "+
 
 " easy system clipboard
 noremap <:clipboard>y "+y

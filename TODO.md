@@ -21,8 +21,11 @@
 	- i3 workflow
 	- tig workflow
 	- vifm workflow
+- forks
+	- add support for global portkey file to [portkey](https://github.com/dsawardekar/portkey)
 - apps
 	- `vim`
+		- add mapping when searching to jump to the result but clear the highlighting
 		- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
 		- modes
 			- ember
@@ -49,7 +52,6 @@
 			- pluginify my modes
 			- remove redundant or unused plugins
 				- I have two commenting plugins, with overlapping but not identical features
-		- add mapping when searching to jump to the result but clear the highlighting
 	- `i3`
 		- modes
 			- break out modes into separate files
