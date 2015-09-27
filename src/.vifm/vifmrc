@@ -229,6 +229,8 @@ nmap oh :VsplitVim<cr>
 nmap cop :view<cr>
 " toggle wrap
 nmap cow :set wrap!<cr>
+" toggle hidden files
+nmap coh za
 
 
 " CLIPBOARD

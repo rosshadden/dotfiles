@@ -83,10 +83,10 @@ function! s:uniteSettings()
 	" CANDIDATES
 
 	" select
-	nmap <buffer><expr> t unite#smart_map('t', '<plug>(unite_toggle_mark_current_candidate)')
 	imap <buffer><expr> t unite#smart_map('t', '<plug>(unite_toggle_mark_current_candidate)')
-	nmap <buffer><expr> T unite#smart_map('T', '<plug>(unite_toggle_mark_current_candidate_up)')
 	imap <buffer><expr> T unite#smart_map('T', '<plug>(unite_toggle_mark_current_candidate_up)')
+	nmap <buffer> t <plug>(unite_toggle_mark_current_candidate)
+	nmap <buffer> T <plug>(unite_toggle_mark_current_candidate_up)
 	vmap <buffer> t <plug>(unite_toggle_mark_selected_candidates)
 
 	" quick match

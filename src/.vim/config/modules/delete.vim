@@ -1,6 +1,10 @@
 " prefix
 call MakePrefix('delete', '<:prefix>d')
 
+" line
+" TODO: does not work
+noremap <:delete><:delete> cc<esc>
+
 " up, down, left, right
 noremap <:delete>h dh
 noremap <:delete>l ldlh
