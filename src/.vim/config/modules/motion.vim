@@ -67,3 +67,5 @@ xmap <silent> <:camel>ie <plug>CamelCaseMotion_ie
 
 omap ir <plug>(textobj-line-i)
 omap ar <plug>(textobj-line-a)
+vmap ir <plug>(textobj-line-i)
+vmap ar <plug>(textobj-line-a)

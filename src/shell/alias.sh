@@ -112,6 +112,7 @@ alias wimi="curl ipecho.net/plain; echo"
 # GLOBAL
 ################
 
+# yaourt --noconfirm
 alias -g YNO="--noconfirm"
 
 

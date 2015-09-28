@@ -46,6 +46,12 @@ stopwatch() {
 }
 
 
-panewrap () {
+panewrap() {
 	printf "\033]2;%s\033\\" "$1"; "$@";
+}
+
+
+# find symlinks in input list
+getSymlinks() {
+	ls -la $1 | grep ' \-> '
 }
