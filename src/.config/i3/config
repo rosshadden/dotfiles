@@ -871,4 +871,6 @@ exec --no-startup-id "i3-msg 'workspace $wsChat; append_layout ~/.config/i3/layo
 exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath
 
 # autolock
-exec --no-startup-id xautolock -resetsaver -detectsleep -time 10 -locker "$LOCK -d" -nowlocker "$LOCK" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"
+set $LOCKER i3lock --color=5f00af
+# exec --no-startup-id xautolock -resetsaver -detectsleep -time 10 -locker "$LOCK -d" -nowlocker "$LOCK" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"
+exec --no-startup-id xautolock -resetsaver -detectsleep -time 10 -locker "$LOCKER -d" -nowlocker "$LOCKER" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"
