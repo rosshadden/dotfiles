@@ -159,7 +159,7 @@ bindsym $super+Shift+d move workspace to output right
 bindsym $super+Tab mark TEMP; [con_mark="LAST"] focus; [con_mark="TEMP"] mark LAST
 
 # back to last workspace
-bindsym $super+Escape workspace back_and_forth
+bindsym $super+Escape mark LAST; workspace back_and_forth
 bindsym $super+Shift+Escape move to workspace back_and_forth; workspace back_and_forth
 
 # switch to workspace

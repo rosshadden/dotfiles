@@ -1,5 +1,5 @@
 " prefix
-call MakePrefix('clipboard', '<:prefix>c')
+call MakePrefix('clipboard', '<:prefix>C')
 call MakePrefix('put', '<:prefix>p')
 
 " easy ref to system clipboard

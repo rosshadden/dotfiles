@@ -25,7 +25,7 @@ let g:textobj_line_no_default_key_mappings = 1
 
 " prefix
 map - <plug>(easymotion-prefix)
-call MakePrefix('camel', '<:prefix>C')
+call MakePrefix('camel', '<:prefix>c')
 
 " better long-distance travel
 map -h <plug>(easymotion-linebackward)
