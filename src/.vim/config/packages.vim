@@ -140,6 +140,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundleLazy 'marijnh/tern_for_vim', { 'autoload': { 'filetypes': 'javascript' } }
 		" json
 		NeoBundleLazy 'elzr/vim-json', { 'autoload': { 'filetypes': 'json' } }
+		" c#
+		NeoBundleLazy 'OmniSharp/omnisharp-vim', { 'autoload': { 'filetypes': 'cs' } }
 		" html5
 		NeoBundleLazy 'othree/html5.vim', { 'autoload': { 'filetypes': 'html' } }
 		" hbs

@@ -25,6 +25,7 @@ endif
 " Enable omni completion.
 augroup completion
 	autocmd!
+	autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
 	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
