@@ -1,6 +1,21 @@
 #!/usr/bin/env bash
 
 ################
+# CONFIG
+################
+
+# keyboard
+~/bin/keys init
+
+
+################
+# ENVIRONMENT
+################
+
+mkdir /tmp/aoeu
+
+
+################
 # UTILITIES
 ################
 
@@ -12,19 +27,19 @@ xcompmgr -cF &
 
 
 ################
-# CONFIG
+# DAEMONS
 ################
 
-# keyboard
-~/bin/keys init
+# Dropbox
+dropbox-cli start
 
 
 ################
 # APPS
 ################
 
-# Dropbox
-dropbox-cli start
+# Easystroke
+easystroke &
 
 # CopyQ
 copyq &
@@ -34,10 +49,3 @@ zeal &
 
 # cvim external editor
 ~/lib/cvim-server.py &
-
-
-################
-# APPS
-################
-
-mkdir /tmp/aoeu
