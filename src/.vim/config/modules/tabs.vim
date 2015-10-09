@@ -28,23 +28,37 @@ call MakePrefix('tabs', '<:tabs>t', 1)
 
 " relative navigation
 nnoremap <silent> n :tabnext<cr>
+nnoremap <silent> <m-n> :tabnext<cr>
 nnoremap <silent> p :tabprevious<cr>
+nnoremap <silent> <m-p> :tabprevious<cr>
 
 " fast tab navigation
 nnoremap <silent> ` :tabfirst<cr>
+nnoremap <silent> <m-`> :tabfirst<cr>
 nnoremap 1 1gt
+nnoremap <m-1> 1gt
 nnoremap 2 2gt
+nnoremap <m-2> 2gt
 nnoremap 3 3gt
+nnoremap <m-3> 3gt
 nnoremap 4 4gt
+nnoremap <m-4> 4gt
 nnoremap 5 5gt
+nnoremap <m-5> 5gt
 nnoremap 6 6gt
+nnoremap <m-6> 6gt
 nnoremap 7 7gt
+nnoremap <m-7> 7gt
 nnoremap 8 8gt
+nnoremap <m-8> 8gt
 nnoremap 9 9gt
+nnoremap <m-9> 9gt
 nnoremap <silent> 0 :tablast<cr>
+nnoremap <silent> <m-0> :tablast<cr>
 
 " alt-tab (pun)
 nnoremap <tab> :exe 'tabnext' . g:lastTab<cr>
+nnoremap <m-tab> :exe 'tabnext' . g:lastTab<cr>
 
 " new
 noremap <silent> <:tabs>n :tabnew<cr>

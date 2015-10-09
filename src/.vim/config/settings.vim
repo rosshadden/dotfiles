@@ -39,3 +39,7 @@ set wildignore+=node_modules/**
 
 " prevent omnicomplete preview window
 set completeopt-=preview
+
+" allow alt-mappings in gvim
+set guioptions-=m
+set winaltkeys=no
