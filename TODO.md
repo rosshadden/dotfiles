@@ -27,6 +27,7 @@
 	- `vim`
 		- add mapping when searching to jump to the result but clear the highlighting
 		- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
+		- make `ctrl-hjkl` nav work with `--servername`
 		- modes
 			- ember
 			- diff
@@ -89,6 +90,7 @@
 		- integrate into workflow
 		- figure out wtf keeps going wrong with the i3 shortcut, and fix it
 	- `vifm`
+		- add support for opening with `vim --servername`, for use with tmux sidebar
 		- add bind to essentially run `fasd`
 		- revisit binds
 		- add specific configs, launched with `-c "source /path/to/config"`

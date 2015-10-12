@@ -2,16 +2,13 @@
 # CLASS
 ################
 
-snippet uClass
-alias c
+snippet uScript
+alias s
 options word
 	using UnityEngine;
 	using System.Collections;
 
-	public class ${1} : MonoBehaviour {
-
-		void ${2:Start}() {
-			${3}
-		}
-
+	public class ${1:basename} : MonoBehaviour {
+		void ${2:Start}() {${3}
+		}${0}
 	}

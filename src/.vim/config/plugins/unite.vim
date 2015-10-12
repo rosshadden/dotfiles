@@ -32,7 +32,7 @@ if executable('ag')
 	let g:unite_source_grep_command = 'ag'
 	let g:unite_source_grep_default_opts = '--hidden --vimgrep'
 	let g:unite_source_grep_recursive_opt = ''
-	let g:unite_source_rec_async_command = ['ag', '--follow', '--hidden', '--nocolor', '--nogroup', '--ignore', '.git', '-g', '']
+	let g:unite_source_rec_async_command = ['ag', '--follow', '--hidden', '--nocolor', '--nogroup', '-g', '']
 elseif executable('ack')
 	" ack >> grep
 	let g:unite_source_grep_command = 'ack'
@@ -79,6 +79,9 @@ function! s:uniteSettings()
 	inoremap <buffer><expr> p unite#smart_map('p', unite#do_action('preview'))
 	nmap <buffer><expr> P unite#smart_map('P', 'p<plug>(unite_toggle_auto_preview)')
 	imap <buffer><expr> P unite#smart_map('P', 'p<plug>(unite_toggle_auto_preview)')
+
+	" redraw
+	nmap <buffer> <leader>r <plug>(unite_redraw)
 
 	" CANDIDATES
 

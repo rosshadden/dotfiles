@@ -18,4 +18,9 @@ if [[ $line != 0 ]]; then
 	file="+$line $file"
 fi
 
-gvim --servername UNITY --remote-tab $file
+server="UNITY"
+app="vim"
+
+vim --serverlist | grep $server || app="gvim"
+
+$app --servername $server --remote-tab $file

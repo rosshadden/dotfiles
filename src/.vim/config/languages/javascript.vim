@@ -34,7 +34,7 @@ endfunction
 
 
 """"""""""""""""
-" MAPPINGS
+" MISC
 """"""""""""""""
 
 augroup javascript
