@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: add docs
+
 calc() {
 	echo "$1" | bc -l
 }
@@ -54,4 +56,16 @@ panewrap() {
 # find symlinks in input list
 getSymlinks() {
 	ls -la $1 | grep ' \-> '
+}
+
+##
+# Sign public AUR key
+#
+# @param {String} key - Public key to sign
+##
+signKey() {
+	# TODO: see if the two `pacman-key` steps can be combined
+	sudo pacman-key -r $1
+	sudo pacman-key --lsign-key $1
+	gpg --keyserver pgp.mit.edu --recv-keys $1
 }

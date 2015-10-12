@@ -85,13 +85,16 @@ map 0 firstTab
 map <A-Tab> lastUsedTab
 imap <A-Tab> lastUsedTab
 
+" TODO: make these copy the url before closing, just like in vim
 map D closeTab
+map dd closeTab
 
 map u lastClosedTab
 
 map <Leader>r reloadTab
 map <Leader>R reloadTabUncached
 map <Leader><Leader>r reloadAllTabs
+map <Leader><Leader>R :source /home/ross/.cvimrc<cr>
 
 
 " INPUT

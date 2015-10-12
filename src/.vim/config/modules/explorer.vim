@@ -79,6 +79,7 @@ noremap <:explorer>d :DiffVifm<cr>
 " ACTIONS
 """"""""""""""""
 
+" TODO: open files in splits or tabs
 function! s:settings()
 	" RESET
 
