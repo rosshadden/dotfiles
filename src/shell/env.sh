@@ -6,10 +6,12 @@
 	export PATH=$HOME/bin:$HOME/local/bin
 	# global
 	export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin
+	# perl (if installed)
+	[[ -f /usr/bin/perl ]] && export PATH=$PATH:/usr/bin/core_perl
 	# ruby (if installed)
-	[[ -e /usr/bin/ruby ]] && export PATH="$PATH:`ruby -e 'puts Gem.user_dir'`/bin:$HOME/.rvm/bin"
+	[[ -f /usr/bin/ruby ]] && export PATH="$PATH:`ruby -e 'puts Gem.user_dir'`/bin:$HOME/.rvm/bin"
 	# java (if installed)
-	[[ -e /usr/bin/java ]] && export PATH=$PATH:$JAVA_HOME/bin
+	[[ -f /usr/bin/java ]] && export PATH=$PATH:$JAVA_HOME/bin
 	# android
 	export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
