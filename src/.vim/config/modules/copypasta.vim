@@ -6,6 +6,14 @@ call MakePrefix('put', '<:prefix>p')
 nnoremap <c-c> "+
 vnoremap <c-c> "+
 
+" easy ref to (non-volatile) yank register
+nnoremap <c-y> "0
+vnoremap <c-y> "0
+
+" easy ref to blackhole register
+nnoremap <c-q> "_
+vnoremap <c-q> "_
+
 " easy system clipboard
 noremap <:clipboard>y "+y
 noremap <:clipboard>Y "+Y

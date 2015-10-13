@@ -1,4 +1,4 @@
-" only enable in NORMAL and VISUAL modes
+" enable emmet in INSERT, NORMAL, and VISUAL modes
 let g:user_emmet_mode='a'
 
 " use <c-localleader>
