@@ -187,7 +187,10 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'KabbAmine/zeavim.vim'
 
 	" external
+		" seamless vim/tmux navigation
 		NeoBundle 'christoomey/vim-tmux-navigator'
+		" completions aware of other panes/windows
+		NeoBundle 'wellle/tmux-complete.vim'
 		NeoBundle 'edkolev/promptline.vim'
 		NeoBundle 'edkolev/tmuxline.vim'
 		NeoBundle 'tmux-plugins/vim-tmux'

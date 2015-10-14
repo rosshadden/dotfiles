@@ -212,6 +212,21 @@ bindsym $super+apostrophe mode "GOTO"
 
 
 ################
+# MOUSE
+################
+
+# bindsym button1 exec "notify-send 1 left"
+bindsym button2 kill
+bindsym button3 mark LAST
+# bindsym button4 exec "notify-send up"
+# bindsym button5 exec "notify-send down"
+bindsym button6 move left
+bindsym button7 move right
+bindsym button8 exec "notify-send back"
+bindsym button9 exec "notify-send forward"
+
+
+################
 # MEDIA
 ################
 

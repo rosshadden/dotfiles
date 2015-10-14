@@ -8,33 +8,36 @@ pushd $DOTS
 
 # update submodules
 thing="submodules"
-echo "\nUpdating ${thing}..."
+echo -e "\nUpdating ${thing}..."
 git submodule update --remote --merge
-echo "Successfully updated ${thing}.\n"
+echo -e "Successfully updated ${thing}.\n"
 
 # update tmux plugins
 thing="tmux plugins"
-echo "\nUpdating ${thing}..."
+echo -e "\nUpdating ${thing}..."
 ~/.tmux/plugins/tpm/bin/update_plugins all
-echo "Successfully updated ${thing}.\n"
+echo -e "Successfully updated ${thing}.\n"
+
+tmux source ~/.tmux.conf
+echo -e "Reloaded tmux config."
 
 # update vim plugins
 thing="vim plugins"
-echo "\nUpdating ${thing}..."
+echo -e "\nUpdating ${thing}..."
 ./src/.vim/bundle/neobundle.vim/bin/neoinstall
-echo "Successfully updated ${thing}.\n"
+echo -e "Successfully updated ${thing}.\n"
 
 # sync pass
 thing="pass"
-echo "\nUpdating ${thing}..."
+echo -e "\nUpdating ${thing}..."
 pass git pull
 pass git push
-echo "Successfully updated ${thing}.\n"
+echo -e "Successfully updated ${thing}.\n"
 
 # sync task
 thing="taskwarrior"
-echo "\nUpdating ${thing}..."
+echo -e "\nUpdating ${thing}..."
 task sync
-echo "Successfully updated ${thing}.\n"
+echo -e "Successfully updated ${thing}.\n"
 
 popd
