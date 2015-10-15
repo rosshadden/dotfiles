@@ -7,12 +7,12 @@ nnoremap <c-c> "+
 vnoremap <c-c> "+
 
 " easy ref to (non-volatile) yank register
-nnoremap <c-y> "0
-vnoremap <c-y> "0
+nnoremap <c-c><c-y> "0
+vnoremap <c-c><c-y> "0
 
 " easy ref to blackhole register
-nnoremap <c-q> "_
-vnoremap <c-q> "_
+nnoremap <c-c><c-b> "_
+vnoremap <c-c><c-b> "_
 
 " easy system clipboard
 noremap <:clipboard>y "+y
