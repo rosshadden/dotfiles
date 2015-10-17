@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# startup script
+~/lib/startup.sh

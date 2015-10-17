@@ -298,8 +298,8 @@ bind generic <esc>M !gg branches -rf 'git merge'
 bind generic Y !@sh -c "echo -n %(commit) | xsel -ib"
 
 # amend commit
-bind status a !git amend -e
-bind status A !git amend
+bind status a !git amend
+bind status A !git amend -e
 
 
 # Colors

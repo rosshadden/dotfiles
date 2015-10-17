@@ -35,6 +35,13 @@ dropbox-cli start
 
 
 ################
+# LOCAL
+################
+
+[[ -f ~/local/lib/startup.sh ]] && ~/local/lib/startup.sh
+
+
+################
 # APPS
 ################
 
