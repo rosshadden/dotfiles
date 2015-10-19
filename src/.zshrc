@@ -5,6 +5,8 @@
 
 # dots
 export DOTS=$HOME/dotfiles
+# sync
+export SYNC=$HOME/sync
 # oh-my-zsh
 export ZSH=$HOME/.oh-my-zsh
 # dropbox
@@ -88,7 +90,7 @@ BASE16_SHELL="$BASE16_DIR/base16-$THEME.$BASE16_VARIANT.sh"
 # FEATURES
 ################
 
-. $shellDir/features.zsh
+source $shellDir/features.zsh
 
 
 ################
