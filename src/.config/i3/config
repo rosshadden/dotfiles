@@ -868,8 +868,8 @@ for_window [title="Dota 2"] border none
 
 # chat
 assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $wsChat
+assign [class="^Slack$"] → $wsChat
 assign [title="^finch$"] → $wsChat
-assign [title="^plaidchat$"] → $wsChat
 
 # monitor
 assign [class="robomongo"] → $wsMonitor

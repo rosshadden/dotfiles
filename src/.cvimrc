@@ -16,6 +16,9 @@ let mapleader = ','
 
 set cncpcompletion
 
+" disable autofocus
+set noautofocus
+
 
 " TABS
 
