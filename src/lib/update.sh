@@ -63,7 +63,7 @@ pushd $SYNC
 
 # update sync
 lawg "sync:repo"
-git pull
+git in
 lawg "sync:repo"
 
 # update submodules
