@@ -13,11 +13,11 @@ set $4 hack
 set $5 files
 set $6 media
 set $7 literature
-set $8 games
+set $8 monitor
 set $9 run
 set $10 chat
 set $11 lab
-set $12 monitor
+set $12 games
 
 set $wsTemp 0| temp
 set $wsWeb 1| web
@@ -27,11 +27,11 @@ set $wsHack 4| hack
 set $wsFiles 5| files
 set $wsMedia 6| media
 set $wsLiterature 7| literature
-set $wsGames 8| games
+set $wsMonitor 8| monitor
 set $wsRun 9| run
 set $wsChat 10| chat
 set $ws11 11| lab
-set $wsMonitor 12| monitor
+set $wsGames 12| games
 
 set $macro1 XF86Tools
 set $macro2 XF86Launch5
@@ -170,11 +170,11 @@ bindsym $super+4 mark LAST; workspace $wsHack
 bindsym $super+5 mark LAST; workspace $wsFiles
 bindsym $super+6 mark LAST; workspace $wsMedia
 bindsym $super+7 mark LAST; workspace $wsLiterature
-bindsym $super+8 mark LAST; workspace $wsGames
+bindsym $super+8 mark LAST; workspace $wsMonitor
 bindsym $super+9 mark LAST; workspace $wsRun
 bindsym $super+0 mark LAST; workspace $wsChat
 bindsym $super+bracketleft mark LAST; workspace $ws11
-bindsym $super+bracketright mark LAST; workspace $wsMonitor
+bindsym $super+bracketright mark LAST; workspace $wsGames
 bindsym $super+grave mark LAST; workspace $wsTemp
 
 # move focused container to workspace
@@ -185,11 +185,11 @@ bindsym $super+Shift+4 move container to workspace $wsHack; workspace $wsHack
 bindsym $super+Shift+5 move container to workspace $wsFiles; workspace $wsFiles
 bindsym $super+Shift+6 move container to workspace $wsMedia; workspace $wsMedia
 bindsym $super+Shift+7 move container to workspace $wsLiterature; workspace $wsLiterature
-bindsym $super+Shift+8 move container to workspace $wsGames; workspace $wsGames
+bindsym $super+Shift+8 move container to workspace $wsMonitor; workspace $wsMonitor
 bindsym $super+Shift+9 move container to workspace $wsRun; workspace $wsRun
 bindsym $super+Shift+0 move container to workspace $wsChat; workspace $wsChat
 bindsym $super+Shift+bracketleft move container to workspace $ws11; workspace $ws11
-bindsym $super+Shift+bracketright move container to workspace $wsMonitor; workspace $wsMonitor
+bindsym $super+Shift+bracketright move container to workspace $wsGames; workspace $wsGames
 bindsym $super+Shift+grave move container to workspace $wsTemp; workspace $wsTemp
 
 # focus the parent/child container

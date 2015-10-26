@@ -55,7 +55,7 @@ panewrap() {
 
 # find symlinks in input list
 getSymlinks() {
-	ls -la $1 | grep ' \-> '
+	find $1 -maxdepth 1 -type l
 }
 
 ##
