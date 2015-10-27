@@ -46,6 +46,7 @@ source $shellDir/colors.sh
 source $shellDir/alias.sh
 source $shellDir/functions.sh
 source $shellDir/general.sh
+[[ -f ~/local/.zshrc ]] && source ~/local/.zshrc
 
 
 ################

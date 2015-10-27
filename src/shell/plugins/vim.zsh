@@ -39,11 +39,10 @@ bindkey -M vicmd 'U' redo
 # `man` page of base command
 bindkey -M viins '\eh' run-help
 
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-
 bindkey '^p' history-substring-search-up
 bindkey '^n' history-substring-search-down
+bindkey -M vicmd '^p' history-substring-search-up
+bindkey -M vicmd '^n' history-substring-search-down
 
 bindkey -M vicmd '\-' vi-repeat-find
 bindkey -M vicmd '_' vi-rev-repeat-find
