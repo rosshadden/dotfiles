@@ -83,35 +83,52 @@ options head
 # LOGS
 ################
 
+# long-form
+
 snippet console-log
-alias cl log
-options head
+alias cl
 	console.log(${1:'${3:$2\}', ${2\}});
 
 snippet console-info
-alias ci info
-options head
+alias ci
 	console.info(${1:'${3:$2\}', ${2\}});
 
 snippet console-warn
-alias cw warn
-options head
+alias cw
 	console.warn(${1:'${3:$2\}', ${2\}});
 
 snippet console-error
-alias ce error
-options head
+alias ce
 	console.error(${1:'${3:$2\}', ${2\}});
 
 snippet console-trace
-alias ct trace
-options head
+alias ct
 	console.trace(${1:'${3:$2\}', ${2\}});
 
 snippet console-dir
-alias cd dir
-options head
+alias cd
 	console.dir(${1:'${3:$2\}', ${2\}});
+
+
+# shorthand
+
+snippet log
+	console.log(${1:TARGET});
+
+snippet info
+	console.info(${1:TARGET});
+
+snippet warn
+	console.warn(${1:TARGET});
+
+snippet error
+	console.error(${1:TARGET});
+
+snippet trace
+	console.trace(${1:TARGET});
+
+snippet dir
+	console.dir(${1:TARGET});
 
 
 ################
@@ -120,5 +137,4 @@ options head
 
 snippet debug
 alias d
-options head
 	debugger;

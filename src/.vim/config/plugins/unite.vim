@@ -210,6 +210,12 @@ call unite#custom#profile('find', 'context', {
 nnoremap <:unite>g :Unite              -buffer-name=find grep:.<cr>
 nnoremap <:unite>G :UniteWithBufferDir -buffer-name=find grep:.<cr>
 
+" quickfix
+call unite#custom#profile('quickfix', 'context', {
+	\ 'auto_preview': 1,
+\ })
+nnoremap <:unite>q :Unite -buffer-name=quickfix quickfix<cr>
+
 " do all the things
 nnoremap <:unite><cr> :Unite -buffer-name=omni source<cr>
 

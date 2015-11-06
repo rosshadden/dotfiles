@@ -170,6 +170,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'Shougo/unite.vim'
 		NeoBundle 'kopischke/unite-spell-suggest'
 		NeoBundle 'thinca/vim-unite-history'
+		NeoBundle 'osyo-manga/unite-quickfix'
 
 	" integration
 		" git
