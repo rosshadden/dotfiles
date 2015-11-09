@@ -64,7 +64,7 @@ case $namespace in
 
 	# windows
 	tab)
-		keys="Space h l n p c C r"
+		keys="Space h l H L n p c C r"
 
 		if [ -z $action ]; then
 			bind
@@ -76,6 +76,10 @@ case $namespace in
 				# navigate
 				h) tmux previous-window ;;
 				l) tmux next-window ;;
+
+				# move
+				H) tmux swap-window -t -1 ;;
+				L) tmux swap-window -t +1 ;;
 
 				# new
 				n) tmux new-window -a -c "#{pane_current_path}" ;;
