@@ -1,3 +1,5 @@
+# TODO: split into files
+
 # colors
 autoload colors
 if [[ "$terminfo[colors]" -gt 8 ]]; then colors; fi

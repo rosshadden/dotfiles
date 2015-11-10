@@ -35,7 +35,7 @@ set mouse=a
 set whichwrap=b,s,<,>,[,]
 
 " ignore in searches
-set wildignore+=node_modules/**,.*.swp
+set wildignore+=node_modules/**,.*.swp,.git/**
 
 " prevent omnicomplete preview window
 set completeopt-=preview

@@ -107,6 +107,7 @@
 			- make semantic modules instead of a file for aliases and a file for functions (for example)
 		- look into [built-in functions](https://github.com/zsh-users/zsh/tree/master/Functions/Zle)
 		- look into [better status indicator](http://ivyl.0xcafe.eu/2013/02/03/refining-zsh/#vi_mode_status_indicator)
+		- split `features.zsh` into files
 	- Add `pick` functions or aliases
 		- something with `ag`, ala unite's `file_rec`
 	- revisit aliases
