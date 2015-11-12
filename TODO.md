@@ -21,14 +21,14 @@
 	- i3 workflow
 	- tig workflow
 	- vifm workflow
-- forks
-	- add support for global portkey file to [portkey](https://github.com/dsawardekar/portkey)
 - apps
 	- `vim`
 		- add mapping when searching to jump to the result but clear the highlighting
 		- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
 		- make `ctrl-hjkl` nav work with `--servername`
 		- modes
+			- javascript
+				- make mappings for opening the test for the current file (and vice versa)
 			- ember
 			- diff
 				- :LineDiff
