@@ -58,8 +58,6 @@ tj() {
 	tmux new-session -t $1 -s $1-$2
 }
 
-alias t="task"
-
 # Shortcuts
 alias Y="yaourt"
 # Making these symlinks instead so sudo may benefit.
@@ -67,6 +65,7 @@ alias Y="yaourt"
 # alias S="systemctl"
 
 alias psu="ps -u $USER"
+alias pse="ps -e"
 
 # These are useful with the Dvorak keyboard layout
 alias h="l"

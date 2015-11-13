@@ -50,6 +50,8 @@
 			- vimfiler
 				- [add git status icons](https://github.com/Shougo/vimfiler.vim/issues/308)
 		- plugins
+			- see if I can make [this](https://github.com/easymotion/vim-easymotion/issues/248#issuecomment-156444426) happen
+				- map `.` in target select mode
 			- pluginify my modes
 			- remove redundant or unused plugins
 				- I have two commenting plugins, with overlapping but not identical features
