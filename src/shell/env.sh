@@ -43,6 +43,7 @@ fpath=($DOTS/src/shell/completions/functions $fpath)
 ################
 
 export EDITOR=vim
+export VISUAL=gvim
 
 # used by some zsh themes (ex: agnoster)
 export DEFAULT_USER=$USER
