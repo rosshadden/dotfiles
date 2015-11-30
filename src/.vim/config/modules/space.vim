@@ -2,6 +2,9 @@
 " SETTINGS
 """"""""""""""""
 
+" show invisibles
+set list
+
 " better whitespace characters
 set listchars=tab:»\ ,trail:·,nbsp:_,extends:>,precedes:<
 
