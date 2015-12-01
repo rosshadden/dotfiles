@@ -27,15 +27,13 @@ call unite#custom#profile('default', 'context', {
 " EXTERNAL
 """"""""""""""""
 
+" ag > ack >> grep
 if executable('ag')
-	" ag > ack
 	let g:unite_source_grep_command = 'ag'
 	let g:unite_source_grep_default_opts = '--hidden --vimgrep'
 	let g:unite_source_grep_recursive_opt = ''
-	" let g:unite_source_rec_async_command = ['ag', '--follow', '--hidden', '--nocolor', '--nogroup', '-g', '']
 	let g:unite_source_rec_async_command = ['ag', '--hidden', '--nocolor', '--nogroup', '-g', '']
 elseif executable('ack')
-	" ack >> grep
 	let g:unite_source_grep_command = 'ack'
 	let g:unite_source_grep_default_opts = '-i --no-heading --no-color -k -H'
 	let g:unite_source_grep_recursive_opt = ''

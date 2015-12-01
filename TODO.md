@@ -27,6 +27,8 @@
 		- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
 		- make `ctrl-hjkl` nav work with `--servername`
 		- modes
+			- buffer
+				- mapping to delete all unused buffers (not just empty)
 			- javascript
 				- make mappings for opening the test for the current file (and vice versa)
 			- ember
@@ -110,6 +112,7 @@
 		- look into [built-in functions](https://github.com/zsh-users/zsh/tree/master/Functions/Zle)
 		- look into [better status indicator](http://ivyl.0xcafe.eu/2013/02/03/refining-zsh/#vi_mode_status_indicator)
 		- split `features.zsh` into files
+	- make mapping to insert newline at cursor
 	- Add `pick` functions or aliases
 		- something with `ag`, ala unite's `file_rec`
 	- revisit aliases

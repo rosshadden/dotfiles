@@ -31,8 +31,8 @@ alias tigs="tig status"
 
 alias e="$EDITOR"
 alias se="sudo $EDITOR"
-alias eg="gvim"
-alias seg="sudo gvim"
+alias ev="$VISUAL"
+alias sev="sudo $VISUAL"
 
 # TODO: breakout.exe into a tmux module
 alias tmux="tmux -2"
