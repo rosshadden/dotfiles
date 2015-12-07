@@ -82,16 +82,6 @@ alias .....="cd ../../../.."
 # lock session
 alias afk="i3lock --color=012345"
 
-##
-# Get current shell
-#
-# @return {String} - Current shell
-#
-alias getShell="ps -o fname --no-headers $$"
-
-# reload shell config
-alias reload=". $HOME/.$(getShell)rc"
-
 # Turn off caps lock
 alias shh="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
 
@@ -111,16 +101,20 @@ alias wimi="curl ipecho.net/plain; echo"
 # GLOBAL
 ################
 
-# yaourt --noconfirm
-alias -g YNO="--noconfirm"
+if [[ $(getShell) == 'zsh' ]]; then
+	# yaourt --noconfirm
+	alias -g YNO="--noconfirm"
+fi
 
 
 ################
 # SUFFIX
 ################
 
-# clone git URLs
-alias -s git="git clone"
+if [[ $(getShell) == 'zsh' ]]; then
+	# clone git URLs
+	alias -s git="git clone"
 
-# open PDFs
-alias -s pdf=evince
+	# open PDFs
+	alias -s pdf=evince
+fi

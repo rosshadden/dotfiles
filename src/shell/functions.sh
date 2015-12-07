@@ -6,11 +6,23 @@ calc() {
 	echo "$1" | bc -l
 }
 
-
 isCommand() {
 	command -v $1 >/dev/null 2>&1
 }
 
+##
+# Get current shell
+#
+# @return {String} - Current shell
+#
+getShell() {
+	ps -o fname --no-headers $$
+}
+
+# reload shell config
+reload() {
+	. $HOME/.$(getShell)rc
+}
 
 set-prompt() {
 	local color=$1
@@ -31,14 +43,12 @@ set-prompt() {
 	echo -ne "${prefix}\033[$shape q${suffix}"
 }
 
-
 countdown() {
 	date1=$((`date +%s` + $1));
 	while [ "$date1" -ne `date +%s` ]; do
 		echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r";
 	done
 }
-
 
 stopwatch() {
 	date1=`date +%s`;
@@ -47,11 +57,9 @@ stopwatch() {
 	done
 }
 
-
 panewrap() {
 	printf "\033]2;%s\033\\" "$1"; "$@";
 }
-
 
 # find symlinks in input list
 getSymlinks() {

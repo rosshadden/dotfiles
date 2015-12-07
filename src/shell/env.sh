@@ -43,13 +43,14 @@ fpath=($DOTS/src/shell/completions/functions $fpath)
 ################
 
 export EDITOR=vim
+
 export VISUAL=gvim
 
-# used by some zsh themes (ex: agnoster)
-export DEFAULT_USER=$USER
+export BROWSER=google-chrome-unstable
 
-# sensible terminal
-export TERMINAL=urxvt
+export TERMINAL=termite
+
+export DEFAULT_USER=$USER
 
 # sensible pager
 export PAGER="less -FRSX"

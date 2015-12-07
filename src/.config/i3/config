@@ -48,8 +48,8 @@ set $chooseWindow rofi -show window -sidebar-mode -i
 set $chooseApp j4-dmenu-desktop --dmenu='rofi -dmenu -p "launch:" -i'
 set $terminal i3-sensible-terminal
 set $run i3-sensible-terminal -e
-set $tmux i3-sensible-terminal -e tmux -2
-set $tmuxAttach i3-sensible-terminal -e tmux -2 new-session -A -s
+set $tmux i3-sensible-terminal -e tmux
+set $tmuxAttach i3-sensible-terminal -e tmux new-session -A -s
 set $LOCK i3lock --color=5f00af
 set $locker xautolock -locknow
 set $locker2 escrotum /tmp/lockscreen.png && i3lock -i /tmp/lockscreen.png

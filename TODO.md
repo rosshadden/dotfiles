@@ -105,7 +105,7 @@
 		- plugins
 	- `cvim`
 		- vet using local script
-- shell
+- zsh
 	- refactor `.zshrc`
 		- modularize
 			- make semantic modules instead of a file for aliases and a file for functions (for example)
@@ -122,6 +122,7 @@
 		- like why the hell don't they work like the Internet says they should?
 	- [yank to clipboard](http://unix.stackexchange.com/questions/25765/pasting-from-clipboard-to-vi-enabled-zsh-or-bash-shell)
 	- make cursor changes update when focus changes (between tmux panes with vim and zsh)
+- bash
 	- make sure bash works, even though I haven't used it in years
 - X
 	- modularize `.Xresources`

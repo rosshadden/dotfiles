@@ -14,3 +14,5 @@ colors[replace2]="#FF5F5F"
 
 colors[background]="#151515"
 colors[foreground]="#FFFFFF"
+
+eval $(dircolors ~/.dircolors)

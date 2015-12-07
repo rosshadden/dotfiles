@@ -1,9 +1,19 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
+
+
+################
+# VARIABLES
+# TODO: breakout.exe
+################
+
+export DOTS=$HOME/dotfiles
+shellDir=$DOTS/src/shell
+
+
+################
+# CONFIG
+################
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -23,6 +33,11 @@ shopt -s checkwinsize
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
+
+
+################
+# THEME
+################
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -81,11 +96,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -109,9 +119,8 @@ fi
 ################
 # MODULES
 ################
-export DOTS=$HOME/dotfiles
-source $DOTS/shell/env.sh
-source $DOTS/shell/alias.sh
-source $DOTS/shell/general.sh
-source $DOTS/shell/functions.sh
+source $shellDir/env.sh
+source $shellDir/alias.sh
+source $shellDir/general.sh
+source $shellDir/functions.sh
 [[ -e "$HOME/.local.sh" ]] && source $HOME/.local.sh

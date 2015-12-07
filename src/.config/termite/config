@@ -1,0 +1,5 @@
+[options]
+font = Fantasque Sans Mono 12
+
+[colors]
+background = rgba(63, 24, 100, 0.8)
