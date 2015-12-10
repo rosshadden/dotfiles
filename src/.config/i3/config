@@ -848,7 +848,7 @@ bar {
 for_window [window_role="pop-up"] floating enable, move absolute center
 for_window [title="Qalculate!"] floating enable
 for_window [class="^Gpick|Pavucontrol$"] floating enable
-for_window [class="^Copyq$"] border pixel 0, floating enable
+for_window [class="^copyq$"] border pixel 0, floating enable
 
 # web
 assign [class="^google-chrome" window_role="browser"] → $wsWeb
@@ -872,7 +872,7 @@ assign [class="^Slack$"] → $wsChat
 assign [title="^finch$"] → $wsChat
 
 # monitor
-assign [class="robomongo"] → $wsMonitor
+assign [class="MongoChef"] → $wsMonitor
 
 
 ################
