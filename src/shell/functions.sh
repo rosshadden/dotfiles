@@ -2,6 +2,50 @@
 
 # TODO: add docs
 
+# copy() {
+# 	local output
+# 	while read line; do
+# 		output="${output}\n${line}"
+# 	done
+# 	echo $output
+# 	# xsel -ib
+# }
+
+# paste() {
+# 	xsel -ob
+# }
+
+# TODO: allow filter
+# TODO: maybe parse cmd for `$file` vs `$folder`
+# TODO: allow options for files/folders/symlinks only
+for-in() {
+	local filter="*"
+	local cmd=$1
+
+	if [[ $2 ]]; then
+		filter=$1
+		cmd=$2
+	fi
+
+	for file in *; do
+		eval $cmd
+	done
+}
+
+for-of() {
+	local filter="*"
+	local cmd=$1
+
+	if [[ $2 ]]; then
+		filter=$1
+		cmd=$2
+	fi
+
+	cmd="if [[ -d \$file ]]; then cd \$file; ${cmd}; cd ../; fi"
+
+	for-in $cmd
+}
+
 calc() {
 	echo "$1" | bc -l
 }
