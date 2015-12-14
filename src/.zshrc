@@ -191,6 +191,12 @@ function TRAPINT() {
 	return $(( 128 + $1 ))
 }
 
+# allow termite to open new windows in pwd
+if [[ $TERM == xterm-termite ]]; then
+	. /etc/profile.d/vte.sh
+	__vte_osc7
+fi
+
 
 # INIT
 
