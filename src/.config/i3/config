@@ -48,8 +48,7 @@ set $chooseWindow rofi -show window -sidebar-mode -i
 set $chooseApp j4-dmenu-desktop --dmenu='rofi -dmenu -p "launch:" -i'
 set $terminal i3-sensible-terminal
 set $run i3-sensible-terminal -e
-set $tmux i3-sensible-terminal -e tmux
-set $tmuxAttach i3-sensible-terminal -e tmux new-session -A -s
+set $tmuxAttach i3-sensible-terminal -e "tmux new-session -A -s
 set $LOCK i3lock --color=5f00af
 set $locker xautolock -locknow
 set $locker2 escrotum /tmp/lockscreen.png && i3lock -i /tmp/lockscreen.png
@@ -97,7 +96,7 @@ bindsym $super+backslash mark LAST; focus mode_toggle
 
 # open terminal
 bindsym $super+t mark LAST; exec $terminal
-bindsym $super+Shift+t mark LAST; exec $tmux
+bindsym $super+Shift+t mark LAST; exec $run tmux
 
 # open runner
 bindsym $super+r mark LAST; exec $chooseCommand
@@ -497,23 +496,23 @@ mode "I3" {
 
 mode "TMUX" {
 	# by name
-		bindsym space exec i3-input -P 'Session name: ' -F 'exec $tmuxAttach %s'; $return
+		bindsym space exec i3-input -P 'Session name: ' -F 'exec $tmuxAttach %s"'; $return
 
 	# presets
 		# TODO: make these dynamic from the workspace name
-		bindsym grave        mark LAST; workspace $wsTemp;  exec $tmuxAttach $0;  $return
-		bindsym 1            mark LAST; workspace $wsWeb;  exec $tmuxAttach $1;  $return
-		bindsym 2            mark LAST; workspace $wsDev;  exec $tmuxAttach $2;  $return
-		bindsym 3            mark LAST; workspace $wsSync;  exec $tmuxAttach $3;  $return
-		bindsym 4            mark LAST; workspace $wsHack;  exec $tmuxAttach $4;  $return
-		bindsym 5            mark LAST; workspace $wsFiles;  exec $tmuxAttach $5 'vifm';  $return
-		bindsym 6            mark LAST; workspace $wsMedia;  exec $tmuxAttach $6;  $return
-		bindsym 7            mark LAST; workspace $wsLiterature;  exec $tmuxAttach $7;  $return
-		bindsym 8            mark LAST; workspace $wsGames;  exec $tmuxAttach $8;  $return
-		bindsym 9            mark LAST; workspace $wsRun;  exec $tmuxAttach $9;  $return
-		bindsym 0            mark LAST; workspace $wsChat; exec $tmuxAttach $10; $return
-		bindsym bracketleft  mark LAST; workspace $ws11; exec $tmuxAttach $11; $return
-		bindsym bracketright mark LAST; workspace $wsMonitor; exec $tmuxAttach $12; $return
+		bindsym grave        mark LAST; workspace $wsTemp;  exec $tmuxAttach $0";  $return
+		bindsym 1            mark LAST; workspace $wsWeb;  exec $tmuxAttach $1";  $return
+		bindsym 2            mark LAST; workspace $wsDev;  exec $tmuxAttach $2";  $return
+		bindsym 3            mark LAST; workspace $wsSync;  exec $tmuxAttach $3";  $return
+		bindsym 4            mark LAST; workspace $wsHack;  exec $tmuxAttach $4";  $return
+		bindsym 5            mark LAST; workspace $wsFiles;  exec $tmuxAttach $5 'vifm'";  $return
+		bindsym 6            mark LAST; workspace $wsMedia;  exec $tmuxAttach $6";  $return
+		bindsym 7            mark LAST; workspace $wsLiterature;  exec $tmuxAttach $7";  $return
+		bindsym 8            mark LAST; workspace $wsGames;  exec $tmuxAttach $8";  $return
+		bindsym 9            mark LAST; workspace $wsRun;  exec $tmuxAttach $9";  $return
+		bindsym 0            mark LAST; workspace $wsChat; exec $tmuxAttach $10"; $return
+		bindsym bracketleft  mark LAST; workspace $ws11; exec $tmuxAttach $11"; $return
+		bindsym bracketright mark LAST; workspace $wsMonitor; exec $tmuxAttach $12"; $return
 
 	# TODO: open preset for the current workspace
 
