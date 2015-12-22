@@ -114,6 +114,9 @@ bindsym $macro1 exec ~/bin/keys init
 # fix monitors
 bindsym $macro2 exec ~/local/lib/mon.sh
 
+# goto latest
+bindsym $macro4 mark LAST; [urgent=latest] focus
+
 # lock screen
 bindsym $macro5 exec $LOCK
 bindsym Shift+$macro5 exec $locker2
@@ -885,6 +888,4 @@ exec --no-startup-id "i3-msg 'workspace $wsChat; append_layout ~/.config/i3/layo
 exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath
 
 # autolock
-set $LOCKER i3lock --color=5f00af
-# exec --no-startup-id xautolock -resetsaver -detectsleep -time 10 -locker "$LOCK -d" -nowlocker "$LOCK" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"
-exec --no-startup-id xautolock -resetsaver -detectsleep -time 10 -locker "$LOCKER -d" -nowlocker "$LOCKER" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"
+exec --no-startup-id xautolock -resetsaver -detectsleep -time 10 -locker "$LOCK -d" -nowlocker "$LOCK" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"
