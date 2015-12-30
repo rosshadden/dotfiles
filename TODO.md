@@ -103,8 +103,6 @@
 			- vim
 	- `spacefm`
 		- plugins
-	- `cvim`
-		- vet using local script
 - zsh
 	- refactor `.zshrc`
 		- modularize
@@ -129,8 +127,6 @@
 	- use something better than `grp:shifts_toggle` in `keys`
 	- look into existing `.Xresources` themes
 		- http://www.noobslab.com/
-- `urxvt`
-	- get unicode fonts working
 - system
 	- only run `xcape` over `CapsLock`, not `Control_L`
 		- for some reason this doesn't work as expected, though I'm not sure why
