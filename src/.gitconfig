@@ -90,21 +90,21 @@
 [alias]
 	# SHORTHAND
 
-	a = add
-	b = branch
-	c = commit
-	d = diff
-	f = fetch -p --tags
-	i = in
-	m = merge
-	o = out
-	r = remote
-	s = status -sb
-	t = tag
-	cl = clone --recursive
-	co = checkout
-	rb = rebase
-	sh = show
+	a = "!git add"
+	b = "!git branch"
+	c = "!git commit"
+	d = "!git diff"
+	f = "!git fetch -p --tags"
+	i = "!git in"
+	m = "!git merge"
+	o = "!git out"
+	r = "!git remote"
+	s = "!git status -sb"
+	t = "!git tag"
+	cl = "!git clone --recursive"
+	co = "!git checkout"
+	rb = "!git rebase"
+	sh = "!git show"
 
 
 	# SYNCING
