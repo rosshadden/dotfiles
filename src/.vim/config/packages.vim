@@ -161,6 +161,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'shime/vim-livedown'
 		NeoBundle 'vim-pandoc/vim-pandoc'
 		NeoBundle 'vim-pandoc/vim-pandoc-syntax'
+		" emblem
+		NeoBundle 'heartsentwined/vim-emblem'
 
 	" unite
 		NeoBundle 'Shougo/neomru.vim'
