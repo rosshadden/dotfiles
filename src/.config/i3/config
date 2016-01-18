@@ -511,11 +511,11 @@ mode "TMUX" {
 		bindsym 5            mark LAST; workspace $wsFiles;  exec $tmuxAttach $5 'vifm'";  $return
 		bindsym 6            mark LAST; workspace $wsMedia;  exec $tmuxAttach $6";  $return
 		bindsym 7            mark LAST; workspace $wsLiterature;  exec $tmuxAttach $7";  $return
-		bindsym 8            mark LAST; workspace $wsGames;  exec $tmuxAttach $8";  $return
+		bindsym 8            mark LAST; workspace $wsMonitor;  exec $tmuxAttach $8";  $return
 		bindsym 9            mark LAST; workspace $wsRun;  exec $tmuxAttach $9";  $return
 		bindsym 0            mark LAST; workspace $wsChat; exec $tmuxAttach $10"; $return
 		bindsym bracketleft  mark LAST; workspace $ws11; exec $tmuxAttach $11"; $return
-		bindsym bracketright mark LAST; workspace $wsMonitor; exec $tmuxAttach $12"; $return
+		bindsym bracketright mark LAST; workspace $wsGames; exec $tmuxAttach $12"; $return
 
 	# TODO: open preset for the current workspace
 
