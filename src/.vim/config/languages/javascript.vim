@@ -49,5 +49,6 @@ augroup javascript
 		\ map <localleader>V :execute PrintVersion('i')<cr>
 
 	" jsdoc
+	" TODO: move jsdoc stuff to docs module
 	autocmd FileType javascript nmap <silent> <localleader>C <plug>(jsdoc)
 augroup END

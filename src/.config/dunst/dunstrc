@@ -14,7 +14,7 @@
     allow_markup = yes
 
     # Treat incoming notifications as plain text
-    plain_text = yes
+    plain_text = no
 
     # The format of the message.  Possible variables are:
     #   %a  appname
