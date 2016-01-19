@@ -32,6 +32,7 @@ for-in() {
 	done
 }
 
+# TODO: add option for suppressing header
 for-of() {
 	local filter="*"
 	local cmd=$1
@@ -41,7 +42,8 @@ for-of() {
 		cmd=$2
 	fi
 
-	cmd="if [[ -d \$file ]]; then cd \$file; ${cmd}; cd ../; fi"
+	local section='\\n################\\n# $file\\n################'
+	local cmd="if [[ -d \$file ]]; then echo $section; cd \$file; ${cmd}; cd ../; fi"
 
 	for-in $cmd
 }
