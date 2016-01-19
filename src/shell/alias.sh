@@ -67,12 +67,6 @@ alias Y="yaourt"
 alias psu="ps -u $USER"
 alias pse="ps -e"
 
-# These are useful with the Dvorak keyboard layout
-alias h="l"
-alias hs="ls"
-alias ha="la"
-alias hh="ll"
-
 # Easier navigation
 alias ..="cd .."
 alias ...="cd ../.."
