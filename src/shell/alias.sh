@@ -12,7 +12,6 @@ alias path="readlink -f"
 # because I keep typing `k` on accident when forgetting I'm in copy-mode
 alias k="fc -ln -1"
 
-
 ################
 # APPS
 ################
@@ -23,7 +22,6 @@ alias open="xdg-open"
 # TODO: breakout.exe into a git module
 alias g="git"
 alias tigs="tig status"
-
 
 ################
 # EDITING
@@ -90,6 +88,11 @@ alias jj="fasd_cd -d -i"
 # get public ip
 alias wimi="curl ipecho.net/plain; echo"
 
+################
+# FUN
+################
+
+alias nyan='telnet -e ^c nyancat.dakko.us'
 
 ################
 # GLOBAL
@@ -99,7 +102,6 @@ if [[ $(getShell) == 'zsh' ]]; then
 	# yaourt --noconfirm
 	alias -g YNO="--noconfirm"
 fi
-
 
 ################
 # SUFFIX
