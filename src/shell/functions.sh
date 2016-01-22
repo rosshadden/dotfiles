@@ -15,37 +15,32 @@
 # 	xsel -ob
 # }
 
-# TODO: allow filter
-# TODO: maybe parse cmd for `$file` vs `$folder`
-# TODO: allow options for files/folders/symlinks only
+# TODO: allow options for files/folders/symlinks only (or mandate globs, which support this)
 for-in() {
-	local filter="*"
-	local cmd=$1
+	local args=( $@ )
+	local len=${#args[@]}
+	local cmd=${args[$len]}
+	local filter=( * )
 
-	if [[ $2 ]]; then
-		filter=$1
-		cmd=$2
+	if [[ $len > 1 ]]; then
+		filter=( ${args[@]:0:$len - 1} )
 	fi
 
-	for file in *; do
+	local name
+	for name in $filter; do
 		eval $cmd
 	done
 }
 
 # TODO: add option for suppressing header
 for-of() {
-	local filter="*"
-	local cmd=$1
+	local args=( $@ )
+	local len=${#args[@]}
 
-	if [[ $2 ]]; then
-		filter=$1
-		cmd=$2
-	fi
+	local section='\\n################\\n# $name\\n################'
+	args[$len]="if [[ -d \$name ]]; then echo $section; cd \$name; ${args[$len]}; cd ../; fi"
 
-	local section='\\n################\\n# $file\\n################'
-	local cmd="if [[ -d \$file ]]; then echo $section; cd \$file; ${cmd}; cd ../; fi"
-
-	for-in $cmd
+	for-in $args
 }
 
 calc() {

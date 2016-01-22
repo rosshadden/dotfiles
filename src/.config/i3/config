@@ -863,7 +863,7 @@ for_window [class="Vlc"] border none
 for_window [title="Google Play Music" window_role="pop-up"] floating disable, move to workspace $wsMedia
 
 # literature
-assign [title="Google Keep"] → $wsLiterature
+assign [title="(Google Keep|todoist)" window_role="app"] → $wsLiterature
 
 # games
 for_window [title="Dota 2"] border none
