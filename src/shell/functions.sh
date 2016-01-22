@@ -37,7 +37,7 @@ for-of() {
 	local args=( $@ )
 	local len=${#args[@]}
 
-	local section='\\n################\\n# $name\\n################'
+	local section='\\n################################\\n# $name\\n################################'
 	args[$len]="if [[ -d \$name ]]; then echo $section; cd \$name; ${args[$len]}; cd ../; fi"
 
 	for-in $args
