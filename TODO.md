@@ -1,175 +1,194 @@
-- meta
-	- trim down as much fat as possible, such as things I don't use anymore
-	- look into [these dotfiles](https://github.com/xero/dotfiles) for sexiness
-	- README
-		- screenshots
-- build
-	- vet using a `Makefile`
-	- clone `tpm` (tmux plugin manager) and other dependencies
-	- call `./src/lib/update.sh` from systemd service
-	- support arguments
-		- anonymous install
-			- no git ssh keys
-			- no reference to me
-			- no .gitconfig
-		- CLI-only, non-X mode (no need to install i3 things on a server, for example)
-	- possibly make a (generated?) manifest file, to make cleanup easier
-- docs
-	- meta (kind of pun), as in keyboard layout, remapped keys, etc.
-	- vim setup
-	- git aliases
-	- i3 workflow
-	- tig workflow
-	- vifm workflow
-- apps
-	- `vim`
-		- add mapping when searching to jump to the result but clear the highlighting
-		- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
-		- make `ctrl-hjkl` nav work with `--servername`
-		- modes
-			- buffer
-				- mapping to delete all unused buffers (not just empty)
-			- javascript
-				- make mappings for opening the test for the current file (and vice versa)
-			- ember
-			- diff
-				- :LineDiff
-				- :DiffChanges
-				- :git diff
-				- :DiffVifm
-			- vifm
-				- https://github.com/vifm/vifm/issues/60 and https://github.com/vifm/vifm/issues/79
-			- sessions
-				- fix and/or make stuff that actually works
-			- files
-				- make a mapping or mode for finding files not in the repo
-			- unite
-				- better previews
-					- possibly a dynamic vertical/horizontal choice
-				- vet the alternate mappings per concept, as some do weird things (`<:unite:1>g`)
-				- vim-session integration
-					- or wait for [this](https://github.com/xolox/vim-session/pull/126)
-			- vimfiler
-				- [add git status icons](https://github.com/Shougo/vimfiler.vim/issues/308)
-		- plugins
-			- see if I can make [this](https://github.com/easymotion/vim-easymotion/issues/248#issuecomment-156444426) happen
-				- map `.` in target select mode
-			- pluginify my modes
-			- remove redundant or unused plugins
-				- I have two commenting plugins, with overlapping but not identical features
-	- `i3`
-		- modes
-			- break out modes into separate files
-				- add a generated help notification for each mode, on `?`
-		- locally override settings (namely font size)
-		- get current tag
-			- open tmux session for current tag
-		- add clipboard management
-		- universalize the media/resize/move increments and whatnot
-			- make sure there are mappings for both big and small increments
-		- integrate `tp`
-		- integrate dunst
-	- `tmux`
-		- put session name in title, making sure it doesn't break navigation things
-		- Raws, Private Investigator
-			- figure out why exiting one session sometimes switches to another
-		- use `choose-session` to pick a session to link current session to
-	- `tig`
-		- spend time making it even more useful
-		- universalize mappings
-		- investigate [wiki binds](https://github.com/jonas/tig/wiki/Bindings)
-		- mappings
-			- make h/l go left/right
-				- bind the current h/l to something else
-			- scrap
-			- stash / pop
-				- per file
-				- all
-			- checkout tags
-				- the main checkout bind should probably just support tags too
-	- `copyq`
-		- make it use my dotfiles theme
-		- figure out why URLs are duplicated
-	- `zeal`
-		- integrate into workflow
-		- figure out wtf keeps going wrong with the i3 shortcut, and fix it
-	- `vifm`
-		- add support for opening with `vim --servername`, for use with tmux sidebar
-		- add bind to essentially run `fasd`
-		- revisit binds
-		- add specific configs, launched with `-c "source /path/to/config"`
-			- tmux
-				- make explorer open files in vim instance
-			- vim
-	- `spacefm`
-		- plugins
-- zsh
-	- refactor `.zshrc`
-		- modularize
-			- make semantic modules instead of a file for aliases and a file for functions (for example)
-		- look into [built-in functions](https://github.com/zsh-users/zsh/tree/master/Functions/Zle)
-		- look into [better status indicator](http://ivyl.0xcafe.eu/2013/02/03/refining-zsh/#vi_mode_status_indicator)
-		- split `features.zsh` into files
-	- make mapping to insert newline at cursor
-	- Add `pick` functions or aliases
-		- something with `ag`, ala unite's `file_rec`
-	- revisit aliases
-		- like `h` and co.
-		- introduce `ls -1`
-	- use `local` variables
-		- like why the hell don't they work like the Internet says they should?
-	- [yank to clipboard](http://unix.stackexchange.com/questions/25765/pasting-from-clipboard-to-vi-enabled-zsh-or-bash-shell)
-	- make cursor changes update when focus changes (between tmux panes with vim and zsh)
-- bash
-	- make sure bash works, even though I haven't used it in years
-- X
-	- modularize `.Xresources`
-	- use something better than `grp:shifts_toggle` in `keys`
-	- look into existing `.Xresources` themes
-		- http://www.noobslab.com/
-- system
-	- only run `xcape` over `CapsLock`, not `Control_L`
-		- for some reason this doesn't work as expected, though I'm not sure why
-	- monitors
-		- handle hot-plugging monitors
-		- make monitors not enter standby when WE'RE WATCHING A SHOW, FOR CRYING OUT LOUD
-- Owmni / Awmni
-	- client-agnostic back-end, which should work with X and terminals alike
-	- clients
-		- rofi
-		- pick
-		- selecta
-		- dmenu
-		- unite.vim
-	- plugins
-		- git
-			- `git branch | cut -c 3- | owmni <blah blah> | xargs git checkout`
-			- `git branch -r | cut -c 10- | pick | xargs git checkout`
-		- i3
-		- zeal
-		- apps
-			- open (`.desktop` files)
-			- run (`/usr/bin`, etc., or maybe everything in `$PATH`)
-			- kill
-			- switch-to (like `rofi`'s window mode)
-		- media
-		- computer
-		- fasd
+# meta
+
+- trim down as much fat as possible, such as things I don't use anymore
+- look into [these dotfiles](https://github.com/xero/dotfiles) for sexiness
+- README
+	- screenshots
+
+# build
+
+- vet using a `Makefile`
+- clone `tpm` (tmux plugin manager) and other dependencies
+- call `./src/lib/update.sh` from systemd service
+- support arguments
+	- anonymous install
+		- no git ssh keys
+		- no reference to me
+		- no .gitconfig
+	- CLI-only, non-X mode (no need to install i3 things on a server, for example)
+- possibly make a (generated?) manifest file, to make cleanup easier
+
+# docs
+
+- meta (kind of pun), as in keyboard layout, remapped keys, etc.
+- vim setup
+- git aliases
+- i3 workflow
+- tig workflow
+- vifm workflow
+
+# apps
+
+- `vim`
+	- add mapping when searching to jump to the result but clear the highlighting
+	- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
+	- make `ctrl-hjkl` nav work with `--servername`
+	- modes
+		- buffer
+			- mapping to delete all unused buffers (not just empty)
+		- javascript
+			- make mappings for opening the test for the current file (and vice versa)
+		- ember
+		- diff
+			- :LineDiff
+			- :DiffChanges
+			- :git diff
+			- :DiffVifm
+		- vifm
+			- https://github.com/vifm/vifm/issues/60 and https://github.com/vifm/vifm/issues/79
+		- sessions
+			- fix and/or make stuff that actually works
 		- files
-			- recursive list of files
-				- all
-				- respecting .gitignore
-			- files in current folder
-				- all
-				- respecting .gitignore
-		- projects
-			- open tmux panes on certain workspaces, etc
-		- windows
-		- pidgin / finch
-			- initiate IMs
-			- switch to opened IMs
-			- send a message
-		- email (mutt?)
-		- grunt
-- misc
-	- make tropes/mappings consistent across programs
+			- make a mapping or mode for finding files not in the repo
+		- unite
+			- better previews
+				- possibly a dynamic vertical/horizontal choice
+			- vet the alternate mappings per concept, as some do weird things (`<:unite:1>g`)
+			- vim-session integration
+				- or wait for [this](https://github.com/xolox/vim-session/pull/126)
+		- vimfiler
+			- [add git status icons](https://github.com/Shougo/vimfiler.vim/issues/308)
+	- plugins
+		- see if I can make [this](https://github.com/easymotion/vim-easymotion/issues/248#issuecomment-156444426) happen
+			- map `.` in target select mode
+		- pluginify my modes
+		- remove redundant or unused plugins
+			- I have two commenting plugins, with overlapping but not identical features
+- `i3`
+	- modes
+		- break out modes into separate files
+			- add a generated help notification for each mode, on `?`
+	- locally override settings (namely font size)
+	- get current tag
+		- open tmux session for current tag
+	- add clipboard management
+	- universalize the media/resize/move increments and whatnot
+		- make sure there are mappings for both big and small increments
+	- integrate `tp`
+	- integrate dunst
+- `tmux`
+	- put session name in title, making sure it doesn't break navigation things
+	- Raws, Private Investigator
+		- figure out why exiting one session sometimes switches to another
+	- use `choose-session` to pick a session to link current session to
+- `tig`
+	- spend time making it even more useful
+	- universalize mappings
+	- investigate [wiki binds](https://github.com/jonas/tig/wiki/Bindings)
+	- mappings
+		- make h/l go left/right
+			- bind the current h/l to something else
+		- scrap
+		- stash / pop
+			- per file
+			- all
+		- checkout tags
+			- the main checkout bind should probably just support tags too
+- `copyq`
+	- make it use my dotfiles theme
+	- figure out why URLs are duplicated
+- `zeal`
+	- integrate into workflow
+	- figure out wtf keeps going wrong with the i3 shortcut, and fix it
+- `vifm`
+	- add support for opening with `vim --servername`, for use with tmux sidebar
+	- add bind to essentially run `fasd`
+	- revisit binds
+	- add specific configs, launched with `-c "source /path/to/config"`
+		- tmux
+			- make explorer open files in vim instance
+		- vim
+- `spacefm`
+	- plugins
+
+# zsh
+
+- refactor `.zshrc`
+	- modularize
+		- make semantic modules instead of a file for aliases and a file for functions (for example)
+	- look into [built-in functions](https://github.com/zsh-users/zsh/tree/master/Functions/Zle)
+	- look into [better status indicator](http://ivyl.0xcafe.eu/2013/02/03/refining-zsh/#vi_mode_status_indicator)
+	- split `features.zsh` into files
+- make mapping to insert newline at cursor
+- Add `pick` functions or aliases
+	- something with `ag`, ala unite's `file_rec`
+- revisit aliases
+	- like `h` and co.
+	- introduce `ls -1`
+- use `local` variables
+	- like why the hell don't they work like the Internet says they should?
+- [yank to clipboard](http://unix.stackexchange.com/questions/25765/pasting-from-clipboard-to-vi-enabled-zsh-or-bash-shell)
+- make cursor changes update when focus changes (between tmux panes with vim and zsh)
+
+# bash
+
+- make sure bash works, even though I haven't used it in years
+
+# X
+
+- modularize `.Xresources`
+- use something better than `grp:shifts_toggle` in `keys`
+- look into existing `.Xresources` themes
+	- http://www.noobslab.com/
+
+# system
+
+- only run `xcape` over `CapsLock`, not `Control_L`
+	- for some reason this doesn't work as expected, though I'm not sure why
+- monitors
+	- handle hot-plugging monitors
+	- make monitors not enter standby when WE'RE WATCHING A SHOW, FOR CRYING OUT LOUD
+
+# Owmni / Awmni
+
+- client-agnostic back-end, which should work with X and terminals alike
+- clients
+	- rofi
+	- pick
+	- selecta
+	- dmenu
+	- unite.vim
+- plugins
+	- git
+		- `git branch | cut -c 3- | owmni <blah blah> | xargs git checkout`
+		- `git branch -r | cut -c 10- | pick | xargs git checkout`
+	- i3
+	- zeal
+	- apps
+		- open (`.desktop` files)
+		- run (`/usr/bin`, etc., or maybe everything in `$PATH`)
+		- kill
+		- switch-to (like `rofi`'s window mode)
+	- media
+	- computer
+	- fasd
+	- files
+		- recursive list of files
+			- all
+			- respecting .gitignore
+		- files in current folder
+			- all
+			- respecting .gitignore
+	- projects
+		- open tmux panes on certain workspaces, etc
+	- windows
+	- pidgin / finch
+		- initiate IMs
+		- switch to opened IMs
+		- send a message
+	- email (mutt?)
+	- grunt
+
+# misc
+
+- make tropes/mappings consistent across programs
