@@ -110,7 +110,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'Shougo/vimfiler.vim'
 
 	" UI
-		NeoBundle 'bling/vim-airline'
+		NeoBundle 'vim-airline/vim-airline'
+		NeoBundle 'vim-airline/vim-airline-themes'
 		NeoBundle 'paranoida/vim-airlineish'
 		" colors
 		NeoBundle 'chriskempson/base16-vim'
