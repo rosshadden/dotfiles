@@ -29,89 +29,104 @@
 
 # apps
 
-- `vim`
-	- add mapping when searching to jump to the result but clear the highlighting
-	- vet [tab indents with space alignment](http://vim.wikia.com/wiki/Indent_with_tabs,_align_with_spaces)
-	- make `ctrl-hjkl` nav work with `--servername`
-	- modes
-		- buffer
-			- mapping to delete all unused buffers (not just empty)
-		- javascript
-			- make mappings for opening the test for the current file (and vice versa)
-		- ember
-		- diff
-			- :LineDiff
-			- :DiffChanges
-			- :git diff
-			- :DiffVifm
-		- vifm
-			- https://github.com/vifm/vifm/issues/60 and https://github.com/vifm/vifm/issues/79
-		- sessions
-			- fix and/or make stuff that actually works
-		- files
-			- make a mapping or mode for finding files not in the repo
-		- unite
-			- better previews
-				- possibly a dynamic vertical/horizontal choice
-			- vet the alternate mappings per concept, as some do weird things (`<:unite:1>g`)
-			- vim-session integration
-				- or wait for [this](https://github.com/xolox/vim-session/pull/126)
-		- vimfiler
-			- [add git status icons](https://github.com/Shougo/vimfiler.vim/issues/308)
-	- plugins
-		- see if I can make [this](https://github.com/easymotion/vim-easymotion/issues/248#issuecomment-156444426) happen
-			- map `.` in target select mode
-		- pluginify my modes
-		- remove redundant or unused plugins
-			- I have two commenting plugins, with overlapping but not identical features
-- `i3`
-	- modes
-		- break out modes into separate files
-			- add a generated help notification for each mode, on `?`
-	- locally override settings (namely font size)
-	- get current tag
-		- open tmux session for current tag
-	- add clipboard management
-	- universalize the media/resize/move increments and whatnot
-		- make sure there are mappings for both big and small increments
-	- integrate `tp`
-	- integrate dunst
-- `tmux`
-	- put session name in title, making sure it doesn't break navigation things
-	- Raws, Private Investigator
-		- figure out why exiting one session sometimes switches to another
-	- use `choose-session` to pick a session to link current session to
-- `tig`
-	- spend time making it even more useful
-	- universalize mappings
-	- investigate [wiki binds](https://github.com/jonas/tig/wiki/Bindings)
-	- mappings
-		- make h/l go left/right
-			- bind the current h/l to something else
-		- scrap
-		- stash / pop
-			- per file
-			- all
-		- checkout tags
-			- the main checkout bind should probably just support tags too
-- `copyq`
-	- make it use my dotfiles theme
-	- figure out why URLs are duplicated
-- `zeal`
-	- integrate into workflow
-	- figure out wtf keeps going wrong with the i3 shortcut, and fix it
-- `vifm`
-	- add support for opening with `vim --servername`, for use with tmux sidebar
-	- add bind to essentially run `fasd`
-	- revisit binds
-	- add specific configs, launched with `-c "source /path/to/config"`
-		- tmux
-			- make explorer open files in vim instance
-		- vim
-- `spacefm`
-	- plugins
+## `vim`
 
-# zsh
+- add mapping when searching to jump to the result but clear the highlighting
+- modes
+	- buffer
+		- mapping to delete all unused buffers (not just empty)
+	- javascript
+		- make mappings for opening the test for the current file (and vice versa)
+	- ember
+	- diff
+		- :LineDiff
+		- :DiffChanges
+		- :git diff
+		- :DiffVifm
+	- vifm
+		- https://github.com/vifm/vifm/issues/60 and https://github.com/vifm/vifm/issues/79
+	- sessions
+		- fix and/or make stuff that actually works
+	- files
+		- make a mapping or mode for finding files not in the repo
+	- unite
+		- better previews
+			- possibly a dynamic vertical/horizontal choice
+		- vet the alternate mappings per concept, as some do weird things (`<:unite:1>g`)
+		- vim-session integration
+			- or wait for [this](https://github.com/xolox/vim-session/pull/126)
+	- vimfiler
+		- [add git status icons](https://github.com/Shougo/vimfiler.vim/issues/308)
+- plugins
+	- see if I can make [this](https://github.com/easymotion/vim-easymotion/issues/248#issuecomment-156444426) happen
+		- map `.` in target select mode
+	- pluginify my modes
+	- remove redundant or unused plugins
+		- I have two commenting plugins, with overlapping but not identical features
+- make `ctrl-hjkl` nav work with `--servername`
+
+## `i3`
+
+- modes
+	- break out modes into separate files
+		- add a generated help notification for each mode, on `?`
+- locally override settings (namely font size)
+- get current tag
+	- open tmux session for current tag
+- add clipboard management
+- universalize the media/resize/move increments and whatnot
+	- make sure there are mappings for both big and small increments
+- integrate `tp`
+- integrate dunst
+
+## `tmux`
+
+- Raws, Private Investigator
+	- figure out why exiting one session sometimes switches to another
+- use `choose-session` to pick a session to link current session to
+
+## `tig`
+
+- spend time making it even more useful
+- universalize mappings
+- investigate [wiki binds](https://github.com/jonas/tig/wiki/Bindings)
+- mappings
+	- make h/l go left/right
+		- bind the current h/l to something else
+	- scrap
+	- stash / pop
+		- per file
+		- all
+	- checkout tags
+		- the main checkout bind should probably just support tags too
+
+## `vifm`
+
+- add support for opening with `vim --servername`, for use with tmux sidebar
+- add bind to essentially run `fasd`
+- revisit binds
+- add specific configs, launched with `-c "source /path/to/config"`
+	- tmux
+		- make explorer open files in vim instance
+	- vim
+
+## `spacefm`
+
+- plugins
+
+## `copyq`
+
+- make it use my dotfiles theme
+- figure out why URLs are duplicated
+
+## `zeal`
+
+- integrate into workflow
+- figure out wtf keeps going wrong with the i3 shortcut, and fix it
+
+# shell
+
+## zsh
 
 - refactor `.zshrc`
 	- modularize
@@ -130,21 +145,18 @@
 - [yank to clipboard](http://unix.stackexchange.com/questions/25765/pasting-from-clipboard-to-vi-enabled-zsh-or-bash-shell)
 - make cursor changes update when focus changes (between tmux panes with vim and zsh)
 
-# bash
+## bash
 
 - make sure bash works, even though I haven't used it in years
 
-# X
+# X11
 
 - modularize `.Xresources`
 - use something better than `grp:shifts_toggle` in `keys`
-- look into existing `.Xresources` themes
-	- http://www.noobslab.com/
-
-# system
-
 - only run `xcape` over `CapsLock`, not `Control_L`
 	- for some reason this doesn't work as expected, though I'm not sure why
+- look into existing `.Xresources` themes
+	- http://www.noobslab.com/
 - monitors
 	- handle hot-plugging monitors
 	- make monitors not enter standby when WE'RE WATCHING A SHOW, FOR CRYING OUT LOUD

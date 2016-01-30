@@ -7,12 +7,12 @@ See the [TODO](TODO.md) for things I have in mind.
 
 ## My environment
 
-- Arch Linux
-- i3
-- vim
-- zsh
-- tmux
-- urxvt
+- [Arch Linux](https://www.archlinux.org/)
+- [`i3`](https://i3wm.org/)
+- [`vim`](http://www.vim.org/)
+- [`zsh`](https://wiki.archlinux.org/index.php/zsh)
+- [`tmux`](https://tmux.github.io/)
+- [`termite`](https://wiki.archlinux.org/index.php/Termite)
 
 
 ## Dependencies

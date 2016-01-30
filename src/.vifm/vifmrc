@@ -365,4 +365,5 @@ filetype *.md5
 " DEFAULTS
 
 filetype *
-	\ xdg-open
+	\ xdg-open,
+	\ vim
