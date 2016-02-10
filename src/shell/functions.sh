@@ -15,32 +15,15 @@
 # 	xsel -ob
 # }
 
-# TODO: allow options for files/folders/symlinks only (or mandate globs, which support this)
-for-in() {
-	local args=( $@ )
-	local len=${#args[@]}
-	local cmd=${args[$len]}
-	local filter=( * )
-
-	if [[ $len > 1 ]]; then
-		filter=( ${args[@]:0:$len - 1} )
-	fi
-
-	local name
-	for name in $filter; do
-		eval $cmd
-	done
-}
-
-# TODO: add option for suppressing header
-for-of() {
-	local args=( $@ )
-	local len=${#args[@]}
-
-	local section='\\n################################\\n# $name\\n################################'
-	args[$len]="if [[ -d \$name ]]; then echo $section; cd \$name; ${args[$len]}; cd ../; fi"
-
-	for-in $args
+##
+# Run `du -h` to a given depth
+#
+# @param {String} [depth=0] - Depth
+##
+duh() {
+	local depth=$1
+	if [[ -z $depth ]]; then depth=0; fi
+	du -h --max-depth=$depth
 }
 
 calc() {

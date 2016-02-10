@@ -1,10 +1,6 @@
 alias copy="xsel -ib"
 alias paste="xsel -ob"
 
-# alias suspend="dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"
-alias l="ls -lah"
-alias du="du -h"
-
 # get full path of file or dir
 alias path="readlink -f"
 
@@ -13,54 +9,11 @@ alias path="readlink -f"
 alias k="fc -ln -1"
 
 ################
-# APPS
+# SHORTCUTS
 ################
 
-alias open="xdg-open"
-
-# git
-# TODO: breakout.exe into a git module
-alias g="git"
-alias tigs="tig status"
-
-################
-# EDITING
-################
-
-alias e="$EDITOR"
-alias se="sudo $EDITOR"
-alias ev="$VISUAL"
-alias sev="sudo $VISUAL"
-
-# TODO: breakout.exe into a tmux module
-alias tmux="tmux -2"
-alias tl="tmux list-sessions"
-
-##
-# attach to existing session, or create new
-#
-# @param {String} [1] - Session name.
-#   Defaults to name of current directory.
-#
-ta() {
-	tmux new-session -A -s ${1-$(basename $(pwd))}
-}
-
-##
-# create a new session, joining in to an existing one
-#
-# @param {String} 1 - Existing session
-# @param {String} 2 - New session
-#
-tj() {
-	tmux new-session -t $1 -s $1-$2
-}
-
-# Shortcuts
-alias Y="yaourt"
-# Making these symlinks instead so sudo may benefit.
-# alias P="pacman"
-# alias S="systemctl"
+# alias suspend="dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"
+alias l="ls -lah"
 
 alias psu="ps -u $USER"
 alias pse="ps -e"
@@ -87,6 +40,52 @@ alias jj="fasd_cd -d -i"
 
 # get public ip
 alias wimi="curl ipecho.net/plain; echo"
+
+################
+# EDITING
+################
+
+alias e="$EDITOR"
+alias se="sudo $EDITOR"
+alias ev="$VISUAL"
+alias sev="sudo $VISUAL"
+
+################
+# APPS
+################
+
+alias open="xdg-open"
+
+# git
+# TODO: breakout.exe into a git module
+alias g="git"
+alias tigs="tig status"
+
+# TODO: breakout.exe into a tmux module
+alias tmux="tmux -2"
+alias tl="tmux list-sessions"
+
+alias Y="yaourt"
+
+##
+# attach to existing session, or create new
+#
+# @param {String} [1] - Session name.
+#   Defaults to name of current directory.
+##
+ta() {
+	tmux new-session -A -s ${1-$(basename $(pwd))}
+}
+
+##
+# create a new session, joining in to an existing one
+#
+# @param {String} 1 - Existing session
+# @param {String} 2 - New session
+##
+tj() {
+	tmux new-session -t $1 -s $1-$2
+}
 
 ################
 # FUN

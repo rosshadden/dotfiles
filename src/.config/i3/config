@@ -89,7 +89,7 @@ mouse_warping none
 
 # close focused window
 bindsym $super+c kill
-bindsym $super+Shift+c exec $run xkill
+bindsym $super+Shift+c --release exec --no-startup-id /usr/bin/xkill
 
 # change focus between tiling / floating windows
 bindsym $super+backslash mark LAST; focus mode_toggle

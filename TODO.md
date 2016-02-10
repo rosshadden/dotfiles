@@ -1,5 +1,6 @@
 # meta
 
+- move `src/{lib,bin}` to root
 - trim down as much fat as possible, such as things I don't use anymore
 - look into [these dotfiles](https://github.com/xero/dotfiles) for sexiness
 - README
