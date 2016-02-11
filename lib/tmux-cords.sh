@@ -3,7 +3,6 @@
 namespace=$1
 action=$2
 
-
 bind() {
 	for key in $keys; do
 		tmux bind -n $key run "~/lib/tmux-cords.sh $namespace $key"
@@ -13,7 +12,6 @@ bind() {
 	tmux bind -n Escape run "~/lib/tmux-cords.sh $namespace Escape"
 }
 
-
 unbind() {
 	for key in $keys; do
 		tmux unbind -n $key
@@ -22,14 +20,11 @@ unbind() {
 	tmux unbind -n Escape
 }
 
-
 getSession() {
 	tmux display -p '#S'
 }
 
-
 case $namespace in
-
 	# sessions
 	session)
 		keys="Space n N c C d D r"
@@ -60,7 +55,6 @@ case $namespace in
 			unbind
 		fi
 	;;
-
 
 	# windows
 	tab)
@@ -97,9 +91,8 @@ case $namespace in
 		fi
 	;;
 
-
 	# panes
-	buffer)
+	buffer|window)
 		keys="j k h l J K H L c C"
 
 		if [ -z $action ]; then
@@ -126,5 +119,4 @@ case $namespace in
 			unbind
 		fi
 	;;
-
 esac

@@ -141,8 +141,6 @@
 - revisit aliases
 	- like `h` and co.
 	- introduce `ls -1`
-- use `local` variables
-	- like why the hell don't they work like the Internet says they should?
 - [yank to clipboard](http://unix.stackexchange.com/questions/25765/pasting-from-clipboard-to-vi-enabled-zsh-or-bash-shell)
 - make cursor changes update when focus changes (between tmux panes with vim and zsh)
 
