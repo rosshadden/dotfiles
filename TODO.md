@@ -59,6 +59,7 @@
 	- vimfiler
 		- [add git status icons](https://github.com/Shougo/vimfiler.vim/issues/308)
 - plugins
+	- fix `unite-spelling` or whatever it's called
 	- see if I can make [this](https://github.com/easymotion/vim-easymotion/issues/248#issuecomment-156444426) happen
 		- map `.` in target select mode
 	- pluginify my modes

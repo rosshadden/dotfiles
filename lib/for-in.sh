@@ -22,6 +22,7 @@ for-in() {
 stdin="$(ls -l /proc/self/fd/0)"
 stdin="${stdin/*-> /}"
 
+# TODO: abstract hasPipe function
 if [[ "$stdin" =~ ^/dev/pts/[0-9] ]]; then
 	for-in "$@"
 else

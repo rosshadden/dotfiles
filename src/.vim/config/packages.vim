@@ -164,6 +164,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'vim-pandoc/vim-pandoc-syntax'
 		" emblem
 		NeoBundle 'heartsentwined/vim-emblem'
+		NeoBundle 'markcornick/vim-bats'
 
 	" unite
 		NeoBundle 'Shougo/neomru.vim'
