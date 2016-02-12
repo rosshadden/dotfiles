@@ -15,17 +15,6 @@
 # 	xsel -ob
 # }
 
-##
-# Run `du -h` to a given depth
-#
-# @param {String} [depth=0] - Depth
-##
-duh() {
-	local depth=$1
-	if [[ -z $depth ]]; then depth=0; fi
-	du -h --max-depth=$depth
-}
-
 calc() {
 	echo "$1" | bc -l
 }

@@ -1,0 +1,29 @@
+##
+# Runs `du -h | sort -h` to a given depth, at a specified directory
+#
+# @method duh
+# @param {Number} [depth=0] - Depth
+# @param {String} [dir=.] - Directory
+##
+duh() {
+	local depth=$1 dir=$2
+
+	local temp
+	if [[ "$dir" =~ ^[0-9]+$ ]]; then
+		temp=$depth
+		depth=$dir
+		dir=$temp
+	fi
+	if ! [[ "$depth" =~ ^[0-9]+$ ]]; then
+		temp=$dir
+		dir=$depth
+		depth=$temp
+	fi
+
+	if [[ -z "$depth" ]]; then depth=0; fi
+	if [[ -z "$dir" ]]; then dir=.; fi
+
+	du -h --max-depth=$depth $dir | sort -h
+}
+
+duh "$@"
