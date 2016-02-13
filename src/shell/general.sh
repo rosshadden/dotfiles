@@ -13,10 +13,8 @@ man() {
 	man "$@"
 }
 
-
 # make `history` have timestamps
 export HIST_STAMPS=yyyy-mm-dd
-
 
 goo=$?
 if [[ $goo == 0 ]]; then
@@ -24,11 +22,6 @@ if [[ $goo == 0 ]]; then
 	alias less=$PAGER
 	alias zless=$PAGER
 fi
-
-
-# init fasd
-eval "$(fasd --init auto)"
-
 
 # alt-left and alt-up to navigate directories
 

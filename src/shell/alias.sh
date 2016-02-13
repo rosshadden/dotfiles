@@ -34,10 +34,6 @@ alias shh="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6
 alias aoeu="keys qwerty"
 alias asdf="keys dvorak"
 
-# fasd
-alias j="fasd_cd -d"
-alias jj="fasd_cd -d -i"
-
 # get public ip
 alias wimi="curl ipecho.net/plain; echo"
 
@@ -91,7 +87,11 @@ tj() {
 # FUN
 ################
 
-alias nyan='telnet -e ^c nyancat.dakko.us'
+if [[ -x `which nc` ]]; then
+  alias nyan='nc -v nyancat.dakko.us 23' # nyan cat
+elif [[ -x `which telnet` ]]; then
+	alias nyan='telnet -e ^c nyancat.dakko.us'
+fi
 
 ################
 # GLOBAL

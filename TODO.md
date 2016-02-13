@@ -128,6 +128,8 @@
 
 # shell
 
+- wrap aliases and functions in `if [[ -x \`which <cmd>\` ]]` blocks
+
 ## zsh
 
 - refactor `.zshrc`

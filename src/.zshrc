@@ -1,4 +1,9 @@
 function variables() {
+	# XDG
+	export XDG_CONFIG_HOME=$HOME/.config
+	export XDG_CACHE_HOME=$HOME/.cache
+	export XDG_DATA_HOME=$HOME/.local/share
+
 	# dots
 	export DOTS=$HOME/dotfiles
 	# sync
@@ -29,20 +34,14 @@ function packages() {
 
 	antigen use oh-my-zsh
 
-	antigen bundle archlinux
-	antigen bundle battery
-	antigen bundle zsh-users/zsh-syntax-highlighting
 	antigen bundle extract
 	antigen bundle git-extras
-	antigen bundle node
-	antigen bundle npm
-	antigen bundle python
-	antigen bundle nyan
-	antigen bundle history-substring-search
 	antigen bundle systemd
-	antigen bundle fasd
 
 	antigen apply
+
+	antibody bundle zsh-users/zsh-history-substring-search
+	antibody bundle zsh-users/zsh-syntax-highlighting
 }
 
 function modules() {
@@ -66,6 +65,9 @@ function plugins() {
 	# tmuxp
 	source tmuxp.zsh
 
+	# npm
+	source <(npm completion)
+
 	# zsh-syntax-highlighting
 	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 	ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=red'
@@ -76,6 +78,22 @@ function plugins() {
 	bindkey '^[f' vi-forward-char
 	bindkey '^b' vi-backward-blank-word
 	bindkey '^[b' vi-backward-char
+
+	# fasd
+	# TODO: move back to a place shared with bash
+	if [ $commands[fasd] ]; then # check if fasd is installed
+		fasd_cache="$XDG_CACHE_HOME/fasd-init"
+		if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+			fasd --init auto >| "$fasd_cache"
+		fi
+		source "$fasd_cache"
+		unset fasd_cache
+
+		alias v='f -e vim'
+		alias o='a -e open_command'
+		alias j="fasd_cd -d"
+		alias jj="fasd_cd -d -i"
+	fi
 }
 
 function mappings() {

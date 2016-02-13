@@ -7,3 +7,6 @@
 [submodule "src/themes/base16-builder"]
 	path = src/themes/base16-builder
 	url = git@github.com:chriskempson/base16-builder.git
+[submodule "src/shell/antigen"]
+	path = src/shell/antigen
+	url = https://github.com/zsh-users/antigen.git
