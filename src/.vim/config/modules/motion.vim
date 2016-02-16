@@ -10,8 +10,8 @@ let g:EasyMotion_startofline = 0
 let g:EasyMotion_use_upper = 1
 " use smart case
 let g:EasyMotion_smartcase = 1
-" prefer the home row
-let g:EasyMotion_keys = 'AOEUIDHTN-,.PYFGCRL;QJKXBMWVZS'
+" use capital hints
+let g:EasyMotion_keys = 'ASDGHKLQWERTYUIOPZXCVBNMFJ;'
 " jump to first search result with `<enter>`
 let g:EasyMotion_enter_jump_first = 1
 
@@ -24,7 +24,7 @@ let g:textobj_line_no_default_key_mappings = 1
 """"""""""""""""
 
 " prefix
-map - <plug>(easymotion-prefix)
+map ' <plug>(easymotion-prefix)
 call MakePrefix('camel', '<:prefix>c')
 
 " better long-distance travel

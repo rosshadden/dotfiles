@@ -40,6 +40,8 @@ function packages() {
 
 	antigen apply
 
+	antibody bundle Tarrasch/zsh-bd
+	antibody bundle Tarrasch/zsh-functional
 	antibody bundle zsh-users/zsh-history-substring-search
 	antibody bundle zsh-users/zsh-syntax-highlighting
 }
