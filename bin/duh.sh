@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 ##
 # Runs `du -h | sort -h` to a given depth, at a specified directory
 #
