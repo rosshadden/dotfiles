@@ -854,6 +854,7 @@ for_window [class="^copyq$"] border pixel 0, floating enable
 
 # web
 assign [class="^google-chrome" window_role="browser"] → $wsWeb
+for_window [title="^Developer Tools"] floating disable
 
 # media
 assign [class="(nuvolaplayer|Spotify|Vlc)"] → $wsMedia
