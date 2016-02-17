@@ -15,7 +15,6 @@ noremap <:leader:1>> >
 noremap <:leader:1>; ;
 noremap <:leader:1>, ,
 noremap <:leader:1>- -
-noremap <:leader:1>' '
 noremap <:leader:1><space> <space>
 
 " fix <<, since I stole `<`

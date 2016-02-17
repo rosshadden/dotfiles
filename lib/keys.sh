@@ -35,7 +35,7 @@ if [[ $action == "init" ]]; then
 	if [ $DISPLAY ]; then
 		setxkbmap \
 			-layout us,us \
-			-variant ,dvorak \
+			-variant dvorak, \
 			-option \
 			-option grp_led:caps \
 			-option grp:shifts_toggle \
@@ -47,7 +47,7 @@ if [[ $action == "init" ]]; then
 		loadMap
 		resetXcape
 	else
-		loadkeys us
+		loadkeys dvorak
 	fi
 elif [[ $action == "get" ]]; then
 	if [ $DISPLAY ]; then

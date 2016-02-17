@@ -175,8 +175,8 @@ bindsym $super+7 mark LAST; workspace $wsLiterature
 bindsym $super+8 mark LAST; workspace $wsMonitor
 bindsym $super+9 mark LAST; workspace $wsRun
 bindsym $super+0 mark LAST; workspace $wsChat
-bindsym $super+minus mark LAST; workspace $ws11
-bindsym $super+equal mark LAST; workspace $wsGames
+bindsym $super+bracketleft mark LAST; workspace $ws11
+bindsym $super+bracketright mark LAST; workspace $wsGames
 bindsym $super+grave mark LAST; workspace $wsTemp
 
 # move focused container to workspace
@@ -190,8 +190,8 @@ bindsym $super+Shift+7 move container to workspace $wsLiterature; workspace $wsL
 bindsym $super+Shift+8 move container to workspace $wsMonitor; workspace $wsMonitor
 bindsym $super+Shift+9 move container to workspace $wsRun; workspace $wsRun
 bindsym $super+Shift+0 move container to workspace $wsChat; workspace $wsChat
-bindsym $super+Shift+minus move container to workspace $ws11; workspace $ws11
-bindsym $super+Shift+equal move container to workspace $wsGames; workspace $wsGames
+bindsym $super+Shift+bracketleft move container to workspace $ws11; workspace $ws11
+bindsym $super+Shift+bracketright move container to workspace $wsGames; workspace $wsGames
 bindsym $super+Shift+grave move container to workspace $wsTemp; workspace $wsTemp
 
 # focus the parent/child container
@@ -327,8 +327,8 @@ mode "MARK" {
 		bindsym 8 mark 8; $return
 		bindsym 9 mark 9; $return
 		bindsym 0 mark 10; $return
-		bindsym minus mark 11; $return
-		bindsym equal mark 12; $return
+		bindsym bracketleft mark 11; $return
+		bindsym bracketright mark 12; $return
 
 		bindsym Shift+grave unmark 0; $return
 		bindsym Shift+1 unmark 1; $return
@@ -341,8 +341,8 @@ mode "MARK" {
 		bindsym Shift+8 unmark 8; $return
 		bindsym Shift+9 unmark 9; $return
 		bindsym Shift+0 unmark 10; $return
-		bindsym Shift+minus unmark 11; $return
-		bindsym Shift+equal unmark 12; $return
+		bindsym Shift+bracketleft unmark 11; $return
+		bindsym Shift+bracketright unmark 12; $return
 
 	# by letter
 		bindsym a mark A; $return
@@ -434,8 +434,8 @@ mode "GOTO" {
 		bindsym 8 mark LAST; [con_mark="8"] focus; $return
 		bindsym 9 mark LAST; [con_mark="9"] focus; $return
 		bindsym 0 mark LAST; [con_mark="10"] focus; $return
-		bindsym minus mark LAST; [con_mark="11"] focus; $return
-		bindsym equal mark LAST; [con_mark="12"] focus; $return
+		bindsym bracketleft mark LAST; [con_mark="11"] focus; $return
+		bindsym bracketright mark LAST; [con_mark="12"] focus; $return
 
 	# by letter
 		bindsym a mark LAST; [con_mark="A"] focus; $return
@@ -514,8 +514,8 @@ mode "TMUX" {
 		bindsym 8            mark LAST; workspace $wsMonitor;  exec $tmuxAttach $8";  $return
 		bindsym 9            mark LAST; workspace $wsRun;  exec $tmuxAttach $9";  $return
 		bindsym 0            mark LAST; workspace $wsChat; exec $tmuxAttach $10"; $return
-		bindsym minus  mark LAST; workspace $ws11; exec $tmuxAttach $11"; $return
-		bindsym equal mark LAST; workspace $wsGames; exec $tmuxAttach $12"; $return
+		bindsym bracketleft  mark LAST; workspace $ws11; exec $tmuxAttach $11"; $return
+		bindsym bracketright mark LAST; workspace $wsGames; exec $tmuxAttach $12"; $return
 
 	# TODO: open preset for the current workspace
 
