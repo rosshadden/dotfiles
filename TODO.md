@@ -59,7 +59,6 @@
 	- vimfiler
 		- [add git status icons](https://github.com/Shougo/vimfiler.vim/issues/308)
 - plugins
-	- fix `unite-spelling` or whatever it's called
 	- see if I can make [this](https://github.com/easymotion/vim-easymotion/issues/248#issuecomment-156444426) happen
 		- map `.` in target select mode
 	- pluginify my modes
@@ -130,6 +129,8 @@
 # shell
 
 - make `for-in` and `for-of` observe aliases
+- add `tcd` function, which `cd`s into a dir and renames the tmux session to that
+	- should possibly share code with `tp` and `ta`, to determine the session name
 - utilize zsh-functional for my wrappers
 - wrap aliases and functions in `if [[ -x \`which <cmd>\` ]]` blocks
 - make piping to `copy` strip out `\n`s

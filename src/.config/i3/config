@@ -5,33 +5,33 @@
 set $super Mod4
 set $alt Mod1
 
-set $0 temp
-set $1 web
-set $2 dev
-set $3 sync
-set $4 hack
-set $5 files
-set $6 media
-set $7 literature
-set $8 monitor
-set $9 run
-set $10 chat
-set $11 lab
-set $12 games
+set $nameTemp temp
+set $nameWeb web
+set $nameDev dev
+set $nameSync sync
+set $nameHack hack
+set $nameFiles files
+set $nameMedia media
+set $nameLit lit
+set $nameMonitor monitor
+set $nameRun run
+set $nameChat chat
+set $nameLab lab
+set $nameGames games
 
-set $wsTemp 0| temp
-set $wsWeb 1| web
-set $wsDev 2| dev
-set $wsSync 3| sync
-set $wsHack 4| hack
-set $wsFiles 5| files
-set $wsMedia 6| media
-set $wsLiterature 7| literature
-set $wsMonitor 8| monitor
-set $wsRun 9| run
-set $wsChat 10| chat
-set $ws11 11| lab
-set $wsGames 12| games
+set $wsTemp  temp
+set $wsWeb  web
+set $wsDev  dev
+set $wsSync  sync
+set $wsHack  hack
+set $wsFiles  files
+set $wsMedia  media
+set $wsLit  lit
+set $wsMonitor  monitor
+set $wsRun  run
+set $wsChat  chat
+set $wsLab  lab
+set $wsGames  games
 
 set $macro1 XF86Tools
 set $macro2 XF86Launch5
@@ -122,16 +122,28 @@ bindsym $macro5 exec $LOCK
 bindsym Shift+$macro5 exec $locker2
 
 # change focus
-bindsym $super+h mark LAST; focus left
 bindsym $super+j mark LAST; focus down
 bindsym $super+k mark LAST; focus up
+bindsym $super+h mark LAST; focus left
 bindsym $super+l mark LAST; focus right
 
 # move focused window/container
-bindsym $super+Shift+h move left
 bindsym $super+Shift+j move down
 bindsym $super+Shift+k move up
+bindsym $super+Shift+h move left
 bindsym $super+Shift+l move right
+
+# focus adjacent outputs
+bindsym $super+Control+j mark LAST; focus output down
+bindsym $super+Control+k mark LAST; focus output up
+bindsym $super+Control+h mark LAST; focus output left
+bindsym $super+Control+l mark LAST; focus output right
+
+# move workspace to adjacent outputs
+bindsym $super+Control+Shift+j move workspace to output down
+bindsym $super+Control+Shift+k move workspace to output up
+bindsym $super+Control+Shift+h move workspace to output left
+bindsym $super+Control+Shift+l move workspace to output right
 
 # focus next/previous workspace on current output
 bindsym $super+n mark LAST; workspace next_on_output
@@ -149,14 +161,6 @@ bindsym $super+b mark LAST; workspace prev
 bindsym $super+Shift+f move to workspace next; workspace next
 bindsym $super+Shift+b move to workspace prev; workspace prev
 
-# focus left/right output
-bindsym $super+u mark LAST; focus output left
-bindsym $super+d mark LAST; focus output right
-
-# move workspace to left/right output
-bindsym $super+Shift+u move workspace to output left
-bindsym $super+Shift+d move workspace to output right
-
 # previous container
 bindsym $super+Tab mark TEMP; [con_mark="LAST"] focus; [con_mark="TEMP"] mark LAST
 
@@ -165,34 +169,34 @@ bindsym $super+Escape mark LAST; workspace back_and_forth
 bindsym $super+Shift+Escape move to workspace back_and_forth; workspace back_and_forth
 
 # switch to workspace
-bindsym $super+1 mark LAST; workspace $wsWeb
-bindsym $super+2 mark LAST; workspace $wsDev
-bindsym $super+3 mark LAST; workspace $wsSync
-bindsym $super+4 mark LAST; workspace $wsHack
-bindsym $super+5 mark LAST; workspace $wsFiles
-bindsym $super+6 mark LAST; workspace $wsMedia
-bindsym $super+7 mark LAST; workspace $wsLiterature
-bindsym $super+8 mark LAST; workspace $wsMonitor
-bindsym $super+9 mark LAST; workspace $wsRun
-bindsym $super+0 mark LAST; workspace $wsChat
-bindsym $super+bracketleft mark LAST; workspace $ws11
-bindsym $super+bracketright mark LAST; workspace $wsGames
-bindsym $super+grave mark LAST; workspace $wsTemp
+bindsym $super+grave        mark LAST; workspace 0 $wsTemp
+bindsym $super+1            mark LAST; workspace 1 $wsWeb
+bindsym $super+2            mark LAST; workspace 2 $wsDev
+bindsym $super+3            mark LAST; workspace 3 $wsSync
+bindsym $super+4            mark LAST; workspace 4 $wsHack
+bindsym $super+5            mark LAST; workspace 5 $wsFiles
+bindsym $super+6            mark LAST; workspace 6 $wsMedia
+bindsym $super+7            mark LAST; workspace 7 $wsLit
+bindsym $super+8            mark LAST; workspace 8 $wsMonitor
+bindsym $super+9            mark LAST; workspace 9 $wsRun
+bindsym $super+0            mark LAST; workspace 10 $wsChat
+bindsym $super+bracketleft  mark LAST; workspace 11 $wsLab
+bindsym $super+bracketright mark LAST; workspace 12 $wsGames
 
 # move focused container to workspace
-bindsym $super+Shift+1 move container to workspace $wsWeb; workspace $wsWeb
-bindsym $super+Shift+2 move container to workspace $wsDev; workspace $wsDev
-bindsym $super+Shift+3 move container to workspace $wsSync; workspace $wsSync
-bindsym $super+Shift+4 move container to workspace $wsHack; workspace $wsHack
-bindsym $super+Shift+5 move container to workspace $wsFiles; workspace $wsFiles
-bindsym $super+Shift+6 move container to workspace $wsMedia; workspace $wsMedia
-bindsym $super+Shift+7 move container to workspace $wsLiterature; workspace $wsLiterature
-bindsym $super+Shift+8 move container to workspace $wsMonitor; workspace $wsMonitor
-bindsym $super+Shift+9 move container to workspace $wsRun; workspace $wsRun
-bindsym $super+Shift+0 move container to workspace $wsChat; workspace $wsChat
-bindsym $super+Shift+bracketleft move container to workspace $ws11; workspace $ws11
-bindsym $super+Shift+bracketright move container to workspace $wsGames; workspace $wsGames
-bindsym $super+Shift+grave move container to workspace $wsTemp; workspace $wsTemp
+bindsym $super+Shift+grave        move container to workspace 0 $wsTemp;    workspace 0 $wsTemp
+bindsym $super+Shift+1            move container to workspace 1 $wsWeb;     workspace 1 $wsWeb
+bindsym $super+Shift+2            move container to workspace 2 $wsDev;     workspace 2 $wsDev
+bindsym $super+Shift+3            move container to workspace 3 $wsSync;    workspace 3 $wsSync
+bindsym $super+Shift+4            move container to workspace 4 $wsHack;    workspace 4 $wsHack
+bindsym $super+Shift+5            move container to workspace 5 $wsFiles;   workspace 5 $wsFiles
+bindsym $super+Shift+6            move container to workspace 6 $wsMedia;   workspace 6 $wsMedia
+bindsym $super+Shift+7            move container to workspace 7 $wsLit;     workspace 7 $wsLit
+bindsym $super+Shift+8            move container to workspace 8 $wsMonitor; workspace 8 $wsMonitor
+bindsym $super+Shift+9            move container to workspace 9 $wsRun;     workspace 9 $wsRun
+bindsym $super+Shift+0            move container to workspace 10 $wsChat;   workspace 10 $wsChat
+bindsym $super+Shift+bracketleft  move container to workspace 11 $wsLab;    workspace 11 $wsLab
+bindsym $super+Shift+bracketright move container to workspace 12 $wsGames;  workspace 12 $wsGames
 
 # focus the parent/child container
 bindsym $super+z mark LAST; focus parent
@@ -316,32 +320,32 @@ mode "MARK" {
 		bindsym space exec i3-input -F 'mark %s' -P 'Mark name: '; $return
 
 	# by number
-		bindsym grave mark 0; $return
-		bindsym 1 mark 1; $return
-		bindsym 2 mark 2; $return
-		bindsym 3 mark 3; $return
-		bindsym 4 mark 4; $return
-		bindsym 5 mark 5; $return
-		bindsym 6 mark 6; $return
-		bindsym 7 mark 7; $return
-		bindsym 8 mark 8; $return
-		bindsym 9 mark 9; $return
-		bindsym 0 mark 10; $return
-		bindsym bracketleft mark 11; $return
+		bindsym grave        mark 0;  $return
+		bindsym 1            mark 1;  $return
+		bindsym 2            mark 2;  $return
+		bindsym 3            mark 3;  $return
+		bindsym 4            mark 4;  $return
+		bindsym 5            mark 5;  $return
+		bindsym 6            mark 6;  $return
+		bindsym 7            mark 7;  $return
+		bindsym 8            mark 8;  $return
+		bindsym 9            mark 9;  $return
+		bindsym 0            mark 10; $return
+		bindsym bracketleft  mark 11; $return
 		bindsym bracketright mark 12; $return
 
-		bindsym Shift+grave unmark 0; $return
-		bindsym Shift+1 unmark 1; $return
-		bindsym Shift+2 unmark 2; $return
-		bindsym Shift+3 unmark 3; $return
-		bindsym Shift+4 unmark 4; $return
-		bindsym Shift+5 unmark 5; $return
-		bindsym Shift+6 unmark 6; $return
-		bindsym Shift+7 unmark 7; $return
-		bindsym Shift+8 unmark 8; $return
-		bindsym Shift+9 unmark 9; $return
-		bindsym Shift+0 unmark 10; $return
-		bindsym Shift+bracketleft unmark 11; $return
+		bindsym Shift+grave        unmark 0;  $return
+		bindsym Shift+1            unmark 1;  $return
+		bindsym Shift+2            unmark 2;  $return
+		bindsym Shift+3            unmark 3;  $return
+		bindsym Shift+4            unmark 4;  $return
+		bindsym Shift+5            unmark 5;  $return
+		bindsym Shift+6            unmark 6;  $return
+		bindsym Shift+7            unmark 7;  $return
+		bindsym Shift+8            unmark 8;  $return
+		bindsym Shift+9            unmark 9;  $return
+		bindsym Shift+0            unmark 10; $return
+		bindsym Shift+bracketleft  unmark 11; $return
 		bindsym Shift+bracketright unmark 12; $return
 
 	# by letter
@@ -423,18 +427,18 @@ mode "GOTO" {
 		bindsym Return exec i3-input -F 'mark LAST; [con_mark=%s] focus' -P 'Go to mark: '; $return
 
 	# by number
-		bindsym grave mark LAST; [con_mark="0"] focus; $return
-		bindsym 1 mark LAST; [con_mark="1"] focus; $return
-		bindsym 2 mark LAST; [con_mark="2"] focus; $return
-		bindsym 3 mark LAST; [con_mark="3"] focus; $return
-		bindsym 4 mark LAST; [con_mark="4"] focus; $return
-		bindsym 5 mark LAST; [con_mark="5"] focus; $return
-		bindsym 6 mark LAST; [con_mark="6"] focus; $return
-		bindsym 7 mark LAST; [con_mark="7"] focus; $return
-		bindsym 8 mark LAST; [con_mark="8"] focus; $return
-		bindsym 9 mark LAST; [con_mark="9"] focus; $return
-		bindsym 0 mark LAST; [con_mark="10"] focus; $return
-		bindsym bracketleft mark LAST; [con_mark="11"] focus; $return
+		bindsym grave        mark LAST; [con_mark="0"] focus;  $return
+		bindsym 1            mark LAST; [con_mark="1"] focus;  $return
+		bindsym 2            mark LAST; [con_mark="2"] focus;  $return
+		bindsym 3            mark LAST; [con_mark="3"] focus;  $return
+		bindsym 4            mark LAST; [con_mark="4"] focus;  $return
+		bindsym 5            mark LAST; [con_mark="5"] focus;  $return
+		bindsym 6            mark LAST; [con_mark="6"] focus;  $return
+		bindsym 7            mark LAST; [con_mark="7"] focus;  $return
+		bindsym 8            mark LAST; [con_mark="8"] focus;  $return
+		bindsym 9            mark LAST; [con_mark="9"] focus;  $return
+		bindsym 0            mark LAST; [con_mark="10"] focus; $return
+		bindsym bracketleft  mark LAST; [con_mark="11"] focus; $return
 		bindsym bracketright mark LAST; [con_mark="12"] focus; $return
 
 	# by letter
@@ -503,19 +507,19 @@ mode "TMUX" {
 
 	# presets
 		# TODO: make these dynamic from the workspace name
-		bindsym grave        mark LAST; workspace $wsTemp;  exec $tmuxAttach $0";  $return
-		bindsym 1            mark LAST; workspace $wsWeb;  exec $tmuxAttach $1";  $return
-		bindsym 2            mark LAST; workspace $wsDev;  exec $tmuxAttach $2";  $return
-		bindsym 3            mark LAST; workspace $wsSync;  exec $tmuxAttach $3";  $return
-		bindsym 4            mark LAST; workspace $wsHack;  exec $tmuxAttach $4";  $return
-		bindsym 5            mark LAST; workspace $wsFiles;  exec $tmuxAttach $5 'vifm'";  $return
-		bindsym 6            mark LAST; workspace $wsMedia;  exec $tmuxAttach $6";  $return
-		bindsym 7            mark LAST; workspace $wsLiterature;  exec $tmuxAttach $7";  $return
-		bindsym 8            mark LAST; workspace $wsMonitor;  exec $tmuxAttach $8";  $return
-		bindsym 9            mark LAST; workspace $wsRun;  exec $tmuxAttach $9";  $return
-		bindsym 0            mark LAST; workspace $wsChat; exec $tmuxAttach $10"; $return
-		bindsym bracketleft  mark LAST; workspace $ws11; exec $tmuxAttach $11"; $return
-		bindsym bracketright mark LAST; workspace $wsGames; exec $tmuxAttach $12"; $return
+		bindsym grave        mark LAST; workspace 0 $wsTemp;    exec $tmuxAttach $nameTemp";         $return
+		bindsym 1            mark LAST; workspace 1 $wsWeb;     exec $tmuxAttach $nameWeb";          $return
+		bindsym 2            mark LAST; workspace 2 $wsDev;     exec $tmuxAttach $nameDev";          $return
+		bindsym 3            mark LAST; workspace 3 $wsSync;    exec $tmuxAttach $nameSync";         $return
+		bindsym 4            mark LAST; workspace 4 $wsHack;    exec $tmuxAttach $nameHack";         $return
+		bindsym 5            mark LAST; workspace 5 $wsFiles;   exec $tmuxAttach $nameFiles 'vifm'"; $return
+		bindsym 6            mark LAST; workspace 6 $wsMedia;   exec $tmuxAttach $nameMedia";        $return
+		bindsym 7            mark LAST; workspace 7 $wsLit;     exec $tmuxAttach $nameLit";          $return
+		bindsym 8            mark LAST; workspace 8 $wsMonitor; exec $tmuxAttach $nameMonitor";      $return
+		bindsym 9            mark LAST; workspace 9 $wsRun;     exec $tmuxAttach $nameRun";          $return
+		bindsym 0            mark LAST; workspace 10 $wsChat;   exec $tmuxAttach $nameChat";         $return
+		bindsym bracketleft  mark LAST; workspace 11 $wsLab;    exec $tmuxAttach $nameLab";          $return
+		bindsym bracketright mark LAST; workspace 12 $wsGames;  exec $tmuxAttach $nameGames";        $return
 
 	# TODO: open preset for the current workspace
 
@@ -861,18 +865,18 @@ assign [class="(nuvolaplayer|Spotify|Vlc)"] → $wsMedia
 assign [title="Popcorn Time"] → $wsMedia
 assign [title="Google Play Music" window_role="pop-up"] → $wsMedia
 for_window [class="Vlc"] border none
-for_window [title="Google Play Music" window_role="pop-up"] floating disable, move to workspace $wsMedia
+for_window [title="Google Play Music" window_role="pop-up"] floating disable, move to workspace 6 $wsMedia
 
-# literature
-assign [title="(Google Keep|todoist)" window_role="app"] → $wsLiterature
+# lit
+assign [title="(Google Keep|todoist)" window_role="app"] → $wsLit
 
 # games
 for_window [title="Dota 2"] border none
 
 # chat
-assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $wsChat
-assign [class="^Slack$"] → $wsChat
-assign [title="^finch$"] → $wsChat
+assign [class="Pidgin" window_role="(buddy_list|conversation)"] → 10 $wsChat
+assign [class="^Slack$"] → 10 $wsChat
+assign [title="^finch$"] → 10 $wsChat
 
 # monitor
 assign [class="MongoChef"] → $wsMonitor
@@ -883,7 +887,7 @@ assign [class="MongoChef"] → $wsMonitor
 ################
 
 # layouts
-exec --no-startup-id "i3-msg 'workspace $wsChat; append_layout ~/.config/i3/layouts/workspace-10.json'"
+exec --no-startup-id "i3-msg 'workspace 10 $wsChat; append_layout ~/.config/i3/layouts/workspace-10.json'"
 
 # wallpaper
 exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath
