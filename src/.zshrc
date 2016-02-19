@@ -104,6 +104,11 @@ function mappings() {
 
 	# fix shift-tab in completion menus
 	bindkey '^[[Z' reverse-menu-complete
+
+	# copy yank register to X clipboard
+	vi-yank-to-x() { print -rn -- $CUTBUFFER | xsel -ib -p; }
+	zle -N vi-yank-to-x
+	bindkey -a '^Y' vi-yank-to-x
 }
 
 function theme() {

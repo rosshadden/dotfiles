@@ -1,6 +1,6 @@
 # meta
 
-- move `src/{lib,bin}` to root
+- add `.editorconfig`
 - trim down as much fat as possible, such as things I don't use anymore
 - look into [these dotfiles](https://github.com/xero/dotfiles) for sexiness
 - README
@@ -66,10 +66,10 @@
 	- remove redundant or unused plugins
 		- I have two commenting plugins, with overlapping but not identical features
 - make `ctrl-hjkl` nav work with `--servername`
-- make `tmux-complete` work in git commits
 
 ## `i3`
 
+- make thing for todoist
 - modes
 	- break out modes into separate files
 		- add a generated help notification for each mode, on `?`
@@ -132,6 +132,7 @@
 - make `for-in` and `for-of` observe aliases
 - utilize zsh-functional for my wrappers
 - wrap aliases and functions in `if [[ -x \`which <cmd>\` ]]` blocks
+- make piping to `copy` strip out `\n`s
 
 ## zsh
 
@@ -145,9 +146,7 @@
 - Add `pick` functions or aliases
 	- something with `ag`, ala unite's `file_rec`
 - revisit aliases
-	- like `h` and co.
 	- introduce `ls -1`
-- [yank to clipboard](http://unix.stackexchange.com/questions/25765/pasting-from-clipboard-to-vi-enabled-zsh-or-bash-shell)
 - make cursor changes update when focus changes (between tmux panes with vim and zsh)
 
 ## bash
@@ -181,6 +180,7 @@
 		- `git branch -r | cut -c 10- | pick | xargs git checkout`
 	- i3
 	- zeal
+	- todoist
 	- apps
 		- open (`.desktop` files)
 		- run (`/usr/bin`, etc., or maybe everything in `$PATH`)
