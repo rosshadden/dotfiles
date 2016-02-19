@@ -18,14 +18,14 @@ teardown() {
 	[[ ${#lines[@]} == 8 ]]
 }
 
-@test 'exposes $name' {
-	run for-in 'echo $name'
+@test 'exposes $1' {
+	run for-in 'echo $1'
 	[[ ${lines[0]} == "a" ]]
 	[[ ${lines[1]} == "b" ]]
 }
 
 @test 'handles pipes' {
-	local blah=$(echo foo bar | for-in 'echo $name')
+	local blah=$(echo foo bar | for-in 'echo $1')
 	local lines=( $blah )
 	[[ ${#lines[@]} == 2 ]]
 	[[ ${lines[0]} == "foo" ]]

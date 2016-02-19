@@ -66,6 +66,7 @@
 	- remove redundant or unused plugins
 		- I have two commenting plugins, with overlapping but not identical features
 - make `ctrl-hjkl` nav work with `--servername`
+- make `tmux-complete` work in git commits
 
 ## `i3`
 
@@ -128,6 +129,8 @@
 
 # shell
 
+- make `for-in` and `for-of` observe aliases
+- utilize zsh-functional for my wrappers
 - wrap aliases and functions in `if [[ -x \`which <cmd>\` ]]` blocks
 
 ## zsh

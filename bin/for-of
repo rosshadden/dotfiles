@@ -8,14 +8,14 @@
 #
 # @method for-of
 # @param {Command} cmd - The command to run
-#   It is given access to `$name` as the value of the current item.
+#   It is given access to `$1` as the value of the current item.
 # @param {Array} [...list=*] - The list to use
 #   May be globs or space-separated values.
 ##
 for-of() {
 	local cmd=$1
-	local section='\\n################\\n# $name\\n################'
-	cmd="if [[ -d \$name ]]; then echo $section; cd \$name; $cmd; cd ../; fi"
+	local section='\\n################\\n# $1\\n################'
+	cmd="if [[ -d \$1 ]]; then echo $section; cd \$1; $cmd; cd ../; fi"
 
 	for-in $cmd
 }

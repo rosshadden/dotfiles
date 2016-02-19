@@ -6,7 +6,7 @@
 #
 # @method for-in
 # @param {Command} cmd - The command to run
-#   It is given access to `$name` as the value of the current item.
+#   It is given access to `$1` as the value of the current item.
 # @param {Array} [...list=*] - The list to use
 #   May be globs or space-separated values.
 ##
@@ -20,8 +20,7 @@ for-in() {
 		list=( ${args[@]:1:$len} )
 	fi
 
-	local name
-	for name in $list; do
+	for 1 in $list; do
 		eval $cmd
 	done
 }

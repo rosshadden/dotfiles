@@ -194,12 +194,13 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	" external
 		" seamless vim/tmux navigation
 		NeoBundle 'christoomey/vim-tmux-navigator'
-		" completions aware of other panes/windows
-		NeoBundle 'wellle/tmux-complete.vim'
 		NeoBundle 'edkolev/promptline.vim'
 		NeoBundle 'edkolev/tmuxline.vim'
 		NeoBundle 'tmux-plugins/vim-tmux'
 		NeoBundle 'tmux-plugins/vim-tmux-focus-events'
+		" completions aware of other panes/windows, only when editing git commit messages
+		" TODO: make sure this works. Probably needs an autocmd to load it
+		NeoBundle 'wellle/tmux-complete.vim', { 'autoload': { 'filetypes': 'gitcommit' } }
 " /PLUGINS
 
 call neobundle#end()
