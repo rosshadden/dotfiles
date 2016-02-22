@@ -5,6 +5,20 @@
 set $super Mod4
 set $alt Mod1
 
+set $numTemp 0
+set $numWeb 1
+set $numDev 2
+set $numSync 3
+set $numHack 4
+set $numFiles 5
+set $numMedia 6
+set $numLit 7
+set $numMonitor 8
+set $numRun 9
+set $numChat 10
+set $numLab 11
+set $numGames 12
+
 set $nameTemp temp
 set $nameWeb web
 set $nameDev dev
@@ -169,34 +183,34 @@ bindsym $super+Escape mark LAST; workspace back_and_forth
 bindsym $super+Shift+Escape move to workspace back_and_forth; workspace back_and_forth
 
 # switch to workspace
-bindsym $super+grave        mark LAST; workspace 0 $wsTemp
-bindsym $super+1            mark LAST; workspace 1 $wsWeb
-bindsym $super+2            mark LAST; workspace 2 $wsDev
-bindsym $super+3            mark LAST; workspace 3 $wsSync
-bindsym $super+4            mark LAST; workspace 4 $wsHack
-bindsym $super+5            mark LAST; workspace 5 $wsFiles
-bindsym $super+6            mark LAST; workspace 6 $wsMedia
-bindsym $super+7            mark LAST; workspace 7 $wsLit
-bindsym $super+8            mark LAST; workspace 8 $wsMonitor
-bindsym $super+9            mark LAST; workspace 9 $wsRun
-bindsym $super+0            mark LAST; workspace 10 $wsChat
-bindsym $super+bracketleft  mark LAST; workspace 11 $wsLab
-bindsym $super+bracketright mark LAST; workspace 12 $wsGames
+bindsym $super+grave        mark LAST; workspace $numTemp $wsTemp
+bindsym $super+1            mark LAST; workspace $numWeb $wsWeb
+bindsym $super+2            mark LAST; workspace $numDev $wsDev
+bindsym $super+3            mark LAST; workspace $numSync $wsSync
+bindsym $super+4            mark LAST; workspace $numHack $wsHack
+bindsym $super+5            mark LAST; workspace $numFiles $wsFiles
+bindsym $super+6            mark LAST; workspace $numMedia $wsMedia
+bindsym $super+7            mark LAST; workspace $numLit $wsLit
+bindsym $super+8            mark LAST; workspace $numMonitor $wsMonitor
+bindsym $super+9            mark LAST; workspace $numRun $wsRun
+bindsym $super+0            mark LAST; workspace $numChat $wsChat
+bindsym $super+bracketleft  mark LAST; workspace $numLab $wsLab
+bindsym $super+bracketright mark LAST; workspace $numGames $wsGames
 
 # move focused container to workspace
-bindsym $super+Shift+grave        move container to workspace 0 $wsTemp;    workspace 0 $wsTemp
-bindsym $super+Shift+1            move container to workspace 1 $wsWeb;     workspace 1 $wsWeb
-bindsym $super+Shift+2            move container to workspace 2 $wsDev;     workspace 2 $wsDev
-bindsym $super+Shift+3            move container to workspace 3 $wsSync;    workspace 3 $wsSync
-bindsym $super+Shift+4            move container to workspace 4 $wsHack;    workspace 4 $wsHack
-bindsym $super+Shift+5            move container to workspace 5 $wsFiles;   workspace 5 $wsFiles
-bindsym $super+Shift+6            move container to workspace 6 $wsMedia;   workspace 6 $wsMedia
-bindsym $super+Shift+7            move container to workspace 7 $wsLit;     workspace 7 $wsLit
-bindsym $super+Shift+8            move container to workspace 8 $wsMonitor; workspace 8 $wsMonitor
-bindsym $super+Shift+9            move container to workspace 9 $wsRun;     workspace 9 $wsRun
-bindsym $super+Shift+0            move container to workspace 10 $wsChat;   workspace 10 $wsChat
-bindsym $super+Shift+bracketleft  move container to workspace 11 $wsLab;    workspace 11 $wsLab
-bindsym $super+Shift+bracketright move container to workspace 12 $wsGames;  workspace 12 $wsGames
+bindsym $super+Shift+grave        move container to workspace $numTemp $wsTemp;       workspace $numTemp $wsTemp
+bindsym $super+Shift+1            move container to workspace $numWeb $wsWeb;         workspace $numWeb $wsWeb
+bindsym $super+Shift+2            move container to workspace $numDev $wsDev;         workspace $numDev $wsDev
+bindsym $super+Shift+3            move container to workspace $numSync $wsSync;       workspace $numSync $wsSync
+bindsym $super+Shift+4            move container to workspace $numHack $wsHack;       workspace $numHack $wsHack
+bindsym $super+Shift+5            move container to workspace $numFiles $wsFiles;     workspace $numFiles $wsFiles
+bindsym $super+Shift+6            move container to workspace $numMedia $wsMedia;     workspace $numMedia $wsMedia
+bindsym $super+Shift+7            move container to workspace $numLit $wsLit;         workspace $numLit $wsLit
+bindsym $super+Shift+8            move container to workspace $numMonitor $wsMonitor; workspace $numMonitor $wsMonitor
+bindsym $super+Shift+9            move container to workspace $numRun $wsRun;         workspace $numRun $wsRun
+bindsym $super+Shift+0            move container to workspace $numChat $wsChat;       workspace $numChat $wsChat
+bindsym $super+Shift+bracketleft  move container to workspace $numLab $wsLab;         workspace $numLab $wsLab
+bindsym $super+Shift+bracketright move container to workspace $numGames $wsGames;     workspace $numGames $wsGames
 
 # focus the parent/child container
 bindsym $super+z mark LAST; focus parent
@@ -404,12 +418,12 @@ mode "MARK" {
 		bindsym Shift+z unmark Z; $return
 
 	# reserved
-		bindsym c exec notify-send "Reserved: chat"; $return
+		bindsym c exec notify-send "Reserved: chat";   $return
 		bindsym e exec notify-send "Reserved: editor"; $return
-		bindsym f exec notify-send "Reserved: files"; $return
-		bindsym m exec notify-send "Reserved: music"; $return
-		bindsym v exec notify-send "Reserved: video"; $return
-		bindsym w exec notify-send "Reserved: web"; $return
+		bindsym f exec notify-send "Reserved: files";  $return
+		bindsym m exec notify-send "Reserved: music";  $return
+		bindsym v exec notify-send "Reserved: video";  $return
+		bindsym w exec notify-send "Reserved: web";    $return
 
 	# exit
 		bindsym $super+space mode "PREFIX"
@@ -419,8 +433,8 @@ mode "MARK" {
 
 mode "GOTO" {
 	# by symbol
-		bindsym space mark LAST; [urgent=latest] focus; $return
-		bindsym apostrophe mark LAST; [urgent=latest] focus; $return
+		bindsym space mark LAST;             [urgent=latest] focus; $return
+		bindsym apostrophe mark LAST;        [urgent=latest] focus; $return
 		bindsym $super+apostrophe mark LAST; [urgent=latest] focus; $return
 
 	# by name
@@ -507,19 +521,19 @@ mode "TMUX" {
 
 	# presets
 		# TODO: make these dynamic from the workspace name
-		bindsym grave        mark LAST; workspace 0 $wsTemp;    exec $tmuxAttach $nameTemp";         $return
-		bindsym 1            mark LAST; workspace 1 $wsWeb;     exec $tmuxAttach $nameWeb";          $return
-		bindsym 2            mark LAST; workspace 2 $wsDev;     exec $tmuxAttach $nameDev";          $return
-		bindsym 3            mark LAST; workspace 3 $wsSync;    exec $tmuxAttach $nameSync";         $return
-		bindsym 4            mark LAST; workspace 4 $wsHack;    exec $tmuxAttach $nameHack";         $return
-		bindsym 5            mark LAST; workspace 5 $wsFiles;   exec $tmuxAttach $nameFiles 'vifm'"; $return
-		bindsym 6            mark LAST; workspace 6 $wsMedia;   exec $tmuxAttach $nameMedia";        $return
-		bindsym 7            mark LAST; workspace 7 $wsLit;     exec $tmuxAttach $nameLit";          $return
-		bindsym 8            mark LAST; workspace 8 $wsMonitor; exec $tmuxAttach $nameMonitor";      $return
-		bindsym 9            mark LAST; workspace 9 $wsRun;     exec $tmuxAttach $nameRun";          $return
-		bindsym 0            mark LAST; workspace 10 $wsChat;   exec $tmuxAttach $nameChat";         $return
-		bindsym bracketleft  mark LAST; workspace 11 $wsLab;    exec $tmuxAttach $nameLab";          $return
-		bindsym bracketright mark LAST; workspace 12 $wsGames;  exec $tmuxAttach $nameGames";        $return
+		bindsym grave        mark LAST; workspace $numTemp $wsTemp;       exec $tmuxAttach $nameTemp";         $return
+		bindsym 1            mark LAST; workspace $numWeb $wsWeb;         exec $tmuxAttach $nameWeb";          $return
+		bindsym 2            mark LAST; workspace $numDev $wsDev;         exec $tmuxAttach $nameDev";          $return
+		bindsym 3            mark LAST; workspace $numSync $wsSync;       exec $tmuxAttach $nameSync";         $return
+		bindsym 4            mark LAST; workspace $numHack $wsHack;       exec $tmuxAttach $nameHack";         $return
+		bindsym 5            mark LAST; workspace $numFiles $wsFiles;     exec $tmuxAttach $nameFiles 'vifm'"; $return
+		bindsym 6            mark LAST; workspace $numMedia $wsMedia;     exec $tmuxAttach $nameMedia";        $return
+		bindsym 7            mark LAST; workspace $numLit $wsLit;         exec $tmuxAttach $nameLit";          $return
+		bindsym 8            mark LAST; workspace $numMonitor $wsMonitor; exec $tmuxAttach $nameMonitor";      $return
+		bindsym 9            mark LAST; workspace $numRun $wsRun;         exec $tmuxAttach $nameRun";          $return
+		bindsym 0            mark LAST; workspace $numChat $wsChat;       exec $tmuxAttach $nameChat";         $return
+		bindsym bracketleft  mark LAST; workspace $numLab $wsLab;         exec $tmuxAttach $nameLab";          $return
+		bindsym bracketright mark LAST; workspace $numGames $wsGames;     exec $tmuxAttach $nameGames";        $return
 
 	# TODO: open preset for the current workspace
 
@@ -530,9 +544,9 @@ mode "TMUX" {
 
 mode "SYSTEM" {
 	# power
-	bindsym Shift+r exec "reboot"; $return
-	bindsym Shift+p exec "poweroff"; $return
-	bindsym Shift+s exec "systemctl suspend"; $return
+	bindsym Shift+r exec "reboot";              $return
+	bindsym Shift+p exec "poweroff";            $return
+	bindsym Shift+s exec "systemctl suspend";   $return
 	bindsym Shift+h exec "systemctl hybernate"; $return
 
 	# lock screen
@@ -857,29 +871,29 @@ for_window [class="^Gpick|Pavucontrol$"] floating enable
 for_window [class="^copyq$"] border pixel 0, floating enable
 
 # web
-assign [class="^google-chrome" window_role="browser"] → $wsWeb
+assign [class="^google-chrome" window_role="browser"] → $numWeb $wsWeb
 for_window [title="^Developer Tools"] floating disable
 
 # media
-assign [class="(nuvolaplayer|Spotify|Vlc)"] → $wsMedia
-assign [title="Popcorn Time"] → $wsMedia
-assign [title="Google Play Music" window_role="pop-up"] → $wsMedia
+assign [class="(nuvolaplayer|Spotify|Vlc)"] → $numMedia $wsMedia
+assign [title="Popcorn Time"] → $numMedia $wsMedia
+assign [title="Google Play Music" window_role="pop-up"] → $numMedia $wsMedia
 for_window [class="Vlc"] border none
-for_window [title="Google Play Music" window_role="pop-up"] floating disable, move to workspace 6 $wsMedia
+for_window [title="Google Play Music" window_role="pop-up"] floating disable, move to workspace $numMedia $wsMedia
 
 # lit
-assign [title="(Google Keep|todoist)" window_role="app"] → $wsLit
+assign [title="(Google Keep|todoist)" window_role="app"] → $numLit $wsLit
 
 # games
 for_window [title="Dota 2"] border none
 
 # chat
-assign [class="Pidgin" window_role="(buddy_list|conversation)"] → 10 $wsChat
-assign [class="^Slack$"] → 10 $wsChat
-assign [title="^finch$"] → 10 $wsChat
+assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $numChat $wsChat
+assign [class="^Slack$"] → $numChat $wsChat
+assign [title="^finch$"] → $numChat $wsChat
 
 # monitor
-assign [class="MongoChef"] → $wsMonitor
+assign [class="MongoChef"] → $numMonitor $wsMonitor
 
 
 ################
@@ -887,7 +901,7 @@ assign [class="MongoChef"] → $wsMonitor
 ################
 
 # layouts
-exec --no-startup-id "i3-msg 'workspace 10 $wsChat; append_layout ~/.config/i3/layouts/workspace-10.json'"
+exec --no-startup-id "i3-msg 'workspace $numChat $wsChat; append_layout ~/.config/i3/layouts/workspace-10.json'"
 
 # wallpaper
 exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath
