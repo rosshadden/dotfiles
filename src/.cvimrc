@@ -33,8 +33,8 @@ let hintcharacters = 'aoeusnthidkbpg'
 
 " SCROLLING
 
-" set nosmoothscroll
-" let scrollduration=10
+set smoothscroll
+let scrollduration=10
 
 
 " UI
