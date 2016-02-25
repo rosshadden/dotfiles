@@ -792,6 +792,9 @@ mode "PROJECTS" {
 
 
 mode "APPS" {
+	# todo app -- Todoist
+	bindsym t mark LAST; exec $(gtk-launch chrome-bgjohebimpjdhhocbknplfelpmdhifhd-Default); $return
+
 	# clipboard manager -- copyq
 	# TODO: move to scratchpad
 	bindsym y mark LAST; exec copyq toggle; $return

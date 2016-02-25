@@ -35,6 +35,7 @@ function packages() {
 	antigen use oh-my-zsh
 
 	antigen bundle extract
+	antigen bundle git
 	antigen bundle git-extras
 	antigen bundle systemd
 

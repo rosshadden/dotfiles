@@ -84,6 +84,8 @@
 ## `tmux`
 
 - Raws, Private Investigator
+	- fix prefix not showing in status on first launch
+		- probably because of the vim/airline stuff
 	- figure out why exiting one session sometimes switches to another
 - use `choose-session` to pick a session to link current session to
 
