@@ -136,19 +136,19 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" autoformat support for multiple
 		NeoBundle 'Chiel92/vim-autoformat'
 		" js
-		NeoBundleLazy 'othree/yajs.vim', { 'autoload': { 'filetypes': 'javascript' } }
-		NeoBundleLazy 'othree/javascript-libraries-syntax.vim', { 'autoload': { 'filetypes': 'javascript' } }
-		NeoBundleLazy 'marijnh/tern_for_vim', { 'autoload': { 'filetypes': 'javascript' } }
+		NeoBundleLazy 'othree/yajs.vim', { 'on_ft': 'javascript' }
+		NeoBundleLazy 'othree/javascript-libraries-syntax.vim', { 'on_ft': 'javascript' }
+		NeoBundleLazy 'marijnh/tern_for_vim', { 'on_ft': 'javascript' }
 		" json
-		NeoBundleLazy 'elzr/vim-json', { 'autoload': { 'filetypes': 'json' } }
+		NeoBundleLazy 'elzr/vim-json', { 'on_ft': 'json' }
 		" c#
-		NeoBundleLazy 'OmniSharp/omnisharp-vim', { 'autoload': { 'filetypes': 'cs' } }
+		NeoBundleLazy 'OmniSharp/omnisharp-vim', { 'on_ft': 'cs' }
 		" html5
-		NeoBundleLazy 'othree/html5.vim', { 'autoload': { 'filetypes': 'html' } }
+		NeoBundleLazy 'othree/html5.vim', { 'on_ft': 'html' }
 		" hbs
 		NeoBundle 'mustache/vim-mustache-handlebars'
 		" jsdoc
-		NeoBundleLazy 'heavenshell/vim-jsdoc', { 'autoload': { 'filetypes': 'javascript' } }
+		NeoBundleLazy 'heavenshell/vim-jsdoc', { 'on_ft': 'javascript' }
 		" emmet
 		NeoBundle 'mattn/emmet-vim'
 		" i3 config
@@ -167,14 +167,14 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'markcornick/vim-bats'
 
 	" unite
-		NeoBundle 'Shougo/neomru.vim'
-		NeoBundle 'Shougo/neossh.vim'
-		NeoBundle 'Shougo/tabpagebuffer.vim'
-		NeoBundle 'Shougo/unite-outline'
 		NeoBundle 'Shougo/unite.vim'
-		NeoBundle 'kopischke/unite-spell-suggest'
-		NeoBundle 'thinca/vim-unite-history'
-		NeoBundle 'osyo-manga/unite-quickfix'
+		NeoBundle 'kopischke/unite-spell-suggest', { 'depends': 'Shougo/unite.vim' }
+		NeoBundle 'osyo-manga/unite-quickfix', { 'depends': 'Shougo/unite.vim' }
+		NeoBundle 'Shougo/neomru.vim', { 'depends': 'Shougo/unite.vim' }
+		NeoBundle 'Shougo/neossh.vim', { 'depends': 'Shougo/unite.vim' }
+		NeoBundle 'Shougo/tabpagebuffer.vim', { 'depends': 'Shougo/unite.vim' }
+		NeoBundle 'Shougo/unite-outline', { 'depends': 'Shougo/unite.vim' }
+		NeoBundle 'thinca/vim-unite-history', { 'depends': 'Shougo/unite.vim' }
 
 	" integration
 		" git
@@ -199,8 +199,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'tmux-plugins/vim-tmux'
 		NeoBundle 'tmux-plugins/vim-tmux-focus-events'
 		" completions aware of other panes/windows, only when editing git commit messages
-		" TODO: make sure this works. Probably needs an autocmd to load it
-		NeoBundle 'wellle/tmux-complete.vim', { 'autoload': { 'filetypes': 'gitcommit' } }
+		NeoBundle 'wellle/tmux-complete.vim', { 'on_ft': [ 'gitcommit', 'pandoc' ] }
 " /PLUGINS
 
 call neobundle#end()

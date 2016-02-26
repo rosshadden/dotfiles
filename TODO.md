@@ -33,6 +33,7 @@
 ## `vim`
 
 - add mapping when searching to jump to the result but clear the highlighting
+- figure out where I can use `on_cmd` in `packages.vim`
 - modes
 	- buffer
 		- mapping to delete all unused buffers (not just empty)
