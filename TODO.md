@@ -82,6 +82,13 @@
 - integrate `tp`
 - integrate dunst
 
+### i3-blocks-contrib
+
+- screen brightness
+- fix keyboard block interaction
+- give blocks state
+	- combine `df` instances, and cycle with mousewheel
+
 ## `tmux`
 
 - Raws, Private Investigator
