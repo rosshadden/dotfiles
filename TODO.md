@@ -69,18 +69,21 @@
 
 ## `i3`
 
-- make thing for todoist
+- add clipboard management
 - modes
 	- break out modes into separate files
 		- add a generated help notification for each mode, on `?`
-- locally override settings (namely font size)
 - get current tag
 	- open tmux session for current tag
-- add clipboard management
 - universalize the media/resize/move increments and whatnot
 	- make sure there are mappings for both big and small increments
 - integrate `tp`
 - integrate dunst
+- integrate todoist
+
+## `dunst`
+
+- make context menu entry for copying contents to clipboard
 
 ### i3-blocks-contrib
 
