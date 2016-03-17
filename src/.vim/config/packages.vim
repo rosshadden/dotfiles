@@ -131,6 +131,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		NeoBundle 'Shougo/context_filetype.vim'
 		" async commands
 		NeoBundle 'tpope/vim-dispatch'
+		" fast folding
+		NeoBundle 'Konfekt/FastFold'
 
 	" languages
 		" autoformat support for multiple
