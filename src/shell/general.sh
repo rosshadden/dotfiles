@@ -18,7 +18,9 @@ export HIST_STAMPS=yyyy-mm-dd
 
 goo=$?
 if [[ $goo == 0 ]]; then
-	export PAGER=vimpager
+	if [[ -x /usr/bin/vimpager ]]; then
+		export PAGER=vimpager
+	fi
 	alias less=$PAGER
 	alias zless=$PAGER
 fi
