@@ -1,6 +1,5 @@
-# meta
-dist/
-node_modules/
+# general
+*.dat
 
 # apps
 src/.config/copyq/.copyq_m
@@ -8,16 +7,14 @@ src/.config/copyq/.copyq_s
 src/.config/copyq/copyq-bak.conf
 src/.config/copyq/copyq_geometry.ini
 src/.config/copyq/copyq_tabs.ini
-src/.config/systemd/user/timers.target.wants
+src/.config/ranger/bookmarks
+src/.config/ranger/history
+src/.config/ranger/tagged
 src/.config/systemd/user/default.target.wants
+src/.config/systemd/user/timers.target.wants
 src/.vifm/Trash
 src/.vifm/vifminfo*
 src/.vifm/vimfiles
 src/.vim/spell/*.spl
-
-# themes
 src/themes/promptline.sh
 src/themes/tmuxline.conf
-
-# general
-*.dat
