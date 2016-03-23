@@ -182,6 +182,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		" git
 		NeoBundle 'airblade/vim-gitgutter'
 		NeoBundle 'tpope/vim-fugitive'
+		" editorconfig
+		NeoBundle 'editorconfig/editorconfig-vim'
 		" ag, the silver searcher
 		NeoBundle 'rking/ag.vim'
 		" file managers and terminals
