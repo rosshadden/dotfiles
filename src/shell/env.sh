@@ -20,7 +20,6 @@ export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin
 # ruby (if installed)
 [[ -f /usr/bin/ruby ]] && export PATH="$PATH:`ruby -e 'puts Gem.user_dir'`/bin:$HOME/.rvm/bin"
 
-
 ################
 # APPS
 ################
@@ -37,6 +36,8 @@ export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64
 # fasd
 fpath=($DOTS/src/shell/completions/functions $fpath)
 
+# ranger
+export RANGER_LOAD_DEFAULT_RC=false
 
 ################
 # SETTINGS
