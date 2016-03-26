@@ -170,7 +170,7 @@
 
 	# DIFFING
 
-	df = diff --word-diff
+	dw = diff --word-diff
 	staged = diff --staged --word-diff
 
 

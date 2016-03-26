@@ -118,6 +118,10 @@
 	- checkout tags
 		- the main checkout bind should probably just support tags too
 
+## `ranger`
+
+- make equivalents to `vifm`'s `cw` and `cW`
+
 ## `vifm`
 
 - add support for opening with `vim --servername`, for use with tmux sidebar
@@ -145,14 +149,16 @@
 # shell
 
 - make `for-in` and `for-of` observe aliases
+- add `-n` arg to `copy` to strip out `\n`s
 - add `tcd` function, which `cd`s into a dir and renames the tmux session to that
 	- should possibly share code with `tp` and `ta`, to determine the session name
 - utilize zsh-functional for my wrappers
 - wrap aliases and functions in `if [[ -x \`which <cmd>\` ]]` blocks
-- make piping to `copy` strip out `\n`s
 
 ## zsh
 
+- use [zsh-functional](https://github.com/Tarrasch/zsh-functional) instead of `for-in` and `for-of`
+	- contribute to them, adding things mine do, or at least use them in mine
 - refactor `.zshrc`
 	- modularize
 		- make semantic modules instead of a file for aliases and a file for functions (for example)
