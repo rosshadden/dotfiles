@@ -282,7 +282,7 @@ bindsym XF86Search exec --no-startup-id google-chrome-unstable
 bindsym XF86LaunchA exec --no-startup-id $chooseApp
 
 # file explorer
-bindsym XF86Explorer exec vifm
+bindsym XF86Explorer exec ranger
 
 # touchscreen
 bindsym XF86TouchpadToggle exec "~/bin/config touchpad !"
@@ -489,7 +489,7 @@ mode "GOTO" {
 		# editor
 		bindsym e mark LAST; [class="URxvt" title="VIM"] focus; $return
 		# files
-		bindsym f mark LAST; [class="URxvt" title="vifm"] focus; $return
+		bindsym f mark LAST; [class="URxvt" title="ranger"] focus; $return
 		# music
 		bindsym m mark LAST; [title="(?i)music"] focus; $return
 		# video
@@ -526,7 +526,7 @@ mode "TMUX" {
 		bindsym 2            mark LAST; workspace $numDev $wsDev;         exec $tmuxAttach $nameDev";          $return
 		bindsym 3            mark LAST; workspace $numSync $wsSync;       exec $tmuxAttach $nameSync";         $return
 		bindsym 4            mark LAST; workspace $numHack $wsHack;       exec $tmuxAttach $nameHack";         $return
-		bindsym 5            mark LAST; workspace $numFiles $wsFiles;     exec $tmuxAttach $nameFiles 'vifm'"; $return
+		bindsym 5            mark LAST; workspace $numFiles $wsFiles;     exec $tmuxAttach $nameFiles 'ranger'"; $return
 		bindsym 6            mark LAST; workspace $numMedia $wsMedia;     exec $tmuxAttach $nameMedia";        $return
 		bindsym 7            mark LAST; workspace $numLit $wsLit;         exec $tmuxAttach $nameLit";          $return
 		bindsym 8            mark LAST; workspace $numMonitor $wsMonitor; exec $tmuxAttach $nameMonitor";      $return

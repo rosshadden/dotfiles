@@ -84,10 +84,6 @@
 - integrate dunst
 - integrate todoist
 
-## `dunst`
-
-- make context menu entry for copying contents to clipboard
-
 ### i3-blocks-contrib
 
 - screen brightness
@@ -120,6 +116,7 @@
 
 ## `ranger`
 
+- add `shred` mapping to delete menu
 - make equivalents to `vifm`'s `cw` and `cW`
 
 ## `vifm`
@@ -145,6 +142,10 @@
 
 - integrate into workflow
 - figure out wtf keeps going wrong with the i3 shortcut, and fix it
+
+## `dunst`
+
+- make context menu entry for copying contents to clipboard
 
 # shell
 
