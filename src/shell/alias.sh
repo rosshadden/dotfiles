@@ -111,5 +111,5 @@ if [[ $(getShell) == 'zsh' ]]; then
 	alias -s git="git clone"
 
 	# open PDFs
-	alias -s pdf=evince
+	alias -s pdf="evince"
 fi

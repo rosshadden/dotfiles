@@ -5,6 +5,7 @@
 - look into [these dotfiles](https://github.com/xero/dotfiles) for sexiness
 - README
 	- screenshots
+- make `update` announce uncommitted changes in `dotfiles` and `sync`
 
 # build
 

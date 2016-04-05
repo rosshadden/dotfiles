@@ -23,6 +23,18 @@ isCommand() {
 	command -v $1 >/dev/null 2>&1
 }
 
+color() {
+	stdin="$(ls -l /proc/self/fd/0)"
+	stdin="${stdin/*-> /}"
+
+	# TODO: abstract hasPipe function
+	if [[ "$stdin" =~ ^/dev/pts/[0-9] ]]; then
+		highlight -O xterm256 "$@"
+	else
+		echo "$(cat -)" | highlight -O xterm256
+	fi
+}
+
 ##
 # Get current shell
 #
