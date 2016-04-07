@@ -3,10 +3,10 @@
 	url = https://github.com/Shougo/neobundle.vim
 [submodule "src/.config/i3/i3-blocks-contrib"]
 	path = src/.config/i3/i3-blocks-contrib
-	url = git@github.com:acleverpun/i3-blocks-contrib.git
+	url = https://github.com/acleverpun/i3-blocks-contrib.git
 [submodule "src/themes/base16-builder"]
 	path = src/themes/base16-builder
-	url = git@github.com:chriskempson/base16-builder.git
+	url = https://github.com/chriskempson/base16-builder.git
 [submodule "src/shell/antigen"]
 	path = src/shell/antigen
 	url = https://github.com/zsh-users/antigen.git

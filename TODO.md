@@ -1,23 +1,22 @@
 # meta
 
-- add `.editorconfig`
-- trim down as much fat as possible, such as things I don't use anymore
+- trim down as much fat as possible
 - look into [these dotfiles](https://github.com/xero/dotfiles) for sexiness
 - README
 	- screenshots
 - make `update` announce uncommitted changes in `dotfiles` and `sync`
 
-# build
+## install
 
-- vet using a `Makefile`
-- clone `tpm` (tmux plugin manager) and other dependencies
-- call `./src/lib/update.sh` from systemd service
 - support arguments
 	- anonymous install
 		- no git ssh keys
 		- no reference to me
 		- no .gitconfig
 	- CLI-only, non-X mode (no need to install i3 things on a server, for example)
+- vet using a `Makefile`
+- clone `tpm` (tmux plugin manager) and other dependencies
+- call `./src/lib/update.sh` from systemd service
 - possibly make a (generated?) manifest file, to make cleanup easier
 
 # docs

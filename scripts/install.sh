@@ -1,35 +1,30 @@
 #!/usr/bin/env bash
 
-################
-# SETUP
-################
+function install() {
+	local task=$1
 
-task=$1
+	# TODO: make this an optional, defaulted argument
+	local DOTS=$HOME/dotfiles
 
-shopt -s extglob
+	echo "Initializing git submodules."
+	git submodule init
+	git submodule update
 
-################
-# VARIABLES
-################
+	echo "Linking dotfiles to $HOME"
+	echo
+	for file in $DOTS/src/{*,.[^.]*}; do
+		local name=$(basename $file)
 
-DOTS=$HOME/dotfiles
+		if [[ "$name" == "shell" ]]; then continue; fi
+		if [[ "$name" == "themes" ]]; then continue; fi
+		if [[ "$name" =~ ".swp" ]]; then continue; fi
 
-################
-# INIT
-################
+		ln -s $file $HOME/
+	done
+	echo
 
-git submodule init
-git submodule update
+	echo "Linking config files to $XDG_CONFIG_HOME"
+	ln -s $DOTS/src/.config/* $XDG_CONFIG_HOME/
+}
 
-################
-# SYMLINKS
-################
-
-ln -s $DOTS/src/!(.config) $HOME/
-ln -s $DOTS/src/.config/* $HOME/.config/
-
-################
-# CLEANUP
-################
-
-shopt -u extglob
+install $1

@@ -792,6 +792,9 @@ mode "PROJECTS" {
 
 
 mode "APPS" {
+	# music -- Google Music
+	bindsym m mark LAST; exec $(gtk-launch nuvolaplayer3-google-play-music); $return
+
 	# todo app -- Todoist
 	bindsym t mark LAST; exec $(gtk-launch chrome-bgjohebimpjdhhocbknplfelpmdhifhd-Default); $return
 
