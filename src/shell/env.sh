@@ -47,7 +47,7 @@ export EDITOR=vim
 
 export VISUAL=gvim
 
-export BROWSER=google-chrome-unstable
+export BROWSER=google-chrome-stable
 
 [[ -f /usr/bin/termite ]] && export TERMINAL=termite || export TERMINAL=xterm
 

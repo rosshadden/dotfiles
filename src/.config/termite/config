@@ -1,5 +1,6 @@
 [options]
-font = Fantasque Sans Mono 18
+font = Fantasque Sans Mono 12
+scrollback_lines = 100000
 
 [colors]
 background = rgba(63, 24, 100, 0.5)
