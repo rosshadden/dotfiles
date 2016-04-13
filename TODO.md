@@ -5,6 +5,7 @@
 - README
 	- screenshots
 - make `update` announce uncommitted changes in `dotfiles` and `sync`
+- swap `~/{bin,lib}` and `~/local/{bin,lib}`
 
 ## install
 

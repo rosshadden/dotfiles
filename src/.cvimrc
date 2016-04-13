@@ -94,6 +94,8 @@ map dd closeTab
 
 map u lastClosedTab
 
+map gD :duplicate<CR>
+
 map <Leader>r reloadTab
 map <Leader>R reloadTabUncached
 map <Leader><Leader>r reloadAllTabs
