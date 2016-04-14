@@ -7,8 +7,7 @@ function install() {
 	local DOTS=$HOME/dotfiles
 
 	echo "Initializing git submodules."
-	git submodule init
-	git submodule update
+	git submodule update --init --remote --recursive
 
 	echo "Linking dotfiles to $HOME"
 	echo
