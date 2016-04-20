@@ -9,6 +9,11 @@ function init() {
 }
 
 function link() {
+	echo "Linking {bin,lib} to $HOME"
+	echo
+		ln -s $dotsPath/{bin,lib} $HOME
+	echo
+
 	echo "Linking dotfiles to $HOME"
 	echo
 	for file in $dotsPath/src/{,.[^.]}*; do
