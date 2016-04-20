@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-DOTS=$1
+dotsPath="${1:-$HOME/dotfiles}"
+configPath="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 function init() {
 	echo "Initializing git submodules."
@@ -10,7 +11,7 @@ function init() {
 function link() {
 	echo "Linking dotfiles to $HOME"
 	echo
-	for file in $DOTS/src/{*,.[^.]*}; do
+	for file in $dotsPath/src/{,.[^.]}*; do
 		local name=$(basename $file)
 
 		# linking blacklist
@@ -22,8 +23,8 @@ function link() {
 	done
 	echo
 
-	echo "Linking config files to $XDG_CONFIG_HOME"
-	ln -s $DOTS/src/.config/* $XDG_CONFIG_HOME/
+	echo "Linking config files to $configPath"
+	ln -s $dotsPath/src/.config/* $configPath/
 }
 
 init

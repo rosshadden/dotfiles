@@ -1,5 +1,6 @@
 " line numbers
 set number
+set relativenumber
 
 " highlight search results
 set hlsearch
