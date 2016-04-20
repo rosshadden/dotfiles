@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 
-function install() {
-	local task=$1
+DOTS=$1
 
-	# TODO: make this an optional, defaulted argument
-	local DOTS=$HOME/dotfiles
-
+function init() {
 	echo "Initializing git submodules."
 	git submodule update --init --remote --recursive
+}
 
+function link() {
 	echo "Linking dotfiles to $HOME"
 	echo
 	for file in $DOTS/src/{*,.[^.]*}; do
 		local name=$(basename $file)
 
+		# linking blacklist
 		if [[ "$name" == "shell" ]]; then continue; fi
 		if [[ "$name" == "themes" ]]; then continue; fi
 		if [[ "$name" =~ ".swp" ]]; then continue; fi
@@ -26,4 +26,5 @@ function install() {
 	ln -s $DOTS/src/.config/* $XDG_CONFIG_HOME/
 }
 
-install $1
+init
+link

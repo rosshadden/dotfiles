@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-# TODO: make path better
+# TODO: use the output of `dots/status.sh` to only do what's necessary
+
 # TODO: fix broken refs from sourcing this file
 source ~/dotfiles/src/shell/features.zsh
 
@@ -68,7 +69,7 @@ lawg "sync:repo"
 
 # update submodules
 lawg "sync:submodules"
-git submodule update --init --remote --merge --recursive
+git submodule update --init --remote --recursive
 lawg "sync:submodules"
 
 popd

@@ -9,16 +9,16 @@ export PATH=$HOME/bin:$HOME/local/bin
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin
 
 # perl (if installed)
-[[ -f /usr/bin/perl ]] && export PATH=$PATH:/usr/bin/core_perl
+[[ -f "/usr/bin/perl" ]] && export PATH=$PATH:/usr/bin/core_perl
 
 # java (if installed)
-[[ -f /usr/bin/java ]] && export PATH=$PATH:$JAVA_HOME/bin
+[[ -f "/usr/bin/java" ]] && export PATH=$PATH:$JAVA_HOME/bin
 
 # android (if installed)
-[[ -d $ANDROID_HOME ]] && export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+[[ -d "$ANDROID_HOME" ]] && export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 # ruby (if installed)
-[[ -f /usr/bin/ruby ]] && export PATH="$PATH:`ruby -e 'puts Gem.user_dir'`/bin:$HOME/.rvm/bin"
+[[ -f "/usr/bin/ruby" ]] && export PATH="$PATH:`ruby -e 'puts Gem.user_dir'`/bin:$HOME/.rvm/bin"
 
 ################
 # APPS
@@ -49,7 +49,7 @@ export VISUAL=gvim
 
 export BROWSER=google-chrome-stable
 
-[[ -f /usr/bin/termite ]] && export TERMINAL=termite || export TERMINAL=xterm
+[[ -f "/usr/bin/termite" ]] && export TERMINAL=termite || export TERMINAL=xterm
 
 export DEFAULT_USER=$USER
 
