@@ -15,6 +15,7 @@ function link() {
 		local name=$(basename $file)
 
 		# linking blacklist
+		if [[ "$name" == ".config" ]]; then continue; fi
 		if [[ "$name" == "shell" ]]; then continue; fi
 		if [[ "$name" == "themes" ]]; then continue; fi
 		if [[ "$name" =~ ".swp" ]]; then continue; fi
