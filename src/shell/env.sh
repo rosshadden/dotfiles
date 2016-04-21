@@ -26,6 +26,7 @@ export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin
 
 # nodejs
 export N_PREFIX=~/local
+
 # java
 export JAVA_HOME=/usr/lib/jvm/default
 

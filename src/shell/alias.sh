@@ -87,9 +87,9 @@ tj() {
 # FUN
 ################
 
-if [[ -x `which nc` ]]; then
+if [[ -f /usr/bin/nc ]]; then
   alias nyan='nc -v nyancat.dakko.us 23' # nyan cat
-elif [[ -x `which telnet` ]]; then
+elif [[ -f /usr/bin/telnet ]]; then
 	alias nyan='telnet -e ^c nyancat.dakko.us'
 fi
 
