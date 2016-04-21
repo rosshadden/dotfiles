@@ -6,6 +6,9 @@ configPath="${XDG_CONFIG_HOME:-$HOME/.config}"
 function init() {
 	echo "Initializing git submodules."
 	git submodule update --init --remote --recursive
+
+	echo "Initializing tpm."
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
 
 function link() {

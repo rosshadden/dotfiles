@@ -10,15 +10,11 @@
 ## install
 
 - support arguments
-	- anonymous install
-		- no git ssh keys
-		- no reference to me
-		- no .gitconfig
-	- CLI-only, non-X mode (no need to install i3 things on a server, for example)
+	-- `--anon`
+	- `--cli`: non-X mode (no need to install i3 things on a server, for example)
 - vet using a `Makefile`
-- clone `tpm` (tmux plugin manager) and other dependencies
-- call `./src/lib/update.sh` from systemd service
-- possibly make a (generated?) manifest file, to make cleanup easier
+- call `dots update` from systemd service
+- possibly make a (generated? githook?) manifest file, to make cleanup easier
 
 # docs
 
