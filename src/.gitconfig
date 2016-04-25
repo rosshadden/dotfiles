@@ -93,18 +93,17 @@
 	a = "!git add"
 	b = "!git branch"
 	c = "!git commit"
+	cl = "!git clone --recursive"
+	co = "!git checkout"
 	d = "!git diff"
-	f = "!git fetch -p --tags"
+	f = "!git fetch -p --tags --all --jobs=4"
 	i = "!git in"
 	m = "!git merge"
 	o = "!git out"
 	r = "!git remote"
+	rb = "!git rebase"
 	s = "!git status -sb"
 	t = "!git tag"
-	cl = "!git clone --recursive"
-	co = "!git checkout"
-	rb = "!git rebase"
-	sh = "!git show"
 
 
 	# SYNCING
@@ -118,10 +117,11 @@
 	# PLURALITY
 
 	tags = "!git tag -l | sort -V"
-	branches = branch -r
-	branches-merged = branch --merged
-	branches-unmerged = branch --no-merged
-	remotes = remote -v
+	branches = "!sh -c 'git branch | cut -c 3-' -"
+	branches-remote = "!sh -c 'git branch -r | cut -c 3- | tail -n+2' -"
+	branches-merged = "!sh -c 'git branch --merged | cut -c 3-' -"
+	branches-unmerged = "!sh -c 'git branch --no-merged | cut -c 3-' -"
+	remotes = "!sh -c 'git remote -v | sed \"0~2d\"' -"
 	submodules = "!git submodule status | gawk '{ print ($2 " " $3) }' | column -t"
 
 

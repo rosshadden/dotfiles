@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 # TODO: use the output of `dots/status.sh` to only do what's necessary
+# TODO: port to bash
 
 # TODO: fix broken refs from sourcing this file
 source ~/dotfiles/src/shell/features.zsh
