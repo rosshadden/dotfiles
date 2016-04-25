@@ -51,7 +51,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 	" motions
 		" gahdlike navigation
-		NeoBundle 'rosshadden/vim-easymotion', { 'rev': 'feature/motions-with-tabs' }
+		NeoBundle 'easymotion/vim-easymotion'
 		" many useful text objects
 		NeoBundle 'wellle/targets.vim'
 		" indents [ii, ai]

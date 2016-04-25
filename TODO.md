@@ -1,5 +1,7 @@
 # meta
 
+- add an install script to `hadden.family`, for easy remembrance and use anywhere
+- add `.editorconfig`
 - trim down as much fat as possible
 - look into [these dotfiles](https://github.com/xero/dotfiles) for sexiness
 - README
