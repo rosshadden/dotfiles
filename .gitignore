@@ -8,6 +8,8 @@ src/.config/copyq/.copyq_s
 src/.config/copyq/copyq-bak.conf
 src/.config/copyq/copyq_geometry.ini
 src/.config/copyq/copyq_tabs.ini
+src/.config/nvim/.init.vim-rplugin~
+src/.config/nvim/dein
 src/.config/ranger/bookmarks
 src/.config/ranger/history
 src/.config/ranger/tagged
@@ -19,4 +21,3 @@ src/.vifm/vimfiles
 src/.vim/spell/*.spl
 src/themes/promptline.sh
 src/themes/tmuxline.conf
-src/.vim/dein
