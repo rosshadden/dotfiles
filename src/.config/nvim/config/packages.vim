@@ -1,7 +1,7 @@
 " Disable vi-compatibility
 set nocompatible
 
-if has ('vim_starting')
+if has('vim_starting')
 	set runtimepath^=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 endif
 
@@ -26,13 +26,15 @@ call dein#begin(expand('~/.config/nvim/dein'))
 	" enhancements
 
 	" sensible default settings
-	call dein#add('tpope/vim-sensible')
+	if !has('nvim')
+		call dein#add('tpope/vim-sensible')
+	endif
 	" let `.` repeat things like plugin mappings
 	call dein#add('tpope/vim-repeat')
 	" let `.` repeat things in visual mode
 	call dein#add('vim-scripts/visualrepeat')
 	" completions in insert mode
-	if has ('nvim')
+	if has('nvim')
 		call dein#add('Shougo/deoplete.nvim')
 	else
 		call dein#add('Shougo/neocomplete.vim')
