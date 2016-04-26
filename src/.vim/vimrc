@@ -1,11 +1,19 @@
-" initialize
-runtime! config/init.vim
+if &compatible
+	set nocompatible
+endif
 
-" load packages
+" let &termencoding = &encoding
+" set encoding=utf-8
+
+filetype plugin indent on
+" remove all `autocmd`s
+autocmd!
+
+" PACKAGES
 runtime! config/packages.vim
 
-" load settings
+" SETTINGS
 runtime! config/functions.vim config/prefixes.vim config/settings.vim config/mappings.vim config/misc.vim
 
-" load modules
+" MODULES
 runtime! config/modules/**/*.vim config/languages/**/*.vim config/plugins/**/*.vim

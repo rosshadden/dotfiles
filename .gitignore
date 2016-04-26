@@ -1,5 +1,6 @@
 # general
 *.dat
+*.swp
 
 # apps
 src/.config/copyq/.copyq_m
@@ -18,3 +19,4 @@ src/.vifm/vimfiles
 src/.vim/spell/*.spl
 src/themes/promptline.sh
 src/themes/tmuxline.conf
+src/.vim/dein

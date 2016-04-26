@@ -44,7 +44,7 @@ export RANGER_LOAD_DEFAULT_RC=false
 # SETTINGS
 ################
 
-export EDITOR=vim
+export EDITOR=nvim
 
 export VISUAL=gvim
 

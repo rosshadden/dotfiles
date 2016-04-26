@@ -2,211 +2,222 @@
 set nocompatible
 
 if has ('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
+	set runtimepath^=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
-
 " PLUGINS
-	" Let NeoBundle manage NeoBundle
-	NeoBundleFetch 'Shougo/neobundle.vim'
 
-	NeoBundle 'Shougo/vimproc.vim', {
-		\ 'build' : {
-			\ 'windows' : 'tools\\update-dll-mingw',
-			\ 'cygwin' : 'make -f make_cygwin.mak',
-			\ 'mac' : 'make -f make_mac.mak',
-			\ 'unix' : 'make -f make_unix.mak',
-		\ }
-	\ }
+call dein#begin(expand('~/.config/nvim/dein'))
+	" Let dein manage dein
+	call dein#add('Shougo/dein.vim')
+
+	" core
+
+	call dein#add('Shougo/vimproc.vim', { 'build': 'make' })
 
 	" libraries
-		NeoBundle 'vim-scripts/ingo-library'
-		NeoBundle 'kana/vim-textobj-user'
-		NeoBundle 'kana/vim-operator-user'
-		NeoBundle 'dbakker/vim-projectroot'
-		NeoBundle 'xolox/vim-misc'
+
+	call dein#add('vim-scripts/ingo-library')
+	call dein#add('kana/vim-textobj-user')
+	call dein#add('kana/vim-operator-user')
+	call dein#add('dbakker/vim-projectroot')
+	call dein#add('xolox/vim-misc')
 
 	" enhancements
-		" sensible default settings
-		NeoBundle 'tpope/vim-sensible'
-		" let `.` repeat things like plugin mappings
-		NeoBundle 'tpope/vim-repeat'
-		" let `.` repeat things in visual mode
-		NeoBundle 'vim-scripts/visualrepeat'
-		" completions in insert mode
-		NeoBundle 'Shougo/neocomplete.vim'
-		" <tab>-complete in the search prompt
-		NeoBundle 'SearchComplete'
-		" search with perl regex
-		NeoBundle 'othree/eregex.vim'
-		" readline-style insersion
-		NeoBundle 'tpope/vim-rsi'
-		" let <c-a>/<c-x> increment dates
-		NeoBundle 'tpope/vim-speeddating'
-		" let <c-a>/<c-x> toggle certain words
-		NeoBundle 'mjbrownie/swapit'
-		" load local .lvimrc files
-		NeoBundle 'embear/vim-localvimrc'
+
+	" sensible default settings
+	call dein#add('tpope/vim-sensible')
+	" let `.` repeat things like plugin mappings
+	call dein#add('tpope/vim-repeat')
+	" let `.` repeat things in visual mode
+	call dein#add('vim-scripts/visualrepeat')
+	" completions in insert mode
+	if has ('nvim')
+		call dein#add('Shougo/deoplete.nvim')
+	else
+		call dein#add('Shougo/neocomplete.vim')
+	endif
+	" <tab>-complete in the search prompt
+	call dein#add('SearchComplete')
+	" search with perl regex
+	call dein#add('othree/eregex.vim')
+	" readline-style insersion
+	call dein#add('tpope/vim-rsi')
+	" let <c-a>/<c-x> increment dates
+	call dein#add('tpope/vim-speeddating')
+	" let <c-a>/<c-x> toggle certain words
+	call dein#add('mjbrownie/swapit')
+	" load local .lvimrc files
+	call dein#add('embear/vim-localvimrc')
 
 	" motions
-		" gahdlike navigation
-		NeoBundle 'easymotion/vim-easymotion'
-		" many useful text objects
-		NeoBundle 'wellle/targets.vim'
-		" indents [ii, ai]
-		NeoBundle 'kana/vim-textobj-indent'
-		" lines [ir, ar]
-		NeoBundle 'kana/vim-textobj-line'
-		" entire buffer [ie, ae]
-		NeoBundle 'kana/vim-textobj-entire'
-		" variable segment [iv, av]
-		NeoBundle 'Julian/vim-textobj-variable-segment'
-		" pasted text [gb]
-		NeoBundle 'saaguero/vim-textobj-pastedtext'
-		" camelCase
-		NeoBundle 'bkad/CamelCaseMotion'
+
+	" gahdlike navigation
+	call dein#add('easymotion/vim-easymotion')
+	" many useful text objects
+	call dein#add('wellle/targets.vim')
+	" indents [ii, ai]
+	call dein#add('kana/vim-textobj-indent')
+	" lines [ir, ar]
+	call dein#add('kana/vim-textobj-line')
+	" entire buffer [ie, ae]
+	call dein#add('kana/vim-textobj-entire')
+	" variable segment [iv, av]
+	call dein#add('Julian/vim-textobj-variable-segment')
+	" pasted text [gb]
+	call dein#add('saaguero/vim-textobj-pastedtext')
+	" camelCase
+	call dein#add('bkad/CamelCaseMotion')
 
 	" operators
-		" put in <motion> *mutters under breath*
-		NeoBundle 'kana/vim-operator-replace'
-		" sort
-		NeoBundle 'christoomey/vim-sort-motion'
+
+	" put in <motion> *mutters under breath*
+	call dein#add('kana/vim-operator-replace')
+	" sort
+	call dein#add('christoomey/vim-sort-motion')
 
 	" features
-		" interact with surroundings
-		NeoBundle 'tpope/vim-surround'
-		" snippets
-		NeoBundle 'Shougo/neosnippet.vim'
-		NeoBundle 'Shougo/neosnippet-snippets'
-		" delimiter closing
-		NeoBundle 'Raimondi/delimitMate'
-		" sessions
-		NeoBundle 'xolox/vim-session'
-		" projects
-		NeoBundle 'dsawardekar/portkey'
-		NeoBundle 'dsawardekar/ember.vim'
-		" swap windows
-		NeoBundle 'wesQ3/vim-windowswap'
-		" language-aware line splits/joins
-		NeoBundle 'AndrewRadev/splitjoin.vim'
-		" comments
-		NeoBundle 'tpope/vim-commentary'
-		NeoBundle 'scrooloose/nerdcommenter'
-		" settings toggles and symmetrical before/after mappings
-		NeoBundle 'tpope/vim-unimpaired'
-		" visualized undo tree
-		NeoBundle 'sjl/gundo.vim'
-		" multiple cursors
-		NeoBundle 'terryma/vim-multiple-cursors'
-		" diff two selections
-		NeoBundle 'AndrewRadev/linediff.vim'
-		" linter
-		NeoBundle 'scrooloose/syntastic'
+
+	" interact with surroundings
+	call dein#add('tpope/vim-surround')
+	" snippets
+	call dein#add('Shougo/neosnippet.vim')
+	call dein#add('Shougo/neosnippet-snippets')
+	" delimiter closing
+	call dein#add('Raimondi/delimitMate')
+	" sessions
+	call dein#add('xolox/vim-session')
+	" projects
+	call dein#add('dsawardekar/portkey')
+	call dein#add('dsawardekar/ember.vim')
+	" swap windows
+	call dein#add('wesQ3/vim-windowswap')
+	" language-aware line splits/joins
+	call dein#add('AndrewRadev/splitjoin.vim')
+	" comments
+	call dein#add('tpope/vim-commentary')
+	call dein#add('scrooloose/nerdcommenter')
+	" settings toggles and symmetrical before/after mappings
+	call dein#add('tpope/vim-unimpaired')
+	" visualized undo tree
+	call dein#add('sjl/gundo.vim')
+	" multiple cursors
+	call dein#add('terryma/vim-multiple-cursors')
+	" diff two selections
+	call dein#add('AndrewRadev/linediff.vim')
+	" linter
+	call dein#add('scrooloose/syntastic')
 
 
 	" files
-		" file trees for people that like file trees
-		NeoBundle 'Shougo/vimfiler.vim'
+
+	" file trees for people that like file trees
+	call dein#add('Shougo/vimfiler.vim')
 
 	" UI
-		NeoBundle 'vim-airline/vim-airline'
-		NeoBundle 'vim-airline/vim-airline-themes'
-		NeoBundle 'paranoida/vim-airlineish'
-		" colors
-		NeoBundle 'chriskempson/base16-vim'
-		" indent guides
-		NeoBundle 'nathanaelkane/vim-indent-guides'
-		" resize windows
-		NeoBundle 'talek/obvious-resize'
+
+	call dein#add('vim-airline/vim-airline')
+	call dein#add('vim-airline/vim-airline-themes')
+	call dein#add('paranoida/vim-airlineish')
+	" colors
+	call dein#add('chriskempson/base16-vim')
+	" indent guides
+	call dein#add('nathanaelkane/vim-indent-guides')
+	" resize windows
+	call dein#add('talek/obvious-resize')
 
 	" utils
-		" auto-detect indent settings
-		NeoBundle 'tpope/vim-sleuth'
-		" show trailing whitespace, and provide a command to clean it
-		NeoBundle 'ntpeters/vim-better-whitespace'
-		" retab spaces => tabs, and vice versa
-		NeoBundle 'rhlobo/vim-super-retab'
-		" context-filetype awareness
-		NeoBundle 'Shougo/context_filetype.vim'
-		" async commands
-		NeoBundle 'tpope/vim-dispatch'
-		" fast folding
-		NeoBundle 'Konfekt/FastFold'
+
+	" auto-detect indent settings
+	call dein#add('tpope/vim-sleuth')
+	" show trailing whitespace, and provide a command to clean it
+	call dein#add('ntpeters/vim-better-whitespace')
+	" retab spaces => tabs, and vice versa
+	call dein#add('rhlobo/vim-super-retab')
+	" context-filetype awareness
+	call dein#add('Shougo/context_filetype.vim')
+	" async commands
+	call dein#add('tpope/vim-dispatch')
+	" fast folding
+	call dein#add('Konfekt/FastFold')
 
 	" languages
-		" autoformat support for multiple
-		NeoBundle 'Chiel92/vim-autoformat'
-		" js
-		NeoBundleLazy 'othree/yajs.vim', { 'on_ft': 'javascript' }
-		NeoBundleLazy 'othree/javascript-libraries-syntax.vim', { 'on_ft': 'javascript' }
-		NeoBundleLazy 'marijnh/tern_for_vim', { 'on_ft': 'javascript' }
-		" json
-		NeoBundleLazy 'elzr/vim-json', { 'on_ft': 'json' }
-		" c#
-		NeoBundleLazy 'OmniSharp/omnisharp-vim', { 'on_ft': 'cs' }
-		" html5
-		NeoBundleLazy 'othree/html5.vim', { 'on_ft': 'html' }
-		" hbs
-		NeoBundle 'mustache/vim-mustache-handlebars'
-		" jsdoc
-		NeoBundleLazy 'heavenshell/vim-jsdoc', { 'on_ft': 'javascript' }
-		" emmet
-		NeoBundle 'mattn/emmet-vim'
-		" i3 config
-		NeoBundle 'PotatoesMaster/i3-vim-syntax'
-		" stylus
-		NeoBundle 'wavded/vim-stylus'
-		" LaTeX
-		NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
-		" markdown
-		NeoBundle 'godlygeek/tabular'
-		NeoBundle 'shime/vim-livedown'
-		NeoBundle 'vim-pandoc/vim-pandoc'
-		NeoBundle 'vim-pandoc/vim-pandoc-syntax'
-		" emblem
-		NeoBundle 'heartsentwined/vim-emblem'
-		NeoBundle 'markcornick/vim-bats'
+
+	" autoformat support for multiple
+	call dein#add('Chiel92/vim-autoformat')
+	" js
+	call dein#add('othree/yajs.vim', { 'lazy': 1, 'on_ft': 'javascript' })
+	call dein#add('othree/javascript-libraries-syntax.vim', { 'lazy': 1, 'on_ft': 'javascript' })
+	call dein#add('marijnh/tern_for_vim', { 'lazy': 1, 'on_ft': 'javascript' })
+	" json
+	call dein#add('elzr/vim-json', { 'lazy': 1, 'on_ft': 'json' })
+	" c#
+	call dein#add('OmniSharp/omnisharp-vim', { 'lazy': 1, 'on_ft': 'cs' })
+	" html5
+	call dein#add('othree/html5.vim', { 'lazy': 1, 'on_ft': 'html' })
+	" hbs
+	call dein#add('mustache/vim-mustache-handlebars')
+	" jsdoc
+	call dein#add('heavenshell/vim-jsdoc', { 'lazy': 1, 'on_ft': 'javascript' })
+	" emmet
+	call dein#add('mattn/emmet-vim')
+	" i3 config
+	call dein#add('PotatoesMaster/i3-vim-syntax')
+	" stylus
+	call dein#add('wavded/vim-stylus')
+	" LaTeX
+	call dein#add('LaTeX-Box-Team/LaTeX-Box')
+	" markdown
+	call dein#add('godlygeek/tabular')
+	call dein#add('shime/vim-livedown')
+	call dein#add('vim-pandoc/vim-pandoc')
+	call dein#add('vim-pandoc/vim-pandoc-syntax')
+	" emblem
+	call dein#add('heartsentwined/vim-emblem')
+	call dein#add('markcornick/vim-bats')
 
 	" unite
-		NeoBundle 'Shougo/unite.vim'
-		NeoBundle 'kopischke/unite-spell-suggest', { 'depends': 'Shougo/unite.vim' }
-		NeoBundle 'osyo-manga/unite-quickfix', { 'depends': 'Shougo/unite.vim' }
-		NeoBundle 'Shougo/neomru.vim', { 'depends': 'Shougo/unite.vim' }
-		NeoBundle 'Shougo/neossh.vim', { 'depends': 'Shougo/unite.vim' }
-		NeoBundle 'Shougo/tabpagebuffer.vim', { 'depends': 'Shougo/unite.vim' }
-		NeoBundle 'Shougo/unite-outline', { 'depends': 'Shougo/unite.vim' }
-		NeoBundle 'thinca/vim-unite-history', { 'depends': 'Shougo/unite.vim' }
+
+	call dein#add('Shougo/unite.vim')
+	call dein#add('kopischke/unite-spell-suggest', { 'depends': 'Shougo/unite.vim' })
+	call dein#add('osyo-manga/unite-quickfix', { 'depends': 'Shougo/unite.vim' })
+	call dein#add('Shougo/neomru.vim', { 'depends': 'Shougo/unite.vim' })
+	call dein#add('Shougo/neossh.vim', { 'depends': 'Shougo/unite.vim' })
+	call dein#add('Shougo/tabpagebuffer.vim', { 'depends': 'Shougo/unite.vim' })
+	call dein#add('Shougo/unite-outline', { 'depends': 'Shougo/unite.vim' })
+	call dein#add('thinca/vim-unite-history', { 'depends': 'Shougo/unite.vim' })
 
 	" integration
-		" git
-		NeoBundle 'airblade/vim-gitgutter'
-		NeoBundle 'tpope/vim-fugitive'
-		" editorconfig
-		NeoBundle 'editorconfig/editorconfig-vim'
-		" ag, the silver searcher
-		NeoBundle 'rking/ag.vim'
-		" file managers and terminals
-		NeoBundle 'justinmk/vim-gtfo'
-		" vifm
-		NeoBundle 'vifm/vifm.vim'
-		" taskwarrior
-		NeoBundle 'farseer90718/vim-taskwarrior'
-		" zeal
-		NeoBundle 'KabbAmine/zeavim.vim'
+
+	" git
+	call dein#add('airblade/vim-gitgutter')
+	call dein#add('tpope/vim-fugitive')
+	" editorconfig
+	call dein#add('editorconfig/editorconfig-vim')
+	" ag, the silver searcher
+	call dein#add('rking/ag.vim')
+	" file managers and terminals
+	call dein#add('justinmk/vim-gtfo')
+	" vifm
+	call dein#add('vifm/vifm.vim')
+	" taskwarrior
+	call dein#add('farseer90718/vim-taskwarrior')
+	" zeal
+	call dein#add('KabbAmine/zeavim.vim')
 
 	" external
-		" seamless vim/tmux navigation
-		NeoBundle 'christoomey/vim-tmux-navigator'
-		NeoBundle 'edkolev/promptline.vim'
-		NeoBundle 'edkolev/tmuxline.vim'
-		NeoBundle 'tmux-plugins/vim-tmux'
-		NeoBundle 'tmux-plugins/vim-tmux-focus-events'
-		" completions aware of other panes/windows, only when editing git commit messages
-		NeoBundle 'wellle/tmux-complete.vim', { 'on_ft': [ 'gitcommit', 'pandoc' ] }
-" /PLUGINS
 
-call neobundle#end()
+	" seamless vim/tmux navigation
+	call dein#add('christoomey/vim-tmux-navigator')
+	call dein#add('edkolev/promptline.vim')
+	call dein#add('edkolev/tmuxline.vim')
+	call dein#add('tmux-plugins/vim-tmux')
+	call dein#add('tmux-plugins/vim-tmux-focus-events')
+	" completions aware of other panes/windows, only when editing git commit messages
+	call dein#add('wellle/tmux-complete.vim', { 'on_ft': [ 'gitcommit', 'pandoc' ] })
+call dein#end()
 
 " Prompt to install any newly added bundles
-NeoBundleCheck
+if dein#check_install()
+	call dein#install()
+endif
