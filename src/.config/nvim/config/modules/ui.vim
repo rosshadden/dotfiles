@@ -3,14 +3,18 @@
 """"""""""""""""
 
 syntax enable
-set t_Co=256
 set background=dark
-" set background=light
 
-" access colors present in 256 colorspace
-let base16colorspace=256
-colorscheme base16-default
+if has('nvim')
+	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+	colorscheme base16-summerfruit
+else
+	set t_Co=256
+	let base16colorspace=256
+	colorscheme base16-default
+endif
 
+scriptencoding utf-8
 
 """"""""""""""""
 " VIM-AIRLINE
@@ -21,7 +25,7 @@ let g:airline_powerline_fonts = 1
 " define and use my own 'prefix' mode, for showing the prefixes
 call airline#parts#define_function('prefix', 'GetPrefix')
 " let g:airline_section_a = airline#section#create_left(['mode', 'prefix', 'paste', 'capslock', 'iminsert'])
-let g:airline_section_a = airline#section#create_left(['mode', 'paste', 'capslock', 'iminsert'])
+let g:airline_section_a = airline#section#create_left([ 'mode', 'paste', 'capslock', 'iminsert' ])
 let g:airline#extensions#branch#enabled = 1
 let g:airline_theme = 'airlineish'
 
@@ -32,7 +36,6 @@ let g:airline#themes#base16#constant = 1
 " 	let g:airline_symbols = {}
 " endif
 " let g:airline_symbols.space = "\ua0"
-
 
 " extensions
 
@@ -55,7 +58,6 @@ let g:airline#themes#base16#constant = 1
 	nmap <leader>8 <Plug>AirlineSelectTab8
 	nmap <leader>9 <Plug>AirlineSelectTab9
 
-
 	" promptline
 
 	let g:airline#extensions#promptline#enabled = 1
@@ -74,7 +76,6 @@ let g:airline#themes#base16#constant = 1
 		\'y' : [ '$(git rev-parse --short HEAD 2>/dev/null)', promptline#slices#vcs_branch() ],
 		\'z' : [ '%*' ],
 	\ }
-
 
 	" tmuxline
 

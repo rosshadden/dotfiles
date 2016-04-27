@@ -31,6 +31,8 @@
 
 ## `vim`
 
+- make variable for the vim path, and use it everywhere we have paths to it
+	- [like this](http://arusahni.net/blog/2015/04/switching-to-neovim-part-2.html)
 - add mapping when searching to jump to the result but clear the highlighting
 - figure out where I can use `on_cmd` in `packages.vim`
 - replace all `vifm` things with `ranger`
