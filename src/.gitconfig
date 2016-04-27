@@ -1,91 +1,49 @@
 [user]
-
 	name = Ross Hadden
 	email = rosshadden@gmail.com
 
-
 [core]
-
 	editor = vim
 
-
 [push]
-
 	default = simple
 
-
 [grep]
-
 	extendRegexp = true
 	lineNumber = true
 
-
 [diff]
-
 	tool = diffconflicts
-
-
 
 [difftool "diffconflicts"]
-
 	cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
 	trustExitCode = true
-
-
-[difftool "subl"]
-
-	cmd = subl -w $MERGED
-	trustExitCode = false
-
 
 [merge]
-
 	tool = diffconflicts
 
-
 [mergetool]
-
 	keepBackup = false
 
-
 [mergetool "diffconflicts"]
-
 	cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
 	trustExitCode = true
 
-
-[mergetool "subl"]
-
-	cmd = subl -w $MERGED
-	trustExitCode = false
-
-
-[remote "origin"]
-
-	#fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
-
-
 [color "branch"]
-
 	current = red reverse
 	local = blue
 	remote = green
 
-
 [color "diff"]
-
 	meta = yellow bold
 	frag = magenta bold
 	old = red bold
 	new = green bold
 
-
 [color "status"]
-
 	added = yellow
 	changed = green
 	untracked = cyan
-
 
 [alias]
 	# SHORTHAND
@@ -105,14 +63,12 @@
 	s = "!git status -sb"
 	t = "!git tag"
 
-
 	# SYNCING
 
 	in = "!sh -c 'git pull ${1-origin} ${2-$(git pwd)}' -"
 	out = "!sh -c 'git push ${1-origin} ${2-$(git pwd)}' -"
 	sync = "!git in && git out"
 	sync-submodules = submodule update --remote --merge
-
 
 	# PLURALITY
 
@@ -123,7 +79,6 @@
 	branches-unmerged = "!sh -c 'git branch --no-merged | cut -c 3-' -"
 	remotes = "!sh -c 'git remote -v | sed \"0~2d\"' -"
 	submodules = "!git submodule status | gawk '{ print ($2 " " $3) }' | column -t"
-
 
 	# UNIX METAPHORS
 
@@ -142,7 +97,6 @@
 	man = help
 	cat = cat-file
 
-
 	# STATE
 
 	# scrap all changed (tracked) files
@@ -151,7 +105,6 @@
 	burn = "!sh -c 'git reset --hard ${1-origin}/$(git pwd)' -"
 	# unstage file
 	unstage = reset HEAD --
-
 
 	# UTILITIES
 
@@ -167,17 +120,14 @@
 	# delete local branches that are already merged into HEAD
 	shear = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
-
 	# DIFFING
 
 	dw = diff --word-diff
 	staged = diff --staged --word-diff
 
-
 	# SEARCHING
 
 	ag = grep -I --ignore-case --line-number --heading --break
-
 
 	# STASHING
 
@@ -186,7 +136,6 @@
 	sa = "!sh -c 'git stash apply stash@{${1-0}}' -"
 	sp = "!sh -c 'git stash pop stash@{${1-0}}' -"
 	sd = "!sh -c 'git stash drop stash@{${1-0}}' -"
-
 
 	# LOGGING
 
