@@ -108,7 +108,7 @@ call dein#begin(expand('~/.config/nvim/dein'))
 	" diff two selections
 	call dein#add('AndrewRadev/linediff.vim')
 	" linter
-	call dein#add('scrooloose/syntastic')
+	call dein#add('benekastah/neomake')
 
 
 	" files

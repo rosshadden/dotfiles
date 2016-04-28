@@ -27,7 +27,7 @@ noremap <:app:1>r :FixSettings<cr>
 noremap <:app:1>R :Reload<cr>
 
 " update plugins
-noremap <:app>u :Unite neobundle/update<cr>
+noremap <:app>u :call dein#update()<cr>
 
 " yank stack
 nnoremap <:app>y :Unite -buffer-name=yank history/yank<cr>
