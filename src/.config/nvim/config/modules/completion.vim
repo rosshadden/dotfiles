@@ -5,6 +5,31 @@
 " enable
 if has('nvim')
 	let g:deoplete#enable_at_startup = 1
+
+	" smartcase
+	let g:deoplete#enable_smart_case = 1
+
+	" max candidates
+	let g:deoplete#max_list = 32
+
+	" start after a certain number of characters
+	let g:deoplete#auto_complete_start_length = 3
+
+	" Define keyword.
+	if !exists('g:deoplete#keyword_patterns')
+		let g:deoplete#keyword_patterns = {}
+	endif
+	let g:deoplete#keyword_patterns['default'] = '\h\w*'
+
+	" Enable heavy omni completion.
+	if !exists('g:deoplete#omni#input_patterns')
+		let g:deoplete#omni#input_patterns = {}
+	endif
+	let g:deoplete#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+	let g:deoplete#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+	let g:deoplete#omni#input_patterns.cs = '.*[^=\);]'
+	let g:deoplete#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+	let g:deoplete#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 else
 	let g:neocomplete#enable_at_startup = 1
 
@@ -54,24 +79,35 @@ augroup END
 " MAPPINGS
 """"""""""""""""
 
-if !has('nvim')
+if has('nvim')
+	inoremap <expr><c-y> deoplete#mappings#undo_completion()
+
+	function! s:my_cr_function()
+		return deoplete#mappings#close_popup() . "\<cr>"
+		" For not inserting <cr> key.
+		" return pumvisible() ? deoplete#mappings#close_popup() : "\<cr>"
+	endfunction
+
+	" fix backspace
+	" inoremap <expr><c-h> deoplete#mappings#smart_close_popup() . "\<c-h>"
+	inoremap <expr><bs> deoplete#mappings#smart_close_popup() . "\<c-h>"
+else
 	inoremap <expr><c-y> neocomplete#undo_completion()
-	" TODO: doesn't seem to work
-	inoremap <expr><c-e> neocomplete#complete_common_string()
 
-	" <TAB>: completion.
-	inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-	inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-
-	" <cr>: close popup and save indent.
-	inoremap <silent> <cr> <c-r>=<sid>my_cr_function()<cr>
 	function! s:my_cr_function()
 		return neocomplete#close_popup() . "\<cr>"
-		" For no inserting <cr> key.
-		"return pumvisible() ? neocomplete#close_popup() : "\<cr>"
+		" For not inserting <cr> key.
+		" return pumvisible() ? neocomplete#close_popup() : "\<cr>"
 	endfunction
 
 	" fix backspace
 	" inoremap <expr><c-h> neocomplete#smart_close_popup() . "\<c-h>"
-	inoremap <expr><bs> neocomplete#smart_close_popup() . "\<c-h>"
+	" inoremap <expr><bs> neocomplete#smart_close_popup() . "\<c-h>"
 endif
+
+" <TAB>: completion.
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+
+" <cr>: close popup and save indent.
+inoremap <silent> <cr> <c-r>=<sid>my_cr_function()<cr>

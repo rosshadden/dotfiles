@@ -36,6 +36,7 @@ call dein#begin(expand('~/.config/nvim/dein'))
 	" completions in insert mode
 	if has('nvim')
 		call dein#add('Shougo/deoplete.nvim')
+		call dein#add('carlitux/deoplete-ternjs')
 	else
 		call dein#add('Shougo/neocomplete.vim')
 	endif

@@ -124,7 +124,7 @@ function theme() {
 		BASE16_TYPE="shell"
 	fi
 
-	THEME="pop"
+	THEME="summerfruit"
 	BASE16_VARIANT="dark"
 	BASE16_DIR="$themeDir/base16-builder/output/$BASE16_TYPE"
 	BASE16_SHELL="$BASE16_DIR/base16-$THEME.$BASE16_VARIANT.sh"
