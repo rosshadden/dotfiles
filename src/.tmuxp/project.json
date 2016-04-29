@@ -1,18 +1,18 @@
 {
-    "session_name": "project",
-    "windows": [{
-        "window_name": "dev",
-        "focus": true,
-        "panes": [
-            "vim"
-        ]
-    }, {
-        "window_name": "sync",
-        "panes": [
-            "tig"
-        ]
-    }, {
-        "window_name": "run",
-        "panes": []
-    }]
+	"session_name": "project",
+	"windows": [{
+		"window_name": "dev",
+		"focus": true,
+		"panes": [
+			"nvim"
+		]
+	}, {
+		"window_name": "sync",
+		"panes": [
+			"tig"
+		]
+	}, {
+		"window_name": "run",
+		"panes": []
+	}]
 }

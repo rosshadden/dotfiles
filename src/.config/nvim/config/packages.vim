@@ -1,6 +1,3 @@
-" Disable vi-compatibility
-set nocompatible
-
 if has('vim_starting')
 	set runtimepath^=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 endif
@@ -33,7 +30,7 @@ call dein#begin(expand('~/.config/nvim/dein'))
 	call dein#add('tpope/vim-repeat')
 	" let `.` repeat things in visual mode
 	call dein#add('vim-scripts/visualrepeat')
-	" completions in insert mode
+	" completions
 	if has('nvim')
 		call dein#add('Shougo/deoplete.nvim')
 		call dein#add('carlitux/deoplete-ternjs')
@@ -221,6 +218,4 @@ call dein#begin(expand('~/.config/nvim/dein'))
 call dein#end()
 
 " Prompt to install any newly added bundles
-if dein#check_install()
-	call dein#install()
-endif
+if dein#check_install() | call dein#install() | endif

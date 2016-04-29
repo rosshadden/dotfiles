@@ -2,6 +2,9 @@
 set number
 set relativenumber
 
+" title
+set title
+
 " highlight search results
 set hlsearch
 
@@ -14,14 +17,13 @@ set spell spelllang=en_us
 " add visible stop column
 set colorcolumn=120
 
-" timeout
-set timeout timeoutlen=1000
-
-" turn off auto-textwrap (vim-sensible turns it on)
-set textwidth=0 wrapmargin=0
-
 " let buffers exist in the background
 set hidden
+
+" scrolling
+set ruler
+set scrolloff=1
+set sidescrolloff=5
 
 " disable splash screen
 set shortmess=atI
@@ -30,7 +32,7 @@ set shortmess=atI
 set gdefault
 
 " simple mouse support
-set mouse=a
+if !has('nvim') | set mouse=a | endif
 
 " Let arrow keys pass \n
 set whichwrap=b,s,<,>,[,]
