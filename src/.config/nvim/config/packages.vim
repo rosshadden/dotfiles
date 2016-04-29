@@ -179,6 +179,7 @@ call dein#begin(expand('~/.config/nvim/dein'))
 	" unite
 
 	call dein#add('Shougo/unite.vim')
+	if has('nvim') | call dein#add('Shougo/denite.nvim') | endif
 	call dein#add('kopischke/unite-spell-suggest', { 'depends': 'Shougo/unite.vim' })
 	call dein#add('osyo-manga/unite-quickfix', { 'depends': 'Shougo/unite.vim' })
 	call dein#add('Shougo/neomru.vim', { 'depends': 'Shougo/unite.vim' })

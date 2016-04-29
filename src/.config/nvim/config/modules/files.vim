@@ -3,8 +3,9 @@
 """"""""""""""""
 
 call unite#custom#profile('files', 'context', {
-	\ 'unique': 1,
 	\ 'candidate_icon': '>',
+	\ 'start_insert': 1,
+	\ 'unique': 1,
 \ })
 
 
@@ -20,8 +21,13 @@ nnoremap <:files>s :Unite -buffer-name=files directory file file/new directory/n
 nnoremap <:files>S :UniteWithBufferDir -buffer-name=files directory file file/new directory/new<cr>
 
 " recursive
-nnoremap <:files>r :Unite              -buffer-name=files -start-insert file_rec/async:!<cr>
-nnoremap <:files>R :UniteWithBufferDir -buffer-name=files -start-insert file_rec/async:!<cr>
+if has('nvim')
+	nnoremap <:files>r :Unite              -buffer-name=files -start-insert file_rec/neovim:!<cr>
+	nnoremap <:files>R :UniteWithBufferDir -buffer-name=files -start-insert file_rec/neovim:!<cr>
+else
+	nnoremap <:files>r :Unite              -buffer-name=files -start-insert file_rec/async:!<cr>
+	nnoremap <:files>R :UniteWithBufferDir -buffer-name=files -start-insert file_rec/async:!<cr>
+endif
 
 " git
 nnoremap <:files>g :Unite              -buffer-name=files -start-insert file_rec/git:--cached:--others:--exclude-standard<cr>

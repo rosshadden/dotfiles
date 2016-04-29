@@ -6,13 +6,13 @@ let g:unite_source_history_yank_enable = 1
 let g:unite_force_overwrite_statusline = 0
 let g:unite_matcher_fuzzy_max_input_length = 32
 
-call unite#custom#source('buffer,file,file_rec,file_rec/async', 'sorters', ['sorter_selecta'])
+call unite#custom#source('buffer,file,file_rec,file_rec/async,file_rec/neovim', 'sorters', [ 'sorter_selecta' ])
 call unite#custom#source('file_rec,file_rec/async', 'ignore_globs', split(&wildignore, ','))
 call unite#custom#source('file_rec,file_rec/async', 'converters', [])
 call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 32)
 
 " prettier output
-call unite#custom#source('buffer', 'converters', ['converter_file_directory'])
+call unite#custom#source('buffer', 'converters', [ 'converter_file_directory' ])
 
 call unite#custom#profile('default', 'context', {
 	\ 'winheight': 20,
@@ -32,12 +32,12 @@ if executable('ag')
 	let g:unite_source_grep_command = 'ag'
 	let g:unite_source_grep_default_opts = '--hidden --vimgrep'
 	let g:unite_source_grep_recursive_opt = ''
-	let g:unite_source_rec_async_command = ['ag', '--hidden', '--nocolor', '--nogroup', '-g', '']
+	let g:unite_source_rec_async_command = [ 'ag', '--hidden', '--nocolor', '--nogroup', '-g', '' ]
 elseif executable('ack')
 	let g:unite_source_grep_command = 'ack'
 	let g:unite_source_grep_default_opts = '-i --no-heading --no-color -k -H'
 	let g:unite_source_grep_recursive_opt = ''
-	let g:unite_source_rec_async_command = ['ack', '-f', '--nofilter']
+	let g:unite_source_rec_async_command = [ 'ack', '-f', '--nofilter' ]
 endif
 
 

@@ -48,37 +48,37 @@
 [alias]
 	# SHORTHAND
 
-	a = "!git add"
-	b = "!git branch"
-	c = "!git commit"
-	cl = "!git clone --recursive"
-	co = "!git checkout"
-	d = "!git diff"
-	f = "!git fetch -p --tags --all --jobs=4"
-	i = "!git in"
-	m = "!git merge"
-	o = "!git out"
-	r = "!git remote"
-	rb = "!git rebase"
-	s = "!git status -sb"
-	t = "!git tag"
+	a = !git add
+	b = !git branch
+	c = !git commit
+	cl = !git clone --recursive
+	co = !git checkout
+	d = !git diff
+	f = !git fetch -p --tags --all --jobs=4
+	i = !git in
+	m = !git merge
+	o = !git out
+	r = !git remote
+	rb = !git rebase
+	s = !git status -sb
+	t = !git tag
 
 	# SYNCING
 
-	in = "!sh -c 'git pull ${1-origin} ${2-$(git pwd)}' -"
-	out = "!sh -c 'git push ${1-origin} ${2-$(git pwd)}' -"
-	sync = "!git in && git out"
+	in = !sh -c 'git pull ${1-origin} ${2-$(git pwd)}' -
+	out = !sh -c 'git push ${1-origin} ${2-$(git pwd)}' -
+	sync = !git in && git out
 	sync-submodules = submodule update --remote --merge
 
 	# PLURALITY
 
-	tags = "!git tag -l | sort -V"
-	branches = "!sh -c 'git branch | cut -c 3-' -"
-	branches-remote = "!sh -c 'git branch -r | cut -c 3- | tail -n+2' -"
-	branches-merged = "!sh -c 'git branch --merged | cut -c 3-' -"
-	branches-unmerged = "!sh -c 'git branch --no-merged | cut -c 3-' -"
-	remotes = "!sh -c 'git remote -v | sed \"0~2d\"' -"
-	submodules = "!git submodule status | gawk '{ print ($2 " " $3) }' | column -t"
+	tags = !git tag -l | sort -V
+	branches = !sh -c 'git branch | cut -c 3-'
+	branches-remote = !sh -c 'git branch -r | cut -c 3- | tail -n+2'
+	branches-merged = !sh -c 'git branch --merged | cut -c 3-'
+	branches-unmerged = !sh -c 'git branch --no-merged | cut -c 3-'
+	remotes = !sh -c 'git remote -v | sed \"0~2d\"' -
+	submodules = !git submodule status | gawk '{ print ($2 " " $3) }' | column -t
 
 	# UNIX METAPHORS
 
@@ -87,7 +87,7 @@
 	# list files
 	ls = ls-files
 	# checkout branch, making a new one if not present
-	cd = "!sh -c 'git checkout $1 2> /dev/null || git checkout -b $1' -"
+	cd = !sh -c 'git checkout $1 2> /dev/null || git checkout -b $1' -
 	# get current branch
 	pwd = rev-parse --abbrev-ref HEAD
 	# get recent commits on a file
@@ -100,9 +100,9 @@
 	# STATE
 
 	# scrap all changed (tracked) files
-	scrap = "!sh -c 'git reset --hard ${1-HEAD}' -"
+	scrap = !sh -c 'git reset --hard ${1-HEAD}'
 	# reset to remote branch
-	burn = "!sh -c 'git reset --hard ${1-origin}/$(git pwd)' -"
+	burn = !sh -c 'git reset --hard ${1-origin}/$(git pwd)'
 	# unstage file
 	unstage = reset HEAD --
 
@@ -114,11 +114,11 @@
 	# untrack file
 	untrack = update-index --assume-unchanged
 	# remote URL
-	url = "!git remote -v | head -1 | gawk '{ print $2 }'"
+	url = !git remote -v | head -1 | gawk '{ print $2 }'
 	# show current branch commits
-	sb = "!ls .git/refs/remotes/*/$(git pwd) | cut -d/ -f4,5 | xargs git show-branch $(git pwd)"
+	sb = !ls .git/refs/remotes/*/$(git pwd) | cut -d/ -f4,5 | xargs git show-branch $(git pwd)
 	# delete local branches that are already merged into HEAD
-	shear = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+	shear = !git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
 
 	# DIFFING
 
@@ -133,15 +133,15 @@
 
 	sl = stash list
 	ss = stash save
-	sa = "!sh -c 'git stash apply stash@{${1-0}}' -"
-	sp = "!sh -c 'git stash pop stash@{${1-0}}' -"
-	sd = "!sh -c 'git stash drop stash@{${1-0}}' -"
+	sa = !sh -c 'git stash apply stash@{${1-0}}' -
+	sp = !sh -c 'git stash pop stash@{${1-0}}' -
+	sd = !sh -c 'git stash drop stash@{${1-0}}' -
 
 	# LOGGING
 
 	lg = log --graph --abbrev-commit --date=relative -n64 --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-	lgs = "!git lg --stat"
-	new = "!git lg HEAD..FETCH_HEAD"
-	news = "!git lgs HEAD..FETCH_HEAD"
+	lgs = !git lg --stat
+	new = !git lg HEAD..FETCH_HEAD
+	news = !git lgs HEAD..FETCH_HEAD
 	report = log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\"
-	report-new = "!sh -c 'git --no-pager log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\" origin/$(git pwd)..$(git pwd)' -"
+	report-new = !sh -c 'git --no-pager log --reverse --author=Ross --no-merges --format=format:"%s%n    %b" origin/$(git pwd)..$(git pwd)' -
