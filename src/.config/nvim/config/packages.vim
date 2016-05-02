@@ -195,9 +195,8 @@ if dein#load_state(g:packageDir)
 		" editorconfig
 		" TODO: inserts a weird search string on save
 		" call dein#add('editorconfig/editorconfig-vim')
-		" file managers and terminals
+		" file managers / terminals
 		call dein#add('justinmk/vim-gtfo')
-		" vifm
 		call dein#add('vifm/vifm.vim')
 
 		" external

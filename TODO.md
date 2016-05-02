@@ -117,7 +117,6 @@
 
 ## `ranger`
 
-- add `shred` mapping to delete menu
 - make equivalents to `vifm`'s `cw` and `cW`
 
 ## `vifm`
@@ -129,6 +128,7 @@
 	- tmux
 		- make explorer open files in vim instance
 	- vim
+- [bind to mime types](https://github.com/vifm/vifm/issues/150)
 
 ## `spacefm`
 
