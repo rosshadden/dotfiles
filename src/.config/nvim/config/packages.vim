@@ -195,16 +195,10 @@ call dein#begin(expand('~/.config/nvim/dein'))
 	call dein#add('tpope/vim-fugitive')
 	" editorconfig
 	call dein#add('editorconfig/editorconfig-vim')
-	" ag, the silver searcher
-	call dein#add('rking/ag.vim')
 	" file managers and terminals
 	call dein#add('justinmk/vim-gtfo')
 	" vifm
 	call dein#add('vifm/vifm.vim')
-	" taskwarrior
-	call dein#add('farseer90718/vim-taskwarrior')
-	" zeal
-	call dein#add('KabbAmine/zeavim.vim')
 
 	" external
 
