@@ -1,5 +1,5 @@
 " make prefixes
-" TODO: automate the "mode" creation
+" TODO: automate the 'mode' creation
 function! MakePrefix(name, key, ...)
 	" accept `mode` number as an optional third argument
 	let l:mode = (a:0 >= 1) ? a:1 : 0
@@ -40,12 +40,12 @@ endfunction
 
 function! GetVisualSelection()
 	" Why is this not a built-in Vim script function?!
-	let [lnum1, col1] = getpos("'<")[1:2]
-	let [lnum2, col2] = getpos("'>")[1:2]
-	let lines = getline(lnum1, lnum2)
-	let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
-	let lines[0] = lines[0][col1 - 1:]
-	return join(lines, "\n")
+	let [ l:lnum1, l:col1 ] = getpos("'<")[1:2]
+	let [ l:lnum2, l:col2 ] = getpos("'>")[1:2]
+	let l:lines = getline(l:lnum1, l:lnum2)
+	let l:lines[-1] = l:lines[-1][: l:col2 - (&selection ==? 'inclusive' ? 1 : 2)]
+	let l:lines[0] = l:lines[0][l:col1 - 1:]
+	return join(l:lines, "\n")
 endfunction
 
 

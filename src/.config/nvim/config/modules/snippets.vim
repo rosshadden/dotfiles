@@ -1,5 +1,5 @@
 " use custom snippets
-let g:neosnippet#snippets_directory = '~/.vim/config/snippets'
+let g:neosnippet#snippets_directory = g:configDir . '/snippets'
 
 " For snippet_complete marker.
 if has('conceal')

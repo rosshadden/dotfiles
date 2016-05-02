@@ -2,11 +2,13 @@
 " SETTINGS
 """"""""""""""""
 
-call unite#custom#profile('files', 'context', {
-	\ 'candidate_icon': '>',
-	\ 'start_insert': 1,
-	\ 'unique': 1,
-\ })
+if dein#tap('unite.vim')
+	call unite#custom#profile('files', 'context', {
+		\ 'candidate_icon': '>',
+		\ 'start_insert': 1,
+		\ 'unique': 1,
+	\ })
+endif
 
 
 """"""""""""""""

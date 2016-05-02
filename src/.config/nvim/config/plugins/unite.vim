@@ -2,25 +2,27 @@
 " SETTINGS
 """"""""""""""""
 
-let g:unite_source_history_yank_enable = 1
-let g:unite_force_overwrite_statusline = 0
-let g:unite_matcher_fuzzy_max_input_length = 32
+if dein#tap('unite.vim')
+	let g:unite_source_history_yank_enable = 1
+	let g:unite_force_overwrite_statusline = 0
+	let g:unite_matcher_fuzzy_max_input_length = 32
 
-call unite#custom#source('buffer,file,file_rec,file_rec/async,file_rec/neovim', 'sorters', [ 'sorter_selecta' ])
-call unite#custom#source('file_rec,file_rec/async', 'ignore_globs', split(&wildignore, ','))
-call unite#custom#source('file_rec,file_rec/async', 'converters', [])
-call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 32)
+	call unite#custom#source('buffer,file,file_rec,file_rec/async,file_rec/neovim', 'sorters', [ 'sorter_selecta' ])
+	call unite#custom#source('file_rec,file_rec/async', 'ignore_globs', split(&wildignore, ','))
+	call unite#custom#source('file_rec,file_rec/async', 'converters', [])
+	call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 32)
 
-" prettier output
-call unite#custom#source('buffer', 'converters', [ 'converter_file_directory' ])
+	" prettier output
+	call unite#custom#source('buffer', 'converters', [ 'converter_file_directory' ])
 
-call unite#custom#profile('default', 'context', {
-	\ 'winheight': 20,
-	\ 'split': 0,
-	\ 'start_insert': 0,
-	\ 'auto_preview': 0,
-	\ 'vertical_preview': 0,
-\ })
+	call unite#custom#profile('default', 'context', {
+		\ 'winheight': 20,
+		\ 'split': 0,
+		\ 'start_insert': 0,
+		\ 'auto_preview': 0,
+		\ 'vertical_preview': 0,
+	\ })
+endif
 
 
 """"""""""""""""
@@ -142,7 +144,7 @@ function! s:uniteSettings()
 	" toggle fuzzy matching
 	nnoremap <buffer><expr> cof unite#mappings#set_current_matchers(
 		\ empty(unite#mappings#get_current_matchers())
-		\ ? ['matcher_fuzzy']
+		\ ? [ 'matcher_fuzzy' ]
 		\ : []
 	\ )
 endfunction
@@ -156,76 +158,77 @@ augroup END
 """"""""""""""""
 " MAPPINGS
 """"""""""""""""
-
 " prefix
 call MakePrefix('unite', '<:prefix>u')
 call MakePrefix('unite', '<:unite>u', 1)
 
-" current file
-	call unite#custom#profile('outline', 'context', {
+if dein#tap('unite.vim')
+	" current file
+		call unite#custom#profile('outline', 'context', {
+			\ 'auto_preview': 1,
+		\ })
+
+		" outline
+		nnoremap <:unite>o :Unite               -buffer-name=outline outline<cr>
+		nnoremap <:unite>O :UniteWithCursorWord -buffer-name=outline outline<cr>
+
+		" line
+		call unite#custom#profile('line', 'context', {
+			\ 'auto_preview': 1,
+			\ 'split': 0,
+		\ })
+		nnoremap <:unite>l :Unite               -buffer-name=line line<cr>
+		nnoremap <:unite>L :UniteWithCursorWord -buffer-name=line line<cr>
+
+		" changes
+		call unite#custom#profile('changes', 'context', {
+			\ 'auto_preview': 1,
+			\ 'split': 0,
+		\ })
+		nnoremap <:unite>k :Unite               -buffer-name=changes change<cr>
+		nnoremap <:unite>K :UniteWithCursorWord -buffer-name=changes change<cr>
+
+		" jump list
+		call unite#custom#profile('jump', 'context', {
+			\ 'auto_preview': 1,
+			\ 'split': 0,
+		\ })
+		nnoremap <:unite>j :Unite               -buffer-name=jump jump<cr>
+		nnoremap <:unite>J :UniteWithCursorWord -buffer-name=jump jump<cr>
+
+		" spelling
+		call unite#custom#profile('spelling', 'context', {
+			\ 'auto_preview': 1,
+		\ })
+		nnoremap <:unite>s :Unite   -buffer-name=spelling spell_suggest<cr>
+		nnoremap <:unite:1>s :Unite -buffer-name=spelling -force-immediately spell_suggest<cr>
+
+	" search files
+	call unite#custom#profile('find', 'context', {
+		\ 'empty': 0,
+	\ })
+	nnoremap <:unite>g :Unite              -buffer-name=find grep:.<cr>
+	nnoremap <:unite>G :UniteWithBufferDir -buffer-name=find grep:.<cr>
+
+	" quickfix
+	call unite#custom#profile('quickfix', 'context', {
 		\ 'auto_preview': 1,
 	\ })
+	nnoremap <:unite>q :Unite -buffer-name=quickfix quickfix<cr>
 
-	" outline
-	nnoremap <:unite>o :Unite               -buffer-name=outline outline<cr>
-	nnoremap <:unite>O :UniteWithCursorWord -buffer-name=outline outline<cr>
+	" do all the things
+	nnoremap <:unite><cr> :Unite -buffer-name=omni source<cr>
 
-	" line
-	call unite#custom#profile('line', 'context', {
-		\ 'auto_preview': 1,
-		\ 'split': 0,
-	\ })
-	nnoremap <:unite>l :Unite               -buffer-name=line line<cr>
-	nnoremap <:unite>L :UniteWithCursorWord -buffer-name=line line<cr>
+	" resume last buffer
+	nnoremap <:unite>. :UniteResume -no-start-insert -vertical-preview<cr>
 
-	" changes
-	call unite#custom#profile('changes', 'context', {
-		\ 'auto_preview': 1,
-		\ 'split': 0,
-	\ })
-	nnoremap <:unite>k :Unite               -buffer-name=changes change<cr>
-	nnoremap <:unite>K :UniteWithCursorWord -buffer-name=changes change<cr>
+	" metavim
+		" mappings
+		nnoremap <:unite>m :Unite mapping<cr>
 
-	" jump list
-	call unite#custom#profile('jump', 'context', {
-		\ 'auto_preview': 1,
-		\ 'split': 0,
-	\ })
-	nnoremap <:unite>j :Unite               -buffer-name=jump jump<cr>
-	nnoremap <:unite>J :UniteWithCursorWord -buffer-name=jump jump<cr>
-
-	" spelling
-	call unite#custom#profile('spelling', 'context', {
-		\ 'auto_preview': 1,
-	\ })
-	nnoremap <:unite>s :Unite   -buffer-name=spelling spell_suggest<cr>
-	nnoremap <:unite:1>s :Unite -buffer-name=spelling -force-immediately spell_suggest<cr>
-
-" search files
-call unite#custom#profile('find', 'context', {
-	\ 'empty': 0,
-\ })
-nnoremap <:unite>g :Unite              -buffer-name=find grep:.<cr>
-nnoremap <:unite>G :UniteWithBufferDir -buffer-name=find grep:.<cr>
-
-" quickfix
-call unite#custom#profile('quickfix', 'context', {
-	\ 'auto_preview': 1,
-\ })
-nnoremap <:unite>q :Unite -buffer-name=quickfix quickfix<cr>
-
-" do all the things
-nnoremap <:unite><cr> :Unite -buffer-name=omni source<cr>
-
-" resume last buffer
-nnoremap <:unite>. :UniteResume -no-start-insert -vertical-preview<cr>
-
-" metavim
-	" mappings
-	nnoremap <:unite>m :Unite mapping<cr>
-
-" external
-	" exit
-	nnoremap <:unite>x :Unite   -default-action=sigterm process<cr>
-	nnoremap <:unite>X :Unite   -default-action=sigkill process<cr>
-	nnoremap <:unite:1>x :Unite -default-action=sigint  process<cr>
+	" external
+		" exit
+		nnoremap <:unite>x :Unite   -default-action=sigterm process<cr>
+		nnoremap <:unite>X :Unite   -default-action=sigkill process<cr>
+		nnoremap <:unite:1>x :Unite -default-action=sigint  process<cr>
+endif

@@ -20,24 +20,25 @@ scriptencoding utf-8
 " VIM-AIRLINE
 """"""""""""""""
 
-" powerline symbols
-let g:airline_powerline_fonts = 1
-" define and use my own 'prefix' mode, for showing the prefixes
-call airline#parts#define_function('prefix', 'GetPrefix')
-" let g:airline_section_a = airline#section#create_left(['mode', 'prefix', 'paste', 'capslock', 'iminsert'])
-let g:airline_section_a = airline#section#create_left([ 'mode', 'paste', 'capslock', 'iminsert' ])
-let g:airline#extensions#branch#enabled = 1
-let g:airline_theme = 'airlineish'
+if dein#tap('vim-airline')
+	" powerline symbols
+	let g:airline_powerline_fonts = 1
+	" define and use my own 'prefix' mode, for showing the prefixes
+	call airline#parts#define_function('prefix', 'GetPrefix')
+	" let g:airline_section_a = airline#section#create_left(['mode', 'prefix', 'paste', 'capslock', 'iminsert'])
+	let g:airline_section_a = airline#section#create_left([ 'mode', 'paste', 'capslock', 'iminsert' ])
+	let g:airline#extensions#branch#enabled = 1
+	let g:airline_theme = 'airlineish'
 
-" this makes the base16 theme work
-let g:airline#themes#base16#constant = 1
+	" this makes the base16 theme work
+	let g:airline#themes#base16#constant = 1
 
-" if !exists('g:airline_symbols')
-" 	let g:airline_symbols = {}
-" endif
-" let g:airline_symbols.space = "\ua0"
+	" if !exists('g:airline_symbols')
+	" 	let g:airline_symbols = {}
+	" endif
+	" let g:airline_symbols.space = "\ua0"
 
-" extensions
+	" extensions
 
 	" tabline
 
@@ -61,7 +62,7 @@ let g:airline#themes#base16#constant = 1
 	" promptline
 
 	let g:airline#extensions#promptline#enabled = 1
-	let airline#extensions#promptline#snapshot_file = '~/dotfiles/src/themes/promptline.sh'
+	let airline#extensions#promptline#snapshot_file = g:themesDir . '/promptline.sh'
 
 	" let airline#extensions#promptline#color_template = 'normal'
 	let airline#extensions#promptline#color_template = 'insert'
@@ -80,10 +81,11 @@ let g:airline#themes#base16#constant = 1
 	" tmuxline
 
 	let g:airline#extensions#tmuxline#enabled = 1
-	let airline#extensions#tmuxline#snapshot_file = '~/dotfiles/src/themes/tmuxline.conf'
+	let airline#extensions#tmuxline#snapshot_file = g:themesDir . '/tmuxline.conf'
 	let g:tmuxline_preset = 'crosshair'
 
 	let airline#extensions#tmuxline#color_template = 'normal'
 	" let airline#extensions#tmuxline#color_template = 'insert'
 	" let airline#extensions#tmuxline#color_template = 'visual'
 	" let airline#extensions#tmuxline#color_template = 'replace'
+endif

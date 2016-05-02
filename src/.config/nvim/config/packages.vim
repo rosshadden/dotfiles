@@ -1,10 +1,7 @@
-if has('vim_starting')
-	set runtimepath^=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
-endif
+if has('vim_starting') | exec 'set rtp^=' . expand(g:packageDir . '/repos/github.com/Shougo/dein.vim') | endif
 
 " PLUGINS
 
-let g:packageDir = '~/.config/nvim/dein'
 if dein#load_state(g:packageDir)
 	call dein#begin(expand(g:packageDir))
 		" Let dein manage dein
@@ -196,7 +193,8 @@ if dein#load_state(g:packageDir)
 		call dein#add('airblade/vim-gitgutter')
 		call dein#add('tpope/vim-fugitive')
 		" editorconfig
-		call dein#add('editorconfig/editorconfig-vim')
+		" TODO: inserts a weird search string on save
+		" call dein#add('editorconfig/editorconfig-vim')
 		" file managers and terminals
 		call dein#add('justinmk/vim-gtfo')
 		" vifm
