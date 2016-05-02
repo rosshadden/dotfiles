@@ -50,7 +50,7 @@ lawg "dotfiles:repo"
 
 # update submodules
 lawg "dotfiles:submodules"
-git submodule update --init --remote --merge --recursive
+git submodule update --init --remote --recursive
 lawg "dotfiles:submodules"
 
 popd

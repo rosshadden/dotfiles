@@ -1,4 +1,4 @@
 augroup syntax
 	autocmd!
-	" autocmd BufWritePost * Neomake
+	autocmd BufWritePost * Neomake
 augroup END

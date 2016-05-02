@@ -68,7 +68,7 @@
 	in = !sh -c 'git pull ${1-origin} ${2-$(git pwd)}' -
 	out = !sh -c 'git push ${1-origin} ${2-$(git pwd)}' -
 	sync = !git in && git out
-	sync-submodules = submodule update --remote --merge
+	sync-submodules = submodule update --init --remote --recursive
 
 	# PLURALITY
 
@@ -93,7 +93,7 @@
 	# get recent commits on a file
 	tail = log --patch
 	# make dir and add `.gitkeep`
-	mkdir = "!sh -c 'mkdir $1; touch $1/.gitkeep' -"
+	mkdir = "!sh -c 'mkdir -p $1; touch $1/.gitkeep; git add $1' -"
 	man = help
 	cat = cat-file
 
