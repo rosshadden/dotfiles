@@ -2,7 +2,8 @@ if has('vim_starting') | exec 'set rtp^=' . expand(g:packageDir . '/repos/github
 
 " PLUGINS
 
-if dein#load_state(g:packageDir)
+let g:cachePackages = 0
+if !g:cachePackages || dein#load_state(g:packageDir)
 	call dein#begin(expand(g:packageDir))
 		" Let dein manage dein
 		call dein#add('Shougo/dein.vim')
@@ -107,13 +108,7 @@ if dein#load_state(g:packageDir)
 		" linter
 		call dein#add('benekastah/neomake')
 
-
-		" files
-
-		" file trees for people that like file trees
-		call dein#add('Shougo/vimfiler.vim')
-
-		" UI
+		" ui
 
 		call dein#add('vim-airline/vim-airline')
 		call dein#add('vim-airline/vim-airline-themes')
@@ -124,6 +119,8 @@ if dein#load_state(g:packageDir)
 		call dein#add('nathanaelkane/vim-indent-guides')
 		" resize windows
 		call dein#add('talek/obvious-resize')
+		" icon fonts
+		call dein#add('ryanoasis/vim-devicons', { 'merged': 0 })
 
 		" utils
 
@@ -195,9 +192,6 @@ if dein#load_state(g:packageDir)
 		" editorconfig
 		" TODO: inserts a weird search string on save
 		" call dein#add('editorconfig/editorconfig-vim')
-		" file managers / terminals
-		call dein#add('justinmk/vim-gtfo')
-		call dein#add('vifm/vifm.vim')
 
 		" external
 

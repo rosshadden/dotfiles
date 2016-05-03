@@ -135,10 +135,6 @@ function! s:uniteSettings()
 	nnoremap <buffer><expr> o<space>s unite#do_action('vsplitswitch')
 	nnoremap <buffer><expr> o<space>- unite#do_action('splitswitch')
 
-	" open `vimfiler`
-	nnoremap <buffer><expr> of unite#do_action('vimfiler')
-	nnoremap <buffer><expr> oF unite#do_action('tabvimfiler')
-
 	" SETTINGS
 
 	" toggle fuzzy matching

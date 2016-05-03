@@ -16,7 +16,7 @@ let &showbreak = "... "
 let g:strip_whitespace_on_save = 1
 
 " blacklist files
-let g:better_whitespace_filetypes_blacklist = ['diff', 'gitcommit', 'unite', 'qf', 'help', 'pandoc', 'vimfiler']
+let g:better_whitespace_filetypes_blacklist = [ 'diff', 'gitcommit', 'unite', 'qf', 'help', 'pandoc' ]
 
 " set the colors
 highlight ExtraWhitespace ctermfg=white ctermbg=blue
