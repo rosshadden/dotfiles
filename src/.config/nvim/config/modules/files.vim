@@ -14,14 +14,14 @@ endif
 " FUNCTIONS
 """"""""""""""""
 
-if !exists('g:rangerPath') | let g:rangerPath = 'ranger' | endif
-
 " TODO: combine clauses
 " TODO: accept filename arg, to select it in ranger
-if has('nvim')
-	function! OpenRanger(dir)
-		let l:currentPath = expand(a:dir)
-		let l:tempFilePath = tempname()
+function! OpenRanger(dir)
+	let l:currentPath = expand(a:dir)
+	let l:tempFilePath = tempname()
+	let l:cmd = 'ranger --choosefiles=' . shellescape(l:tempFilePath) . ' ' . l:currentPath
+
+	if has('nvim')
 		let l:rangerCallback = { 'name': 'ranger' , 'tempFilePath': l:tempFilePath }
 
 		function! l:rangerCallback.on_exit(id, code)
@@ -38,16 +38,11 @@ if has('nvim')
 
 		tabnew
 
-		call termopen(g:rangerPath . ' --choosefiles=' . shellescape(l:tempFilePath) . ' ' . l:currentPath, l:rangerCallback)
+		call termopen(l:cmd, l:rangerCallback)
 
 		startinsert
-	endfunction
-else
-	function! OpenRanger(dir)
-		let l:currentPath = expand(a:dir)
-		let l:tempFilePath = tempname()
-
-		exec 'silent !' . g:rangerPath . ' --choosefiles=' . shellescape(l:tempFilePath) . ' ' . l:currentPath
+	else
+		exec 'silent !' . l:cmd
 
 		if filereadable(l:tempFilePath)
 			for l:file in readfile(l:tempFilePath)
@@ -58,8 +53,8 @@ else
 		endif
 
 		redraw!
-	endfunction
-endif
+	endif
+endfunction
 
 """"""""""""""""
 " MAPPINGS
