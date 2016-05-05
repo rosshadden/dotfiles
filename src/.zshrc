@@ -17,17 +17,6 @@ function variables() {
 	themeDir=$DOTS/src/themes
 }
 
-function options() {
-	# command correction
-	setopt correct
-
-	# dots displayed while waiting for completion
-	# COMPLETION_WAITING_DOTS="true"
-
-	# better zsh correction prompt
-	SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color? ([y]es, [n]o, [a]bort, [e]dit) "
-}
-
 function packages() {
 	source $shellDir/antibody/antibody.zsh
 	source $shellDir/antigen/antigen.zsh
@@ -45,6 +34,20 @@ function packages() {
 	antibody bundle Tarrasch/zsh-functional
 	antibody bundle zsh-users/zsh-history-substring-search
 	antibody bundle zsh-users/zsh-syntax-highlighting
+}
+
+function options() {
+	# command correction
+	setopt correct
+
+	# don't share history
+	setopt nosharehistory
+
+	# dots displayed while waiting for completion
+	# COMPLETION_WAITING_DOTS="true"
+
+	# better zsh correction prompt
+	SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color? ([y]es, [n]o, [a]bort, [e]dit) "
 }
 
 function modules() {
@@ -230,7 +233,7 @@ function terminal() {
 	zle -N zle-line-init
 }
 
-fns=( variables options packages modules features plugins mappings theme terminal )
+fns=( variables packages options modules features plugins mappings theme terminal )
 
 function load() {
 	for fn in $fns; do $fn; done
