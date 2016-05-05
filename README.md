@@ -29,7 +29,7 @@ See the [TODO](TODO.md) for things I have in mind.
 	- [`gtk-theme-flatstudio`](https://aur.archlinux.org/packages/gtk-theme-flatstudio/)
 	- [`python-dbus`]()
 - [`tig`](https://github.com/jonas/tig)
-- [`pick`](https://github.com/thoughtbot/pick)
+- [`fzf`](https://github.com/junegunn/fzf)
 - [`vifm`](https://github.com/vifm/vifm)
 	- [`gloobus-preview`](https://launchpad.net/gloobus-preview)
 - fonts

@@ -166,7 +166,7 @@
 	- look into [better status indicator](http://ivyl.0xcafe.eu/2013/02/03/refining-zsh/#vi_mode_status_indicator)
 	- split `features.zsh` into files
 - make mapping to insert newline at cursor
-- Add `pick` functions or aliases
+- Add `fzf` functions or aliases
 	- something with `ag`, ala unite's `file_rec`
 - revisit aliases
 	- introduce `ls -1`
@@ -193,6 +193,7 @@
 - client-agnostic back-end, which should work with X and terminals alike
 - clients
 	- rofi
+	- fzf
 	- pick
 	- selecta
 	- dmenu
@@ -200,7 +201,7 @@
 - plugins
 	- git
 		- `git branch | cut -c 3- | owmni <blah blah> | xargs git checkout`
-		- `git branch -r | cut -c 10- | pick | xargs git checkout`
+		- `git branch -r | cut -c 10- | fzf | xargs git checkout`
 	- i3
 	- zeal
 	- todoist

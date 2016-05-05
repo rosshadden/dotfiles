@@ -124,6 +124,8 @@ if !g:cachePackages || dein#load_state(g:packageDir)
 
 		" utils
 
+		" better buffer deletion
+		call dein#add('moll/vim-bbye')
 		" auto-detect indent settings
 		call dein#add('tpope/vim-sleuth')
 		" show trailing whitespace, and provide a command to clean it

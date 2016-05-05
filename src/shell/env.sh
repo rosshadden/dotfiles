@@ -38,7 +38,7 @@ export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64
 fpath=($DOTS/src/shell/completions/functions $fpath)
 
 # ranger
-export RANGER_LOAD_DEFAULT_RC=false
+export RANGER_LOAD_DEFAULT_RC=FALSE
 
 ################
 # SETTINGS
