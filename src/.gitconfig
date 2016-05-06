@@ -3,7 +3,7 @@
 	email = rosshadden@gmail.com
 
 [core]
-	editor = vim
+	editor = $EDITOR
 
 [push]
 	default = simple
