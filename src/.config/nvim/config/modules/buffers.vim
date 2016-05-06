@@ -52,10 +52,10 @@ nnoremap <silent> <:buffers:1>h :leftabove vsplit<cr>
 nnoremap <silent> <:buffers:1>l :rightbelow vsplit<cr>
 
 " close buffer
-nnoremap <silent> <:buffers>c :Bdelete<cr>
-nnoremap <silent> <:buffers>C :Bdelete!<cr>
-nnoremap <silent> <:buffers:1>c :bufdo Bdelete<cr>
-nnoremap <silent> <:buffers:1>C :bufdo Bdelete!<cr>
+nnoremap <silent> <:buffers>c :bdelete<cr>
+nnoremap <silent> <:buffers>C :bdelete!<cr>
+nnoremap <silent> <:buffers:1>c :bufdo bdelete<cr>
+nnoremap <silent> <:buffers:1>C :bufdo bdelete!<cr>
 
 " delete all empty buffers
 nnoremap <silent> <:buffers>r :call CleanEmptyBuffers()<cr>

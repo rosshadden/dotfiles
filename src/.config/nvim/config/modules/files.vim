@@ -25,7 +25,7 @@ function! OpenRanger(dir)
 		let l:rangerCallback = { 'name': 'ranger' , 'tempFilePath': l:tempFilePath }
 
 		function! l:rangerCallback.on_exit(id, code)
-			Bdelete!
+			bdelete!
 
 			if filereadable(self.tempFilePath)
 				for l:file in readfile(self.tempFilePath)

@@ -10,6 +10,7 @@ src/.config/copyq/copyq_geometry.ini
 src/.config/copyq/copyq_tabs.ini
 src/.config/nvim/.init.vim-rplugin~
 src/.config/nvim/dein
+src/.config/ranger/**/__*
 src/.config/ranger/bookmarks
 src/.config/ranger/history
 src/.config/ranger/tagged
