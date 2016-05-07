@@ -2,12 +2,12 @@ let g:dotsDir = '~/dotfiles'
 let g:themesDir = '~/dotfiles/src/themes'
 
 if has('nvim')
-	let g:mainDir = '~/.config/nvim'
-	let g:configFile = g:mainDir . '/init.vim'
+	let g:vimDir = '~/.config/nvim'
+	let g:configFile = g:vimDir . '/init.vim'
 else
-	let g:mainDir = '~/.vim'
-	let g:configFile = g:mainDir . '/vimrc'
+	let g:vimDir = '~/.vim'
+	let g:configFile = g:vimDir . '/vimrc'
 endif
 
-let g:configDir = g:mainDir . '/config'
-let g:packageDir = g:mainDir . '/dein'
+let g:configDir = g:vimDir . '/config'
+let g:packageDir = g:vimDir . '/plugged'

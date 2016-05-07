@@ -7,6 +7,3 @@
 [submodule "src/shell/antigen"]
 	path = src/shell/antigen
 	url = https://github.com/zsh-users/antigen.git
-[submodule "src/.config/nvim/dein/repos/github.com/Shougo/dein.vim"]
-	path = src/.config/nvim/dein/repos/github.com/Shougo/dein.vim
-	url = https://github.com/Shougo/dein.vim

@@ -2,7 +2,7 @@
 " SETTINGS
 """"""""""""""""
 
-if dein#tap('unite.vim')
+if IsLoaded('unite.vim')
 	call unite#custom#profile('files', 'context', {
 		\ 'candidate_icon': '>',
 		\ 'start_insert': 1,

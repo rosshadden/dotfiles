@@ -52,3 +52,14 @@ endfunction
 function! FixSettings()
 	set tabstop=2 shiftwidth=2
 endfunction
+
+
+" https://github.com/junegunn/vim-plug/issues/146#issuecomment-70376031
+
+function! IsInstalled(plugin)
+	return isdirectory(g:plugs[a:plugin].dir)
+endfunction
+
+function! IsLoaded(plugin)
+	return stridx(&rtp, g:plugs[a:plugin].dir) >= 0
+endfunction

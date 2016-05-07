@@ -27,7 +27,10 @@ noremap <:app:1>r :FixSettings<cr>
 noremap <:app:1>R :Reload<cr>
 
 " update plugins
-noremap <:app>u :call dein#update()<cr>
+noremap <:app>u :PlugUpdate<cr>
+noremap <:app>U :PlugUpdate!<cr>
+noremap <:app:1>u :PlugUpgrade<cr>
+noremap <:app:1>U :PlugUpgrade!<cr>
 
 " yank stack
 nnoremap <:app>y :Unite -buffer-name=yank history/yank<cr>

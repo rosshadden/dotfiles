@@ -1,4 +1,4 @@
-if dein#tap('neomake')
+if IsLoaded('neomake')
 	augroup syntax
 		autocmd!
 		autocmd BufWritePost * Neomake

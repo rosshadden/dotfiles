@@ -20,7 +20,7 @@ scriptencoding utf-8
 " VIM-AIRLINE
 """"""""""""""""
 
-if dein#tap('vim-airline')
+if IsLoaded('vim-airline')
 	" powerline symbols
 	let g:airline_powerline_fonts = 1
 	" define and use my own 'prefix' mode, for showing the prefixes

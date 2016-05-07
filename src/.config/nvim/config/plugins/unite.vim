@@ -2,7 +2,7 @@
 " SETTINGS
 """"""""""""""""
 
-if dein#tap('unite.vim')
+if IsLoaded('unite.vim')
 	let g:unite_source_history_yank_enable = 1
 	let g:unite_force_overwrite_statusline = 0
 	let g:unite_matcher_fuzzy_max_input_length = 32
@@ -158,7 +158,7 @@ augroup END
 call MakePrefix('unite', '<:prefix>u')
 call MakePrefix('unite', '<:unite>u', 1)
 
-if dein#tap('unite.vim')
+if IsLoaded('unite.vim')
 	" current file
 		call unite#custom#profile('outline', 'context', {
 			\ 'auto_preview': 1,
