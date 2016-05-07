@@ -3,7 +3,6 @@
 """"""""""""""""
 
 if IsLoaded('unite.vim')
-	let g:unite_source_history_yank_enable = 1
 	let g:unite_force_overwrite_statusline = 0
 	let g:unite_matcher_fuzzy_max_input_length = 32
 

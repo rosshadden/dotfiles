@@ -132,6 +132,7 @@ call plug#begin(expand(g:packageDir))
 	" fast folding
 	Plug 'Konfekt/FastFold'
 	" fuzzyness
+	Plug 'junegunn/fzf', { 'dir': '~/local/lib/fzf', 'do': './install --bin' }
 	Plug 'junegunn/fzf.vim'
 
 	" languages
@@ -176,6 +177,7 @@ call plug#begin(expand(g:packageDir))
 		\| Plug 'osyo-manga/unite-quickfix'
 		\| Plug 'Shougo/neomru.vim'
 		\| Plug 'Shougo/neossh.vim'
+		\| Plug 'Shougo/neoyank.vim'
 		\| Plug 'Shougo/tabpagebuffer.vim'
 		\| Plug 'Shougo/unite-outline'
 		\| Plug 'thinca/vim-unite-history'

@@ -49,7 +49,7 @@ function! GetVisualSelection()
 endfunction
 
 
-function! FixSettings()
+function! FixIndentation()
 	set tabstop=2 shiftwidth=2
 endfunction
 
