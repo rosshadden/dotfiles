@@ -16,20 +16,15 @@ call plug#begin(expand(g:packageDir))
 	" enhancements
 
 	" sensible default settings
-	if !has('nvim')
-		Plug 'tpope/vim-sensible'
-	endif
+	Plug 'tpope/vim-sensible', LoadIf(!has('nvim'))
 	" let `.` repeat things like plugin mappings
 	Plug 'tpope/vim-repeat'
 	" let `.` repeat things in visual mode
 	Plug 'vim-scripts/visualrepeat'
 	" completions
-	if has('nvim')
-		Plug 'Shougo/deoplete.nvim'
-		Plug 'carlitux/deoplete-ternjs'
-	else
-		Plug 'Shougo/neocomplete.vim'
-	endif
+	Plug 'Shougo/deoplete.nvim', LoadIf(has('nvim'))
+		\| Plug 'carlitux/deoplete-ternjs', LoadIf(has('nvim'))
+	Plug 'Shougo/neocomplete.vim', LoadIf(!has('nvim'))
 	" <tab>-complete in the search prompt
 	Plug 'SearchComplete'
 	" search with perl regex

@@ -100,7 +100,7 @@ lawg "tmux"
 
 # update vim plugins
 lawg "vim:plugins"
-# ~/.vim/bundle/neobundle.vim/bin/neoinstall
+nvim +PlugUpdate +qa
 lawg "vim:plugins"
 
 ################
