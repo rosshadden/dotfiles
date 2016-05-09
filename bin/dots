@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
 action=${1:-status}
+shift
 
 # TODO: make this an optional, defaulted argument
 DOTS=$HOME/dotfiles
-actionScript="$DOTS/lib/dots/$action.sh"
+actionCmd="$DOTS/lib/dots/$action.sh"
 
 function init() {
 	if [[ -d "$DOTS" ]]; then
@@ -36,8 +37,8 @@ if [[ ! -d "$DOTS" ]]; then
 	exit 1
 fi
 
-if [[ -f "$actionScript" ]]; then
-	$actionScript
+if [[ -f "$actionCmd" ]]; then
+	$actionCmd $*
 else
 	echo "ERROR:  Unknown action '$action'."
 	exit 1

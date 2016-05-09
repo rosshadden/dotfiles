@@ -1,21 +1,23 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 # TODO: use the output of `dots/status.sh` to only do what's necessary
-# TODO: port to bash
 
-# TODO: fix broken refs from sourcing this file
-source ~/dotfiles/src/shell/features.zsh
+################
+# INIT
+################
+
+source ~/dotfiles/src/shell/colors.sh
 
 ################
 # FUNCTIONS
 ################
 
-haveBeenRun=()
+haveBeenRun=""
 lawg() {
 	local name=$1
 
-	if [[ ${haveBeenRun[(i)$name]} -gt ${#haveBeenRun} ]]; then
-		haveBeenRun+=( $name )
+	if [[ $haveBeenRun != *"[$name]"* ]]; then
+		haveBeenRun+="[$name]"
 		echo -e "\n${RED}Updating ${YELLOW}$name${RED}...${RESET}";
 	else
 		echo -e "${RED}Successfully updated ${YELLOW}$name${RED}.${RESET}\n"
@@ -23,25 +25,11 @@ lawg() {
 }
 
 ################
-# DEBUG
-################
-
-if [[ "$1" == "debug" ]]; then
-	lawg "debug"
-	lawg "debug"
-
-	lawg "debug:two"
-	lawg "debug:two"
-
-	exit 0
-fi
-
-################
 # DOTFILES
 ################
 
 lawg "dotfiles"
-pushd $DOTS
+pushd $DOTS > /dev/null
 
 # update dotfiles
 lawg "dotfiles:repo"
@@ -53,7 +41,7 @@ lawg "dotfiles:submodules"
 git submodule update --init --remote --recursive
 lawg "dotfiles:submodules"
 
-popd
+popd > /dev/null
 lawg "dotfiles"
 
 ################
@@ -61,7 +49,7 @@ lawg "dotfiles"
 ################
 
 lawg "sync"
-pushd $SYNC
+pushd $SYNC > /dev/null
 
 # update sync
 lawg "sync:repo"
@@ -73,7 +61,7 @@ lawg "sync:submodules"
 git submodule update --init --remote --recursive
 lawg "sync:submodules"
 
-popd
+popd > /dev/null
 lawg "sync"
 
 ################
@@ -100,7 +88,7 @@ lawg "tmux"
 
 # update vim plugins
 lawg "vim:plugins"
-nvim +PlugUpdate +qa
+nvim +PlugUpdate +PlugUpgrade +qa
 lawg "vim:plugins"
 
 ################

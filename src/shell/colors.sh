@@ -1,3 +1,19 @@
+################
+# DEFINITIONS
+################
+
+counter=0
+for color in BLACK RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
+	eval $color='$(tput setaf $counter)'
+	let counter=counter+1
+done
+RESET=$(tput sgr0)
+unset counter
+
+################
+# THEME
+################
+
 typeset -A colors
 
 colors[normal]="#5F00AF"
@@ -14,5 +30,9 @@ colors[replace2]="#FF5F5F"
 
 colors[background]="#151515"
 colors[foreground]="#FFFFFF"
+
+################
+# INIT
+################
 
 eval $(dircolors ~/.dircolors)

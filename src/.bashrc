@@ -115,6 +115,7 @@ fi
 # MODULES
 ################
 source $shellDir/env.sh
+source $shellDir/colors.sh
 source $shellDir/functions.sh
 source $shellDir/alias.sh
 source $shellDir/general.sh
