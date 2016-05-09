@@ -9,8 +9,8 @@ src/.config/copyq/copyq-bak.conf
 src/.config/copyq/copyq_geometry.ini
 src/.config/copyq/copyq_tabs.ini
 src/.config/nvim/.init.vim-rplugin~
-src/.config/nvim/dein
 src/.config/nvim/plugged
+src/.config/nvim/sessions
 src/.config/ranger/**/__*
 src/.config/ranger/bookmarks
 src/.config/ranger/history

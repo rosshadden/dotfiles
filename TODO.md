@@ -39,6 +39,9 @@
 - conditionally include packages, based on dependencies
 	- @ex taskwarrior
 - modes
+	- rename `unite` to something, and/or distribute contents elsewhere
+	- make git/version-control/changes mode
+		- called g|v|c
 	- buffer
 		- mapping to delete all unused buffers (not just empty)
 	- javascript
@@ -55,12 +58,6 @@
 		- fix and/or make stuff that actually works
 	- files
 		- make a mapping or mode for finding files not in the repo
-	- unite
-		- better previews
-			- possibly a dynamic vertical/horizontal choice
-		- vet the alternate mappings per concept, as some do weird things (`<:unite:1>g`)
-		- vim-session integration
-			- or wait for [this](https://github.com/xolox/vim-session/pull/126)
 - plugins
 	- see if I can make [this](https://github.com/easymotion/vim-easymotion/issues/248#issuecomment-156444426) happen
 		- map `.` in target select mode
@@ -167,7 +164,6 @@
 	- split `features.zsh` into files
 - make mapping to insert newline at cursor
 - Add `fzf` functions or aliases
-	- something with `ag`, ala unite's `file_rec`
 - revisit aliases
 	- introduce `ls -1`
 - make cursor changes update when focus changes (between tmux panes with vim and zsh)
@@ -197,7 +193,6 @@
 	- pick
 	- selecta
 	- dmenu
-	- unite.vim
 - plugins
 	- git
 		- `git branch | cut -c 3- | owmni <blah blah> | xargs git checkout`

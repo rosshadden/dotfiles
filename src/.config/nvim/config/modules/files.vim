@@ -1,16 +1,4 @@
 """"""""""""""""
-" SETTINGS
-""""""""""""""""
-
-if IsLoaded('unite.vim')
-	call unite#custom#profile('files', 'context', {
-		\ 'candidate_icon': '>',
-		\ 'start_insert': 1,
-		\ 'unique': 1,
-	\ })
-endif
-
-""""""""""""""""
 " FUNCTIONS
 """"""""""""""""
 
@@ -67,22 +55,20 @@ noremap <:files><space> :call OpenRanger('')<CR>
 noremap <:files:1><space> :call OpenRanger('%:p:h')<CR>
 
 " flat
-nnoremap <:files>s :Unite -buffer-name=files directory file file/new directory/new<cr>
-nnoremap <:files:1>s :UniteWithBufferDir -buffer-name=files directory file file/new directory/new<cr>
+nnoremap <:files>s :FZF<cr>
+nnoremap <:files:1>s :FZF<space>
 
 " recursive
 let s:recSource = 'neovim'
 if !has('nvim') | let s:recSource = 'async' | endif
 
-exec 'nnoremap <:files>r :Unite -buffer-name=files -start-insert file_rec/' . s:recSource . ':!<cr>'
-exec 'nnoremap <:files:1>r :UniteWithBufferDir -buffer-name=files -start-insert file_rec/' . s:recSource . ':!<cr>'
+nnoremap <:files>r :Files<cr>
+nnoremap <:files:1>r :Files<space>
 
 " git
-nnoremap <:files>g :Unite              -buffer-name=files -start-insert file_rec/git:--cached:--others:--exclude-standard<cr>
-nnoremap <:files:1>g :UniteWithBufferDir -buffer-name=files -start-insert file_rec/git:--cached:--others:--exclude-standard<cr>
+nnoremap <:files>g :GitFiles<cr>
+nnoremap <:files>G :GitFiles?<cr>
 
 " most recently used (mru) files
-nnoremap <:files>m :Unite              -buffer-name=recent file_mru<cr>
-nnoremap <:files:1>m :UniteWithBufferDir -buffer-name=recent file_mru<cr>
-nnoremap <:files>M :Unite              -buffer-name=recent -silent -force-immediately file_mru<cr>
-nnoremap <:files:1>M :UniteWithBufferDir -buffer-name=recent -silent -force-immediately file_mru<cr>
+nnoremap <:files>m :FilesMru<cr>
+nnoremap <:files>M :ProjectMru<cr>

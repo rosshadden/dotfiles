@@ -41,6 +41,9 @@ call MakePrefix('windows', '<:prefix>w')
 call MakePrefix('windows', '<:windows>w', 1)
 call MakePrefix('resize', '<:prefix>r')
 
+" list
+nnoremap <:windows><space> :Windows<cr>
+
 " navigation
 nnoremap <:windows>n :wnext<cr>
 nnoremap <:windows>p :wprevious<cr>

@@ -129,6 +129,7 @@ call plug#begin(expand(g:packageDir))
 	" fuzzyness
 	Plug 'junegunn/fzf'
 	Plug 'junegunn/fzf.vim'
+		\| Plug 'tweekmonster/fzf-filemru'
 
 	" languages
 
@@ -163,19 +164,6 @@ call plug#begin(expand(g:packageDir))
 	Plug 'heartsentwined/vim-emblem'
 	" shell test framework
 	Plug 'markcornick/vim-bats'
-
-	" unite
-
-	" if has('nvim') | Plug 'Shougo/denite.nvim' | endif
-	Plug 'Shougo/unite.vim'
-		\| Plug 'kopischke/unite-spell-suggest'
-		\| Plug 'osyo-manga/unite-quickfix'
-		\| Plug 'Shougo/neomru.vim'
-		\| Plug 'Shougo/neossh.vim'
-		\| Plug 'Shougo/neoyank.vim'
-		\| Plug 'Shougo/tabpagebuffer.vim'
-		\| Plug 'Shougo/unite-outline'
-		\| Plug 'thinca/vim-unite-history'
 
 	" integration
 

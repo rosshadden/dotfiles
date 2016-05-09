@@ -6,14 +6,16 @@
 set splitbelow
 set splitright
 
+""""""""""""""""
+" FUNCTIONS
+""""""""""""""""
 
 function! CleanEmptyBuffers()
-	let buffers = filter(range(0, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val)<0')
+	let buffers = filter(range(0, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val) < 0')
 	if !empty(buffers)
-		exe 'bw '.join(buffers, ' ')
+		exec 'bwipeout ' . join(buffers, ' ')
 	endif
 endfunction
-
 
 """"""""""""""""
 " MAPPINGS
@@ -63,13 +65,4 @@ nnoremap <silent> <:buffers>r :call CleanEmptyBuffers()<cr>
 " PROMPTS
 
 " current buffers
-nnoremap <silent> <:buffers>s :Unite              -buffer-name=buffers buffer<cr>
-nnoremap <silent> <:buffers>S :UniteWithBufferDir -buffer-name=buffers buffer<cr>
-
-" current... tabs? buffers?
-nnoremap <silent> <:buffers>t :Unite              -buffer-name=buffers tab buffer_tab<cr>
-nnoremap <silent> <:buffers>T :UniteWithBufferDir -buffer-name=buffers tab buffer_tab<cr>
-
-" buffer, tab, or files
-nnoremap <silent> <:buffers>a :Unite              -buffer-name=buffers buffer tab file_mru directory_mru bookmark<cr>
-nnoremap <silent> <:buffers>A :UniteWithBufferDir -buffer-name=buffers buffer tab file_mru directory_mru bookmark<cr>
+nnoremap <:buffers>s :Buffers<cr>

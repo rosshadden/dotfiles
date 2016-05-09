@@ -34,10 +34,12 @@ noremap <:app:1>r :Reload<cr>
 " fix indentation
 noremap <:app>i :FixIndentation<cr>
 
-" yank stack
-nnoremap <:app>y :Unite -buffer-name=yank history/yank -default-action=append<cr>
-nnoremap <:app>Y :Unite -buffer-name=yank history/yank<cr>
+" search history
+nnoremap <:app>/ :History/<cr>
 
 " command history
-nnoremap <:app>; :Unite -buffer-name=commands -default-action=execute history/command command<cr>
-nnoremap <:app:1>; :Unite -buffer-name=commands -default-action=edit history/command command<cr>
+nnoremap <:app>; :History:<cr>
+" command list
+nnoremap <:app>: :Commands<cr>
+
+" TODO: yank stack
