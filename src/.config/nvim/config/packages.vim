@@ -127,7 +127,7 @@ call plug#begin(expand(g:packageDir))
 	" fast folding
 	Plug 'Konfekt/FastFold'
 	" fuzzyness
-	Plug 'junegunn/fzf', { 'dir': '~/local/lib/fzf', 'do': './install --bin' }
+	Plug 'junegunn/fzf'
 	Plug 'junegunn/fzf.vim'
 
 	" languages

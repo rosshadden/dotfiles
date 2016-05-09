@@ -120,3 +120,6 @@ source $shellDir/functions.sh
 source $shellDir/alias.sh
 source $shellDir/general.sh
 [[ -e "$HOME/.local.sh" ]] && source $HOME/.local.sh
+
+# load `fzf` mappings
+[[ -f /usr/share/fzf/key-bindings.bash ]] && source /usr/share/fzf/key-bindings.bash

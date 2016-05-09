@@ -113,6 +113,9 @@ function mappings() {
 	vi-yank-to-x() { print -rn -- $CUTBUFFER | xsel -ib -p; }
 	zle -N vi-yank-to-x
 	bindkey -a '^Y' vi-yank-to-x
+
+	# load `fzf` mappings
+	[[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
 }
 
 function theme() {

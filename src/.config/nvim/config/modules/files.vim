@@ -14,7 +14,6 @@ endif
 " FUNCTIONS
 """"""""""""""""
 
-" TODO: combine clauses
 " TODO: accept filename arg, to select it in ranger
 function! OpenRanger(dir)
 	let l:currentPath = expand(a:dir)
@@ -25,7 +24,7 @@ function! OpenRanger(dir)
 		let l:rangerCallback = { 'name': 'ranger' , 'tempFilePath': l:tempFilePath }
 
 		function! l:rangerCallback.on_exit(id, code)
-			bdelete!
+			Bdelete!
 
 			if filereadable(self.tempFilePath)
 				for l:file in readfile(self.tempFilePath)
@@ -36,7 +35,7 @@ function! OpenRanger(dir)
 			endif
 		endfunction
 
-		tabnew
+		enew
 
 		call termopen(l:cmd, l:rangerCallback)
 
