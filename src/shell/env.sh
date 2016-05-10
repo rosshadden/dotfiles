@@ -3,7 +3,7 @@
 ################
 
 # local
-export PATH=$HOME/bin:$HOME/local/bin
+export PATH=~/bin:~/local/bin
 
 # system
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin/:/bin
@@ -18,7 +18,7 @@ export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin/:/bin
 [[ -d "$ANDROID_HOME" ]] && export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 # ruby (if installed)
-[[ -f "/usr/bin/ruby" ]] && export PATH="$PATH:`ruby -e 'puts Gem.user_dir'`/bin:$HOME/.rvm/bin"
+[[ -f "/usr/bin/ruby" ]] && export PATH="$PATH:`ruby -e 'puts Gem.user_dir'`/bin:~/.rvm/bin"
 
 ################
 # APPS
@@ -36,6 +36,10 @@ export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64
 
 # fasd
 fpath=($DOTS/src/shell/completions/functions $fpath)
+# TODO: this does not work
+# if [[ -f "$XDG_DATA_HOME/nvim/shada/main.shada" ]]; then
+# 	export _FASD_VIMINFO="$XDG_DATA_HOME/nvim/shada/main.shada"
+# fi
 
 # ranger
 export RANGER_LOAD_DEFAULT_RC=FALSE

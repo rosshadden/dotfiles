@@ -95,8 +95,8 @@ function plugins() {
 		source "$fasd_cache"
 		unset fasd_cache
 
-		alias v='f -t -e $EDITOR -b viminfo'
-		alias o='a -e open_command'
+		alias v="f -t -e $EDITOR -b viminfo"
+		alias o="a -e open_command"
 		alias j="fasd_cd -d"
 		alias jj="fasd_cd -d -i"
 	fi

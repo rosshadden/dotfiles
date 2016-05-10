@@ -10,6 +10,8 @@ can be changed via the "vimcommand" cVimrc option
 '''
 
 import os
+import sys
+import shlex
 from json import loads
 import subprocess
 from tempfile import mkstemp
@@ -22,7 +24,7 @@ def edit_file(command, content):
     fd, fn = mkstemp(suffix='.txt', prefix='cvim-', text=True)
     os.write(fd, content.encode('utf8'))
     os.close(fd)
-    subprocess.Popen(command.split() + [fn]).wait()
+    subprocess.Popen(shlex.split(command) + [fn]).wait()
     text = None
     with open(fn, 'r') as f:
         text = f.read()
@@ -31,20 +33,10 @@ def edit_file(command, content):
 
 
 class CvimServer(BaseHTTPRequestHandler):
-    # def do_POST(self):
-    #     length = int(self.headers['Content-Length'])
-    #     content = loads(self.rfile.read(length).decode('utf8'))
-    #     edit = edit_file(content['command'], content['data'])
-    #     self.send_response(200)
-    #     self.send_header('Content-Type', 'text/plain')
-    #     self.end_headers()
-    #     self.wfile.write(edit.encode('utf8'))
     def do_POST(self):
         length = int(self.headers['Content-Length'])
-        data = self.rfile.read(length).decode('utf8')
-        # content = loads(self.rfile.read(length).decode('utf8'))
-        # edit = edit_file(content['command'], content['data'])
-        edit = edit_file("gvim -f", data)
+        content = loads(self.rfile.read(length).decode('utf8'))
+        edit = edit_file(content['command'], content['data'])
         self.send_response(200)
         self.send_header('Content-Type', 'text/plain')
         self.end_headers()
@@ -52,7 +44,7 @@ class CvimServer(BaseHTTPRequestHandler):
 
 
 def init_server(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
-    server_address = ('', PORT)
+    server_address = ('127.0.0.1', PORT)
     httpd = server_class(server_address, CvimServer)
     httpd.serve_forever()
 

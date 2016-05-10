@@ -63,6 +63,8 @@ alias tl="tmux list-sessions"
 
 alias Y="yaourt"
 
+alias ag="ag --hidden --ignore .git"
+
 ##
 # attach to existing session, or create new
 #
@@ -87,8 +89,8 @@ tj() {
 # FUN
 ################
 
-if [[ -f /usr/bin/nc ]]; then
-  alias nyan='nc -v nyancat.dakko.us 23' # nyan cat
+if [[ -f "/usr/bin/nc" ]]; then
+	alias nyan='nc -v nyancat.dakko.us 23' # nyan cat
 elif [[ -f /usr/bin/telnet ]]; then
 	alias nyan='telnet -e ^c nyancat.dakko.us'
 fi
@@ -97,7 +99,7 @@ fi
 # GLOBAL
 ################
 
-if [[ $(getShell) == 'zsh' ]]; then
+if [[ "$(getShell)" == "zsh" ]]; then
 	# yaourt --noconfirm
 	alias -g YNO="--noconfirm"
 fi
@@ -106,7 +108,7 @@ fi
 # SUFFIX
 ################
 
-if [[ $(getShell) == 'zsh' ]]; then
+if [[ "$(getShell)" == "zsh" ]]; then
 	# clone git URLs
 	alias -s git="git clone"
 

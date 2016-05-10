@@ -54,16 +54,11 @@ call MakePrefix('files', '<:files>f', 1)
 noremap <:files><space> :call OpenRanger('')<CR>
 noremap <:files:1><space> :call OpenRanger('%:p:h')<CR>
 
-" flat
-nnoremap <:files>s :FZF<cr>
-nnoremap <:files:1>s :FZF<space>
-
 " recursive
-let s:recSource = 'neovim'
-if !has('nvim') | let s:recSource = 'async' | endif
-
 nnoremap <:files>r :Files<cr>
 nnoremap <:files:1>r :Files<space>
+nnoremap <:files>s :FZF --tiebreak=length,end,index<cr>
+nnoremap <:files:1>s :FZF --tiebreak=length,end,index<space>
 
 " git
 nnoremap <:files>g :GitFiles<cr>
