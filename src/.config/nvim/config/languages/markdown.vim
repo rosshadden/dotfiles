@@ -3,19 +3,19 @@
 """"""""""""""""
 
 function! CompileMarkdown(files)
-	let l:dir = expand("%:h:t")
-	if l:dir == "."
-		let l:dir = expand("%:p:t")
+	let l:dir = expand('%:h:t')
+	if l:dir == '.'
+		let l:dir = expand('%:p:t')
 	endif
 
 	echo l:dir
-	let l:output = "/tmp/" . l:dir . ".pdf"
-	let l:options = " -R -f markdown -o " . l:output . " -V geometry:margin=1in -V fontsize=12pt "
+	let l:output = '/tmp/' . l:dir . '.pdf'
+	let l:options = ' -R -f markdown -o ' . l:output . ' -V geometry:margin=1in -V fontsize=12pt '
 
-	let l:cmd = "pandoc" . l:options . a:files
+	let l:cmd = 'pandoc' . l:options . a:files
 
 	write
-	execute "!" . l:cmd
+	execute '!' . l:cmd
 endfunction
 
 
@@ -40,8 +40,8 @@ augroup markdown
 
 	" compile to pdf
 	autocmd FileType markdown
-		\ noremap <localleader>c :call CompileMarkdown(expand("%:p"))<cr> |
-		\ noremap <localleader>C :call CompileMarkdown("*.md")<cr>
+		\ noremap <localleader>c :call CompileMarkdown(expand('%:p'))<cr> |
+		\ noremap <localleader>C :call CompileMarkdown('*.md')<cr>
 
 	" vim-instant-markdown
 	autocmd FileType markdown noremap <localleader>p :LivedownToggle<cr>

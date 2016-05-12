@@ -35,13 +35,10 @@
 	- [like this](http://arusahni.net/blog/2015/04/switching-to-neovim-part-2.html)
 - add mapping when searching to jump to the result but clear the highlighting
 - figure out where I can use `on_cmd` in `packages.vim`
-- replace all `vifm` things with `ranger`
 - conditionally include packages, based on dependencies
 	- @ex taskwarrior
 - modes
-	- rename `unite` to something, and/or distribute contents elsewhere
-	- make git/version-control/changes mode
-		- called g|v|c
+	- `[F] file` mode, for the specific file opened
 	- buffer
 		- mapping to delete all unused buffers (not just empty)
 	- javascript
@@ -51,9 +48,6 @@
 		- :LineDiff
 		- :DiffChanges
 		- :git diff
-		- :DiffVifm
-	- vifm
-		- https://github.com/vifm/vifm/issues/60 and https://github.com/vifm/vifm/issues/79
 	- sessions
 		- fix and/or make stuff that actually works
 	- files
@@ -63,8 +57,6 @@
 		- map `.` in target select mode
 	- pluginify my modes
 	- remove redundant or unused plugins
-		- I have two commenting plugins, with overlapping but not identical features
-- make `ctrl-hjkl` nav work with `--servername`
 
 ## `i3`
 

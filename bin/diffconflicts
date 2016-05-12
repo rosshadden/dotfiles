@@ -1,5 +1,5 @@
+#!/usr/bin/env bash
 
-#!/bin/bash
 # A better vimdiff mergetool for Git
 #
 # Git does a great job resolving merge conflicts automatically but there are
@@ -37,40 +37,40 @@
 #
 #   Tab1 is a two-way diff of just the conflicts. Resolve the conflicts here
 #   and save the file.
-#       +--------------------------------+
-#       |    LCONFL     |    RCONFL      |
-#       +--------------------------------+
+#	   +--------------------------------+
+#	   |	LCONFL	 |	RCONFL	  |
+#	   +--------------------------------+
 #   Tab2 is a three-way diff of the original files and the merge base. This is
 #   the traditional three-way diff. Although noisy, it is occasionally useful
 #   to view the three original states of the conflicting file before the merge.
-#       +--------------------------------+
-#       |  LOCAL   |   BASE   |  REMOTE  |
-#       +--------------------------------+
+#	   +--------------------------------+
+#	   |  LOCAL   |   BASE   |  REMOTE  |
+#	   +--------------------------------+
 #   Tab3 is the in-progress merge that Git has written to the filesystem
 #   containing the conflict markers. I.e., the file you would normally edit by
 #   hand when not using a mergetool.
-#       +--------------------------------+
-#       |       <<<<<<< HEAD             |
-#       |        LCONFL                  |
-#       |       =======                  |
-#       |        RCONFL                  |
-#       |       >>>>>>> someref          |
-#       +--------------------------------+
+#	   +--------------------------------+
+#	   |	   <<<<<<< HEAD			 |
+#	   |		LCONFL				  |
+#	   |	   =======				  |
+#	   |		RCONFL				  |
+#	   |	   >>>>>>> someref		  |
+#	   +--------------------------------+
 #
 # Workflow:
 #
-# 1.    Save your changes to the LCONFL temporary file (the left window on the
-#       first tab; also the only file that isn't read-only).
-# 2.    The LOCAL, BASE, and REMOTE versions of the file are available in the
-#       second tabpage if you want to look at them.
-# 3.    When vimdiff exits cleanly, the file containing the conflict markers
-#       will be updated with the contents of your LCONFL file edits.
+# 1.	Save your changes to the LCONFL temporary file (the left window on the
+#	   first tab; also the only file that isn't read-only).
+# 2.	The LOCAL, BASE, and REMOTE versions of the file are available in the
+#	   second tabpage if you want to look at them.
+# 3.	When vimdiff exits cleanly, the file containing the conflict markers
+#	   will be updated with the contents of your LCONFL file edits.
 #
 # NOTE: Use :cq to abort the merge and exit Vim with an error code.
 
 if [[ -z $@ || $# != "5" ]] ; then
-    echo -e "Usage: $0 \$EDITOR \$BASE \$LOCAL \$REMOTE \$MERGED"
-    exit 1
+	echo -e "Usage: $0 \$EDITOR \$BASE \$LOCAL \$REMOTE \$MERGED"
+	exit 1
 fi
 
 cmd=$1
@@ -96,16 +96,15 @@ sed -e '/^=======$/,/^>>>>>>> /d' -e '/^<<<<<<< /d' "${MERGED}" > "${RCONFL}"
 
 # Fire up vimdiff
 $cmd -f -R -d "${LCONFL}" "${RCONFL}" \
-    -c ":set noro" \
-    -c ":tabe $QLOCAL" -c ":vert diffs $QBASE" -c ":vert diffs $QREMOTE" \
-    -c ":winc t" -c ":tabe $QMERGED" -c ":tabfir"
+	-c ":set noro" \
+	-c ":tabe $QLOCAL" -c ":vert diffs $QBASE" -c ":vert diffs $QREMOTE" \
+	-c ":winc t" -c ":tabe $QMERGED" -c ":tabfir"
 
 EC=$?
 
 # Overwrite $MERGED only if vimdiff exits cleanly.
 if [[ $EC == "0" ]] ; then
-    cat "${LCONFL}" > "${MERGED}"
+	cat "${LCONFL}" > "${MERGED}"
 fi
 
 exit $EC
-

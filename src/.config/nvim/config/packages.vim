@@ -83,8 +83,7 @@ call plug#begin(expand(g:packageDir))
 	" language-aware line splits/joins
 	Plug 'AndrewRadev/splitjoin.vim'
 	" comments
-	Plug 'tpope/vim-commentary'
-	Plug 'scrooloose/nerdcommenter'
+	Plug 'tomtom/tcomment_vim'
 	" settings toggles and symmetrical before/after mappings
 	Plug 'tpope/vim-unimpaired'
 	" visualized undo tree
@@ -130,6 +129,8 @@ call plug#begin(expand(g:packageDir))
 	Plug 'junegunn/fzf'
 	Plug 'junegunn/fzf.vim'
 		\| Plug 'tweekmonster/fzf-filemru'
+	" alignment
+	Plug 'junegunn/vim-easy-align'
 
 	" languages
 
@@ -156,7 +157,6 @@ call plug#begin(expand(g:packageDir))
 	" LaTeX
 	Plug 'LaTeX-Box-Team/LaTeX-Box'
 	" markdown
-	Plug 'godlygeek/tabular'
 	Plug 'shime/vim-livedown'
 	Plug 'vim-pandoc/vim-pandoc'
 	Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -169,7 +169,7 @@ call plug#begin(expand(g:packageDir))
 
 	" git
 	Plug 'airblade/vim-gitgutter'
-	Plug 'tpope/vim-fugitive'
+	Plug 'codeindulgence/vim-tig'
 	" editorconfig
 	" TODO: inserts a weird search string on save
 	" Plug 'editorconfig/editorconfig-vim'

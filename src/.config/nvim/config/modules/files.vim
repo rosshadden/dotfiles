@@ -2,11 +2,14 @@
 " FUNCTIONS
 """"""""""""""""
 
-" TODO: accept filename arg, to select it in ranger
-function! OpenRanger(dir)
-	let l:currentPath = expand(a:dir)
+function! OpenRanger(selectFile)
 	let l:tempFilePath = tempname()
-	let l:cmd = 'ranger --choosefiles=' . shellescape(l:tempFilePath) . ' ' . l:currentPath
+	let l:cmd = 'ranger --choosefiles=' . shellescape(l:tempFilePath)
+
+	let l:file = expand('%:f:h')
+	if a:selectFile == 1 && l:file != ''
+		let l:cmd .= ' --selectfile=' . shellescape(l:file)
+	endif
 
 	if has('nvim')
 		let l:rangerCallback = { 'name': 'ranger' , 'tempFilePath': l:tempFilePath }
@@ -43,6 +46,19 @@ function! OpenRanger(dir)
 	endif
 endfunction
 
+" allow `:Ag` to be called with options (like `--hidden`)
+function! s:agWithOptions(arg, bang)
+	let tokens  = split(a:arg)
+	let ag_opts = join(filter(copy(tokens), 'v:val =~ "^-"'))
+	let query   = join(filter(copy(tokens), 'v:val !~ "^-"'))
+	call fzf#vim#ag(query, ag_opts, a:bang ? {} : { 'down': '40%' })
+endfunction
+
+augroup files
+	autocmd!
+	autocmd VimEnter * command! -nargs=* -bang Ag call s:agWithOptions(<q-args>, <bang>0)
+augroup END
+
 """"""""""""""""
 " MAPPINGS
 """"""""""""""""
@@ -51,19 +67,25 @@ call MakePrefix('files', '<:prefix>f')
 call MakePrefix('files', '<:files>f', 1)
 
 " file manager
-noremap <:files><space> :call OpenRanger('')<CR>
-noremap <:files:1><space> :call OpenRanger('%:p:h')<CR>
+noremap <silent> <:files><space> :call OpenRanger(0)<CR>
+noremap <silent> <:files:1><space> :call OpenRanger(1)<CR>
 
 " recursive
-nnoremap <:files>r :Files<cr>
-nnoremap <:files:1>r :Files<space>
-nnoremap <:files>s :FZF --tiebreak=length,end,index<cr>
-nnoremap <:files:1>s :FZF --tiebreak=length,end,index<space>
-
-" git
-nnoremap <:files>g :GitFiles<cr>
-nnoremap <:files>G :GitFiles?<cr>
+nnoremap <:files>r :FZF --tiebreak=length,end,index<cr>
+nnoremap <:files:1>r :FZF --tiebreak=length,end,index<space>
+nnoremap <:files>R :Files<cr>
+nnoremap <:files:1>R :Files<space>
 
 " most recently used (mru) files
 nnoremap <:files>m :FilesMru<cr>
 nnoremap <:files>M :ProjectMru<cr>
+
+" search files
+nnoremap <:files>s :Ag<cr>
+nnoremap <:files>S :Ag --hidden<cr>
+nnoremap <:files:1>s :Ag<space>
+nnoremap <:files:1>S :Ag --hidden<space>
+
+" line
+nnoremap <:files>l :Lines<cr>
+nnoremap <:files>L :BLines<cr>

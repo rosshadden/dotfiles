@@ -7,16 +7,14 @@
 # keyboard
 # ~/bin/keys init
 
-
 ################
 # ENVIRONMENT
 ################
 
 mkdir /tmp/aoeu
 
-
 ################
-# UTILITIES
+# UTILS
 ################
 
 # pulseaudio
@@ -25,25 +23,12 @@ pulseaudio --start &
 # composite manager
 xcompmgr -cF &
 
-
-################
-# DAEMONS
-################
-
-# Dropbox
-dropbox-cli start
-
-
-################
-# LOCAL
-################
-
-[[ -f ~/local/lib/startup.sh ]] && ~/local/lib/startup.sh
-
-
 ################
 # APPS
 ################
+
+# dropbox
+dropbox-cli start
 
 # Easystroke
 easystroke &
@@ -56,3 +41,9 @@ zeal &
 
 # cvim external editor
 ~/lib/cvim-server.py &
+
+################
+# LOCAL
+################
+
+[[ -f ~/local/lib/startup.sh ]] && ~/local/lib/startup.sh
