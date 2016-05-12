@@ -42,4 +42,7 @@ nnoremap <:app>; :History:<cr>
 " command list
 nnoremap <:app>: :Commands<cr>
 
+" show mappings
+nnoremap <:app>m :Maps<cr>
+
 " TODO: yank stack

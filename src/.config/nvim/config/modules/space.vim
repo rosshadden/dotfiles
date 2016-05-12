@@ -10,7 +10,9 @@ set listchars=tab:»\ ,trail:·,nbsp:_,extends:>,precedes:<
 
 set linebreak
 set breakindent
-let &showbreak = '... '
+" let &showbreak = '... '
+" let &showbreak = '… '
+let &showbreak = '↪️ '
 
 " strip whitepsace
 let g:strip_whitespace_on_save = 1
@@ -28,6 +30,10 @@ highlight ExtraWhitespace ctermfg=white ctermbg=blue
 
 " prefix
 call MakePrefix('space', '<:prefix>s')
+
+" easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " up, down, left, right
 noremap <:space>h i<space><esc>l

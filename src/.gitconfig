@@ -86,6 +86,8 @@
 	find = ls-files
 	# list files
 	ls = ls-files
+	# list directories
+	ls-dirs = ls-tree -d --name-only HEAD
 	# checkout branch, making a new one if not present
 	cd = !sh -c 'git checkout $1 2> /dev/null || git checkout -b $1' -
 	# get current branch
