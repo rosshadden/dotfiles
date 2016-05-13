@@ -10,8 +10,8 @@
 
 ## install
 
-- support arguments
-	-- `--anon`
+- [support arguments](http://wiki.bash-hackers.org/howto/getopts_tutorial)
+	- `--anon`
 	- `--cli`: non-X mode (no need to install i3 things on a server, for example)
 - vet using a `Makefile`
 - call `dots update` from systemd service

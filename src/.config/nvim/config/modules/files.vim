@@ -2,6 +2,7 @@
 " FUNCTIONS
 """"""""""""""""
 
+" TODO: make argument optional
 function! OpenRanger(selectFile)
 	let l:tempFilePath = tempname()
 	let l:cmd = 'ranger --choosefiles=' . shellescape(l:tempFilePath)
@@ -67,8 +68,8 @@ call MakePrefix('files', '<:prefix>f')
 call MakePrefix('files', '<:files>f', 1)
 
 " file manager
-noremap <silent> <:files><space> :call OpenRanger(0)<CR>
-noremap <silent> <:files:1><space> :call OpenRanger(1)<CR>
+noremap <silent> <:files><space> :call OpenRanger(1)<cr>
+noremap <silent> <:files:1><space> :call OpenRanger(0)<cr>
 
 " recursive
 nnoremap <:files>r :FZF --tiebreak=length,end,index<cr>

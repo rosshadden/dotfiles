@@ -11,8 +11,8 @@ nnoremap <:git:1><space> :Tig!<cr>
 nnoremap <:git>b :Tig blame<cr>
 nnoremap <:git>B :Tig refs<cr>
 nnoremap <:git>l :Tig log<cr>
-nnoremap <:git>s :Tig show<cr>
-nnoremap <:git>S :Tig status<cr>
+nnoremap <:git>s :Tig status<cr>
+nnoremap <:git>S :Tig show<cr>
 nnoremap <:git>y :Tig stash<cr>
 
 nnoremap <:git>r :GitFiles<cr>
