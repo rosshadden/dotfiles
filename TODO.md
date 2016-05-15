@@ -1,24 +1,27 @@
 # meta
 
 - trim down as much fat as possible
-- look into [these dotfiles](https://github.com/xero/dotfiles) for sexiness
-- README
-	- improve/update
-	- screenshots
-- make `update` announce uncommitted changes in `dotfiles` and `sync`
+- look into [these dotfiles]( https://github.com/xero/dotfiles ) for sexiness
 - swap `~/{bin,lib}` and `~/local/{bin,lib}`
 
-## install
+## `dots`
 
-- [support arguments](http://wiki.bash-hackers.org/howto/getopts_tutorial)
+- make `update` announce uncommitted changes in `dotfiles` and `sync`
+
+### install
+
+- [support arguments]( http://wiki.bash-hackers.org/howto/getopts_tutorial )
 	- `--anon`
 	- `--cli`: non-X mode (no need to install i3 things on a server, for example)
 - vet using a `Makefile`
 - call `dots update` from systemd service
 - possibly make a (generated? githook?) manifest file, to make cleanup easier
+	- add a clause to `update` that creates new links and removes old
 
-# docs
+## docs
 
+- improve/update
+- screenshots
 - meta (kind of pun), as in keyboard layout, remapped keys, etc.
 - vim setup
 - git aliases
@@ -30,31 +33,33 @@
 
 ## `vim`
 
-- make variable for the vim path, and use it everywhere we have paths to it
-	- [like this](http://arusahni.net/blog/2015/04/switching-to-neovim-part-2.html)
 - add mapping when searching to jump to the result but clear the highlighting
 - figure out where I can use `on_cmd` in `packages.vim`
 - conditionally include packages, based on dependencies
-	- @ex taskwarrior
+	- @ex taskwarrior (even though I've since removed this)
 - modes
-	- `[F] file` mode, for the specific file opened
-	- buffer
-		- mapping to delete all unused buffers (not just empty)
 	- javascript
 		- make mappings for opening the test for the current file (and vice versa)
-	- ember
+			- hopefully use `portkey`, but it'll need a global default file
+	- `[F] file` mode, for the specific file opened
+		- or use "buffer"?
+	- buffer
+		- mapping to delete all unused buffers (not just empty)
+	- files
+		- make a mapping or mode for finding files not in the repo
 	- diff
 		- :LineDiff
 		- :DiffChanges
 		- :git diff
 	- sessions
 		- fix and/or make stuff that actually works
-	- files
-		- make a mapping or mode for finding files not in the repo
+	- ember? or nah
 - plugins
-	- see if I can make [this](https://github.com/easymotion/vim-easymotion/issues/248#issuecomment-156444426) happen
-		- map `.` in target select mode
 	- pluginify my modes
+	- pluginify `ranger` stuff
+	- pluginify other stuff
+	- see if I can make [this]( https://github.com/easymotion/vim-easymotion/issues/248#issuecomment-156444426 ) happen
+		- map `.` in target select mode
 	- remove redundant or unused plugins
 
 ## `i3`
@@ -75,50 +80,50 @@
 
 - screen brightness
 - fix keyboard block interaction
-- give blocks state
-	- combine `df` instances, and cycle with mousewheel
 
 ## `tmux`
 
 - Raws, Private Investigator
 	- fix prefix not showing in status on first launch
 		- probably because of the vim/airline stuff
-	- figure out why exiting one session sometimes switches to another
 - use `choose-session` to pick a session to link current session to
+- add `tcd` function, which `cd`s into a dir and renames the tmux session to that
+	- should possibly share code with `tp` and `ta`, to determine the session name
+- universalize all of the `tl`, `ta`, `tp`, etc things, into one binary
 
 ## `tig`
 
 - spend time making it even more useful
 - universalize mappings
-- investigate [wiki binds](https://github.com/jonas/tig/wiki/Bindings)
+- fix opening files in neovim
+- investigate [wiki binds]( https://github.com/jonas/tig/wiki/Bindings )
 - mappings
-	- make h/l go left/right
-		- bind the current h/l to something else
+	- make `[hl]` go left/right
+		- bind the current `[hl]` to something else
+	- unbind `<c-[hjkl]>` so it uses the tmux mappings
 	- scrap
 	- stash / pop
 		- per file
 		- all
 	- checkout tags
 		- the main checkout bind should probably just support tags too
+		- add tags to the list branch
 
 ## `ranger`
 
-- make equivalents to `vifm`'s `cw` and `cW`
+- vet `fasd` integration
+- vet `fzf` integration
+- support an easier deletion, like how `vifm` does it using `trash-cli`
 
-## `vifm`
+## `fzf`
 
-- add support for opening with `vim --servername`, for use with tmux sidebar
-- add bind to essentially run `fasd`
-- revisit binds
-- add specific configs, launched with `-c "source /path/to/config"`
-	- tmux
-		- make explorer open files in vim instance
-	- vim
-- [bind to mime types](https://github.com/vifm/vifm/issues/150)
-
-## `spacefm`
-
-- plugins
+- either:
+	- make a binary, like `f` or `r`
+	- or, make a consistent prefix, like `fcd`, `f-cd`, or `fzf-cd`
+- make convenient wrappers
+	- `cd`
+	- `j`
+- maybe this is all `awmni`'s responsibility...
 
 ## `copyq`
 
@@ -136,46 +141,45 @@
 
 # shell
 
-- make `for-in` and `for-of` observe aliases
-- add `-n` arg to `copy` to strip out `\n`s
-- add `tcd` function, which `cd`s into a dir and renames the tmux session to that
-	- should possibly share code with `tp` and `ta`, to determine the session name
-- utilize zsh-functional for my wrappers
 - wrap aliases and functions in `if [[ -x \`which <cmd>\` ]]` blocks
+- make things more modular
+- handle zsh- and bash- specific things better
+	- `shell/features.sh`, and `shell/features.zsh`
+- revisit aliases
+	- introduce `ls -1`
 
 ## zsh
 
-- use [zsh-functional](https://github.com/Tarrasch/zsh-functional) instead of `for-in` and `for-of`
-	- contribute to them, adding things mine do, or at least use them in mine
 - refactor `.zshrc`
 	- modularize
 		- make semantic modules instead of a file for aliases and a file for functions (for example)
-	- look into [built-in functions](https://github.com/zsh-users/zsh/tree/master/Functions/Zle)
-	- look into [better status indicator](http://ivyl.0xcafe.eu/2013/02/03/refining-zsh/#vi_mode_status_indicator)
+	- look into [built-in functions]( https://github.com/zsh-users/zsh/tree/master/Functions/Zle )
+	- look into [better status indicator]( http://ivyl.0xcafe.eu/2013/02/03/refining-zsh/#vi_mode_status_indicator )
 	- split `features.zsh` into files
 - make mapping to insert newline at cursor
-- Add `fzf` functions or aliases
-- revisit aliases
-	- introduce `ls -1`
-- make cursor changes update when focus changes (between tmux panes with vim and zsh)
 
-## bash
+## `for-{in,of}`
 
-- make sure bash works, even though I haven't used it in years
+- vet using [zsh-functional]( https://github.com/Tarrasch/zsh-functional ) instead of `for-{in,of}`
+	- contribute to them, adding things mine do, or at least use them in mine
+- or, vet breaking out into separate repo
+- or, try harder to support bash
+- make `for-{in,of}` observe aliases
+- add `-n` arg to `copy` to strip out `\n`s
 
 # X11
 
 - modularize `.Xresources`
+- look into [existing `.Xresources` themes]( http://www.noobslab.com/ )
+
+## `keys`
+
+- vet breaking out into separate repo
 - use something better than `grp:shifts_toggle` in `keys`
 - only run `xcape` over `CapsLock`, not `Control_L`
 	- for some reason this doesn't work as expected, though I'm not sure why
-- look into existing `.Xresources` themes
-	- http://www.noobslab.com/
-- monitors
-	- handle hot-plugging monitors
-	- make monitors not enter standby when WE'RE WATCHING A SHOW, FOR CRYING OUT LOUD
 
-# Owmni / Awmni
+# `awmni` / `owmni`
 
 - client-agnostic back-end, which should work with X and terminals alike
 - clients
