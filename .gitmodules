@@ -4,6 +4,3 @@
 [submodule "lib/shell/antigen"]
 	path = lib/shell/antigen
 	url = https://github.com/zsh-users/antigen.git
-[submodule "lib/themes/base16-builder"]
-	path = lib/themes/base16-builder
-	url = https://github.com/base16-builder/base16-builder.git

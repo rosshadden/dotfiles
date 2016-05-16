@@ -119,10 +119,6 @@ function mappings() {
 }
 
 function theme() {
-	# NOTE: overwritten below
-	ZSH_THEME="agnoster"
-
-
 	# base16 colors
 	if [ "${TERM%%-*}" = 'linux' ]; then
 		BASE16_TYPE="vconsole"
@@ -130,10 +126,7 @@ function theme() {
 		BASE16_TYPE="shell"
 	fi
 
-	THEME="summerfruit"
-	BASE16_VARIANT="dark"
-	BASE16_DIR="$themeDir/base16-builder/output/$BASE16_TYPE"
-	BASE16_SHELL="$BASE16_DIR/base16-$THEME.$BASE16_VARIANT.sh"
+	BASE16_SHELL="$themeDir/$BASE16_TYPE.sh"
 
 	[[ -f $BASE16_SHELL ]] && source $BASE16_SHELL
 

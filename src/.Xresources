@@ -15,13 +15,13 @@
 !! THEME
 !!!!!!!!!!!!!!!!
 
-#include "/home/ross/dotfiles/lib/themes/base16-builder/output/xresources/base16-pop.dark.256.xresources"
+#include "/home/ross/dotfiles/lib/themes/xresources.xresources"
 
 *.highlightbg: #875fd7
 *.highlightfg: #ffffff
 *.bordercolor: #5f00af
 *.opacity: 100
-*.terminal: urxvt
+*.terminal: termite
 
 !!!!!!!!!!!!!!!!
 !! CURSOR
@@ -31,8 +31,16 @@ Xcursor.theme: Polar
 Xcursor.size: 48
 
 !!!!!!!!!!!!!!!!
+!! DMENU
+!!!!!!!!!!!!!!!!
+
+#include "/home/ross/dotfiles/lib/themes/dmenu.xresources"
+
+!!!!!!!!!!!!!!!!
 !! ROFI
 !!!!!!!!!!!!!!!!
+
+#include "/home/ross/dotfiles/lib/themes/rofi.xresources"
 
 rofi.borderwidth: 3
 rofi.padding: 3

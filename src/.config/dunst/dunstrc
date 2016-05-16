@@ -185,20 +185,16 @@
     context = mod1+Return
 
 [urgency_low]
-    background = "#0087FF"
-    foreground = "#888888"
-    timeout = 10
+    background = "#151515"
+    foreground = "#FFFFFF"
 
 [urgency_normal]
-    background = "#5F00AF"
-    foreground = "#ffffff"
-    timeout = 10
+    background = "#151515"
+    foreground = "#3777E6"
 
 [urgency_critical]
-    background = "#FF5F00"
-    foreground = "#ffffff"
-    timeout = 0
-
+    background = "#151515"
+    foreground = "#FF0086"
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
@@ -251,5 +247,5 @@
 #    appname = Pidgin
 #    summary = *twitter.com*
 #    urgency = normal
-#
-# vim: ft=cfg
+
+# vim: filetype=yaml

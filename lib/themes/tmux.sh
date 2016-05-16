@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-tmuxline=~/dotfiles/src/themes/tmuxline.conf
+tmuxline=~/dotfiles/lib/themes/tmuxline.conf
 
 # tmuxline
 [ -f $tmuxline ] && tmux source $tmuxline

@@ -7,6 +7,7 @@
 ## `dots`
 
 - make `update` announce uncommitted changes in `dotfiles` and `sync`
+- automate theme stuff
 
 ### install
 
