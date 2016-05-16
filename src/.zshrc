@@ -115,7 +115,10 @@ function mappings() {
 	bindkey -a '^Y' vi-yank-to-x
 
 	# load `fzf` mappings
-	[[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
+	local shell="$(getShell)"
+	if [[ -f /usr/share/fzf/key-bindings.$shell ]]; then local fzfMappings=/usr/share/fzf/key-bindings.$shell; fi
+	if [[ -f /etc/profile.d/fzf.$shell ]]; then local fzfMappings=/etc/profile.d/fzf.$shell; fi
+	if [[ "$fzfMappings" != "" ]]; then source $fzfMappings; fi
 }
 
 function theme() {

@@ -10,7 +10,7 @@
 # @param {Array} [...list=*] - The list to use
 #   May be globs or space-separated values.
 ##
-for-in() {
+function for-in() {
 	local args=( $@ )
 	local len=${#args[@]}
 	local cmd=${args[1]}

@@ -12,7 +12,7 @@
 # @param {Array} [...list=*] - The list to use
 #   May be globs or space-separated values.
 ##
-for-of() {
+function for-of() {
 	local cmd=$1
 	local section='\\n################\\n# $1\\n################'
 	cmd="if [[ -d \$1 ]]; then echo $section; cd \$1; $cmd; cd ../; fi"
