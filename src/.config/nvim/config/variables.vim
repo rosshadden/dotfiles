@@ -1,5 +1,5 @@
 let g:dotsDir = '~/dotfiles'
-let g:themesDir = '~/dotfiles/src/themes'
+let g:themesDir = '~/dotfiles/lib/themes'
 
 if has('nvim')
 	let g:vimDir = '~/.config/nvim'

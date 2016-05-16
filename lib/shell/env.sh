@@ -35,7 +35,7 @@ export ANDROID_HOME=/opt/android-sdk
 export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64
 
 # fasd
-fpath=($DOTS/src/shell/completions/functions $fpath)
+fpath=($DOTS/lib/shell/completions/functions $fpath)
 # TODO: this does not work
 # if [[ -f "$XDG_DATA_HOME/nvim/shada/main.shada" ]]; then
 # 	export _FASD_VIMINFO="$XDG_DATA_HOME/nvim/shada/main.shada"

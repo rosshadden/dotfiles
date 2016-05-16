@@ -6,7 +6,7 @@
 # INIT
 ################
 
-source ~/dotfiles/src/shell/colors.sh
+source ~/dotfiles/lib/shell/colors.sh
 
 ################
 # FUNCTIONS

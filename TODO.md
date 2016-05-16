@@ -169,7 +169,7 @@
 
 # X11
 
-- modularize `.Xresources`
+- [modularize `.Xresources`]( https://wiki.archlinux.org/index.php/x_resources#Include_files )
 - look into [existing `.Xresources` themes]( http://www.noobslab.com/ )
 
 ## `keys`

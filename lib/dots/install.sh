@@ -26,7 +26,6 @@ function link() {
 		if [[ "$name" == ".config" ]]; then continue; fi
 		if [[ "$name" == "shell" ]]; then continue; fi
 		if [[ "$name" == "themes" ]]; then continue; fi
-		if [[ "$name" =~ ".swp" ]]; then continue; fi
 
 		ln -s $file $HOME/
 	done

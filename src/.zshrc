@@ -12,9 +12,9 @@ function variables() {
 	export DB=$HOME/Dropbox
 
 	# shell dir
-	shellDir=$DOTS/src/shell
+	shellDir=$DOTS/lib/shell
 	# themes dir
-	themeDir=$DOTS/src/themes
+	themeDir=$DOTS/lib/themes
 }
 
 function packages() {
