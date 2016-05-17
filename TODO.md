@@ -1,11 +1,13 @@
 # meta
 
+- add version
 - trim down as much fat as possible
 - look into [these dotfiles]( https://github.com/xero/dotfiles ) for sexiness
 - swap `~/{bin,lib}` and `~/local/{bin,lib}`
 
 ## `dots`
 
+- add `--version`
 - make `update` announce uncommitted changes in `dotfiles` and `sync`
 - automate theme stuff
 
@@ -84,6 +86,7 @@
 
 ## `tmux`
 
+- rewrite or change tmux-urlview, to use `fzf`
 - Raws, Private Investigator
 	- fix prefix not showing in status on first launch
 		- probably because of the vim/airline stuff
@@ -161,11 +164,9 @@
 
 ## `for-{in,of}`
 
-- vet using [zsh-functional]( https://github.com/Tarrasch/zsh-functional ) instead of `for-{in,of}`
-	- contribute to them, adding things mine do, or at least use them in mine
-- or, vet breaking out into separate repo
-- or, try harder to support bash
-- make `for-{in,of}` observe aliases
+- break out into separate repo
+- try harder to support bash
+- make `for-{in,of}` observe aliases again
 - add `-n` arg to `copy` to strip out `\n`s
 
 # X11

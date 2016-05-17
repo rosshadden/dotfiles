@@ -53,7 +53,11 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # SETTINGS
 ################
 
-export EDITOR=nvim
+if [[ -f "/usr/bin/nvim" ]]; then
+	export EDITOR=nvim
+else
+	export EDITOR=vim
+fi
 
 export VISUAL=gvim
 

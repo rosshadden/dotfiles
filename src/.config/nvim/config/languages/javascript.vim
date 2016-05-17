@@ -32,6 +32,13 @@ augroup javascript
 
 	" insert version
 	autocmd FileType javascript
-		\ map <localleader>v :execute InsertVersion('a')<cr> |
-		\ map <localleader>V :execute InsertVersion('i')<cr>
+		\  map <localleader>d :TernDef<cr>
+		\| map <localleader>D :TernDefPreview<cr>
+		\| map <localleader>l :TernDoc<cr>
+		\| map <localleader>L :TernDocBrowse<cr>
+		\| map <localleader>r :TernRefs<cr>
+		\| map <localleader>R :TernRename<cr>
+		\| map <localleader>t :TernType<cr>
+		\| map <localleader>v :execute InsertVersion('a')<cr>
+		\| map <localleader>V :execute InsertVersion('i')<cr>
 augroup END
