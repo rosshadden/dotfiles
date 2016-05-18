@@ -11,5 +11,5 @@ augroup misc
 	autocmd FileType gitcommit setlocal spell | setlocal complete+=kspell | call cursor(1, 1)
 
 	" read things as shell scripts
-	autocmd BufNewFile,BufReadPost *.conf set filetype=sh
+	autocmd BufNewFile,BufReadPost,BufEnter * if &filetype == '' | setlocal filetype=config | endif
 augroup END

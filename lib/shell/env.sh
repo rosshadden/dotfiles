@@ -6,7 +6,7 @@
 export PATH=~/bin:~/local/bin
 
 # system
-export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin/:/bin
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin
 
 # perl (if installed)
 [[ -f "/usr/bin/perl" ]] && export PATH=$PATH:/usr/bin/core_perl

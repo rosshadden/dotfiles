@@ -97,9 +97,10 @@ call plug#begin(expand(g:packageDir))
 
 	" ui
 
+	Plug 'mhinz/vim-startify'
+	Plug 'paranoida/vim-airlineish'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
-	Plug 'paranoida/vim-airlineish'
 	" colors
 	Plug 'chriskempson/base16-vim'
 	" indent guides

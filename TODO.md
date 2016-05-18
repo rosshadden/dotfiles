@@ -91,6 +91,11 @@
 	- fix prefix not showing in status on first launch
 		- probably because of the vim/airline stuff
 - use `choose-session` to pick a session to link current session to
+
+### `tp`
+
+- break `tp` and friends into separate repo
+- use `j -sl | fzf +s --tac` to give a list of recent dirs
 - add `tcd` function, which `cd`s into a dir and renames the tmux session to that
 	- should possibly share code with `tp` and `ta`, to determine the session name
 - universalize all of the `tl`, `ta`, `tp`, etc things, into one binary
