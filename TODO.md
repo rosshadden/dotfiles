@@ -1,20 +1,18 @@
 # meta
 
-- add version
 - trim down as much fat as possible
 - look into [these dotfiles]( https://github.com/xero/dotfiles ) for sexiness
 - swap `~/{bin,lib}` and `~/local/{bin,lib}`
 
 ## `dots`
 
-- add `--version`
 - make `update` announce uncommitted changes in `dotfiles` and `sync`
 - automate theme stuff
+- make `dots-get`, which will return requested settings/paths/variables
 
 ### install
 
-- [support arguments]( http://wiki.bash-hackers.org/howto/getopts_tutorial )
-	- `--anon`
+- support arguments
 	- `--cli`: non-X mode (no need to install i3 things on a server, for example)
 - vet using a `Makefile`
 - call `dots update` from systemd service

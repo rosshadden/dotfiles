@@ -53,9 +53,9 @@ function options() {
 function modules() {
 	autoload -U compaudit compinit
 
+	source $shellDir/functions.sh
 	source $shellDir/env.sh
 	source $shellDir/colors.sh
-	source $shellDir/functions.sh
 	source $shellDir/alias.sh
 	source $shellDir/general.sh
 	[[ -f ~/local/.zshrc ]] && source ~/local/.zshrc

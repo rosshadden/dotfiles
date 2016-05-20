@@ -9,16 +9,16 @@ export PATH=~/bin:~/local/bin
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin
 
 # perl (if installed)
-[[ -f "/usr/bin/perl" ]] && export PATH=$PATH:/usr/bin/core_perl
+if isCommand perl; then export PATH=$PATH:/usr/bin/core_perl; fi
 
 # java (if installed)
-[[ -f "/usr/bin/java" ]] && export PATH=$PATH:$JAVA_HOME/bin
+if isCommand java; then export PATH=$PATH:$JAVA_HOME/bin; fi
+
+# ruby (if installed)
+if isCommand ruby; then export PATH="$PATH:`ruby -e 'puts Gem.user_dir'`/bin:~/.rvm/bin"; fi
 
 # android (if installed)
 [[ -d "$ANDROID_HOME" ]] && export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-
-# ruby (if installed)
-[[ -f "/usr/bin/ruby" ]] && export PATH="$PATH:`ruby -e 'puts Gem.user_dir'`/bin:~/.rvm/bin"
 
 ################
 # APPS

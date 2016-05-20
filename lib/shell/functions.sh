@@ -15,6 +15,11 @@
 # 	xsel -ob
 # }
 
+function error() {
+	echo "$1" 1>&2
+	exit 1
+}
+
 calc() {
 	echo "$1" | bc -l
 }

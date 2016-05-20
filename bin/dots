@@ -1,45 +1,30 @@
 #!/usr/bin/env bash
 
-action=${1:-status}
+export DOTS="${DOTS:-$HOME/dotfiles}"
+
+source "$DOTS/lib/dots/functions.sh"
+
+while getopts ":vV" opt; do
+	case "$opt" in
+		v|V) cat "$DOTS/VERSION"; exit ;;
+		:) error "Option '-$OPTARG' requires an argument" ;;
+		*) error "Invalid option: -$OPTARG" ;;
+	esac
+done
+shift "$((OPTIND-1))"
+
+action="${1:-status}"
 shift
 
-# TODO: make this an optional, defaulted argument
-DOTS=$HOME/dotfiles
-actionCmd="$DOTS/lib/dots/$action.sh"
+case "$action" in
+	i|install) action=install ;;
+	s|status) action=status ;;
+	v|version) $0 -v; exit ;;
+esac
 
-function init() {
-	if [[ -d "$DOTS" ]]; then
-		echo "Skipping init."
-		echo "REASON:  Dotfiles already exist at '$DOTS'."
-		exit 1
-	fi
-
-	echo "Downloading dotfiles into '$DOTS'."
-
-	if command -v git; then
-		# TODO: do 2nd one if anon
-		# git clone git@github.com:rosshadden/dotfiles.git $DOTS
-		git clone https://github.com/rosshadden/dotfiles.git $DOTS
-	else
-		wget https://github.com/rosshadden/dotfiles/archive/master.zip
-		mv dotfiles-master $DOTS
-	fi
-}
-
-if [[ "$action" == "init" ]]; then
-	init
-	exit 0
-fi
-
-if [[ ! -d "$DOTS" ]]; then
-	echo "ERROR:  Dotfiles were not found at '$DOTS'."
-	echo "FIX:  Run \`dots init\` to initialize."
-	exit 1
-fi
-
-if [[ -f "$actionCmd" ]]; then
-	$actionCmd $*
+actionFile="$DOTS/lib/dots/$action.sh"
+if [[ -f "$actionFile" ]]; then
+	$actionFile $*
 else
-	echo "ERROR:  Unknown action '$action'."
-	exit 1
+	error "Invalid action: $action"
 fi

@@ -6,7 +6,8 @@
 # INIT
 ################
 
-source ~/dotfiles/lib/shell/colors.sh
+source "$(dirname $0)/functions.sh"
+source "$DOTS/lib/shell/colors.sh"
 
 ################
 # FUNCTIONS

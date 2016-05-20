@@ -112,9 +112,9 @@ if [[ -f /etc/bash_completion ]] && ! shopt -oq posix; then
 fi
 
 function modules() {
+	source $shellDir/functions.sh
 	source $shellDir/env.sh
 	source $shellDir/colors.sh
-	source $shellDir/functions.sh
 	source $shellDir/alias.sh
 	source $shellDir/general.sh
 	[[ -e "$HOME/.local.sh" ]] && source $HOME/.local.sh
