@@ -6,7 +6,8 @@ isAnon=false
 shouldDownload=false
 shouldForce=false
 
-while getopts ":adf" opt; do
+spec=":adf"
+while getopts $spec opt; do
 	case "$opt" in
 		a) isAnon=true ;;
 		d) shouldDownload=true ;;
@@ -43,7 +44,7 @@ function fetch() {
 function init() {
 	echo "Initializing git submodules..."
 	pushd $DOTS &> /dev/null
-	git submodule update --init --remote --recursive
+		git submodule update --init --remote --recursive
 	popd &> /dev/null
 
 	if [[ ! -d "$tpmPath" ]]; then

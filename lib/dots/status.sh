@@ -10,7 +10,8 @@ source "$(dirname $0)/functions.sh"
 
 pushd $DOTS &> /dev/null
 
-while getopts ":f" opt; do
+spec=":f"
+while getopts $spec opt; do
 	case "$opt" in
 		f) git fetch ;;
 		*) error "Invalid option: -$OPTARG" ;;

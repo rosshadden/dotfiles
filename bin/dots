@@ -4,9 +4,10 @@ export DOTS="${DOTS:-$HOME/dotfiles}"
 
 source "$DOTS/lib/dots/functions.sh"
 
-while getopts ":vV" opt; do
+spec=":vV"
+while getopts $spec opt; do
 	case "$opt" in
-		v|V) cat "$DOTS/VERSION"; exit ;;
+		v | V) $0 version; exit ;;
 		:) error "Option '-$OPTARG' requires an argument" ;;
 		*) error "Invalid option: -$OPTARG" ;;
 	esac
@@ -14,16 +15,16 @@ done
 shift "$((OPTIND-1))"
 
 action="${1:-status}"
-shift
 
 case "$action" in
-	i|install) action=install ;;
-	s|status) action=status ;;
-	v|version) $0 -v; exit ;;
+	i | install) action=install ;;
+	s | status) action=status ;;
+	v | version) action=version ;;
 esac
 
 actionFile="$DOTS/lib/dots/$action.sh"
 if [[ -f "$actionFile" ]]; then
+	shift
 	$actionFile $*
 else
 	error "Invalid action: $action"
