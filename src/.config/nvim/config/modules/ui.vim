@@ -5,14 +5,16 @@
 syntax enable
 set background=dark
 
+runtime! colors/vim-airline.vim
+
 if has('nvim')
 	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-	colorscheme base16-summerfruit
 else
 	set t_Co=256
 	let base16colorspace=256
-	colorscheme base16-default
 endif
+
+colorscheme vim
 
 scriptencoding utf-8
 
@@ -28,15 +30,10 @@ if IsLoaded('vim-airline')
 	" let g:airline_section_a = airline#section#create_left(['mode', 'prefix', 'paste', 'capslock', 'iminsert'])
 	let g:airline_section_a = airline#section#create_left([ 'mode', 'paste', 'capslock', 'iminsert' ])
 	let g:airline#extensions#branch#enabled = 1
-	let g:airline_theme = 'airlineish'
+	let g:airline_theme = 'base16_summerfruit'
 
 	" this makes the base16 theme work
 	let g:airline#themes#base16#constant = 1
-
-	" if !exists('g:airline_symbols')
-	" 	let g:airline_symbols = {}
-	" endif
-	" let g:airline_symbols.space = "\ua0"
 
 	" extensions
 
@@ -44,20 +41,11 @@ if IsLoaded('vim-airline')
 
 	let g:airline#extensions#tabline#enabled = 1
 	" close 'button'
-	let g:airline#extensions#tabline#close_symbol = 'â'
+	let g:airline#extensions#tabline#close_symbol = '✖️'
 	" how tab numbers are calculated (0 for # of splits, 1 for tab #)
 	let g:airline#extensions#tabline#tab_nr_type = 1
 	" quick buffer switch
 	let g:airline#extensions#tabline#buffer_idx_mode = 1
-	nmap <leader>1 <Plug>AirlineSelectTab1
-	nmap <leader>2 <Plug>AirlineSelectTab2
-	nmap <leader>3 <Plug>AirlineSelectTab3
-	nmap <leader>4 <Plug>AirlineSelectTab4
-	nmap <leader>5 <Plug>AirlineSelectTab5
-	nmap <leader>6 <Plug>AirlineSelectTab6
-	nmap <leader>7 <Plug>AirlineSelectTab7
-	nmap <leader>8 <Plug>AirlineSelectTab8
-	nmap <leader>9 <Plug>AirlineSelectTab9
 
 	" promptline
 

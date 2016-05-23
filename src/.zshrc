@@ -131,7 +131,7 @@ function theme() {
 
 	BASE16_SHELL="$themeDir/$BASE16_TYPE.sh"
 
-	[[ -f $BASE16_SHELL ]] && source $BASE16_SHELL
+	[[ -f "$BASE16_SHELL" ]] && source $BASE16_SHELL
 
 
 	# airline prompt
@@ -169,67 +169,17 @@ function terminal() {
 		# Finally, make sure the terminal is in application mode, when zle is active.
 		# Only then are the values from $terminfo valid.
 		if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
-			function zle-line-init () {
-				printf '%s' "${terminfo[smkx]}"
-			}
-			function zle-line-finish () {
-				printf '%s' "${terminfo[rmkx]}"
-			}
+			function zle-line-init () { printf '%s' "${terminfo[smkx]}" }
+			function zle-line-finish () { printf '%s' "${terminfo[rmkx]}" }
 			zle -N zle-line-init
 			zle -N zle-line-finish
 		fi
-
-
-	# VI-MODE
-	# TODO: breakout.exe
-
-	vim_ins_mode="INSERT"
-	vim_cmd_mode="NORMAL"
-	vim_mode=$vim_ins_mode
-
-	zle-keymap-select() {
-		vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-		__promptline
-		zle reset-prompt
-
-		if [ "$TERM" != "linux" ]; then
-			if [ $KEYMAP = vicmd ]; then
-				set-prompt $colors[normal2] 2
-			else
-				set-prompt $colors[insert2] 2
-			fi
-		fi
-	};
-	zle -N zle-keymap-select
-
-	function zle-line-finish {
-		vim_mode=$vim_ins_mode
-	}
-	zle -N zle-line-finish
-
-	function TRAPINT() {
-		vim_mode=$vim_ins_mode
-		return $(( 128 + $1 ))
-	}
 
 	# allow termite to open new windows in pwd
 	if [[ $TERM == xterm-termite ]]; then
 		source /etc/profile.d/vte.sh
 		__vte_osc7
 	fi
-
-
-	# INIT
-
-	zle-line-init () {
-		# RESET
-		zle -K viins
-		set-prompt $colors[insert2] 2
-
-		# Enable autosuggestions automatically
-		# zle autosuggest-start
-	};
-	zle -N zle-line-init
 }
 
 fns=( variables packages options modules features plugins mappings theme terminal )
@@ -244,6 +194,5 @@ function cleanup() {
 
 function() {
 	load
-
 	cleanup
 }

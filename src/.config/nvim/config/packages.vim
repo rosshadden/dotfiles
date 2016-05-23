@@ -97,12 +97,7 @@ call plug#begin(expand(g:packageDir))
 
 	" ui
 
-	Plug 'mhinz/vim-startify'
-	Plug 'paranoida/vim-airlineish'
 	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-	" colors
-	Plug 'chriskempson/base16-vim'
 	" indent guides
 	Plug 'nathanaelkane/vim-indent-guides'
 	" resize windows
@@ -129,7 +124,6 @@ call plug#begin(expand(g:packageDir))
 	" fuzzyness
 	Plug 'junegunn/fzf'
 	Plug 'junegunn/fzf.vim'
-		\| Plug 'tweekmonster/fzf-filemru'
 	" alignment
 	Plug 'junegunn/vim-easy-align'
 
