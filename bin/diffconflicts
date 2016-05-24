@@ -73,7 +73,7 @@ if [[ -z $@ || $# != "5" ]] ; then
 	exit 1
 fi
 
-cmd=$1
+cmd="$1"
 BASE="$2"
 LOCAL="$3"
 REMOTE="$4"

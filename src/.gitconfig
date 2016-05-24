@@ -16,7 +16,7 @@
 	tool = diffconflicts
 
 [difftool "diffconflicts"]
-	cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+	cmd = diffconflicts $EDITOR $BASE $LOCAL $REMOTE $MERGED
 	trustExitCode = true
 
 [merge]
@@ -26,7 +26,7 @@
 	keepBackup = false
 
 [mergetool "diffconflicts"]
-	cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+	cmd = diffconflicts $EDITOR $BASE $LOCAL $REMOTE $MERGED
 	trustExitCode = true
 
 [color "branch"]

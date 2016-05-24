@@ -1,5 +1,8 @@
+# Tig default configuration
+#
+# Please see 'man tigrc' for a complete reference.
+
 # Settings
-# TODO: reorganize to group by mode, like stash
 # --------
 # Most of these settings can be toggleable, either via the toggle-*
 # actions or via the option menu (bound to `o` by default).
@@ -13,9 +16,9 @@
 #					: Show author information?
 #   commit-title
 #    - display (bool)			: Show the commit title?
-#    - graph (bool)			: Show the commit revision graph? (main view only)
+#    - graph (enum) [no|v2|v1]		: Show the commit graph? (main view only)
 #    - refs (bool)			: Show branches, tags and remotes? (main view only)
-#    - overflow (boolint)		: Highlight overflows? Default to 50 when enabled.
+#    - overflow (boolint)		: Highlight overflows? Defaults to 50 when enabled.
 #
 #   date
 #    - display (enum) [no|default|local|relative|short]
@@ -31,7 +34,7 @@
 #
 #   line-number
 #    - display (bool)			: Show line numbers?
-#    - interval (int)			: Interval between line numbers
+#    - interval (int)			: Interval between line numbers; defaults to 5
 #
 #   mode
 #    - display (bool)			: Show file modes?
@@ -47,10 +50,10 @@
 # the column. Use zero (the default value) to auto-size the column based
 # on the content.
 
-set blame-view	= date:relative author:full file-name:auto id:yes,color line-number:no,interval=5 text
+set blame-view	= date:relative author:full file-name:auto id:yes,color line-number:yes,interval=5 text
 set grep-view	= file-name:no line-number:yes,interval=1 text
 set main-view	= line-number:no,interval=5 id:no date:relative author:full commit-title:yes,graph,refs,overflow=no
-set refs-view	= date:relative author:full ref commit-title
+set refs-view	= line-number:no id:no date:relative author:full ref commit-title
 set stash-view	= line-number:no,interval=5 id:no date:relative author:full commit-title
 set status-view	= line-number:no,interval=5 status:short file-name
 set tree-view	= line-number:no,interval=5 mode author:full file-size date:relative id:no file-name
@@ -83,27 +86,29 @@ set line-graphics		= utf-8		# Enum: ascii, default, utf-8
 set reference-format		= [branch] <tag> {remote} ~replace~
 
 # Settings controlling how content is read from Git
-set commit-order		= default	# Enum: default, topo, date, reverse (main)
+set commit-order		= auto		# Enum: auto, default, topo, date, reverse (main)
 set status-untracked-dirs	= yes		# Show files in untracked directories? (status)
 set ignore-space		= no		# Enum: no, all, some, at-eol (diff)
 set show-notes			= yes		# When non-bool passed as `--show-notes=...` (diff)
 #set diff-context		= 3		# Number of lines to show around diff changes (diff)
-#set diff-options		= -C		# User-defined options for `tig show` (diff)
-#set blame-options		= -C -C -C	# User-defined options for `tig blame` (blame)
+#set diff-options		= -C		# User-defined options for `tig show` (git-diff)
+#set blame-options		= -C -C -C	# User-defined options for `tig blame` (git-blame)
+#set log-options		= --pretty=raw	# User-defined options for `tig log` (git-log)
+#set main-options		= -n 1000	# User-defined options for `tig` (git-log)
 
 # Misc
-set refresh-mode		= periodic		# Enum: manual, auto, after-command, periodic
-set refresh-interval	= 10		# Interval in seconds between refreshes
+set refresh-mode		= auto		# Enum: manual, auto, after-command, periodic
+set refresh-interval		= 10		# Interval in seconds between refreshes
 set ignore-case			= no		# Ignore case when searching?
 set focus-child			= yes		# Move focus to child view when opened?
-set horizontal-scroll	= 50%		# Number of columns to scroll as % of width
-set split-view-height	= 80%		# Height of the bottom view for horizontal splits
+set horizontal-scroll		= 50%		# Number of columns to scroll as % of width
+set split-view-height		= 80%		# Height of the bottom view for horizontal splits
 set vertical-split		= auto		# Enum: horizontal, vertical, auto; Use auto to
 						# switch to horizontal split when width allows it
-set split-view-width	= 80%		# Width of right-most view for vertical splits
-set editor-line-number	= yes		# Automatically pass line number to editor? Used
-									# for opening file at specific line e.g. from a diff
-set mouse				= yes		# Enable mouse support?
+set split-view-width		= 80%		# Width of right-most view for vertical splits
+set editor-line-number		= yes		# Automatically pass line number to editor? Used
+						# for opening file at specific line e.g. from a diff
+set mouse			= yes		# Enable mouse support?
 set mouse-scroll		= 3		# Number of lines to scroll via the mouse
 
 # User-defined commands
@@ -154,19 +159,22 @@ bind refs	!	?git branch -D %(branch)
 # ---------------
 
 # View switching
-bind generic R view-refs
-bind generic b view-blame
-bind generic c view-stage
-bind generic d view-diff
-bind generic f view-blob
-bind generic g view-grep
-bind generic h view-help
-bind generic l view-log
-bind generic m view-main
-bind generic p view-pager
-bind generic s view-status
-bind generic t view-tree
-bind generic y view-stash
+bind generic	m	view-main
+bind generic	d	view-diff
+bind generic	l	none
+bind generic	L	view-log
+bind generic	t	view-tree
+bind generic	f	view-blob
+bind generic	b	view-blame
+bind generic	r	view-refs
+bind generic	p	view-pager
+bind generic	h	none
+bind generic	H	view-help
+bind generic	s	view-status
+bind generic	S	view-status		# Compat binding to avoid going crazy!
+bind generic	c	view-stage
+bind generic	y	view-stash
+bind generic	g	view-grep
 
 # View manipulation
 bind generic	<Enter>	enter			# Enter and open selected entry
@@ -179,7 +187,7 @@ bind generic	<C-P>	previous
 bind generic	K	previous
 bind generic	,	parent			# Move to parent
 bind generic	<Tab>	view-next		# Move focus to the next view
-bind generic	r	refresh			# Reload and refresh view
+bind generic	R	refresh			# Reload and refresh view
 bind generic	<F5>	refresh
 bind generic	O	maximize		# Maximize the current view
 bind generic	q	view-close		# Close the current view
@@ -204,10 +212,13 @@ bind main	G	:toggle commit-title-graph # Toggle revision graph visualization
 bind main	F	:toggle commit-title-refs  # Toggle reference display (tags/branches)
 
 # Cursor navigation
-bind generic	k	move-up
 bind generic	j	move-down
+bind generic	k	move-up
+#bind generic	?	move-half-page-down
+#bind generic	?	move-half-page-up
 bind generic	<PgDown> move-page-down
 bind generic	<C-D>	move-page-down
+bind generic	<Space>	move-page-down
 bind generic	<C-F>	move-page-down
 bind generic	<PgUp>	move-page-up
 bind generic	<C-U>	move-page-up
@@ -232,6 +243,13 @@ bind generic	/	search
 bind generic	?	search-back
 bind generic	n	find-next
 bind generic	N	find-prev
+# Navigation keys used while searching
+bind search	<Down>	find-next
+bind search	<C-N>	find-next
+bind search	<C-J>	find-next
+bind search	<Up>	find-prev
+bind search	<C-P>	find-prev
+bind search	<C-K>	find-prev
 
 # Option manipulation
 bind generic	o	options			# Open the options menu
@@ -256,9 +274,7 @@ bind generic	$	:toggle commit-title-overflow
 # bind generic	???	:toggle vertical-split	# Toggle vertical split
 bind generic	%	:toggle file-filter
 
-
 # Misc
-
 bind generic	e	edit			# Open in editor
 bind generic	:	prompt			# Open the prompt
 bind generic	<C-L>	screen-redraw		# Redraw the screen
@@ -322,6 +338,8 @@ bind status A !git amend -e
 # Git automatically indents commit messages by four spaces.
 
 color "diff --"			yellow	default
+color "--- "			yellow	default
+color "+++ "			yellow	default
 color "@@"			magenta	default
 color "+"			green	default
 color " +"			green	default

@@ -11,7 +11,7 @@ nnoremap <:git:1><space> :Tig!<cr>
 nnoremap <:git>r :GitFiles<cr>
 nnoremap <:git>R :GitFiles?<cr>
 
-nnoremap <:git>b :exec 'Tig blame ' . expand('%:f')<cr>
+nnoremap <:git>b :exec 'Tig blame -C ' . expand('%:f') . ' +' . line('.')<cr>
 
 nnoremap <:git>l :exec 'Tig log ' . expand('%:f')<cr>
 nnoremap <:git:1>l :Tig log<cr>

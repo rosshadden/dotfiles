@@ -105,9 +105,6 @@
 - fix opening files in neovim
 - investigate [wiki binds]( https://github.com/jonas/tig/wiki/Bindings )
 - mappings
-	- make `[hl]` go left/right
-		- bind the current `[hl]` to something else
-	- unbind `<c-[hjkl]>` so it uses the tmux mappings
 	- scrap
 	- stash / pop
 		- per file
@@ -198,6 +195,7 @@
 		- `git branch | cut -c 3- | owmni <blah blah> | xargs git checkout`
 		- `git branch -r | cut -c 10- | fzf | xargs git checkout`
 	- i3
+	- copyq
 	- zeal
 	- todoist
 	- apps
