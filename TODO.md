@@ -112,6 +112,7 @@
 	- checkout tags
 		- the main checkout bind should probably just support tags too
 		- add tags to the list branch
+	- add mappings to [wiki]( https://github.com/jonas/tig/wiki/Bindings )
 
 ## `ranger`
 

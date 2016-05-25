@@ -8,7 +8,7 @@ set $alt Mod1
 set $numTemp 0
 set $numWeb 1
 set $numDev 2
-set $numSync 3
+set $numRemote 3
 set $numHack 4
 set $numFiles 5
 set $numMedia 6
@@ -22,7 +22,7 @@ set $numGames 12
 set $nameTemp temp
 set $nameWeb web
 set $nameDev dev
-set $nameSync sync
+set $nameRemote remote
 set $nameHack hack
 set $nameFiles files
 set $nameMedia media
@@ -36,7 +36,7 @@ set $nameGames games
 set $wsTemp  temp
 set $wsWeb  web
 set $wsDev  dev
-set $wsSync  sync
+set $wsRemote 📡 remote
 set $wsHack  hack
 set $wsFiles  files
 set $wsMedia  media
@@ -186,7 +186,7 @@ bindsym $super+Shift+Escape move to workspace back_and_forth; workspace back_and
 bindsym $super+grave        mark LAST; workspace $numTemp $wsTemp
 bindsym $super+1            mark LAST; workspace $numWeb $wsWeb
 bindsym $super+2            mark LAST; workspace $numDev $wsDev
-bindsym $super+3            mark LAST; workspace $numSync $wsSync
+bindsym $super+3            mark LAST; workspace $numRemote $wsRemote
 bindsym $super+4            mark LAST; workspace $numHack $wsHack
 bindsym $super+5            mark LAST; workspace $numFiles $wsFiles
 bindsym $super+6            mark LAST; workspace $numMedia $wsMedia
@@ -201,7 +201,7 @@ bindsym $super+bracketright mark LAST; workspace $numGames $wsGames
 bindsym $super+Shift+grave        move container to workspace $numTemp $wsTemp;       workspace $numTemp $wsTemp
 bindsym $super+Shift+1            move container to workspace $numWeb $wsWeb;         workspace $numWeb $wsWeb
 bindsym $super+Shift+2            move container to workspace $numDev $wsDev;         workspace $numDev $wsDev
-bindsym $super+Shift+3            move container to workspace $numSync $wsSync;       workspace $numSync $wsSync
+bindsym $super+Shift+3            move container to workspace $numRemote $wsRemote;       workspace $numRemote $wsRemote
 bindsym $super+Shift+4            move container to workspace $numHack $wsHack;       workspace $numHack $wsHack
 bindsym $super+Shift+5            move container to workspace $numFiles $wsFiles;     workspace $numFiles $wsFiles
 bindsym $super+Shift+6            move container to workspace $numMedia $wsMedia;     workspace $numMedia $wsMedia
@@ -524,7 +524,7 @@ mode "TMUX" {
 		bindsym grave        mark LAST; workspace $numTemp $wsTemp;       exec $tmuxAttach $nameTemp";         $return
 		bindsym 1            mark LAST; workspace $numWeb $wsWeb;         exec $tmuxAttach $nameWeb";          $return
 		bindsym 2            mark LAST; workspace $numDev $wsDev;         exec $tmuxAttach $nameDev";          $return
-		bindsym 3            mark LAST; workspace $numSync $wsSync;       exec $tmuxAttach $nameSync";         $return
+		bindsym 3            mark LAST; workspace $numRemote $wsRemote;       exec $tmuxAttach $nameRemote";         $return
 		bindsym 4            mark LAST; workspace $numHack $wsHack;       exec $tmuxAttach $nameHack";         $return
 		bindsym 5            mark LAST; workspace $numFiles $wsFiles;     exec $tmuxAttach $nameFiles 'ranger'"; $return
 		bindsym 6            mark LAST; workspace $numMedia $wsMedia;     exec $tmuxAttach $nameMedia";        $return
