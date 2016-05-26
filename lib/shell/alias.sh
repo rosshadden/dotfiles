@@ -61,7 +61,7 @@ alias tigs="tig status"
 alias tmux="tmux -2"
 alias tl="tmux list-sessions"
 
-alias Y="yaourt"
+alias bb="bb-wrapper"
 
 alias ag="ag --hidden --ignore .git"
 
