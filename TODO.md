@@ -56,7 +56,7 @@
 		- fix and/or make stuff that actually works
 	- ember? or nah
 - plugins
-	- pluginify my modes
+	- [pluginify my modes]( http://stevelosh.com/blog/2011/09/writing-vim-plugins/#mapping-keys-the-right-way )
 	- pluginify `ranger` stuff
 	- pluginify other stuff
 	- see if I can make [this]( https://github.com/easymotion/vim-easymotion/issues/248#issuecomment-156444426 ) happen

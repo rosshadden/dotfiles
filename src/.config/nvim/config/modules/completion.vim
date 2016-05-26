@@ -55,6 +55,10 @@ else
 	let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 endif
 
+if emoji#available()
+	set completefunc=emoji#complete
+endif
+
 " Enable omni completion.
 augroup completion
 	autocmd!
@@ -95,3 +99,8 @@ endfunction
 
 " <cr>: close popup and save indent.
 inoremap <silent> <cr> <c-r>=<sid>my_cr_function()<cr>
+
+if emoji#available()
+	map ge :s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<cr>
+	map gE :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<cr>
+endif

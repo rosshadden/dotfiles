@@ -126,6 +126,8 @@ call plug#begin(expand(g:packageDir))
 	Plug 'junegunn/fzf.vim'
 	" alignment
 	Plug 'junegunn/vim-easy-align'
+	" emojis
+	Plug 'junegunn/vim-emoji'
 
 	" languages
 

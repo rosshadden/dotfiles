@@ -61,7 +61,8 @@ alias tigs="tig status"
 alias tmux="tmux -2"
 alias tl="tmux list-sessions"
 
-alias bb="bb-wrapper"
+alias B="bauerbill --build-dir /tmp/bauerbill"
+alias BB="bb-wrapper --build-dir /tmp/bauerbill"
 
 alias ag="ag --hidden --ignore .git"
 
