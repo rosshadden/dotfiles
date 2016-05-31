@@ -3,7 +3,7 @@
 ################################
 # Get/set config settings
 #
-# Dependencies:
+# dependencies:
 # - ponymix
 # - xbacklight
 # - synclient

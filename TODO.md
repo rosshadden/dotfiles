@@ -79,7 +79,6 @@
 
 ### i3-blocks-contrib
 
-- screen brightness
 - fix keyboard block interaction
 
 ## `tmux`

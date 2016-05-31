@@ -56,6 +56,10 @@ set $macro5 XF86Launch8
 # return to the default mode
 set $return mode "default"
 
+# refresh blocks
+set $refreshVolume pkill -RTMIN+11 i3blocks
+set $refreshBrightness pkill -RTMIN+12 i3blocks
+
 # default apps
 set $chooseCommand rofi -show run -sidebar-mode -i
 set $chooseWindow rofi -show window -sidebar-mode -i
@@ -250,21 +254,19 @@ bindsym button9 exec "notify-send forward"
 # MEDIA
 ################
 
-set $refreshI3Media pkill -RTMIN+11 i3blocks
-
 # volume
-bindsym XF86AudioRaiseVolume exec "~/bin/config volume +5; $refreshI3Media"
-bindsym XF86AudioLowerVolume exec "~/bin/config volume -5; $refreshI3Media"
-bindsym XF86AudioMute exec "~/bin/config volume !; $refreshI3Media"
+bindsym XF86AudioRaiseVolume exec "~/bin/config volume +5; $refreshVolume"
+bindsym XF86AudioLowerVolume exec "~/bin/config volume -5; $refreshVolume"
+bindsym XF86AudioMute exec "~/bin/config volume !; $refreshVolume"
 
 # playback
-bindsym XF86AudioPlay exec "playerctl play-pause; $refreshI3Media"
-bindsym XF86AudioNext exec "playerctl next; $refreshI3Media"
-bindsym XF86AudioPrev exec "playerctl previous; $refreshI3Media"
+bindsym XF86AudioPlay exec "playerctl play-pause; $refreshVolume"
+bindsym XF86AudioNext exec "playerctl next; $refreshVolume"
+bindsym XF86AudioPrev exec "playerctl previous; $refreshVolume"
 
 # brightness
-bindsym XF86MonBrightnessUp exec ~/bin/config brightness +5
-bindsym XF86MonBrightnessDown exec ~/bin/config brightness -5
+bindsym XF86MonBrightnessUp exec "~/bin/config brightness +5; $refreshBrightness"
+bindsym XF86MonBrightnessDown exec "~/bin/config brightness -5; $refreshBrightness"
 
 # toggle touchpad
 bindsym XF86AudioMicMute exec "~/bin/config touchpad !"
@@ -556,20 +558,20 @@ mode "SYSTEM" {
 	# brightness
 
 	# small
-	bindsym $alt+k exec ~/bin/config brightness +5; $return
-	bindsym $alt+j exec ~/bin/config brightness -5; $return
-	bindsym $alt+Shift+k exec ~/bin/config brightness +5
-	bindsym $alt+Shift+j exec ~/bin/config brightness -5
+	bindsym $alt+k exec "~/bin/config brightness +5; $refreshBrightness"; $return
+	bindsym $alt+j exec "~/bin/config brightness -5; $refreshBrightness"; $return
+	bindsym $alt+Shift+k exec "~/bin/config brightness +5; $refreshBrightness"
+	bindsym $alt+Shift+j exec "~/bin/config brightness -5; $refreshBrightness"
 	# medium
-	bindsym k exec ~/bin/config brightness +20; $return
-	bindsym j exec ~/bin/config brightness -20; $return
-	bindsym Shift+k exec ~/bin/config brightness +20
-	bindsym Shift+j exec ~/bin/config brightness -20
+	bindsym k exec "~/bin/config brightness +20; $refreshBrightness"; $return
+	bindsym j exec "~/bin/config brightness -20; $refreshBrightness"; $return
+	bindsym Shift+k exec "~/bin/config brightness +20; $refreshBrightness"
+	bindsym Shift+j exec "~/bin/config brightness -20; $refreshBrightness"
 	# large
-	bindsym Control+k exec ~/bin/config brightness +80; $return
-	bindsym Control+j exec ~/bin/config brightness -80; $return
-	bindsym Control+Shift+k exec ~/bin/config brightness +80
-	bindsym Control+Shift+j exec ~/bin/config brightness -80
+	bindsym Control+k exec "~/bin/config brightness +80; $refreshBrightness"; $return
+	bindsym Control+j exec "~/bin/config brightness -80; $refreshBrightness"; $return
+	bindsym Control+Shift+k exec "~/bin/config brightness +80; $refreshBrightness"
+	bindsym Control+Shift+j exec "~/bin/config brightness -80; $refreshBrightness"
 
 	# wifi
 	bindsym w exec ~/bin/config wifi; $return
@@ -739,22 +741,22 @@ mode "MOUSE" {
 mode "MEDIA" {
 	# volume
 
-	bindsym m exec "~/bin/config volume !; $refreshI3Media"; $return
-	bindsym k exec "~/bin/config volume +5; $refreshI3Media"; $return
-	bindsym j exec "~/bin/config volume -5; $refreshI3Media"; $return
-	bindsym Up exec "~/bin/config volume +10; $refreshI3Media"; $return
-	bindsym Down exec "~/bin/config volume -10; $refreshI3Media"; $return
-	bindsym Control+k exec "~/bin/config volume +20; $refreshI3Media"; $return
-	bindsym Control+j exec "~/bin/config volume -20; $refreshI3Media"; $return
+	bindsym m exec "~/bin/config volume !; $refreshVolume"; $return
+	bindsym k exec "~/bin/config volume +5; $refreshVolume"; $return
+	bindsym j exec "~/bin/config volume -5; $refreshVolume"; $return
+	bindsym Up exec "~/bin/config volume +10; $refreshVolume"; $return
+	bindsym Down exec "~/bin/config volume -10; $refreshVolume"; $return
+	bindsym Control+k exec "~/bin/config volume +20; $refreshVolume"; $return
+	bindsym Control+j exec "~/bin/config volume -20; $refreshVolume"; $return
 
 
-	bindsym Shift+m exec "~/bin/config volume !; $refreshI3Media"
-	bindsym Shift+k exec "~/bin/config volume +5; $refreshI3Media"
-	bindsym Shift+j exec "~/bin/config volume -5; $refreshI3Media"
-	bindsym Shift+Up exec "~/bin/config volume +10; $refreshI3Media"
-	bindsym Shift+Down exec "~/bin/config volume -10; $refreshI3Media"
-	bindsym Control+Shift+k exec "~/bin/config volume +20; $refreshI3Media"
-	bindsym Control+Shift+j exec "~/bin/config volume -20; $refreshI3Media"
+	bindsym Shift+m exec "~/bin/config volume !; $refreshVolume"
+	bindsym Shift+k exec "~/bin/config volume +5; $refreshVolume"
+	bindsym Shift+j exec "~/bin/config volume -5; $refreshVolume"
+	bindsym Shift+Up exec "~/bin/config volume +10; $refreshVolume"
+	bindsym Shift+Down exec "~/bin/config volume -10; $refreshVolume"
+	bindsym Control+Shift+k exec "~/bin/config volume +20; $refreshVolume"
+	bindsym Control+Shift+j exec "~/bin/config volume -20; $refreshVolume"
 
 	# playback
 
