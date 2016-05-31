@@ -521,19 +521,19 @@ mode "TMUX" {
 
 	# presets
 		# TODO: make these dynamic from the workspace name
-		bindsym grave        mark LAST; workspace $numTemp $wsTemp;       exec $tmuxAttach $nameTemp";         $return
-		bindsym 1            mark LAST; workspace $numWeb $wsWeb;         exec $tmuxAttach $nameWeb";          $return
-		bindsym 2            mark LAST; workspace $numDev $wsDev;         exec $tmuxAttach $nameDev";          $return
-		bindsym 3            mark LAST; workspace $numRemote $wsRemote;       exec $tmuxAttach $nameRemote";         $return
-		bindsym 4            mark LAST; workspace $numHack $wsHack;       exec $tmuxAttach $nameHack";         $return
+		bindsym grave        mark LAST; workspace $numTemp $wsTemp;       exec $tmuxAttach $nameTemp";           $return
+		bindsym 1            mark LAST; workspace $numWeb $wsWeb;         exec $tmuxAttach $nameWeb";            $return
+		bindsym 2            mark LAST; workspace $numDev $wsDev;         exec $tmuxAttach $nameDev";            $return
+		bindsym 3            mark LAST; workspace $numRemote $wsRemote;   exec $tmuxAttach $nameRemote";         $return
+		bindsym 4            mark LAST; workspace $numHack $wsHack;       exec $tmuxAttach $nameHack";           $return
 		bindsym 5            mark LAST; workspace $numFiles $wsFiles;     exec $tmuxAttach $nameFiles 'ranger'"; $return
-		bindsym 6            mark LAST; workspace $numMedia $wsMedia;     exec $tmuxAttach $nameMedia";        $return
-		bindsym 7            mark LAST; workspace $numLit $wsLit;         exec $tmuxAttach $nameLit";          $return
-		bindsym 8            mark LAST; workspace $numMonitor $wsMonitor; exec $tmuxAttach $nameMonitor";      $return
-		bindsym 9            mark LAST; workspace $numRun $wsRun;         exec $tmuxAttach $nameRun";          $return
-		bindsym 0            mark LAST; workspace $numChat $wsChat;       exec $tmuxAttach $nameChat";         $return
-		bindsym bracketleft  mark LAST; workspace $numLab $wsLab;         exec $tmuxAttach $nameLab";          $return
-		bindsym bracketright mark LAST; workspace $numGames $wsGames;     exec $tmuxAttach $nameGames";        $return
+		bindsym 6            mark LAST; workspace $numMedia $wsMedia;     exec $tmuxAttach $nameMedia";          $return
+		bindsym 7            mark LAST; workspace $numLit $wsLit;         exec $tmuxAttach $nameLit";            $return
+		bindsym 8            mark LAST; workspace $numMonitor $wsMonitor; exec $tmuxAttach $nameMonitor";        $return
+		bindsym 9            mark LAST; workspace $numRun $wsRun;         exec $tmuxAttach $nameRun";            $return
+		bindsym 0            mark LAST; workspace $numChat $wsChat;       exec $tmuxAttach $nameChat";           $return
+		bindsym bracketleft  mark LAST; workspace $numLab $wsLab;         exec $tmuxAttach $nameLab";            $return
+		bindsym bracketright mark LAST; workspace $numGames $wsGames;     exec $tmuxAttach $nameGames";          $return
 
 	# TODO: open preset for the current workspace
 

@@ -30,17 +30,20 @@ xcompmgr -cF &
 # dropbox
 dropbox-cli start
 
-# Easystroke
+# easystroke
 easystroke &
 
-# CopyQ
+# copyQ
 copyq &
 
-# Zeal
+# zeal
 zeal &
 
+# pidgin
+pidgin &
+
 # cvim external editor
-~/lib/cvim-server.py &
+# ~/lib/cvim-server.py &
 
 ################
 # LOCAL
