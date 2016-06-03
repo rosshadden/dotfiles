@@ -101,6 +101,6 @@ endfunction
 inoremap <silent> <cr> <c-r>=<sid>my_cr_function()<cr>
 
 if emoji#available()
-	map ge :s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<cr>
-	map gE :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<cr>
+	map gm :s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<cr>
+	map gM :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<cr>
 endif

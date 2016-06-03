@@ -313,6 +313,9 @@ bind generic <esc>M !sh -c "git merge $(git branch -r | cut -c 3- | fzf-tmux)"
 # copy commit hash to clipboard
 bind generic Y !@sh -c "echo -n %(commit) | xsel -ib"
 
+# open file manager
+bind generic <esc>e !ranger --selectfile=%(file)
+
 # amend commit
 bind status a !git amend
 bind status A !git amend -e

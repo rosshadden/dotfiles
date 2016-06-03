@@ -16,14 +16,14 @@ man() {
 # make `history` have timestamps
 export HIST_STAMPS=yyyy-mm-dd
 
-goo=$?
-if [[ $goo == 0 ]]; then
-	if [[ -x /usr/bin/vimpager ]]; then
-		export PAGER=vimpager
-	fi
-	alias less=$PAGER
-	alias zless=$PAGER
-fi
+# goo=$?
+# if [[ $goo == 0 ]]; then
+# 	if [[ -x /usr/bin/vimpager ]]; then
+# 		export PAGER=vimpager
+# 	fi
+# 	alias less=$PAGER
+# 	alias zless=$PAGER
+# fi
 
 # alt-left and alt-up to navigate directories
 
