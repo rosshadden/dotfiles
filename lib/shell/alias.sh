@@ -97,15 +97,6 @@ elif [[ -f /usr/bin/telnet ]]; then
 fi
 
 ################
-# GLOBAL
-################
-
-if [[ "$(getShell)" == "zsh" ]]; then
-	# yaourt --noconfirm
-	alias -g YNO="--noconfirm"
-fi
-
-################
 # SUFFIX
 ################
 
