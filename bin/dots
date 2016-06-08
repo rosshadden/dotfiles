@@ -19,6 +19,7 @@ action="${1:-status}"
 case "$action" in
 	i | install) action=install ;;
 	s | status) action=status ;;
+	u | update) action=update ;;
 	v | version) action=version ;;
 esac
 
