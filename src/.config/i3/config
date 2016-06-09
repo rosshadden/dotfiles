@@ -923,7 +923,7 @@ assign [class="MongoChef"] → $numMonitor $wsMonitor
 ################
 
 # layouts
-exec --no-startup-id "i3-msg 'workspace $numChat $wsChat; append_layout ~/.config/i3/layouts/workspace-10.json'"
+exec --no-startup-id "i3-msg 'workspace $numChat $wsChat; append_layout ~/.config/i3/layouts/workspace-chat.json'"
 
 # wallpaper
 exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath

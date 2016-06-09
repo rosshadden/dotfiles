@@ -9,7 +9,7 @@
 	}, {
 		"window_name": "sync",
 		"panes": [
-			"tig"
+			"tig status"
 		]
 	}, {
 		"window_name": "run",

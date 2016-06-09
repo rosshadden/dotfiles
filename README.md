@@ -17,23 +17,27 @@ See the [TODO](TODO.md) for things I have in mind.
 
 ## Dependencies
 
-- [`nodejs`*]( https://nodejs.org/ )
-- [`npm`*]( https://www.npmjs.com/ )
-- [`grunt-cli`*]( http://gruntjs.com/ )
-- [`vim`]( http://www.vim.org/ )
-	- [`livedown`]( https://github.com/shime/vim-livedown ) - Live previews of markdown files in vim.
+- [`neovim`]( https://neovim.io/ )
+	- [`npm:livedown`]( https://github.com/shime/vim-livedown ) - live previews of markdown files in vim
 - [`tmux`]( https://github.com/tmux/tmux )
+	- [`tmuxp`]( https://github.com/tony/tmuxp ) - powers ./bin/tp
 	- [`urlview`]( https://github.com/sigpipe/urlview )
 	- [`fpp`]( https://github.com/facebook/PathPicker )
-- [`pidgin`]( https://pidgin.im/ )
-	- [`gtk-theme-arc`]( https://github.com/horst3180/arc-theme )
-	- [`python-dbus`]()
 - [`tig`]( https://github.com/jonas/tig )
 - [`fzf`]( https://github.com/junegunn/fzf )
-- [`vifm`]( https://github.com/vifm/vifm )
-	- [`gloobus-preview`]( https://launchpad.net/gloobus-preview )
+- [`pidgin`]( https://pidgin.im/ )
+	- `python-dbus` - powers ./lib/purple.py
+	- [`gtk-theme-arc`]( https://github.com/horst3180/arc-theme )
+- [`ranger`]( https://github.com/hut/ranger )
+	- installed optional dependencies:
+		- `atool`
+		- `highlight`
+		- `libcaca`
+		- `mediainfo`
+		- `poppler`
+		- `python-chardet`
+		- `transmission-cli`
+		- `w3m`
 - fonts
 	- `ttf-fantasque-sans` - main font
 	- `ttf-font-icons` - mix of non-overlapping fonts from Font Awesome and Ionicons
-
-> \*: I'm going to remove these dependencies

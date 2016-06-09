@@ -23,6 +23,9 @@ endfunction
 " SETTINGS
 """"""""""""""""
 
+" vim-livedown
+let g:livedown_browser = 'google-chrome-stable'
+
 " vim-instant-markdown
 " disable autostart
 let g:instant_markdown_autostart = 0
