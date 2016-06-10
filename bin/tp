@@ -14,7 +14,7 @@ path=${path:-.}
 
 
 # start in target dir
-[[ $1 ]] && cd "$path" || exit
+if [[ $1 ]]; then cd "$path" || exit; fi
 
 
 # create session
