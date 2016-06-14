@@ -34,7 +34,6 @@
 
 ## `vim`
 
-- add mapping when searching to jump to the result but clear the highlighting
 - figure out where I can use `on_cmd` in `packages.vim`
 - conditionally include packages, based on dependencies
 	- @ex taskwarrior (even though I've since removed this)

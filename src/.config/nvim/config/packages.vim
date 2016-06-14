@@ -25,8 +25,6 @@ call plug#begin(expand(g:packageDir))
 	Plug 'Shougo/deoplete.nvim', LoadIf(has('nvim'))
 		\| Plug 'carlitux/deoplete-ternjs', LoadIf(has('nvim'))
 	Plug 'Shougo/neocomplete.vim', LoadIf(!has('nvim'))
-	" <tab>-complete in the search prompt
-	Plug 'SearchComplete'
 	" search with perl regex
 	Plug 'othree/eregex.vim'
 	" readline-style insersion

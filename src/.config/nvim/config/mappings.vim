@@ -30,20 +30,25 @@ noremap <:leader:1>r :Reload<cr>
 noremap <leader>. @:
 
 " SEARCHING
+" TODO: breakout.exe
+
 " toggle highlighted search
 nnoremap <:leader:1>/ :nohlsearch<cr>
 nnoremap co/ :set hlsearch!<cr>
-" search for selected word
+
+" search for visually-selected word
 vnoremap / "vy/<c-r>v
 vnoremap ? "vy?<c-r>v
 
-" visual shifting (does not exit Visual mode)
-vnoremap < <gv
-vnoremap > >gv
+" find result and clear highlight
+cnoremap <a-cr> <cr>:nohlsearch<cr>
+
+" FORMATTING
 
 " use Q for formatting, not Ex mode
 noremap Q gq
 
-" build
+" BUILD
+
 noremap <localleader><space> :Make<cr>:cc<cr>
 noremap <localleader><localleader><space> :Make!<cr>:cc<cr>

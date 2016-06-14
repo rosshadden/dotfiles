@@ -31,6 +31,10 @@ highlight ExtraWhitespace ctermfg=white ctermbg=blue
 " prefix
 call MakePrefix('space', '<:prefix>s')
 
+" visual shifting (does not exit Visual mode)
+vnoremap < <gv
+vnoremap > >gv
+
 " easy-align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
