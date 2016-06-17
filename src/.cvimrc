@@ -7,7 +7,6 @@
 set localconfig
 let configpath = '/home/ross/.cvimrc'
 
-
 """"""""""""""""
 " SETTINGS
 """"""""""""""""
@@ -20,18 +19,15 @@ set cncpcompletion
 
 set defaultnewtabpage
 
-
 " LINKS
 
 set linkanimations
 let hintcharacters = 'aoeusnthidkbpg'
 
-
 " SCROLLING
 
 set smoothscroll
 let scrollduration=10
-
 
 " UI
 
@@ -40,18 +36,15 @@ let highlight = '#00afff'
 let activehighlight = '#0087ff'
 set autohidecursor
 
-
 " SEARCHING
 
 let completionengines = ['google', 'amazon']
 let searchalias g = 'google'
 let searchalias a = 'amazon'
 
-
 " BLACKLIST
 
 let blacklists = []
-
 
 """"""""""""""""
 " MAPPINGS
@@ -64,7 +57,6 @@ map a goToInput
 
 unmap <Space>
 
-
 " SCROLLING
 
 map <C-e> scrollDown
@@ -73,7 +65,6 @@ map <C-d> scrollPageDown
 map <C-u> scrollPageUp
 map <C-f> scrollFullPageDown
 map <C-b> scrollFullPageUp
-
 
 " TABS
 
@@ -97,11 +88,9 @@ map <Leader>R reloadTabUncached
 map <Leader><Leader>r reloadAllTabs
 map <Leader><Leader>R :source /home/ross/.cvimrc<cr>
 
-
 " INPUT
 
 imap <C-o> editWithVim
-
 
 " LINKS
 
