@@ -46,7 +46,7 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 
 # fzf
 export FZF_DEFAULT_OPTS="--bind=alt-enter:print-query"
-export FZF_DEFAULT_COMMAND="ag --hidden --ignore .git -g ''"
+export FZF_DEFAULT_COMMAND="pt -g ''"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 ################

@@ -46,6 +46,7 @@
 	- buffer
 		- mapping to delete all unused buffers (not just empty)
 	- files
+		- mapping that uses `ranger` to insert a (relative) path to the selected file
 		- make a mapping or mode for finding files not in the repo
 	- diff
 		- :LineDiff

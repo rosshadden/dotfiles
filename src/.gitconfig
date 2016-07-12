@@ -130,6 +130,7 @@
 	# SEARCHING
 
 	ag = grep -I --ignore-case --line-number --heading --break
+	pt = grep -I --ignore-case --line-number --heading --break
 
 	# STASHING
 

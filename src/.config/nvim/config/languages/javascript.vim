@@ -30,7 +30,6 @@ endfunction
 augroup javascript
 	autocmd!
 
-	" insert version
 	autocmd FileType javascript
 		\  map <localleader>d :TernDef<cr>
 		\| map <localleader>D :TernDefPreview<cr>
