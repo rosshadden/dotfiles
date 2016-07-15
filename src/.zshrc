@@ -4,17 +4,14 @@ function variables() {
 	export XDG_CACHE_HOME=$HOME/.cache
 	export XDG_DATA_HOME=$HOME/.local/share
 
-	# dots
+	# apps
 	export DOTS=$HOME/dotfiles
-	# sync
 	export SYNC=$HOME/sync
-	# dropbox
 	export DB=$HOME/Dropbox
 
-	# shell dir
 	shellDir=$DOTS/lib/shell
-	# themes dir
-	themeDir=$DOTS/lib/themes
+	moduleDir=$shellDir/modules
+	pluginDir=$shellDir/plugins
 }
 
 function packages() {
@@ -53,53 +50,20 @@ function options() {
 function modules() {
 	autoload -U compaudit compinit
 
-	source $shellDir/functions.sh
-	source $shellDir/env.sh
-	source $shellDir/colors.sh
-	source $shellDir/alias.sh
-	source $shellDir/general.sh
+	source $moduleDir/functions.sh
+	source $moduleDir/env.sh
+	source $moduleDir/colors.sh
+	source $moduleDir/alias.sh
+	source $moduleDir/general.sh
+	source $moduleDir/theme.zsh
+	source $moduleDir/features.zsh
 	[[ -f ~/local/.zshrc ]] && source ~/local/.zshrc
 }
 
-function features() {
-	source $shellDir/features.zsh
-}
-
 function plugins() {
-	source $shellDir/plugins/vim.zsh
-
-	# tmuxp
-	source tmuxp.zsh
-
-	# npm
-	source <(npm completion)
-
-	# zsh-syntax-highlighting
-	ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-	ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=red'
-
-	# TODO: move to standalone file, merged with shell/plugins/vim.zsh
-	# expand
-	bindkey '^f' vi-forward-blank-word
-	bindkey '^[f' vi-forward-char
-	bindkey '^b' vi-backward-blank-word
-	bindkey '^[b' vi-backward-char
-
-	# fasd
-	# TODO: move back to a place shared with bash
-	if [ $commands[fasd] ]; then # check if fasd is installed
-		fasd_cache="$XDG_CACHE_HOME/fasd-init"
-		if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-			fasd --init auto >| "$fasd_cache"
-		fi
-		source "$fasd_cache"
-		unset fasd_cache
-
-		alias v="f -t -e $EDITOR -b viminfo"
-		alias o="a -e open_command"
-		alias j="fasd_cd -d"
-		alias jj="fasd_cd -d -i"
-	fi
+	for plugin in $pluginDir/*; do
+		source $plugin
+	done
 }
 
 function mappings() {
@@ -119,23 +83,6 @@ function mappings() {
 	if [[ -f /usr/share/fzf/key-bindings.$shell ]]; then local fzfMappings=/usr/share/fzf/key-bindings.$shell; fi
 	if [[ -f /etc/profile.d/fzf.$shell ]]; then local fzfMappings=/etc/profile.d/fzf.$shell; fi
 	if [[ "$fzfMappings" != "" ]]; then source $fzfMappings; fi
-}
-
-function theme() {
-	# base16 colors
-	if [ "${TERM%%-*}" = 'linux' ]; then
-		BASE16_TYPE="vconsole"
-	else
-		BASE16_TYPE="shell"
-	fi
-
-	BASE16_SHELL="$themeDir/$BASE16_TYPE.sh"
-
-	[[ -f "$BASE16_SHELL" ]] && source $BASE16_SHELL
-
-
-	# airline prompt
-	source $themeDir/promptline.sh
 }
 
 function terminal() {
@@ -182,7 +129,7 @@ function terminal() {
 	fi
 }
 
-fns=( variables packages options modules features plugins mappings theme terminal )
+fns=( variables packages options modules plugins mappings terminal )
 
 function load() {
 	for fn in $fns; do $fn; done

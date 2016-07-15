@@ -76,3 +76,9 @@ bindkey "^S" history-incremental-pattern-search-forward
 
 # expand .[TAB] and ..[TAB]
 zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
+
+# expand prompt input
+bindkey '^f' vi-forward-blank-word
+bindkey '^[f' vi-forward-char
+bindkey '^b' vi-backward-blank-word
+bindkey '^[b' vi-backward-char

@@ -9,6 +9,7 @@
 
 export DOTS=$HOME/dotfiles
 shellDir=$DOTS/lib/shell
+modulesDir=$shellDir/modules
 
 
 ################
@@ -112,11 +113,11 @@ if [[ -f /etc/bash_completion ]] && ! shopt -oq posix; then
 fi
 
 function modules() {
-	source $shellDir/functions.sh
-	source $shellDir/env.sh
-	source $shellDir/colors.sh
-	source $shellDir/alias.sh
-	source $shellDir/general.sh
+	source $modulesDir/functions.sh
+	source $modulesDir/env.sh
+	source $modulesDir/colors.sh
+	source $modulesDir/alias.sh
+	source $modulesDir/general.sh
 	[[ -e "$HOME/.local.sh" ]] && source $HOME/.local.sh
 }
 
