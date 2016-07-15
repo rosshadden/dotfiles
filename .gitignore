@@ -24,3 +24,4 @@ src/.vim/spell/*.spl
 lib/themes/promptline.sh
 lib/themes/tmuxline.conf
 src/.config/gtk-3.0/bookmarks
+src/.config/nvim/autoload/plug.vim.old
