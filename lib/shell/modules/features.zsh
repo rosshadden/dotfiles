@@ -1,5 +1,7 @@
 # TODO: split into files
 
+autoload -U compaudit compinit
+
 # bracket object
 autoload -U select-bracketed
 zle -N select-bracketed

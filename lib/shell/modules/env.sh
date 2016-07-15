@@ -70,8 +70,20 @@ export DEFAULT_USER=$USER
 # sensible pager
 export PAGER="less -FRSX"
 
+# add timestamps to `history`
+export HIST_STAMPS=yyyy-mm-dd
+
 # big-ass search history
 export HISTSIZE=65536
+
+# goo=$?
+# if [[ $goo == 0 ]]; then
+# 	if [[ -x /usr/bin/vimpager ]]; then
+# 		export PAGER=vimpager
+# 	fi
+# 	alias less=$PAGER
+# 	alias zless=$PAGER
+# fi
 
 # enable XON/XOFF flow control
 stty -ixon
