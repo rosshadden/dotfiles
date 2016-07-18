@@ -7,7 +7,7 @@
 ################
 
 source "$(dirname $0)/functions.sh"
-source "$DOTS/lib/shell/colors.sh"
+source "$DOTS/lib/shell/modules/colors.sh"
 
 ################
 # FUNCTIONS

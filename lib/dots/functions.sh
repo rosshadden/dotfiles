@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-source "$DOTS/lib/shell/functions.sh"
+source "$DOTS/lib/shell/init/functions.sh"
