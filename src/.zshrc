@@ -11,7 +11,7 @@ function variables() {
 
 	# TODO: group into object
 	shellDir=$DOTS/lib/shell
-	utilDir=$shellDir/utils
+	initDir=$shellDir/init
 	moduleDir=$shellDir/modules
 	pluginDir=$shellDir/plugins
 }
@@ -50,8 +50,7 @@ function packages() {
 }
 
 function modules() {
-	for util in $utilDir/*; do source $util; done
-	for module in $moduleDir/*; do source $module; done
+	for module in $initDir/{functions,env}.sh $moduleDir/*; do source $module; done
 	for plugin in $pluginDir/*; do source $plugin; done
 
 	[[ -f ~/local/.zshrc ]] && source ~/local/.zshrc
