@@ -89,7 +89,7 @@ lawg "tmux"
 
 # update vim plugins
 lawg "vim:plugins"
-nvim +PlugUpdate +PlugUpgrade +qa
+$EDITOR +PlugUpdate +PlugUpgrade +qa
 lawg "vim:plugins"
 
 ################

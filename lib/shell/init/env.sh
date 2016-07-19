@@ -49,8 +49,10 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 
 # fzf
 export FZF_DEFAULT_OPTS="--bind=alt-enter:print-query"
-export FZF_DEFAULT_COMMAND="pt -g ''"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+if isCommand pt; then
+	export FZF_DEFAULT_COMMAND="pt -g ''"
+	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
 
 ################
 # SETTINGS
