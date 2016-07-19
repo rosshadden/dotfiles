@@ -145,6 +145,8 @@ call plug#begin(expand(g:packageDir))
 	Plug 'mustache/vim-mustache-handlebars'
 	" jsdoc
 	Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
+	" rust
+	Plug 'rust-lang/rust.vim'
 	" emmet
 	Plug 'mattn/emmet-vim'
 	" i3 config

@@ -2,7 +2,10 @@
 
 export DOTS="${DOTS:-$HOME/dotfiles}"
 
-source "$DOTS/lib/dots/functions.sh"
+function error() {
+	echo "$1" 1>&2
+	exit 1
+}
 
 spec=":vV"
 while getopts $spec opt; do
@@ -23,10 +26,12 @@ case "$action" in
 	v | version) action=version ;;
 esac
 
+if [ "$action" != "install" ]; then source "$DOTS/lib/dots/functions.sh"; fi
+
 actionFile="$DOTS/lib/dots/$action.sh"
 if [[ -f "$actionFile" ]]; then
 	shift
-	$actionFile $*
+	$actionFile "$*"
 else
 	error "Invalid action: $action"
 fi

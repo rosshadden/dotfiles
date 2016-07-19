@@ -17,6 +17,9 @@ if isCommand java; then export PATH=$PATH:$JAVA_HOME/bin; fi
 # ruby (if installed)
 if isCommand ruby; then export PATH="$PATH:`ruby -e 'puts Gem.user_dir'`/bin:~/.rvm/bin"; fi
 
+# rust (if installed)
+if isCommand rustc; then export PATH=$PATH:~/.cargo/bin; fi
+
 # android (if installed)
 [[ -d "$ANDROID_HOME" ]] && export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
