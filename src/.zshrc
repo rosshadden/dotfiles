@@ -1,3 +1,7 @@
+function sourceIfExists() {
+	if [[ -f "$1" ]]; then source "$1"; fi
+}
+
 function variables() {
 	# XDG
 	export XDG_CONFIG_HOME=$HOME/.config
@@ -50,10 +54,11 @@ function packages() {
 }
 
 function modules() {
-	for module in $initDir/{functions,env}.sh $moduleDir/*; do source $module; done
-	for plugin in $pluginDir/*; do source $plugin; done
+	for module in $initDir/{functions,env}.sh $moduleDir/*.{,z}sh; do sourceIfExists $module; done
+	for plugin in $pluginDir/*.zsh; do sourceIfExists $plugin; done
 
-	[[ -f ~/local/.zshrc ]] && source ~/local/.zshrc
+	sourceIfExists ~/local/.zshrc
+	sourceIfExists $HOME/.local.sh
 }
 
 function() {

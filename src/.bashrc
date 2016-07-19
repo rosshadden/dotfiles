@@ -1,7 +1,6 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-
 ################
 # VARIABLES
 # TODO: breakout.exe
@@ -9,8 +8,9 @@
 
 export DOTS=$HOME/dotfiles
 shellDir=$DOTS/lib/shell
-modulesDir=$shellDir/modules
-
+initDir=$shellDir/init
+moduleDir=$shellDir/modules
+pluginDir=$shellDir/plugins
 
 ################
 # CONFIG
@@ -34,7 +34,6 @@ shopt -s checkwinsize
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
-
 
 ################
 # THEME
@@ -112,13 +111,16 @@ if [[ -f /etc/bash_completion ]] && ! shopt -oq posix; then
 	. /etc/bash_completion
 fi
 
+function sourceIfExists() {
+	if [[ -f "$1" ]]; then source "$1"; fi
+}
+
 function modules() {
-	source $modulesDir/functions.sh
-	source $modulesDir/env.sh
-	source $modulesDir/colors.sh
-	source $modulesDir/alias.sh
-	source $modulesDir/general.sh
-	[[ -e "$HOME/.local.sh" ]] && source $HOME/.local.sh
+	for module in $initDir/{functions,env}.sh $moduleDir/*.{,ba}sh; do sourceIfExists $module; done
+	for plugin in $pluginDir/*.{,ba}sh; do sourceIfExists $plugin; done
+
+	sourceIfExists ~/local/.bashrc
+	sourceIfExists $HOME/.local.sh
 }
 
 function mappings() {
