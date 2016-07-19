@@ -148,7 +148,7 @@ call plug#begin(expand(g:packageDir))
 	" rust
 	Plug 'rust-lang/rust.vim'
 	" emmet
-	Plug 'mattn/emmet-vim'
+	Plug 'mattn/emmet-vim', { 'for': 'html' }
 	" i3 config
 	Plug 'PotatoesMaster/i3-vim-syntax'
 	" LaTeX

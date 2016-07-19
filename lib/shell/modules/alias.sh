@@ -64,8 +64,6 @@ alias tl="tmux list-sessions"
 alias B="bauerbill --build-dir /tmp/bauerbill"
 alias BB="bb-wrapper --build-dir /tmp/bauerbill"
 
-alias ag="ag --hidden --ignore .git"
-
 ##
 # attach to existing session, or create new
 #

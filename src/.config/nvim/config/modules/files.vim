@@ -52,7 +52,7 @@ function! s:agWithOptions(arg, bang)
 	let tokens  = split(a:arg)
 	let ag_opts = join(filter(copy(tokens), 'v:val =~ "^-"'))
 	let query   = join(filter(copy(tokens), 'v:val !~ "^-"'))
-	call fzf#vim#ag(query, ag_opts, a:bang ? {} : { 'down': '40%' })
+	call fzf#vim#ag(query, ag_opts, a:bang ? {} : { 'down': '40%', 'prompt': 'foo' })
 endfunction
 
 augroup files
