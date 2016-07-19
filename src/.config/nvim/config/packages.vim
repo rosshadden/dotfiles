@@ -159,6 +159,8 @@ call plug#begin(expand(g:packageDir))
 	Plug 'heartsentwined/vim-emblem'
 	" shell test framework
 	Plug 'markcornick/vim-bats'
+	" toml
+	Plug 'cespare/vim-toml'
 
 	" integration
 
