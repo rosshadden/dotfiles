@@ -163,6 +163,8 @@ call plug#begin(expand(g:packageDir))
 	Plug 'markcornick/vim-bats'
 	" toml
 	Plug 'cespare/vim-toml'
+	" moonscript
+	Plug 'leafo/moonscript-vim'
 
 	" integration
 

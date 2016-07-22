@@ -3,6 +3,8 @@
 - trim down as much fat as possible
 - look into [these dotfiles]( https://github.com/xero/dotfiles ) for sexiness
 - swap `~/{bin,lib}` and `~/local/{bin,lib}`
+- consider moving systemd stuff to sync
+- move startup things to systemd
 
 ## `dots`
 
