@@ -129,26 +129,29 @@ call plug#begin(expand(g:packageDir))
 
 	" languages
 
-	" polyglot autoformat support
-	Plug 'Chiel92/vim-autoformat'
 	" polyglot support
 	Plug 'sheerun/vim-polyglot'
+	" polyglot autoformat support
+	Plug 'Chiel92/vim-autoformat'
 	" markdown
 	Plug 'shime/vim-livedown'
 	Plug 'vim-pandoc/vim-pandoc'
 	Plug 'vim-pandoc/vim-pandoc-syntax'
 	" js
-	Plug 'marijnh/tern_for_vim', { 'do': 'npm install' , 'for': 'javascript' }
-	" c#
-	Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
-	" emmet
-	Plug 'mattn/emmet-vim', { 'for': 'html' }
+	Plug 'othree/yajs.vim', { 'for': 'javascript' }
+	Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
+	Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
+	Plug 'marijnh/tern_for_vim', { 'for': 'javascript', 'do': 'npm install' }
 	" moonscript
 	Plug 'leafo/moonscript-vim'
 	" i3 config
 	Plug 'PotatoesMaster/i3-vim-syntax'
+	" c#
+	Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
 	" shell test framework
 	Plug 'markcornick/vim-bats'
+	" emmet
+	Plug 'mattn/emmet-vim', { 'for': 'html' }
 
 	" integration
 

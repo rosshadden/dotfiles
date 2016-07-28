@@ -2,8 +2,8 @@
 " SETTINGS
 """"""""""""""""
 
-" enable jsdoc support
-let g:javascript_plugin_jsdoc = 1
+" javascript-libraries-syntax
+let g:used_javascript_libs = 'underscore,chai,jquery'
 
 """"""""""""""""
 " FUNCTIONS
