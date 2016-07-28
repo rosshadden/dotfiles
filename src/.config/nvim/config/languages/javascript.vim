@@ -2,9 +2,8 @@
 " SETTINGS
 """"""""""""""""
 
-" set libraries for othree/javascript-libraries-syntax
-let g:used_javascript_libs = 'underscore,chai,jquery'
-
+" enable jsdoc support
+let g:javascript_plugin_jsdoc = 1
 
 """"""""""""""""
 " FUNCTIONS
@@ -21,7 +20,6 @@ function! InsertVersion(command)
 	" TODO: figure out why it jumps the cursor to the BOF
 	execute 'normal! ' . a:command . l:version . ''
 endfunction
-
 
 """"""""""""""""
 " MISC

@@ -11,9 +11,9 @@ if has('nvim')
 	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 else
 	set t_Co=256
-	let base16colorspace=256
 endif
 
+let base16colorspace=256
 colorscheme vim
 
 scriptencoding utf-8

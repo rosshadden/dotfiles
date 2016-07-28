@@ -1,4 +1,19 @@
 """"""""""""""""
+" SETTINGS
+""""""""""""""""
+
+" vim-livedown
+let g:livedown_browser = 'google-chrome-stable'
+
+" vim-instant-markdown
+" disable autostart
+let g:instant_markdown_autostart = 0
+
+" vim-pandoc-syntax
+let g:pandoc#syntax#conceal#urls = 1
+let g:pandoc#syntax#codeblocks#embeds#langs = [ 'javascript', 'js=javascript', 'json', 'bash=sh' ]
+
+""""""""""""""""
 " FUNCTIONS
 """"""""""""""""
 
@@ -17,19 +32,6 @@ function! CompileMarkdown(files)
 	write
 	execute '!' . l:cmd
 endfunction
-
-
-""""""""""""""""
-" SETTINGS
-""""""""""""""""
-
-" vim-livedown
-let g:livedown_browser = 'google-chrome-stable'
-
-" vim-instant-markdown
-" disable autostart
-let g:instant_markdown_autostart = 0
-
 
 """"""""""""""""
 " MAPPINGS

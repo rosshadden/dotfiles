@@ -129,42 +129,26 @@ call plug#begin(expand(g:packageDir))
 
 	" languages
 
-	" autoformat support for multiple
+	" polyglot autoformat support
 	Plug 'Chiel92/vim-autoformat'
-	" js
-	Plug 'othree/yajs.vim', { 'for': 'javascript' }
-	Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
-	Plug 'marijnh/tern_for_vim', { 'do': 'npm install' , 'for': 'javascript' }
-	" json
-	Plug 'elzr/vim-json', { 'for': 'json' }
-	" c#
-	Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
-	" html5
-	Plug 'othree/html5.vim', { 'for': 'html' }
-	" hbs
-	Plug 'mustache/vim-mustache-handlebars'
-	" jsdoc
-	Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
-	" rust
-	Plug 'rust-lang/rust.vim'
-	" emmet
-	Plug 'mattn/emmet-vim', { 'for': 'html' }
-	" i3 config
-	Plug 'PotatoesMaster/i3-vim-syntax'
-	" LaTeX
-	Plug 'LaTeX-Box-Team/LaTeX-Box'
+	" polyglot support
+	Plug 'sheerun/vim-polyglot'
 	" markdown
 	Plug 'shime/vim-livedown'
 	Plug 'vim-pandoc/vim-pandoc'
 	Plug 'vim-pandoc/vim-pandoc-syntax'
-	" emblem
-	Plug 'heartsentwined/vim-emblem'
-	" shell test framework
-	Plug 'markcornick/vim-bats'
-	" toml
-	Plug 'cespare/vim-toml'
+	" js
+	Plug 'marijnh/tern_for_vim', { 'do': 'npm install' , 'for': 'javascript' }
+	" c#
+	Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
+	" emmet
+	Plug 'mattn/emmet-vim', { 'for': 'html' }
 	" moonscript
 	Plug 'leafo/moonscript-vim'
+	" i3 config
+	Plug 'PotatoesMaster/i3-vim-syntax'
+	" shell test framework
+	Plug 'markcornick/vim-bats'
 
 	" integration
 
