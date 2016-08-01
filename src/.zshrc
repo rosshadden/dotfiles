@@ -1,3 +1,4 @@
+# TODO: handle n args
 function sourceIfExists() {
 	if [[ -f "$1" ]]; then source "$1"; fi
 }
@@ -57,8 +58,8 @@ function modules() {
 	for module in $initDir/{functions,env}.sh $moduleDir/*.{,z}sh; do sourceIfExists $module; done
 	for plugin in $pluginDir/*.zsh; do sourceIfExists $plugin; done
 
+	sourceIfExists ~/local/.sh
 	sourceIfExists ~/local/.zshrc
-	sourceIfExists $HOME/.local.sh
 }
 
 function() {

@@ -67,6 +67,8 @@
 
 ## `i3`
 
+- make the 2nd `i3lock` thing blur my background
+- fix and add backgrounds
 - add clipboard management
 - modes
 	- break out modes into separate files
