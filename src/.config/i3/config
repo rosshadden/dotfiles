@@ -100,6 +100,11 @@ new_float pixel $borderFloatingWidth
 
 mouse_warping none
 
+# gaps
+
+gaps inner 10
+# smart_gaps on
+
 ################
 # BINDS
 ################
@@ -302,6 +307,7 @@ $return {
 	bindsym apostrophe mode "GOTO"
 	bindsym a mode "APPS"
 	bindsym b mode "BUFFER"
+	bindsym g mode "GAPS"
 	bindsym i mode "I3"
 	bindsym l mode "LAYOUT"
 	bindsym m mode "MEDIA"
@@ -690,6 +696,39 @@ mode "BORDER" {
 	bindsym 0 border none; $exit
 	bindsym 1 border 1pixel; $exit
 	bindsym 2 border normal; $exit
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "GAPS" {
+	bindsym o mode "GAPS-OUTER"
+	bindsym i mode "GAPS-INNER"
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "GAPS-OUTER" {
+	bindsym plus  gaps outer current plus 5
+	bindsym minus gaps outer current minus 5
+	bindsym 0     gaps outer current set 0
+
+	bindsym Shift+plus  gaps outer all plus 5
+	bindsym Shift+minus gaps outer all minus 5
+	bindsym Shift+0     gaps outer all set 0
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "GAPS-INNER" {
+	bindsym plus  gaps inner current plus 5
+	bindsym minus gaps inner current minus 5
+	bindsym 0     gaps inner current set 0
+
+	bindsym Shift+plus  gaps inner all plus 5
+	bindsym Shift+minus gaps inner all minus 5
+	bindsym Shift+0     gaps inner all set 0
 
 	bindsym $super+space $return
 	bindsym Escape $exit
