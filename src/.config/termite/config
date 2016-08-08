@@ -10,7 +10,7 @@ scrollback_lines = 100000
 foreground      = #D0D0D0
 foreground_bold = #D0D0D0
 # cursor          = #D0D0D0
-background      = #151515
+background      = rgba(21, 21, 21, .8)
 
 # 16 color space
 color0  = #151515

@@ -18,6 +18,9 @@ colorscheme vim
 
 scriptencoding utf-8
 
+highlight Normal guibg=none
+highlight NonText guibg=none
+
 """"""""""""""""
 " VIM-AIRLINE
 """"""""""""""""

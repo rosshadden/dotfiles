@@ -21,7 +21,7 @@ mkdir /tmp/aoeu
 pulseaudio --start &
 
 # composite manager
-xcompmgr -cF &
+compton -b
 
 ################
 # APPS
@@ -41,6 +41,9 @@ zeal &
 
 # pidgin
 pidgin &
+
+# google music proxy
+GMusicProxy &
 
 # cvim external editor
 # ~/lib/cvim-server.py &

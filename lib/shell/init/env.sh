@@ -44,8 +44,10 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 export FZF_DEFAULT_OPTS="--bind=alt-enter:print-query"
 if isCommand pt; then
 	export FZF_DEFAULT_COMMAND="pt -g ''"
-	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+elif isCommand ag; then
+	export FZF_DEFAULT_COMMAND="ag --hidden --ignore .git -g ''"
 fi
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 ################
 # SETTINGS
