@@ -18,8 +18,12 @@ colorscheme vim
 
 scriptencoding utf-8
 
-highlight Normal guibg=none
-highlight NonText guibg=none
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+if has('nvim')
+	highlight Normal guibg=none
+	highlight NonText guibg=none
+endif
 
 """"""""""""""""
 " VIM-AIRLINE
