@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+# urlencode <string>
+urlencode() {
+	old_lc_collate=$LC_COLLATE
+	LC_COLLATE=C
+
+	local length="${#1}"
+	for (( i = 0; i < length; i++ )); do
+		local c="${1:i:1}"
+		case $c in
+			[a-zA-Z0-9.~_-]) printf "%s" "$c" ;;
+			*) printf '%%%02X' "'$c" ;;
+		esac
+	done
+
+	LC_COLLATE=$old_lc_collate
+}
+
+muse() {
+	local artist
+	local query="get_by_search"
+	local type="matches"
+
+	spec=":a:t:"
+	while getopts $spec opt; do
+		case "$opt" in
+			a) artist="$OPTARG" ;;
+			l) limit="$OPTARG" ;;
+			q) query="$OPTARG" ;;
+			t) type="$OPTARG" ;;
+			:) error "Option '-$OPTARG' requires an argument" ;;
+			*) error "Invalid option: -$OPTARG" ;;
+		esac
+	done
+	shift "$((OPTIND-1))"
+
+	local title="$1"
+	local uri="http://localhost:9999/${query}?type=${type}&exact=no"
+
+	if [[ "$title" != "" ]]; then
+		uri="${uri}&title=$(urlencode "$title")"
+	fi
+
+	if [[ "$artist" != "" ]]; then
+		uri="${uri}&artist=$(urlencode "$artist")"
+	fi
+
+	if [[ "$limit" != "" ]]; then
+		uri="${uri}&num_tracks=${limit}"
+	fi
+
+	killall vlc
+	curl -s "$uri" | vlc - >/dev/null 2>&1 &
+}
+
+muse "$@"
