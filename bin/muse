@@ -50,7 +50,7 @@ muse() {
 		uri="${uri}&num_tracks=${limit}"
 	fi
 
-	killall vlc
+	killall vlc >/dev/null 2>&1
 	curl -s "$uri" | vlc - >/dev/null 2>&1 &
 }
 
