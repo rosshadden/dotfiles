@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+qKill() {
+	kill "$(ps aux | fzf | awk '{ print $2 }')"
+}
+
+if [[ "$1" == "kill" ]]; then
+	qKill
+fi
