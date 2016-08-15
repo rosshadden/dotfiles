@@ -1,1 +1,0 @@
-	source tmuxp.zsh

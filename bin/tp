@@ -20,7 +20,7 @@ if [[ $1 ]]; then cd "$path" || exit; fi
 # create session
 # TODO: allow per-project window list overrides
 # TODO: allow per-project windows/panes/commands (basically arbitrary json config)
-tmuxp load -d project.json
+tmuxp load -d project
 
 # configure session
 tmux rename-session -t project "$project"
