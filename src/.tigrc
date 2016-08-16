@@ -290,6 +290,7 @@ bind generic ; prompt
 bind generic <esc>i !git in
 bind generic <esc>o !git out
 bind generic <esc>s !git sync
+bind generic <esc>S !git sync-submodules
 bind generic <esc>f !git fetch -p --tags
 
 # checkout/create local branch

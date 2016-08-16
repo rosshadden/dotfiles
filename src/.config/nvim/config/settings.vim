@@ -2,6 +2,9 @@
 set number
 set relativenumber
 
+" timeouts
+set timeoutlen=1000 ttimeoutlen=0
+
 " title
 set title
 
@@ -22,8 +25,7 @@ set hidden
 
 " scrolling
 set ruler
-set scrolloff=1
-set sidescrolloff=5
+set scrolloff=1 sidescrolloff=5
 
 " disable splash screen
 set shortmess=atI
