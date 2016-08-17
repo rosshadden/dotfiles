@@ -49,20 +49,20 @@
 [alias]
 	# SHORTHAND
 
-	a = !git add
-	b = !git branch
-	c = !git commit
-	cl = !git clone --recursive
-	co = !git checkout
-	d = !git diff
-	f = !git fetch -p --tags --all --jobs=4
+	a = add
+	b = branch
+	c = commit
+	cl = clone --recursive
+	co = checkout
+	d = diff
+	f = fetch -p --tags --all --jobs=4
 	i = !git in
-	m = !git merge
+	m = merge
 	o = !git out
-	r = !git remote
-	rb = !git rebase
-	s = !git status -sb
-	t = !git tag
+	r = remote
+	rb = rebase
+	s = status -sb
+	t = tag
 
 	# SYNCING
 

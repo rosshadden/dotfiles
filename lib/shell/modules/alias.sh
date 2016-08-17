@@ -54,7 +54,7 @@ alias open="xdg-open"
 
 # git
 # TODO: breakout.exe into a git module
-# alias g="git"
+alias g="git"
 alias tigs="tig status"
 
 # TODO: breakout.exe into a tmux module
