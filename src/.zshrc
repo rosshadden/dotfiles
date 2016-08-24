@@ -54,8 +54,8 @@ function packages() {
 }
 
 function modules() {
-	for module in $initDir/{functions,env}.sh $moduleDir/*.{,z}sh; do sourceIfExists $module; done
 	for plugin in $pluginDir/*.zsh; do sourceIfExists $plugin; done
+	for module in $initDir/{functions,env}.sh $moduleDir/*.{,z}sh; do sourceIfExists $module; done
 
 	sourceIfExists ~/local/.sh
 	sourceIfExists ~/local/.zshrc
