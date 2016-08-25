@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
+command="$1"
+shift
+
 qKill() {
-	kill -9 "$(ps aux | fzf | awk '{ print $2 }')"
+	kill $* "$(ps aux | fzf | awk '{ print $2 }')"
 }
 
-if [[ "$1" == "kill" ]]; then
-	qKill
+if [[ "$command" == "kill" ]]; then
+	qKill "$*"
 fi
