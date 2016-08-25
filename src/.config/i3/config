@@ -62,9 +62,10 @@ set $refreshVolume pkill -RTMIN+11 i3blocks
 set $refreshBrightness pkill -RTMIN+12 i3blocks
 
 # default apps
-set $chooseCommand rofi -show run -sidebar-mode -i
-set $chooseWindow rofi -show window -sidebar-mode -i
-set $chooseApp j4-dmenu-desktop --dmenu='rofi -dmenu -p "launch:" -i'
+set $chooseCommand "rofi -show run -sidebar-mode"
+set $chooseWindow "rofi -show window -sidebar-mode"
+set $chooseApp "rofi -show drun -p 'launch: '"
+set $chooseAll "rofi -combi-modi drun,run -show combi -p 'all: '"
 set $terminal i3-sensible-terminal
 set $run i3-sensible-terminal -e
 set $tmuxAttach i3-sensible-terminal -e "tmux new-session -A -s
@@ -122,12 +123,12 @@ bindsym $super+Shift+t mark LAST; exec $run tmux
 
 # open runner
 bindsym $super+r mark LAST; exec $chooseCommand
-
+# open launcher
+bindsym $super+o mark LAST; exec $chooseApp
+# open runner/launcher
+bindsym $super+a mark LAST; exec $chooseAll
 # open window finder
 bindsym $super+w mark LAST; exec $chooseWindow
-
-# open launcher
-bindsym $super+o mark LAST; exec --no-startup-id $chooseApp
 
 # fix keys
 # TODO: this does not work

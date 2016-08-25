@@ -35,14 +35,3 @@ Xcursor.size: 48
 !!!!!!!!!!!!!!!!
 
 #include "/home/ross/dotfiles/lib/themes/dmenu.xresources"
-
-!!!!!!!!!!!!!!!!
-!! ROFI
-!!!!!!!!!!!!!!!!
-
-#include "/home/ross/dotfiles/lib/themes/rofi.xresources"
-
-rofi.borderwidth: 3
-rofi.padding: 3
-rofi.lines: 25
-rofi.width: -64

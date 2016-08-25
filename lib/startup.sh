@@ -21,7 +21,7 @@ mkdir /tmp/aoeu
 pulseaudio --start &
 
 # composite manager
-# compton -b
+compton -b
 
 ################
 # APPS
