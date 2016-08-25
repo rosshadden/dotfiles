@@ -1,1 +1,1 @@
-../../../../lib/themes/vim-airline.vim
+../../../../lib/themes/vim-airline

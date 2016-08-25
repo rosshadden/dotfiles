@@ -5,8 +5,6 @@
 syntax enable
 set background=dark
 
-runtime! colors/vim-airline.vim
-
 if has('nvim')
 	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 else
@@ -17,6 +15,9 @@ let base16colorspace=256
 colorscheme vim
 
 scriptencoding utf-8
+
+" runtime! colors/vim.vim
+runtime! colors/vim-airline.vim
 
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none

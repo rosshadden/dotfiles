@@ -1,6 +1,6 @@
 ! vim: set ft=xdefaults:
 
-#include "/home/ross/dotfiles/lib/themes/rofi.xresources"
+#include "/home/ross/dotfiles/lib/themes/rofi"
 
 ! Window opacity
 rofi.opacity:                        75

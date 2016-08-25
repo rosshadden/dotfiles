@@ -1,6 +1,7 @@
 # general
 *.dat
 *.swp
+node_modules
 
 # apps
 src/.config/copyq/.copyq_m

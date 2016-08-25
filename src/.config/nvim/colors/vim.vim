@@ -1,1 +1,1 @@
-../../../../lib/themes/vim.vim
+../../../../lib/themes/vim

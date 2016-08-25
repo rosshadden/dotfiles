@@ -15,7 +15,7 @@
 !! THEME
 !!!!!!!!!!!!!!!!
 
-#include "/home/ross/dotfiles/lib/themes/xresources.xresources"
+#include "/home/ross/dotfiles/lib/themes/xresources"
 
 *.highlightbg: #875fd7
 *.highlightfg: #ffffff
@@ -34,4 +34,4 @@ Xcursor.size: 48
 !! DMENU
 !!!!!!!!!!!!!!!!
 
-#include "/home/ross/dotfiles/lib/themes/dmenu.xresources"
+#include "/home/ross/dotfiles/lib/themes/dmenu"

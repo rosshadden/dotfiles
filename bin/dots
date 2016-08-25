@@ -31,7 +31,7 @@ if [ "$action" != "install" ]; then source "$DOTS/lib/dots/functions.sh"; fi
 actionFile="$DOTS/lib/dots/$action.sh"
 if [[ -f "$actionFile" ]]; then
 	shift
-	$actionFile "$*"
+	$actionFile "$@"
 else
 	error "Invalid action: $action"
 fi
