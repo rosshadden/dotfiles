@@ -3,7 +3,7 @@
 #include "/home/ross/dotfiles/lib/themes/rofi"
 
 ! Window opacity
-rofi.opacity:                        75
+rofi.opacity:                        80
 ! Window width
 rofi.width:                          -64
 ! Number of lines

@@ -7,11 +7,22 @@
 ################
 
 templates="shell vconsole xresources vim rofi vim-airline"
+themeFile="$DOTS/THEME"
 themePath="$DOTS/lib/themes"
 base16="$DOTS/node_modules/base16-builder/dist/cli.js"
 
 get() {
-	echo "TODO: Get current theme"
+	cat "$themeFile"
+}
+
+set() {
+	local scheme="$1"
+	echo "$scheme" > "$themeFile"
+}
+
+list() {
+	local type="${1:-templates}"
+	$base16 ls "$type"
 }
 
 clean() {
@@ -34,10 +45,9 @@ generate() {
 	local template="$2"
 
 	# Regenerate current theme
-	if [[ "$scheme" == "" ]]; then
-		echo "TODO: Regenerate current theme"
-		exit
-	fi
+	if [[ "$scheme" == "" ]]; then scheme="$(get)"; fi
+
+	set "$scheme"
 
 	# Generate themes for all templates
 	if [[ "$template" == "" ]]; then
@@ -56,6 +66,8 @@ shift
 
 case "$action" in
 	get) action=get ;;
+	set) action=set ;;
+	l | ls | list) action=list ;;
 	c | clean) action=clean ;;
 	g | gen | generate) action=generate ;;
 esac

@@ -29,9 +29,3 @@
 
 Xcursor.theme: Polar
 Xcursor.size: 48
-
-!!!!!!!!!!!!!!!!
-!! DMENU
-!!!!!!!!!!!!!!!!
-
-#include "/home/ross/dotfiles/lib/themes/dmenu"

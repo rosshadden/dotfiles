@@ -1,7 +1,11 @@
 # general
 *.dat
 *.swp
+
+# meta
+THEME
 node_modules
+lib/themes
 
 # apps
 src/.config/copyq/.copyq_m
@@ -22,8 +26,6 @@ src/.vifm/Trash
 src/.vifm/vifminfo*
 src/.vifm/vimfiles
 src/.vim/spell/*.spl
-lib/themes/promptline.sh
-lib/themes/tmuxline.conf
 src/.config/gtk-3.0/bookmarks
 src/.config/nvim/autoload/plug.vim.old
 src/.config/vis/vis.log

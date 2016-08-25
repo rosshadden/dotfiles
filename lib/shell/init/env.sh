@@ -1,3 +1,11 @@
+#!/usr/bin/env sh
+
+################
+# DOTFILES
+################
+
+export DOTS_THEME="$(cat $DOTS/THEME)"
+
 ################
 # BINS
 ################
