@@ -26,6 +26,9 @@ if has('nvim')
 	highlight NonText guibg=none
 endif
 
+" Stop highlighting pairs
+let loaded_matchparen = 1
+
 """"""""""""""""
 " VIM-AIRLINE
 """"""""""""""""
