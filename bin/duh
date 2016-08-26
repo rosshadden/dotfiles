@@ -25,7 +25,7 @@ duh() {
 	if [[ -z "$depth" ]]; then depth=0; fi
 	if [[ -z "$dir" ]]; then dir=.; fi
 
-	du -h --max-depth=$depth $dir | sort -h
+	du -h --max-depth=$depth $dir | sort -hr
 }
 
 duh "$@"

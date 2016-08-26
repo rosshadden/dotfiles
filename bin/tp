@@ -8,6 +8,9 @@
 # TODO: make a "kill" or "clean" project, which kills tmux sessions
 # TODO: support "filling" current session, instead of making a new session
 
+# Exit if already in a tmux session
+if [ -n "$TMUX" ]; then echo "Already in tmux, nerd."; exit; fi
+
 project=${1:-$(basename "$PWD")}
 path=${2:-$(fasd -d "$project")}
 path=${path:-.}

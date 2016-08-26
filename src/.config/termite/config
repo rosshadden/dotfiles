@@ -4,36 +4,37 @@ font = Fantasque Sans Mono 12
 scrollback_lines = 100000
 
 [colors]
-# Base16 Summerfruit
-# Scheme: Christopher Corley (http://cscorley.github.io/)
+# Base16 Materia
+# Scheme: Defman21
 
-foreground      = #D0D0D0
-foreground_bold = #D0D0D0
-# cursor          = #D0D0D0
-background      = rgba(21, 21, 21, 1)
+foreground      = #CDD3DE
+foreground_bold = #CDD3DE
+cursor          = #CDD3DE
+background      = #263238
 
 # 16 color space
-color0  = #151515
-color1  = #FF0086
-color2  = #00C918
-color3  = #ABA800
-color4  = #3777E6
-color5  = #AD00A1
-color6  = #1faaaa
-color7  = #D0D0D0
-color8  = #505050
-color9  = #FF0086
-color10 = #00C918
-color11 = #ABA800
-color12 = #3777E6
-color13 = #AD00A1
-color14 = #1faaaa
+color0  = #263238
+color1  = #EC5F67
+color2  = #8BD649
+color3  = #FFCC00
+color4  = #89DDFF
+color5  = #82AAFF
+color6  = #80CBC4
+color7  = #CDD3DE
+color8  = #707880
+color9  = #EC5F67
+color10 = #8BD649
+color11 = #FFCC00
+color12 = #89DDFF
+color13 = #82AAFF
+color14 = #80CBC4
 color15 = #FFFFFF
 
 # 256 color space
-color16 = #FD8900
-color17 = #cc6633
-color18 = #202020
-color19 = #303030
-color20 = #B0B0B0
-color21 = #E0E0E0
+color16 = #EA9560
+color17 = #EC5F67
+color18 = #2C393F
+color19 = #37474F
+color20 = #C9CCD3
+color21 = #D5DBE5
+

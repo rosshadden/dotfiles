@@ -6,7 +6,7 @@
 # Generates theme files, using base16-builder
 ################
 
-templates="shell vconsole i3 vim xresources rofi vim-airline"
+templates="shell vconsole i3 vim xresources termite rofi vim-airline"
 themeFile="$DOTS/THEME"
 themePath="$DOTS/lib/themes"
 base16="$DOTS/node_modules/base16-builder/dist/cli.js"
