@@ -15,7 +15,7 @@ rofi.bw:                             0
 ! Location on screen
 rofi.location:                       0
 ! Padding
-rofi.padding:                        400
+rofi.padding:                        200
 ! Always show number of lines
 rofi.fixed-num-lines:                true
 ! Terminal to use

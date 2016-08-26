@@ -862,25 +862,25 @@ mode "PIDGIN" {
 
 # ~/.i3/config
 # i3 config template
-# Base16 Chalk by Chris Kempson (http://chriskempson.com)
+# Base16 Materia by Defman21
 # template by Matt Parnell, @parnmatt
 
-set $base00 #151515
-set $base01 #202020
-set $base02 #303030
-set $base03 #505050
-set $base04 #b0b0b0
-set $base05 #d0d0d0
-set $base06 #e0e0e0
-set $base07 #f5f5f5
-set $base08 #fb9fb1
-set $base09 #eda987
-set $base0A #ddb26f
-set $base0B #acc267
-set $base0C #12cfc0
-set $base0D #6fc2ef
-set $base0E #e1a3ee
-set $base0F #deaf8f
+set $base00 #263238
+set $base01 #2C393F
+set $base02 #37474F
+set $base03 #707880
+set $base04 #C9CCD3
+set $base05 #CDD3DE
+set $base06 #D5DBE5
+set $base07 #FFFFFF
+set $base08 #EC5F67
+set $base09 #EA9560
+set $base0A #FFCC00
+set $base0B #8BD649
+set $base0C #80CBC4
+set $base0D #89DDFF
+set $base0E #82AAFF
+set $base0F #EC5F67
 
 client.focused $base0D $base0D $base00 $base01
 client.focused_inactive $base02 $base02 $base03 $base01
