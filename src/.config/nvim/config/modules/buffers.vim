@@ -35,6 +35,8 @@ nnoremap k <c-w>k
 nnoremap h <c-w>h
 nnoremap l <c-w>l
 
+nnoremap <silent> <:buffers><space> :Buffers<cr>
+
 nnoremap <silent> <:buffers>n :bnext<cr>
 nnoremap <silent> <:buffers>p :bprevious<cr>
 

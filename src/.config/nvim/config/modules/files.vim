@@ -1,4 +1,23 @@
 """"""""""""""""
+" SETTINGS
+""""""""""""""""
+
+" make fzf use current pane
+let g:fzf_layout = { 'window': 'enew' }
+
+" jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" Seamless splits
+let g:fzf_action = {
+	\ 'ctrl-t': 'tab split',
+	\ 'ctrl-k': 'leftabove split',
+	\ 'ctrl-j': 'rightbelow split',
+	\ 'ctrl-h': 'leftabove vsplit',
+	\ 'ctrl-l': 'rightbelow vsplit',
+\ }
+
+""""""""""""""""
 " FUNCTIONS
 """"""""""""""""
 
@@ -72,8 +91,8 @@ noremap <silent> <:files><space> :call OpenRanger(1)<cr>
 noremap <silent> <:files:1><space> :call OpenRanger(0)<cr>
 
 " recursive
-nnoremap <:files>r :FZF --tiebreak=length,end,index<cr>
-nnoremap <:files:1>r :FZF --tiebreak=length,end,index<space>
+nnoremap <:files>r :FZF -m --tiebreak=length,end,index<cr>
+nnoremap <:files:1>r :FZF -m --tiebreak=length,end,index<space>
 nnoremap <:files>R :Files<cr>
 nnoremap <:files:1>R :Files<space>
 
