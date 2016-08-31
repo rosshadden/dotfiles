@@ -36,6 +36,9 @@ set gdefault
 " simple mouse support
 if !has('nvim') | set mouse=a | endif
 
+" disable word wrap
+set nowrap
+
 " Let arrow keys pass \n
 set whichwrap=b,s,<,>,[,]
 
