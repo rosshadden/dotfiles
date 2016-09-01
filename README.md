@@ -27,7 +27,7 @@ See the [TODO](TODO.md) for things I have in mind.
 - [`fzf`]( https://github.com/junegunn/fzf )
 - [`pidgin`]( https://pidgin.im/ )
 	- `python-dbus` - powers ./lib/purple.py
-	- [`gtk-theme-arc`]( https://github.com/horst3180/arc-theme )
+	- [`gtk-theme-numix-ocean`]( https://github.com/aaronjamesyoung/Numix-Ocean )
 - [`ranger`]( https://github.com/hut/ranger )
 	- installed optional dependencies:
 		- `atool`

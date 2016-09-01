@@ -2,8 +2,9 @@
 # SETTINGS
 ################
 
+include "/home/ross/dotfiles/lib/themes/gtk-2.0"
 gtk-font-name = "Fantasque Sans Mono 12"
-gtk-theme-name = "Arc-Dark"
+gtk-theme-name = "Numix-Ocean-Ocean"
 # gtk-key-theme-name = "Emacs"
 
 ################
@@ -61,96 +62,13 @@ gtk-can-change-accels = 1
 # STYLES
 ################
 
-# Create a style called "inverted" where the text and base (the base color behind the widget) are the reverse of typical.
-style "main" {
-	text[NORMAL] = "#d0d0d0"
-	base[NORMAL] = "#151515"
-	bg[NORMAL] = "#202020"
-}
+# # Create a style called "inverted" where the text and base (the base color behind the widget) are the reverse of typical.
+# style "main" {
+# 	text[NORMAL] = "#d0d0d0"
+# 	base[NORMAL] = "#151515"
+# 	bg[NORMAL] = "#202020"
+# }
 
 
 # everything ever
 # widget "*" style "main"
-
-
-# Summerfruit scheme
-# by Christopher Corley (http://cscorley.github.io/)
-#
-# GTK 3.0 template
-# by Jonn Mostovoy - https://github.com/manpages
-#
-# Generated
-#  by base16-builder - https://github.com/base16-builder/base16-builder
-
-style "default"
-{
-  engine "hcengine" {
-    edge_thickness = 2
-  }
-
-  xthickness = 2
-  ythickness = 2
-
-  EelEditableLabel::cursor_aspect_ratio = 0.1
-  EelEditableLabel::cursor_color    = "#3777E6"
-
-  GtkEntry::cursor_color    = "#3777E6"
-  GtkEntry::cursor_aspect_ratio = 0.1
-
-  GtkHSV::focus-line-pattern = "\0"
-
-  GtkRange::stepper-size = 20
-
-  GtkTextView::cursor_aspect_ratio = 0.1
-  GtkTextView::cursor_color    = "#3777E6"
-
-  GtkTreeView::expander-size = 16
-
-  GtkWidget::focus-line-pattern = "\4\2"
-  GtkWidget::focus-line-width = 2
-  GtkWidget::focus-padding = 0
-  GtkWidget::interior_focus = 1
-  GtkWidget::link-color = "#3777E6"
-  GtkWidget::visited-link-color = "#AD00A1"
-
-  # Nautilus
-  NautilusIconContainer::frame_text = 1
-
-  # Pidgin
-  GtkIMHtml::hyperlink-color = "#3777E6"
-  GtkIMHtml::hyperlink-visited-color = "#AD00A1"
-  GtkIMHtml::hyperlink-prelight-color = "#FFFFFF"
-
-  # Evolution
-  GtkHTML::link_color = "#3777E6"
-  GtkHTML::vlink_color = "#AD00A1"
-  GtkHTML::cite_color = "#FFFFFF"
-
-  fg[NORMAL]      = "#B0B0B0"
-  text[NORMAL]    = "#B0B0B0"
-  bg[NORMAL]      = "#151515"
-  base[NORMAL]    = "#151515"
-
-  fg[INSENSITIVE]      = "#B0B0B0"
-  bg[INSENSITIVE]      = "#202020"
-  text[INSENSITIVE]    = "#B0B0B0"
-  base[INSENSITIVE]    = "#202020"
-
-  fg[PRELIGHT]    = "#151515"
-  text[PRELIGHT]  = "#151515"
-  bg[PRELIGHT]    = "#B0B0B0"
-  base[PRELIGHT]  = "#B0B0B0"
-
-  fg[ACTIVE]      = "#D0D0D0"
-  text[ACTIVE]    = "#D0D0D0"
-  bg[ACTIVE]      = "#303030"
-  base[ACTIVE]    = "#303030"
-
-  fg[SELECTED]    = "#151515"
-  text[SELECTED]  = "#151515"
-  bg[SELECTED]    = "#B0B0B0"
-  base[SELECTED]  = "#FFFFFF"
-}
-
-class "GtkWidget" style "default"
-

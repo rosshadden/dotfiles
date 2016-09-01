@@ -4,7 +4,7 @@
 
 [core]
 	editor = $EDITOR
-	pager = [ -f /usr/bin/pt ] && diff-so-fancy | less --tabs=4 -RFX || less
+	pager = command -v diff-so-fancy >/dev/null && diff-so-fancy | less --tabs=4 -RFX || less
 
 [push]
 	default = simple

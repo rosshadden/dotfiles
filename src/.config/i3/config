@@ -802,12 +802,14 @@ mode "MEDIA" {
 	bindsym Right exec $(xdotool key XF86AudioNext); $exit
 	bindsym h exec $(xdotool key XF86AudioPrev); $exit
 	bindsym Left exec $(xdotool key XF86AudioPrev); $exit
+	bindsym s exec "playerctl stop; $refreshVolume"; $exit
 
 	bindsym Shift+space exec $(xdotool key XF86AudioPlay)
 	bindsym Shift+l exec $(xdotool key XF86AudioNext)
 	bindsym Shift+Right exec $(xdotool key XF86AudioNext)
 	bindsym Shift+h exec $(xdotool key XF86AudioPrev)
 	bindsym Shift+Left exec $(xdotool key XF86AudioPrev)
+	bindsym Shift+s exec "playerctl stop; $refreshVolume"
 
 	# screenshots
 
