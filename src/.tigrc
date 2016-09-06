@@ -318,8 +318,8 @@ bind generic Y !@sh -c "echo -n %(commit) | xsel -ib"
 bind generic <esc>e !ranger --selectfile=%(file)
 
 # amend commit
-bind status a !git amend
-bind status A !git amend -e
+bind status <esc>a !git amend
+bind status <esc>A !git amend -e
 
 
 # Colors
