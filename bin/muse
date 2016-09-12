@@ -22,7 +22,7 @@ muse() {
 	local query="get_by_search"
 	local type="matches"
 
-	spec=":a:t:"
+	spec=":a:l:q:t:"
 	while getopts $spec opt; do
 		case "$opt" in
 			a) artist="$OPTARG" ;;
