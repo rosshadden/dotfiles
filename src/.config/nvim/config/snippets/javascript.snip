@@ -84,6 +84,7 @@ options word
 # shorthand
 
 snippet log
+alias p
 	console.log(${1:TARGET});
 
 snippet info
@@ -135,6 +136,11 @@ snippet debug
 alias d
 options head
 	debugger;
+
+snippet exit
+alias q
+options head
+	process.exit();
 
 ################
 # MISC
