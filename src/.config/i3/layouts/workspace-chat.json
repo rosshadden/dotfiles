@@ -6,6 +6,27 @@
 	"type": "con",
 	"nodes": [{
 		"border": "pixel",
+		"current_border_width": 2,
+		"floating": "auto_off",
+		"layout": "stacked",
+		"geometry": {
+			"height": 1056,
+			"width": 264,
+			"x": 3572,
+			"y": 20
+		},
+		"name": "Buddy List",
+		"percent": 0.14,
+		"swallows": [{
+			"class": "^Pidgin$",
+			"instance": "^Pidgin$",
+			"title": "^Buddy\\ List$",
+			"transient_for": "^$",
+			"window_role": "^buddy_list$"
+		}],
+		"type": "con"
+	}, {
+		"border": "pixel",
 		"floating": "auto_off",
 		"layout": "stacked",
 		"percent": 0.86,
@@ -30,26 +51,5 @@
 			}],
 			"type": "con"
 		}]
-	}, {
-		"border": "pixel",
-		"current_border_width": 2,
-		"floating": "auto_off",
-		"layout": "stacked",
-		"geometry": {
-			"height": 1056,
-			"width": 264,
-			"x": 3572,
-			"y": 20
-		},
-		"name": "Buddy List",
-		"percent": 0.14,
-		"swallows": [{
-			"class": "^Pidgin$",
-			"instance": "^Pidgin$",
-			"title": "^Buddy\\ List$",
-			"transient_for": "^$",
-			"window_role": "^buddy_list$"
-		}],
-		"type": "con"
 	}]
 }
