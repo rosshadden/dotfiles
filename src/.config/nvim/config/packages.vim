@@ -141,6 +141,7 @@ call plug#begin(expand(g:packageDir))
 	Plug 'othree/yajs.vim', { 'for': 'javascript' }
 	Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 	Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
+	Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
 	Plug 'marijnh/tern_for_vim', { 'for': 'javascript', 'do': 'npm install' }
 	" moonscript
 	Plug 'leafo/moonscript-vim'

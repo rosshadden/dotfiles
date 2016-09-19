@@ -5,6 +5,12 @@
 " javascript-libraries-syntax
 let g:used_javascript_libs = 'underscore,chai,jquery'
 
+" vim-jsdoc
+let g:jsdoc_enable_es6 = 1
+let g:jsdoc_underscore_private = 1
+let g:jsdoc_return_description = 0
+let g:jsdoc_param_description_separator = ' - '
+
 """"""""""""""""
 " FUNCTIONS
 """"""""""""""""
