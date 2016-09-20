@@ -1,4 +1,28 @@
 ################
+# MODULES
+################
+
+snippet require
+alias r req
+options head
+	${2:$1} = require('${1}')
+
+################
+# LOGS
+################
+
+# long-form
+
+snippet console-log
+alias cl
+	print ${1:'${3:$2\}', ${2\}}
+
+# shorthand
+
+snippet log
+	print ${1:TARGET}
+
+################
 # LOVE
 ################
 
@@ -6,3 +30,12 @@ snippet exit
 alias q
 options head
 	love.event.quit()
+
+################
+# LIBRARIES
+################
+
+snippet debug
+alias d
+options head
+	debugger()
