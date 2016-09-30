@@ -16,8 +16,9 @@ function for-of() {
 	local cmd=$1
 	local section='\\n################\\n# $1\\n################'
 	cmd="if [[ -d \$1 ]]; then echo $section; cd \$1; $cmd; cd ../; fi"
+	shift
 
-	for-in $cmd
+	for-in $cmd "$@"
 }
 
 for-of "$@"
