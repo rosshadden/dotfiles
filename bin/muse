@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+################################
+# Streams music to vlc.
+#
+# Dependencies:
+# - [gmusicproxy](https://github.com/diraimondo/gmusicproxy)
+################################
+
 # urlencode <string>
 urlencode() {
 	old_lc_collate=$LC_COLLATE
@@ -19,14 +26,14 @@ urlencode() {
 
 muse() {
 	local artist
+	local type
 	local query="get_by_search"
-	local type="matches"
 
-	spec=":a:l:q:t:"
+	spec=":a:n:q:t:"
 	while getopts $spec opt; do
 		case "$opt" in
 			a) artist="$OPTARG" ;;
-			l) limit="$OPTARG" ;;
+			n) numTracks="$OPTARG" ;;
 			q) query="$OPTARG" ;;
 			t) type="$OPTARG" ;;
 			:) error "Option '-$OPTARG' requires an argument" ;;
@@ -35,8 +42,16 @@ muse() {
 	done
 	shift "$((OPTIND-1))"
 
+	if [[ "$query" == "radio" ]]; then
+		query="get_new_station_by_search"
+		type="${type:-artist}"
+	fi
+
+	type="${type:-matches}"
+
 	local title="$1"
-	local uri="http://localhost:9999/${query}?type=${type}&exact=no"
+	local api="http://localhost:9999"
+	local uri="${api}/${query}?type=${type}&exact=no"
 
 	if [[ "$title" != "" ]]; then
 		uri="${uri}&title=$(urlencode "$title")"
@@ -46,8 +61,8 @@ muse() {
 		uri="${uri}&artist=$(urlencode "$artist")"
 	fi
 
-	if [[ "$limit" != "" ]]; then
-		uri="${uri}&num_tracks=${limit}"
+	if [[ "$numTracks" != "" ]]; then
+		uri="${uri}&num_tracks=${numTracks}"
 	fi
 
 	killall vlc >/dev/null 2>&1
