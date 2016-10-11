@@ -27,8 +27,8 @@ set hidden
 set ruler
 set scrolloff=1 sidescrolloff=5
 
-" disable splash screen
-set shortmess=atI
+" disable splash screen and 'press ENTER' promt
+set shortmess=atIO
 
 " add the g flag to search/replace by default
 set gdefault

@@ -102,6 +102,8 @@ call plug#begin(expand(g:packageDir))
 	Plug 'talek/obvious-resize'
 	" icon fonts
 	Plug 'ryanoasis/vim-devicons'
+	" colorize colors
+	Plug 'ap/vim-css-color'
 
 	" utils
 

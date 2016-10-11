@@ -132,10 +132,10 @@ bindsym $super+w mark LAST; exec $chooseWindow
 
 # fix keys
 # TODO: this does not work
-bindsym $macro1 exec ~/bin/keys init
+bindsym $macro1 exec "~/bin/keys init"
 
 # fix monitors
-bindsym $macro2 exec ~/local/lib/mon.sh
+bindsym $macro2 exec "~/local/lib/mon.sh"
 
 # goto latest
 bindsym $macro4 mark LAST; [urgent=latest] focus

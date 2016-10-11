@@ -12,4 +12,6 @@ augroup misc
 
 	" read things as shell scripts
 	autocmd BufNewFile,BufReadPost,BufEnter * if &filetype == '' | setlocal filetype=config | endif
+
+	autocmd FileType conf call css_color#init('hex', 'extended', 'confString')
 augroup END

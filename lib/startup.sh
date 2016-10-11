@@ -5,7 +5,7 @@
 ################
 
 # keyboard
-# ~/bin/keys init
+~/bin/keys init
 
 ################
 # ENVIRONMENT
