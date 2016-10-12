@@ -95,6 +95,9 @@ call plug#begin(expand(g:packageDir))
 
 	" ui
 
+	" highlight yanked regions
+	Plug 'machakann/vim-highlightedyank'
+	" status bar
 	Plug 'vim-airline/vim-airline'
 	" indent guides
 	Plug 'nathanaelkane/vim-indent-guides'

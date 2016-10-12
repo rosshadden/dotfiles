@@ -30,6 +30,13 @@ endif
 let loaded_matchparen = 1
 
 """"""""""""""""
+" VIM-HIGHLIGHTEDYANK
+""""""""""""""""
+
+" Set highlight duration
+let g:highlightedyank_highlight_duration = 200
+
+""""""""""""""""
 " VIM-AIRLINE
 """"""""""""""""
 
