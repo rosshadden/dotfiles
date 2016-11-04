@@ -117,7 +117,7 @@
 	# untrack file
 	untrack = update-index --assume-unchanged
 	# remote URL
-	url = !git remote -v | head -1 | gawk '{ print $2 }'
+	url = !echo -n $(git remote -v | head -1 | gawk '{ print $2 }')
 	# show current branch commits
 	sb = !ls .git/refs/remotes/*/$(git pwd) | cut -d/ -f4,5 | xargs git show-branch $(git pwd)
 	# delete local branches that are already merged into HEAD
@@ -149,3 +149,7 @@
 	news = !git lgs HEAD..FETCH_HEAD
 	report = log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\"
 	report-new = !sh -c 'git --no-pager log --reverse --author=Ross --no-merges --format=format:"%s%n    %b" origin/$(git pwd)..$(git pwd)' -
+
+[filter "noise-xml"]
+	smudge = sed \"/\\(setting\\|pref\\) name='\\(last_event_timestamp_\\\\w\\+\\|signedon\\|signedoff\\|last_*seen\\|lastsaid\\|buddy_icon\\|icon_checksum\\|x\\|y\\|width\\|height\\)'/d\"
+	clean = sed \"/\\(setting\\|pref\\) name='\\(last_event_timestamp_\\\\w\\+\\|signedon\\|signedoff\\|last_*seen\\|lastsaid\\|buddy_icon\\|icon_checksum\\|x\\|y\\|width\\|height\\)'/d\"
