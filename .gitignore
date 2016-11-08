@@ -30,3 +30,4 @@ src/.config/gtk-3.0/bookmarks
 src/.config/nvim/autoload/plug.vim.old
 src/.config/vis/vis.log
 src/.config/ranger/copy_buffer
+src/.config/nvim/.netrwhist
