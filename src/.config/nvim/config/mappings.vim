@@ -40,6 +40,9 @@ nnoremap co/ :set hlsearch!<cr>
 vnoremap / "vy/<c-r>v
 vnoremap ? "vy?<c-r>v
 
+" search for current word
+nnoremap g/ gd``
+
 " find result and clear highlight
 cnoremap <a-cr> <cr>:nohlsearch<cr>
 

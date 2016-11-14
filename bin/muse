@@ -28,6 +28,7 @@ muse() {
 	local artist
 	local type
 	local query="get_by_search"
+	local options
 
 	spec=":a:n:q:t:"
 	while getopts $spec opt; do
@@ -45,6 +46,7 @@ muse() {
 	if [[ "$query" == "radio" ]]; then
 		query="get_new_station_by_search"
 		type="${type:-artist}"
+		options="--no-random"
 	fi
 
 	type="${type:-matches}"
@@ -66,7 +68,7 @@ muse() {
 	fi
 
 	killall vlc >/dev/null 2>&1
-	curl -s "$uri" | vlc - >/dev/null 2>&1 &
+	curl -s "$uri" | vlc $options - >/dev/null 2>&1 &
 }
 
 muse "$@"
