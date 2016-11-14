@@ -69,9 +69,9 @@ set $chooseAll "rofi -combi-modi drun,run -show combi -p 'all: '"
 set $terminal i3-sensible-terminal
 set $run i3-sensible-terminal -e
 set $tmuxAttach i3-sensible-terminal -e "tmux new-session -A -s
-set $LOCK i3lock --color=5f00af
 set $locker xautolock -locknow
 set $locker2 escrotum /tmp/lockscreen.png && i3lock -i /tmp/lockscreen.png
+set $locker3 i3lock-wrapper
 
 # UI
 set $borderWidth 2
@@ -141,7 +141,7 @@ bindsym $macro2 exec "~/local/lib/mon.sh"
 bindsym $macro4 mark LAST; [urgent=latest] focus
 
 # lock screen
-bindsym $macro5 exec $LOCK
+bindsym $macro5 exec $locker
 bindsym Shift+$macro5 exec $locker2
 
 # change focus
@@ -561,7 +561,7 @@ mode "SYSTEM" {
 	bindsym Shift+h exec "systemctl hybernate"; $exit
 
 	# lock screen
-	bindsym l exec $LOCK; $exit
+	bindsym l exec $locker; $exit
 	bindsym Shift+l exec $locker2; $exit
 
 	# brightness
@@ -964,4 +964,5 @@ exec --no-startup-id "i3-msg 'workspace $numChat $wsChat; append_layout ~/.confi
 exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath
 
 # autolock
+set $LOCK i3lock --color=5f00af
 exec --no-startup-id xautolock -resetsaver -detectsleep -time 10 -locker "$LOCK -d" -nowlocker "$LOCK" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"
