@@ -69,7 +69,8 @@ set $chooseAll "rofi -combi-modi drun,run -show combi -p 'all: '"
 set $terminal i3-sensible-terminal
 set $run i3-sensible-terminal -e
 set $tmuxAttach i3-sensible-terminal -e "tmux new-session -A -s
-set $locker xautolock -locknow
+set $locker i3lock --color=5f00af
+set $locker1 xautolock -locknow
 set $locker2 escrotum /tmp/lockscreen.png && i3lock -i /tmp/lockscreen.png
 set $locker3 i3lock-wrapper
 
@@ -964,5 +965,4 @@ exec --no-startup-id "i3-msg 'workspace $numChat $wsChat; append_layout ~/.confi
 exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath
 
 # autolock
-set $LOCK i3lock --color=5f00af
-exec --no-startup-id xautolock -resetsaver -detectsleep -time 10 -locker "$LOCK -d" -nowlocker "$LOCK" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"
+exec --no-startup-id xautolock -resetsaver -detectsleep -time 10 -locker "$locker -d" -nowlocker "$locker" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"
