@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 alias copy="xsel -ib"
 alias paste="xsel -ob"
 

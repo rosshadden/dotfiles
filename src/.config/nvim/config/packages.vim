@@ -8,10 +8,7 @@ call plug#begin(expand(g:packageDir))
 	" libraries
 
 	Plug 'vim-scripts/ingo-library'
-	Plug 'kana/vim-textobj-user'
-	Plug 'kana/vim-operator-user'
 	Plug 'dbakker/vim-projectroot'
-	Plug 'xolox/vim-misc'
 
 	" enhancements
 
@@ -36,29 +33,26 @@ call plug#begin(expand(g:packageDir))
 	" load local .lvimrc files
 	Plug 'embear/vim-localvimrc'
 
-	" motions
+	" text objects
 
-	" gahdlike navigation
-	Plug 'easymotion/vim-easymotion'
+	Plug 'kana/vim-textobj-user'
+		\| Plug 'kana/vim-textobj-indent'
+		\| Plug 'kana/vim-textobj-line'
+		\| Plug 'kana/vim-textobj-entire'
+		\| Plug 'Julian/vim-textobj-variable-segment'
+		\| Plug 'saaguero/vim-textobj-pastedtext'
+		\| Plug 'jceb/vim-textobj-uri'
 	" many useful text objects
 	Plug 'wellle/targets.vim'
-	" indents [ii, ai]
-	Plug 'kana/vim-textobj-indent'
-	" lines [ir, ar]
-	Plug 'kana/vim-textobj-line'
-	" entire buffer [ie, ae]
-	Plug 'kana/vim-textobj-entire'
-	" variable segment [iv, av]
-	Plug 'Julian/vim-textobj-variable-segment'
-	" pasted text [gb]
-	Plug 'saaguero/vim-textobj-pastedtext'
 	" camelCase
 	Plug 'bkad/CamelCaseMotion'
 
-	" operators
+	" motions
 
-	" put in <motion> *mutters under breath*
-	Plug 'kana/vim-operator-replace'
+	Plug 'kana/vim-operator-user'
+		\| Plug 'kana/vim-operator-replace' " put in <motion> *mutters under breath*
+	" gahdlike navigation
+	Plug 'easymotion/vim-easymotion'
 	" sort
 	Plug 'christoomey/vim-sort-motion'
 
@@ -71,8 +65,6 @@ call plug#begin(expand(g:packageDir))
 	Plug 'Shougo/neosnippet-snippets'
 	" delimiter closing
 	Plug 'Raimondi/delimitMate'
-	" sessions
-	Plug 'xolox/vim-session'
 	" projects
 	Plug 'dsawardekar/portkey'
 	Plug 'dsawardekar/ember.vim'
@@ -92,6 +84,8 @@ call plug#begin(expand(g:packageDir))
 	Plug 'AndrewRadev/linediff.vim'
 	" linter
 	Plug 'benekastah/neomake'
+	" visual star search
+	Plug 'bronson/vim-visual-star-search'
 
 	" ui
 

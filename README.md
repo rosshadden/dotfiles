@@ -41,3 +41,13 @@ See the [TODO](TODO.md) for things I have in mind.
 - fonts
 	- `ttf-fantasque-sans` - main font
 	- `ttf-font-icons` - mix of non-overlapping fonts from Font Awesome and Ionicons
+
+## Vim stuff
+
+- text objects
+	- uris [ au, iu ]
+	- pasted text [ gb ]
+	- variable segment [ iv, av ]
+	- entire buffer [ ie, ae ]
+	- lines [ ir, ar ]
+	- indents [ ii, ai ]
