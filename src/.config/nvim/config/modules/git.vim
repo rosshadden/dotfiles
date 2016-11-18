@@ -4,6 +4,7 @@
 
 call MakePrefix('git', '<:prefix>g')
 call MakePrefix('git', '<:git>g', 1)
+call MakePrefix('hunk', '<:prefix>h')
 
 nnoremap <:git><space> :Tig<cr>
 nnoremap <:git:1><space> :Tig!<cr>
@@ -36,15 +37,21 @@ nnoremap <:git:1>r :Tig refs<cr>
 " don't map keys
 let g:gitgutter_map_keys = 0
 
+" motions
+omap ih <plug>GitGutterTextObjectInnerPending
+omap ah <plug>GitGutterTextObjectOuterPending
+xmap ih <plug>GitGutterTextObjectInnerVisual
+xmap ah <plug>GitGutterTextObjectOuterVisual
+
 " go to next/prev changed hunk
-nmap ]H <plug>GitGutterNextHunk
-nmap [H <plug>GitGutterPrevHunk
+nmap <:hunk>j <plug>GitGutterNextHunk
+nmap <:hunk>k <plug>GitGutterPrevHunk
 
 " preview changed hunk
-nmap <:prefix>Hp <plug>GitGutterPreviewHunk
+nmap <:hunk>p <plug>GitGutterPreviewHunk
 
 " stage changed hunk
-nmap <:prefix>Hs <plug>GitGutterStageHunk
+nmap <:hunk>s <plug>GitGutterStageHunk
 
 " revert changed hunk
-nmap <:prefix>Hr <plug>GitGutterRevertHunk
+nmap <:hunk>u <plug>GitGutterRevertHunk
