@@ -5,7 +5,7 @@
 set $super Mod4
 set $alt Mod1
 
-set $numTemp 0
+set $numLab 0
 set $numWeb 1
 set $numDev 2
 set $numRemote 3
@@ -16,10 +16,10 @@ set $numLit 7
 set $numMonitor 8
 set $numRun 9
 set $numChat 10
-set $numLab 11
+set $numDesign 11
 set $numGames 12
 
-set $nameTemp temp
+set $nameLab lab
 set $nameWeb web
 set $nameDev dev
 set $nameRemote remote
@@ -30,10 +30,10 @@ set $nameLit lit
 set $nameMonitor monitor
 set $nameRun run
 set $nameChat chat
-set $nameLab lab
+set $nameDesign design
 set $nameGames games
 
-set $wsTemp  temp
+set $wsLab  lab
 set $wsWeb  web
 set $wsDev  dev
 set $wsRemote 📡 remote
@@ -44,7 +44,7 @@ set $wsLit  lit
 set $wsMonitor  monitor
 set $wsRun  run
 set $wsChat  chat
-set $wsLab  lab
+set $wsDesign  design
 set $wsGames  games
 
 set $macro1 XF86Tools
@@ -193,7 +193,7 @@ bindsym $super+Escape mark LAST; workspace back_and_forth
 bindsym $super+Shift+Escape move to workspace back_and_forth; workspace back_and_forth
 
 # switch to workspace
-bindsym $super+grave        mark LAST; workspace $numTemp $wsTemp
+bindsym $super+grave        mark LAST; workspace $numLab $wsLab
 bindsym $super+1            mark LAST; workspace $numWeb $wsWeb
 bindsym $super+2            mark LAST; workspace $numDev $wsDev
 bindsym $super+3            mark LAST; workspace $numRemote $wsRemote
@@ -204,11 +204,11 @@ bindsym $super+7            mark LAST; workspace $numLit $wsLit
 bindsym $super+8            mark LAST; workspace $numMonitor $wsMonitor
 bindsym $super+9            mark LAST; workspace $numRun $wsRun
 bindsym $super+0            mark LAST; workspace $numChat $wsChat
-bindsym $super+bracketleft  mark LAST; workspace $numLab $wsLab
+bindsym $super+bracketleft  mark LAST; workspace $numDesign $wsDesign
 bindsym $super+bracketright mark LAST; workspace $numGames $wsGames
 
 # move focused container to workspace
-bindsym $super+Shift+grave        move container to workspace $numTemp $wsTemp;       workspace $numTemp $wsTemp
+bindsym $super+Shift+grave        move container to workspace $numLab $wsLab;       workspace $numLab $wsLab
 bindsym $super+Shift+1            move container to workspace $numWeb $wsWeb;         workspace $numWeb $wsWeb
 bindsym $super+Shift+2            move container to workspace $numDev $wsDev;         workspace $numDev $wsDev
 bindsym $super+Shift+3            move container to workspace $numRemote $wsRemote;       workspace $numRemote $wsRemote
@@ -219,7 +219,7 @@ bindsym $super+Shift+7            move container to workspace $numLit $wsLit;   
 bindsym $super+Shift+8            move container to workspace $numMonitor $wsMonitor; workspace $numMonitor $wsMonitor
 bindsym $super+Shift+9            move container to workspace $numRun $wsRun;         workspace $numRun $wsRun
 bindsym $super+Shift+0            move container to workspace $numChat $wsChat;       workspace $numChat $wsChat
-bindsym $super+Shift+bracketleft  move container to workspace $numLab $wsLab;         workspace $numLab $wsLab
+bindsym $super+Shift+bracketleft  move container to workspace $numDesign $wsDesign;         workspace $numDesign $wsDesign
 bindsym $super+Shift+bracketright move container to workspace $numGames $wsGames;     workspace $numGames $wsGames
 
 # focus the parent/child container
@@ -253,6 +253,22 @@ bindsym button6 move left
 bindsym button7 move right
 bindsym button8 exec "notify-send back"
 bindsym button9 exec "notify-send forward"
+
+################
+# SYSTEM
+################
+
+# allow switching VTs
+bindsym Control+$alt+F1 exec $(xdotool key XF86Switch_VT_1)
+bindsym Control+$alt+F2 exec $(xdotool key XF86Switch_VT_2)
+bindsym Control+$alt+F3 exec $(xdotool key XF86Switch_VT_3)
+bindsym Control+$alt+F4 exec $(xdotool key XF86Switch_VT_4)
+bindsym Control+$alt+F5 exec $(xdotool key XF86Switch_VT_5)
+bindsym Control+$alt+F6 exec $(xdotool key XF86Switch_VT_6)
+bindsym Control+$alt+F7 exec $(xdotool key XF86Switch_VT_7)
+bindsym Control+$alt+F8 exec $(xdotool key XF86Switch_VT_8)
+bindsym Control+$alt+F9 exec $(xdotool key XF86Switch_VT_9)
+bindsym Control+$alt+F10 exec $(xdotool key XF86Switch_VT_10)
 
 ################
 # MEDIA
@@ -534,7 +550,7 @@ mode "TMUX" {
 	# presets
 
 	# TODO: make these dynamic from the workspace name
-	bindsym grave        mark LAST; workspace $numTemp $wsTemp;       exec $tmuxAttach $nameTemp";           $exit
+	bindsym grave        mark LAST; workspace $numLab $wsLab;       exec $tmuxAttach $nameLab";           $exit
 	bindsym 1            mark LAST; workspace $numWeb $wsWeb;         exec $tmuxAttach $nameWeb";            $exit
 	bindsym 2            mark LAST; workspace $numDev $wsDev;         exec $tmuxAttach $nameDev";            $exit
 	bindsym 3            mark LAST; workspace $numRemote $wsRemote;   exec $tmuxAttach $nameRemote";         $exit
@@ -545,7 +561,7 @@ mode "TMUX" {
 	bindsym 8            mark LAST; workspace $numMonitor $wsMonitor; exec $tmuxAttach $nameMonitor";        $exit
 	bindsym 9            mark LAST; workspace $numRun $wsRun;         exec $tmuxAttach $nameRun";            $exit
 	bindsym 0            mark LAST; workspace $numChat $wsChat;       exec $tmuxAttach $nameChat";           $exit
-	bindsym bracketleft  mark LAST; workspace $numLab $wsLab;         exec $tmuxAttach $nameLab";            $exit
+	bindsym bracketleft  mark LAST; workspace $numDesign $wsDesign;         exec $tmuxAttach $nameDesign";            $exit
 	bindsym bracketright mark LAST; workspace $numGames $wsGames;     exec $tmuxAttach $nameGames";          $exit
 
 	# TODO: open preset for the current workspace
