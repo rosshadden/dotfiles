@@ -33,7 +33,7 @@ set $nameChat chat
 set $nameDesign design
 set $nameGames games
 
-set $wsLab  lab
+set $wsLab  lab
 set $wsWeb  web
 set $wsDev  dev
 set $wsRemote 📡 remote

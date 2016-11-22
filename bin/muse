@@ -30,12 +30,14 @@ muse() {
 	local query="get_by_search"
 	local options
 
-	spec=":a:n:q:t:"
+	spec=":a:n:q:rRt:"
 	while getopts $spec opt; do
 		case "$opt" in
 			a) artist="$OPTARG" ;;
 			n) numTracks="$OPTARG" ;;
 			q) query="$OPTARG" ;;
+			r) options="--random" ;;
+			R) options="--no-random" ;;
 			t) type="$OPTARG" ;;
 			:) error "Option '-$OPTARG' requires an argument" ;;
 			*) error "Invalid option: -$OPTARG" ;;
@@ -46,7 +48,7 @@ muse() {
 	if [[ "$query" == "radio" ]]; then
 		query="get_new_station_by_search"
 		type="${type:-artist}"
-		options="--no-random"
+		options="${options:---no-random}"
 	fi
 
 	type="${type:-matches}"
