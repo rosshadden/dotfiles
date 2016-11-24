@@ -48,7 +48,10 @@ if IsLoaded('vim-airline')
 	" let g:airline_section_a = airline#section#create_left(['mode', 'prefix', 'paste', 'capslock', 'iminsert'])
 	let g:airline_section_a = airline#section#create_left([ 'mode', 'paste', 'capslock', 'iminsert' ])
 	let g:airline#extensions#branch#enabled = 1
-	let g:airline_theme = 'base16_' . $DOTS_THEME
+
+	let theme = $DOTS_THEME
+	let theme = (theme) ? theme : substitute(system('cat ~/dotfiles/THEME'), '\n\+$', '', '')
+	let g:airline_theme = 'base16_' . theme
 
 	" this makes the base16 theme work
 	let g:airline#themes#base16#constant = 1

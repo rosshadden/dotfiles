@@ -1,16 +1,38 @@
 #!/usr/bin/env zsh
 
+function error() {
+	echo "$1" 1>&2
+	exit 1
+}
+
 ##
 # Run a given command for each item in a given list.
 # If a list is piped to the function, uses this instead of the list of files in the current directory.
 #
+# Dependencies:
+# - [parallel](https://www.gnu.org/software/parallel/)
+#
 # @method for-in
 # @param {Command} cmd - The command to run
-#   It is given access to `$1` as the value of the current item.
+#   It uses the `parallel` spec.
 # @param {Array} [...list=*] - The list to use
 #   May be globs or space-separated values.
 ##
 function for-in() {
+	local options=""
+
+	local spec=":j:sS"
+	while getopts $spec opt; do
+		case "$opt" in
+			j) options="-j$OPTARG" ;;
+			s) options="-j1" ;;
+			S) echo $spec; exit ;;
+			:) error "Option '-$OPTARG' requires an argument" ;;
+			*) error "Invalid option: -$OPTARG" ;;
+		esac
+	done
+	shift $((OPTIND - 1))
+
 	local args=( $@ )
 	local len=${#args[@]}
 	local cmd=${args[1]}
@@ -20,9 +42,7 @@ function for-in() {
 		list=( ${args[@]:1:$len} )
 	fi
 
-	for 1 in $list; do
-		eval $cmd
-	done
+	parallel "$options" "$cmd" ::: $list
 }
 
 stdin="$(ls -l /proc/self/fd/0)"

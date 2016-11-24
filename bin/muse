@@ -30,7 +30,7 @@ muse() {
 	local query="get_by_search"
 	local options
 
-	spec=":a:n:q:rRt:"
+	local spec=":a:n:q:rRt:"
 	while getopts $spec opt; do
 		case "$opt" in
 			a) artist="$OPTARG" ;;
@@ -43,7 +43,7 @@ muse() {
 			*) error "Invalid option: -$OPTARG" ;;
 		esac
 	done
-	shift "$((OPTIND-1))"
+	shift $((OPTIND - 1))
 
 	if [[ "$query" == "radio" ]]; then
 		query="get_new_station_by_search"

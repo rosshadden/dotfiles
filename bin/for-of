@@ -1,24 +1,45 @@
 #!/usr/bin/env zsh
 
-# TODO: add option for suppressing header
-
 ##
 # Run a given command from within each directory in a given list.
 # If a list is piped to the function, uses this instead of the list of files in the current directory.
 #
+# Dependencies:
+# - for-in
+#
 # @method for-of
 # @param {Command} cmd - The command to run
-#   It is given access to `$1` as the value of the current item.
 # @param {Array} [...list=*] - The list to use
 #   May be globs or space-separated values.
 ##
 function for-of() {
+	local headers=false
+	local options=""
+
+	local spec="$(for-in -S)h"
+	while getopts $spec opt; do
+		case "$opt" in
+			h) headers=true ;;
+			*)
+				if [[ "$options" != "" ]]; then options="$options "; fi
+				options="$options-$opt$OPTARG"
+			;;
+		esac
+	done
+	shift $((OPTIND - 1))
+
 	local cmd=$1
-	local section='\\n################\\n# $1\\n################'
-	cmd="if [[ -d \$1 ]]; then echo $section; cd \$1; $cmd; cd ../; fi"
+	local wrapper="if [[ -d {1} ]]; then"
+
+	if [ "$headers" = true ]; then
+		local section='\\n################\\n# {1}\\n################'
+		wrapper="$wrapper echo $section; "
+	fi
+
+	wrapper="$wrapper cd {1}; $cmd; cd ../; fi"
 	shift
 
-	for-in $cmd "$@"
+	for-in "$options" $wrapper "$@"
 }
 
 for-of "$@"

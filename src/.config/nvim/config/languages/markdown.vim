@@ -40,6 +40,9 @@ endfunction
 augroup markdown
 	autocmd!
 
+	" treat other files as markdown
+	autocmd BufEnter,BufNew *.txt set ft=pandoc
+
 	" spell check
 	autocmd FileType markdown setlocal spell | setlocal complete+=kspell
 

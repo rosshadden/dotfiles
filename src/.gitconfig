@@ -30,6 +30,9 @@
 	cmd = diffconflicts $EDITOR $BASE $LOCAL $REMOTE $MERGED
 	trustExitCode = true
 
+[color]
+	ui = always
+
 [color "branch"]
 	current = red reverse
 	local = blue
