@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 ##
 # Run a given command from within each directory in a given list.
@@ -28,18 +28,22 @@ function for-of() {
 	done
 	shift $((OPTIND - 1))
 
-	local cmd=$1
+	local cmd="$1"
 	local wrapper="if [[ -d {1} ]]; then"
 
 	if [ "$headers" = true ]; then
 		local section='\\n################\\n# {1}\\n################'
-		wrapper="$wrapper echo $section; "
+		wrapper="$wrapper echo -e $section; "
 	fi
 
 	wrapper="$wrapper cd {1}; $cmd; cd ../; fi"
 	shift
 
-	for-in "$options" $wrapper "$@"
+	if [ "$options" != "" ]; then
+		for-in "$options" "$wrapper" "$@"
+	else
+		for-in "$wrapper" "$@"
+	fi
 }
 
 for-of "$@"

@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 function error() {
 	echo "$1" 1>&2
@@ -33,16 +33,21 @@ function for-in() {
 	done
 	shift $((OPTIND - 1))
 
-	local args=( $@ )
-	local len=${#args[@]}
-	local cmd=${args[1]}
+	local cmd="$1"
+	shift
+	local args=( "$@" )
+	local len="${#args[@]}"
 	local list=( * )
 
-	if [[ $len > 1 ]]; then
-		list=( ${args[@]:1:$len} )
+	if [[ $len -gt 1 ]]; then
+		list=( "${args[@]}" )
 	fi
 
-	parallel "$options" "$cmd" ::: $list
+	if [ "$options" != "" ]; then
+		parallel "$options" "$cmd" ::: "${list[@]}"
+	else
+		parallel "$cmd" ::: "${list[@]}"
+	fi
 }
 
 stdin="$(ls -l /proc/self/fd/0)"
