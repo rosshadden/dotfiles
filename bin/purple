@@ -13,57 +13,61 @@ obj = bus.get_object("im.pidgin.purple.PurpleService", "/im/pidgin/purple/Purple
 purple = dbus.Interface(obj, "im.pidgin.purple.PurpleInterface")
 
 # get list of accounts
-accounts = purple.PurpleAccountsGetAll()
+accounts = purple.PurpleAccountsGetAllActive()
 
 users = {}
 
 for accountId in accounts:
-    connectionId = purple.PurpleAccountGetConnection(accountId)
-    protocol = purple.PurpleConnectionGetDisplayName(connectionId)
+	connectionId = purple.PurpleAccountGetConnection(accountId)
+	accountName = purple.PurpleAccountGetUsername(accountId)
+	protocolName = purple.PurpleAccountGetProtocolName(accountId)
+	connectionName = purple.PurpleConnectionGetDisplayName(connectionId)
+	protocol = purple.PurpleConnectionGetDisplayName(connectionId)
 
-    if not connectionId: continue
+	if not connectionId: continue
 
-    # get list of users for an account
-    userIds = purple.PurpleFindBuddies(accountId, "")
+	# get list of users for an account
+	userIds = purple.PurpleFindBuddies(accountId, "")
 
-    for userId in userIds:
-        user = {
-            "id": userId,
-            "name": purple.PurpleBuddyGetName(userId),
-            "alias": purple.PurpleBuddyGetAlias(userId),
-            "accountId": accountId,
-            "protocol": protocol
-        }
+	for userId in userIds:
+		user = {
+			"id": userId,
+			"name": purple.PurpleBuddyGetName(userId),
+			"alias": purple.PurpleBuddyGetAlias(userId),
+			"accountId": accountId,
+			"account": accountName,
+			"protocol": protocolName,
+			"connectionName": connectionName
+		}
 
-        # NOTE: this overwrites users if they are in multiple protocols
-        users[user["alias"] + " [" + user["protocol"] + "]"] = user
+		users[user["alias"] + " [" + str(user["name"]) + "] [" + user["protocol"] + "] [" + user["account"] + "]"] = user
 
 
 def getUser(userHash):
-    return users[userHash]
+	return users[userHash]
 
 
 # Send a message to `user`, which is some entry in `users`
-def sendIm(user, message = ""):
-    if isinstance(user, str): user = getUser(user)
-    if message is None: message = ""
+def sendIm(userHash, message = ""):
+	if isinstance(userHash, str): user = getUser(userHash)
+	if message is None: message = ""
 
-    # First we make a new conversation
-    # (I think the `1` in the first arg is "IM", and a 2 would be "chat"...?
-    conversationId = purple.PurpleConversationNew(1, user["accountId"], user["name"])
+	# First we make a new conversation
+	# (I think the `1` in the first arg is "IM", and a 2 would be "chat"...?
+	conversationId = purple.PurpleConversationNew(1, user["accountId"], user["name"])
 
-    # Next we make a new IM out of the conversation (yep...)
-    imId = purple.PurpleConvIm(conversationId)
+	# Next we make a new IM out of the conversation (yep...)
+	imId = purple.PurpleConvIm(conversationId)
 
-    # Finally we send the IM
-    purple.PurpleConvImSend(imId, message)
+	# Finally we send the IM
+	purple.PurpleConvImSend(imId, message)
 
 
 if len(sys.argv) > 1:
-    username = sys.argv[1]
-    message = sys.argv[2] if len(sys.argv) > 2 else None
+	username = sys.argv[1]
+	message = sys.argv[2] if len(sys.argv) > 2 else None
 
-    sendIm(username, message)
+	sendIm(username, message)
 else:
-    for userHash in users:
-        print(userHash)
+	for userHash in users:
+		print(userHash)
