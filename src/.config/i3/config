@@ -869,7 +869,7 @@ mode "APPS" {
 }
 
 mode "PIDGIN" {
-	bindsym space mark LAST; exec $(python3 ~/lib/purple.py | sort | rofi -dmenu -p "IM:" -i | xargs -I$ python3 ~/lib/purple.py "$"); $exit
+	bindsym space mark LAST; exec $(~/bin/purple | sort | rofi -dmenu -p "IM:" -i | xargs -I$ ~/bin/purple "$"); $exit
 
 	bindsym $super+space $return
 	bindsym Escape $exit

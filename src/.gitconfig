@@ -31,7 +31,7 @@
 	trustExitCode = true
 
 [color]
-	ui = always
+	status = always
 
 [color "branch"]
 	current = red reverse
