@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
-import sys, dbus
+import sys, operator
+from collections import OrderedDict
+import dbus
 
 
 """
@@ -15,7 +17,8 @@ purple = dbus.Interface(obj, "im.pidgin.purple.PurpleInterface")
 # get list of accounts
 accounts = purple.PurpleAccountsGetAllActive()
 
-users = {}
+users = []
+userMap = OrderedDict()
 
 for accountId in accounts:
 	connectionId = purple.PurpleAccountGetConnection(accountId)
@@ -39,12 +42,15 @@ for accountId in accounts:
 			"protocol": protocolName,
 			"connectionName": connectionName
 		}
+		user["score"] = purple.PurpleLogGetActivityScore(1, user["name"], accountId)
+		users.append(user)
 
-		users[user["alias"] + " [" + str(user["name"]) + "] [" + user["protocol"] + "] [" + user["account"] + "]"] = user
+users = sorted(users, key = operator.itemgetter('score'), reverse = True)
+for user in users:
+	userMap[user["alias"] + " \t\t\t[" + user["protocol"] + "] [" + user["account"] + "]"] = user
 
 
-def getUser(userHash):
-	return users[userHash]
+def getUser(userHash): return userMap[userHash]
 
 
 # Send a message to `user`, which is some entry in `users`
@@ -69,5 +75,5 @@ if len(sys.argv) > 1:
 
 	sendIm(username, message)
 else:
-	for userHash in users:
+	for userHash in userMap:
 		print(userHash)
