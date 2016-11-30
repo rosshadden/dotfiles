@@ -32,6 +32,7 @@
 
 [color]
 	status = always
+	diff = always
 
 [color "branch"]
 	current = red reverse

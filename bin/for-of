@@ -13,13 +13,11 @@
 #   May be globs or space-separated values.
 ##
 function for-of() {
-	local headers=false
 	local options=""
 
-	local spec="$(for-in -S)h"
+	local spec="$(for-in -S)"
 	while getopts $spec opt; do
 		case "$opt" in
-			h) headers=true ;;
 			*)
 				if [[ "$options" != "" ]]; then options="$options "; fi
 				options="$options-$opt$OPTARG"
@@ -30,11 +28,6 @@ function for-of() {
 
 	local cmd="$1"
 	local wrapper="if [[ -d {1} ]]; then"
-
-	if [ "$headers" = true ]; then
-		local section='\\n################\\n# {1}\\n################'
-		wrapper="$wrapper echo -e $section; "
-	fi
 
 	wrapper="$wrapper cd {1}; $cmd; cd ../; fi"
 	shift

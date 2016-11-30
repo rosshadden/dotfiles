@@ -19,11 +19,13 @@ function error() {
 #   May be globs or space-separated values.
 ##
 function for-in() {
+	local headers=false
 	local options=""
 
-	local spec=":j:sS"
+	local spec=":hj:sS"
 	while getopts $spec opt; do
 		case "$opt" in
+			h) headers=true ;;
 			j) options="-j$OPTARG" ;;
 			s) options="-j1" ;;
 			S) echo $spec; exit ;;
@@ -38,6 +40,11 @@ function for-in() {
 	local args=( "$@" )
 	local len="${#args[@]}"
 	local list=( * )
+
+	if [ "$headers" = true ]; then
+		local section='\\n################\\n# {1}\\n################'
+		cmd="echo -e $section; $cmd"
+	fi
 
 	if [[ $len -gt 1 ]]; then
 		list=( "${args[@]}" )

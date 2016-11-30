@@ -47,7 +47,7 @@ for accountId in accounts:
 
 users = sorted(users, key = operator.itemgetter('score'), reverse = True)
 for user in users:
-	userMap[user["alias"] + " \t\t\t[" + user["protocol"] + "] [" + user["account"] + "]"] = user
+	userMap[user["alias"] + " \t\t\t[" + user["protocol"] + "] [" + user["account"] + "] [" + user["name"] + "]"] = user
 
 
 def getUser(userHash): return userMap[userHash]
