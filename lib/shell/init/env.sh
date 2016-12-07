@@ -38,6 +38,9 @@ if isCommand rustc; then export PATH=$PATH:~/.cargo/bin; fi
 # nodejs
 export N_PREFIX=~/local
 
+# rust
+export RUST_SRC_PATH=/usr/src/rust/src
+
 # java
 export JAVA_HOME=/usr/lib/jvm/default
 

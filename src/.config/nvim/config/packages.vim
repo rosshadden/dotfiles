@@ -141,9 +141,11 @@ call plug#begin(expand(g:packageDir))
 	Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 	Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
 	Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
-	Plug 'marijnh/tern_for_vim', { 'for': 'javascript', 'do': 'npm install' }
+	Plug 'marijnh/tern_for_vim', { 'for': 'javascript', 'do': 'npm i; npm i tern-phaser' }
+	" rust
+	Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 	" moonscript
-	Plug 'leafo/moonscript-vim'
+	Plug 'leafo/moonscript-vim', { 'for': 'moon' }
 	" i3 config
 	Plug 'PotatoesMaster/i3-vim-syntax'
 	" c#
