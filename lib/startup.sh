@@ -5,7 +5,7 @@
 ################
 
 # keyboard
-~/bin/keys init
+~/bin/keys
 
 ################
 # ENVIRONMENT
@@ -35,9 +35,6 @@ easystroke &
 
 # copyQ
 copyq &
-
-# zeal
-zeal &
 
 # pidgin
 pidgin &

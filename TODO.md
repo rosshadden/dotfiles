@@ -9,6 +9,7 @@
 
 ## `dots`
 
+- make `upgrade/U`, and move vim/tmux/pass from `update/u`
 - make `update` announce uncommitted changes in `dotfiles` and `sync`
 - make `dots-get`, which will return requested settings/paths/variables
 - move `THEME` into a more general place with more, like a toml file
@@ -31,7 +32,7 @@
 - git aliases
 - i3 workflow
 - tig workflow
-- vifm workflow
+- ranger workflow
 
 # apps
 
