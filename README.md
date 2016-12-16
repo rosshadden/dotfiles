@@ -18,6 +18,7 @@ See the [TODO](TODO.md) for things I have in mind.
 ## Dependencies
 
 - [`neovim`]( https://neovim.io/ )
+	- [`npm:tern`]( https://github.com/ternjs/tern ) - code analyzer
 	- [`npm:livedown`]( https://github.com/shime/vim-livedown ) - live previews of markdown files in vim
 - [`tmux`]( https://github.com/tmux/tmux )
 	- [`tmuxp`]( https://github.com/tony/tmuxp ) - powers ./bin/tp
