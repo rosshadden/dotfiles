@@ -20,7 +20,7 @@ call plug#begin(expand(g:packageDir))
 	Plug 'vim-scripts/visualrepeat'
 	" completions
 	Plug 'Shougo/deoplete.nvim', LoadIf(has('nvim'))
-		\| Plug 'carlitux/deoplete-ternjs', LoadIf(has('nvim'))
+		\| Plug 'carlitux/deoplete-ternjs', LoadIf(has('nvim'), { 'do': 'npm install -g tern' })
 	Plug 'Shougo/neocomplete.vim', LoadIf(!has('nvim'))
 	" search with perl regex
 	Plug 'othree/eregex.vim'
@@ -141,6 +141,7 @@ call plug#begin(expand(g:packageDir))
 	Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 	Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
 	Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
+	Plug 'marijnh/tern_for_vim', { 'for': 'javascript', 'do': 'npm i; npm i tern-phaser' }
 	" rust
 	Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 	" moonscript

@@ -11,6 +11,14 @@ let g:jsdoc_underscore_private = 1
 let g:jsdoc_return_description = 0
 let g:jsdoc_param_description_separator = ' - '
 
+" tern
+let g:tern_map_keys = 1
+let g:tern#command = [ 'tern' ]
+let g:tern#arguments = [ '--persistent' ]
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = '0'
+let g:tern#filetypes = [ 'javascript.jsx' ]
+
 """"""""""""""""
 " FUNCTIONS
 """"""""""""""""
@@ -35,13 +43,6 @@ augroup javascript
 	autocmd!
 
 	autocmd FileType javascript
-		\  map <localleader>d :TernDef<cr>
-		\| map <localleader>D :TernDefPreview<cr>
-		\| map <localleader>l :TernDoc<cr>
-		\| map <localleader>L :TernDocBrowse<cr>
-		\| map <localleader>r :TernRefs<cr>
-		\| map <localleader>R :TernRename<cr>
-		\| map <localleader>t :TernType<cr>
 		\| map <localleader>v :execute InsertVersion('a')<cr>
 		\| map <localleader>V :execute InsertVersion('i')<cr>
 augroup END

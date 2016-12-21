@@ -15,5 +15,5 @@ let g:packageDir = g:vimDir . '/plugged'
 " https://github.com/junegunn/vim-plug/wiki/faq
 function! LoadIf(cond, ...)
 	let opts = get(a:000, 0, {})
-	return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+	return (a:cond) ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
