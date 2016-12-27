@@ -36,20 +36,17 @@ function options() {
 }
 
 function packages() {
-	source $shellDir/antibody/antibody.zsh
-	source $shellDir/antigen/antigen.zsh
-
+	source /usr/share/zsh/scripts/antigen/antigen.zsh
 	antigen use oh-my-zsh
-
 	antigen bundle git-extras
 	antigen bundle systemd
-
 	antigen apply
 
+	source <(antibody init)
 	antibody bundle Tarrasch/zsh-bd
 	antibody bundle Tarrasch/zsh-functional
-	antibody bundle zsh-users/zsh-history-substring-search
 	antibody bundle zsh-users/zsh-syntax-highlighting
+	antibody bundle zsh-users/zsh-history-substring-search
 }
 
 function modules() {

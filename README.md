@@ -17,6 +17,9 @@ See the [TODO](TODO.md) for things I have in mind.
 
 ## Dependencies
 
+- `zsh`
+	- `antibody`
+	- `antigen-git`
 - [`neovim`]( https://neovim.io/ )
 	- [`npm:tern`]( https://github.com/ternjs/tern ) - code analyzer
 	- [`npm:livedown`]( https://github.com/shime/vim-livedown ) - live previews of markdown files in vim

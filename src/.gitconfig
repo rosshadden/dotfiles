@@ -72,7 +72,7 @@
 
 	in = !sh -c 'git pull ${1-origin} ${2-$(git pwd)}' -
 	out = !sh -c 'git push ${1-origin} ${2-$(git pwd)}' -
-	sync = !git in && git out
+	io = !git in && git out
 	sync-submodules = submodule update --init --remote --recursive
 
 	# PLURALITY

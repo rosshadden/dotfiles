@@ -1,1 +1,1 @@
-source <(npm completion)
+# source <(npm completion)
