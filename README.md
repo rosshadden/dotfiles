@@ -18,8 +18,7 @@ See the [TODO](TODO.md) for things I have in mind.
 ## Dependencies
 
 - `zsh`
-	- `antibody`
-	- `antigen-git`
+	- [`zplug`]( https://zplug.sh/ ) - package manager
 - [`neovim`]( https://neovim.io/ )
 	- [`npm:tern`]( https://github.com/ternjs/tern ) - code analyzer
 	- [`npm:livedown`]( https://github.com/shime/vim-livedown ) - live previews of markdown files in vim
@@ -30,7 +29,7 @@ See the [TODO](TODO.md) for things I have in mind.
 - [`tig`]( https://github.com/jonas/tig )
 - [`fzf`]( https://github.com/junegunn/fzf )
 - [`pidgin`]( https://pidgin.im/ )
-	- `python-dbus` - powers ./lib/purple.py
+	- `python-dbus` - powers `./lib/purple.py`
 	- [`gtk-theme-numix-ocean`]( https://github.com/aaronjamesyoung/Numix-Ocean )
 - [`ranger`]( https://github.com/hut/ranger )
 	- installed optional dependencies:

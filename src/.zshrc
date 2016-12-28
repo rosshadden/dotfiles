@@ -36,17 +36,19 @@ function options() {
 }
 
 function packages() {
-	source /usr/share/zsh/scripts/antigen/antigen.zsh
-	antigen use oh-my-zsh
-	antigen bundle git-extras
-	antigen bundle systemd
-	antigen apply
+	source $shellDir/zplug/init.zsh
 
-	source <(antibody init)
-	antibody bundle Tarrasch/zsh-bd
-	antibody bundle Tarrasch/zsh-functional
-	antibody bundle zsh-users/zsh-syntax-highlighting
-	antibody bundle zsh-users/zsh-history-substring-search
+	zplug lib/history, from:oh-my-zsh
+	zplug plugins/git-extras, from:oh-my-zsh
+	zplug plugins/systemd, from:oh-my-zsh
+
+	zplug Tarrasch/zsh-bd
+	zplug Tarrasch/zsh-functional
+	zplug zsh-users/zsh-syntax-highlighting
+	zplug zsh-users/zsh-history-substring-search
+
+	if ! zplug check --verbose; then zplug install; fi
+	zplug load
 }
 
 function modules() {

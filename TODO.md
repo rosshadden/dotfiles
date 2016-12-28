@@ -160,23 +160,21 @@
 	- `shell/features.sh`, and `shell/features.zsh`
 - revisit aliases
 	- introduce `ls -1`
+- add `-n` arg to `copy` to strip out `\n`s
 
 ## zsh
 
+- vet using zplug for loading local modules
 - refactor `.zshrc`
-	- modularize
-		- make semantic modules instead of a file for aliases and a file for functions (for example)
+	- make semantic modules instead of a file for aliases and a file for functions (for example)
+	- split `features.zsh` into files
 	- look into [built-in functions]( https://github.com/zsh-users/zsh/tree/master/Functions/Zle )
 	- look into [better status indicator]( http://ivyl.0xcafe.eu/2013/02/03/refining-zsh/#vi_mode_status_indicator )
-	- split `features.zsh` into files
 - make mapping to insert newline at cursor
 
 ## `for-{in,of}`
 
 - break out into separate repo
-- try harder to support bash
-- make `for-{in,of}` observe aliases again
-- add `-n` arg to `copy` to strip out `\n`s
 
 # X11
 

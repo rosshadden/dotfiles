@@ -43,13 +43,24 @@ function fetch() {
 
 function init() {
 	echo "Initializing git submodules..."
-	pushd $DOTS &> /dev/null
+	pushd "$DOTS" &> /dev/null
 		git submodule update --init --remote --recursive
 	popd &> /dev/null
 
 	if [[ ! -d "$tpmPath" ]]; then
 		echo "Initializing tpm..."
 		git clone https://github.com/tmux-plugins/tpm "$tpmPath"
+	fi
+
+	local zplugFile=$DOTS/lib/shell/zplug/init.zsh
+	if [[ -f "$zplugFile" ]]; then
+		echo "Initializing zplug..."
+		zsh <<-eof
+			source $zplugFile
+			zplug install
+		eof
+	else
+		echo "zplug not found"
 	fi
 
 	echo
