@@ -13,12 +13,6 @@ function variables() {
 	export DOTS=$HOME/dotfiles
 	export SYNC=$HOME/sync
 	export DB=$HOME/Dropbox
-
-	# TODO: group into object
-	shellDir=$DOTS/lib/shell
-	initDir=$shellDir/init
-	moduleDir=$shellDir/modules
-	pluginDir=$shellDir/plugins
 }
 
 function options() {
@@ -28,6 +22,9 @@ function options() {
 	# don't share history
 	setopt nosharehistory
 
+	setopt auto_pushd
+	setopt pushd_ignore_dups
+
 	# dots displayed while waiting for completion
 	# COMPLETION_WAITING_DOTS="true"
 
@@ -36,24 +33,28 @@ function options() {
 }
 
 function packages() {
+	local shellDir=$DOTS/lib/shell
 	source $shellDir/zplug/init.zsh
 
+	zplug lib/completion, from:oh-my-zsh
 	zplug lib/history, from:oh-my-zsh
 	zplug plugins/git-extras, from:oh-my-zsh
 	zplug plugins/systemd, from:oh-my-zsh
 
 	zplug Tarrasch/zsh-bd
 	zplug Tarrasch/zsh-functional
-	zplug zsh-users/zsh-syntax-highlighting
+	zplug trapd00r/LS_COLORS
 	zplug zsh-users/zsh-history-substring-search
+	zplug zsh-users/zsh-syntax-highlighting
 
 	if ! zplug check --verbose; then zplug install; fi
 	zplug load
 }
 
 function modules() {
-	for plugin in $pluginDir/*.zsh; do sourceIfExists $plugin; done
-	for module in $initDir/{functions,env}.sh $moduleDir/*.{,z}sh; do sourceIfExists $module; done
+	local shellDir=$DOTS/lib/shell
+	for plugin in $shellDir/plugins/*.zsh; do sourceIfExists $plugin; done
+	for module in $shellDir/init/{functions,env}.sh $shellDir/modules/*.{,z}sh; do sourceIfExists $module; done
 
 	sourceIfExists ~/local/.sh
 	sourceIfExists ~/local/.zshrc

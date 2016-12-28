@@ -66,6 +66,14 @@ function! OpenRanger(selectFile)
 	endif
 endfunction
 
+command! -bang -nargs=* Pt
+	\ call fzf#vim#grep(
+		\ 'pt --nogroup --column ' . shellescape(<q-args>),
+		\ 1,
+		\ <bang>0 ? fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%:hidden', '?'),
+		\ <bang>0
+	\ )
+
 " allow `:Ag` to be called with options (like `--hidden`)
 function! s:agWithOptions(arg, bang)
 	let tokens  = split(a:arg)

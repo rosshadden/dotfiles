@@ -14,4 +14,4 @@ unset counter
 # INIT
 ################
 
-eval $(dircolors ~/.dircolors)
+eval "$(dircolors -b $ZPLUG_REPOS/trapd00r/LS_COLORS/LS_COLORS)"

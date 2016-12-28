@@ -15,6 +15,7 @@ alias k="fc -ln -1"
 ################
 
 # alias suspend="dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"
+alias ls="ls -G --color"
 alias l="ls -lah"
 
 alias psu="ps -u $USER"
