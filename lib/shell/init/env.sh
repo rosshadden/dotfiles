@@ -56,7 +56,7 @@ export FZF_DEFAULT_OPTS="--bind=alt-enter:print-query,tab:toggle-up"
 if isCommand pt; then
 	export FZF_DEFAULT_COMMAND="pt -g ''"
 elif isCommand ag; then
-	export FZF_DEFAULT_COMMAND="ag --hidden --ignore .git -g ''"
+	export FZF_DEFAULT_COMMAND="ag --hidden -g '' --ignore=.git"
 fi
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
