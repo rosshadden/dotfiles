@@ -52,7 +52,10 @@ export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
 # fzf
-export FZF_DEFAULT_OPTS="--bind=alt-enter:print-query,tab:toggle-up"
+fzfOutput=ansi
+# fzfOutput=xterm256
+numLines=$(($(tput lines) * 2))
+export FZF_DEFAULT_OPTS="--bind=alt-enter:print-query,tab:toggle-up --preview='(highlight -O $fzfOutput {} || cat {}) 2> /dev/null | head -$numLines'"
 if isCommand pt; then
 	export FZF_DEFAULT_COMMAND="pt -g ''"
 elif isCommand ag; then
