@@ -60,13 +60,18 @@ isCommand() {
 color() {
 	stdin="$(ls -l /proc/self/fd/0)"
 	stdin="${stdin/*-> /}"
+	format=ansi
+	format=xterm256
 
-	# TODO: abstract hasPipe function
-	if [[ "$stdin" =~ ^/dev/pts/[0-9] ]]; then
-		highlight -O xterm256 "$@"
-	else
-		echo "$(cat -)" | highlight -O xterm256
-	fi
+	highlight -O $format "$@"
+
+	# TODO: make work with pipes again
+	# # TODO: abstract hasPipe function
+	# if [[ "$stdin" =~ ^/dev/pts/[0-9] ]]; then
+	# 	highlight -O $format "$@"
+	# else
+	# 	echo "$(cat -)" | highlight -O $format
+	# fi
 }
 
 ##
