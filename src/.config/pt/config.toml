@@ -1,5 +1,6 @@
-hidden = true
-ignore = [ '.git', '.tern-port' ]
 color-line-number = '1;31'
 color-match = '1;32'
 color-path = '1;33'
+hidden = true
+ignore = [ '.git', '.tern-port' ]
+smart-case = true

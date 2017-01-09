@@ -291,7 +291,7 @@ bind generic <esc>i !git in
 bind generic <esc>o !git out
 bind generic <esc>s !git sync
 bind generic <esc>S !git sync-submodules
-bind generic <esc>f !git fetch -p --tags
+bind generic <esc>f !git fetch -p --tags --all --jobs=4
 
 # checkout/create local branch
 bind generic <esc>c !sh -c "git cd $(git branch | cut -c 3- | fzf-tmux)"

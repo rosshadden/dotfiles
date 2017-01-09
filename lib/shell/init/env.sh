@@ -55,13 +55,15 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 fzfOutput=ansi
 # fzfOutput=xterm256
 numLines=$(($(tput lines) * 2))
-export FZF_DEFAULT_OPTS="--bind=alt-enter:print-query,tab:toggle-up --preview='(highlight -O $fzfOutput {} || cat {}) 2> /dev/null | head -$numLines'"
 if isCommand pt; then
 	export FZF_DEFAULT_COMMAND="pt -g ''"
 elif isCommand ag; then
 	export FZF_DEFAULT_COMMAND="ag --hidden -g '' --ignore=.git"
 fi
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3"
+export FZF_DEFAULT_OPTS="--bind=alt-enter:print-query,tab:toggle-up --preview='(highlight -O $fzfOutput {} || cat {}) 2> /dev/null | head -$numLines'"
 
 ################
 # SETTINGS
