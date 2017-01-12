@@ -65,6 +65,9 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3"
 export FZF_DEFAULT_OPTS="--bind=alt-enter:print-query,tab:toggle-up --preview='(highlight -O $fzfOutput {} || cat {}) 2> /dev/null | head -$numLines'"
 
+# pass
+export PASSWORD_STORE_GENERATED_LENGTH=16
+
 ################
 # SETTINGS
 ################
