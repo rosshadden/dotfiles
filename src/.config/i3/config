@@ -44,7 +44,7 @@ set $wsLit  lit
 set $wsMonitor  monitor
 set $wsRun  run
 set $wsChat  chat
-set $wsDesign  design
+set $wsDesign  design
 set $wsGames  games
 
 set $macro1 XF86Tools
