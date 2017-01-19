@@ -39,8 +39,6 @@ copyq &
 # pidgin
 pidgin &
 
-gitter &
-
 # google music proxy
 GMusicProxy &
 
