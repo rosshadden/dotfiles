@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+function lock() {
+	local args=""
+
+	local blur=false
+	local color
+	local image
+	local random=false
+
+	local spec=":bc:i:r"
+	while getopts $spec opt; do
+		case "$opt" in
+			b) blur=true ;;
+			c) color="$OPTARG" ;;
+			i) image="$OPTARG" ;;
+			r) random=true ;;
+			:) error "Option '-$OPTARG' requires an argument" ;;
+			*) error "Invalid option: -$OPTARG" ;;
+		esac
+	done
+	shift $((OPTIND - 1))
+
+	if [[ $blur == true ]]; then
+		i3lock-wrapper
+		exit 0
+	fi
+
+	if [[ $image ]]; then
+		args="${args} -i $image"
+	fi
+
+	if [[ $random == true ]]; then
+		color=$(openssl rand -hex 3)
+	fi
+
+	if [[ $color ]]; then
+		args="${args} --color $color"
+	fi
+
+	i3lock $args
+}
+
+lock "$@"

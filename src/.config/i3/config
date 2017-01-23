@@ -69,10 +69,10 @@ set $chooseAll "rofi -combi-modi drun,run -show combi -p 'all: '"
 set $terminal i3-sensible-terminal
 set $run i3-sensible-terminal -e
 set $tmuxAttach i3-sensible-terminal -e "tmux new-session -A -s
-set $locker i3lock --color=5f00af
+set $locker ~/bin/locker -r
 set $locker1 xautolock -locknow
-set $locker2 escrotum /tmp/lockscreen.png && i3lock -i /tmp/lockscreen.png
-set $locker3 i3lock-wrapper
+set $locker2 escrotum /tmp/lockscreen.png && ~/bin/locker -i /tmp/lockscreen.png
+set $locker3 ~/bin/locker -b
 
 # UI
 set $borderWidth 2
@@ -144,6 +144,7 @@ bindsym $macro4 mark LAST; [urgent=latest] focus
 # lock screen
 bindsym $macro5 exec $locker
 bindsym Shift+$macro5 exec $locker2
+bindsym Control+$macro5 exec $locker3
 
 # change focus
 bindsym $super+j mark LAST; focus down
@@ -580,6 +581,7 @@ mode "SYSTEM" {
 	# lock screen
 	bindsym l exec $locker; $exit
 	bindsym Shift+l exec $locker2; $exit
+	bindsym Control+l exec $locker2; $exit
 
 	# brightness
 
@@ -981,4 +983,4 @@ exec --no-startup-id "i3-msg 'workspace $numChat $wsChat; append_layout ~/.confi
 exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath
 
 # autolock
-exec --no-startup-id xautolock -resetsaver -detectsleep -time 10 -locker "$locker -d" -nowlocker "$locker" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"
+exec --no-startup-id xautolock -resetsaver -detectsleep -time 10 -locker "$locker" -nowlocker "$locker" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"
