@@ -29,7 +29,7 @@ if isCommand ruby; then export PATH="$PATH:`ruby -e 'puts Gem.user_dir'`/bin:~/.
 if isCommand rustc; then export PATH=$PATH:~/.cargo/bin; fi
 
 # android (if installed)
-[[ -d "$ANDROID_HOME" ]] && export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+[ -d "$ANDROID_HOME" ] && export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 ################
 # APPS
@@ -72,17 +72,18 @@ export PASSWORD_STORE_GENERATED_LENGTH=16
 # SETTINGS
 ################
 
-if [[ -f "/usr/bin/nvim" ]]; then
+if [ -f "/usr/bin/nvim" ]; then
 	export EDITOR=nvim
 else
 	export EDITOR=vim
 fi
+export GIT_EDITOR=$EDITOR
 
 export VISUAL=gvim
 
 export BROWSER=google-chrome-stable
 
-[[ -f "/usr/bin/termite" ]] && export TERMINAL=termite || export TERMINAL=xterm
+[ -f "/usr/bin/termite" ] && export TERMINAL=termite || export TERMINAL=xterm
 
 export DEFAULT_USER=$USER
 

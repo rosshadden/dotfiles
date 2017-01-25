@@ -4,7 +4,8 @@ function taglish() {
 	local version=$(grep '^\s\s"version"' package.json | sed -r 's;^\s+"version":\s?"(.+)",?;\1;')
 
 	echo "Committing $version..."
-	git commit package.json -m 'version++'
+	git add package.json
+	git commit -m 'version++'
 
 	echo "Tagging $version..."
 	git tag "v$version"
