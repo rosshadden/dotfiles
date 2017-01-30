@@ -22,9 +22,6 @@ if isCommand perl; then export PATH=$PATH:/usr/bin/core_perl; fi
 # java (if installed)
 if isCommand java; then export PATH=$PATH:$JAVA_HOME/bin; fi
 
-# ruby (if installed)
-if isCommand ruby; then export PATH="$PATH:`ruby -e 'puts Gem.user_dir'`/bin:~/.rvm/bin"; fi
-
 # rust (if installed)
 if isCommand rustc; then export PATH=$PATH:~/.cargo/bin; fi
 
@@ -79,7 +76,7 @@ else
 fi
 export GIT_EDITOR=$EDITOR
 
-export VISUAL=gvim
+export VISUAL=atom
 
 export BROWSER=google-chrome-stable
 

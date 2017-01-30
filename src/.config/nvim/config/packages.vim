@@ -156,6 +156,8 @@ call plug#begin(expand(g:packageDir))
 	Plug 'markcornick/vim-bats'
 	" emmet
 	Plug 'mattn/emmet-vim', { 'for': 'html' }
+	" godot
+	Plug 'quabug/vim-gdscript'
 
 	" integration
 
@@ -175,5 +177,5 @@ call plug#begin(expand(g:packageDir))
 	Plug 'tmux-plugins/vim-tmux'
 	Plug 'tmux-plugins/vim-tmux-focus-events'
 	" completions aware of other panes/windows, only when editing git commit messages
-	Plug 'wellle/tmux-complete.vim', { 'for': [ 'gitcommit', 'pandoc' ] }
+	Plug 'wellle/tmux-complete.vim', { 'for': [ 'gitcommit', 'markdown', 'pandoc' ] }
 call plug#end()
