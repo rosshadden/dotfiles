@@ -6,6 +6,7 @@
 
 set localconfig
 let configpath = '/home/ross/.cvimrc'
+let blacklists = []
 
 """"""""""""""""
 " SETTINGS
@@ -15,58 +16,21 @@ let mapleader = ','
 
 set cncpcompletion
 
-" TABS
-
-set defaultnewtabpage
-
-" LINKS
-
-set linkanimations
-let hintcharacters = 'aoeusnthidkbpg'
-
-" SCROLLING
-
-set nosmoothscroll
-let scrollduration=10
-
-" UI
-
-let barposition = 'bottom'
-let highlight = '#00afff'
-let activehighlight = '#0087ff'
-set autohidecursor
-
-" SEARCHING
-
-let completionengines = [ 'google', 'amazon' ]
-let searchalias g = 'google'
-let searchalias a = 'amazon'
-
-" BLACKLIST
-
-let blacklists = []
-
 """"""""""""""""
 " MAPPINGS
 """"""""""""""""
 
 map ; :
-
-map i goToInput
-map a goToInput
-
 unmap <Space>
 
-" SCROLLING
-
-map <C-y> scrollUp
-map <C-e> scrollDown
-map <C-u> scrollPageUp
-map <C-d> scrollPageDown
-map <C-b> scrollFullPageUp
-map <C-f> scrollFullPageDown
-
+""""""""""""""""
 " TABS
+""""""""""""""""
+
+let newtaburl = ''
+set defaultnewtabpage
+set newtabalwaysontheright
+set showtabindices
 
 map 0 firstTab
 map $ lastTab
@@ -82,16 +46,61 @@ map dd closeTab
 map u lastClosedTab
 
 map gD :duplicate<CR>
+map gM muteTab
 
 map <Leader>r reloadTab
 map <Leader>R reloadTabUncached
 map <Leader><Leader>r reloadAllTabs
 map <Leader><Leader>R :source /home/ross/.cvimrc<cr>
 
-" INPUT
+""""""""""""""""
+" SCROLLING
+""""""""""""""""
 
+set nosmoothscroll
+let scrollduration=10
+
+map `` lastScrollPosition
+map <C-y> scrollUp
+map <C-e> scrollDown
+map <C-u> scrollPageUp
+map <C-d> scrollPageDown
+map <C-b> scrollFullPageUp
+map <C-f> scrollFullPageDown
+
+""""""""""""""""
+" INPUT
+""""""""""""""""
+
+map i goToLastInput
+map a goToLastInput
+map I goToInput
+map A goToInput
 imap <C-o> editWithVim
 
+""""""""""""""""
+" UI
+""""""""""""""""
+
+let barposition = 'bottom'
+let highlight = '#00afff'
+let activehighlight = '#0087ff'
+set autohidecursor
+
+""""""""""""""""
 " LINKS
+""""""""""""""""
+
+set linkanimations
+let hintcharacters = 'aoeusnthidkbpg'
+let mouselesshintcharacters = 'aoeusnthidkbpg'
 
 map gS :viewsource!<CR>
+
+""""""""""""""""
+" SEARCHING
+""""""""""""""""
+
+let completionengines = [ 'google', 'wikipedia', 'amazon' ]
+let searchalias g = 'google'
+let searchalias a = 'amazon'

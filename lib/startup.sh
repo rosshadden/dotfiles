@@ -43,7 +43,8 @@ pidgin &
 GMusicProxy &
 
 # cvim external editor
-# ~/lib/cvim-server.py &
+cvimServer=~/lib/vendor/mouseless/cvim_server.py
+[[ -f $cvimServer ]] && $cvimServer &
 
 ################
 # LOCAL
