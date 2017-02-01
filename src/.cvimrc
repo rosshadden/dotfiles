@@ -30,7 +30,7 @@ unmap <Space>
 let newtaburl = ''
 set defaultnewtabpage
 set newtabalwaysontheright
-set showtabindices
+set noshowtabindices
 
 map 0 firstTab
 map $ lastTab
