@@ -26,14 +26,16 @@ urlencode() {
 
 muse() {
 	local artist
-	local type
-	local query="get_by_search"
+	local client
 	local options
+	local query="get_by_search"
+	local type
 
-	local spec=":a:n:q:rRt:"
+	local spec=":a:c:n:q:rRt:"
 	while getopts $spec opt; do
 		case "$opt" in
 			a) artist="$OPTARG" ;;
+			a) client="$OPTARG" ;;
 			n) numTracks="$OPTARG" ;;
 			q) query="$OPTARG" ;;
 			r) options="--random" ;;
@@ -69,8 +71,12 @@ muse() {
 		uri="${uri}&num_tracks=${numTracks}"
 	fi
 
-	killall vlc >/dev/null 2>&1
-	curl -s "$uri" | vlc $options - >/dev/null 2>&1 &
+	if [[ "$client" == "" ]]; then
+		echo "$uri"
+	else
+		killall "$client" >/dev/null 2>&1
+		curl -s "$uri" | $client $options - >/dev/null 2>&1 &
+	fi
 }
 
 muse "$@"

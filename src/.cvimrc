@@ -72,10 +72,10 @@ map <C-f> scrollFullPageDown
 " INPUT
 """"""""""""""""
 
-map i goToLastInput
+map i goToInput
 map a goToLastInput
 map I goToInput
-map A goToInput
+map A goToLastInput
 imap <C-o> editWithVim
 
 """"""""""""""""

@@ -18,7 +18,7 @@ mkdir /tmp/aoeu
 ################
 
 # pulseaudio
-pulseaudio --start &
+pulseaudio --start
 
 # composite manager
 compton -b
@@ -27,20 +27,20 @@ compton -b
 # APPS
 ################
 
-# dropbox
+# fs
 dropbox-cli start
 
-# easystroke
-easystroke &
-
-# copyQ
-copyq &
-
-# pidgin
+# chat
 pidgin &
 
-# google music proxy
-GMusicProxy &
+# copypasta
+copyq &
+
+# music
+GMusicProxy
+
+# gestures
+easystroke &
 
 # cvim external editor
 cvimServer=~/lib/vendor/mouseless/cvim_server.py
