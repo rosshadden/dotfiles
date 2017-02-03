@@ -551,19 +551,19 @@ mode "TMUX" {
 	# presets
 
 	# TODO: make these dynamic from the workspace name
-	bindsym grave        mark LAST; workspace $numLab $wsLab;         exec $tmuxAttach $nameLab";     $exit
-	bindsym 1            mark LAST; workspace $numWeb $wsWeb;         exec $tmuxAttach $nameWeb";     $exit
-	bindsym 2            mark LAST; workspace $numDev $wsDev;         exec $tmuxAttach $nameDev";     $exit
-	bindsym 3            mark LAST; workspace $numRemote $wsRemote;   exec $tmuxAttach $nameRemote";  $exit
+	bindsym grave        mark LAST; workspace $numLab $wsLab;         exec $tmuxAttach $nameLab"; $exit
+	bindsym 1            mark LAST; workspace $numWeb $wsWeb;         exec $tmuxAttach $nameWeb"; $exit
+	bindsym 2            mark LAST; workspace $numDev $wsDev;         exec $tmuxAttach $nameDev"; $exit
+	bindsym 3            mark LAST; workspace $numRemote $wsRemote;   exec $tmuxAttach $nameRemote"; $exit
 	bindsym 4            mark LAST; workspace $numHack $wsHack;       exec $tmuxAttach $nameHack -c /home/ross/dotfiles"; $exit
 	bindsym 5            mark LAST; workspace $numFiles $wsFiles;     exec $tmuxAttach $nameFiles 'ranger'"; $exit
 	bindsym 6            mark LAST; workspace $numMedia $wsMedia;     exec $tmuxAttach $nameMedia 'ncmpcpp'"; $exit
-	bindsym 7            mark LAST; workspace $numLit $wsLit;         exec $tmuxAttach $nameLit";     $exit
+	bindsym 7            mark LAST; workspace $numLit $wsLit;         exec $tmuxAttach $nameLit 'rtv'"; $exit
 	bindsym 8            mark LAST; workspace $numMonitor $wsMonitor; exec $tmuxAttach $nameMonitor"; $exit
-	bindsym 9            mark LAST; workspace $numRun $wsRun;         exec $tmuxAttach $nameRun";     $exit
-	bindsym 0            mark LAST; workspace $numChat $wsChat;       exec $tmuxAttach $nameChat";    $exit
-	bindsym bracketleft  mark LAST; workspace $numDesign $wsDesign;   exec $tmuxAttach $nameDesign";  $exit
-	bindsym bracketright mark LAST; workspace $numGames $wsGames;     exec $tmuxAttach $nameGames";   $exit
+	bindsym 9            mark LAST; workspace $numRun $wsRun;         exec $tmuxAttach $nameRun"; $exit
+	bindsym 0            mark LAST; workspace $numChat $wsChat;       exec $tmuxAttach $nameChat"; $exit
+	bindsym bracketleft  mark LAST; workspace $numDesign $wsDesign;   exec $tmuxAttach $nameDesign"; $exit
+	bindsym bracketright mark LAST; workspace $numGames $wsGames;     exec $tmuxAttach $nameGames"; $exit
 
 	# TODO: open preset for the current workspace
 
