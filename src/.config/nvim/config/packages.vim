@@ -173,7 +173,9 @@ call plug#begin(expand(g:packageDir))
 	" seamless vim/tmux navigation
 	Plug 'christoomey/vim-tmux-navigator'
 	Plug 'edkolev/promptline.vim'
-	Plug 'edkolev/tmuxline.vim'
+	" TODO: pending https://github.com/edkolev/tmuxline.vim/pull/75
+	" Plug 'edkolev/tmuxline.vim'
+	Plug 'munyari/tmuxline.vim', { 'branch': 'utf8' }
 	Plug 'tmux-plugins/vim-tmux'
 	Plug 'tmux-plugins/vim-tmux-focus-events'
 	" completions aware of other panes/windows, only when editing git commit messages

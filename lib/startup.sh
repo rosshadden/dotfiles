@@ -5,30 +5,30 @@
 ################
 
 # keyboard
-~/bin/keys
+~/bin/keys &
 
 ################
 # ENVIRONMENT
 ################
 
-mkdir /tmp/aoeu
+mkdir /tmp/aoeu &
 
 ################
 # UTILS
 ################
 
 # pulseaudio
-pulseaudio --start
+pulseaudio --start &
 
 # composite manager
-compton -b
+compton -b &
 
 ################
 # APPS
 ################
 
 # fs
-dropbox-cli start
+dropbox-cli start &
 
 # chat
 pidgin &
@@ -37,7 +37,7 @@ pidgin &
 copyq &
 
 # music
-GMusicProxy
+GMusicProxy &
 
 # gestures
 easystroke &
@@ -50,4 +50,4 @@ cvimServer=~/lib/vendor/mouseless/cvim_server.py
 # LOCAL
 ################
 
-[[ -f ~/local/lib/startup.sh ]] && ~/local/lib/startup.sh
+[[ -f ~/local/lib/startup.sh ]] && ~/local/lib/startup.sh &
