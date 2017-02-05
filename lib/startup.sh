@@ -37,6 +37,7 @@ pidgin &
 copyq &
 
 # music
+systemctl --user start mopidy.service &
 GMusicProxy &
 
 # gestures

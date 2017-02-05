@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+cd /tmp/aoeu || exit
+pkg=$1
+
+wget "https://aur.archlinux.org/cgit/aur.git/snapshot/$pkg.tar.gz"
+tar -zxvf "$pkg.tar.gz"
+cd "$pkg" || exit
+yes | makepkg -si
+cd ..
