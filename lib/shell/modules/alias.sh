@@ -67,6 +67,10 @@ alias tl="tmux list-sessions"
 alias B="bauerbill --build-dir /tmp/bauerbill"
 alias BB="bb-wrapper --build-dir /tmp/bauerbill"
 
+if isTmux; then
+	alias weechat="TERM=tmux-256color weechat"
+fi
+
 ##
 # attach to existing session, or create new
 #

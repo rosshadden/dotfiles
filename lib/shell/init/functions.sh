@@ -88,6 +88,10 @@ reload() {
 	. $HOME/.$(getShell)rc
 }
 
+isTmux() {
+	[ "$TMUX" ]
+}
+
 set-prompt() {
 	local color=$1
 	local shape=$2
@@ -95,7 +99,7 @@ set-prompt() {
 	local prefix=""
 	local suffix=""
 
-	if [ $TMUX ]; then
+	if isTmux; then
 		local prefix="\033Ptmux;\033"
 		local suffix="\033\\"
 	fi

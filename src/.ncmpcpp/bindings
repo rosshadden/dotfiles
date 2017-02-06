@@ -1,0 +1,47 @@
+def_key "j"
+	scroll_down
+def_key "k"
+	scroll_up
+
+def_key "h"
+	previous_column
+def_key "l"
+	next_column
+
+def_key "ctrl-u"
+	page_up
+#push_characters "kkkkkkkkkkkkkkk"
+def_key "ctrl-d"
+	page_down
+#push_characters "jjjjjjjjjjjjjjj"
+
+def_key "ctrl-b"
+	page_up
+#push_characters "kkkkkkkkkkkkkkk"
+def_key "ctrl-f"
+	page_down
+#push_characters "jjjjjjjjjjjjjjj"
+
+def_key "space"
+	toggle_visualization_type
+
+def_key "."
+	show_lyrics
+
+def_key "n"
+	next_found_item
+def_key "N"
+	previous_found_item
+
+def_key "J"
+	move_sort_order_down
+def_key "K"
+	move_sort_order_up
+
+def_key "g"
+	move_home
+def_key "G"
+	move_end
+
+def_key "t"
+	select_item
