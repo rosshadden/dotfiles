@@ -151,3 +151,8 @@ signKey() {
 	sudo pacman-key --lsign-key $1
 	gpg --keyserver pgp.mit.edu --recv-keys $1
 }
+
+trickPython() {
+	ln -s "$(which python2)" /tmp/aoeu/python
+	export PATH=/tmp/aoeu:$PATH
+}

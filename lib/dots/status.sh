@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source "$(dirname $0)/functions.sh"
+source "$DOTS/lib/shell/init/functions.sh"
 
 # TODO: report whether submodules have remote changes
 # TODO: report whether `tmux` plugins are updated

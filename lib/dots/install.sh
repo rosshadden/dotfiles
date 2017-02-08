@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source "$(dirname $0)/functions.sh"
+source "$DOTS/lib/shell/init/functions.sh"
 
 isAnon=false
 shouldDownload=false

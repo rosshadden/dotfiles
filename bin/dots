@@ -26,7 +26,7 @@ case "$action" in
 	v | version) action=version ;;
 esac
 
-if [ "$action" != "install" ]; then source "$DOTS/lib/dots/functions.sh"; fi
+if [ "$action" != "install" ]; then source "$DOTS/lib/shell/init/functions.sh"; fi
 
 actionFile="$DOTS/lib/dots/$action.sh"
 if [[ -f "$actionFile" ]]; then

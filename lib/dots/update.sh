@@ -2,7 +2,7 @@
 
 # TODO: use the output of `dots/status.sh` to only do what's necessary
 
-source "$(dirname $0)/functions.sh"
+source "$DOTS/lib/shell/init/functions.sh"
 source "$DOTS/lib/shell/modules/colors.sh"
 
 haveBeenRun=""
