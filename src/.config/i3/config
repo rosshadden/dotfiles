@@ -561,7 +561,7 @@ mode "TMUX" {
 	bindsym 7            mark LAST; workspace $numLit $wsLit;         exec $tmuxAttach $nameLit 'rtv'"; $exit
 	bindsym 8            mark LAST; workspace $numMonitor $wsMonitor; exec $tmuxAttach $nameMonitor"; $exit
 	bindsym 9            mark LAST; workspace $numRun $wsRun;         exec $tmuxAttach $nameRun"; $exit
-	bindsym 0            mark LAST; workspace $numChat $wsChat;       exec $tmuxAttach $nameChat 'weechat'"; $exit
+	bindsym 0            mark LAST; workspace $numChat $wsChat;       exec $tmuxAttach $nameChat 'TERM=tmux-256color weechat'"; $exit
 	bindsym bracketleft  mark LAST; workspace $numDesign $wsDesign;   exec $tmuxAttach $nameDesign"; $exit
 	bindsym bracketright mark LAST; workspace $numGames $wsGames;     exec $tmuxAttach $nameGames"; $exit
 
