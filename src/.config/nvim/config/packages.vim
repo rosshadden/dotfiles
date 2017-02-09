@@ -153,11 +153,13 @@ call plug#begin(expand(g:packageDir))
 	" c#
 	Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
 	" shell test framework
-	Plug 'markcornick/vim-bats'
+	Plug 'markcornick/vim-bats', { 'for': 'bats' }
 	" emmet
 	Plug 'mattn/emmet-vim', { 'for': 'html' }
+	" nim
+	Plug 'zah/nim.vim', { 'for': 'nim' }
 	" godot
-	Plug 'quabug/vim-gdscript'
+	Plug 'quabug/vim-gdscript', { 'for': 'gd' }
 
 	" integration
 
