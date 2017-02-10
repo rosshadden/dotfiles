@@ -7,7 +7,7 @@
 	- or vice versa
 - move startup things to systemd
 
-## `dots`
+## dots
 
 - make `upgrade/U`, and move vim/tmux/pass from `update/u`
 - make `update` announce uncommitted changes in `dotfiles` and `sync`
@@ -36,7 +36,7 @@
 
 # apps
 
-## `vim`
+## vim
 
 - figure out where I can use `on_cmd` in `packages.vim`
 - conditionally include packages, based on dependencies
@@ -67,7 +67,7 @@
 		- map `.` in target select mode
 	- remove redundant or unused plugins
 
-## `i3`
+## i3
 
 - make tmux mode support apps
 	- `[tmux]d` for dotfiles
@@ -90,15 +90,16 @@
 
 - fix keyboard block interaction
 
-## `tmux`
+## tmux
 
+- make function that evenly resizes panes
 - rewrite or change tmux-urlview, to use `fzf`
 - Raws, Private Investigator
 	- fix prefix not showing in status on first launch
 		- probably because of the vim/airline stuff
 - use `choose-session` to pick a session to link current session to
 
-### `tp`
+### tp
 
 - break `tp` and friends into separate repo
 - use `j -sl | fzf +s --tac` to give a list of recent dirs
@@ -106,7 +107,7 @@
 	- should possibly share code with `tp` and `ta`, to determine the session name
 - universalize all of the `tl`, `ta`, `tp`, etc things, into one binary
 
-## `tig`
+## tig
 
 - spend time making it even more useful
 - universalize mappings
@@ -122,13 +123,13 @@
 		- add tags to the list branch
 	- add mappings to [wiki]( https://github.com/jonas/tig/wiki/Bindings )
 
-## `ranger`
+## ranger
 
 - vet `fasd` integration
 - vet `fzf` integration
 - support an easier deletion, like how `vifm` does it using `trash-cli`
 
-## `fzf`
+## fzf
 
 - either:
 	- make a binary, like `f` or `r`
@@ -138,17 +139,17 @@
 	- `j`
 - maybe this is all `awmni`'s responsibility...
 
-## `copyq`
+## copyq
 
 - make it use my dotfiles theme
 - figure out why URLs are duplicated
 
-## `zeal`
+## zeal
 
 - integrate into workflow
 - figure out wtf keeps going wrong with the i3 shortcut, and fix it
 
-## `dunst`
+## dunst
 
 - make context menu entry for copying contents to clipboard
 
@@ -172,7 +173,7 @@
 	- look into [better status indicator]( http://ivyl.0xcafe.eu/2013/02/03/refining-zsh/#vi_mode_status_indicator )
 - make mapping to insert newline at cursor
 
-## `for-{in,of}`
+## for-{in,of}
 
 - break out into separate repo
 
@@ -181,14 +182,14 @@
 - [modularize `.Xresources`]( https://wiki.archlinux.org/index.php/x_resources#Include_files )
 - look into [existing `.Xresources` themes]( http://www.noobslab.com/ )
 
-## `keys`
+## keys
 
 - vet breaking out into separate repo
 - use something better than `grp:shifts_toggle` in `keys`
 - only run `xcape` over `CapsLock`, not `Control_L`
 	- for some reason this doesn't work as expected, though I'm not sure why
 
-# `awmni` / `owmni`
+# awmni / owmni
 
 - client-agnostic back-end, which should work with X and terminals alike
 - clients
