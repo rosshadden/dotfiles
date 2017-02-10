@@ -22,6 +22,9 @@ if isCommand perl; then export PATH=$PATH:/usr/bin/core_perl; fi
 # java (if installed)
 if isCommand java; then export PATH=$PATH:$JAVA_HOME/bin; fi
 
+# nimble (if installed)
+if isCommand nimble; then export PATH=$PATH:~/.nimble/bin; fi
+
 # rust (if installed)
 if isCommand rustc; then export PATH=$PATH:~/.cargo/bin; fi
 
