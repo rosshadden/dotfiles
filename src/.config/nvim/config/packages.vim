@@ -157,7 +157,7 @@ call plug#begin(expand(g:packageDir))
 	" emmet
 	Plug 'mattn/emmet-vim', { 'for': 'html' }
 	" nim
-	Plug 'zah/nim.vim', { 'for': 'nim' }
+	Plug 'baabelfish/nvim-nim', { 'for': 'nim' }
 	" godot
 	Plug 'quabug/vim-gdscript', { 'for': 'gd' }
 
