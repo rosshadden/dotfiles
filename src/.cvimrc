@@ -22,6 +22,7 @@ set cncpcompletion
 
 map ; :
 unmap <Space>
+map <C-Space> passKeys 1
 
 """"""""""""""""
 " TABS
