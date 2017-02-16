@@ -3,10 +3,16 @@
 command="$1"
 shift
 
-qKill() {
-	kill $* "$(ps aux | fzf --preview= | awk '{ print $2 }')"
+qDebug() {
+	echo $* "$(ps aux | fzf -m --preview= | awk '{ print $2 }')"
 }
 
-if [[ "$command" == "kill" ]]; then
+qKill() {
+	kill $* "$(ps aux | fzf -m --preview= | awk '{ print $2 }')"
+}
+
+if [[ "$command" == "debug" ]]; then
+	qDebug "$*"
+elif [[ "$command" == "kill" ]]; then
 	qKill "$*"
 fi

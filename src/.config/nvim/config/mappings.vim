@@ -3,6 +3,7 @@ noremap Y y$
 
 " shift is for sucks!
 noremap ; :
+noremap <leader>; ;
 
 " U => redo [:redo]
 noremap U :redo<cr>
