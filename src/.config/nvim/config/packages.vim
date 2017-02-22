@@ -141,7 +141,7 @@ call plug#begin(expand(g:packageDir))
 	Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 	Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
 	Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
-	Plug 'marijnh/tern_for_vim', { 'for': 'javascript', 'do': 'npm i; npm i tern-phaser' }
+	Plug 'marijnh/tern_for_vim', { 'for': 'javascript', 'do': 'npm i' }
 	" ts
 	Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 	" rust

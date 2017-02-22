@@ -19,7 +19,7 @@ function lawg() {
 
 function updateDotfiles() {
 	lawg "dotfiles"
-	pushd $DOTS > /dev/null
+	pushd "$DOTS" > /dev/null
 
 	# update dotfiles
 	lawg "dotfiles:repo"
@@ -36,8 +36,10 @@ function updateDotfiles() {
 }
 
 function updateSync() {
+	if [ ! -d "$SYNC" ]; then return; fi
+
 	lawg "sync"
-	pushd $SYNC > /dev/null
+	pushd "$SYNC" > /dev/null
 
 	# update sync
 	lawg "sync:repo"
