@@ -73,9 +73,13 @@ muse() {
 
 	if [[ "$client" == "" ]]; then
 		echo "$uri"
-	else
+	elif [[ "$client" == "mpc" ]]; then
+		curl -s "$uri" | sed '/^#/d' | $client add
+	elif [[ "$client" == "vlc" ]]; then
 		killall "$client" >/dev/null 2>&1
 		curl -s "$uri" | $client $options - >/dev/null 2>&1 &
+	else
+		curl -s "$uri" | $client >/dev/null 2>&1 &
 	fi
 }
 
