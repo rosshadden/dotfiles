@@ -12,6 +12,7 @@ else
 endif
 
 let base16colorspace=256
+set termguicolors
 colorscheme vim
 
 scriptencoding utf-8
