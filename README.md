@@ -43,6 +43,7 @@ See the [TODO](TODO.md) for things I have in mind.
 		- `w3m`
 - fonts
 	- `ttf-fantasque-sans` - main font
+	- `otf-fira-code` - x11 font
 	- `ttf-font-icons` - mix of non-overlapping fonts from Font Awesome and Ionicons
 
 ## Vim stuff

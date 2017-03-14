@@ -4,11 +4,11 @@
 !! FONTS
 !!!!!!!!!!!!!!!!
 
-*font: Fantasque Sans Mono 12
-*boldFont: Fantasque Sans Mono Bold 12
-*italicFont: Fantasque Sans Mono Italic 12
-*boldItalicFont: Fantasque Sans Mono Bold Italic 12
-*faceName: Fantasque Sans Mono 12
+*font: Fira Code 12
+*boldFont: Fira Code Bold 12
+*italicFont: Fira Code Italic 12
+*boldItalicFont: Fira Code Bold Italic 12
+*faceName: Fira Code 12
 *faceSize: 12
 
 !!!!!!!!!!!!!!!!
