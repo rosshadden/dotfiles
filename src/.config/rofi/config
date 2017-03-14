@@ -9,7 +9,7 @@ rofi.width:                          -64
 ! Number of lines
 rofi.lines:                          8
 ! Font to use
-rofi.font:                           Fantasque Sans Mono 12
+rofi.font:                           Fira Code 12
 ! Border width
 rofi.bw:                             0
 ! Location on screen
