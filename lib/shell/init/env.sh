@@ -46,6 +46,9 @@ export JAVA_HOME=/usr/lib/jvm/default
 
 # android
 export ANDROID_HOME=/opt/android-sdk
+export ANDROID_NDK_ROOT=/opt/android-ndk
+export ANDROID_NDK_CLANG=/opt/android-ndk/toolchains/llvm/prebuilt/linux-x86_64
+export ANDROID_NDK_ARM=/opt/android-ndk/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64
 export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64
 
 # ranger

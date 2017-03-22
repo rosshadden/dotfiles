@@ -1,6 +1,7 @@
 # meta
 
 - trim down as much fat as possible
+- split `lib` into `lib` and `src`
 - look into [these dotfiles]( https://github.com/xero/dotfiles ) for sexiness
 - swap `~/{bin,lib}` and `~/local/{bin,lib}`
 - consider moving systemd stuff to sync
