@@ -14,4 +14,10 @@ augroup misc
 	autocmd BufNewFile,BufReadPost,BufEnter * if &filetype == '' | setlocal filetype=config | endif
 
 	autocmd FileType conf call css_color#init('hex', 'extended', 'confString')
+
+	" sync stuff between instances
+	" https://github.com/neovim/neovim/issues/3463#issuecomment-148757691
+	if has('nvim')
+		autocmd CursorHold,FocusGained,FocusLost * rshada|wshada
+	endif
 augroup END

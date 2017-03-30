@@ -11,7 +11,7 @@
 # Exit if already in a tmux session
 if [ -n "$TMUX" ]; then echo "Already in tmux, nerd."; exit; fi
 
-project=${1:-$(basename "$PWD")}
+project=${1:-$(basename "$PWD" | sed 's;\.;-;g')}
 path=${2:-$(fasd -d "$project")}
 path=${path:-.}
 
