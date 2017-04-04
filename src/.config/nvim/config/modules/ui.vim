@@ -11,21 +11,19 @@ else
 	set t_Co=256
 endif
 
-let base16colorspace=256
 set termguicolors
-colorscheme vim
+let base16colorspace=256
+let g:base16_color_overrides = { 'ColorColumn': 'bg=dark3' }
+let g:base16_transparent_background = 1
 
 scriptencoding utf-8
 
-" runtime! colors/vim.vim
-runtime! colors/vim-airline.vim
-
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
 if has('nvim')
-	highlight Normal guibg=none
-	highlight NonText guibg=none
+	colorscheme nvim
+else
+	colorscheme vim
 endif
+runtime! colors/vim-airline.vim
 
 " Stop highlighting pairs
 let loaded_matchparen = 1
