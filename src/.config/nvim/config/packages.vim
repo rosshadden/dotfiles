@@ -150,6 +150,8 @@ call plug#begin(expand(g:packageDir))
 	Plug 'leafo/moonscript-vim', { 'for': 'moon' }
 	" i3 config
 	Plug 'PotatoesMaster/i3-vim-syntax'
+	" c++
+	Plug 'Rip-Rip/clang_complete'
 	" c#
 	Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
 	" shell test framework

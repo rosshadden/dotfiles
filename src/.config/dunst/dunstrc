@@ -184,17 +184,21 @@
     # Context menu.
     context = mod1+Return
 
+# vim: filetype=yaml
+# dunst template
+# Base16 Materia Dark, by Defman21
+
 [urgency_low]
-    background = "#151515"
+    background = "#263238"
     foreground = "#FFFFFF"
 
 [urgency_normal]
-    background = "#151515"
-    foreground = "#3777E6"
+    background = "#263238"
+    foreground = "#89DDFF"
 
 [urgency_critical]
-    background = "#151515"
-    foreground = "#FF0086"
+    background = "#263238"
+    foreground = "#EC5F67"
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
