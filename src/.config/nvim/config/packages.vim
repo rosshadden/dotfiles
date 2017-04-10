@@ -86,6 +86,8 @@ call plug#begin(expand(g:packageDir))
 	Plug 'benekastah/neomake'
 	" visual star search
 	Plug 'bronson/vim-visual-star-search'
+	" tagbar
+	Plug 'majutsushi/tagbar'
 
 	" ui
 
@@ -142,6 +144,7 @@ call plug#begin(expand(g:packageDir))
 	Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
 	Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
 	Plug 'marijnh/tern_for_vim', { 'for': 'javascript', 'do': 'npm i' }
+	Plug 'moll/vim-node', { 'for': 'javascript' }
 	" ts
 	Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 	" rust
