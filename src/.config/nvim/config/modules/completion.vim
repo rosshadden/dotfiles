@@ -26,6 +26,10 @@ if has('nvim')
 	let g:deoplete#omni#input_patterns.cs = '.*[^=\);]'
 	let g:deoplete#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 	let g:deoplete#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+
+	let g:deoplete#sources = {}
+	let g:deoplete#sources._ = [ 'buffer' ]
+	let g:deoplete#sources.cpp = [ 'deoplete-clang2', 'buffer', 'tag' ]
 else
 	let g:neocomplete#enable_at_startup = 1
 

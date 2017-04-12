@@ -21,6 +21,7 @@ call plug#begin(expand(g:packageDir))
 	" completions
 	Plug 'Shougo/deoplete.nvim', LoadIf(has('nvim'))
 		\| Plug 'carlitux/deoplete-ternjs', LoadIf(has('nvim'), { 'do': 'npm install -g tern' })
+		\| Plug 'tweekmonster/deoplete-clang2', LoadIf(has('nvim'))
 	Plug 'Shougo/neocomplete.vim', LoadIf(!has('nvim'))
 	" search with perl regex
 	Plug 'othree/eregex.vim'
@@ -83,7 +84,8 @@ call plug#begin(expand(g:packageDir))
 	" diff two selections
 	Plug 'AndrewRadev/linediff.vim'
 	" linter
-	Plug 'benekastah/neomake'
+	Plug 'neomake/neomake'
+		\| Plug 'coddingtonbear/neomake-platformio'
 	" visual star search
 	Plug 'bronson/vim-visual-star-search'
 
@@ -150,8 +152,6 @@ call plug#begin(expand(g:packageDir))
 	Plug 'leafo/moonscript-vim', { 'for': 'moon' }
 	" i3 config
 	Plug 'PotatoesMaster/i3-vim-syntax'
-	" c++
-	Plug 'Rip-Rip/clang_complete'
 	" c#
 	Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
 	" shell test framework
