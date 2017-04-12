@@ -21,7 +21,9 @@ See the [TODO](TODO.md) for things I have in mind.
 	- [`zplug`]( https://zplug.sh/ ) - package manager
 - [`neovim`]( https://neovim.io/ )
 	- [`npm:tern`]( https://github.com/ternjs/tern ) - code analyzer
+	- [`npm:jsctags`]( https://github.com/ramitos/jsctags ) - JavaScript tags
 	- [`npm:livedown`]( https://github.com/shime/vim-livedown ) - live previews of markdown files in vim
+	- [`ctags`]( https://www.archlinux.org/packages/extra/i686/ctags/ ) - exuberant ctags
 - [`tmux`]( https://github.com/tmux/tmux )
 	- [`tmuxp`]( https://github.com/tony/tmuxp ) - powers ./bin/tp
 	- [`urlview`]( https://github.com/sigpipe/urlview )
