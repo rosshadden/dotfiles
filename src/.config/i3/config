@@ -698,6 +698,7 @@ mode "LAYOUT" {
 	bindsym t layout toggle; $exit
 	# toggle fullscreen
 	bindsym f fullscreen; $exit
+	bindsym Control+f fullscreen toggle; $exit
 	bindsym Shift+f fullscreen global; $exit
 	# toggle [floating, tiled]
 	bindsym space floating toggle; $exit
@@ -966,7 +967,7 @@ assign [title="(Google Keep|todoist)" window_role="app"] → $numLit $wsLit
 
 # games
 for_window [title="Dota 2"] border none
-for_window [class="Dolphin-emu"] floating toggle
+for_window [class="Dolphin-emu" title="^Dolphin$"] floating toggle
 
 # chat
 assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $numChat $wsChat
