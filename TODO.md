@@ -1,16 +1,14 @@
 # meta
 
-- trim down as much fat as possible
 - split `lib` into `lib` and `src`
 - look into [these dotfiles]( https://github.com/xero/dotfiles ) for sexiness
 - swap `~/{bin,lib}` and `~/local/{bin,lib}`
-- consider moving systemd stuff to sync
-	- or vice versa
+- consider moving systemd stuff to sync, or vice versa
 - move startup things to systemd
 
 ## dots
 
-- make `upgrade/U`, and move vim/tmux/pass from `update/u`
+- make `upgrade/U`, for things like submodules
 - make `update` announce uncommitted changes in `dotfiles` and `sync`
 - make `dots-get`, which will return requested settings/paths/variables
 - move `THEME` into a more general place with more, like a toml file
@@ -46,10 +44,8 @@
 	- javascript
 		- make mappings for opening the test for the current file (and vice versa)
 			- hopefully use `portkey`, but it'll need a global default file
-	- `[F] file` mode, for the specific file opened
-		- or use "buffer"?
 	- buffer
-		- mapping to delete all unused buffers (not just empty)
+		- mapping to delete all unused/hidden buffers (not just empty)
 	- files
 		- mapping that uses `ranger` to insert a (relative) path to the selected file
 		- make a mapping or mode for finding files not in the repo
@@ -66,7 +62,6 @@
 	- pluginify other stuff
 	- see if I can make [this]( https://github.com/easymotion/vim-easymotion/issues/248#issuecomment-156444426 ) happen
 		- map `.` in target select mode
-	- remove redundant or unused plugins
 
 ## i3
 
