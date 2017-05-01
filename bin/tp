@@ -8,17 +8,21 @@
 # TODO: make a "kill" or "clean" project, which kills tmux sessions
 # TODO: support "filling" current session, instead of making a new session
 
-# Exit if already in a tmux session
-if [ -n "$TMUX" ]; then echo "Already in tmux, nerd."; exit; fi
+name=${1:-$(basename "$PWD" | sed 's;\.;-;g')}
 
-project=${1:-$(basename "$PWD" | sed 's;\.;-;g')}
-path=${2:-$(fasd -d "$project")}
+# Rename session if already in a tmux session
+if [ -n "$TMUX" ]; then
+	tmux rename-session "$name"
+	echo "Already in tmux, nerd."
+	echo "Renaming session to: $name"
+	exit
+fi
+
+path=${2:-$(fasd -d "$name")}
 path=${path:-.}
-
 
 # start in target dir
 if [[ $1 ]]; then cd "$path" || exit; fi
-
 
 # create session
 # TODO: allow per-project window list overrides
@@ -26,9 +30,9 @@ if [[ $1 ]]; then cd "$path" || exit; fi
 tmuxp load -d project
 
 # configure session
-tmux rename-session -t project "$project"
-# tmux set -t $project set-remain-on-exit on
+tmux rename-session -t project "$name"
+# tmux set -t $name set-remain-on-exit on
 
 # attach to session
 # TODO: make optional
-tmux attach-session -t "$project"
+tmux attach-session -t "$name"

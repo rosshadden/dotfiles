@@ -71,26 +71,6 @@ if isTmux; then
 	alias weechat="TERM=tmux-256color weechat"
 fi
 
-##
-# attach to existing session, or create new
-#
-# @param {String} [1] - Session name.
-#   Defaults to name of current directory.
-##
-ta() {
-	tmux new-session -A -s ${1-$(basename $(pwd))}
-}
-
-##
-# create a new session, joining in to an existing one
-#
-# @param {String} 1 - Existing session
-# @param {String} 2 - New session
-##
-tj() {
-	tmux new-session -t $1 -s $1-$2
-}
-
 ################
 # FUN
 ################

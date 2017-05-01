@@ -89,7 +89,34 @@ reload() {
 }
 
 isTmux() {
-	[ "$TMUX" ]
+	[ -n "$TMUX" ]
+}
+
+##
+# Attach to existing session, or create new.
+# If inside a session already, rename it.
+#
+# @param {String} [name] - Session name.
+#   Defaults to name of current directory.
+##
+ta() {
+	local name=${1-$(basename "$(pwd)")}
+	if isTmux; then
+		tmux rename-session "$name"
+		echo "Renaming session to: $name"
+	else
+		tmux new-session -A -s "$name"
+	fi
+}
+
+##
+# create a new session, joining in to an existing one
+#
+# @param {String} - Existing session
+# @param {String} - New session
+##
+tj() {
+	tmux new-session -t "$1" -s "$1-$2"
 }
 
 set-prompt() {
