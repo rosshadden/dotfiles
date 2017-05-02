@@ -290,7 +290,7 @@ bindsym XF86MonBrightnessUp exec "~/bin/config brightness +5; $refreshBrightness
 bindsym XF86MonBrightnessDown exec "~/bin/config brightness -5; $refreshBrightness"
 
 # toggle touchpad
-bindsym XF86AudioMicMute exec "~/bin/config touchpad !"
+bindsym XF86AudioMicMute exec --no-startup-id "~/bin/config touchpad !"
 
 # fix monitors
 bindsym XF86Display exec ~/local/bin/mon
