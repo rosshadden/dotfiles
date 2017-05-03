@@ -104,8 +104,8 @@ mouse_warping none
 
 # gaps
 
-gaps inner 10
-# smart_gaps on
+gaps inner 20
+smart_gaps on
 
 ################
 # BINDS
@@ -916,24 +916,26 @@ client.urgent $base02 $base08 $base07 $base08
 # STATUSBAR
 ################
 
-bar {
-	position top
-	workspace_buttons yes
-	mode dock
-	tray_output primary
+exec_always --no-startup-id $HOME/.config/polybar/run.sh
 
-	status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
-
-	colors {
-		separator $base03
-		background $base01
-		statusline $base05
-		focused_workspace $base0C $base0D $base00
-		active_workspace $base02 $base02 $base07
-		inactive_workspace $base01 $base01 $base03
-		urgent_workspace $base08 $base08 $base07
-	}
-}
+# bar {
+# 	position top
+# 	workspace_buttons yes
+# 	mode dock
+# 	tray_output primary
+#
+# 	status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
+#
+# 	colors {
+# 		separator $base03
+# 		background $base01
+# 		statusline $base05
+# 		focused_workspace $base0C $base0D $base00
+# 		active_workspace $base02 $base02 $base07
+# 		inactive_workspace $base01 $base01 $base03
+# 		urgent_workspace $base08 $base08 $base07
+# 	}
+# }
 
 ################
 # WORKSPACES
