@@ -1,0 +1,61 @@
+mpd_music_dir = ~/Music
+
+visualizer_fifo_path = /tmp/mpd.fifo
+visualizer_output_name = Visualizer feed
+visualizer_in_stereo = yes
+visualizer_type = spectrum
+
+song_list_format = {%a - }{%t}|{$8%f$9}$R{$3(%l)$9}
+song_status_format = {{%a{ "%b"{ (%y)}} - }{%t}}|{%f}
+song_library_format = {%n - }{%t}|{%f}
+
+alternative_header_first_line_format = $b$1$aqqu$/a$3 {%t}|{%f} $1$atqq$/a$9$/b
+
+now_playing_suffix = $/b
+
+song_columns_list_format = (20)[red]{a} (6f)[green]{NE} (50)[blue]{t|f:Title} (20)[yellow]{b} (7f)[magenta]{l}
+
+browser_display_mode = columns
+search_engine_display_mode = columns
+playlist_editor_display_mode = columns
+incremental_seeking = yes
+autocenter_mode = yes
+centered_cursor = yes
+
+progressbar_look = "◾◾◽"
+progressbar_boldness = yes
+
+user_interface = alternative
+
+header_visibility = yes
+statusbar_visibility = yes
+titles_visibility = yes
+header_text_scrolling = yes
+
+startup_screen = playlist
+
+display_volume_level = yes
+display_bitrate = yes
+
+mouse_support = yes
+mouse_list_scroll_whole_page = no
+
+search_engine_default_search_mode = 2
+external_editor = nano
+use_console_editor = yes
+
+colors_enabled = yes
+header_window_color = white
+volume_color = green
+state_line_color = red
+main_window_color = magenta
+color1 = green
+color2 = red
+main_window_highlight_color = green
+progressbar_color = black
+progressbar_elapsed_color = green
+statusbar_color = green
+alternative_ui_separator_color = black
+active_column_color = red
+window_border_color = magenta
+active_window_border = green

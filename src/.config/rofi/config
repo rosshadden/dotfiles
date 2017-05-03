@@ -7,15 +7,15 @@ rofi.opacity:                        80
 ! Window width
 rofi.width:                          -64
 ! Number of lines
-rofi.lines:                          8
+rofi.lines:                          16
 ! Font to use
 rofi.font:                           Fira Code 12
 ! Border width
-rofi.bw:                             0
+rofi.bw:                             4
 ! Location on screen
 rofi.location:                       0
 ! Padding
-rofi.padding:                        200
+rofi.padding:                        50
 ! Always show number of lines
 rofi.fixed-num-lines:                true
 ! Terminal to use
@@ -29,14 +29,19 @@ rofi.regex:                          true
 ! Margin between rows
 rofi.line-margin:                    4
 ! Separator style (none, dash, solid)
-rofi.separator-style:                none
+rofi.separator-style:                solid
 ! Hide scroll-bar
 rofi.hide-scrollbar:                 true
 ! Fullscreen
-rofi.fullscreen:                     true
+rofi.fullscreen:                     false
 ! Threads to use for string matching
 rofi.threads:                        0
 ! Window Format. w (desktop name), t (title), n (name), r (role), c (class)
 rofi.window-format:                  w   c   n   t
 ! Enable the extended coloring options
 rofi.color-enabled:                  true
+
+rofi.color-window: #141021, #c16772, #9568a1
+rofi.color-normal: #141021, #ffeefc, #312842, #c16772, #ffeefc
+rofi.color-active: #141021, #c05c47, #312842, #c05c47, #ffeefc
+rofi.color-urgent: #141021, #e4b226, #312842, #e4b226, #ffeefc
