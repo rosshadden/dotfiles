@@ -916,7 +916,7 @@ client.urgent $base02 $base08 $base07 $base08
 # STATUSBAR
 ################
 
-exec_always --no-startup-id $HOME/.config/polybar/run.sh
+exec_always --no-startup-id $HOME/bin/init-polybar
 
 # bar {
 # 	position top
