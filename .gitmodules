@@ -1,6 +1,3 @@
-[submodule "src/.config/i3/i3-blocks-contrib"]
-	path = src/.config/i3/i3-blocks-contrib
-	url = https://github.com/acleverpun/i3-blocks-contrib.git
 [submodule "lib/shell/zplug"]
 	path = lib/shell/zplug
 	url = https://github.com/zplug/zplug.git

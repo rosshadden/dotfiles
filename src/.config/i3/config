@@ -57,10 +57,6 @@ set $macro5 XF86Launch8
 set $return mode "PREFIX"
 set $exit mode "default"
 
-# refresh blocks
-set $refreshVolume pkill -RTMIN+11 i3blocks
-set $refreshBrightness pkill -RTMIN+12 i3blocks
-
 # default apps
 set $chooseCommand "rofi -show run -sidebar-mode"
 set $chooseWindow "rofi -show window -sidebar-mode"
@@ -276,18 +272,18 @@ bindsym Control+$alt+F10 exec $(xdotool key XF86Switch_VT_10)
 ################
 
 # volume
-bindsym XF86AudioRaiseVolume exec "~/bin/config volume +5; $refreshVolume"
-bindsym XF86AudioLowerVolume exec "~/bin/config volume -5; $refreshVolume"
-bindsym XF86AudioMute exec "~/bin/config volume !; $refreshVolume"
+bindsym XF86AudioRaiseVolume exec "~/bin/config volume +5"
+bindsym XF86AudioLowerVolume exec "~/bin/config volume -5"
+bindsym XF86AudioMute exec "~/bin/config volume !"
 
 # playback
-bindsym XF86AudioPlay exec "mpc toggle; playerctl play-pause; $refreshVolume"
-bindsym XF86AudioNext exec "mpc next; playerctl next; $refreshVolume"
-bindsym XF86AudioPrev exec "mpc prev; playerctl prev; $refreshVolume"
+bindsym XF86AudioPlay exec "mpc toggle; playerctl play-pause"
+bindsym XF86AudioNext exec "mpc next; playerctl next"
+bindsym XF86AudioPrev exec "mpc prev; playerctl prev"
 
 # brightness
-bindsym XF86MonBrightnessUp exec "~/bin/config brightness +5; $refreshBrightness"
-bindsym XF86MonBrightnessDown exec "~/bin/config brightness -5; $refreshBrightness"
+bindsym XF86MonBrightnessUp exec "~/bin/config brightness +5"
+bindsym XF86MonBrightnessDown exec "~/bin/config brightness -5"
 
 # toggle touchpad
 bindsym XF86AudioMicMute exec --no-startup-id "~/bin/config touchpad !"
@@ -586,20 +582,20 @@ mode "SYSTEM" {
 	# brightness
 
 	# small
-	bindsym $alt+k exec "~/bin/config brightness +5; $refreshBrightness"; $exit
-	bindsym $alt+j exec "~/bin/config brightness -5; $refreshBrightness"; $exit
-	bindsym $alt+Shift+k exec "~/bin/config brightness +5; $refreshBrightness"
-	bindsym $alt+Shift+j exec "~/bin/config brightness -5; $refreshBrightness"
+	bindsym $alt+k exec "~/bin/config brightness +5"; $exit
+	bindsym $alt+j exec "~/bin/config brightness -5"; $exit
+	bindsym $alt+Shift+k exec "~/bin/config brightness +5"
+	bindsym $alt+Shift+j exec "~/bin/config brightness -5"
 	# medium
-	bindsym k exec "~/bin/config brightness +20; $refreshBrightness"; $exit
-	bindsym j exec "~/bin/config brightness -20; $refreshBrightness"; $exit
-	bindsym Shift+k exec "~/bin/config brightness +20; $refreshBrightness"
-	bindsym Shift+j exec "~/bin/config brightness -20; $refreshBrightness"
+	bindsym k exec "~/bin/config brightness +20"; $exit
+	bindsym j exec "~/bin/config brightness -20"; $exit
+	bindsym Shift+k exec "~/bin/config brightness +20"
+	bindsym Shift+j exec "~/bin/config brightness -20"
 	# large
-	bindsym Control+k exec "~/bin/config brightness +80; $refreshBrightness"; $exit
-	bindsym Control+j exec "~/bin/config brightness -80; $refreshBrightness"; $exit
-	bindsym Control+Shift+k exec "~/bin/config brightness +80; $refreshBrightness"
-	bindsym Control+Shift+j exec "~/bin/config brightness -80; $refreshBrightness"
+	bindsym Control+k exec "~/bin/config brightness +80"; $exit
+	bindsym Control+j exec "~/bin/config brightness -80"; $exit
+	bindsym Control+Shift+k exec "~/bin/config brightness +80"
+	bindsym Control+Shift+j exec "~/bin/config brightness -80"
 
 	# wifi
 	bindsym w exec ~/bin/config wifi; $exit
@@ -799,21 +795,21 @@ mode "MOUSE" {
 mode "MEDIA" {
 	# volume
 
-	bindsym m exec "~/bin/config volume !; $refreshVolume"; $exit
-	bindsym k exec "~/bin/config volume +5; $refreshVolume"; $exit
-	bindsym j exec "~/bin/config volume -5; $refreshVolume"; $exit
-	bindsym Up exec "~/bin/config volume +10; $refreshVolume"; $exit
-	bindsym Down exec "~/bin/config volume -10; $refreshVolume"; $exit
-	bindsym Control+k exec "~/bin/config volume +20; $refreshVolume"; $exit
-	bindsym Control+j exec "~/bin/config volume -20; $refreshVolume"; $exit
+	bindsym m exec "~/bin/config volume !"; $exit
+	bindsym k exec "~/bin/config volume +5"; $exit
+	bindsym j exec "~/bin/config volume -5"; $exit
+	bindsym Up exec "~/bin/config volume +10"; $exit
+	bindsym Down exec "~/bin/config volume -10"; $exit
+	bindsym Control+k exec "~/bin/config volume +20"; $exit
+	bindsym Control+j exec "~/bin/config volume -20"; $exit
 
-	bindsym Shift+m exec "~/bin/config volume !; $refreshVolume"
-	bindsym Shift+k exec "~/bin/config volume +5; $refreshVolume"
-	bindsym Shift+j exec "~/bin/config volume -5; $refreshVolume"
-	bindsym Shift+Up exec "~/bin/config volume +10; $refreshVolume"
-	bindsym Shift+Down exec "~/bin/config volume -10; $refreshVolume"
-	bindsym Control+Shift+k exec "~/bin/config volume +20; $refreshVolume"
-	bindsym Control+Shift+j exec "~/bin/config volume -20; $refreshVolume"
+	bindsym Shift+m exec "~/bin/config volume !"
+	bindsym Shift+k exec "~/bin/config volume +5"
+	bindsym Shift+j exec "~/bin/config volume -5"
+	bindsym Shift+Up exec "~/bin/config volume +10"
+	bindsym Shift+Down exec "~/bin/config volume -10"
+	bindsym Control+Shift+k exec "~/bin/config volume +20"
+	bindsym Control+Shift+j exec "~/bin/config volume -20"
 
 	# playback
 
@@ -822,14 +818,14 @@ mode "MEDIA" {
 	bindsym Right exec $(xdotool key XF86AudioNext); $exit
 	bindsym h exec $(xdotool key XF86AudioPrev); $exit
 	bindsym Left exec $(xdotool key XF86AudioPrev); $exit
-	bindsym s exec "mpc stop; playerctl stop; $refreshVolume"; $exit
+	bindsym s exec "mpc stop; playerctl stop"; $exit
 
 	bindsym Shift+space exec $(xdotool key XF86AudioPlay)
 	bindsym Shift+l exec $(xdotool key XF86AudioNext)
 	bindsym Shift+Right exec $(xdotool key XF86AudioNext)
 	bindsym Shift+h exec $(xdotool key XF86AudioPrev)
 	bindsym Shift+Left exec $(xdotool key XF86AudioPrev)
-	bindsym Shift+s exec "mpc stop; playerctl stop; $refreshVolume"
+	bindsym Shift+s exec "mpc stop; playerctl stop"
 
 	# screenshots
 
