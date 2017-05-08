@@ -34,7 +34,7 @@ set shortmess=atIO
 set gdefault
 
 " simple mouse support
-if !has('nvim') | set mouse=a | endif
+set mouse=a
 
 " disable word wrap
 set nowrap

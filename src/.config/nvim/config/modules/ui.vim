@@ -5,9 +5,7 @@
 syntax enable
 set background=dark
 
-if has('nvim')
-	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-else
+if !has('nvim')
 	set t_Co=256
 endif
 

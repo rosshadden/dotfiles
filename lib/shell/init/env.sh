@@ -28,6 +28,9 @@ if isCommand nimble; then export PATH=$PATH:~/.nimble/bin; fi
 # rust (if installed)
 if isCommand rustc; then export PATH=$PATH:~/.cargo/bin; fi
 
+# go (if installed)
+if isCommand go; then export PATH=$PATH:~/go/bin; fi
+
 # android (if installed)
 [ -d "$ANDROID_HOME" ] && export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 

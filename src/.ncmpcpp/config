@@ -22,7 +22,7 @@ incremental_seeking = yes
 autocenter_mode = yes
 centered_cursor = yes
 
-progressbar_look = "◾◾◽"
+# progressbar_look = "◾◾◽"
 progressbar_boldness = yes
 
 user_interface = alternative

@@ -5,10 +5,6 @@
 " highlight cursor line
 set cursorline
 
-if has('nvim')
-	let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
-endif
-
 """"""""""""""""
 " PLUGINS
 """"""""""""""""
