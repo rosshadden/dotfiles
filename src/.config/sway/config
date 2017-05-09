@@ -1,0 +1,998 @@
+################
+# VARIABLES
+################
+
+set $super Mod4
+set $alt Mod1
+
+set $numLab 0
+set $numWeb 1
+set $numDev 2
+set $numRemote 3
+set $numHack 4
+set $numFiles 5
+set $numMedia 6
+set $numLit 7
+set $numMonitor 8
+set $numRun 9
+set $numChat 10
+set $numDesign 11
+set $numGames 12
+
+set $nameLab lab
+set $nameWeb web
+set $nameDev dev
+set $nameRemote remote
+set $nameHack hack
+set $nameFiles files
+set $nameMedia media
+set $nameLit lit
+set $nameMonitor monitor
+set $nameRun run
+set $nameChat chat
+set $nameDesign design
+set $nameGames games
+
+set $wsLab  lab
+set $wsWeb  web
+set $wsDev  dev
+set $wsRemote 📡 remote
+set $wsHack  hack
+set $wsFiles  files
+set $wsMedia  media
+set $wsLit  lit
+set $wsMonitor  monitor
+set $wsRun  run
+set $wsChat  chat
+set $wsDesign  design
+set $wsGames  games
+
+set $macro1 XF86Tools
+set $macro2 XF86Launch5
+set $macro3 XF86Launch6
+set $macro4 XF86Launch7
+set $macro5 XF86Launch8
+
+# return to the default mode
+set $return mode "PREFIX"
+set $exit mode "default"
+
+# default apps
+set $chooseCommand "rofi -show run -sidebar-mode"
+set $chooseWindow "rofi -show window -sidebar-mode"
+set $chooseApp "rofi -show drun -p 'launch: '"
+set $chooseAll "rofi -combi-modi drun,run -show combi -p 'all: '"
+set $terminal i3-sensible-terminal
+set $run i3-sensible-terminal -e
+set $tmuxAttach i3-sensible-terminal -e "tmux new-session -A -s
+set $locker ~/bin/locker -r
+set $locker1 xautolock -locknow
+set $locker2 escrotum /tmp/lockscreen.png && ~/bin/locker -i /tmp/lockscreen.png
+set $locker3 ~/bin/locker -b
+
+# UI
+set $borderWidth 2
+set $borderFloatingWidth 4
+
+# paths
+set $wallpaperPath ~/Dropbox/media/images/wallpaper
+
+################
+# OPTIONS
+################
+
+font pango:Fira Code, Icons 14
+
+workspace_layout stacking
+workspace_auto_back_and_forth no
+
+# Use Mouse+$super to drag floating windows to their wanted position
+floating_modifier $super
+
+# Don't follow mouse focus
+focus_follows_mouse no
+
+# window borders
+new_window pixel $borderWidth
+new_float pixel $borderFloatingWidth
+
+mouse_warping none
+
+# gaps
+
+gaps inner 20
+smart_gaps on
+
+################
+# BINDS
+################
+
+# close focused window
+bindsym $super+c kill
+bindsym $super+Shift+c --release exec --no-startup-id /usr/bin/xkill
+
+# change focus between tiling / floating windows
+bindsym $super+backslash mark LAST; focus mode_toggle
+
+# open terminal
+bindsym $super+t mark LAST; exec $terminal
+bindsym $super+Shift+t mark LAST; exec $run tmux
+
+# open runner
+bindsym $super+r mark LAST; exec $chooseCommand
+# open launcher
+bindsym $super+o mark LAST; exec $chooseApp
+# open runner/launcher
+bindsym $super+a mark LAST; exec $chooseAll
+# open window finder
+bindsym $super+w mark LAST; exec $chooseWindow
+
+# fix keys
+# TODO: this does not work
+bindsym $macro1 exec "~/bin/keys init"
+
+# fix monitors
+bindsym $macro2 exec "~/local/lib/mon.sh"
+
+# goto latest
+bindsym $macro4 mark LAST; [urgent=latest] focus
+
+# lock screen
+bindsym $macro5 exec $locker
+bindsym Shift+$macro5 exec $locker2
+bindsym Control+$macro5 exec $locker3
+
+# change focus
+bindsym $super+j mark LAST; focus down
+bindsym $super+k mark LAST; focus up
+bindsym $super+h mark LAST; focus left
+bindsym $super+l mark LAST; focus right
+
+# move focused window/container
+bindsym $super+Shift+j move down
+bindsym $super+Shift+k move up
+bindsym $super+Shift+h move left
+bindsym $super+Shift+l move right
+
+# focus adjacent outputs
+bindsym $super+Control+j mark LAST; focus output down
+bindsym $super+Control+k mark LAST; focus output up
+bindsym $super+Control+h mark LAST; focus output left
+bindsym $super+Control+l mark LAST; focus output right
+
+# move workspace to adjacent outputs
+bindsym $super+Control+Shift+j move workspace to output down
+bindsym $super+Control+Shift+k move workspace to output up
+bindsym $super+Control+Shift+h move workspace to output left
+bindsym $super+Control+Shift+l move workspace to output right
+
+# focus next/previous workspace on current output
+bindsym $super+n mark LAST; workspace next_on_output
+bindsym $super+p mark LAST; workspace prev_on_output
+
+# move container to next/previous workspace
+bindsym $super+Shift+n move to workspace next_on_output; workspace next_on_output
+bindsym $super+Shift+p move to workspace prev_on_output; workspace prev_on_output
+
+# focus next/previous workspace
+bindsym $super+f mark LAST; workspace next
+bindsym $super+b mark LAST; workspace prev
+
+# move window to next/previous workspace
+bindsym $super+Shift+f move to workspace next; workspace next
+bindsym $super+Shift+b move to workspace prev; workspace prev
+
+# previous container
+bindsym $super+Tab mark TEMP; [con_mark="LAST"] focus; [con_mark="TEMP"] mark LAST
+
+# back to last workspace
+bindsym $super+Escape mark LAST; workspace back_and_forth
+bindsym $super+Shift+Escape move to workspace back_and_forth; workspace back_and_forth
+
+# switch to workspace
+bindsym $super+grave        mark LAST; workspace $numLab $wsLab
+bindsym $super+1            mark LAST; workspace $numWeb $wsWeb
+bindsym $super+2            mark LAST; workspace $numDev $wsDev
+bindsym $super+3            mark LAST; workspace $numRemote $wsRemote
+bindsym $super+4            mark LAST; workspace $numHack $wsHack
+bindsym $super+5            mark LAST; workspace $numFiles $wsFiles
+bindsym $super+6            mark LAST; workspace $numMedia $wsMedia
+bindsym $super+7            mark LAST; workspace $numLit $wsLit
+bindsym $super+8            mark LAST; workspace $numMonitor $wsMonitor
+bindsym $super+9            mark LAST; workspace $numRun $wsRun
+bindsym $super+0            mark LAST; workspace $numChat $wsChat
+bindsym $super+bracketleft  mark LAST; workspace $numDesign $wsDesign
+bindsym $super+bracketright mark LAST; workspace $numGames $wsGames
+
+# move focused container to workspace
+bindsym $super+Shift+grave        move container to workspace $numLab $wsLab;       workspace $numLab $wsLab
+bindsym $super+Shift+1            move container to workspace $numWeb $wsWeb;         workspace $numWeb $wsWeb
+bindsym $super+Shift+2            move container to workspace $numDev $wsDev;         workspace $numDev $wsDev
+bindsym $super+Shift+3            move container to workspace $numRemote $wsRemote;       workspace $numRemote $wsRemote
+bindsym $super+Shift+4            move container to workspace $numHack $wsHack;       workspace $numHack $wsHack
+bindsym $super+Shift+5            move container to workspace $numFiles $wsFiles;     workspace $numFiles $wsFiles
+bindsym $super+Shift+6            move container to workspace $numMedia $wsMedia;     workspace $numMedia $wsMedia
+bindsym $super+Shift+7            move container to workspace $numLit $wsLit;         workspace $numLit $wsLit
+bindsym $super+Shift+8            move container to workspace $numMonitor $wsMonitor; workspace $numMonitor $wsMonitor
+bindsym $super+Shift+9            move container to workspace $numRun $wsRun;         workspace $numRun $wsRun
+bindsym $super+Shift+0            move container to workspace $numChat $wsChat;       workspace $numChat $wsChat
+bindsym $super+Shift+bracketleft  move container to workspace $numDesign $wsDesign;         workspace $numDesign $wsDesign
+bindsym $super+Shift+bracketright move container to workspace $numGames $wsGames;     workspace $numGames $wsGames
+
+# focus the parent/child container
+bindsym $super+z mark LAST; focus parent
+bindsym $super+Shift+z mark LAST; focus child
+
+# show scratchpad
+bindsym $super+s mark LAST; scratchpad show
+# move the currently focused window to the scratchpad
+bindsym $super+Shift+s move scratchpad
+
+# modes
+bindsym $super+space $return
+bindsym $super+m mode "MARK"
+bindsym $super+apostrophe mode "GOTO"
+# TODO: [y] yank
+# TODO: [p] paste
+# TODO: [q], [@] macros
+# TODO: [f] focus (or maybe [/])
+
+################
+# MOUSE
+################
+
+# # bindsym button1 exec "notify-send 1 left"
+# # bindsym button2 kill
+# bindsym button3 mark LAST
+# # bindsym button4 exec "notify-send up"
+# # bindsym button5 exec "notify-send down"
+# bindsym button6 move left
+# bindsym button7 move right
+# bindsym button8 exec "notify-send back"
+# bindsym button9 exec "notify-send forward"
+
+################
+# SYSTEM
+################
+
+# allow switching VTs
+bindsym Control+$alt+F1 exec $(xdotool key XF86Switch_VT_1)
+bindsym Control+$alt+F2 exec $(xdotool key XF86Switch_VT_2)
+bindsym Control+$alt+F3 exec $(xdotool key XF86Switch_VT_3)
+bindsym Control+$alt+F4 exec $(xdotool key XF86Switch_VT_4)
+bindsym Control+$alt+F5 exec $(xdotool key XF86Switch_VT_5)
+bindsym Control+$alt+F6 exec $(xdotool key XF86Switch_VT_6)
+bindsym Control+$alt+F7 exec $(xdotool key XF86Switch_VT_7)
+bindsym Control+$alt+F8 exec $(xdotool key XF86Switch_VT_8)
+bindsym Control+$alt+F9 exec $(xdotool key XF86Switch_VT_9)
+bindsym Control+$alt+F10 exec $(xdotool key XF86Switch_VT_10)
+
+################
+# MEDIA
+################
+
+# volume
+bindsym XF86AudioRaiseVolume exec "~/bin/config volume +5"
+bindsym XF86AudioLowerVolume exec "~/bin/config volume -5"
+bindsym XF86AudioMute exec "~/bin/config volume !"
+
+# playback
+bindsym XF86AudioPlay exec "mpc toggle; playerctl play-pause"
+bindsym XF86AudioNext exec "mpc next; playerctl next"
+bindsym XF86AudioPrev exec "mpc prev; playerctl prev"
+
+# brightness
+bindsym XF86MonBrightnessUp exec "~/bin/config brightness +5"
+bindsym XF86MonBrightnessDown exec "~/bin/config brightness -5"
+
+# toggle touchpad
+bindsym XF86AudioMicMute exec --no-startup-id "~/bin/config touchpad !"
+
+# fix monitors
+bindsym XF86Display exec ~/local/bin/mon
+
+# fix keys
+# NOTE: this points to the same thing as $macro1
+# bindsym XF86Tools exec ~/bin/keys init
+
+bindsym XF86Search exec --no-startup-id google-chrome-unstable
+
+# app launcher
+bindsym XF86LaunchA exec --no-startup-id $chooseApp
+
+# file explorer
+bindsym XF86Explorer exec ranger
+
+# touchscreen
+bindsym XF86TouchpadToggle exec "~/bin/config touchpad !"
+
+# web browser
+bindsym XF86HomePage exec --no-startup-id google-chrome-unstable
+
+# screenshots
+bindsym Print exec "~/bin/screenshot"
+bindsym $alt+Print exec "~/bin/screenshot window"
+bindsym Control+Shift+Print exec "~/bin/screenshot select"
+
+################
+# MODES
+################
+
+mode "PREFIX" {
+	bindsym apostrophe mode "GOTO"
+	bindsym a mode "APPS"
+	bindsym b mode "BUFFER"
+	bindsym g mode "GAPS"
+	bindsym i mode "I3"
+	bindsym l mode "LAYOUT"
+	bindsym m mode "MEDIA"
+	bindsym Shift+m mode "MOUSE"
+	bindsym p mode "PROJECTS"
+	bindsym r mode "RESIZE"
+	bindsym Shift+r mode "MOVE"
+	bindsym s mode "SYSTEM"
+	bindsym t mode "TMUX"
+
+	bindsym Shift+p mode "PIDGIN"
+
+	bindsym $super+space $exit
+	bindsym Escape $exit
+}
+
+mode "BUFFER" {
+	bindsym c kill; $exit
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "MARK" {
+	# by name
+
+	bindsym space exec i3-input -F 'mark %s' -P 'Mark name: '; $exit
+
+	# by number
+
+	bindsym grave        mark 0;  $exit
+	bindsym 1            mark 1;  $exit
+	bindsym 2            mark 2;  $exit
+	bindsym 3            mark 3;  $exit
+	bindsym 4            mark 4;  $exit
+	bindsym 5            mark 5;  $exit
+	bindsym 6            mark 6;  $exit
+	bindsym 7            mark 7;  $exit
+	bindsym 8            mark 8;  $exit
+	bindsym 9            mark 9;  $exit
+	bindsym 0            mark 10; $exit
+	bindsym bracketleft  mark 11; $exit
+	bindsym bracketright mark 12; $exit
+
+	bindsym Shift+grave        unmark 0;  $exit
+	bindsym Shift+1            unmark 1;  $exit
+	bindsym Shift+2            unmark 2;  $exit
+	bindsym Shift+3            unmark 3;  $exit
+	bindsym Shift+4            unmark 4;  $exit
+	bindsym Shift+5            unmark 5;  $exit
+	bindsym Shift+6            unmark 6;  $exit
+	bindsym Shift+7            unmark 7;  $exit
+	bindsym Shift+8            unmark 8;  $exit
+	bindsym Shift+9            unmark 9;  $exit
+	bindsym Shift+0            unmark 10; $exit
+	bindsym Shift+bracketleft  unmark 11; $exit
+	bindsym Shift+bracketright unmark 12; $exit
+
+	# by letter
+
+	bindsym a mark A; $exit
+	bindsym b mark B; $exit
+	# bindsym c mark C; $exit
+	bindsym d mark D; $exit
+	# bindsym e mark E; $exit
+	# bindsym f mark F; $exit
+	bindsym g mark G; $exit
+	bindsym h mark H; $exit
+	bindsym i mark I; $exit
+	bindsym j mark J; $exit
+	bindsym k mark K; $exit
+	bindsym l mark L; $exit
+	# bindsym m mark M; $exit
+	bindsym n mark N; $exit
+	bindsym o mark O; $exit
+	bindsym p mark P; $exit
+	bindsym q mark Q; $exit
+	bindsym r mark R; $exit
+	bindsym s mark S; $exit
+	bindsym t mark T; $exit
+	bindsym u mark U; $exit
+	# bindsym v mark V; $exit
+	# bindsym w mark W; $exit
+	bindsym x mark X; $exit
+	bindsym y mark Y; $exit
+	bindsym z mark Z; $exit
+
+	bindsym Shift+a unmark A; $exit
+	bindsym Shift+b unmark B; $exit
+	# bindsym Shift+c unmark C; $exit
+	bindsym Shift+d unmark D; $exit
+	# bindsym Shift+e unmark E; $exit
+	# bindsym Shift+f unmark F; $exit
+	bindsym Shift+g unmark G; $exit
+	bindsym Shift+h unmark H; $exit
+	bindsym Shift+i unmark I; $exit
+	bindsym Shift+j unmark J; $exit
+	bindsym Shift+k unmark K; $exit
+	bindsym Shift+l unmark L; $exit
+	# bindsym Shift+m unmark M; $exit
+	bindsym Shift+n unmark N; $exit
+	bindsym Shift+o unmark O; $exit
+	bindsym Shift+p unmark P; $exit
+	bindsym Shift+q unmark Q; $exit
+	bindsym Shift+r unmark R; $exit
+	bindsym Shift+s unmark S; $exit
+	bindsym Shift+t unmark T; $exit
+	bindsym Shift+u unmark U; $exit
+	# bindsym Shift+v unmark V; $exit
+	# bindsym Shift+w unmark W; $exit
+	bindsym Shift+x unmark X; $exit
+	bindsym Shift+y unmark Y; $exit
+	bindsym Shift+z unmark Z; $exit
+
+	# reserved
+
+	bindsym c exec notify-send "Reserved: chat";   $exit
+	bindsym e exec notify-send "Reserved: editor"; $exit
+	bindsym f exec notify-send "Reserved: files";  $exit
+	bindsym m exec notify-send "Reserved: music";  $exit
+	bindsym v exec notify-send "Reserved: video";  $exit
+	bindsym w exec notify-send "Reserved: web";    $exit
+
+	# exit
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "GOTO" {
+	# by symbol
+
+	bindsym space mark LAST;             [urgent=latest] focus; $exit
+	bindsym apostrophe mark LAST;        [urgent=latest] focus; $exit
+	bindsym $super+apostrophe mark LAST; [urgent=latest] focus; $exit
+
+	# by name
+
+	bindsym Return exec i3-input -F 'mark LAST; [con_mark=%s] focus' -P 'Go to mark: '; $exit
+
+	# by number
+
+	bindsym grave        mark LAST; [con_mark="0"] focus;  $exit
+	bindsym 1            mark LAST; [con_mark="1"] focus;  $exit
+	bindsym 2            mark LAST; [con_mark="2"] focus;  $exit
+	bindsym 3            mark LAST; [con_mark="3"] focus;  $exit
+	bindsym 4            mark LAST; [con_mark="4"] focus;  $exit
+	bindsym 5            mark LAST; [con_mark="5"] focus;  $exit
+	bindsym 6            mark LAST; [con_mark="6"] focus;  $exit
+	bindsym 7            mark LAST; [con_mark="7"] focus;  $exit
+	bindsym 8            mark LAST; [con_mark="8"] focus;  $exit
+	bindsym 9            mark LAST; [con_mark="9"] focus;  $exit
+	bindsym 0            mark LAST; [con_mark="10"] focus; $exit
+	bindsym bracketleft  mark LAST; [con_mark="11"] focus; $exit
+	bindsym bracketright mark LAST; [con_mark="12"] focus; $exit
+
+	# by letter
+
+	bindsym a mark LAST; [con_mark="A"] focus; $exit
+	bindsym b mark LAST; [con_mark="B"] focus; $exit
+	# bindsym c mark LAST; [con_mark="C"] focus; $exit
+	bindsym d mark LAST; [con_mark="D"] focus; $exit
+	# bindsym e mark LAST; [con_mark="E"] focus; $exit
+	# bindsym f mark LAST; [con_mark="F"] focus; $exit
+	bindsym g mark LAST; [con_mark="G"] focus; $exit
+	bindsym h mark LAST; [con_mark="H"] focus; $exit
+	bindsym i mark LAST; [con_mark="I"] focus; $exit
+	bindsym j mark LAST; [con_mark="J"] focus; $exit
+	bindsym k mark LAST; [con_mark="K"] focus; $exit
+	bindsym l mark LAST; [con_mark="L"] focus; $exit
+	# bindsym m mark LAST; [con_mark="M"] focus; $exit
+	bindsym n mark LAST; [con_mark="N"] focus; $exit
+	bindsym o mark LAST; [con_mark="O"] focus; $exit
+	bindsym p mark LAST; [con_mark="P"] focus; $exit
+	bindsym q mark LAST; [con_mark="Q"] focus; $exit
+	bindsym r mark LAST; [con_mark="R"] focus; $exit
+	bindsym s mark LAST; [con_mark="S"] focus; $exit
+	bindsym t mark LAST; [con_mark="T"] focus; $exit
+	bindsym u mark LAST; [con_mark="U"] focus; $exit
+	# bindsym v mark LAST; [con_mark="V"] focus; $exit
+	# bindsym w mark LAST; [con_mark="W"] focus; $exit
+	bindsym x mark LAST; [con_mark="X"] focus; $exit
+	bindsym y mark LAST; [con_mark="Y"] focus; $exit
+	bindsym z mark LAST; [con_mark="Z"] focus; $exit
+
+	# by app
+
+	# chat
+	bindsym c mark LAST; [title="(Buddy List|finch)"] focus; $exit
+	# editor
+	bindsym e mark LAST; [class="URxvt" title="VIM"] focus; $exit
+	# files
+	bindsym f mark LAST; [class="URxvt" title="ranger"] focus; $exit
+	# music
+	bindsym m mark LAST; [title="(?i)music"] focus; $exit
+	# video
+	bindsym v mark LAST; [class="vlc"] focus; $exit
+	# web
+	bindsym w mark LAST; [class="Google-chrome"] focus; $exit
+
+	# exit
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "I3" {
+	# reload the configuration file
+	bindsym space reload; $exit
+	# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+	bindsym r restart; $exit
+	# exit i3 (logs you out of your X session)
+	bindsym q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"; $exit
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "TMUX" {
+	# by name
+
+	bindsym space exec i3-input -P 'Session name: ' -F 'exec $tmuxAttach %s"'; $exit
+
+	# presets
+
+	# TODO: make these dynamic from the workspace name
+	bindsym grave        mark LAST; workspace $numLab $wsLab;         exec $tmuxAttach $nameLab -c /tmp/aoeu"; $exit
+	bindsym 1            mark LAST; workspace $numWeb $wsWeb;         exec $tmuxAttach $nameWeb"; $exit
+	bindsym 2            mark LAST; workspace $numDev $wsDev;         exec $tmuxAttach $nameDev -c /home/ross/dev"; $exit
+	bindsym 3            mark LAST; workspace $numRemote $wsRemote;   exec $tmuxAttach $nameRemote"; $exit
+	bindsym 4            mark LAST; workspace $numHack $wsHack;       exec $tmuxAttach $nameHack -c /home/ross/dotfiles"; $exit
+	bindsym 5            mark LAST; workspace $numFiles $wsFiles;     exec $tmuxAttach $nameFiles 'ranger'"; $exit
+	bindsym 6            mark LAST; workspace $numMedia $wsMedia;     exec $tmuxAttach $nameMedia 'ncmpcpp'"; $exit
+	bindsym 7            mark LAST; workspace $numLit $wsLit;         exec $tmuxAttach $nameLit"; $exit
+	bindsym 8            mark LAST; workspace $numMonitor $wsMonitor; exec $tmuxAttach $nameMonitor"; $exit
+	bindsym 9            mark LAST; workspace $numRun $wsRun;         exec $tmuxAttach $nameRun"; $exit
+	bindsym 0            mark LAST; workspace $numChat $wsChat;       exec $tmuxAttach $nameChat 'TERM=tmux-256color weechat'"; $exit
+	bindsym bracketleft  mark LAST; workspace $numDesign $wsDesign;   exec $tmuxAttach $nameDesign"; $exit
+	bindsym bracketright mark LAST; workspace $numGames $wsGames;     exec $tmuxAttach $nameGames"; $exit
+
+	# TODO: open preset for the current workspace
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "SYSTEM" {
+	# power
+	bindsym Shift+r exec "reboot";              $exit
+	bindsym Shift+p exec "poweroff";            $exit
+	bindsym Shift+s exec "systemctl suspend";   $exit
+	bindsym Shift+h exec "systemctl hybernate"; $exit
+
+	# lock screen
+	bindsym l exec $locker; $exit
+	bindsym Shift+l exec $locker2; $exit
+	bindsym Control+l exec $locker2; $exit
+
+	# brightness
+
+	# small
+	bindsym $alt+k exec "~/bin/config brightness +5"; $exit
+	bindsym $alt+j exec "~/bin/config brightness -5"; $exit
+	bindsym $alt+Shift+k exec "~/bin/config brightness +5"
+	bindsym $alt+Shift+j exec "~/bin/config brightness -5"
+	# medium
+	bindsym k exec "~/bin/config brightness +20"; $exit
+	bindsym j exec "~/bin/config brightness -20"; $exit
+	bindsym Shift+k exec "~/bin/config brightness +20"
+	bindsym Shift+j exec "~/bin/config brightness -20"
+	# large
+	bindsym Control+k exec "~/bin/config brightness +80"; $exit
+	bindsym Control+j exec "~/bin/config brightness -80"; $exit
+	bindsym Control+Shift+k exec "~/bin/config brightness +80"
+	bindsym Control+Shift+j exec "~/bin/config brightness -80"
+
+	# wifi
+	bindsym w exec ~/bin/config wifi; $exit
+	# bluetooth
+	bindsym b exec ~/bin/config bluetooth; $exit
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "RESIZE" {
+	# small
+	bindsym $alt+h resize shrink width 1 px or 1 ppt
+	bindsym $alt+j resize grow height 1 px or 1 ppt
+	bindsym $alt+k resize shrink height 1 px or 1 ppt
+	bindsym $alt+l resize grow width 1 px or 1 ppt
+	# medium
+	bindsym h resize shrink width 4 px or 4 ppt
+	bindsym j resize grow height 4 px or 4 ppt
+	bindsym k resize shrink height 4 px or 4 ppt
+	bindsym l resize grow width 4 px or 4 ppt
+	# large
+	bindsym Shift+h resize shrink width 16 px or 16 ppt
+	bindsym Shift+j resize grow height 16 px or 16 ppt
+	bindsym Shift+k resize shrink height 16 px or 16 ppt
+	bindsym Shift+l resize grow width 16 px or 16 ppt
+	# bigger
+	bindsym Control+h resize shrink width 32 px or 32 ppt
+	bindsym Control+j resize grow height 32 px or 32 ppt
+	bindsym Control+k resize shrink height 32 px or 32 ppt
+	bindsym Control+l resize grow width 32 px or 32 ppt
+	# extreme
+	bindsym Control+Shift+h resize shrink width 64 px or 64 ppt
+	bindsym Control+Shift+j resize grow height 64 px or 64 ppt
+	bindsym Control+Shift+k resize shrink height 64 px or 64 ppt
+	bindsym Control+Shift+l resize grow width 64 px or 64 ppt
+
+	bindsym space move right; resize shrink width 36 px or 36 ppt
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "MOVE" {
+	# small
+	bindsym $alt+h move left 1 px
+	bindsym $alt+j move down 1 px
+	bindsym $alt+k move up 1 px
+	bindsym $alt+l move right 1 px
+	# medium
+	bindsym h move left 4 px
+	bindsym j move down 4 px
+	bindsym k move up 4 px
+	bindsym l move right 4 px
+	# large
+	bindsym Shift+h move left 16 px
+	bindsym Shift+j move down 16 px
+	bindsym Shift+k move up 16 px
+	bindsym Shift+l move right 16 px
+	# bigger
+	bindsym Control+h move left 32 px
+	bindsym Control+j move down 32 px
+	bindsym Control+k move up 32 px
+	bindsym Control+l move right 32 px
+	# extreme
+	bindsym Control+Shift+h move left 64 px
+	bindsym Control+Shift+j move down 64 px
+	bindsym Control+Shift+k move up 64 px
+	bindsym Control+Shift+l move right 64 px
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "LAYOUT" {
+	bindsym grave layout default; $exit
+	bindsym 1 layout tabbed; $exit
+	bindsym 2 layout stacking; $exit
+	bindsym 3 layout splith; $exit
+	bindsym 4 layout splitv; $exit
+
+	# split down
+	bindsym j split vertical; $exit
+	# split up (but really down)
+	bindsym k split vertical; $exit
+	# split left (but really right)
+	bindsym h split horizontal; $exit
+	# split right
+	bindsym l split horizontal; $exit
+
+	# toggle [stacking, tabbed, splith, splitv]
+	bindsym a layout toggle all; $exit
+	# toggle [splith, splitv]
+	bindsym s layout toggle split; $exit
+	# toggle [stacking, tabbed, split]
+	bindsym t layout toggle; $exit
+	# toggle fullscreen
+	bindsym f fullscreen; $exit
+	bindsym Control+f fullscreen toggle; $exit
+	bindsym Shift+f fullscreen global; $exit
+	# toggle [floating, tiled]
+	bindsym space floating toggle; $exit
+
+	# borders
+	bindsym b mode "BORDER"
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "BORDER" {
+	# cycle through border styles
+	bindsym space border toggle; $exit
+
+	bindsym 0 border none; $exit
+	bindsym 1 border 1pixel; $exit
+	bindsym 2 border normal; $exit
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "GAPS" {
+	bindsym o mode "GAPS-OUTER"
+	bindsym i mode "GAPS-INNER"
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "GAPS-OUTER" {
+	bindsym plus  gaps outer current plus 5
+	bindsym minus gaps outer current minus 5
+	bindsym 0     gaps outer current set 0
+
+	bindsym Shift+plus  gaps outer all plus 5
+	bindsym Shift+minus gaps outer all minus 5
+	bindsym Shift+0     gaps outer all set 0
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "GAPS-INNER" {
+	bindsym plus  gaps inner current plus 5
+	bindsym minus gaps inner current minus 5
+	bindsym 0     gaps inner current set 0
+
+	bindsym Shift+plus  gaps inner all plus 5
+	bindsym Shift+minus gaps inner all minus 5
+	bindsym Shift+0     gaps inner all set 0
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "MOUSE" {
+	# buttons
+
+	# left
+	bindsym space exec $(xdotool click 1)
+	# middle
+	bindsym $alt+space exec $(xdotool click 2)
+	# right
+	bindsym Shift+space exec $(xdotool click 3)
+	# wheel up
+	bindsym b exec $(xdotool click 4)
+	# wheel down
+	bindsym f exec $(xdotool click 5)
+
+	# movement
+
+	# slow
+	bindsym $alt+h exec $(xdotool mousemove_relative -- -4  0)
+	bindsym $alt+l exec $(xdotool mousemove_relative --  4  0)
+	bindsym $alt+j exec $(xdotool mousemove_relative --  0  4)
+	bindsym $alt+k exec $(xdotool mousemove_relative --  0 -4)
+	# normal
+	bindsym h exec $(xdotool mousemove_relative -- -16   0)
+	bindsym l exec $(xdotool mousemove_relative --  16   0)
+	bindsym j exec $(xdotool mousemove_relative --   0  16)
+	bindsym k exec $(xdotool mousemove_relative --   0 -16)
+	# fast
+	bindsym Shift+h exec $(xdotool mousemove_relative -- -128    0)
+	bindsym Shift+l exec $(xdotool mousemove_relative --  128    0)
+	bindsym Shift+j exec $(xdotool mousemove_relative --    0  128)
+	bindsym Shift+k exec $(xdotool mousemove_relative --    0 -128)
+	# turbo
+	bindsym Control+h exec $(xdotool mousemove_relative -- -512    0)
+	bindsym Control+l exec $(xdotool mousemove_relative --  512    0)
+	bindsym Control+j exec $(xdotool mousemove_relative --    0  512)
+	bindsym Control+k exec $(xdotool mousemove_relative --    0 -512)
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "MEDIA" {
+	# volume
+
+	bindsym m exec "~/bin/config volume !"; $exit
+	bindsym k exec "~/bin/config volume +5"; $exit
+	bindsym j exec "~/bin/config volume -5"; $exit
+	bindsym Up exec "~/bin/config volume +10"; $exit
+	bindsym Down exec "~/bin/config volume -10"; $exit
+	bindsym Control+k exec "~/bin/config volume +20"; $exit
+	bindsym Control+j exec "~/bin/config volume -20"; $exit
+
+	bindsym Shift+m exec "~/bin/config volume !"
+	bindsym Shift+k exec "~/bin/config volume +5"
+	bindsym Shift+j exec "~/bin/config volume -5"
+	bindsym Shift+Up exec "~/bin/config volume +10"
+	bindsym Shift+Down exec "~/bin/config volume -10"
+	bindsym Control+Shift+k exec "~/bin/config volume +20"
+	bindsym Control+Shift+j exec "~/bin/config volume -20"
+
+	# playback
+
+	bindsym space exec $(xdotool key XF86AudioPlay); $exit
+	bindsym l exec $(xdotool key XF86AudioNext); $exit
+	bindsym Right exec $(xdotool key XF86AudioNext); $exit
+	bindsym h exec $(xdotool key XF86AudioPrev); $exit
+	bindsym Left exec $(xdotool key XF86AudioPrev); $exit
+	bindsym s exec "mpc stop; playerctl stop"; $exit
+
+	bindsym Shift+space exec $(xdotool key XF86AudioPlay)
+	bindsym Shift+l exec $(xdotool key XF86AudioNext)
+	bindsym Shift+Right exec $(xdotool key XF86AudioNext)
+	bindsym Shift+h exec $(xdotool key XF86AudioPrev)
+	bindsym Shift+Left exec $(xdotool key XF86AudioPrev)
+	bindsym Shift+s exec "mpc stop; playerctl stop"
+
+	# screenshots
+
+	bindsym y exec "~/bin/screenshot"; $exit
+	bindsym $alt+y exec "~/bin/screenshot window"; $exit
+	bindsym Shift+y exec "~/bin/screenshot select"; $exit
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "PROJECTS" {
+	bindsym space exec i3-input -P 'Open project: ' -F 'exec ~/bin/tp %s'; $exit
+	bindsym Shift+space exec i3-input -P 'Open project: ' -F 'exec ~/bin/tp %s'; $exit
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "APPS" {
+	# music -- Google Music
+	bindsym m mark LAST; exec $(gtk-launch nuvolaplayer3-google-play-music); $exit
+
+	# todo app -- Todoist
+	bindsym t mark LAST; exec $(gtk-launch chrome-bgjohebimpjdhhocbknplfelpmdhifhd-Default); $exit
+
+	# news feed -- Reddit
+	bindsym r mark LAST; exec $tmuxAttach reddit 'rtv'"; $exit
+
+	# clipboard manager -- copyq
+	# TODO: move to scratchpad
+	bindsym y mark LAST; exec copyq toggle; $exit
+
+	# calculator -- Qalc
+	# TODO: move to scratchpad
+	bindsym c mark LAST; exec qalculate-gtk; $exit
+
+	# documentation -- zeal
+	bindsym --release d mark LAST; exec $(xdotool key --clearmodifiers "alt+super+shift+Z"); $exit
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "PIDGIN" {
+	bindsym space mark LAST; exec $(~/bin/purple | rofi -dmenu -p "IM:" -i | xargs -I $ ~/bin/purple '$'); $exit
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+################
+# THEME
+################
+
+# ~/.i3/config
+# i3 config template
+# Base16 Materia by Defman21
+# template by Matt Parnell, @parnmatt
+
+set $base00 #263238
+set $base01 #2C393F
+set $base02 #37474F
+set $base03 #707880
+set $base04 #C9CCD3
+set $base05 #CDD3DE
+set $base06 #D5DBE5
+set $base07 #FFFFFF
+set $base08 #EC5F67
+set $base09 #EA9560
+set $base0A #FFCC00
+set $base0B #8BD649
+set $base0C #80CBC4
+set $base0D #89DDFF
+set $base0E #82AAFF
+set $base0F #EC5F67
+
+client.focused $base0D $base0D $base00 $base01
+client.focused_inactive $base02 $base02 $base03 $base01
+client.unfocused $base01 $base01 $base03 $base01
+client.urgent $base02 $base08 $base07 $base08
+
+################
+# STATUSBAR
+################
+
+# exec_always --no-startup-id $HOME/bin/init-polybar
+
+bar {
+	status_command i3status
+}
+
+# bar {
+# 	position top
+# 	workspace_buttons yes
+# 	mode dock
+# 	tray_output primary
+#
+# 	status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
+#
+# 	colors {
+# 		separator $base03
+# 		background $base01
+# 		statusline $base05
+# 		focused_workspace $base0C $base0D $base00
+# 		active_workspace $base02 $base02 $base07
+# 		inactive_workspace $base01 $base01 $base03
+# 		urgent_workspace $base08 $base08 $base07
+# 	}
+# }
+
+################
+# WORKSPACES
+################
+
+output "*" background "/home/ross/Dropbox/media/images/wallpaper/doctor-who/numix - blue tardis.png" fill
+
+# TODO: handle the fact that different computers have different xrandr setups...
+
+################
+# APPS
+################
+
+# dialogs
+# for_window [window_role="pop-up"] floating enable, move absolute center
+for_window [title="Qalculate!"] floating enable
+for_window [class="^Gpick|Pavucontrol$"] floating enable
+for_window [class="^copyq$"] border pixel 0, floating enable
+
+# web
+# assign [class="^google-chrome" window_role="browser"] → $numWeb $wsWeb
+for_window [title="^Developer Tools"] floating disable
+
+# media
+assign [class="(nuvolaplayer|Spotify|Vlc)"] → $numMedia $wsMedia
+assign [title="Popcorn Time"] → $numMedia $wsMedia
+# assign [title="Google Play Music" window_role="pop-up"] → $numMedia $wsMedia
+for_window [class="Vlc"] border none
+# for_window [title="Google Play Music" window_role="pop-up"] floating disable, move to workspace $numMedia $wsMedia
+
+# lit
+# assign [title="(Google Keep|todoist)" window_role="app"] → $numLit $wsLit
+
+# games
+for_window [title="Dota 2"] border none
+for_window [class="Dolphin-emu" title="^Dolphin$"] floating toggle
+
+# chat
+# assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $numChat $wsChat
+assign [class="^Slack$"] → $numChat $wsChat
+assign [title="^finch$"] → $numChat $wsChat
+
+# monitor
+assign [class="MongoChef"] → $numMonitor $wsMonitor
+
+################
+# STARTUP
+################
+
+# layouts
+exec --no-startup-id "i3-msg 'workspace $numChat $wsChat; append_layout ~/.config/i3/layouts/workspace-chat.json'"
+
+# wallpaper
+exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath
+
+# autolock
+exec --no-startup-id xautolock -resetsaver -detectsleep -time 10 -locker "$locker" -nowlocker "$locker" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"
+
+# irc
+exec --no-startup-id $tmuxAttach $nameChat 'TERM=tmux-256color weechat'"

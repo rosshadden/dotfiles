@@ -21,8 +21,11 @@
 #    - overflow (boolint)		: Highlight overflows? Defaults to 50 when enabled.
 #
 #   date
-#    - display (enum) [no|default|local|relative|short]
+#    - display (enum) [no|default|relative|relative-compact|custom]
 #					: Show dates?
+#    - local (bool)			: Show local dates?
+#    - format (string)			: Custom strftime(3) format
+#
 #   file-name
 #    - display (enum) [no|always|auto]	: Show file names?
 #
@@ -68,7 +71,7 @@ set diff-view	= line-number:no,interval=5 text:yes,commit-title-overflow=no
 # UI display settings
 set show-changes		= yes		# Show changes commits in the main view?
 set wrap-lines			= no		# Wrap long lines in pager views?
-set tab-size			= 4		# Number of spaces to use when expanding tabs
+set tab-size			= 2		# Number of spaces to use when expanding tabs
 set line-graphics		= utf-8		# Enum: ascii, default, utf-8
 
 # Format reference names based on type.
@@ -87,19 +90,25 @@ set reference-format		= [branch] <tag> {remote} ~replace~
 
 # Settings controlling how content is read from Git
 set commit-order		= auto		# Enum: auto, default, topo, date, reverse (main)
-set status-untracked-dirs	= yes		# Show files in untracked directories? (status)
+set status-show-untracked-dirs	= yes		# Show files in untracked directories? (status)
+set status-show-untracked-files = yes		# Show untracked files?
 set ignore-space		= no		# Enum: no, all, some, at-eol (diff)
 set show-notes			= yes		# When non-bool passed as `--show-notes=...` (diff)
 #set diff-context		= 3		# Number of lines to show around diff changes (diff)
 #set diff-options		= -C		# User-defined options for `tig show` (git-diff)
+#set diff-highlight		= true		# String (or bool): Path to diff-highlight script,
+						#                   defaults to `diff-highlight`.
 #set blame-options		= -C -C -C	# User-defined options for `tig blame` (git-blame)
 #set log-options		= --pretty=raw	# User-defined options for `tig log` (git-log)
 #set main-options		= -n 1000	# User-defined options for `tig` (git-log)
+#set mailmap			= yes		# Use .mailmap to show canonical name and email address
 
 # Misc
 set refresh-mode		= auto		# Enum: manual, auto, after-command, periodic
 set refresh-interval		= 10		# Interval in seconds between refreshes
-set ignore-case			= no		# Ignore case when searching?
+set ignore-case			= no		# Enum: no, yes, smart-case
+                                                # Ignore case when searching? Smart-case option will
+set wrap-search			= yes		# Wrap around to top/bottom of view when searching
 set focus-child			= yes		# Move focus to child view when opened?
 set horizontal-scroll		= 50%		# Number of columns to scroll as % of width
 set split-view-height		= 80%		# Height of the bottom view for horizontal splits
@@ -214,14 +223,12 @@ bind main	F	:toggle commit-title-refs  # Toggle reference display (tags/branches
 # Cursor navigation
 bind generic	j	move-down
 bind generic	k	move-up
-#bind generic	?	move-half-page-down
-#bind generic	?	move-half-page-up
+bind generic	<C-D>	move-half-page-down
+bind generic	<C-U>	move-half-page-up
 bind generic	<PgDown> move-page-down
-bind generic	<C-D>	move-page-down
 bind generic	<Space>	move-page-down
 bind generic	<C-F>	move-page-down
 bind generic	<PgUp>	move-page-up
-bind generic	<C-U>	move-page-up
 bind generic	<C-B>	move-page-up
 bind generic	-	move-page-up
 bind generic	<Home>	move-first-line
@@ -341,6 +348,7 @@ bind status <esc>A !git amend -e
 # Note the four leading spaces in the string to match. This is because
 # Git automatically indents commit messages by four spaces.
 
+color "---"			blue	default
 color "diff --"			yellow	default
 color "--- "			yellow	default
 color "+++ "			yellow	default
@@ -428,6 +436,7 @@ color palette-11		default	default bold
 color palette-12		white	default bold
 color palette-13		red	default bold
 color graph-commit		blue	default
+color search-result		black	yellow
 
 # Mappings for colors read from git configuration.
 # Set to "no" to disable.
