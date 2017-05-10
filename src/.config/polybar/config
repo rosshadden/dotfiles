@@ -42,11 +42,9 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=16;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = "Wuncon Siji:pixelsize=16;1"
-font-3 = Fira Code:pixelsize=16
-font-4 = Icons:pixelsize=16
+font-0 = "Fira Code:pixelsize=16"
+font-1 = Icons:pixelsize=16
+
 
 modules-left = i3
 modules-center = mpd
@@ -169,12 +167,9 @@ label = BL
 bar-width = 10
 bar-indicator = |
 bar-indicator-foreground = #ff
-bar-indicator-font = 2
 bar-fill = ─
-bar-fill-font = 2
 bar-fill-foreground = #9f78e1
 bar-empty = ─
-bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
 
 [module/backlight-acpi]
@@ -255,13 +250,19 @@ label = %date% %time%
 [module/volume]
 type = internal/volume
 
-format-volume = <label-volume> <bar-volume>
-label-volume = 
+format-volume = <ramp-volume> <label-volume> <bar-volume>
+label-volume =  %percentage%%
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+format-muted-foreground = ${root.foreground}
+label-muted = 🔇 %percentage%% [muted]
+
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+ramp-headphones-0 = 
+ramp-headphones-1 = 
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
@@ -273,11 +274,8 @@ bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
 bar-volume-indicator = |
-bar-volume-indicator-font = 2
 bar-volume-fill = ─
-bar-volume-fill-font = 2
 bar-volume-empty = ─
-bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]

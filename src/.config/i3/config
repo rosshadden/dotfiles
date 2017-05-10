@@ -912,7 +912,7 @@ client.urgent $base02 $base08 $base07 $base08
 # STATUSBAR
 ################
 
-exec_always --no-startup-id $HOME/bin/init-polybar
+exec_always --no-startup-id $HOME/bin/bar
 
 # bar {
 # 	position top
