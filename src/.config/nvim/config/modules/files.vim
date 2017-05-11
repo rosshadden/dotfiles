@@ -34,7 +34,7 @@ function! OpenRanger(selectFile)
 	if has('nvim')
 		let l:rangerCallback = { 'name': 'ranger' , 'tempFilePath': l:tempFilePath }
 
-		function! l:rangerCallback.on_exit(id, code)
+		function! l:rangerCallback.on_exit(id, code, event)
 			Bdelete!
 
 			if filereadable(self.tempFilePath)
