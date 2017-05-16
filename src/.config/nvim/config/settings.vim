@@ -25,13 +25,20 @@ set hidden
 
 " scrolling
 set ruler
-set scrolloff=1 sidescrolloff=5
+set scrolloff=3 sidescrolloff=5
+set nostartofline
 
-" disable splash screen and 'press ENTER' promt
+" disable splash screen and 'press ENTER' prompt
 set shortmess=atIO
 
 " add the g flag to search/replace by default
 set gdefault
+
+" disable showing current mode
+set noshowmode
+
+" better joins
+set nojoinspaces
 
 " simple mouse support
 set mouse=a
