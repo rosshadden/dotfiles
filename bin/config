@@ -61,6 +61,10 @@ elif [[ $setting == "brightness" ]]; then
 	else
 		xbacklight -set $value
 	fi
+elif [[ $setting == "battery" ]]; then
+	charge=$(acpi | sed -n 's/Battery [0-9]:.*, \([0-9]\{1,3\}\)%.*/\1/p')
+	status=$(acpi | sed -n 's/Battery [0-9]: \([A-Z]\).*, .*/\1/p')
+	paste <(echo "$charge") <(echo "$status")
 elif [[ $setting == "touchpad" ]]; then
 	if [[ ! $value ]]; then
 		synclient -l | grep "TouchpadOff .*=.*0"

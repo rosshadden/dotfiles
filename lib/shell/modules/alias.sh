@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 alias copy="xsel -ib"
-alias paste="xsel -ob"
+alias put="xsel -ob"
 
 # get full path of file or dir
 alias path="readlink -f"
