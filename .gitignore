@@ -22,9 +22,6 @@ src/.config/ranger/history
 src/.config/ranger/tagged
 src/.config/systemd/user/default.target.wants
 src/.config/systemd/user/timers.target.wants
-src/.vifm/Trash
-src/.vifm/vifminfo*
-src/.vifm/vimfiles
 src/.vim/spell/*.spl
 src/.config/gtk-3.0/bookmarks
 src/.config/nvim/autoload/plug.vim.old
