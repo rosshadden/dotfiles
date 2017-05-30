@@ -2,13 +2,6 @@
 " SETTINGS
 """"""""""""""""
 
-" vim-livedown
-let g:livedown_browser = 'google-chrome-stable'
-
-" vim-instant-markdown
-" disable autostart
-let g:instant_markdown_autostart = 0
-
 " vim-pandoc-syntax
 let g:pandoc#syntax#conceal#urls = 1
 let g:pandoc#syntax#codeblocks#embeds#langs = [ 'javascript', 'js=javascript', 'json', 'bash=sh' ]
@@ -51,6 +44,6 @@ augroup markdown
 		\ noremap <localleader>c :call CompileMarkdown(expand('%:p'))<cr> |
 		\ noremap <localleader>C :call CompileMarkdown('*.md')<cr>
 
-	" vim-instant-markdown
-	autocmd FileType markdown noremap <localleader>p :LivedownToggle<cr>
+	" live preview
+	autocmd FileType markdown noremap <localleader>p :ComposerOpen<cr>
 augroup END

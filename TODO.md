@@ -6,6 +6,7 @@
 - swap `~/{bin,lib}` and `~/local/{bin,lib}`
 - consider moving systemd stuff to sync, or vice versa
 - move startup things to systemd
+- make tropes/mappings consistent across programs
 
 ## dots
 
@@ -83,10 +84,6 @@
 - integrate dunst
 - integrate todoist
 
-### i3-blocks-contrib
-
-- fix keyboard block interaction
-
 ## tmux
 
 - make function that evenly resizes panes
@@ -122,8 +119,6 @@
 
 ## ranger
 
-- vet `fasd` integration
-- vet `fzf` integration
 - support an easier deletion, like how `vifm` does it using `trash-cli`
 
 ## fzf
@@ -227,7 +222,3 @@
 		- send a message
 	- email (mutt?)
 	- grunt
-
-# misc
-
-- make tropes/mappings consistent across programs

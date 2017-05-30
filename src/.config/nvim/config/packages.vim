@@ -20,7 +20,7 @@ call plug#begin(expand(g:packageDir))
 	Plug 'vim-scripts/visualrepeat'
 	" completions
 	Plug 'Shougo/deoplete.nvim', LoadIf(has('nvim'))
-		\| Plug 'carlitux/deoplete-ternjs', LoadIf(has('nvim'), { 'do': 'npm install -g tern' })
+		\| Plug 'carlitux/deoplete-ternjs', LoadIf(has('nvim'), { 'do': 'npm i -g tern' })
 		\| Plug 'tweekmonster/deoplete-clang2', LoadIf(has('nvim'))
 	Plug 'Shougo/neocomplete.vim', LoadIf(!has('nvim'))
 	" search with perl regex
@@ -84,8 +84,7 @@ call plug#begin(expand(g:packageDir))
 	" diff two selections
 	Plug 'AndrewRadev/linediff.vim'
 	" linter
-	Plug 'neomake/neomake'
-		\| Plug 'coddingtonbear/neomake-platformio'
+	Plug 'w0rp/ale'
 	" visual star search
 	Plug 'bronson/vim-visual-star-search'
 	" tagbar
@@ -137,7 +136,7 @@ call plug#begin(expand(g:packageDir))
 	" polyglot autoformat support
 	Plug 'Chiel92/vim-autoformat'
 	" markdown
-	Plug 'shime/vim-livedown'
+	Plug 'euclio/vim-markdown-composer', { 'do': 'cargo build --release' }
 	Plug 'vim-pandoc/vim-pandoc'
 	Plug 'vim-pandoc/vim-pandoc-syntax'
 	" js
