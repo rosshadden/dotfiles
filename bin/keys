@@ -47,8 +47,10 @@ elif [[ $action == "get" ]]; then
 		echo $variant
 	fi
 elif [[ $action == "toggle" ]]; then
-	if [ "$DISPLAY" ]; then
-		xdotool key ISO_Next_Group
+	if [[ $(keys get) == "dvorak" ]]; then
+		keys qwerty
+	else
+		keys dvorak
 	fi
 elif [[ $action == "dvorak" ]]; then
 	# switch to dvorak

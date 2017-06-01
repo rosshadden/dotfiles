@@ -15,6 +15,8 @@
 setting="$1"
 value="$2"
 
+modules=( volume brightness battery ip touchpad dpi )
+
 # recursively call itself
 config() {
 	$0 "$@"
@@ -30,7 +32,13 @@ normalizeValue() {
 
 value=$(normalizeValue $value)
 
-if [[ $setting == "volume" ]]; then
+if [[ ! $setting ]]; then
+	for module in "${modules[@]}"; do
+		echo "$module:"
+		config "$module"
+		echo
+	done
+elif [[ $setting == "volume" ]]; then
 	if [[ ! $value ]]; then
 		ponymix get-volume
 		exit 0
@@ -109,8 +117,6 @@ elif [[ $setting == "dpi" ]]; then
 	if [[ $value == "--scale" ]]; then
 		echo "$dpi / 96" | bc -l
 	fi
-elif [[ $setting == "wifi" ]]; then
-	echo "$setting is not yet supported"
-elif [[ $setting == "bluetooth" ]]; then
-	echo "$setting is not yet supported"
+else
+	echo "$setting is not (yet?) supported"
 fi
