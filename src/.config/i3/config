@@ -954,7 +954,7 @@ assign [class="^google-chrome" window_role="browser"] → $numWeb $wsWeb
 for_window [title="^Developer Tools"] floating disable
 
 # media
-assign [class="(nuvolaplayer|Spotify|Vlc)"] → $numMedia $wsMedia
+assign [class="nuvolaplayer|Spotify|Vlc"] → $numMedia $wsMedia
 assign [title="Popcorn Time"] → $numMedia $wsMedia
 assign [title="Google Play Music" window_role="pop-up"] → $numMedia $wsMedia
 for_window [class="Vlc"] border none
@@ -965,7 +965,7 @@ assign [title="(Google Keep|todoist)" window_role="app"] → $numLit $wsLit
 
 # games
 for_window [title="Dota 2"] border none
-for_window [class="Dolphin-emu" title="^Dolphin$"] floating toggle
+for_window [class="^Dolphin-emu$|^Launch-faster-melee$" title="^Dolphin$|^launch-faster-melee$"] floating toggle
 
 # chat
 assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $numChat $wsChat

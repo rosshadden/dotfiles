@@ -46,8 +46,8 @@ map dd closeTab
 
 map u lastClosedTab
 
-map gD :duplicate<CR>
-map gM muteTab
+map gD :duplicate<cr>
+map gM :call muteTab<cr>
 
 map <Leader>r reloadTab
 map <Leader>R reloadTabUncached
@@ -66,6 +66,7 @@ map <C-y> scrollUp
 map <C-e> scrollDown
 map <C-u> scrollPageUp
 map <C-d> scrollPageDown
+imap <C-d> scrollPageDown
 map <C-b> scrollFullPageUp
 map <C-f> scrollFullPageDown
 
@@ -96,7 +97,7 @@ set linkanimations
 let hintcharacters = 'aoeusnthidkbpg'
 let mouselesshintcharacters = 'aoeusnthidkbpg'
 
-map gS :viewsource!<CR>
+map gS :viewsource!<cr>
 
 """"""""""""""""
 " SEARCHING
