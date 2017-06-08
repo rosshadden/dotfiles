@@ -6,6 +6,9 @@
 let g:pandoc#syntax#conceal#urls = 1
 let g:pandoc#syntax#codeblocks#embeds#langs = [ 'javascript', 'js=javascript', 'json', 'bash=sh' ]
 
+" vim-markdown-composer
+let g:markdown_composer_autostart = 0
+
 """"""""""""""""
 " FUNCTIONS
 """"""""""""""""
@@ -45,5 +48,6 @@ augroup markdown
 		\ noremap <localleader>C :call CompileMarkdown('*.md')<cr>
 
 	" live preview
-	autocmd FileType markdown noremap <localleader>p :ComposerOpen<cr>
+	autocmd FileType markdown noremap <localleader>p :ComposerStart<cr>
+	autocmd FileType markdown noremap <localleader>P :ComposerOpen<cr>
 augroup END

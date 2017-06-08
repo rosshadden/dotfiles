@@ -73,6 +73,7 @@ call plug#begin(expand(g:packageDir))
 	Plug 'wesQ3/vim-windowswap'
 	" language-aware line splits/joins
 	Plug 'AndrewRadev/splitjoin.vim'
+	Plug 'sk1418/Join'
 	" comments
 	Plug 'tomtom/tcomment_vim'
 	" settings toggles and symmetrical before/after mappings
