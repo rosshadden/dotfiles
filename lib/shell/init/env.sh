@@ -22,6 +22,9 @@ if isCommand perl; then export PATH=$PATH:/usr/bin/core_perl; fi
 # java (if installed)
 if isCommand java; then export PATH=$PATH:$JAVA_HOME/bin; fi
 
+# ruby (if installed)
+if isCommand ruby; then export PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin:~/.rvm/bin"; fi
+
 # nimble (if installed)
 if isCommand nimble; then export PATH=$PATH:~/.nimble/bin; fi
 
