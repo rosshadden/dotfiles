@@ -17,6 +17,9 @@ augroup misc
 
 	autocmd FileType conf call css_color#init('hex', 'extended', 'confString')
 
+	" automatically resize windows
+	autocmd VimResized * wincmd =
+
 	" sync stuff between instances
 	" https://github.com/neovim/neovim/issues/3463#issuecomment-148757691
 	if has('nvim')

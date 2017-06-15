@@ -12,7 +12,7 @@ set title
 set hlsearch
 
 " casing
-set smartcase ignorecase
+set smartcase ignorecase infercase
 
 " spelling
 set spell spelllang=en_us
@@ -54,6 +54,9 @@ set wildignore+=node_modules/**,.*.swp,.git/**
 
 " prevent omnicomplete preview window
 set completeopt-=preview
+
+" only syntax highlight the beginning of lines
+set synmaxcol=200
 
 " allow alt-mappings in gvim
 set guioptions-=m

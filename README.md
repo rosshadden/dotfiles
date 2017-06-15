@@ -4,7 +4,6 @@ A collection of dotfiles and scripts that I use between computers.
 
 See the [TODO](TODO.md) for things I have in mind.
 
-
 ## My environment
 
 - [Arch Linux]( https://www.archlinux.org/ )
@@ -13,7 +12,6 @@ See the [TODO](TODO.md) for things I have in mind.
 - [`zsh`]( https://wiki.archlinux.org/index.php/zsh )
 - [`tmux`]( https://tmux.github.io/ )
 - [`termite`]( https://wiki.archlinux.org/index.php/Termite )
-
 
 ## Dependencies
 
