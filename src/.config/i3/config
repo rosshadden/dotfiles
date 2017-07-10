@@ -10,6 +10,20 @@ set $down j
 set $left h
 set $right l
 
+set $numLab 0
+set $numWeb 1
+set $numDev 2
+set $numRemote 3
+set $numHack 4
+set $numFiles 5
+set $numMedia 6
+set $numLit 7
+set $numMonitor 8
+set $numRun 9
+set $numChat 10
+set $numDesign 11
+set $numGames 12
+
 set $nameLab lab
 set $nameWeb web
 set $nameDev dev
@@ -958,9 +972,9 @@ for_window [title="Dota 2"] border none
 for_window [class="^Dolphin-emu$|^Launch-faster-melee$" title="^Dolphin$|^launch-faster-melee$"] floating toggle
 
 # chat
-assign [class="Pidgin" window_role="(buddy_list|conversation)"] → number 10 $wsChat
-assign [class="^Slack$"] → number 10 $wsChat
-assign [title="^finch$"] → number 10 $wsChat
+assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $numChat $wsChat
+assign [class="^Slack$"] → $numChat $wsChat
+assign [title="^finch$"] → $numChat $wsChat
 
 # monitor
 assign [class="MongoChef"] → $numMonitor $wsMonitor
@@ -970,7 +984,7 @@ assign [class="MongoChef"] → $numMonitor $wsMonitor
 ################
 
 # layouts
-exec --no-startup-id "i3-msg 'workspace number 10 $wsChat; append_layout ~/.config/i3/layouts/workspace-chat.json'"
+exec --no-startup-id "i3-msg 'workspace $numChat $wsChat; append_layout ~/.config/i3/layouts/workspace-chat.json'"
 
 # wallpaper
 exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath
