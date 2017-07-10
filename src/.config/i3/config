@@ -5,19 +5,10 @@
 set $super Mod4
 set $alt Mod1
 
-set $numLab 0
-set $numWeb 1
-set $numDev 2
-set $numRemote 3
-set $numHack 4
-set $numFiles 5
-set $numMedia 6
-set $numLit 7
-set $numMonitor 8
-set $numRun 9
-set $numChat 10
-set $numDesign 11
-set $numGames 12
+set $up k
+set $down j
+set $left h
+set $right l
 
 set $nameLab lab
 set $nameWeb web
@@ -104,15 +95,45 @@ gaps inner 20
 smart_gaps on
 
 ################
-# BINDS
+# MAPPINGS
 ################
+
+# switch to workspace
+bindsym $super+grave        mark LAST; workspace number 0 $wsLab
+bindsym $super+1            mark LAST; workspace number 1 $wsWeb
+bindsym $super+2            mark LAST; workspace number 2 $wsDev
+bindsym $super+3            mark LAST; workspace number 3 $wsRemote
+bindsym $super+4            mark LAST; workspace number 4 $wsHack
+bindsym $super+5            mark LAST; workspace number 5 $wsFiles
+bindsym $super+6            mark LAST; workspace number 6 $wsMedia
+bindsym $super+7            mark LAST; workspace number 7 $wsLit
+bindsym $super+8            mark LAST; workspace number 8 $wsMonitor
+bindsym $super+9            mark LAST; workspace number 9 $wsRun
+bindsym $super+0            mark LAST; workspace number 10 $wsChat
+bindsym $super+bracketleft  mark LAST; workspace number 11 $wsDesign
+bindsym $super+bracketright mark LAST; workspace number 12 $wsGames
+
+# move focused container to workspace
+bindsym $super+Shift+grave        move container to workspace number 0 $wsLab;     workspace number 0
+bindsym $super+Shift+1            move container to workspace number 1 $wsWeb;     workspace number 1
+bindsym $super+Shift+2            move container to workspace number 2 $wsDev;     workspace number 2
+bindsym $super+Shift+3            move container to workspace number 3 $wsRemote;  workspace number 3
+bindsym $super+Shift+4            move container to workspace number 4 $wsHack;    workspace number 4
+bindsym $super+Shift+5            move container to workspace number 5 $wsFiles;   workspace number 5
+bindsym $super+Shift+6            move container to workspace number 6 $wsMedia;   workspace number 6
+bindsym $super+Shift+7            move container to workspace number 7 $wsLit;     workspace number 7
+bindsym $super+Shift+8            move container to workspace number 8 $wsMonitor; workspace number 8
+bindsym $super+Shift+9            move container to workspace number 9 $wsRun;     workspace number 9
+bindsym $super+Shift+0            move container to workspace number 10 $wsChat;   workspace number 10
+bindsym $super+Shift+bracketleft  move container to workspace number 11 $wsDesign; workspace number 11
+bindsym $super+Shift+bracketright move container to workspace number 12 $wsGames;  workspace number 12
 
 # close focused window
 bindsym $super+c kill
 bindsym $super+Shift+c --release exec --no-startup-id /usr/bin/xkill
 
 # change focus between tiling / floating windows
-bindsym $super+backslash mark LAST; focus mode_toggle
+bindsym $super+BackSpace mark LAST; focus mode_toggle
 
 # open terminal
 bindsym $super+t mark LAST; exec $terminal
@@ -143,28 +164,28 @@ bindsym Shift+$macro5 exec $locker2
 bindsym Control+$macro5 exec $locker3
 
 # change focus
-bindsym $super+j mark LAST; focus down
-bindsym $super+k mark LAST; focus up
-bindsym $super+h mark LAST; focus left
-bindsym $super+l mark LAST; focus right
+bindsym $super+$up mark LAST; focus up
+bindsym $super+$down mark LAST; focus down
+bindsym $super+$left mark LAST; focus left
+bindsym $super+$right mark LAST; focus right
 
 # move focused window/container
-bindsym $super+Shift+j move down
-bindsym $super+Shift+k move up
-bindsym $super+Shift+h move left
-bindsym $super+Shift+l move right
+bindsym $super+Shift+$up move up
+bindsym $super+Shift+$down move down
+bindsym $super+Shift+$left move left
+bindsym $super+Shift+$right move right
 
 # focus adjacent outputs
-bindsym $super+Control+j mark LAST; focus output down
-bindsym $super+Control+k mark LAST; focus output up
-bindsym $super+Control+h mark LAST; focus output left
-bindsym $super+Control+l mark LAST; focus output right
+bindsym $super+Control+$up mark LAST; focus output up
+bindsym $super+Control+$down mark LAST; focus output down
+bindsym $super+Control+$left mark LAST; focus output left
+bindsym $super+Control+$right mark LAST; focus output right
 
 # move workspace to adjacent outputs
-bindsym $super+Control+Shift+j move workspace to output down
-bindsym $super+Control+Shift+k move workspace to output up
-bindsym $super+Control+Shift+h move workspace to output left
-bindsym $super+Control+Shift+l move workspace to output right
+bindsym $super+Control+Shift+$up move workspace to output up
+bindsym $super+Control+Shift+$down move workspace to output down
+bindsym $super+Control+Shift+$left move workspace to output left
+bindsym $super+Control+Shift+$right move workspace to output right
 
 # focus next/previous workspace on current output
 bindsym $super+n mark LAST; workspace next_on_output
@@ -188,36 +209,6 @@ bindsym $super+Tab mark TEMP; [con_mark="LAST"] focus; [con_mark="TEMP"] mark LA
 # back to last workspace
 bindsym $super+Escape mark LAST; workspace back_and_forth
 bindsym $super+Shift+Escape move to workspace back_and_forth; workspace back_and_forth
-
-# switch to workspace
-bindsym $super+grave        mark LAST; workspace $numLab $wsLab
-bindsym $super+1            mark LAST; workspace $numWeb $wsWeb
-bindsym $super+2            mark LAST; workspace $numDev $wsDev
-bindsym $super+3            mark LAST; workspace $numRemote $wsRemote
-bindsym $super+4            mark LAST; workspace $numHack $wsHack
-bindsym $super+5            mark LAST; workspace $numFiles $wsFiles
-bindsym $super+6            mark LAST; workspace $numMedia $wsMedia
-bindsym $super+7            mark LAST; workspace $numLit $wsLit
-bindsym $super+8            mark LAST; workspace $numMonitor $wsMonitor
-bindsym $super+9            mark LAST; workspace $numRun $wsRun
-bindsym $super+0            mark LAST; workspace $numChat $wsChat
-bindsym $super+bracketleft  mark LAST; workspace $numDesign $wsDesign
-bindsym $super+bracketright mark LAST; workspace $numGames $wsGames
-
-# move focused container to workspace
-bindsym $super+Shift+grave        move container to workspace $numLab $wsLab;       workspace $numLab $wsLab
-bindsym $super+Shift+1            move container to workspace $numWeb $wsWeb;         workspace $numWeb $wsWeb
-bindsym $super+Shift+2            move container to workspace $numDev $wsDev;         workspace $numDev $wsDev
-bindsym $super+Shift+3            move container to workspace $numRemote $wsRemote;       workspace $numRemote $wsRemote
-bindsym $super+Shift+4            move container to workspace $numHack $wsHack;       workspace $numHack $wsHack
-bindsym $super+Shift+5            move container to workspace $numFiles $wsFiles;     workspace $numFiles $wsFiles
-bindsym $super+Shift+6            move container to workspace $numMedia $wsMedia;     workspace $numMedia $wsMedia
-bindsym $super+Shift+7            move container to workspace $numLit $wsLit;         workspace $numLit $wsLit
-bindsym $super+Shift+8            move container to workspace $numMonitor $wsMonitor; workspace $numMonitor $wsMonitor
-bindsym $super+Shift+9            move container to workspace $numRun $wsRun;         workspace $numRun $wsRun
-bindsym $super+Shift+0            move container to workspace $numChat $wsChat;       workspace $numChat $wsChat
-bindsym $super+Shift+bracketleft  move container to workspace $numDesign $wsDesign;         workspace $numDesign $wsDesign
-bindsym $super+Shift+bracketright move container to workspace $numGames $wsGames;     workspace $numGames $wsGames
 
 # focus the parent/child container
 bindsym $super+z mark LAST; focus parent
@@ -541,25 +532,24 @@ mode "I3" {
 
 mode "TMUX" {
 	# by name
-
 	bindsym space exec i3-input -P 'Session name: ' -F 'exec $tmuxAttach %s"'; $exit
 
 	# presets
 
 	# TODO: make these dynamic from the workspace name
-	bindsym grave        mark LAST; workspace $numLab $wsLab;         exec $tmuxAttach $nameLab -c /tmp/aoeu"; $exit
-	bindsym 1            mark LAST; workspace $numWeb $wsWeb;         exec $tmuxAttach $nameWeb"; $exit
-	bindsym 2            mark LAST; workspace $numDev $wsDev;         exec $tmuxAttach $nameDev -c /home/ross/dev"; $exit
-	bindsym 3            mark LAST; workspace $numRemote $wsRemote;   exec $tmuxAttach $nameRemote"; $exit
-	bindsym 4            mark LAST; workspace $numHack $wsHack;       exec $tmuxAttach $nameHack -c /home/ross/dotfiles"; $exit
-	bindsym 5            mark LAST; workspace $numFiles $wsFiles;     exec $tmuxAttach $nameFiles 'ranger'"; $exit
-	bindsym 6            mark LAST; workspace $numMedia $wsMedia;     exec $tmuxAttach $nameMedia 'ncmpcpp'"; $exit
-	bindsym 7            mark LAST; workspace $numLit $wsLit;         exec $tmuxAttach $nameLit"; $exit
-	bindsym 8            mark LAST; workspace $numMonitor $wsMonitor; exec $tmuxAttach $nameMonitor"; $exit
-	bindsym 9            mark LAST; workspace $numRun $wsRun;         exec $tmuxAttach $nameRun"; $exit
-	bindsym 0            mark LAST; workspace $numChat $wsChat;       exec $tmuxAttach $nameChat 'TERM=tmux-256color weechat'"; $exit
-	bindsym bracketleft  mark LAST; workspace $numDesign $wsDesign;   exec $tmuxAttach $nameDesign"; $exit
-	bindsym bracketright mark LAST; workspace $numGames $wsGames;     exec $tmuxAttach $nameGames"; $exit
+	bindsym grave        mark LAST; workspace number 0 $wsLab;     exec $tmuxAttach $nameLab -c /tmp/aoeu"; $exit
+	bindsym 1            mark LAST; workspace number 1 $wsWeb;     exec $tmuxAttach $nameWeb"; $exit
+	bindsym 2            mark LAST; workspace number 2 $wsDev;     exec $tmuxAttach $nameDev -c /home/ross/dev"; $exit
+	bindsym 3            mark LAST; workspace number 3 $wsRemote;  exec $tmuxAttach $nameRemote"; $exit
+	bindsym 4            mark LAST; workspace number 4 $wsHack;    exec $tmuxAttach $nameHack -c /home/ross/dotfiles"; $exit
+	bindsym 5            mark LAST; workspace number 5 $wsFiles;   exec $tmuxAttach $nameFiles 'ranger'"; $exit
+	bindsym 6            mark LAST; workspace number 6 $wsMedia;   exec $tmuxAttach $nameMedia 'ncmpcpp'"; $exit
+	bindsym 7            mark LAST; workspace number 7 $wsLit;     exec $tmuxAttach $nameLit"; $exit
+	bindsym 8            mark LAST; workspace number 8 $wsMonitor; exec $tmuxAttach $nameMonitor"; $exit
+	bindsym 9            mark LAST; workspace number 9 $wsRun;     exec $tmuxAttach $nameRun"; $exit
+	bindsym 0            mark LAST; workspace number 10 $wsChat;   exec $tmuxAttach $nameChat 'TERM=tmux-256color weechat'"; $exit
+	bindsym bracketleft  mark LAST; workspace number 11 $wsDesign; exec $tmuxAttach $nameDesign"; $exit
+	bindsym bracketright mark LAST; workspace number 12 $wsGames;  exec $tmuxAttach $nameGames"; $exit
 
 	# TODO: open preset for the current workspace
 
@@ -582,20 +572,20 @@ mode "SYSTEM" {
 	# brightness
 
 	# small
-	bindsym $alt+k exec "~/bin/config brightness +5"; $exit
-	bindsym $alt+j exec "~/bin/config brightness -5"; $exit
-	bindsym $alt+Shift+k exec "~/bin/config brightness +5"
-	bindsym $alt+Shift+j exec "~/bin/config brightness -5"
+	bindsym $alt+$up exec "~/bin/config brightness +5"; $exit
+	bindsym $alt+$down exec "~/bin/config brightness -5"; $exit
+	bindsym $alt+Shift+$up exec "~/bin/config brightness +5"
+	bindsym $alt+Shift+$down exec "~/bin/config brightness -5"
 	# medium
 	bindsym k exec "~/bin/config brightness +20"; $exit
 	bindsym j exec "~/bin/config brightness -20"; $exit
-	bindsym Shift+k exec "~/bin/config brightness +20"
-	bindsym Shift+j exec "~/bin/config brightness -20"
+	bindsym Shift+$up exec "~/bin/config brightness +20"
+	bindsym Shift+$down exec "~/bin/config brightness -20"
 	# large
-	bindsym Control+k exec "~/bin/config brightness +80"; $exit
-	bindsym Control+j exec "~/bin/config brightness -80"; $exit
-	bindsym Control+Shift+k exec "~/bin/config brightness +80"
-	bindsym Control+Shift+j exec "~/bin/config brightness -80"
+	bindsym Control+$up exec "~/bin/config brightness +80"; $exit
+	bindsym Control+$down exec "~/bin/config brightness -80"; $exit
+	bindsym Control+Shift+$up exec "~/bin/config brightness +80"
+	bindsym Control+Shift+$down exec "~/bin/config brightness -80"
 
 	# wifi
 	bindsym w exec ~/bin/config wifi; $exit
@@ -608,30 +598,30 @@ mode "SYSTEM" {
 
 mode "RESIZE" {
 	# small
-	bindsym $alt+h resize shrink width 1 px or 1 ppt
-	bindsym $alt+j resize grow height 1 px or 1 ppt
-	bindsym $alt+k resize shrink height 1 px or 1 ppt
-	bindsym $alt+l resize grow width 1 px or 1 ppt
+	bindsym $alt+$up resize shrink height 1 px or 1 ppt
+	bindsym $alt+$down resize grow height 1 px or 1 ppt
+	bindsym $alt+$left resize shrink width 1 px or 1 ppt
+	bindsym $alt+$right resize grow width 1 px or 1 ppt
 	# medium
-	bindsym h resize shrink width 4 px or 4 ppt
-	bindsym j resize grow height 4 px or 4 ppt
-	bindsym k resize shrink height 4 px or 4 ppt
-	bindsym l resize grow width 4 px or 4 ppt
+	bindsym $up resize shrink height 4 px or 4 ppt
+	bindsym $down resize grow height 4 px or 4 ppt
+	bindsym $left resize shrink width 4 px or 4 ppt
+	bindsym $right resize grow width 4 px or 4 ppt
 	# large
-	bindsym Shift+h resize shrink width 16 px or 16 ppt
-	bindsym Shift+j resize grow height 16 px or 16 ppt
-	bindsym Shift+k resize shrink height 16 px or 16 ppt
-	bindsym Shift+l resize grow width 16 px or 16 ppt
+	bindsym Shift+$up resize shrink height 16 px or 16 ppt
+	bindsym Shift+$down resize grow height 16 px or 16 ppt
+	bindsym Shift+$left resize shrink width 16 px or 16 ppt
+	bindsym Shift+$right resize grow width 16 px or 16 ppt
 	# bigger
-	bindsym Control+h resize shrink width 32 px or 32 ppt
-	bindsym Control+j resize grow height 32 px or 32 ppt
-	bindsym Control+k resize shrink height 32 px or 32 ppt
-	bindsym Control+l resize grow width 32 px or 32 ppt
+	bindsym Control+$up resize shrink height 32 px or 32 ppt
+	bindsym Control+$down resize grow height 32 px or 32 ppt
+	bindsym Control+$left resize shrink width 32 px or 32 ppt
+	bindsym Control+$right resize grow width 32 px or 32 ppt
 	# extreme
-	bindsym Control+Shift+h resize shrink width 64 px or 64 ppt
-	bindsym Control+Shift+j resize grow height 64 px or 64 ppt
-	bindsym Control+Shift+k resize shrink height 64 px or 64 ppt
-	bindsym Control+Shift+l resize grow width 64 px or 64 ppt
+	bindsym Control+Shift+$up resize shrink height 64 px or 64 ppt
+	bindsym Control+Shift+$down resize grow height 64 px or 64 ppt
+	bindsym Control+Shift+$left resize shrink width 64 px or 64 ppt
+	bindsym Control+Shift+$right resize grow width 64 px or 64 ppt
 
 	bindsym space move right; resize shrink width 36 px or 36 ppt
 
@@ -641,30 +631,30 @@ mode "RESIZE" {
 
 mode "MOVE" {
 	# small
-	bindsym $alt+h move left 1 px
-	bindsym $alt+j move down 1 px
-	bindsym $alt+k move up 1 px
-	bindsym $alt+l move right 1 px
+	bindsym $alt+$up move up 1 px
+	bindsym $alt+$down move down 1 px
+	bindsym $alt+$left move left 1 px
+	bindsym $alt+$right move right 1 px
 	# medium
 	bindsym h move left 4 px
 	bindsym j move down 4 px
 	bindsym k move up 4 px
 	bindsym l move right 4 px
 	# large
-	bindsym Shift+h move left 16 px
-	bindsym Shift+j move down 16 px
-	bindsym Shift+k move up 16 px
-	bindsym Shift+l move right 16 px
+	bindsym Shift+$up move up 16 px
+	bindsym Shift+$down move down 16 px
+	bindsym Shift+$left move left 16 px
+	bindsym Shift+$right move right 16 px
 	# bigger
-	bindsym Control+h move left 32 px
-	bindsym Control+j move down 32 px
-	bindsym Control+k move up 32 px
-	bindsym Control+l move right 32 px
+	bindsym Control+$up move up 32 px
+	bindsym Control+$down move down 32 px
+	bindsym Control+$left move left 32 px
+	bindsym Control+$right move right 32 px
 	# extreme
-	bindsym Control+Shift+h move left 64 px
-	bindsym Control+Shift+j move down 64 px
-	bindsym Control+Shift+k move up 64 px
-	bindsym Control+Shift+l move right 64 px
+	bindsym Control+Shift+$up move up 64 px
+	bindsym Control+Shift+$down move down 64 px
+	bindsym Control+Shift+$left move left 64 px
+	bindsym Control+Shift+$right move right 64 px
 
 	bindsym $super+space $return
 	bindsym Escape $exit
@@ -768,25 +758,25 @@ mode "MOUSE" {
 	# movement
 
 	# slow
-	bindsym $alt+h exec $(xdotool mousemove_relative -- -4  0)
-	bindsym $alt+l exec $(xdotool mousemove_relative --  4  0)
-	bindsym $alt+j exec $(xdotool mousemove_relative --  0  4)
-	bindsym $alt+k exec $(xdotool mousemove_relative --  0 -4)
+	bindsym $alt+$up exec $(xdotool mousemove_relative --  0 -4)
+	bindsym $alt+$down exec $(xdotool mousemove_relative --  0  4)
+	bindsym $alt+$left exec $(xdotool mousemove_relative -- -4  0)
+	bindsym $alt+$right exec $(xdotool mousemove_relative --  4  0)
 	# normal
 	bindsym h exec $(xdotool mousemove_relative -- -16   0)
 	bindsym l exec $(xdotool mousemove_relative --  16   0)
 	bindsym j exec $(xdotool mousemove_relative --   0  16)
 	bindsym k exec $(xdotool mousemove_relative --   0 -16)
 	# fast
-	bindsym Shift+h exec $(xdotool mousemove_relative -- -128    0)
-	bindsym Shift+l exec $(xdotool mousemove_relative --  128    0)
-	bindsym Shift+j exec $(xdotool mousemove_relative --    0  128)
-	bindsym Shift+k exec $(xdotool mousemove_relative --    0 -128)
+	bindsym Shift+$up exec $(xdotool mousemove_relative --    0 -128)
+	bindsym Shift+$down exec $(xdotool mousemove_relative --    0  128)
+	bindsym Shift+$left exec $(xdotool mousemove_relative -- -128    0)
+	bindsym Shift+$right exec $(xdotool mousemove_relative --  128    0)
 	# turbo
-	bindsym Control+h exec $(xdotool mousemove_relative -- -512    0)
-	bindsym Control+l exec $(xdotool mousemove_relative --  512    0)
-	bindsym Control+j exec $(xdotool mousemove_relative --    0  512)
-	bindsym Control+k exec $(xdotool mousemove_relative --    0 -512)
+	bindsym Control+$up exec $(xdotool mousemove_relative --    0 -512)
+	bindsym Control+$down exec $(xdotool mousemove_relative --    0  512)
+	bindsym Control+$left exec $(xdotool mousemove_relative -- -512    0)
+	bindsym Control+$right exec $(xdotool mousemove_relative --  512    0)
 
 	bindsym $super+space $return
 	bindsym Escape $exit
@@ -800,16 +790,16 @@ mode "MEDIA" {
 	bindsym j exec "~/bin/config volume -5"; $exit
 	bindsym Up exec "~/bin/config volume +10"; $exit
 	bindsym Down exec "~/bin/config volume -10"; $exit
-	bindsym Control+k exec "~/bin/config volume +20"; $exit
-	bindsym Control+j exec "~/bin/config volume -20"; $exit
+	bindsym Control+$up exec "~/bin/config volume +20"; $exit
+	bindsym Control+$down exec "~/bin/config volume -20"; $exit
 
 	bindsym Shift+m exec "~/bin/config volume !"
-	bindsym Shift+k exec "~/bin/config volume +5"
-	bindsym Shift+j exec "~/bin/config volume -5"
+	bindsym Shift+$up exec "~/bin/config volume +5"
+	bindsym Shift+$down exec "~/bin/config volume -5"
 	bindsym Shift+Up exec "~/bin/config volume +10"
 	bindsym Shift+Down exec "~/bin/config volume -10"
-	bindsym Control+Shift+k exec "~/bin/config volume +20"
-	bindsym Control+Shift+j exec "~/bin/config volume -20"
+	bindsym Control+Shift+$up exec "~/bin/config volume +20"
+	bindsym Control+Shift+$down exec "~/bin/config volume -20"
 
 	# playback
 
@@ -821,10 +811,10 @@ mode "MEDIA" {
 	bindsym s exec "mpc stop; playerctl stop"; $exit
 
 	bindsym Shift+space exec $(xdotool key XF86AudioPlay)
-	bindsym Shift+l exec $(xdotool key XF86AudioNext)
+	bindsym Shift+$right exec $(xdotool key XF86AudioNext)
 	bindsym Shift+Right exec $(xdotool key XF86AudioNext)
-	bindsym Shift+h exec $(xdotool key XF86AudioPrev)
-	bindsym Shift+Left exec $(xdotool key XF86AudioPrev)
+	bindsym Shift+$left exec $(xdotool key XF86AudioPrev)
+	bindsym Shift+$right exec $(xdotool key XF86AudioPrev)
 	bindsym Shift+s exec "mpc stop; playerctl stop"
 
 	# screenshots
@@ -853,7 +843,7 @@ mode "APPS" {
 	bindsym t mark LAST; exec $(gtk-launch chrome-bgjohebimpjdhhocbknplfelpmdhifhd-Default); $exit
 
 	# news feed -- Reddit
-	bindsym r mark LAST; exec $tmuxAttach reddit 'rtv'"; $exit
+	bindsym r mark LAST; workspace number 7 news; exec $tmuxAttach news 'rtv'"; $exit
 
 	# clipboard manager -- copyq
 	# TODO: move to scratchpad
@@ -864,7 +854,7 @@ mode "APPS" {
 	bindsym c mark LAST; exec qalculate-gtk; $exit
 
 	# documentation -- zeal
-	bindsym --release d mark LAST; exec $(xdotool key --clearmodifiers "alt+super+shift+Z"); $exit
+	bindsym d mark LAST; exec $(xdotool key --clearmodifiers "alt+super+shift+Z"); $exit
 
 	bindsym $super+space $return
 	bindsym Escape $exit
