@@ -912,7 +912,7 @@ client.urgent $base02 $base08 $base07 $base08
 # STATUSBAR
 ################
 
-exec_always --no-startup-id $HOME/bin/bar
+exec_always --no-startup-id $HOME/bin/bars
 
 # bar {
 # 	position top
@@ -989,4 +989,4 @@ exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath
 exec --no-startup-id xautolock -resetsaver -detectsleep -time 10 -locker "$locker" -nowlocker "$locker" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"
 
 # irc
-exec --no-startup-id $tmuxAttach $nameChat 'TERM=tmux-256color weechat'"
+# exec --no-startup-id $tmuxAttach $nameChat 'TERM=tmux-256color weechat'"

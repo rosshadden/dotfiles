@@ -3,11 +3,15 @@
 # Terminate already running bar instances
 killall -q polybar
 
+debug="${1:-0}"
+if [[ "$debug" == "0" ]]; then exec 2>/dev/null; fi
+
 # Wait until the processes have been shut down
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 for m in $(polybar -m | awk -F: '{ print $1 }'); do
-	MONITOR=$m polybar main &
+	MONITOR=$m polybar top &
+	MONITOR=$m polybar bottom &
 done
 
 echo "Bars launched..."

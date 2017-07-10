@@ -1,6 +1,8 @@
 ; vim:ft=dosini
 
-include-file = /home/ross/.config/polybar/bars/main.ini
+include-file = /home/ross/.config/polybar/bars/bottom.ini
+include-file = /home/ross/.config/polybar/bars/common.ini
+include-file = /home/ross/.config/polybar/bars/top.ini
 include-file = /home/ross/.config/polybar/global.ini
 include-file = /home/ross/.config/polybar/modules/batteries.ini
 include-file = /home/ross/.config/polybar/modules/brightness.ini
@@ -17,6 +19,6 @@ include-file = /home/ross/.config/polybar/modules/net-wireless.ini
 include-file = /home/ross/.config/polybar/modules/temperature.ini
 include-file = /home/ross/.config/polybar/modules/time.ini
 include-file = /home/ross/.config/polybar/modules/volume.ini
-include-file = /home/ross/.config/polybar/modules/xwindow.ini
+include-file = /home/ross/.config/polybar/modules/window.ini
 include-file = /home/ross/.config/polybar/settings.ini
 include-file = /home/ross/.config/polybar/variables.ini
