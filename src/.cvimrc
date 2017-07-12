@@ -21,6 +21,7 @@ set cncpcompletion
 """"""""""""""""
 
 map ; :
+unmap :
 unmap <Space>
 map <C-Space> passKeys 1
 
