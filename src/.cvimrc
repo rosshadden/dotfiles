@@ -20,9 +20,13 @@ set cncpcompletion
 " MAPPINGS
 """"""""""""""""
 
-map ; :
-unmap :
 unmap <Space>
+
+" surfingkeys passthroughs
+unmap : ?
+iunmap <C-o>
+
+map ; :
 map <C-Space> passKeys 1
 
 """"""""""""""""
@@ -79,7 +83,6 @@ map i goToInput
 map a goToLastInput
 map I goToInput
 map A goToLastInput
-imap <C-o> editWithVim
 
 """"""""""""""""
 " UI
