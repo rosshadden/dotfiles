@@ -17,18 +17,12 @@ function mapp(mode, key, fn, description) {
 	}
 	mode.keys.push(key);
 	if (!fn) return;
-	mode.mapkeyFn(key, description, fn);
-}
-
-function alias(mode, key, to) {
-	if (typeof mode === 'string') {
-		to = key;
-		key = mode;
-		mode = Normal;
+	if (typeof fn === 'string') {
+		const mapping = mode.mappings.find(encodeKeystroke(fn));
+		if (mapping) mode.mapkeyFn(key, mapping.meta.annotation || '', mapping.meta.code);
+		return;
 	}
-	const meta = mode.mappings.find(encodeKeystroke(to)).meta;
-	mode.keys.push(key);
-	mode.mapkeyFn(key, meta.annotation, meta.code);
+	mode.mapkeyFn(key, description || '', fn);
 }
 
 function unmapDefaults() {
@@ -56,11 +50,12 @@ function init() {
 function main() {
 	mapp(':')
 	mapp('?')
-	alias('<Ctrl-o>', '<Ctrl-i>');
+	mapp('<Ctrl-o>', '<Ctrl-i>');
+
+	mapp(Insert, `<Ctrl-'>`);
+	mapp(Insert, '<Ctrl-o>', '<Ctrl-i>');
 
 	unmapDefaults();
-
-	imap('<Ctrl-o>', '<Ctrl-i>');
 }
 
 init();
