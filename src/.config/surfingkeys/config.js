@@ -47,10 +47,13 @@ function init() {
 	addMode('Console', cmap, cmapkey);
 }
 
-function main() {
+function settings() {
+	Hints.characters = 'aoeusnthidkbpg';
+}
+
+function mappings() {
 	mapp(':')
 	mapp('?')
-	mapp('<Ctrl-o>', '<Ctrl-i>');
 
 	mapp(Insert, `<Ctrl-'>`);
 	mapp(Insert, '<Ctrl-o>', '<Ctrl-i>');
@@ -59,4 +62,5 @@ function main() {
 }
 
 init();
-main();
+settings();
+mappings();
