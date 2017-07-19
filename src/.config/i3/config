@@ -676,8 +676,8 @@ mode "MOVE" {
 
 mode "LAYOUT" {
 	bindsym grave layout default; $exit
-	bindsym 1 layout tabbed; $exit
-	bindsym 2 layout stacking; $exit
+	bindsym 1 layout stacking; $exit
+	bindsym 2 layout tabbed; $exit
 	bindsym 3 layout splith; $exit
 	bindsym 4 layout splitv; $exit
 
@@ -970,6 +970,8 @@ assign [title="(Google Keep|todoist)" window_role="app"] → $numLit $wsLit
 # games
 for_window [title="Dota 2"] border none
 for_window [class="^Dolphin-emu$|^Launch-faster-melee$" title="^Dolphin$|^launch-faster-melee$"] floating toggle
+for_window [instance="^Godot_Engine$"] floating enable
+for_window [title="^Godot (Engine|Editor)|\.tscn$"] floating disable
 
 # chat
 assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $numChat $wsChat
