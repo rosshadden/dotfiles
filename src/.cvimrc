@@ -110,3 +110,10 @@ map gS :viewsource!<cr>
 let completionengines = [ 'google', 'wikipedia', 'amazon' ]
 let searchalias g = 'google'
 let searchalias a = 'amazon'
+
+""""""""""""""""
+" FRAMES
+""""""""""""""""
+
+map zfp prevFrame
+map zfn nextFrame

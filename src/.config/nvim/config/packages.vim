@@ -164,7 +164,7 @@ call plug#begin(expand(g:packageDir))
 	" nim
 	Plug 'baabelfish/nvim-nim', { 'for': [ 'nim', 'nims', 'nimble' ] }
 	" godot
-	Plug 'quabug/vim-gdscript', { 'for': 'gd' }
+	Plug 'quabug/vim-gdscript'
 
 	" integration
 
