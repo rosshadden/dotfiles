@@ -1,5 +1,5 @@
 [Unit]
-Description=Mopidy music server
+Description=Mopidy
 After=avahi-daemon.service
 After=dbus.service
 After=network.target

@@ -295,7 +295,7 @@ bindsym XF86Display exec ~/local/bin/mon
 # NOTE: this points to the same thing as $macro1
 # bindsym XF86Tools exec ~/bin/keys init
 
-bindsym XF86Search exec --no-startup-id google-chrome-unstable
+bindsym XF86Search exec --no-startup-id google-chrome-beta
 
 # app launcher
 bindsym XF86LaunchA exec --no-startup-id $chooseApp
@@ -307,7 +307,7 @@ bindsym XF86Explorer exec ranger
 bindsym XF86TouchpadToggle exec "~/bin/config touchpad !"
 
 # web browser
-bindsym XF86HomePage exec --no-startup-id google-chrome-unstable
+bindsym XF86HomePage exec --no-startup-id google-chrome-beta
 
 # screenshots
 bindsym Print exec "~/bin/screenshot"

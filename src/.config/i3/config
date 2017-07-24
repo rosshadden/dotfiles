@@ -300,7 +300,7 @@ bindsym XF86Display exec ~/local/bin/mon
 # NOTE: this points to the same thing as $macro1
 # bindsym XF86Tools exec ~/bin/keys init
 
-bindsym XF86Search exec --no-startup-id google-chrome-unstable
+bindsym XF86Search exec --no-startup-id google-chrome-beta
 
 # app launcher
 bindsym XF86LaunchA exec --no-startup-id $chooseApp
@@ -312,7 +312,7 @@ bindsym XF86Explorer exec ranger
 bindsym XF86TouchpadToggle exec "~/bin/config touchpad !"
 
 # web browser
-bindsym XF86HomePage exec --no-startup-id google-chrome-unstable
+bindsym XF86HomePage exec --no-startup-id google-chrome-beta
 
 # screenshots
 bindsym Print exec "~/bin/screenshot"
@@ -968,10 +968,10 @@ for_window [title="Google Play Music" window_role="pop-up"] floating disable, mo
 assign [title="(Google Keep|todoist)" window_role="app"] → $numLit $wsLit
 
 # games
-for_window [title="Dota 2"] border none
-for_window [class="^Dolphin-emu$|^Launch-faster-melee$" title="^Dolphin$|^launch-faster-melee$"] floating toggle
 for_window [instance="^Godot_Engine$"] floating enable
 for_window [title="^Godot (Engine|Editor)|\.tscn$"] floating disable
+for_window [class="^Dolphin-emu$|^Launch-faster-melee$|^Launch-fm$" title="^Dolphin$|^launch-faster-melee$"] floating toggle
+for_window [title="Dota 2"] border none
 
 # chat
 assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $numChat $wsChat
@@ -995,4 +995,4 @@ exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath
 exec --no-startup-id xautolock -resetsaver -detectsleep -time 10 -locker "$locker" -nowlocker "$locker" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"
 
 # irc
-# exec --no-startup-id $tmuxAttach $nameChat 'TERM=tmux-256color weechat'"
+exec --no-startup-id $tmuxAttach $nameChat 'TERM=tmux-256color weechat'"

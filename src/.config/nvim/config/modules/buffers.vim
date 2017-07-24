@@ -30,10 +30,10 @@ call MakePrefix('buffers', '<:buffers>b', 1)
 noremap <leader>b <c-^>
 
 " navigation
-nnoremap j <c-w>j
-nnoremap k <c-w>k
-nnoremap h <c-w>h
-nnoremap l <c-w>l
+nnoremap <m-j> <c-w>j
+nnoremap <m-k> <c-w>k
+nnoremap <m-h> <c-w>h
+nnoremap <m-l> <c-w>l
 
 nnoremap <silent> <:buffers><space> :Buffers<cr>
 

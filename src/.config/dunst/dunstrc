@@ -150,7 +150,7 @@
 
     # Browser for opening urls in context menu.
     # browser = /usr/bin/firefox -new-tab
-    browser = /usr/bin/google-chrome-unstable
+    browser = /usr/bin/google-chrome-beta
 
     # Align icons left/right/off
     # icon_position = off

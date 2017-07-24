@@ -90,7 +90,7 @@ export GIT_EDITOR=$EDITOR
 
 export VISUAL=atom
 
-export BROWSER=google-chrome-stable
+export BROWSER=google-chrome-beta
 
 [ -f "/usr/bin/termite" ] && export TERMINAL=termite || export TERMINAL=xterm
 
