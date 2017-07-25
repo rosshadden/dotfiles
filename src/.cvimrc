@@ -23,7 +23,7 @@ set cncpcompletion
 unmap <Space>
 
 " surfingkeys passthroughs
-unmap : ?
+unmap : ? s
 iunmap <C-o>
 
 map ; :

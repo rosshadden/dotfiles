@@ -52,8 +52,9 @@ function settings() {
 }
 
 function mappings() {
-	mapp(':')
-	mapp('?')
+	mapp(':');
+	mapp('?');
+	mapp('s', 'su');
 
 	mapp(Insert, `<Ctrl-'>`);
 	mapp(Insert, '<Ctrl-o>', '<Ctrl-i>');
