@@ -49,6 +49,7 @@ function init() {
 
 function settings() {
 	Hints.characters = 'aoeusnthidkbpg';
+	chrome.storage.local.set({ "noPdfViewer": 1 });
 }
 
 function mappings() {
