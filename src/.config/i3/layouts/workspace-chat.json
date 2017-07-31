@@ -27,6 +27,8 @@
 				"instance": "^Pidgin$",
 				"transient_for": "^$",
 				"window_role": "^conversation$"
+			}, {
+				"title": "^chat: WeeChat "
 			}],
 			"type": "con"
 		}]
@@ -46,7 +48,7 @@
 		"swallows": [{
 			"class": "^Pidgin$",
 			"instance": "^Pidgin$",
-			"title": "^Buddy\\ List$",
+			"_title": "^Buddy\\ List$",
 			"transient_for": "^$",
 			"window_role": "^buddy_list$"
 		}],
