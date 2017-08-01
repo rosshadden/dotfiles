@@ -79,7 +79,6 @@ export PASSWORD_STORE_GENERATED_LENGTH=16
 
 # godot
 export GODOT_BIN=/usr/bin/godot
-export GODOT_BIN=~/dev/forks/godot/bin/godot.x11.tools.64
 
 ################
 # SETTINGS
