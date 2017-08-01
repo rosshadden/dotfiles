@@ -59,6 +59,11 @@ map <Leader>R reloadTabUncached
 map <Leader><Leader>r reloadAllTabs
 map <Leader><Leader>R :source /home/ross/.cvimrc<cr>
 
+" merge
+map mt markMergeTab
+map mw markMergeWindow
+map mp putMergeTabs
+
 """"""""""""""""
 " SCROLLING
 """"""""""""""""

@@ -4,8 +4,9 @@
 
 # meta
 THEME
-node_modules
 lib/themes
+lib/vendor
+node_modules
 
 # apps
 src/.config/copyq/.copyq_m
