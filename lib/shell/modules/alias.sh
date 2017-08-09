@@ -40,6 +40,8 @@ alias asdf="keys dvorak"
 # get public ip
 alias wimi="curl ipecho.net/plain; echo"
 
+alias today="date +%Y-%m-%d"
+
 ################
 # EDITING
 ################

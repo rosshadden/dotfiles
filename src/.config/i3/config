@@ -558,7 +558,7 @@ mode "TMUX" {
 	bindsym 4            mark LAST; workspace number 4 $wsHack;    exec $tmuxAttach $nameHack -c /home/ross/dotfiles"; $exit
 	bindsym 5            mark LAST; workspace number 5 $wsFiles;   exec $tmuxAttach $nameFiles 'ranger'"; $exit
 	bindsym 6            mark LAST; workspace number 6 $wsMedia;   exec $tmuxAttach $nameMedia 'ncmpcpp'"; $exit
-	bindsym 7            mark LAST; workspace number 7 $wsLit;     exec $tmuxAttach $nameLit"; $exit
+	bindsym 7            mark LAST; workspace number 7 $wsLit;     exec $tmuxAttach $nameLit -c /home/ross/dev/lit"; $exit
 	bindsym 8            mark LAST; workspace number 8 $wsMonitor; exec $tmuxAttach $nameMonitor"; $exit
 	bindsym 9            mark LAST; workspace number 9 $wsRun;     exec $tmuxAttach $nameRun"; $exit
 	bindsym 0            mark LAST; workspace number 10 $wsChat;   exec $tmuxAttach $nameChat 'TERM=tmux-256color weechat'"; $exit
@@ -992,7 +992,7 @@ exec --no-startup-id "i3-msg 'workspace $numChat $wsChat; append_layout ~/.confi
 exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath
 
 # autolock
-exec --no-startup-id xautolock -resetsaver -detectsleep -time 10 -locker "$locker" -nowlocker "$locker" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"
+exec --no-startup-id xautolock -resetsaver -detectsleep -time 30 -locker "$locker" -nowlocker "$locker" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"
 
 # irc
 exec --no-startup-id $tmuxAttach $nameChat 'TERM=tmux-256color weechat'"

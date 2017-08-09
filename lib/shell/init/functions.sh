@@ -31,6 +31,20 @@ cdParentKey() {
 	echo
 }
 
+hasPipe() {
+	stdin="$(ls -l /proc/self/fd/0)"
+	stdin="${stdin/*-> /}"
+	if [[ "$stdin" =~ /dev/pts ]]; then return 1; fi
+}
+
+trim() {
+	if hasPipe; then
+		echo -n "$(cat -)"
+	else
+		echo -n "$1"
+	fi
+}
+
 # copy() {
 # 	local output
 # 	while read line; do
@@ -54,24 +68,19 @@ calc() {
 }
 
 isCommand() {
-	command -v $1 >/dev/null 2>&1
+	command -v "$1" >/dev/null 2>&1
 }
 
 color() {
 	stdin="$(ls -l /proc/self/fd/0)"
 	stdin="${stdin/*-> /}"
 	format=ansi
-	format=xterm256
 
-	highlight -O $format "$@"
-
-	# TODO: make work with pipes again
-	# # TODO: abstract hasPipe function
-	# if [[ "$stdin" =~ ^/dev/pts/[0-9] ]]; then
-	# 	highlight -O $format "$@"
-	# else
-	# 	echo "$(cat -)" | highlight -O $format
-	# fi
+	if hasPipe; then
+		cat - | highlight -O $format "$@"
+	else
+		highlight -O $format "$@"
+	fi
 }
 
 ##
@@ -139,16 +148,16 @@ set-prompt() {
 }
 
 countdown() {
-	date1=$((`date +%s` + $1));
-	while [ "$date1" -ne `date +%s` ]; do
-		echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r";
+	date1=$(($(date +%s) + $1));
+	while [ "$date1" -ne "$(date +%s)" ]; do
+		echo -ne "$(date -u --date @$(($(date +%s) - date1)) +%H:%M:%S)\r";
 	done
 }
 
 stopwatch() {
-	date1=`date +%s`;
+	date1=$(date +%s);
 	while true; do
-		echo -ne "\r$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)";
+		echo -ne "\r$(date -u --date @$(($(date +%s) - date1)) +%H:%M:%S)";
 	done
 }
 
@@ -158,12 +167,12 @@ panewrap() {
 
 # find symlinks in input list
 getSymlinks() {
-	find $1 -maxdepth 1 -type l
+	find "$1" -maxdepth 1 -type l
 }
 
 toJSON() {
-	while read foo; do
-		echo $foo | json | pygmentize -l json
+	while read -r foo; do
+		echo "$foo" | json | pygmentize -l json
 	done
 }
 
@@ -174,9 +183,9 @@ toJSON() {
 ##
 signKey() {
 	# TODO: see if the two `pacman-key` steps can be combined
-	sudo pacman-key -r $1
-	sudo pacman-key --lsign-key $1
-	gpg --keyserver pgp.mit.edu --recv-keys $1
+	sudo pacman-key -r "$1"
+	sudo pacman-key --lsign-key "$1"
+	gpg --keyserver pgp.mit.edu --recv-keys "$1"
 }
 
 trickPython() {

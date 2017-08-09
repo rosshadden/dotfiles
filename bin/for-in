@@ -57,12 +57,14 @@ function for-in() {
 	fi
 }
 
-stdin="$(ls -l /proc/self/fd/0)"
-stdin="${stdin/*-> /}"
+hasPipe() {
+	stdin="$(ls -l /proc/self/fd/0)"
+	stdin="${stdin/*-> /}"
+	if [[ "$stdin" =~ /dev/pts ]]; then return 1; fi
+}
 
-# TODO: abstract hasPipe function
-if [[ "$stdin" =~ ^/dev/pts/[0-9] ]]; then
-	for-in "$@"
-else
+if hasPipe; then
 	for-in "$@" $(cat -)
+else
+	for-in "$@"
 fi
