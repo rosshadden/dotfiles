@@ -120,6 +120,7 @@
 ## ranger
 
 - support an easier deletion, like how `vifm` does it using `trash-cli`
+- mapping to rename with vim
 
 ## fzf
 
