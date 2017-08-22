@@ -32,9 +32,7 @@ imapkey("<Ctrl-'>", '#15Toggle quotes in an input element', toggleQuote);
 cmapkey("<Ctrl-'>", '#15Toggle quotes in an input element', toggleQuote);
 imapkey('<Ctrl-i>', '#15Open vim editor for current input', function() {
     var element = document.activeElement;
-    Front.showEditor(element, function(data) {
-        $(element).val(data);
-    }, element.localName);
+    Front.showEditor(element);
 });
 function toggleProxySite(host) {
     RUNTIME('updateProxy', {
@@ -137,6 +135,65 @@ command('toggleProxySite', 'toggleProxySite <host>, toggle proxy for a site.', f
     var hosts = args.join('');
     return toggleProxySite(hosts);
 });
+command('listVoices', 'list tts voices', function() {
+    runtime.command({
+        action: 'getVoices'
+    }, function(response) {
+
+        var voices = response.voices.map(function(s) {
+            return `<tr><td>${s.voiceName}</td><td>${s.lang}</td><td>${s.gender}</td><td>${s.remote}</td></tr>`;
+        });
+        voices.unshift("<tr style='font-weight: bold;'><td>voiceName</td><td>lang</td><td>gender</td><td>remote</td></tr>");
+        Front.showPopup("<table style='width:100%'>{0}</table>".format(voices.join('')));
+
+    });
+});
+command('testVoices', 'testVoices <locale> <text>', function(args) {
+    runtime.command({
+        action: 'getVoices'
+    }, function(response) {
+
+        var voices = response.voices, i = 0;
+        if (args.length > 0) {
+            voices = voices.filter(function(v) {
+                return v.lang.indexOf(args[0]) !== -1;
+            });
+        }
+        var textToRead = "This is to test voice with SurfingKeys";
+        if (args.length > 1) {
+            textToRead = args[1];
+        }
+        var text;
+        for (i = 0; i < voices.length - 1; i++) {
+            text = `${textToRead}, ${voices[i].voiceName} / ${voices[i].lang}.`;
+            readText(text, {
+                enqueue: true,
+                verbose: true,
+                voiceName: voices[i].voiceName
+            });
+        }
+        text = `${textToRead}, ${voices[i].voiceName} / ${voices[i].lang}.`;
+        readText(text, {
+            enqueue: true,
+            verbose: true,
+            voiceName: voices[i].voiceName,
+            onEnd: function() {
+                Front.showPopup("All voices test done.");
+            }
+        });
+    });
+});
+command('stopReading', '#13Stop reading.', function(args) {
+    RUNTIME('stopReading');
+});
+mapkey('gr', '#14Read selected text or text from clipboard', function() {
+    Front.getContentFromClipboard(function(response) {
+        readText(window.getSelection().toString() || response.data, {verbose: true});
+    });
+});
+vmapkey('gr', '#9Read selected text', function() {
+    readText(window.getSelection().toString(), {verbose: true});
+});
 mapkey('sfr', '#13show failed web requests of current page', function() {
     runtime.command({
         action: 'getTabErrors'
@@ -216,28 +273,29 @@ map('C', 'gf');
 mapkey('<Ctrl-h>', '#1Mouse over elements.', 'Hints.create("", Hints.dispatchMouseClick, {mouseEvents: ["mouseover"]})');
 mapkey('<Ctrl-j>', '#1Mouse out elements.', 'Hints.create("", Hints.dispatchMouseClick, {mouseEvents: ["mouseout"]})');
 mapkey('ya', '#7Copy a link URL to the clipboard', function() {
-    Hints.create('*[href]', function(element, event) {
+    Hints.create('*[href]', function(element) {
         Front.writeClipboard(element.href);
     })
 });
 mapkey('yma', '#7Copy multiple link URLs to the clipboard', function() {
     Hints.linksToYank = [];
-    Hints.create('*[href]', function(element, event) {
+    Hints.create('*[href]', function(element) {
         Hints.linksToYank.push(element.href);
         Front.writeClipboard(Hints.linksToYank.join('\n'));
     }, {multipleHits: true})
 });
 mapkey('i', '#1Go to edit box', 'Hints.create("input:visible, textarea:visible, *[contenteditable=true], select:visible", Hints.dispatchMouseClick)');
+mapkey('gi', '#1Go to the first edit box', function() {
+    Hints.create("input[type=text]:visible:nth(0)", Hints.dispatchMouseClick);
+});
 mapkey('I', '#1Go to edit box with vim editor', function() {
-    Hints.create("input:visible, textarea:visible, *[contenteditable=true], select:visible", function(element, event) {
-        Front.showEditor(element, function(data) {
-            $(element).val(data);
-        }, element.localName);
+    Hints.create("input:visible, textarea:visible, *[contenteditable=true], select:visible", function(element) {
+        Front.showEditor(element);
     });
 });
 mapkey('O', '#1Open detected links from text', function() {
-    Hints.create(runtime.conf.clickablePat, function(element, event, match) {
-        $(`<a href=${match}>`)[0].click()
+    Hints.create(runtime.conf.clickablePat, function(element) {
+        $(`<a href=${element[2]}>`)[0].click()
     }, {statusLine: "Open detected links from text"});
 });
 mapkey(';s', 'Toggle PDF viewer from SurfingKeys', function() {
@@ -357,6 +415,10 @@ command('listQueueURLs', 'list URLs in queue waiting for open', function(args) {
         });
     });
 });
+command('timeStamp', 'print time stamp in human readable format', function(args) {
+    var dt = new Date(parseInt(args[0]));
+    Omnibar.listWords([dt.toString()]);
+});
 mapkey('v', '#9Toggle visual mode', 'Visual.toggle()');
 mapkey('V', '#9Restore visual mode', 'Visual.restore()');
 mapkey('/', '#9Find in current page', 'Front.openFinder()');
@@ -441,10 +503,12 @@ mapkey('yf', '#7Copy form data in JSON on current page', function() {
     Front.writeClipboard(JSON.stringify(aa, null, 4));
 });
 mapkey('yg', '#7Capture current page', function() {
+    Front.toggleStatus();
     setTimeout(function() {
         runtime.command({
             action: 'captureVisibleTab'
         }, function(response) {
+            Front.toggleStatus();
             Front.showPopup("<img src='{0}' />".format(response.dataUrl));
         });
     }, 500);
@@ -473,7 +537,7 @@ mapkey('gb', '#12Open Chrome Bookmarks', 'tabOpenLink("chrome://bookmarks/")');
 mapkey('gc', '#12Open Chrome Cache', 'tabOpenLink("chrome://cache/")');
 mapkey('gd', '#12Open Chrome Downloads', 'tabOpenLink("chrome://downloads/")');
 mapkey('gh', '#12Open Chrome History', 'tabOpenLink("chrome://history/")');
-mapkey('gk', '#12Open Chrome Cookies', 'tabOpenLink("chrome://settings/cookies")');
+mapkey('gk', '#12Open Chrome Cookies', 'tabOpenLink("chrome://settings/content/cookies")');
 mapkey('ge', '#12Open Chrome Extensions', 'tabOpenLink("chrome://extensions/")');
 mapkey('gn', '#12Open Chrome net-internals', 'tabOpenLink("chrome://net-internals/#proxy")');
 mapkey('gs', '#12View page source', 'RUNTIME("viewSource", { tab: { tabbed: true }})');
@@ -552,5 +616,3 @@ addSearchAliasX('w', 'bing', 'http://global.bing.com/search?setmkt=en-us&setlang
 });
 addSearchAliasX('s', 'stackoverflow', 'http://stackoverflow.com/search?q=');
 addSearchAliasX('h', 'github', 'https://github.com/search?type=Code&utf8=%E2%9C%93&q=');
-
-$(document).trigger("surfingkeys:defaultSettingsLoaded");

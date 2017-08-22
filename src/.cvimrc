@@ -1,33 +1,22 @@
-" config file for https://github.com/1995eaton/chromium-vim
+unmapAll
+iunmapAll
 
 """"""""""""""""
 " META
 """"""""""""""""
 
-set localconfig
-let configpath = '/home/ross/.cvimrc'
 let blacklists = []
+let configpath = '/home/ross/.cvimrc'
+set localconfig
+
+map -: openCommandBar
 
 """"""""""""""""
 " SETTINGS
 """"""""""""""""
 
 let mapleader = ','
-
 set cncpcompletion
-
-""""""""""""""""
-" MAPPINGS
-""""""""""""""""
-
-unmap <Space>
-
-" surfingkeys passthroughs
-unmap : ? s
-iunmap <C-o>
-
-map ; :
-map <C-Space> passKeys 1
 
 """"""""""""""""
 " TABS
@@ -38,31 +27,16 @@ set defaultnewtabpage
 set newtabalwaysontheright
 set noshowtabindices
 
-map 0 firstTab
-map $ lastTab
-
 " alt-tab (pun)
-map <A-Tab> lastUsedTab
-imap <A-Tab> lastUsedTab
-
-" TODO: make these copy the url before closing, just like in vim
-map D closeTab
-map dd closeTab
-
-map u lastClosedTab
-
-map gD :duplicate<cr>
-map gM :call muteTab<cr>
-
-map <Leader>r reloadTab
-map <Leader>R reloadTabUncached
-map <Leader><Leader>r reloadAllTabs
-map <Leader><Leader>R :source /home/ross/.cvimrc<cr>
+map -<A-Tab> lastUsedTab
 
 " merge
-map mt markMergeTab
-map mw markMergeWindow
-map mp putMergeTabs
+map -mp putMergeTabs
+map -mt markMergeTab
+map -mw markMergeWindow
+
+map -r reloadAllTabs
+map -R :source /home/ross/.cvimrc<cr>
 
 """"""""""""""""
 " SCROLLING
@@ -70,6 +44,11 @@ map mp putMergeTabs
 
 set nosmoothscroll
 let scrollduration=10
+
+map j scrollDown
+map k scrollUp
+map h scrollLeft
+map l scrollRight
 
 map `` lastScrollPosition
 map <C-y> scrollUp
@@ -80,14 +59,8 @@ imap <C-d> scrollPageDown
 map <C-b> scrollFullPageUp
 map <C-f> scrollFullPageDown
 
-""""""""""""""""
-" INPUT
-""""""""""""""""
-
-map i goToInput
-map a goToLastInput
-map I goToInput
-map A goToLastInput
+map -gg scrollToTop
+map -G scrollToBottom
 
 """"""""""""""""
 " UI
@@ -106,19 +79,5 @@ set linkanimations
 let hintcharacters = 'aoeusnthidkbpg'
 let mouselesshintcharacters = 'aoeusnthidkbpg'
 
-map gS :viewsource!<cr>
-
-""""""""""""""""
-" SEARCHING
-""""""""""""""""
-
-let completionengines = [ 'google', 'wikipedia', 'amazon' ]
-let searchalias g = 'google'
-let searchalias a = 'amazon'
-
-""""""""""""""""
-" FRAMES
-""""""""""""""""
-
-map zfp prevFrame
-map zfn nextFrame
+map -f createHint
+map -F createTabbedHint

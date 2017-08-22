@@ -1,10 +1,10 @@
 const modes = {};
 
-function addMode(mode, mapFn, mapkeyFn) {
+function addMode(mode, mapFn, mapkeyFn, unmapFn) {
 	if (typeof mode === 'string') mode = { name: mode };
 	mode.mapFn = mapFn;
 	mode.mapkeyFn = mapkeyFn;
-	mode.keys = [];
+	mode.unmapFn = unmapFn;
 	modes[mode.name] = mode;
 }
 
@@ -13,9 +13,8 @@ function mapp(mode, key, fn, description) {
 		description = fn;
 		fn = key;
 		key = mode;
-		mode = Normal;
+		mode = modes.Normal;
 	}
-	mode.keys.push(key);
 	if (!fn) return;
 	if (typeof fn === 'string') {
 		const mapping = mode.mappings.find(encodeKeystroke(fn));
@@ -25,42 +24,48 @@ function mapp(mode, key, fn, description) {
 	mode.mapkeyFn(key, description || '', fn);
 }
 
-function unmapDefaults() {
-	for (let name in modes) {
-		const mode = modes[name];
-		const mappings = new Trie();
-		for (let key of mode.keys) {
-			const map = encodeKeystroke(key);
-			const node = mode.mappings.find(map);
-			if (node) mappings.add(map, node.meta);
-		}
-		delete mode.mappings;
-		mode.mappings = mappings;
-		mode.map_node = mappings;
+function unmapp(mode, keys) {
+	if (arguments.length === 1) {
+		keys = mode;
+		mode = modes.Normal;
 	}
+	if (typeof keys === 'string') keys = [ keys ];
+	for (const key of keys) mode.unmapFn(key);
 }
 
 function init() {
-	addMode(Normal, map, mapkey);
-	addMode(Insert, imap, imapkey);
-	addMode(Visual, vmap, vmapkey);
-	addMode('Console', cmap, cmapkey);
+	addMode(Normal, map, mapkey, unmap);
+	addMode(Insert, imap, imapkey, iunmap);
+	addMode(Visual, vmap, vmapkey, vunmap);
+	addMode('Console', cmap, cmapkey, () => { throw new Error('Not implemented'); });
 }
 
 function settings() {
 	Hints.characters = 'aoeusnthidkbpg';
-	chrome.storage.local.set({ "noPdfViewer": 1 });
+	chrome.storage.local.set({ "noPdfViewer": 0 });
+
+	addSearchAliasX('w', 'wikipedia', 'https://en.wikipedia.org/w/index.php?search=', 's');
 }
 
 function mappings() {
-	mapp(':');
-	mapp('?');
-	mapp('s', 'su');
+	// HISTORY
+	mapp('H', 'S');
+	mapp('L', 'D');
 
-	mapp(Insert, `<Ctrl-'>`);
-	mapp(Insert, '<Ctrl-o>', '<Ctrl-i>');
+	// TABS
+	mapp('gM', '<Alt-m>');
+	mapp(',r', '#4Reload the page uncached', 'RUNTIME("reloadTab", { nocache: true })');
+	mapp('u', 'X');
+	// alt-tab (pun)
+	mapp('<A-Tab>', 'gt');
+	mapp(modes.Insert, '<A-Tab>', 'gt');
 
-	unmapDefaults();
+	// INSERT
+	mapp(modes.Insert, '<Ctrl-o>', '<Ctrl-i>');
+
+	// UNMAP
+	unmapp([ 'S', 'D', '<Alt-m>', 'X', '<Ctrl-i>' ]);
+	unmapp(modes.Insert, [ '<Ctrl-i>' ]);
 }
 
 init();
