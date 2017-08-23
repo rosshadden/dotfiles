@@ -22,10 +22,7 @@ set cncpcompletion
 " TABS
 """"""""""""""""
 
-let newtaburl = ''
-set defaultnewtabpage
 set newtabalwaysontheright
-set noshowtabindices
 
 " alt-tab (pun)
 map -<A-Tab> lastUsedTab

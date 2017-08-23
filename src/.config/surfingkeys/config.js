@@ -8,6 +8,15 @@ function addMode(mode, mapFn, mapkeyFn, unmapFn) {
 	modes[mode.name] = mode;
 }
 
+function addProvider(key, name, url, ...args) {
+	addSearchAliasX(key, name, url, ...args);
+	mapkey(
+		`o${key}`,
+		`#8Open Search with alias ${key}`,
+		`Front.openOmnibar({ type: "SearchEngine", extra: "${key}" })`
+	);
+}
+
 function mapp(mode, key, fn, description) {
 	if (typeof mode === 'string') {
 		description = fn;
@@ -43,8 +52,6 @@ function init() {
 function settings() {
 	Hints.characters = 'aoeusnthidkbpg';
 	chrome.storage.local.set({ "noPdfViewer": 0 });
-
-	addSearchAliasX('w', 'wikipedia', 'https://en.wikipedia.org/w/index.php?search=', 's');
 }
 
 function mappings() {
@@ -62,12 +69,34 @@ function mappings() {
 
 	// INSERT
 	mapp(modes.Insert, '<Ctrl-o>', '<Ctrl-i>');
+}
 
-	// UNMAP
-	unmapp([ 'S', 'D', '<Alt-m>', 'X', '<Ctrl-i>' ]);
-	unmapp(modes.Insert, [ '<Ctrl-i>' ]);
+function unmappings() {
+	unmapp([
+		'<Alt-m>',
+		'<Alt-p>',
+		'<Ctrl-i>',
+		'B',
+		'D',
+		'E',
+		'F',
+		'R',
+		'S',
+		'X'
+	]);
+	unmapp(modes.Insert, [
+		'<Ctrl-i>'
+	]);
+}
+
+function providers() {
+	addProvider('G', 'github', 'https://github.com/search?type=Code&utf8=%E2%9C%93&q=');
+	addProvider('r', 'reddit', 'http://www.reddit.com/r/');
+	addProvider('w', 'wikipedia', 'https://en.wikipedia.org/w/index.php?search=', 's');
 }
 
 init();
 settings();
 mappings();
+unmappings();
+providers();
