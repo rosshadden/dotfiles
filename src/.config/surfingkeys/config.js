@@ -17,20 +17,22 @@ function addProvider(key, name, url, ...args) {
 	);
 }
 
-function mapp(mode, key, fn, description) {
+function mapp(mode, ...args) {
 	if (typeof mode === 'string') {
-		description = fn;
-		fn = key;
+		args.unshift(mode);
+		mode = modes.Normal;
+	}
+	mode.mapkeyFn(...args);
+}
+
+function alias(mode, key, target) {
+	if (typeof mode === 'string') {
+		target = key;
 		key = mode;
 		mode = modes.Normal;
 	}
-	if (!fn) return;
-	if (typeof fn === 'string') {
-		const mapping = mode.mappings.find(encodeKeystroke(fn));
-		if (mapping) mode.mapkeyFn(key, mapping.meta.annotation || '', mapping.meta.code);
-		return;
-	}
-	mode.mapkeyFn(key, description || '', fn);
+	const mapping = mode.mappings.find(encodeKeystroke(target));
+	if (mapping) mode.mapkeyFn(key, mapping.meta.annotation || '', mapping.meta.code);
 }
 
 function unmapp(mode, keys) {
@@ -56,19 +58,24 @@ function settings() {
 
 function mappings() {
 	// HISTORY
-	mapp('H', 'S');
-	mapp('L', 'D');
+	alias('H', 'S');
+	alias('L', 'D');
 
 	// TABS
-	mapp('gM', '<Alt-m>');
+	alias('gM', '<Alt-m>');
 	mapp(',r', '#4Reload the page uncached', 'RUNTIME("reloadTab", { nocache: true })');
-	mapp('u', 'X');
+	alias('u', 'X');
 	// alt-tab (pun)
-	mapp('<A-Tab>', 'gt');
-	mapp(modes.Insert, '<A-Tab>', 'gt');
+	alias('<A-Tab>', 'gt');
+	alias(modes.Insert, '<A-Tab>', 'gt');
+
+	// LINKS
+	alias('F', 'af');
 
 	// INSERT
-	mapp(modes.Insert, '<Ctrl-o>', '<Ctrl-i>');
+	mapp('a', '#1Append in edit box', 'Hints.create("input:visible, textarea:visible, *[contenteditable=true], select:visible", Hints.dispatchMouseClick)');
+	alias(modes.Insert, '<Ctrl-o>', '<Ctrl-i>');
+	alias(modes.Insert, '<Ctrl-i>', '<Ctrl-f>');
 }
 
 function unmappings() {
@@ -78,14 +85,13 @@ function unmappings() {
 		'<Ctrl-i>',
 		'B',
 		'D',
-		'E',
-		'F',
-		'R',
 		'S',
-		'X'
+		'X',
+		'ab',
+		'af',
 	]);
 	unmapp(modes.Insert, [
-		'<Ctrl-i>'
+		'<Ctrl-f>'
 	]);
 }
 
