@@ -22,17 +22,19 @@ function mapp(mode, ...args) {
 		args.unshift(mode);
 		mode = modes.Normal;
 	}
+	if (args.length < 3) args.splice(1, 0, '');
 	mode.mapkeyFn(...args);
 }
 
-function alias(mode, key, target) {
+function alias(mode, key, target, replace) {
 	if (typeof mode === 'string') {
+		replace = target;
 		target = key;
 		key = mode;
 		mode = modes.Normal;
 	}
-	const mapping = mode.mappings.find(encodeKeystroke(target));
-	if (mapping) mode.mapkeyFn(key, mapping.meta.annotation || '', mapping.meta.code);
+	mode.mapFn(key, target);
+	if (replace) unmapp(mode, target);
 }
 
 function unmapp(mode, keys) {
@@ -58,40 +60,49 @@ function settings() {
 
 function mappings() {
 	// HISTORY
-	alias('H', 'S');
-	alias('L', 'D');
+	alias('H', 'S', true);
+	alias('L', 'D', true);
 
 	// TABS
-	alias('gM', '<Alt-m>');
+	alias('gM', '<Alt-m>', true);
 	mapp(',r', '#4Reload the page uncached', 'RUNTIME("reloadTab", { nocache: true })');
-	alias('u', 'X');
+	alias('u', 'X', true);
 	// alt-tab (pun)
 	alias('<A-Tab>', 'gt');
-	alias(modes.Insert, '<A-Tab>', 'gt');
 
 	// LINKS
-	alias('F', 'af');
+	alias('F', 'af', true);
 
-	// INSERT
-	mapp('a', '#1Append in edit box', 'Hints.create("input:visible, textarea:visible, *[contenteditable=true], select:visible", Hints.dispatchMouseClick)');
-	alias(modes.Insert, '<Ctrl-o>', '<Ctrl-i>');
-	alias(modes.Insert, '<Ctrl-i>', '<Ctrl-f>');
+	// INPUT
+	mapp('a', '#1Append to edit box', () => {
+		Hints.create("input:visible, textarea:visible, *[contenteditable=true], select:visible", Hints.dispatchMouseClick);
+		const element = document.activeElement;
+		// contenteditable
+		if (element.setSelectionRange === undefined) {
+			const selection = document.getSelection();
+			selection.setPosition(selection.focusNode, selection.focusNode.data.length - 1);
+			Visual.showCursor();
+			Visual.hideCursor();
+			return;
+		}
+		element.setSelectionRange(element.value.length, element.value.length);
+	});
+	alias('A', 'I');
+	mapkey('ga', '#1Go to last input', () => Hints.create("input[type=text]:visible:last", Hints.dispatchMouseClick));
+	alias(modes.Insert, '<Ctrl-o>', '<Ctrl-i>', true);
+	alias(modes.Insert, '<Ctrl-i>', '<Ctrl-f>', true);
+
+	// CONSOLE
+	alias(modes.Console, '<Ctrl-n>', '<Tab>');
+	alias(modes.Console, '<Ctrl-p>', '<Shift-Tab>');
 }
 
 function unmappings() {
 	unmapp([
-		'<Alt-m>',
 		'<Alt-p>',
 		'<Ctrl-i>',
 		'B',
-		'D',
-		'S',
-		'X',
 		'ab',
-		'af',
-	]);
-	unmapp(modes.Insert, [
-		'<Ctrl-f>'
 	]);
 }
 
