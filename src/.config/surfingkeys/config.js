@@ -73,6 +73,12 @@ function mappings() {
 	// LINKS
 	alias('F', 'af', true);
 
+	// NAV
+	alias('st', 'su', true);
+	mapkey('su', '#4Edit current URL with vim editor (same tab)', () => {
+		Front.showEditor(window.location.href, (url) => window.location = url, 'url');
+	});
+
 	// INPUT
 	mapp('a', '#1Append to edit box', () => {
 		Hints.create("input:visible, textarea:visible, *[contenteditable=true], select:visible", Hints.dispatchMouseClick);
@@ -91,6 +97,8 @@ function mappings() {
 	mapkey('ga', '#1Go to last input', () => Hints.create("input[type=text]:visible:last", Hints.dispatchMouseClick));
 	alias(modes.Insert, '<Ctrl-o>', '<Ctrl-i>', true);
 	alias(modes.Insert, '<Ctrl-i>', '<Ctrl-f>', true);
+	alias(modes.Insert, '<Ctrl-h>', '<Alt-b>');
+	alias(modes.Insert, '<Ctrl-l>', '<Alt-f>');
 
 	// CONSOLE
 	alias(modes.Console, '<Ctrl-n>', '<Tab>');
