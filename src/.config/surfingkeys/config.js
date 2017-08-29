@@ -64,7 +64,9 @@ function mappings() {
 	alias('L', 'D', true);
 
 	// TABS
+	alias('dd', 'x');
 	alias('gM', '<Alt-m>', true);
+	alias('gp', '<Alt-p>', true);
 	mapp(',r', '#4Reload the page uncached', 'RUNTIME("reloadTab", { nocache: true })');
 	alias('u', 'X', true);
 	// alt-tab (pun)
@@ -107,7 +109,6 @@ function mappings() {
 
 function unmappings() {
 	unmapp([
-		'<Alt-p>',
 		'<Ctrl-i>',
 		'B',
 		'ab',
