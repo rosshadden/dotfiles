@@ -43,10 +43,6 @@ GMusicProxy &
 # gestures
 easystroke &
 
-# cvim external editor
-cvimServer=~/lib/vendor/mouseless/cvim_server.py
-[[ -f $cvimServer ]] && $cvimServer &
-
 ################
 # LOCAL
 ################
