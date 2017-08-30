@@ -1,47 +1,48 @@
 #!/usr/bin/env bash
 
+isCommand() {
+	command -v "$1" >/dev/null 2>&1
+}
+
 ################
-# CONFIG
+# ENV
 ################
 
 # keyboard
-~/bin/keys &
+[[ -f ~/bin/keys ]] && ~/bin/keys
 
-################
-# ENVIRONMENT
-################
-
-mkdir /tmp/aoeu &
+[[ -d /tmp/aoeu ]] || mkdir /tmp/aoeu
 
 ################
 # UTILS
 ################
 
 # pulseaudio
-pulseaudio --start &
+isCommand pulseaudio && pulseaudio --start &
 
 # composite manager
-compton -b &
+isCommand compton && compton -b &
 
 ################
 # APPS
 ################
 
 # fs
-dropbox-cli start &
+isCommand dropbox&& dropbox-cli start &
 
 # chat
-pidgin &
+isCommand pidgin && pidgin &
+isCommand scudcloud && scudcloud &
 
 # copypasta
-copyq &
+isCommand copyq && copyq &
 
 # music
-systemctl --user start mopidy.service &
-GMusicProxy &
+isCommand mopidy && systemctl --user start mopidy.service &
+isCommand GMusicProxy && GMusicProxy &
 
 # gestures
-easystroke &
+isCommand easystroke && easystroke &
 
 ################
 # LOCAL
