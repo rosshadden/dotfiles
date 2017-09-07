@@ -59,10 +59,6 @@ function settings() {
 }
 
 function mappings() {
-	// HISTORY
-	alias('H', 'S', true);
-	alias('L', 'D', true);
-
 	// TABS
 	alias('dd', 'x');
 	alias('gM', '<Alt-m>', true);
@@ -71,6 +67,24 @@ function mappings() {
 	alias('u', 'X', true);
 	// alt-tab (pun)
 	alias('<A-Tab>', 'gt');
+
+	// SCROLLING
+	mapp('<Ctrl-y>', 'Normal.scroll("pageUp")', { repeatIgnore: true });
+	mapp('<Ctrl-e>', 'Normal.scroll("pageDown")', { repeatIgnore: true });
+	mapp('<Ctrl-u>', 'Normal.scroll("pageUp")', { repeatIgnore: true });
+	mapp('<Ctrl-d>', 'Normal.scroll("pageDown")', { repeatIgnore: true });
+	mapp('<Ctrl-b>', 'Normal.scroll("pageUp")', { repeatIgnore: true });
+	mapp('<Ctrl-f>', 'Normal.scroll("pageDown")', { repeatIgnore: true });
+	mapp(modes.Insert, '<Ctrl-y>', 'Normal.scroll("pageUp")', { repeatIgnore: true });
+	mapp(modes.Insert, '<Ctrl-e>', 'Normal.scroll("pageDown")', { repeatIgnore: true });
+	mapp(modes.Insert, '<Ctrl-u>', 'Normal.scroll("pageUp")', { repeatIgnore: true });
+	mapp(modes.Insert, '<Ctrl-d>', 'Normal.scroll("pageDown")', { repeatIgnore: true });
+	mapp(modes.Insert, '<Ctrl-b>', 'Normal.scroll("pageUp")', { repeatIgnore: true });
+	mapp(modes.Insert, '<Ctrl-f>', 'Normal.scroll("pageDown")', { repeatIgnore: true });
+
+	// HISTORY
+	alias('H', 'S', true);
+	alias('L', 'D', true);
 
 	// LINKS
 	alias('F', 'af', true);

@@ -94,6 +94,8 @@
 	ls = ls-files
 	# list directories
 	ls-dirs = ls-tree -d --name-only HEAD
+	# list untracked files
+	untracked = ls-files --others --ignored --exclude-from=.gitignore
 	# checkout branch, making a new one if not present
 	cd = !sh -c 'git checkout $1 2> /dev/null || git checkout -b $1' -
 	# get current branch
