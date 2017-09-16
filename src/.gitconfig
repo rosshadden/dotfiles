@@ -63,6 +63,7 @@
 	f = fetch -p --tags --all --jobs=4
 	i = !git in
 	m = merge
+	mt = mergetool
 	o = !git out
 	r = remote
 	rb = rebase

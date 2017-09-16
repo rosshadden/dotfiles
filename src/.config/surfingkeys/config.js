@@ -63,24 +63,18 @@ function mappings() {
 	alias('dd', 'x');
 	alias('gM', '<Alt-m>', true);
 	alias('gp', '<Alt-p>', true);
-	mapp(',r', '#4Reload the page uncached', 'RUNTIME("reloadTab", { nocache: true })');
+	mapp(',r', '#4 Reload the page uncached', 'RUNTIME("reloadTab", { nocache: true })');
 	alias('u', 'X', true);
 	// alt-tab (pun)
 	alias('<A-Tab>', 'gt');
 
 	// SCROLLING
-	mapp('<Ctrl-y>', 'Normal.scroll("pageUp")', { repeatIgnore: true });
-	mapp('<Ctrl-e>', 'Normal.scroll("pageDown")', { repeatIgnore: true });
-	mapp('<Ctrl-u>', 'Normal.scroll("pageUp")', { repeatIgnore: true });
-	mapp('<Ctrl-d>', 'Normal.scroll("pageDown")', { repeatIgnore: true });
-	mapp('<Ctrl-b>', 'Normal.scroll("pageUp")', { repeatIgnore: true });
-	mapp('<Ctrl-f>', 'Normal.scroll("pageDown")', { repeatIgnore: true });
-	mapp(modes.Insert, '<Ctrl-y>', 'Normal.scroll("pageUp")', { repeatIgnore: true });
-	mapp(modes.Insert, '<Ctrl-e>', 'Normal.scroll("pageDown")', { repeatIgnore: true });
-	mapp(modes.Insert, '<Ctrl-u>', 'Normal.scroll("pageUp")', { repeatIgnore: true });
-	mapp(modes.Insert, '<Ctrl-d>', 'Normal.scroll("pageDown")', { repeatIgnore: true });
-	mapp(modes.Insert, '<Ctrl-b>', 'Normal.scroll("pageUp")', { repeatIgnore: true });
-	mapp(modes.Insert, '<Ctrl-f>', 'Normal.scroll("pageDown")', { repeatIgnore: true });
+	mapp('<Ctrl-y>', '#2 pageUp',   'Normal.scroll("pageUp")', { repeatIgnore: true });
+	mapp('<Ctrl-e>', '#2 pageDown', 'Normal.scroll("pageDown")', { repeatIgnore: true });
+	mapp('<Ctrl-u>', '#2 pageUp',   'Normal.scroll("pageUp")', { repeatIgnore: true });
+	mapp('<Ctrl-d>', '#2 pageDown', 'Normal.scroll("pageDown")', { repeatIgnore: true });
+	mapp('<Ctrl-b>', '#2 pageUp',   'Normal.scroll("pageUp")', { repeatIgnore: true });
+	mapp('<Ctrl-f>', '#2 pageDown', 'Normal.scroll("pageDown")', { repeatIgnore: true });
 
 	// HISTORY
 	alias('H', 'S', true);
@@ -91,12 +85,12 @@ function mappings() {
 
 	// NAV
 	alias('st', 'su', true);
-	mapkey('su', '#4Edit current URL with vim editor (same tab)', () => {
+	mapkey('su', '#4 Edit current URL with vim editor (same tab)', () => {
 		Front.showEditor(window.location.href, (url) => window.location = url, 'url');
 	});
 
 	// INPUT
-	mapp('a', '#1Append to edit box', () => {
+	mapp('a', '#1 Append to edit box', () => {
 		Hints.create("input:visible, textarea:visible, *[contenteditable=true], select:visible", Hints.dispatchMouseClick);
 		const element = document.activeElement;
 		// contenteditable
@@ -110,7 +104,7 @@ function mappings() {
 		element.setSelectionRange(element.value.length, element.value.length);
 	});
 	alias('A', 'I');
-	mapkey('ga', '#1Go to last input', () => Hints.create("input[type=text]:visible:last", Hints.dispatchMouseClick));
+	mapkey('ga', '#1 Go to last input', () => Hints.create("input[type=text]:visible:last", Hints.dispatchMouseClick));
 	alias(modes.Insert, '<Ctrl-o>', '<Ctrl-i>', true);
 	alias(modes.Insert, '<Ctrl-i>', '<Ctrl-f>', true);
 	alias(modes.Insert, '<Ctrl-h>', '<Alt-b>');

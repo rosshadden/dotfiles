@@ -172,8 +172,7 @@ call plug#begin(expand(g:packageDir))
 	Plug 'airblade/vim-gitgutter'
 	Plug 'codeindulgence/vim-tig'
 	" editorconfig
-	" TODO: inserts a weird search string on save
-	" Plug 'editorconfig/editorconfig-vim'
+	Plug 'editorconfig/editorconfig-vim'
 
 	" external
 
