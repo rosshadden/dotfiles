@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+file="$1"
+showFile="$2"
+showStats="$3"
+
+typos=$(aspell list --ignore-case < "$file" | cut -d ' ' -f 2 | grep -v '*' | grep -v '^\s*$' | sort)
+stats=$(echo "$typos" | uniq -c | sort -nr)
+
+if [[ $showStats == 1 ]]; then echo "$stats"; fi
+
+if [[ $showFile == 1 ]]; then
+	echo "$(echo "$typos" | wc -l) - $file"
+else
+	echo "$typos" | wc -l
+fi
