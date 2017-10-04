@@ -32,7 +32,7 @@ isCommand dropbox&& dropbox-cli start &
 
 # chat
 isCommand pidgin && pidgin &
-isCommand scudcloud && scudcloud &
+isCommand slack && slack &
 
 # copypasta
 isCommand copyq && copyq &

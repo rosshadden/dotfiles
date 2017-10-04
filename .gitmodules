@@ -1,9 +1,6 @@
 [submodule "lib/shell/zplug"]
 	path = lib/shell/zplug
 	url = https://github.com/zplug/zplug.git
-[submodule "lib/vendor/mouseless"]
-	path = lib/vendor/mouseless
-	url = https://github.com/hbt/mouseless.git
 [submodule "lib/vendor/Surfingkeys"]
 	path = lib/vendor/Surfingkeys
 	url = https://github.com/brookhong/Surfingkeys.git
