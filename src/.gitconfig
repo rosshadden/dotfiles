@@ -72,6 +72,7 @@
 	m = merge
 	mt = mergetool
 	o = !git out
+	of = !git out-force
 	r = remote
 	rb = rebase
 	s = status -sb
@@ -81,6 +82,7 @@
 
 	in = !sh -c 'git pull ${1-origin} ${2-$(git pwd)}' -
 	out = !sh -c 'git push ${1-origin} ${2-$(git pwd)}' -
+	out-force = !sh -c 'git push -f ${1-origin} ${2-$(git pwd)}' -
 	io = !git in && git out
 	sync-submodules = submodule update --init --remote --recursive
 
@@ -137,6 +139,10 @@
 	sb = !ls .git/refs/remotes/*/$(git pwd) | cut -d/ -f4,5 | xargs git show-branch $(git pwd)
 	# delete local branches that are already merged into HEAD
 	shear = !git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
+	# list conflicted files
+	conflicts = !git s | grep 'UU' | awk '{ print $2 }'
+	# open mergetool to a chosen conflicted file
+	mc = !git mergetool $(git conflicts | fzf)
 
 	# DIFFING
 

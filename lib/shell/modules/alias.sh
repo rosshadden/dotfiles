@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-alias copy="xsel -ib"
-alias put="xsel -ob"
-
 # get full path of file or dir
 alias path="readlink -f"
 
@@ -61,11 +58,13 @@ alias open="xdg-open"
 # TODO: breakout.exe into a git module
 alias g="git"
 alias tigs="tig status"
+alias tigr="tig \$(g rev-parse HEAD)..\$(g rev-parse FETCH_HEAD)"
 
 # TODO: breakout.exe into a tmux module
 alias tmux="tmux -2"
 alias tl="tmux list-sessions"
 
+# TODO: breakout.exe into an arch module
 alias B="bauerbill --build-dir /tmp/bauerbill"
 alias BB="bb-wrapper --build-dir /tmp/bauerbill"
 

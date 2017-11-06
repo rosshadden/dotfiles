@@ -45,18 +45,15 @@ trim() {
 	fi
 }
 
-# copy() {
-# 	local output
-# 	while read line; do
-# 		output="${output}\n${line}"
-# 	done
-# 	echo $output
-# 	# xsel -ib
-# }
+copy() {
+	local flags="${1:--b}"
+	xsel -i $flags
+}
 
-# paste() {
-# 	xsel -ob
-# }
+put() {
+	local flags="${1:--b}"
+	xsel -o $flags
+}
 
 error() {
 	echo "$1" 1>&2
