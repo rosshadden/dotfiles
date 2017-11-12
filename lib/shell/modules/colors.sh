@@ -14,4 +14,7 @@ unset counter
 # INIT
 ################
 
-eval "$(dircolors -b $ZPLUG_REPOS/trapd00r/LS_COLORS/LS_COLORS)"
+shell="$(getShell)"
+if [[ "$shell" == "zsh" ]]; then
+	eval "$(dircolors -b $ZPLUG_REPOS/trapd00r/LS_COLORS/LS_COLORS)"
+fi

@@ -23,9 +23,10 @@ call plug#begin(expand(g:packageDir))
 		\| Plug 'carlitux/deoplete-ternjs', LoadIf(has('nvim'), { 'do': 'npm i -g tern' })
 		\| Plug 'tweekmonster/deoplete-clang2', LoadIf(has('nvim'))
 	Plug 'Shougo/neocomplete.vim', LoadIf(!has('nvim'))
+	Plug 'Shougo/echodoc.vim'
 	" search with perl regex
 	Plug 'othree/eregex.vim'
-	" readline-style insersion
+	" readline-style insertion
 	Plug 'tpope/vim-rsi'
 	" let <c-a>/<c-x> increment dates
 	Plug 'tpope/vim-speeddating'
@@ -66,9 +67,6 @@ call plug#begin(expand(g:packageDir))
 	Plug 'Shougo/neosnippet-snippets'
 	" delimiter closing
 	Plug 'Raimondi/delimitMate'
-	" projects
-	Plug 'dsawardekar/portkey'
-	Plug 'dsawardekar/ember.vim'
 	" swap windows
 	Plug 'wesQ3/vim-windowswap'
 	" language-aware line splits/joins
@@ -118,8 +116,6 @@ call plug#begin(expand(g:packageDir))
 	Plug 'rhlobo/vim-super-retab'
 	" context-filetype awareness
 	Plug 'Shougo/context_filetype.vim'
-	" async commands
-	Plug 'tpope/vim-dispatch'
 	" fast folding
 	Plug 'Konfekt/FastFold'
 	" fuzzyness
@@ -179,9 +175,7 @@ call plug#begin(expand(g:packageDir))
 	" seamless vim/tmux navigation
 	Plug 'christoomey/vim-tmux-navigator'
 	Plug 'edkolev/promptline.vim'
-	" TODO: pending https://github.com/edkolev/tmuxline.vim/pull/75
-	" Plug 'edkolev/tmuxline.vim'
-	Plug 'munyari/tmuxline.vim', { 'branch': 'utf8' }
+	Plug 'edkolev/tmuxline.vim'
 	Plug 'tmux-plugins/vim-tmux'
 	Plug 'tmux-plugins/vim-tmux-focus-events'
 	" completions aware of other panes/windows, only when editing git commit messages

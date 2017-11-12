@@ -59,6 +59,7 @@ alias open="xdg-open"
 alias g="git"
 alias tigs="tig status"
 alias tigr="tig \$(g rev-parse HEAD)..\$(g rev-parse FETCH_HEAD)"
+alias tigr-="tigr --no-merges"
 
 # TODO: breakout.exe into a tmux module
 alias tmux="tmux -2"

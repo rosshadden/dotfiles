@@ -958,10 +958,10 @@ assign [class="^google-chrome" window_role="browser"] → $numWeb $wsWeb
 for_window [title="^Developer Tools"] floating disable
 
 # media
-assign [class="nuvolaplayer|Spotify|Vlc"] → $numMedia $wsMedia
+assign [class="nuvolaplayer|Spotify|Vlc|mpv"] → $numMedia $wsMedia
 assign [title="Popcorn Time"] → $numMedia $wsMedia
 assign [title="Google Play Music" window_role="pop-up"] → $numMedia $wsMedia
-for_window [class="Vlc"] border none
+for_window [class="Vlc|mpv"] border none
 for_window [title="Google Play Music" window_role="pop-up"] floating disable, move to workspace $numMedia $wsMedia
 
 # lit

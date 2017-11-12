@@ -2,24 +2,6 @@
   "name": "dotfiles",
   "version": "0.8.0",
   "description": "Ross' dotfiles of epic awesomeness +10",
-  "main": "bin/dots",
-  "scripts": {
-    "dots": "bin/dots"
-  },
-  "bin": {
-    "config": "bin/config",
-    "diffconflicts": "bin/diffconflicts",
-    "dots": "bin/dots",
-    "duh": "bin/duh",
-    "for-in": "bin/for-in",
-    "for-of": "bin/for-of",
-    "g": "bin/g",
-    "keys": "bin/keys",
-    "muse": "bin/muse",
-    "q": "bin/q",
-    "screenshot": "bin/screenshot",
-    "tp": "bin/tp"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/rosshadden/dotfiles.git"
