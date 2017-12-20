@@ -68,6 +68,13 @@ function mappings() {
 	// alt-tab (pun)
 	alias('<A-Tab>', 'gt');
 
+	mapp('p', '#7 Paste URL in current tab', () => {
+		Clipboard.read(({ data }) => (window.location.href = data));
+	});
+	mapp('P', '#7 Paste URL in new tab', () => {
+		Clipboard.read(({ data }) => tabOpenLink(data));
+	});
+
 	// SCROLLING
 	mapp('<Ctrl-y>', '#2 pageUp',   'Normal.scroll("pageUp")', { repeatIgnore: true });
 	mapp('<Ctrl-e>', '#2 pageDown', 'Normal.scroll("pageDown")', { repeatIgnore: true });

@@ -79,9 +79,6 @@ set $locker3 ~/bin/locker -b
 set $borderWidth 2
 set $borderFloatingWidth 4
 
-# paths
-set $wallpaperPath ~/Dropbox/media/images/wallpaper
-
 ################
 # OPTIONS
 ################
@@ -161,16 +158,6 @@ bindsym $super+o mark LAST; exec $chooseApp
 bindsym $super+a mark LAST; exec $chooseAll
 # open window finder
 bindsym $super+w mark LAST; exec $chooseWindow
-
-# fix keys
-# TODO: this does not work
-bindsym $macro1 exec "~/bin/keys init"
-
-# fix monitors
-bindsym $macro2 exec "~/local/lib/mon.sh"
-
-# goto latest
-bindsym $macro4 mark LAST; [urgent=latest] focus
 
 # lock screen
 bindsym $macro5 exec $locker
@@ -555,7 +542,7 @@ mode "TMUX" {
 	bindsym 1            mark LAST; workspace number 1 $wsWeb;     exec $tmuxAttach $nameWeb"; $exit
 	bindsym 2            mark LAST; workspace number 2 $wsDev;     exec $tmuxAttach $nameDev -c /home/ross/dev"; $exit
 	bindsym 3            mark LAST; workspace number 3 $wsRemote;  exec $tmuxAttach $nameRemote"; $exit
-	bindsym 4            mark LAST; workspace number 4 $wsHack;    exec $tmuxAttach $nameHack -c /home/ross/dotfiles"; $exit
+	bindsym 4            mark LAST; workspace number 4 $wsHack;    exec $tmuxAttach $nameHack"; $exit
 	bindsym 5            mark LAST; workspace number 5 $wsFiles;   exec $tmuxAttach $nameFiles 'ranger'"; $exit
 	bindsym 6            mark LAST; workspace number 6 $wsMedia;   exec $tmuxAttach $nameMedia 'ncmpcpp'"; $exit
 	bindsym 7            mark LAST; workspace number 7 $wsLit;     exec $tmuxAttach $nameLit -c /home/ross/dev/lit"; $exit
@@ -564,6 +551,8 @@ mode "TMUX" {
 	bindsym 0            mark LAST; workspace number 10 $wsChat;   exec $tmuxAttach $nameChat 'TERM=tmux-256color weechat'"; $exit
 	bindsym bracketleft  mark LAST; workspace number 11 $wsDesign; exec $tmuxAttach $nameDesign"; $exit
 	bindsym bracketright mark LAST; workspace number 12 $wsGames;  exec $tmuxAttach $nameGames"; $exit
+
+	bindsym d            mark LAST; workspace number 4 $wsHack;    exec $tmuxAttach $nameHack -c /home/ross/dotfiles"; $exit
 
 	# TODO: open preset for the current workspace
 
@@ -850,6 +839,9 @@ mode "PROJECTS" {
 }
 
 mode "APPS" {
+	# volume -- pavucontrol
+	bindsym v mark LAST; exec $(pavucontrol); $exit
+
 	# music -- Google Music
 	bindsym m mark LAST; exec $(gtk-launch nuvolaplayer3-google-play-music); $exit
 
@@ -869,6 +861,9 @@ mode "APPS" {
 
 	# documentation -- zeal
 	bindsym d mark LAST; exec $(xdotool key --clearmodifiers "alt+super+shift+Z"); $exit
+
+	# stream app -- OBS
+	bindsym s mark LAST; exec $(gtk-launch obs); $exit
 
 	bindsym $super+space $return
 	bindsym Escape $exit
@@ -980,6 +975,7 @@ assign [title="^finch$"] → $numChat $wsChat
 
 # monitor
 assign [class="MongoChef"] → $numMonitor $wsMonitor
+assign [class="^obs$"] → $numMonitor $wsMonitor
 
 ################
 # STARTUP
@@ -989,7 +985,7 @@ assign [class="MongoChef"] → $numMonitor $wsMonitor
 exec --no-startup-id "i3-msg 'workspace $numChat $wsChat; append_layout ~/.config/i3/layouts/workspace-chat.json'"
 
 # wallpaper
-exec --no-startup-id feh --recursive --randomize --bg-scale $wallpaperPath
+exec --no-startup-id ~/.fehbg
 
 # autolock
 exec --no-startup-id xautolock -resetsaver -detectsleep -time 30 -locker "$locker" -nowlocker "$locker" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"

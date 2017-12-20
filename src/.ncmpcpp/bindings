@@ -37,6 +37,10 @@ def_key "J"
 	move_sort_order_down
 def_key "K"
 	move_sort_order_up
+def_key "J"
+	move_selected_items_down
+def_key "K"
+	move_selected_items_up
 
 def_key "g"
 	move_home
