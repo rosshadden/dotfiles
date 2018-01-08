@@ -54,5 +54,5 @@ noremap Q gq
 
 " BUILD
 
-noremap <localleader><space> :Make<cr>:cc<cr>
-noremap <localleader><localleader><space> :Make!<cr>:cc<cr>
+noremap <localleader><space> :make<cr>:cc<cr>
+noremap <localleader><localleader><space> :make!<cr>:cc<cr>

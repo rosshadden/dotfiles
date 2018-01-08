@@ -1,6 +1,6 @@
 [options]
-font = Fantasque Sans Mono Regular Nerd Font Complete 12
-font = Fantasque Sans Mono 12
+font = Fantasque Sans Mono Regular Nerd Font Complete 10
+font = Fantasque Sans Mono 10
 scrollback_lines = 100000
 
 [colors]

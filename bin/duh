@@ -8,6 +8,18 @@
 # @param {String} [dir=.] - Directory
 ##
 duh() {
+	local options=""
+
+	local spec=":f"
+	while getopts $spec opt; do
+		case "$opt" in
+			f) options="-a" ;;
+			:) error "Option '-$OPTARG' requires an argument" ;;
+			*) error "Invalid option: -$OPTARG" ;;
+		esac
+	done
+	shift $((OPTIND - 1))
+
 	local depth=$1 dir=$2
 
 	local temp
@@ -22,10 +34,14 @@ duh() {
 		depth=$temp
 	fi
 
-	if [[ -z "$depth" ]]; then depth=0; fi
+	if [[ -z "$depth" ]]; then depth=1; fi
 	if [[ -z "$dir" ]]; then dir=.; fi
 
-	du -h --max-depth=$depth $dir | sort -h
+	if [ "$options" != "" ]; then
+		du -h --max-depth=$depth "$options" $dir | sort -h
+	else
+		du -h --max-depth=$depth $dir | sort -h
+	fi
 }
 
 duh "$@"

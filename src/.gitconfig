@@ -135,6 +135,7 @@
 	untrack = update-index --assume-unchanged
 	# remote URL
 	url = !echo -n $(git remote -v | head -1 | gawk '{ print $2 }')
+	web = !git url | sed 's_com:_com/_' | sed 's_git@__' | sed 's_\\.git$__'
 	# show current branch commits
 	sb = !ls .git/refs/remotes/*/$(git pwd) | cut -d/ -f4,5 | xargs git show-branch $(git pwd)
 	# delete local branches that are already merged into HEAD
