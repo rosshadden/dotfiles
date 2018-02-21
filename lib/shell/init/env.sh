@@ -95,7 +95,13 @@ export VISUAL=atom
 
 export BROWSER=google-chrome-stable
 
-[ -f "/usr/bin/termite" ] && export TERMINAL=termite || export TERMINAL=xterm
+if [ -f "/usr/bin/termite" ]; then
+	export TERMINAL=termite
+elif [ -f "/usr/bin/kitty" ]; then
+	export TERMINAL=kitty
+else
+	export TERMINAL=xterm
+fi
 
 export DEFAULT_USER=$USER
 

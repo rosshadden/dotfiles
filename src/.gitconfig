@@ -73,6 +73,7 @@
 	mt = mergetool
 	o = !git out
 	of = !git out-force
+	op = !git please
 	r = remote
 	rb = rebase
 	s = status -sb
@@ -84,6 +85,7 @@
 	out = !sh -c 'git push ${1-origin} ${2-$(git pwd)}' -
 	out-force = !sh -c 'git push -f ${1-origin} ${2-$(git pwd)}' -
 	io = !git in && git out
+	please = push --force-with-lease
 	sync-submodules = submodule update --init --remote --recursive
 
 	# PLURALITY
@@ -102,20 +104,23 @@
 	find = ls-files
 	# list files
 	ls = ls-files
+	lsa = ls-files -co --exclude-standard
 	# list directories
 	ls-dirs = ls-tree -d --name-only HEAD
 	# list untracked files
 	untracked = ls-files --others --ignored --exclude-from=.gitignore
 	# checkout branch, making a new one if not present
 	cd = !sh -c 'git checkout $1 2> /dev/null || git checkout -b $1' -
-	# get current branch
+	# get current ref
 	pwd = rev-parse --abbrev-ref HEAD
+	cwd = rev-parse --short HEAD
 	# get recent commits on a file
 	tail = log --patch
 	# make dir and add `.gitkeep`
 	mkdir = "!sh -c 'mkdir -p $1; touch $1/.gitkeep; git add $1' -"
 	man = help
-	cat = cat-file
+	cat = show
+	cp = cherry-pick
 
 	# STATE
 

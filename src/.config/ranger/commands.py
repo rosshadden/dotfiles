@@ -5,13 +5,15 @@
 # commands when upgrading ranger.
 
 # You always need to import ranger.api.commands here to get the Command class:
-from ranger.api.commands import *
+from ranger.api.commands import Command
 
 # A simple command for demonstration purposes follows.
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 # You can import any python module as needed.
 import os
+import subprocess
+
 
 # Any class that is a subclass of "Command" will be integrated into ranger as a
 # command.  Try typing ":my_edit<ENTER>" in ranger!
@@ -59,28 +61,33 @@ class my_edit(Command):
 
 # TODO: abstract out the general part of these two methods
 
+
 class fzf_select(Command):
     def execute(self):
-        import subprocess
-        command = 'fzf'
+        command = "fzf"
         fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
-            fzf_file = os.path.abspath(stdout.decode('utf-8').rstrip('\n'))
+            fzf_file = os.path.abspath(stdout.decode("utf-8").rstrip("\n"))
             if os.path.isdir(fzf_file):
                 self.fm.cd(fzf_file)
             else:
                 self.fm.select_file(fzf_file)
 
+
 class fzf_cd(Command):
     def execute(self):
-        import subprocess
-        command = "command find -L . \\( -path '*/\\.*' -o -fstype 'dev' -o -fstype 'proc' \\) -prune     -o -type d -print 2> /dev/null | sed 1d | cut -b3- | fzf"
-        command += ' ' + os.getenv('FZF_ALT_C_OPTS')
+        fzfOpts = os.getenv("FZF_ALT_C_OPTS") or "--preview 'tree -C {} | head -200'"
+        command = (
+          "command find -L ."
+          " \\( -path '*/\\.*' -o -fstype 'dev' -o -fstype 'proc' \\)"
+          " -prune -o -type d -print 2> /dev/null | sed 1d | cut -b3- | fzf"
+        )
+        command += " " + fzfOpts
         fzf = self.fm.execute_command(command, stdout=subprocess.PIPE)
         stdout, stderr = fzf.communicate()
         if fzf.returncode == 0:
-            fzf_file = os.path.abspath(stdout.decode('utf-8').rstrip('\n'))
+            fzf_file = os.path.abspath(stdout.decode("utf-8").rstrip("\n"))
             if os.path.isdir(fzf_file):
                 self.fm.cd(fzf_file)
             else:

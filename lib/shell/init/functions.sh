@@ -37,6 +37,12 @@ hasPipe() {
 	if [[ "$stdin" =~ /dev/pts ]]; then return 1; fi
 }
 
+port() {
+	local to="$1"
+	local file="$2"
+	cp {,"$to/"}"$file"
+}
+
 trim() {
 	if hasPipe; then
 		echo -n "$(cat -)"
@@ -188,4 +194,9 @@ signKey() {
 trickPython() {
 	ln -s "$(which python2)" /tmp/aoeu/python
 	export PATH=/tmp/aoeu:$PATH
+}
+
+fixBluetooth() {
+	local index=$(pacmd list-cards | pt 'name: <bluez' -B 1 | head -1 | sed -E 's;^.*index: (.+);\1;')
+	pacmd set-card-profile "$index" off && pacmd set-card-profile "$index" a2dp_sink
 }

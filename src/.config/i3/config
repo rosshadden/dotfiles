@@ -285,7 +285,7 @@ bindsym XF86Display exec ~/local/bin/mon
 
 # fix keys
 # NOTE: this points to the same thing as $macro1
-# bindsym XF86Tools exec ~/bin/keys init
+bindsym XF86Tools exec "xdotool keydown --window obs ctrl+shift+Num_Lock; sleep 0.01; xdotool keyup --window obs ctrl+shift+Num_Lock"
 
 bindsym XF86Search exec --no-startup-id google-chrome-beta
 
@@ -912,25 +912,6 @@ client.urgent $base02 $base08 $base07 $base08
 ################
 
 exec_always --no-startup-id $HOME/bin/bars
-
-# bar {
-# 	position top
-# 	workspace_buttons yes
-# 	mode dock
-# 	tray_output primary
-#
-# 	status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
-#
-# 	colors {
-# 		separator $base03
-# 		background $base01
-# 		statusline $base05
-# 		focused_workspace $base0C $base0D $base00
-# 		active_workspace $base02 $base02 $base07
-# 		inactive_workspace $base01 $base01 $base03
-# 		urgent_workspace $base08 $base08 $base07
-# 	}
-# }
 
 ################
 # WORKSPACES

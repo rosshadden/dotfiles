@@ -42,7 +42,8 @@ endfunction
 augroup javascript
 	autocmd!
 
-	autocmd FileType javascript
+	autocmd FileType javascript,typescript
 		\| map <localleader>v :execute InsertVersion('a')<cr>
 		\| map <localleader>V :execute InsertVersion('i')<cr>
+		\| map <localleader>s :'<,'>sort /^import.\+ \zs['"]/<cr>
 augroup END

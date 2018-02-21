@@ -60,7 +60,7 @@ function settings() {
 
 function mappings() {
 	// TABS
-	alias('dd', 'x');
+	alias('dd', 'x', true);
 	alias('gM', '<Alt-m>', true);
 	alias('gp', '<Alt-p>', true);
 	mapp(',r', '#4 Reload the page uncached', 'RUNTIME("reloadTab", { nocache: true })');
