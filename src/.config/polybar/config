@@ -20,5 +20,6 @@ include-file = /home/ross/.config/polybar/modules/temperature.ini
 include-file = /home/ross/.config/polybar/modules/time.ini
 include-file = /home/ross/.config/polybar/modules/volume.ini
 include-file = /home/ross/.config/polybar/modules/window.ini
+include-file = /home/ross/.config/polybar/modules/xsel.ini
 include-file = /home/ross/.config/polybar/settings.ini
 include-file = /home/ross/.config/polybar/variables.ini

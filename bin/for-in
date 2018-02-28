@@ -21,12 +21,14 @@ function error() {
 function for-in() {
 	local headers=false
 	local options=""
+	local dry=false
 
-	local spec=":hj:sS"
+	local spec=":hj:nsS"
 	while getopts $spec opt; do
 		case "$opt" in
 			h) headers=true ;;
 			j) options="-j$OPTARG" ;;
+			n) dry=true ;;
 			s) options="-j1" ;;
 			S) echo $spec; exit ;;
 			:) error "Option '-$OPTARG' requires an argument" ;;
@@ -48,6 +50,10 @@ function for-in() {
 
 	if [[ $len -gt 1 ]]; then
 		list=( "${args[@]}" )
+	fi
+
+	if [ "$dry" = true ]; then
+		cmd="echo $cmd"
 	fi
 
 	if [ "$options" != "" ]; then
