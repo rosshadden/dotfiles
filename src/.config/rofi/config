@@ -5,27 +5,31 @@
 ! Window opacity
 rofi.opacity:                        80
 ! Window width
-rofi.width:                          -64
+rofi.width:                          -128
 ! Number of lines
 rofi.lines:                          16
 ! Font to use
-rofi.font:                           Fira Code 12
+rofi.font:                           Fira Code 10
 ! Border width
 rofi.bw:                             4
 ! Location on screen
 rofi.location:                       0
 ! Padding
-rofi.padding:                        50
+rofi.padding:                        32
 ! Always show number of lines
 rofi.fixed-num-lines:                true
+! Whether to load and show icons
+rofi.show-icons:                     true
 ! Terminal to use
 rofi.terminal:                       rofi-sensible-terminal
+! Use sorting
+rofi.sort:                           false
+! Use levenshtein sorting also for fuzzy matching
+rofi.levenshtein-sort:               false
 ! Row height (in chars)
 rofi.eh:                             2
-! Use glob matching
-rofi.glob:                           false
-! Use regex matching
-rofi.regex:                          true
+! Set the matching algorithm. (normal, regex, glob, fuzzy)
+rofi.matching:                       regex
 ! Margin between rows
 rofi.line-margin:                    4
 ! Separator style (none, dash, solid)
@@ -37,7 +41,7 @@ rofi.fullscreen:                     false
 ! Threads to use for string matching
 rofi.threads:                        0
 ! Window Format. w (desktop name), t (title), n (name), r (role), c (class)
-rofi.window-format:                  w   c   n   t
+rofi.window-format:                  {w}    {c}    {n}    {t}
 ! Enable the extended coloring options
 rofi.color-enabled:                  true
 

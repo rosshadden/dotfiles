@@ -34,8 +34,10 @@ call plug#begin(expand(g:packageDir))
 	Plug 'mjbrownie/swapit'
 	" load local .lvimrc files
 	Plug 'embear/vim-localvimrc'
+	" look at registers
+	Plug 'junegunn/vim-peekaboo'
 
-	" text objects
+	" text objects and motions
 
 	Plug 'kana/vim-textobj-user'
 		\| Plug 'kana/vim-textobj-indent'
@@ -48,9 +50,7 @@ call plug#begin(expand(g:packageDir))
 	Plug 'wellle/targets.vim'
 	" camelCase
 	Plug 'bkad/CamelCaseMotion'
-
-	" motions
-
+	" user-defined operator library
 	Plug 'kana/vim-operator-user'
 		\| Plug 'kana/vim-operator-replace' " put in <motion> *mutters under breath*
 	" gahdlike navigation
@@ -95,8 +95,6 @@ call plug#begin(expand(g:packageDir))
 	Plug 'machakann/vim-highlightedyank'
 	" status bar
 	Plug 'vim-airline/vim-airline'
-	" indent guides
-	Plug 'nathanaelkane/vim-indent-guides'
 	" resize windows
 	Plug 'talek/obvious-resize'
 	" icon fonts

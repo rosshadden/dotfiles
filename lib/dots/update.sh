@@ -86,7 +86,7 @@ function updateZsh() {
 
 function updateVim() {
 	# update vim plugins
-	if isCommand vim; then
+	if isCommand vim || isCommand nvim; then
 		lawg "vim:plugins"
 		$EDITOR +PlugUpdate +PlugUpgrade +qa
 		lawg "vim:plugins"

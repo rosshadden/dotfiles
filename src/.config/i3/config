@@ -67,6 +67,8 @@ set $chooseCommand "rofi -show run -sidebar-mode"
 set $chooseWindow "rofi -show window -sidebar-mode"
 set $chooseApp "rofi -show drun -p 'launch: '"
 set $chooseAll "rofi -combi-modi drun,run -show combi -p 'all: '"
+set $chooseKill "kill $(ps -u $USER -o pid,command | tail -n +2 | rofi -dmenu -p 'kill' | awk '{ print $1 }')"
+set $chooseKillForce "kill -9 $(ps -u $USER -o pid,command | tail -n +2 | rofi -dmenu -p 'kill' | awk '{ print $1 }')"
 set $terminal i3-sensible-terminal
 set $run i3-sensible-terminal -e
 set $tmuxAttach i3-sensible-terminal -e "tmux new-session -A -s
@@ -158,6 +160,9 @@ bindsym $super+o mark LAST; exec $chooseApp
 bindsym $super+a mark LAST; exec $chooseAll
 # open window finder
 bindsym $super+w mark LAST; exec $chooseWindow
+# open killer
+bindsym $super+x; exec $chooseKill
+bindsym $super+Shift+x; exec $chooseKillForce
 
 # lock screen
 bindsym $macro5 exec $locker

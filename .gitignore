@@ -15,6 +15,7 @@ src/.config/copyq/copyq-bak.conf
 src/.config/copyq/copyq_geometry.ini
 src/.config/copyq/copyq_tabs.ini
 src/.config/gtk-3.0/bookmarks
+src/.config/mpv/watch_later
 src/.config/nvim/.init.vim-rplugin~
 src/.config/nvim/.netrwhist
 src/.config/nvim/autoload/plug.vim.old
