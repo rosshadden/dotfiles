@@ -2,4 +2,4 @@
 " SETTINGS
 """"""""""""""""
 
-let g:polyglot_disabled = [ 'markdown', 'javascript', 'nim' ]
+let g:polyglot_disabled = [ 'javascript', 'markdown', 'nim', 'typescript' ]

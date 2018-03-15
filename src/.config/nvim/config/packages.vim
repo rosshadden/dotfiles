@@ -142,6 +142,8 @@ call plug#begin(expand(g:packageDir))
 	Plug 'marijnh/tern_for_vim', { 'for': 'javascript', 'do': 'npm i' }
 	Plug 'moll/vim-node', { 'for': 'javascript' }
 	" ts
+	Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
+		\| Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 	Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 	" rust
 	Plug 'racer-rust/vim-racer', { 'for': 'rust' }
