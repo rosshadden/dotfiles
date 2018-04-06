@@ -22,6 +22,17 @@ config() {
 	$0 "$@"
 }
 
+isCommand() {
+	command -v "$1" >/dev/null 2>&1
+}
+
+checkEnabled() {
+	if ! isCommand "$1"; then
+		echo "mode disabled ($1 not found)"
+		exit 0
+	fi
+}
+
 normalizeValue() {
 	local value=$1
 
@@ -33,12 +44,15 @@ normalizeValue() {
 value=$(normalizeValue $value)
 
 if [[ ! $setting ]]; then
+	# Output all settings
 	for module in "${modules[@]}"; do
 		echo "$module:"
 		config "$module"
 		echo
 	done
 elif [[ $setting == "volume" ]]; then
+	checkEnabled ponymix
+
 	if [[ ! $value ]]; then
 		ponymix get-volume
 		exit 0
@@ -57,6 +71,8 @@ elif [[ $setting == "volume" ]]; then
 		ponymix set-volume $value
 	fi
 elif [[ $setting == "brightness" ]]; then
+	checkEnabled xbacklight
+
 	if [[ ! $value ]]; then
 		xbacklight -get
 		exit 0
@@ -70,24 +86,28 @@ elif [[ $setting == "brightness" ]]; then
 		xbacklight -set $value
 	fi
 elif [[ $setting == "battery" ]]; then
+	checkEnabled acpi
 	charge=$(acpi | sed -n 's/Battery [0-9]:.*, \([0-9]\{1,3\}\)%.*/\1/p')
 	status=$(acpi | sed -n 's/Battery [0-9]: \([A-Z]\).*, .*/\1/p')
 	paste <(echo "$charge") <(echo "$status")
 elif [[ $setting == "ip" ]]; then
+	checkEnabled ip
 	if [[ $value ]]; then
 		# Add wildcard to end to simplify api
 		value="$value*"
 		# Expand wildcard interfaces
 		netPath=/sys/class/net
-		interfacePath=$(echo $netPath/$value)
+		interfacePath="$netPath/$value"
 		value=${interfacePath#$netPath/}
 	fi
-	ips=$(ip addr show $value| pt -e '\d+(\.\d+){3} .*global' | awk '{ print $7 ": " $2 }' | sed -E 's;/[0-9]+;;')
+	ips=$(ip addr show $value | pt -e '\d+(\.\d+){3} .*global' | awk '{ print $7 ": " $2 }' | sed -E 's;/[0-9]+;;')
 	if [[ $value ]]; then
-		ips=$(echo $ips | awk '{ print $2 }')
+		ips=$(echo "$ips" | awk '{ print $2 }')
 	fi
 	echo "$ips"
 elif [[ $setting == "touchpad" ]]; then
+	checkEnabled synclient
+
 	if [[ ! $value ]]; then
 		synclient -l | grep "TouchpadOff .*=.*0"
 		exit 0
@@ -108,7 +128,7 @@ elif [[ $setting == "dpi" ]]; then
 	dpi=$(xrdb -query | grep dpi | awk '{ print $2 }');
 
 	if [[ ! $value ]]; then
-		echo $dpi
+		echo "$dpi"
 		exit 0
 	fi
 

@@ -65,10 +65,6 @@ alias tigr-="tigr --no-merges"
 alias tmux="tmux -2"
 alias tl="tmux list-sessions"
 
-# TODO: breakout.exe into an arch module
-alias B="bauerbill --build-dir /tmp/bauerbill"
-alias BB="bb-wrapper --build-dir /tmp/bauerbill"
-
 if isTmux; then
 	alias weechat="TERM=tmux-256color weechat"
 fi
