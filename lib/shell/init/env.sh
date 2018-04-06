@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 ################
 # DOTFILES
@@ -84,6 +84,10 @@ export GODOT_BIN=/usr/bin/godot
 # SETTINGS
 ################
 
+export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable vcs)
+export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs vi_mode time)
+export POWERLEVEL9K_HOME_FOLDER_ABBREVIATION=🏠
+
 if [ -f "/usr/bin/nvim" ]; then
 	export EDITOR=nvim
 else
@@ -91,7 +95,7 @@ else
 fi
 export GIT_EDITOR=$EDITOR
 
-export VISUAL=atom
+export VISUAL=gvim
 
 export BROWSER=google-chrome-stable
 

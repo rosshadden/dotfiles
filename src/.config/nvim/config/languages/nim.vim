@@ -2,7 +2,7 @@
 " SETTINGS
 """"""""""""""""
 
-call tcomment#DefineType('nim', '# %s')
+call tcomment#type#Define('nim', '# %s')
 
 """"""""""""""""
 " MISC

@@ -174,7 +174,6 @@ call plug#begin(expand(g:packageDir))
 
 	" seamless vim/tmux navigation
 	Plug 'christoomey/vim-tmux-navigator'
-	Plug 'edkolev/promptline.vim'
 	Plug 'edkolev/tmuxline.vim'
 	Plug 'tmux-plugins/vim-tmux'
 	Plug 'tmux-plugins/vim-tmux-focus-events'

@@ -65,25 +65,6 @@ if IsLoaded('vim-airline')
 	" quick buffer switch
 	let g:airline#extensions#tabline#buffer_idx_mode = 1
 
-	" promptline
-
-	let g:airline#extensions#promptline#enabled = 1
-	let airline#extensions#promptline#snapshot_file = g:themesDir . '/promptline.sh'
-
-	" let airline#extensions#promptline#color_template = 'normal'
-	let airline#extensions#promptline#color_template = 'insert'
-	" let airline#extensions#promptline#color_template = 'visual'
-	" let airline#extensions#promptline#color_template = 'replace'
-
-	let g:promptline_preset = {
-		\'a' : [ promptline#slices#host({ 'only_if_ssh': 1 }), '$USER' ],
-		\'b' : [ promptline#slices#cwd() ],
-		\'warn' : [ promptline#slices#last_exit_code() ],
-		\'x' : [ promptline#slices#git_status() ],
-		\'y' : [ '$(git rev-parse --short HEAD 2>/dev/null)', promptline#slices#vcs_branch() ],
-		\'z' : [ '%*' ],
-	\ }
-
 	" tmuxline
 
 	let g:airline#extensions#tmuxline#enabled = 1

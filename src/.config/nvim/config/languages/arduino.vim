@@ -2,4 +2,4 @@
 " SETTINGS
 """"""""""""""""
 
-call tcomment#DefineType('arduino', '// %s')
+call tcomment#type#Define('arduino', '// %s')

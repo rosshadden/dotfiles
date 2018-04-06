@@ -36,16 +36,12 @@ function packages() {
 	local shellDir=$DOTS/lib/shell
 	source $shellDir/zplug/init.zsh
 
-	zplug lib/completion, from:oh-my-zsh
-	zplug lib/history, from:oh-my-zsh
-	zplug plugins/git-extras, from:oh-my-zsh
-	zplug plugins/systemd, from:oh-my-zsh
-
-	zplug Tarrasch/zsh-bd
-	zplug Tarrasch/zsh-functional
-	zplug trapd00r/LS_COLORS
-	zplug zsh-users/zsh-history-substring-search
-	zplug zsh-users/zsh-syntax-highlighting
+	zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+	zplug "Tarrasch/zsh-bd"
+	zplug "Tarrasch/zsh-functional"
+	zplug "trapd00r/LS_COLORS"
+	zplug "zsh-users/zsh-history-substring-search"
+	zplug "zsh-users/zsh-syntax-highlighting"
 
 	if ! zplug check --verbose; then zplug install; fi
 	zplug load
@@ -53,11 +49,9 @@ function packages() {
 
 function modules() {
 	local shellDir=$DOTS/lib/shell
-	for plugin in $shellDir/plugins/*.zsh; do sourceIfExists $plugin; done
-	for module in $shellDir/init/{functions,env}.sh $shellDir/modules/*.{,z}sh; do sourceIfExists $module; done
-
-	sourceIfExists ~/local/.sh
-	sourceIfExists ~/local/.zshrc
+	for file in $shellDir/plugins/*.zsh; do sourceIfExists $file; done
+	for file in $shellDir/init/{functions,env}.sh $shellDir/modules/*.{,z}sh; do sourceIfExists $file; done
+	for file in ~/local/.sh ~/local/.zshrc; do sourceIfExists $file; done
 }
 
 function() {

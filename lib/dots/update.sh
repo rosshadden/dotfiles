@@ -78,7 +78,8 @@ function updateZsh() {
 		zsh <<-eof
 			source $zplugFile
 			if ! zplug check --verbose; then zplug install; fi
-			zplug update
+			# zplug update
+			echo "TODO: zplug doesn't work here. Run 'zplug update'"
 		eof
 		lawg "zsh:plugins"
 	fi
