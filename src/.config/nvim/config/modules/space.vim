@@ -39,10 +39,9 @@ vnoremap > >gv
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" up, down, left, right
+" cardinal
 noremap <:space>h i<space><esc>l
 noremap <:space>l a<space><esc>h
-" TODO: figure out native maps, instead of relying on vim-unimpaired
 map <:space>j ]<space>
 map <:space>k [<space>
 

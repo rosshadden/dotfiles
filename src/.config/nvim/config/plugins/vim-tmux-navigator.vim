@@ -7,20 +7,14 @@ noremap <silent> <c-k> :TmuxNavigateUp<cr>
 noremap <silent> <c-j> :TmuxNavigateDown<cr>
 noremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 
-inoremap <silent> <c-h> <esc>:TmuxNavigateLeft<cr>
-inoremap <silent> <c-l> <esc>:TmuxNavigateRight<cr>
-inoremap <silent> <c-k> <esc>:TmuxNavigateUp<cr>
-inoremap <silent> <c-j> <esc>:TmuxNavigateDown<cr>
-inoremap <silent> <c-\> <esc>:TmuxNavigatePrevious<cr>
+inoremap <silent> <c-h> <c-o>:TmuxNavigateLeft<cr>
+inoremap <silent> <c-l> <c-o>:TmuxNavigateRight<cr>
+inoremap <silent> <c-k> <c-o>:TmuxNavigateUp<cr>
+inoremap <silent> <c-j> <c-o>:TmuxNavigateDown<cr>
+inoremap <silent> <c-\> <c-o>:TmuxNavigatePrevious<cr>
 
-snoremap <silent> <c-h> <esc>:TmuxNavigateLeft<cr>
-snoremap <silent> <c-l> <esc>:TmuxNavigateRight<cr>
-snoremap <silent> <c-k> <esc>:TmuxNavigateUp<cr>
-snoremap <silent> <c-j> <esc>:TmuxNavigateDown<cr>
-snoremap <silent> <c-\> <esc>:TmuxNavigatePrevious<cr>
-
-xnoremap <silent> <c-h> <esc>:TmuxNavigateLeft<cr>
-xnoremap <silent> <c-l> <esc>:TmuxNavigateRight<cr>
-xnoremap <silent> <c-k> <esc>:TmuxNavigateUp<cr>
-xnoremap <silent> <c-j> <esc>:TmuxNavigateDown<cr>
-xnoremap <silent> <c-\> <esc>:TmuxNavigatePrevious<cr>
+vnoremap <silent> <c-h> :<c-w>TmuxNavigateLeft<cr>gv
+vnoremap <silent> <c-l> :<c-w>TmuxNavigateRight<cr>gv
+vnoremap <silent> <c-k> :<c-w>TmuxNavigateUp<cr>gv
+vnoremap <silent> <c-j> :<c-w>TmuxNavigateDown<cr>gv
+vnoremap <silent> <c-\> :<c-w>TmuxNavigatePrevious<cr>gv

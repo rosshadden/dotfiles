@@ -2,14 +2,13 @@
 call MakePrefix('delete', '<:prefix>d')
 
 " line
-" TODO: does not work
-noremap <:delete><:delete> cc<esc>
+noremap <:delete>d cc<esc>
 
-" up, down, left, right
+" cardinal
 noremap <:delete>h dh
 noremap <:delete>l ldlh
 noremap <:delete>j mDjdd`D
-noremap <:delete>k mDkdd`D
+noremap <:delete>k kdd
 
 " horizontal
 map <:delete>s <:delete>h<:delete>l
