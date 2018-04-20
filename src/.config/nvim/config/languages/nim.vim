@@ -2,6 +2,8 @@
 " SETTINGS
 """"""""""""""""
 
+" let g:nvim_nim_highlighter_enable = 1
+
 call tcomment#type#Define('nim', '# %s')
 
 """"""""""""""""
