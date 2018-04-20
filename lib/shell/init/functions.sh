@@ -173,12 +173,6 @@ getSymlinks() {
 	find "$1" -maxdepth 1 -type l
 }
 
-toJSON() {
-	while read -r foo; do
-		echo "$foo" | json | pygmentize -l json
-	done
-}
-
 ##
 # Sign public AUR key
 #

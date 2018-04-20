@@ -19,10 +19,13 @@ call plug#begin(expand(g:packageDir))
 	" let `.` repeat things in visual mode
 	Plug 'vim-scripts/visualrepeat'
 	" completions
-	Plug 'Shougo/deoplete.nvim', LoadIf(has('nvim'))
-		\| Plug 'carlitux/deoplete-ternjs', LoadIf(has('nvim'), { 'do': 'npm i -g tern' })
-		\| Plug 'tweekmonster/deoplete-clang2', LoadIf(has('nvim'))
-	Plug 'Shougo/neocomplete.vim', LoadIf(!has('nvim'))
+	Plug 'Shougo/deoplete.nvim'
+		\| Plug 'carlitux/deoplete-ternjs', { 'do': 'npm i -g tern' }
+		\| Plug 'tweekmonster/deoplete-clang2'
+	if !has('nvim')
+		Plug 'roxma/nvim-yarp'
+		Plug 'roxma/vim-hug-neovim-rpc'
+	endif
 	Plug 'Shougo/echodoc.vim'
 	" search with perl regex
 	Plug 'othree/eregex.vim'
@@ -143,7 +146,8 @@ call plug#begin(expand(g:packageDir))
 	Plug 'moll/vim-node', { 'for': 'javascript' }
 	" ts
 	Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
-		\| Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+		" \| Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+	Plug 'mhartington/nvim-typescript', { 'for': 'typescript' }
 	Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 	" rust
 	Plug 'racer-rust/vim-racer', { 'for': 'rust' }
@@ -158,8 +162,8 @@ call plug#begin(expand(g:packageDir))
 	" emmet
 	Plug 'mattn/emmet-vim', { 'for': 'html' }
 	" nim
-	Plug 'erw7/nim.vim', { 'for': [ 'nim', 'nims', 'nimble' ], 'branch': 'develop' }
-	Plug 'baabelfish/nvim-nim', { 'for': [ 'nim', 'nims', 'nimble' ] }
+	" Plug 'erw7/nim.vim', { 'for': [ 'nim', 'nims', 'nimble' ], 'branch': 'develop' }
+	Plug 'JCavallo/nvim-nim', { 'for': [ 'nim', 'nims', 'nimble' ] }
 	" godot
 	Plug 'quabug/vim-gdscript'
 

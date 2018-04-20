@@ -89,7 +89,7 @@ function updateVim() {
 	# update vim plugins
 	if isCommand vim || isCommand nvim; then
 		lawg "vim:plugins"
-		$EDITOR +PlugUpdate +PlugUpgrade +qa
+		$EDITOR +PlugClean +PlugInstall +PlugUpdate +PlugUpgrade +UpdateRemotePLugins +qa
 		lawg "vim:plugins"
 	fi
 }

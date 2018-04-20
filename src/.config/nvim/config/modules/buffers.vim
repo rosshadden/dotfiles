@@ -56,6 +56,7 @@ nnoremap <silent> <:buffers:1>h :leftabove vsplit<cr>
 nnoremap <silent> <:buffers:1>l :rightbelow vsplit<cr>
 
 " close buffer
+nnoremap <a-c> :bdelete<cr>
 nnoremap <silent> <:buffers>c :bdelete<cr>
 nnoremap <silent> <:buffers>C :bdelete!<cr>
 nnoremap <silent> <:buffers:1>c :bufdo bdelete<cr>
