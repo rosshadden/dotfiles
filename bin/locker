@@ -8,13 +8,17 @@ function lock() {
 	local image
 	local random=false
 
-	local spec=":bc:i:r"
+	local spec=":bc:i:rs"
 	while getopts $spec opt; do
 		case "$opt" in
 			b) blur=true ;;
 			c) color="$OPTARG" ;;
 			i) image="$OPTARG" ;;
 			r) random=true ;;
+			s)
+				image=/tmp/lockscreen.png
+				escrotum $image
+				;;
 			:) error "Option '-$OPTARG' requires an argument" ;;
 			*) error "Invalid option: -$OPTARG" ;;
 		esac

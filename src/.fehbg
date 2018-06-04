@@ -1,2 +1,2 @@
 #!/bin/sh
-'feh' '--recursive' '--randomize' '--bg-scale' '/home/ross/Dropbox/media/images/wallpaper' 
+feh --bg-scale 

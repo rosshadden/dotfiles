@@ -72,10 +72,6 @@ set $chooseKillForce "kill -9 $(ps -u $USER -o pid,command | tail -n +2 | rofi -
 set $terminal i3-sensible-terminal
 set $run i3-sensible-terminal -e
 set $tmuxAttach i3-sensible-terminal -e "tmux new-session -A -s
-set $locker ~/bin/locker -r
-set $locker1 xautolock -locknow
-set $locker2 escrotum /tmp/lockscreen.png && ~/bin/locker -i /tmp/lockscreen.png
-set $locker3 ~/bin/locker -b
 
 # UI
 set $borderWidth 2
@@ -165,9 +161,9 @@ bindsym $super+x; exec $chooseKill
 bindsym $super+Shift+x; exec $chooseKillForce
 
 # lock screen
-bindsym $macro5 exec $locker
-bindsym Shift+$macro5 exec $locker2
-bindsym Control+$macro5 exec $locker3
+bindsym $macro5 exec ~/bin/locker -r
+bindsym Shift+$macro5 exec ~/bin/locker -s
+bindsym Control+$macro5 exec ~/bin/locker -b
 
 # change focus
 bindsym $super+$up mark LAST; focus up
@@ -573,9 +569,9 @@ mode "SYSTEM" {
 	bindsym Shift+h exec "systemctl hybernate"; $exit
 
 	# lock screen
-	bindsym l exec $locker; $exit
-	bindsym Shift+l exec $locker2; $exit
-	bindsym Control+l exec $locker2; $exit
+	bindsym l exec ~/bin/locker -r; $exit
+	bindsym Shift+l exec ~/bin/locker -s; $exit
+	bindsym Control+l exec ~/bin/locker -s; $exit
 
 	# brightness
 
@@ -974,7 +970,8 @@ exec --no-startup-id "i3-msg 'workspace $numChat $wsChat; append_layout ~/.confi
 exec --no-startup-id ~/.fehbg
 
 # autolock
-exec --no-startup-id xautolock -resetsaver -detectsleep -time 30 -locker "$locker" -nowlocker "$locker" -notify 60 -notifier "notify-send -u critical -t 5000 -- 'LOCKING screen in 60 seconds'"
+# exec --no-startup-id xss-lock -n "notify-send -u critical -t 5000 'LOCKING screen in 60 seconds'" -- ~/bin/locker -r
+exec --no-startup-id xss-lock -- ~/bin/locker -r
 
 # irc
 exec --no-startup-id $tmuxAttach $nameChat 'TERM=tmux-256color weechat'"

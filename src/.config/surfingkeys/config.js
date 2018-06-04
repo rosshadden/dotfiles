@@ -95,6 +95,9 @@ function mappings() {
 	mapkey('su', '#4 Edit current URL with vim editor (same tab)', () => {
 		Front.showEditor(window.location.href, (url) => window.location = url, 'url');
 	});
+	mapkey('g#', '#4Reload current page without hash string (all parts after #)', function() {
+			window.location.href = window.location.href.replace(/#[^\#]*$/, '');
+	});
 
 	// INPUT
 	mapp('a', '#1 Append to edit box', () => {
