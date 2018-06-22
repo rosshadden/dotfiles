@@ -100,7 +100,7 @@ mouse_warping none
 
 # gaps
 
-gaps inner 20
+gaps inner 0
 smart_gaps on
 
 ################
