@@ -38,9 +38,18 @@ hasPipe() {
 }
 
 port() {
-	local to="$1"
-	local file="$2"
-	cp {,"$to/"}"$file"
+	local direction="$1"
+	local dir="$2"
+	shift 2
+	local files=( "$@" )
+
+	for file in "${files[@]}"; do
+		if [[ "$direction" = "to" ]]; then
+			cp {,"$dir/"}"$file"
+		elif [[ "$direction" = "from" ]]; then
+			cp {"$dir/",}"$file"
+		fi
+	done
 }
 
 trim() {
