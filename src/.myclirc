@@ -34,19 +34,19 @@ timing = True
 # psql, plain, simple, grid, fancy_grid, pipe, orgtbl, rst, mediawiki, html,
 # latex, latex_booktabs, textile, moinmoin, jira, vertical, tsv, csv.
 # Recommended: ascii
-table_format = ascii
+table_format = double
 
 # Syntax coloring style. Possible values (many support the "-dark" suffix):
 # manni, igor, xcode, vim, autumn, vs, rrt, native, perldoc, borland, tango, emacs,
 # friendly, monokai, paraiso, colorful, murphy, bw, pastie, paraiso, trac, default,
 # fruity.
 # Screenshots at http://mycli.net/syntax
-syntax_style = default
+syntax_style = monokai
 
 # Keybindings: Possible values: emacs, vi.
 # Emacs mode: Ctrl-A is home, Ctrl-E is end. All emacs keybindings are available in the REPL.
 # When Vi mode is enabled you can use modal editing features offered by Vi in the REPL.
-key_bindings = emacs
+key_bindings = vi
 
 # Enabling this option will show the suggestions in a wider menu. Thus more items are suggested.
 wider_completion_menu = False
@@ -68,7 +68,7 @@ prompt = '\t \u@\h:\d> '
 prompt_continuation = '-> '
 
 # Skip intro info on startup and outro info on exit
-less_chatty = False
+less_chatty = True
 
 # Use alias from --login-path instead of host name in prompt
 login_path_as_host = False

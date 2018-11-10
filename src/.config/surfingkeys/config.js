@@ -50,7 +50,6 @@ function init() {
 	addMode(Normal, map, mapkey, unmap);
 	addMode(Insert, imap, imapkey, iunmap);
 	addMode(Visual, vmap, vmapkey, vunmap);
-	addMode('Console', cmap, cmapkey, () => { throw new Error('Not implemented'); });
 }
 
 function settings() {
@@ -63,7 +62,7 @@ function mappings() {
 	alias('dd', 'x', true);
 	alias('gM', '<Alt-m>', true);
 	alias('gp', '<Alt-p>', true);
-	mapp(',r', '#4 Reload the page uncached', 'RUNTIME("reloadTab", { nocache: true })');
+	mapp(',r', '#4 Reload the page uncached', () => RUNTIME("reloadTab", { nocache: true }));
 	alias('u', 'X', true);
 	// alt-tab (pun)
 	alias('<A-Tab>', 'gt');
@@ -76,12 +75,12 @@ function mappings() {
 	});
 
 	// SCROLLING
-	mapp('<Ctrl-y>', '#2 pageUp',   'Normal.scroll("pageUp")', { repeatIgnore: true });
-	mapp('<Ctrl-e>', '#2 pageDown', 'Normal.scroll("pageDown")', { repeatIgnore: true });
-	mapp('<Ctrl-u>', '#2 pageUp',   'Normal.scroll("pageUp")', { repeatIgnore: true });
-	mapp('<Ctrl-d>', '#2 pageDown', 'Normal.scroll("pageDown")', { repeatIgnore: true });
-	mapp('<Ctrl-b>', '#2 pageUp',   'Normal.scroll("pageUp")', { repeatIgnore: true });
-	mapp('<Ctrl-f>', '#2 pageDown', 'Normal.scroll("pageDown")', { repeatIgnore: true });
+	mapp('<Ctrl-y>', '#2 pageUp', () => Normal.scroll("pageUp"), { repeatIgnore: true });
+	mapp('<Ctrl-e>', '#2 pageDown', () => Normal.scroll("pageDown"), { repeatIgnore: true });
+	mapp('<Ctrl-u>', '#2 pageUp', () => Normal.scroll("pageUp"), { repeatIgnore: true });
+	mapp('<Ctrl-d>', '#2 pageDown', () => Normal.scroll("pageDown"), { repeatIgnore: true });
+	mapp('<Ctrl-b>', '#2 pageUp', () => Normal.scroll("pageUp"), { repeatIgnore: true });
+	mapp('<Ctrl-f>', '#2 pageDown', () => Normal.scroll("pageDown"), { repeatIgnore: true });
 
 	// HISTORY
 	alias('H', 'S', true);
@@ -119,10 +118,6 @@ function mappings() {
 	alias(modes.Insert, '<Ctrl-i>', '<Ctrl-f>', true);
 	alias(modes.Insert, '<Ctrl-h>', '<Alt-b>');
 	alias(modes.Insert, '<Ctrl-l>', '<Alt-f>');
-
-	// CONSOLE
-	alias(modes.Console, '<Ctrl-n>', '<Tab>');
-	alias(modes.Console, '<Ctrl-p>', '<Shift-Tab>');
 }
 
 function unmappings() {
@@ -139,8 +134,10 @@ function providers() {
 	addProvider('w', 'wikipedia', 'https://en.wikipedia.org/w/index.php?search=', 's');
 }
 
-init();
-settings();
-mappings();
-unmappings();
-providers();
+(function() {
+	init();
+	settings();
+	mappings();
+	unmappings();
+	providers();
+})();

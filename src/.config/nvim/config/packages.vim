@@ -165,7 +165,7 @@ call plug#begin(expand(g:packageDir))
 	Plug 'erw7/nim.vim', { 'for': [ 'nim', 'nims', 'nimble' ], 'branch': 'develop' }
 	" Plug 'JCavallo/nvim-nim', { 'for': [ 'nim', 'nims', 'nimble' ] }
 	" godot
-	Plug 'quabug/vim-gdscript'
+	Plug 'calviken/vim-gdscript3'
 
 	" integration
 

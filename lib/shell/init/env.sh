@@ -11,7 +11,7 @@ export DOTS_THEME="$(cat $DOTS/THEME)"
 ################
 
 # local
-export PATH=~/bin:~/local/bin
+export PATH=~/bin:~/local/bin:~/.local/bin
 
 # system
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin

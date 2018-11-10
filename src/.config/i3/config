@@ -81,7 +81,7 @@ set $borderFloatingWidth 4
 # OPTIONS
 ################
 
-font pango:Fira Code, Icons 14
+font pango:Fira Code, Icons 10
 
 workspace_layout stacking
 workspace_auto_back_and_forth no
@@ -268,6 +268,7 @@ bindsym Control+$alt+F10 exec $(xdotool key XF86Switch_VT_10)
 bindsym XF86AudioRaiseVolume exec "~/bin/config volume +5"
 bindsym XF86AudioLowerVolume exec "~/bin/config volume -5"
 bindsym XF86AudioMute exec "~/bin/config volume !"
+bindsym XF86AudioMicMute exec "~/bin/config mic !"
 
 # playback
 bindsym XF86AudioPlay exec "mpc toggle; playerctl play-pause"
@@ -277,9 +278,6 @@ bindsym XF86AudioPrev exec "mpc prev; playerctl prev"
 # brightness
 bindsym XF86MonBrightnessUp exec "~/bin/config brightness +5"
 bindsym XF86MonBrightnessDown exec "~/bin/config brightness -5"
-
-# toggle touchpad
-bindsym XF86AudioMicMute exec --no-startup-id "~/bin/config touchpad !"
 
 # fix monitors
 bindsym XF86Display exec ~/local/bin/mon
@@ -296,7 +294,7 @@ bindsym XF86LaunchA exec --no-startup-id $chooseApp
 # file explorer
 bindsym XF86Explorer exec ranger
 
-# touchscreen
+# toggle touchpad
 bindsym XF86TouchpadToggle exec "~/bin/config touchpad !"
 
 # web browser
@@ -334,6 +332,7 @@ $return {
 
 mode "BUFFER" {
 	bindsym c kill; $exit
+	bindsym r exec i3-input -P 'Rename container: ' -F 'title_format %s'; $exit
 
 	bindsym $super+space $return
 	bindsym Escape $exit
@@ -790,6 +789,7 @@ mode "MEDIA" {
 	# volume
 
 	bindsym m exec "~/bin/config volume !"; $exit
+	bindsym i exec "~/bin/config mic !"; $exit
 	bindsym k exec "~/bin/config volume +5"; $exit
 	bindsym j exec "~/bin/config volume -5"; $exit
 	bindsym Up exec "~/bin/config volume +10"; $exit
@@ -798,6 +798,7 @@ mode "MEDIA" {
 	bindsym Control+$down exec "~/bin/config volume -20"; $exit
 
 	bindsym Shift+m exec "~/bin/config volume !"
+	bindsym Shift+i exec "~/bin/config mic !"
 	bindsym Shift+$up exec "~/bin/config volume +5"
 	bindsym Shift+$down exec "~/bin/config volume -5"
 	bindsym Shift+Up exec "~/bin/config volume +10"
@@ -826,6 +827,14 @@ mode "MEDIA" {
 	bindsym y exec "~/bin/screenshot"; $exit
 	bindsym $alt+y exec "~/bin/screenshot window"; $exit
 	bindsym Shift+y exec "~/bin/screenshot select"; $exit
+
+	bindsym F1 exec "~/bin/config volume !"
+	bindsym F2 exec "~/bin/config volume -5"
+	bindsym F3 exec "~/bin/config volume +5"
+	bindsym F4 exec "~/bin/config mic !"
+	bindsym F5 exec $(xdotool key XF86AudioPrev)
+	bindsym F6 exec $(xdotool key XF86AudioPlay)
+	bindsym F7 exec $(xdotool key XF86AudioNext)
 
 	bindsym $super+space $return
 	bindsym Escape $exit
@@ -860,8 +869,8 @@ mode "APPS" {
 	# TODO: move to scratchpad
 	bindsym c mark LAST; exec qalculate-gtk; $exit
 
-	# documentation -- zeal
-	bindsym d mark LAST; exec $(xdotool key --clearmodifiers "alt+super+shift+Z"); $exit
+	# documentation -- devdocs
+	bindsym d mark LAST; exec devdocs-desktop; $exit
 
 	# stream app -- OBS
 	bindsym s mark LAST; exec $(gtk-launch obs); $exit
@@ -938,11 +947,12 @@ for_window [title="^Developer Tools"] floating disable
 assign [class="nuvolaplayer|Spotify|Vlc|mpv"] → $numMedia $wsMedia
 assign [title="Popcorn Time"] → $numMedia $wsMedia
 assign [title="Google Play Music" window_role="pop-up"] → $numMedia $wsMedia
+assign [class="^zoom$" title="^Zoom$"] → $numMonitor $wsMonitor
 for_window [class="Vlc|mpv"] border none
 for_window [title="Google Play Music" window_role="pop-up"] floating disable, move to workspace $numMedia $wsMedia
 
 # lit
-assign [title="(Google Keep|todoist)" window_role="app"] → $numLit $wsLit
+assign [title="(Google Keep|todoist|DevDocs)" window_role="app"] → $numLit $wsLit
 
 # games
 for_window [instance="^Godot_Engine$"] floating enable
@@ -958,6 +968,7 @@ assign [title="^finch$"] → $numChat $wsChat
 # monitor
 assign [class="MongoChef"] → $numMonitor $wsMonitor
 assign [class="^obs$"] → $numMonitor $wsMonitor
+assign [class="^zoom$" title="^Zoom Meeting"] → $numMonitor $wsMonitor
 
 ################
 # STARTUP
@@ -972,6 +983,3 @@ exec --no-startup-id ~/.fehbg
 # autolock
 # exec --no-startup-id xss-lock -n "notify-send -u critical -t 5000 'LOCKING screen in 60 seconds'" -- ~/bin/locker -r
 exec --no-startup-id xss-lock -- ~/bin/locker -r
-
-# irc
-exec --no-startup-id $tmuxAttach $nameChat 'TERM=tmux-256color weechat'"

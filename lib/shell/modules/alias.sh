@@ -69,6 +69,8 @@ if isTmux; then
 	alias weechat="TERM=tmux-256color weechat"
 fi
 
+alias dcp=docker-compose
+
 ################
 # FUN
 ################

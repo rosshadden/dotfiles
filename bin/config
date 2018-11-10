@@ -70,6 +70,26 @@ elif [[ $setting == "volume" ]]; then
 	else
 		ponymix set-volume $value
 	fi
+elif [[ $setting == "mic" ]]; then
+	checkEnabled ponymix
+
+	if [[ ! $value ]]; then
+		ponymix -t source get-volume
+		exit 0
+	fi
+
+	[[ $value == "on" ]] && value="unmute"
+	[[ $value == "off" ]] && value="mute"
+
+	if [[ ${value:0:1} == "+" ]]; then
+		ponymix -t source increase ${value:1}
+	elif [[ ${value:0:1} == "-" ]]; then
+		ponymix -t source decrease ${value:1}
+	elif [[ "toggle mute unmute" =~ $value ]]; then
+		ponymix -t source toggle
+	else
+		ponymix -t source set-volume $value
+	fi
 elif [[ $setting == "brightness" ]]; then
 	checkEnabled xbacklight
 

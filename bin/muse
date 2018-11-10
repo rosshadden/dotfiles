@@ -1,85 +1,31 @@
 #!/usr/bin/env bash
 
 ################################
-# Streams music to vlc.
+# Control and query media
 #
 # Dependencies:
-# - [gmusicproxy](https://github.com/diraimondo/gmusicproxy)
+# - [playerctl](https://github.com/acrisci/playerctl)
 ################################
 
-# urlencode <string>
-urlencode() {
-	old_lc_collate=$LC_COLLATE
-	LC_COLLATE=C
-
-	local length="${#1}"
-	for (( i = 0; i < length; i++ )); do
-		local c="${1:i:1}"
-		case $c in
-			[a-zA-Z0-9.~_-]) printf "%s" "$c" ;;
-			*) printf '%%%02X' "'$c" ;;
-		esac
-	done
-
-	LC_COLLATE=$old_lc_collate
-}
-
 muse() {
-	local artist
-	local client
-	local options
-	local query="get_by_search"
-	local type
+	local players="$(playerctl -l)"
+	if [[ ! $players ]]; then exit 0; fi
 
-	local spec=":a:c:n:q:rRt:"
-	while getopts $spec opt; do
-		case "$opt" in
-			a) artist="$OPTARG" ;;
-			c) client="$OPTARG" ;;
-			n) numTracks="$OPTARG" ;;
-			q) query="$OPTARG" ;;
-			r) options="--random" ;;
-			R) options="--no-random" ;;
-			t) type="$OPTARG" ;;
-			:) error "Option '-$OPTARG' requires an argument" ;;
-			*) error "Invalid option: -$OPTARG" ;;
-		esac
-	done
-	shift $((OPTIND - 1))
+	local action="${1:-query}"
 
-	if [[ "$query" == "radio" ]]; then
-		query="get_new_station_by_search"
-		type="${type:-artist}"
-		options="${options:---no-random}"
-	fi
+	if [[ $action == "query" ]]; then
+		declare -A icons
+		icons["Playing"]=""
+		icons["Paused"]=""
+		icons["Stopped"]=""
 
-	type="${type:-matches}"
+		local artist="$(playerctl metadata artist)"
+		local title="$(playerctl metadata title)"
+		local album="$(playerctl metadata album)"
+		local status="$(playerctl status)"
+		local icon="${icons[$status]}"
 
-	local title="$1"
-	local api="http://localhost:9999"
-	local uri="${api}/${query}?type=${type}&exact=no"
-
-	if [[ "$title" != "" ]]; then
-		uri="${uri}&title=$(urlencode "$title")"
-	fi
-
-	if [[ "$artist" != "" ]]; then
-		uri="${uri}&artist=$(urlencode "$artist")"
-	fi
-
-	if [[ "$numTracks" != "" ]]; then
-		uri="${uri}&num_tracks=${numTracks}"
-	fi
-
-	if [[ "$client" == "" ]]; then
-		echo "$uri"
-	elif [[ "$client" == "mpc" ]]; then
-		curl -s "$uri" | sed '/^#/d' | $client add
-	elif [[ "$client" == "vlc" ]]; then
-		killall "$client" >/dev/null 2>&1
-		curl -s "$uri" | $client $options - >/dev/null 2>&1 &
-	else
-		curl -s "$uri" | $client >/dev/null 2>&1 &
+		echo "$icon $artist - $title"
 	fi
 }
 
