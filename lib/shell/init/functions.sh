@@ -45,9 +45,9 @@ port() {
 
 	for file in "${files[@]}"; do
 		if [[ "$direction" = "to" ]]; then
-			cp {,"$dir/"}"$file"
+			cp -r {,"$dir/"}"$file"
 		elif [[ "$direction" = "from" ]]; then
-			cp {"$dir/",}"$file"
+			cp -r {"$dir/",}"$file"
 		fi
 	done
 }

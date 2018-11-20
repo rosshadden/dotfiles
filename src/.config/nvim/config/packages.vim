@@ -97,7 +97,7 @@ call plug#begin(expand(g:packageDir))
 	" highlight yanked regions
 	Plug 'machakann/vim-highlightedyank'
 	" status bar
-	Plug 'vim-airline/vim-airline'
+	Plug 'itchyny/lightline.vim'
 	" resize windows
 	Plug 'talek/obvious-resize'
 	" icon fonts
