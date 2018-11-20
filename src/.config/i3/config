@@ -100,7 +100,8 @@ mouse_warping none
 
 # gaps
 
-gaps inner 0
+gaps inner 8
+gaps outer 2
 smart_gaps on
 
 ################
@@ -892,30 +893,31 @@ mode "PIDGIN" {
 
 # ~/.i3/config
 # i3 config template
-# Base16 Materia by Defman21
+# Base16 Paraiso by Jan T. Sott
 # template by Matt Parnell, @parnmatt
 
-set $base00 #263238
-set $base01 #2C393F
-set $base02 #37474F
-set $base03 #707880
-set $base04 #C9CCD3
-set $base05 #CDD3DE
-set $base06 #D5DBE5
-set $base07 #FFFFFF
-set $base08 #EC5F67
-set $base09 #EA9560
-set $base0A #FFCC00
-set $base0B #8BD649
-set $base0C #80CBC4
-set $base0D #89DDFF
-set $base0E #82AAFF
-set $base0F #EC5F67
+set $base00 #2f1e2e
+set $base01 #41323f
+set $base02 #4f424c
+set $base03 #776e71
+set $base04 #8d8687
+set $base05 #a39e9b
+set $base06 #b9b6b0
+set $base07 #e7e9db
+set $base08 #ef6155
+set $base09 #f99b15
+set $base0A #fec418
+set $base0B #48b685
+set $base0C #5bc4bf
+set $base0D #06b6ef
+set $base0E #815ba4
+set $base0F #e96ba8
 
-client.focused $base0D $base0D $base00 $base01
-client.focused_inactive $base02 $base02 $base03 $base01
-client.unfocused $base01 $base01 $base03 $base01
-client.urgent $base02 $base08 $base07 $base08
+# Window Colours            border  background  text    indicator
+client.focused              $base0D $base0D     $base00 $base01
+client.focused_inactive     $base02 $base02     $base03 $base01
+client.unfocused            $base01 $base01     $base03 $base01
+client.urgent               $base02 $base08     $base07 $base08
 
 ################
 # STATUSBAR

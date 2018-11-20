@@ -39,3 +39,43 @@ let g:highlightedyank_highlight_duration = 200
 let g:lightline = {
 	\ 'colorscheme': 'materia'
 \ }
+
+""""""""""""""""
+" TMUXLINE
+""""""""""""""""
+
+let g:tmuxline_preset = {
+	\'a': '#S',
+	\'b': '#W',
+	\'win': '#I #W',
+	\'cwin': '#I #W',
+	\'y': '%a',
+	\'z': '#h'
+\ }
+
+let g:tmuxline_separators = {
+	\ 'left': '█▓░ ',
+	\ 'left_alt': '',
+	\ 'right': ' ░▓█',
+	\ 'right_alt': '',
+	\ 'space': ' '
+\ }
+
+	" \ 'left': '█▓▒░ ',
+	" \ 'left': '',
+	" \ 'left_alt': '',
+	" \ 'right': '',
+	" \ 'right_alt': '',
+	" \ 'space': ' '
+
+let g:tmuxline_theme = {
+	\ 'a': [ 255, 13 ],
+	\ 'b': [ 255, 10 ],
+	\ 'c': [ 244, 236 ],
+	\ 'x': [ 244, 236 ],
+	\ 'y': [ 255, 10 ],
+	\ 'z': [ 255, 13 ],
+	\ 'win': [ 255, 236 ],
+	\ 'cwin': [ 255, 13 ],
+	\ 'bg': [ 244, 236 ],
+\ }
