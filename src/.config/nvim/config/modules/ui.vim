@@ -45,19 +45,20 @@ let g:lightline = {
 """"""""""""""""
 
 let g:tmuxline_preset = {
-	\'a': '#S',
-	\'b': '#W',
-	\'win': '#I #W',
-	\'cwin': '#I #W',
-	\'y': '%a',
-	\'z': '#h'
+	\'a': [ '#S' ],
+	\'b': [ '#W' ],
+	\'cwin': [ '#F#I', '#W' ],
+	\'win': [ '#F#I', '#W' ],
+	\'x': [ '%R' ],
+	\'y': [ '%F' ],
+	\'z': [ '#h' ]
 \ }
 
 let g:tmuxline_separators = {
-	\ 'left': '█▓░ ',
-	\ 'left_alt': '',
-	\ 'right': ' ░▓█',
-	\ 'right_alt': '',
+	\ 'left': '█▓▒░ ',
+	\ 'left_alt': '⌇',
+	\ 'right': ' ░▒▓█',
+	\ 'right_alt': '⌇',
 	\ 'space': ' '
 \ }
 

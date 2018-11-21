@@ -18,17 +18,17 @@ isCommand() {
 ################
 
 # pulseaudio
-isCommand pulseaudio && pulseaudio --start
+isCommand pulseaudio && pulseaudio --start &
 
 # composite manager
-isCommand compton && compton -b
+isCommand compton && compton -b &
 
 ################
 # APPS
 ################
 
 # fs
-isCommand dropbox && dropbox-cli start
+isCommand dropbox && dropbox-cli start &
 
 # chat
 isCommand pidgin && pidgin &
@@ -38,7 +38,7 @@ isCommand slack && slack &
 isCommand copyq && copyq &
 
 # music
-isCommand mopidy && systemctl --user start mopidy.service
+isCommand mopidy && systemctl --user start mopidy.service &
 isCommand GMusicProxy && GMusicProxy &
 
 # gestures
