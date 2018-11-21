@@ -3,15 +3,19 @@
 ################
 
 [Finch]
+
 # mouse
 mouse = 1
+
 # window manager
 # wm = /usr/lib/gnt/s.so
 wm = /usr/lib/gnt/irssi.so
+
 # UI
 shadow = 0
 remember_position = 1
 small-button = true
+
 # colors
 color-available = green; black
 color-away = blue; black
@@ -60,16 +64,16 @@ k = move-up
 [colors]
 # The RGB values range in [0, 1000]
 black = 0; 0; 0
-red = 1000; 0; 0
-green = 0; 1000; 0
-blue = 250; 550; 700
+red = 937; 380; 333
+green = 356; 768; 749
+blue = 24; 714; 937
 white = 1000; 1000; 1000
 gray = 700; 700; 700
 darkgray = 256; 256; 256
 
 [colorpairs]
 normal = white; transparent
-highlight = black; blue
+highlight = white; blue
 highlightd = blue; black
 shadow = black; darkgray
 title = black; red

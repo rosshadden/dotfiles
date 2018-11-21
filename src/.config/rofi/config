@@ -45,7 +45,13 @@ rofi.window-format:                  {w}    {c}    {n}    {t}
 ! Enable the extended coloring options
 rofi.color-enabled:                  true
 
-rofi.color-window: #141021, #c16772, #9568a1
-rofi.color-normal: #141021, #ffeefc, #312842, #c16772, #ffeefc
-rofi.color-active: #141021, #c05c47, #312842, #c05c47, #ffeefc
-rofi.color-urgent: #141021, #e4b226, #312842, #e4b226, #ffeefc
+! vim: filetype=yaml
+! rofi template
+! Base16 Paraiso Dark, by Jan T. Sott
+
+! State:           'bg',    'fg',    'bgalt', 'hlbg',  'hlfg'
+rofi.color-normal: #2f1e2e, #e7e9db, #2f1e2e, #5bc4bf, #ffffff
+rofi.color-urgent: #2f1e2e, #ef6155, #2f1e2e, #ef6155, #ffffff
+rofi.color-active: #2f1e2e, #06b6ef, #2f1e2e, #06b6ef, #ffffff
+!                  'bg',    'border'
+rofi.color-window: #2f1e2e, #e96ba8

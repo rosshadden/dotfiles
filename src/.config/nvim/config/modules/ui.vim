@@ -37,7 +37,7 @@ let g:highlightedyank_highlight_duration = 200
 """"""""""""""""
 
 let g:lightline = {
-	\ 'colorscheme': 'materia'
+	\ 'colorscheme': 'Tomorrow_Night_Eighties'
 \ }
 
 """"""""""""""""

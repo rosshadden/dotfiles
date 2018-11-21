@@ -11,7 +11,7 @@
     # <http://developer.gnome.org/pango/stable/PangoMarkupFormat.html>.
     # If markup is not allowed, those tags will be stripped out of the
     # message.
-    allow_markup = yes
+    markup = yes
 
     # Treat incoming notifications as plain text
     plain_text = no
@@ -157,7 +157,7 @@
     icon_position = left
 
     # Paths to default icons.
-    icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
 [frame]
     width = 2
@@ -186,19 +186,19 @@
 
 # vim: filetype=yaml
 # dunst template
-# Base16 Materia Dark, by Defman21
+# Base16 Paraiso Dark, by Jan T. Sott
 
 [urgency_low]
-    background = "#263238"
-    foreground = "#FFFFFF"
+    background = "#2f1e2e"
+    foreground = "#e7e9db"
 
 [urgency_normal]
-    background = "#263238"
-    foreground = "#89DDFF"
+    background = "#2f1e2e"
+    foreground = "#06b6ef"
 
 [urgency_critical]
-    background = "#263238"
-    foreground = "#EC5F67"
+    background = "#2f1e2e"
+    foreground = "#ef6155"
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
