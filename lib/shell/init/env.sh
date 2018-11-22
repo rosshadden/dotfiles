@@ -118,6 +118,9 @@ export HIST_STAMPS=yyyy-mm-dd
 # big-ass search history
 export HISTSIZE=65536
 
+export GTK_PATH=$HOME/.gtk-2.0/modules
+export GTK_MODULES=vi
+
 # goo=$?
 # if [[ $goo == 0 ]]; then
 # 	if [[ -x /usr/bin/vimpager ]]; then

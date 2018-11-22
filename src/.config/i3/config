@@ -920,12 +920,6 @@ client.unfocused            $base01 $base01     $base03 $base01
 client.urgent               $base02 $base08     $base07 $base08
 
 ################
-# STATUSBAR
-################
-
-exec_always --no-startup-id $HOME/bin/bars
-
-################
 # WORKSPACES
 ################
 
@@ -976,11 +970,13 @@ assign [class="^zoom$" title="^Zoom Meeting"] → $numMonitor $wsMonitor
 # STARTUP
 ################
 
-# layouts
-exec --no-startup-id "i3-msg 'workspace $numChat $wsChat; append_layout ~/.config/i3/layouts/workspace-chat.json'"
+# statusbar
+exec_always --no-startup-id ~/bin/bars
+
+exec --no-startup-id ~/lib/startup.sh
 
 # wallpaper
-exec --no-startup-id ~/.fehbg
+exec --no-startup-id feh --recursive --randomize --bg-scale /home/ross/Dropbox/media/images/wallpaper
 
 # autolock
 # exec --no-startup-id xss-lock -n "notify-send -u critical -t 5000 'LOCKING screen in 60 seconds'" -- ~/bin/locker -r

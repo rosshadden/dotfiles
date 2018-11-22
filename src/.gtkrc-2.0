@@ -6,7 +6,6 @@ include "/home/ross/dotfiles/lib/themes/gtk-2.0"
 gtk-font-name = "Fira Code 12"
 gtk-theme-name = "Numix-Ocean-Ocean"
 gtk-key-theme-name = "Vi"
-# gtk-key-theme-name = "Emacs"
 
 ################
 # APPS
