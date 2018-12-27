@@ -147,7 +147,7 @@ call plug#begin(expand(g:packageDir))
 	" ts
 	Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
 		" \| Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-	Plug 'mhartington/nvim-typescript', { 'for': 'typescript' }
+	Plug 'mhartington/nvim-typescript', { 'for': 'typescript', 'do': ':UpdateRemotePlugins' }
 	Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 	" rust
 	Plug 'racer-rust/vim-racer', { 'for': 'rust' }
@@ -164,6 +164,10 @@ call plug#begin(expand(g:packageDir))
 	" nim
 	Plug 'erw7/nim.vim', { 'for': [ 'nim', 'nims', 'nimble' ], 'branch': 'develop' }
 	" Plug 'JCavallo/nvim-nim', { 'for': [ 'nim', 'nims', 'nimble' ] }
+	" clojure
+	Plug 'clojure-vim/acid.nvim', { 'for': 'clojure', 'do': ':UpdateRemotePlugins' }
+	Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
+	Plug 'eraserhd/parinfer-rust', { 'for': 'clojure', 'do': 'cargo build --release' }
 	" godot
 	Plug 'calviken/vim-gdscript3'
 

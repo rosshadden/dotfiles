@@ -44,6 +44,10 @@ isCommand GMusicProxy && GMusicProxy &
 # gestures
 isCommand easystroke && easystroke &
 
+# dunst
+# TODO: this is supposed to start up automatically, and used to
+isCommand dunst && dunst &
+
 ################
 # LOCAL
 ################
