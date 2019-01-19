@@ -13,7 +13,7 @@ function addProvider(key, name, url, ...args) {
 	mapkey(
 		`o${key}`,
 		`#8Open Search with alias ${key}`,
-		`Front.openOmnibar({ type: "SearchEngine", extra: "${key}" })`
+		() => Front.openOmnibar({ type: 'SearchEngine', extra: key })
 	);
 }
 
@@ -126,12 +126,15 @@ function unmappings() {
 		'B',
 		'ab',
 	]);
+
+	// disable emojis
+	unmapp(modes.Insert, ':');
 }
 
 function providers() {
-	addProvider('G', 'github', 'https://github.com/search?type=Code&utf8=%E2%9C%93&q=');
-	addProvider('r', 'reddit', 'http://www.reddit.com/r/');
-	addProvider('w', 'wikipedia', 'https://en.wikipedia.org/w/index.php?search=', 's');
+	addProvider('T', 'twitch', 'https://twitch.tv');
+	addProvider('r', 'reddit', 'https://www.reddit.com/r/');
+	addProvider('w', 'wikipedia', 'https://en.wikipedia.org/w/index.php?search=');
 }
 
 (function() {

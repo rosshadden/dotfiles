@@ -4,8 +4,6 @@ augroup misc
 	" Reload vimrc when edited (using :Reload, defined elsewhere)
 	" autocmd BufWritePost *.vim Reload
 
-	autocmd TermOpen * set relativenumber
-
 	" Preserve cursor position
 	autocmd BufRead * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
