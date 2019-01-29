@@ -1,6 +1,5 @@
 " line numbers
 set number
-set relativenumber
 
 " timeouts
 set timeoutlen=1000 ttimeoutlen=0

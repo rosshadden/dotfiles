@@ -1,11 +1,15 @@
 [user]
 	name = Ross Hadden
 	email = rosshadden@gmail.com
+	signingkey = 6B19DFDE659EC841
 
 [core]
 	autocrlf = input
 	editor = $EDITOR
 	pager = command -v diff-so-fancy >/dev/null && diff-so-fancy | less --tabs=4 -RFX || less
+
+[commit]
+	gpgsign = true
 
 [push]
 	default = simple

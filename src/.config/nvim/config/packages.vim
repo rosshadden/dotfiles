@@ -147,7 +147,7 @@ call plug#begin(expand(g:packageDir))
 	" ts
 	Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
 		" \| Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-	Plug 'mhartington/nvim-typescript', { 'for': 'typescript', 'do': ':UpdateRemotePlugins' }
+	Plug 'mhartington/nvim-typescript', { 'for': 'typescript', 'do': './install.sh' }
 	Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 	" rust
 	Plug 'racer-rust/vim-racer', { 'for': 'rust' }
