@@ -25,8 +25,8 @@ if isCommand java; then export PATH=$PATH:$JAVA_HOME/bin; fi
 # ruby (if installed)
 if isCommand ruby; then export PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin:~/.rvm/bin"; fi
 
-# nimble (if installed)
-if isCommand nimble; then export PATH=$PATH:~/.nimble/bin; fi
+# nim
+export PATH=$PATH:~/.nimble/bin
 
 # rust (if installed)
 if isCommand rustc; then export PATH=$PATH:~/.cargo/bin; fi

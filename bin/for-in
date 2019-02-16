@@ -48,7 +48,7 @@ function for-in() {
 		cmd="echo -e $section; $cmd"
 	fi
 
-	if [[ $len -gt 1 ]]; then
+	if [[ $len -gt 0 ]]; then
 		list=( "${args[@]}" )
 	fi
 

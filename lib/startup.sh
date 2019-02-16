@@ -8,6 +8,9 @@ isCommand() {
 # ENV
 ################
 
+# monitor blanking
+xset s 3600 3600
+
 # keyboard
 [[ -f ~/bin/keys ]] && ~/bin/keys
 

@@ -29,7 +29,7 @@ function for-of() {
 	local cmd="$1"
 	local wrapper="if [[ -d {1} ]]; then"
 
-	wrapper="$wrapper cd {1}; $cmd; cd ../; fi"
+	wrapper="$wrapper cd {1}; $cmd; fi"
 	shift
 
 	if [ "$options" != "" ]; then

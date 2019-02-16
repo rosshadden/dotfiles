@@ -294,7 +294,7 @@ bind generic	v	show-version		# Show Tig version
 ################
 
 # overrides
-bind status c	!git commit -S
+bind status c	!git commit -S --signoff
 
 bind generic ; prompt
 bind generic <esc>i !git in
