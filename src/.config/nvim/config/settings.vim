@@ -60,3 +60,6 @@ set synmaxcol=200
 " allow alt-mappings in gvim
 set guioptions-=m
 set winaltkeys=no
+
+" delay peekaboo menu
+let g:peekaboo_delay = 1000

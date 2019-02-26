@@ -52,6 +52,15 @@ cnoremap <a-cr> <cr>:nohlsearch<cr>
 " use Q for formatting, not Ex mode
 noremap Q gq
 
+" VISUAL
+
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+function! ExecuteMacroOverVisualRange()
+	echo "@".getcmdline()
+	execute ":'<,'>normal @".nr2char(getchar())
+endfunction
+
 " BUILD
 
 noremap <localleader><space> :make<cr>:cc<cr>
