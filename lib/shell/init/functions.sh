@@ -191,7 +191,7 @@ signKey() {
 	# TODO: see if the two `pacman-key` steps can be combined
 	sudo pacman-key -r "$1"
 	sudo pacman-key --lsign-key "$1"
-	gpg --keyserver pgp.mit.edu --recv-keys "$1"
+	gpg --recv-keys "$1"
 }
 
 trickPython() {

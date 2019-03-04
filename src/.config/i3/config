@@ -62,6 +62,12 @@ set $macro5 XF86Launch8
 set $return mode "PREFIX"
 set $exit mode "default"
 
+# commands
+set $playCmd "mpc toggle; playerctl play-pause"
+set $stopCmd "mpc stop; playerctl stop"
+set $nextCmd "mpc toggle; playerctl next"
+set $prevCmd "mpc toggle; playerctl previous"
+
 # default apps
 set $chooseCommand "rofi -show run -sidebar-mode"
 set $chooseWindow "rofi -show window -sidebar-mode"
@@ -272,9 +278,9 @@ bindsym XF86AudioMute exec "~/bin/config volume !"
 bindsym XF86AudioMicMute exec "~/bin/config mic !"
 
 # playback
-bindsym XF86AudioPlay exec "mpc toggle; playerctl play-pause"
-bindsym XF86AudioNext exec "mpc next; playerctl next"
-bindsym XF86AudioPrev exec "mpc prev; playerctl prev"
+bindsym XF86AudioPlay exec $playCmd
+bindsym XF86AudioNext exec $nextCmd
+bindsym XF86AudioPrev exec $prevCmd
 
 # brightness
 bindsym XF86MonBrightnessUp exec "~/bin/config brightness +5"
@@ -809,18 +815,18 @@ mode "MEDIA" {
 
 	# playback
 
-	bindsym space exec $(xdotool key XF86AudioPlay); $exit
-	bindsym l exec $(xdotool key XF86AudioNext); $exit
-	bindsym Right exec $(xdotool key XF86AudioNext); $exit
-	bindsym h exec $(xdotool key XF86AudioPrev); $exit
-	bindsym Left exec $(xdotool key XF86AudioPrev); $exit
-	bindsym s exec "mpc stop; playerctl stop"; $exit
+	bindsym space exec $playCmd; $exit
+	bindsym l exec $nextCmd; $exit
+	bindsym Right exec $nextCmd; $exit
+	bindsym h exec $prevCmd; $exit
+	bindsym Left exec $prevCmd; $exit
+	bindsym s exec $stopCmd; $exit
 
-	bindsym Shift+space exec $(xdotool key XF86AudioPlay)
-	bindsym Shift+$right exec $(xdotool key XF86AudioNext)
-	bindsym Shift+Right exec $(xdotool key XF86AudioNext)
-	bindsym Shift+$left exec $(xdotool key XF86AudioPrev)
-	bindsym Shift+$right exec $(xdotool key XF86AudioPrev)
+	bindsym Shift+space exec $playCmd
+	bindsym Shift+$right exec $nextCmd
+	bindsym Shift+Right exec $nextCmd
+	bindsym Shift+$left exec $prevCmd
+	bindsym Shift+$right exec $prevCmd
 	bindsym Shift+s exec "mpc stop; playerctl stop"
 
 	# screenshots
@@ -833,9 +839,9 @@ mode "MEDIA" {
 	bindsym F2 exec "~/bin/config volume -5"
 	bindsym F3 exec "~/bin/config volume +5"
 	bindsym F4 exec "~/bin/config mic !"
-	bindsym F5 exec $(xdotool key XF86AudioPrev)
-	bindsym F6 exec $(xdotool key XF86AudioPlay)
-	bindsym F7 exec $(xdotool key XF86AudioNext)
+	bindsym F5 exec $prevCmd
+	bindsym F6 exec $playCmd
+	bindsym F7 exec $nextCmd
 
 	bindsym $super+space $return
 	bindsym Escape $exit

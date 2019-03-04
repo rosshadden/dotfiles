@@ -2,6 +2,8 @@
 
 #include "/home/ross/dotfiles/lib/themes/rofi"
 
+! Show on focused monitor
+rofi.m: -1
 ! Window opacity
 rofi.opacity:                        80
 ! Window width
@@ -44,14 +46,3 @@ rofi.threads:                        0
 rofi.window-format:                  {w}    {c}    {n}    {t}
 ! Enable the extended coloring options
 rofi.color-enabled:                  true
-
-! vim: filetype=yaml
-! rofi template
-! Base16 Paraiso Dark, by Jan T. Sott
-
-! State:           'bg',    'fg',    'bgalt', 'hlbg',  'hlfg'
-rofi.color-normal: #2f1e2e, #e7e9db, #2f1e2e, #5bc4bf, #ffffff
-rofi.color-urgent: #2f1e2e, #ef6155, #2f1e2e, #ef6155, #ffffff
-rofi.color-active: #2f1e2e, #06b6ef, #2f1e2e, #06b6ef, #ffffff
-!                  'bg',    'border'
-rofi.color-window: #2f1e2e, #e96ba8

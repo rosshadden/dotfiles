@@ -7,7 +7,7 @@
 # Dependencies:
 # - escrotum
 # - [dropbox-cli]
-# - [dunstify]
+# - [dunst]
 ################
 
 action=$1

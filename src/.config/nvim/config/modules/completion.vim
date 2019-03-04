@@ -2,8 +2,7 @@
 " SETTINGS
 """"""""""""""""
 
-" enable
-let g:deoplete#enable_at_startup = 1
+set completeopt=noinsert,menuone,noselect
 
 if emoji#available()
 	set completefunc=emoji#complete
@@ -12,47 +11,37 @@ endif
 " Enable omni completion.
 augroup completion
 	autocmd!
+	autocmd BufEnter * call ncm2#enable_for_buffer()
 	autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
 	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-augroup END
 
+	au User asyncomplete_setup call asyncomplete#register_source({
+		\ 'name': 'nim',
+		\ 'whitelist': [ 'nim' ],
+		\ 'completor': { opt, ctx -> nim#suggest#sug#GetAllCandidates({ start, candidates -> asyncomplete#complete(opt['name'], ctx, start, candidates) }) }
+	\ })
+augroup END
 
 """"""""""""""""
 " MAPPINGS
 """"""""""""""""
 
-inoremap <expr><c-y> deoplete#undo_completion()
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+inoremap <c-c> <esc>
 
-" fix backspace
-inoremap <expr><bs> deoplete#smart_close_popup() . "\<c-h>"
+" When the <Enter> key is pressed while the popup menu is visible, it only hides the menu.
+" Use this mapping to close the menu and also start a new line.
+inoremap <expr> <cr> (pumvisible() ? "\<c-y>\<cr>" : "\<cr>")
 
 " <tab>: completion.
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-
-function! s:my_cr_function()
-	" return ((pumvisible()) ? "\<c-y>" : "" ) . "\<cr>"
-	" For not inserting `<cr>`
-	return (pumvisible()) ? "\<c-y>" : "\<cr>"
-endfunction
-
-" <cr>: close popup and save indent.
-inoremap <silent> <cr> <c-r>=<sid>my_cr_function()<cr>
+inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 if emoji#available()
 	map gm :s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<cr>
 	map gM :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<cr>
 endif
-
-inoremap <silent><expr> <c-n>
-	\ pumvisible() ? "\<c-n>" :
-	\ <sid>check_back_space() ? "\<tab>" :
-	\ deoplete#manual_complete()
-function! s:check_back_space() abort "{{{
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}

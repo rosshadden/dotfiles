@@ -28,7 +28,7 @@ set scrolloff=3 sidescrolloff=5
 set nostartofline
 
 " disable splash screen and 'press ENTER' prompt
-set shortmess=atIO
+set shortmess=actIO
 
 " add the g flag to search/replace by default
 set gdefault

@@ -7,8 +7,9 @@ call plug#begin(expand(g:packageDir))
 
 	" libraries
 
-	Plug 'vim-scripts/ingo-library'
 	Plug 'dbakker/vim-projectroot'
+	Plug 'roxma/nvim-yarp'
+	Plug 'vim-scripts/ingo-library'
 
 	" enhancements
 
@@ -18,15 +19,6 @@ call plug#begin(expand(g:packageDir))
 	Plug 'tpope/vim-repeat'
 	" let `.` repeat things in visual mode
 	Plug 'vim-scripts/visualrepeat'
-	" completions
-	Plug 'Shougo/deoplete.nvim'
-		\| Plug 'carlitux/deoplete-ternjs', { 'do': 'npm i -g tern' }
-		\| Plug 'tweekmonster/deoplete-clang2'
-	if !has('nvim')
-		Plug 'roxma/nvim-yarp'
-		Plug 'roxma/vim-hug-neovim-rpc'
-	endif
-	Plug 'Shougo/echodoc.vim'
 	" search with perl regex
 	Plug 'othree/eregex.vim'
 	" readline-style insertion
@@ -39,6 +31,22 @@ call plug#begin(expand(g:packageDir))
 	Plug 'embear/vim-localvimrc'
 	" look at registers
 	Plug 'junegunn/vim-peekaboo'
+	" completions
+	Plug 'ncm2/ncm2'
+		\| Plug 'ncm2/ncm2-bufword'
+		\| Plug 'ncm2/ncm2-path'
+		\| Plug 'fgrsnau/ncm2-aspell'
+		\| Plug 'ncm2/ncm2-syntax'
+			\| Plug 'Shougo/neco-syntax'
+		\| Plug 'ncm2/ncm2-neosnippet'
+		\| Plug 'ncm2/ncm2-vim', { 'for': 'vim' }
+			\| Plug 'Shougo/neco-vim', { 'for': 'vim' }
+		\| Plug 'ncm2/ncm2-tern', { 'for': 'javascript', 'do': 'npm install' }
+		\| Plug 'ncm2/ncm2-tmux', { 'for': [ 'text', 'config', 'markdown', 'pandoc', 'yaml', 'make', 'sh', 'gitcommit' ] }
+	if !has('nvim')
+		Plug 'roxma/vim-hug-neovim-rpc'
+	endif
+	Plug 'Shougo/echodoc.vim'
 
 	" text objects and motions
 
@@ -142,11 +150,9 @@ call plug#begin(expand(g:packageDir))
 	Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
 	Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
 	Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
-	Plug 'marijnh/tern_for_vim', { 'for': 'javascript', 'do': 'npm i' }
 	Plug 'moll/vim-node', { 'for': 'javascript' }
 	" ts
 	Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
-		" \| Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 	Plug 'mhartington/nvim-typescript', { 'for': 'typescript', 'do': './install.sh' }
 	Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 	" rust
@@ -162,8 +168,9 @@ call plug#begin(expand(g:packageDir))
 	" emmet
 	Plug 'mattn/emmet-vim', { 'for': 'html' }
 	" nim
-	Plug 'erw7/nim.vim', { 'for': [ 'nim', 'nims', 'nimble' ], 'branch': 'develop' }
+	" Plug 'erw7/nim.vim', { 'for': [ 'nim', 'nims', 'nimble' ], 'branch': 'develop' }
 	" Plug 'JCavallo/nvim-nim', { 'for': [ 'nim', 'nims', 'nimble' ] }
+	Plug 'alaviss/nim.nvim', { 'for': [ 'nim', 'nims', 'nimble' ] }
 	" clojure
 	Plug 'clojure-vim/acid.nvim', { 'for': 'clojure', 'do': ':UpdateRemotePlugins' }
 	Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
@@ -186,6 +193,4 @@ call plug#begin(expand(g:packageDir))
 	Plug 'edkolev/tmuxline.vim'
 	Plug 'tmux-plugins/vim-tmux'
 	Plug 'tmux-plugins/vim-tmux-focus-events'
-	" completions aware of other panes/windows, only when editing git commit messages
-	Plug 'wellle/tmux-complete.vim', { 'for': [ 'gitcommit', 'markdown', 'pandoc' ] }
 call plug#end()
