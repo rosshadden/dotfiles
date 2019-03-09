@@ -20,12 +20,14 @@ function error() {
 ##
 function for-in() {
 	local headers=false
-	local options=""
+	local options
 	local dry=false
+	local condition
 
-	local spec=":hj:nsS"
+	local spec=":c:hj:nsS"
 	while getopts $spec opt; do
 		case "$opt" in
+			c) condition="$OPTARG" ;;
 			h) headers=true ;;
 			j) options="-j$OPTARG" ;;
 			n) dry=true ;;
@@ -56,11 +58,11 @@ function for-in() {
 		cmd="echo $cmd"
 	fi
 
-	if [ "$options" != "" ]; then
-		parallel "$options" "$cmd" ::: "${list[@]}"
-	else
-		parallel "$cmd" ::: "${list[@]}"
+	if [ "$condition" ]; then
+		cmd="$condition && ($cmd)"
 	fi
+
+	parallel $options "$cmd" ::: "${list[@]}"
 }
 
 hasPipe() {

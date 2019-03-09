@@ -3,7 +3,6 @@
 - move gtk-vikb into repo as submodule with build script
 - split `lib` into `lib` and `src`
 - look into [these dotfiles]( https://github.com/xero/dotfiles ) for sexiness
-- swap `~/{bin,lib}` and `~/local/{bin,lib}`
 - consider moving systemd stuff to sync, or vice versa
 - move startup things to systemd
 - make tropes/mappings consistent across programs

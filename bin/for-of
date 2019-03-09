@@ -13,13 +13,15 @@
 #   May be globs or space-separated values.
 ##
 function for-of() {
-	local options=""
+	local options
+	local condition="[[ -d {1} ]]"
 
 	local spec="$(for-in -S)"
 	while getopts $spec opt; do
 		case "$opt" in
+			c) condition="$condition && $OPTARG" ;;
 			*)
-				if [[ "$options" != "" ]]; then options="$options "; fi
+				if [[ "$options" ]]; then options="$options "; fi
 				options="$options-$opt$OPTARG"
 			;;
 		esac
@@ -27,16 +29,10 @@ function for-of() {
 	shift $((OPTIND - 1))
 
 	local cmd="$1"
-	local wrapper="if [[ -d {1} ]]; then"
-
-	wrapper="$wrapper cd {1}; $cmd; fi"
+	local wrapper="cd {1} && $cmd"
 	shift
 
-	if [ "$options" != "" ]; then
-		for-in "$options" "$wrapper" "$@"
-	else
-		for-in "$wrapper" "$@"
-	fi
+	for-in $options -c "$condition" "$wrapper" "$@"
 }
 
 for-of "$@"

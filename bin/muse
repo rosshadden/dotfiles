@@ -19,10 +19,10 @@ muse() {
 		icons["Paused"]=""
 		icons["Stopped"]=""
 
-		local artist="$(playerctl metadata artist)"
-		local title="$(playerctl metadata title)"
-		local album="$(playerctl metadata album)"
-		local status="$(playerctl status)"
+		local artist="$(playerctl metadata artist 2>/dev/null)"
+		local title="$(playerctl metadata title 2>/dev/null)"
+		local album="$(playerctl metadata album 2>/dev/null)"
+		local status="$(playerctl status 2>/dev/null)"
 		local icon="${icons[$status]}"
 
 		echo "$icon $artist - $title"
