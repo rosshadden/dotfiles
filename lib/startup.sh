@@ -41,10 +41,6 @@ isCommand slack && slack &
 # copypasta
 isCommand copyq && copyq &
 
-# music
-isCommand mopidy && systemctl --user start mopidy.service &
-isCommand GMusicProxy && GMusicProxy &
-
 # gestures
 isCommand easystroke && easystroke &
 

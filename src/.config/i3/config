@@ -75,9 +75,9 @@ set $chooseApp "rofi -show drun -p 'launch: '"
 set $chooseAll "rofi -combi-modi drun,run -show combi -p 'all: '"
 set $chooseKill "kill $(ps -u $USER -o pid,command | tail -n +2 | rofi -dmenu -p 'kill' | awk '{ print $1 }')"
 set $chooseKillForce "kill -9 $(ps -u $USER -o pid,command | tail -n +2 | rofi -dmenu -p 'kill' | awk '{ print $1 }')"
-set $terminal i3-sensible-terminal
-set $run i3-sensible-terminal -e
-set $tmuxAttach i3-sensible-terminal -e "tmux new-session -A -s
+set $terminal ~/dotfiles/bin/termoil
+set $run ~/dotfiles/bin/termoil --
+set $runTmux ~/dotfiles/bin/termoil -- tmux new-session -A -s
 
 # UI
 set $borderWidth 2
@@ -540,26 +540,26 @@ mode "I3" {
 
 mode "TMUX" {
 	# by name
-	bindsym space exec i3-input -P 'Session name: ' -F 'exec $tmuxAttach %s"'; $exit
+	bindsym space exec i3-input -P 'Session name: ' -F 'exec $runTmux %s'; $exit
 
 	# presets
 
 	# TODO: make these dynamic from the workspace name
-	bindsym grave        mark LAST; workspace number 0 $wsLab;     exec $tmuxAttach $nameLab -c /tmp/aoeu"; $exit
-	bindsym 1            mark LAST; workspace number 1 $wsWeb;     exec $tmuxAttach $nameWeb"; $exit
-	bindsym 2            mark LAST; workspace number 2 $wsDev;     exec $tmuxAttach $nameDev -c /home/ross/dev"; $exit
-	bindsym 3            mark LAST; workspace number 3 $wsRemote;  exec $tmuxAttach $nameRemote"; $exit
-	bindsym 4            mark LAST; workspace number 4 $wsHack;    exec $tmuxAttach $nameHack"; $exit
-	bindsym 5            mark LAST; workspace number 5 $wsFiles;   exec $tmuxAttach $nameFiles 'ranger'"; $exit
-	bindsym 6            mark LAST; workspace number 6 $wsMedia;   exec $tmuxAttach $nameMedia 'ncmpcpp'"; $exit
-	bindsym 7            mark LAST; workspace number 7 $wsLit;     exec $tmuxAttach $nameLit -c /home/ross/dev/lit"; $exit
-	bindsym 8            mark LAST; workspace number 8 $wsMonitor; exec $tmuxAttach $nameMonitor"; $exit
-	bindsym 9            mark LAST; workspace number 9 $wsRun;     exec $tmuxAttach $nameRun"; $exit
-	bindsym 0            mark LAST; workspace number 10 $wsChat;   exec $tmuxAttach $nameChat 'TERM=tmux-256color weechat'"; $exit
-	bindsym bracketleft  mark LAST; workspace number 11 $wsDesign; exec $tmuxAttach $nameDesign"; $exit
-	bindsym bracketright mark LAST; workspace number 12 $wsGames;  exec $tmuxAttach $nameGames"; $exit
+	bindsym grave        mark LAST; workspace number 0 $wsLab;     exec $runTmux $nameLab -c /tmp/aoeu; $exit
+	bindsym 1            mark LAST; workspace number 1 $wsWeb;     exec $runTmux $nameWeb; $exit
+	bindsym 2            mark LAST; workspace number 2 $wsDev;     exec $runTmux $nameDev -c /home/ross/dev; $exit
+	bindsym 3            mark LAST; workspace number 3 $wsRemote;  exec $runTmux $nameRemote; $exit
+	bindsym 4            mark LAST; workspace number 4 $wsHack;    exec $runTmux $nameHack; $exit
+	bindsym 5            mark LAST; workspace number 5 $wsFiles;   exec $runTmux $nameFiles 'ranger'; $exit
+	bindsym 6            mark LAST; workspace number 6 $wsMedia;   exec $runTmux $nameMedia 'ncmpcpp'; $exit
+	bindsym 7            mark LAST; workspace number 7 $wsLit;     exec $runTmux $nameLit -c /home/ross/dev/lit; $exit
+	bindsym 8            mark LAST; workspace number 8 $wsMonitor; exec $runTmux $nameMonitor; $exit
+	bindsym 9            mark LAST; workspace number 9 $wsRun;     exec $runTmux $nameRun; $exit
+	bindsym 0            mark LAST; workspace number 10 $wsChat;   exec $runTmux $nameChat 'TERM=tmux-256color weechat'; $exit
+	bindsym bracketleft  mark LAST; workspace number 11 $wsDesign; exec $runTmux $nameDesign; $exit
+	bindsym bracketright mark LAST; workspace number 12 $wsGames;  exec $runTmux $nameGames; $exit
 
-	bindsym d            mark LAST; workspace number 4 $wsHack;    exec $tmuxAttach $nameHack -c /home/ross/dotfiles"; $exit
+	bindsym d            mark LAST; workspace number 4 $wsHack;    exec $runTmux $nameHack -c /home/ross/dotfiles; $exit
 
 	# TODO: open preset for the current workspace
 
@@ -866,7 +866,7 @@ mode "APPS" {
 	bindsym t mark LAST; exec $(gtk-launch chrome-bgjohebimpjdhhocbknplfelpmdhifhd-Default); $exit
 
 	# news feed -- Reddit
-	bindsym r mark LAST; workspace number 7 news; exec $tmuxAttach news 'rtv'"; $exit
+	bindsym r mark LAST; workspace number 7 news; exec $runTmux news 'rtv'; $exit
 
 	# clipboard manager -- copyq
 	# TODO: move to scratchpad
@@ -943,10 +943,10 @@ for_window [class="^copyq$"] border pixel 0, floating enable
 
 # web
 assign [class="^google-chrome" window_role="browser"] → $numWeb $wsWeb
-for_window [title="^Developer Tools"] floating disable
+for_window [title="^DevTools"] floating disable
 
 # media
-assign [class="nuvolaplayer|Spotify|Vlc|mpv"] → $numMedia $wsMedia
+assign [class="nuvolaplayer|Vlc|mpv"] → $numMedia $wsMedia
 assign [title="Popcorn Time"] → $numMedia $wsMedia
 assign [title="Google Play Music" window_role="pop-up"] → $numMedia $wsMedia
 assign [class="^zoom$" title="^Zoom$"] → $numMonitor $wsMonitor
@@ -960,7 +960,6 @@ assign [title="(Google Keep|todoist|DevDocs)" window_role="app"] → $numLit $ws
 for_window [instance="^Godot_Engine$"] floating enable
 for_window [title="^Godot (Engine|Editor)|\.tscn$"] floating disable
 for_window [class="^Dolphin-emu$|^Launch-faster-melee$|^Launch-fm$" title="^Dolphin$|^launch-faster-melee$"] floating toggle
-for_window [title="Dota 2"] border none
 
 # chat
 assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $numChat $wsChat
@@ -968,7 +967,6 @@ assign [class="^Slack$"] → $numChat $wsChat
 assign [title="^finch$"] → $numChat $wsChat
 
 # monitor
-assign [class="MongoChef"] → $numMonitor $wsMonitor
 assign [class="^obs$"] → $numMonitor $wsMonitor
 assign [class="^zoom$" title="^Zoom Meeting"] → $numMonitor $wsMonitor
 

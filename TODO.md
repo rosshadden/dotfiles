@@ -1,5 +1,6 @@
 # meta
 
+- combine startup.sh and i3 startup section
 - move gtk-vikb into repo as submodule with build script
 - split `lib` into `lib` and `src`
 - look into [these dotfiles]( https://github.com/xero/dotfiles ) for sexiness

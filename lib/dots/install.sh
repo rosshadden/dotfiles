@@ -69,7 +69,7 @@ function init() {
 # TODO: combine into one stanza with conditions or variables, instead of three
 # TODO: handle `shouldForce`
 function link() {
-	echo "Linking {bin,lib} to $HOME"
+	echo "Linking bin to $HOME"
 	if [[ ! -e "$HOME/bin" ]]; then
 		echo "Linking bin to $HOME"
 		ln -s "$DOTS/bin" "$HOME"
@@ -77,14 +77,6 @@ function link() {
 		echo "File already exists and is not a symlink: bin"
 	else
 		echo "Skipping existing node: bin"
-	fi
-	if [[ ! -e "$HOME/lib" ]]; then
-		echo "Linking lib to $HOME"
-		ln -s "$DOTS/lib" "$HOME"
-	elif [[ ! -h "$HOME/lib" ]]; then
-		echo "File already exists and is not a symlink: lib"
-	else
-		echo "Skipping existing node: lib"
 	fi
 	echo
 
