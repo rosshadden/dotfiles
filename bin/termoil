@@ -13,7 +13,7 @@ function termoil() {
 	done
 	shift $((OPTIND - 1))
 
-	if [ "$@" ]; then
+	if [[ "$*" ]]; then
 		$term -e "$(echo "$@")"
 	else
 		$term

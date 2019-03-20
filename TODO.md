@@ -3,10 +3,11 @@
 - combine startup.sh and i3 startup section
 - move gtk-vikb into repo as submodule with build script
 - split `lib` into `lib` and `src`
-- look into [these dotfiles]( https://github.com/xero/dotfiles ) for sexiness
+- look into [these dotfiles](https://github.com/xero/dotfiles) for sexiness
 - consider moving systemd stuff to sync, or vice versa
 - move startup things to systemd
 - make tropes/mappings consistent across programs
+- consider organizing into apps, with a general misc catch-all app for ~ and ~/.config
 
 ## dots
 
@@ -59,25 +60,20 @@
 		- fix and/or make stuff that actually works
 	- ember? or nah
 - plugins
-	- [pluginify my modes]( http://stevelosh.com/blog/2011/09/writing-vim-plugins/#mapping-keys-the-right-way )
+	- [pluginify my modes](http://stevelosh.com/blog/2011/09/writing-vim-plugins/#mapping-keys-the-right-way)
 	- pluginify `ranger` stuff
 	- pluginify other stuff
-	- see if I can make [this]( https://github.com/easymotion/vim-easymotion/issues/248#issuecomment-156444426 ) happen
+	- see if I can make [this](https://github.com/easymotion/vim-easymotion/issues/248#issuecomment-156444426) happen
 		- map `.` in target select mode
 
 ## i3
 
-- make tmux mode support apps
-	- `[tmux]d` for dotfiles
-	- `[tmux]m` for music/media/muse, whatever
 - make the 2nd `i3lock` thing blur my background
-- fix and add backgrounds
-- add clipboard management
 - modes
 	- break out modes into separate files
 		- add a generated help notification for each mode, on `?`
-- get current tag
-	- open tmux session for current tag
+	- clipboard management
+	- `[tmux]m` for music/media/muse, whatever
 - universalize the media/resize/move increments and whatnot
 	- make sure there are mappings for both big and small increments
 - integrate `tp`
@@ -88,16 +84,13 @@
 
 - make function that evenly resizes panes
 - rewrite or change tmux-urlview, to use `fzf`
-- Raws, Private Investigator
-	- fix prefix not showing in status on first launch
-		- probably because of the vim/airline stuff
 - use `choose-session` to pick a session to link current session to
 
 ### tp
 
 - break `tp` and friends into separate repo
 - use `j -sl | fzf +s --tac` to give a list of recent dirs
-- add `tcd` function, which `cd`s into a dir and renames the tmux session to that
+- add option to `ta` and `tp` to `j`ump to the directory and make the session name the destination dir
 	- should possibly share code with `tp` and `ta`, to determine the session name
 - universalize all of the `tl`, `ta`, `tp`, etc things, into one binary
 
@@ -106,7 +99,7 @@
 - spend time making it even more useful
 - universalize mappings
 - fix opening files in neovim
-- investigate [wiki binds]( https://github.com/jonas/tig/wiki/Bindings )
+- investigate [wiki binds](https://github.com/jonas/tig/wiki/Bindings)
 - mappings
 	- scrap
 	- stash / pop
@@ -115,7 +108,7 @@
 	- checkout tags
 		- the main checkout bind should probably just support tags too
 		- add tags to the list branch
-	- add mappings to [wiki]( https://github.com/jonas/tig/wiki/Bindings )
+	- add mappings to wiki
 
 ## ranger
 
@@ -131,6 +124,10 @@
 	- `cd`
 	- `j`
 - maybe this is all `awmni`'s responsibility...
+
+## rofi
+
+- migrate theme to themes dir, and load through `rofi.theme`
 
 ## copyq
 
@@ -162,8 +159,8 @@
 - refactor `.zshrc`
 	- make semantic modules instead of a file for aliases and a file for functions (for example)
 	- split `features.zsh` into files
-	- look into [built-in functions]( https://github.com/zsh-users/zsh/tree/master/Functions/Zle )
-	- look into [better status indicator]( http://ivyl.0xcafe.eu/2013/02/03/refining-zsh/#vi_mode_status_indicator )
+	- look into [built-in functions](https://github.com/zsh-users/zsh/tree/master/Functions/Zle)
+	- look into [better status indicator](http://ivyl.0xcafe.eu/2013/02/03/refining-zsh/#vi_mode_status_indicator)
 - make mapping to insert newline at cursor
 
 ## for-{in,of}
@@ -172,8 +169,8 @@
 
 # X11
 
-- [modularize `.Xresources`]( https://wiki.archlinux.org/index.php/x_resources#Include_files )
-- look into [existing `.Xresources` themes]( http://www.noobslab.com/ )
+- [modularize `.Xresources`](https://wiki.archlinux.org/index.php/x_resources#Include_files)
+- look into [existing `.Xresources` themes](http://www.noobslab.com/)
 
 ## keys
 

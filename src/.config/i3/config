@@ -331,7 +331,7 @@ $return {
 	bindsym s mode "SYSTEM"
 	bindsym t mode "TMUX"
 
-	bindsym Shift+p mode "PIDGIN"
+	bindsym Shift+p mode "PASS"
 
 	bindsym $super+space $exit
 	bindsym Escape $exit
@@ -539,8 +539,11 @@ mode "I3" {
 }
 
 mode "TMUX" {
+	# by workspace
+	bindsym space exec $runTmux $(i3-msg -t get_workspaces | jq -r '.[] | select(.focused == true) | .name' | awk '{ print $3 }'); $exit
+
 	# by name
-	bindsym space exec i3-input -P 'Session name: ' -F 'exec $runTmux %s'; $exit
+	bindsym n exec i3-input -P 'Session name: ' -F 'exec $runTmux %s'; $exit
 
 	# presets
 
@@ -876,6 +879,9 @@ mode "APPS" {
 	# TODO: move to scratchpad
 	bindsym c mark LAST; exec qalculate-gtk; $exit
 
+	# pidgin
+	bindsym p mode "PIDGIN"
+
 	# documentation -- devdocs
 	bindsym d mark LAST; exec devdocs-desktop; $exit
 
@@ -886,9 +892,14 @@ mode "APPS" {
 	bindsym Escape $exit
 }
 
+mode "PASS" {
+	bindsym space exec $(passmenu); $exit
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
 mode "PIDGIN" {
 	bindsym space mark LAST; exec $(~/dotfiles/bin/purple | rofi -dmenu -p "IM:" -i | xargs -I $ ~/dotfiles/bin/purple '$'); $exit
-
 	bindsym $super+space $return
 	bindsym Escape $exit
 }
