@@ -72,7 +72,7 @@ hasPipe() {
 }
 
 if hasPipe; then
-	for-in "$@" $(cat -)
+	for-in "$@" $(cat)
 else
 	for-in "$@"
 fi

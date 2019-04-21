@@ -38,9 +38,9 @@ duh() {
 	if [[ -z "$dir" ]]; then dir=.; fi
 
 	if [ "$options" != "" ]; then
-		du -h --max-depth=$depth "$options" $dir | sort -h
+		du -h --max-depth=$depth "$options" "$dir" | sort -h
 	else
-		du -h --max-depth=$depth $dir | sort -h
+		du -h --max-depth=$depth "$dir" | sort -h
 	fi
 }
 

@@ -10,9 +10,7 @@ qDebug() {
 }
 
 qKill() {
-	for entry in $(ps aux | fzf -m --preview= | awk '{ print $2 }'); do
-		kill $* "$entry"
-	done
+	kill $* $(ps aux | fzf -m --preview= | awk '{ print $2 }')
 }
 
 if [[ "$command" == "debug" ]]; then

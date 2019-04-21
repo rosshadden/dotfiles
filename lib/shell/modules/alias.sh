@@ -71,6 +71,9 @@ fi
 
 alias dcp=docker-compose
 
+# steam
+alias proton="STEAM_COMPAT_DATA_PATH=/media/data/games/proton/ '/media/data/games/steam/SteamApps/common/Proton 4.2/proton'"
+
 ################
 # FUN
 ################

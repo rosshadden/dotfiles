@@ -54,7 +54,7 @@ port() {
 
 trim() {
 	if hasPipe; then
-		echo -n "$(cat -)"
+		echo -n "$(cat)"
 	else
 		echo -n "$1"
 	fi
@@ -81,18 +81,6 @@ calc() {
 
 isCommand() {
 	command -v "$1" >/dev/null 2>&1
-}
-
-color() {
-	stdin="$(ls -l /proc/self/fd/0)"
-	stdin="${stdin/*-> /}"
-	format=ansi
-
-	if hasPipe; then
-		cat - | highlight -O $format "$@"
-	else
-		highlight -O $format "$@"
-	fi
 }
 
 ##
@@ -138,6 +126,10 @@ ta() {
 ##
 tj() {
 	tmux new-session -t "$1" -s "$1-$2"
+}
+
+fzff() {
+  cat | fzf --query "$1" --select-1 --exit-0
 }
 
 set-prompt() {

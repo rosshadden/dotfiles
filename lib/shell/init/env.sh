@@ -13,6 +13,9 @@ export DOTS_THEME="$(cat $DOTS/THEME)"
 # local
 export PATH=~/dotfiles/bin:~/local/bin:~/.local/bin
 
+# work
+export PATH=$PATH:~/dev/reaction/bin
+
 # system
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin
 
@@ -76,6 +79,9 @@ export FZF_DEFAULT_OPTS="--cycle --tiebreak=length,index --bind=alt-enter:print-
 
 # pass
 export PASSWORD_STORE_GENERATED_LENGTH=16
+
+# steam
+export STEAM_COMPAT_DATA_PATH=/media/data/games/proton/
 
 # godot
 export GODOT_BIN=/usr/bin/godot

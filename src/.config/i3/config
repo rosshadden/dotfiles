@@ -147,6 +147,7 @@ bindsym $super+Shift+bracketright move container to workspace number 12 $wsGames
 # close focused window
 bindsym $super+c kill
 bindsym $super+Shift+c --release exec --no-startup-id /usr/bin/xkill
+bindsym $super+$alt+c exec --no-startup-id xdotool windowunmap $(xdotool getactivewindow)
 
 # change focus between tiling / floating windows
 bindsym $super+BackSpace mark LAST; focus mode_toggle
@@ -256,16 +257,16 @@ bindsym button9 exec "notify-send forward"
 ################
 
 # allow switching VTs
-bindsym Control+$alt+F1 exec $(xdotool key XF86Switch_VT_1)
-bindsym Control+$alt+F2 exec $(xdotool key XF86Switch_VT_2)
-bindsym Control+$alt+F3 exec $(xdotool key XF86Switch_VT_3)
-bindsym Control+$alt+F4 exec $(xdotool key XF86Switch_VT_4)
-bindsym Control+$alt+F5 exec $(xdotool key XF86Switch_VT_5)
-bindsym Control+$alt+F6 exec $(xdotool key XF86Switch_VT_6)
-bindsym Control+$alt+F7 exec $(xdotool key XF86Switch_VT_7)
-bindsym Control+$alt+F8 exec $(xdotool key XF86Switch_VT_8)
-bindsym Control+$alt+F9 exec $(xdotool key XF86Switch_VT_9)
-bindsym Control+$alt+F10 exec $(xdotool key XF86Switch_VT_10)
+bindsym Control+$alt+F1 exec xdotool key XF86Switch_VT_1
+bindsym Control+$alt+F2 exec xdotool key XF86Switch_VT_2
+bindsym Control+$alt+F3 exec xdotool key XF86Switch_VT_3
+bindsym Control+$alt+F4 exec xdotool key XF86Switch_VT_4
+bindsym Control+$alt+F5 exec xdotool key XF86Switch_VT_5
+bindsym Control+$alt+F6 exec xdotool key XF86Switch_VT_6
+bindsym Control+$alt+F7 exec xdotool key XF86Switch_VT_7
+bindsym Control+$alt+F8 exec xdotool key XF86Switch_VT_8
+bindsym Control+$alt+F9 exec xdotool key XF86Switch_VT_9
+bindsym Control+$alt+F10 exec xdotool key XF86Switch_VT_10
 
 ################
 # MEDIA
@@ -758,15 +759,15 @@ mode "MOUSE" {
 	# buttons
 
 	# left
-	bindsym space exec $(xdotool click 1)
+	bindsym space exec xdotool click 1
 	# middle
-	bindsym $alt+space exec $(xdotool click 2)
+	bindsym $alt+space exec xdotool click 2
 	# right
-	bindsym Shift+space exec $(xdotool click 3)
+	bindsym Shift+space exec xdotool click 3
 	# wheel up
-	bindsym b exec $(xdotool click 4)
+	bindsym b exec xdotool click 4
 	# wheel down
-	bindsym f exec $(xdotool click 5)
+	bindsym f exec xdotool click 5
 
 	# movement
 

@@ -49,8 +49,9 @@ function packages() {
 
 function modules() {
 	local shellDir=$DOTS/lib/shell
+	for file in $shellDir/init/{functions,env}.sh; do sourceIfExists $file; done
 	for file in $shellDir/plugins/*.zsh; do sourceIfExists $file; done
-	for file in $shellDir/init/{functions,env}.sh $shellDir/modules/*.{,z}sh; do sourceIfExists $file; done
+	for file in $shellDir/modules/*.{,z}sh; do sourceIfExists $file; done
 	for file in ~/local/.sh ~/local/.zshrc; do sourceIfExists $file; done
 }
 

@@ -16,3 +16,12 @@ bindkey '^[[Z' reverse-menu-complete
 vi-yank-to-x() { print -rn -- $CUTBUFFER | xsel -ib -p; }
 zle -N vi-yank-to-x
 bindkey -a '^Y' vi-yank-to-x
+
+# TODO: This belongs in an `fzf.sh` plugin file, but the order of sources breaks things
+shell="$(getShell)"
+fzfDir=/usr/share/fzf
+if [[ -d $fzfDir ]]; then
+	for file in $fzfDir/*.$shell; do
+		source $file
+	done
+fi

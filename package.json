@@ -3,7 +3,7 @@
   "version": "0.8.0",
   "description": "Ross' dotfiles of epic awesomeness +10",
   "repository": {
-    "type": "git",
+    "type": true,
     "url": "https://github.com/rosshadden/dotfiles.git"
   },
   "keywords": [
