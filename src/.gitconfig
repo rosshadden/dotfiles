@@ -84,9 +84,8 @@
 
 	in = !sh -c 'git pull ${1-origin} ${2-$(git pwd)}' -
 	out = !sh -c 'git push ${1-origin} ${2-$(git pwd)}' -
-	out-force = !sh -c 'git push -f ${1-origin} ${2-$(git pwd)}' -
+	out-force = !sh -c 'git push --force-with-lease ${1-origin} ${2-$(git pwd)}' -
 	io = !git in && git out
-	please = push --force-with-lease
 	sync-submodules = submodule update --init --remote --recursive
 
 	# PLURALITY
