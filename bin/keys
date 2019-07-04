@@ -10,7 +10,7 @@ if [[ $action == "aoeu" ]] || [[ $action == "asdf" ]]; then action=toggle; fi
 
 # reset xcape
 function resetXcape {
-	sudo pkill xcape
+	pkill xcape
 	xcape -e "Control_L=Escape;Alt_L=Control_L|space;Alt_R=Super_L|space"
 	# TODO: the following is more ideal, but depends on `caps:ctrl_modifier` working
 	# xcape -e "Caps_Lock=Escape;Alt_R=Control_L|space"

@@ -77,7 +77,7 @@ set $chooseKill "kill $(ps -u $USER -o pid,command | tail -n +2 | rofi -dmenu -p
 set $chooseKillForce "kill -9 $(ps -u $USER -o pid,command | tail -n +2 | rofi -dmenu -p 'kill' | awk '{ print $1 }')"
 set $terminal ~/dotfiles/bin/termoil
 set $run ~/dotfiles/bin/termoil --
-set $runTmux ~/dotfiles/bin/termoil -- tmux new-session -A -s
+set $runTmux ~/dotfiles/bin/termoil -- tmux -u new-session -A -s
 
 # UI
 set $borderWidth 2
@@ -154,7 +154,7 @@ bindsym $super+BackSpace mark LAST; focus mode_toggle
 
 # open terminal
 bindsym $super+t mark LAST; exec $terminal
-bindsym $super+Shift+t mark LAST; exec $run tmux
+bindsym $super+Shift+t mark LAST; exec $run tmux -u
 
 # open runner
 bindsym $super+r mark LAST; exec $chooseCommand

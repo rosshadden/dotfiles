@@ -125,7 +125,7 @@ ta() {
 # @param {String} - New session
 ##
 tj() {
-	tmux new-session -t "$1" -s "$1-$2"
+	tmux -u new-session -t "$1" -s "$1-$2"
 }
 
 fzff() {

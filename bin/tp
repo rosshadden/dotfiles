@@ -35,4 +35,4 @@ tmux rename-session -t project "$name"
 
 # attach to session
 # TODO: make optional
-tmux attach-session -t "$name"
+tmux -u attach-session -t "$name"
