@@ -76,7 +76,6 @@ set $chooseAll "rofi -combi-modi drun,run -show combi -p 'all: '"
 set $chooseKill "kill $(ps -u $USER -o pid,command | tail -n +2 | rofi -dmenu -p 'kill' | awk '{ print $1 }')"
 set $chooseKillForce "kill -9 $(ps -u $USER -o pid,command | tail -n +2 | rofi -dmenu -p 'kill' | awk '{ print $1 }')"
 set $terminal ~/dotfiles/bin/termoil
-set $run ~/dotfiles/bin/termoil --
 set $runTmux ~/dotfiles/bin/termoil -- tmux -u new-session -A -s
 
 # UI
@@ -154,7 +153,10 @@ bindsym $super+BackSpace mark LAST; focus mode_toggle
 
 # open terminal
 bindsym $super+t mark LAST; exec $terminal
-bindsym $super+Shift+t mark LAST; exec $run tmux -u
+bindsym $super+Shift+t mark LAST; exec $terminal -- tmux -u
+
+# edit anything
+bindsym $super+e exec termite --title=vimmer --exec=vimmer
 
 # open runner
 bindsym $super+r mark LAST; exec $chooseCommand
@@ -952,6 +954,7 @@ for_window [window_role="pop-up"] floating enable, move absolute center
 for_window [title="Qalculate!"] floating enable
 for_window [class="^Gpick|Pavucontrol$"] floating enable
 for_window [class="^copyq$"] border pixel 0, floating enable
+for_window [title="^vimmer$"] floating enable
 
 # web
 assign [class="^google-chrome" window_role="browser"] → $numWeb $wsWeb

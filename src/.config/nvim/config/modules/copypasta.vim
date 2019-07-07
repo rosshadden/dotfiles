@@ -1,31 +1,27 @@
 " prefix
-call MakePrefix('clipboard', '<:prefix>C')
+call MakePrefix('clipboard', '<c-c>')
 call MakePrefix('put', '<:prefix>p')
 
-" easy ref to system clipboard
-nnoremap <c-c> "+
-vnoremap <c-c> "+
+" easy ref to system clipboard (CLIPBOARD)
+nnoremap <:clipboard> "+
+vnoremap <:clipboard> "+
+
+" easy ref to selection clipboard (PRIMARY)
+nnoremap <:clipboard><c-s> "*
+vnoremap <:clipboard><c-s> "*
 
 " easy ref to (non-volatile) yank register
-nnoremap <c-c><c-y> "0
-vnoremap <c-c><c-y> "0
+nnoremap <:clipboard><c-y> "0
+vnoremap <:clipboard><c-y> "0
 
 " easy ref to blackhole register
-nnoremap <c-c><c-b> "_
-vnoremap <c-c><c-b> "_
-
-" easy system clipboard
-noremap <:clipboard>y "+y
-noremap <:clipboard>Y "+Y
-noremap <:clipboard>p "+p
-noremap <:clipboard>P "+P
-noremap <:clipboard>d "+d
-noremap <:clipboard>D "+D
-noremap <:clipboard>c "+c
-noremap <:clipboard>C "+C
+nnoremap <:clipboard><c-b> "_
+vnoremap <:clipboard><c-b> "_
 
 " paste without comments mucking everything up
 nnoremap cop :set invpaste<cr>
 
 " put in <motion>
+map <:clipboard><c-p> <plug>(operator-replace)
+" TODO: consider deprecating?
 map <:put> <plug>(operator-replace)

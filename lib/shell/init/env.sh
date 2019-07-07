@@ -99,9 +99,8 @@ if [ -f "/usr/bin/nvim" ]; then
 else
 	export EDITOR=vim
 fi
+export VISUAL="termoil -- $EDITOR"
 export GIT_EDITOR=$EDITOR
-
-export VISUAL=gvim
 
 export BROWSER=google-chrome-stable
 

@@ -114,7 +114,7 @@ ta() {
 		tmux rename-session "$name"
 		echo "Renaming session to: $name"
 	else
-		tmux new-session -A -s "$name"
+		tmux -u new-session -A -s "$name"
 	fi
 }
 

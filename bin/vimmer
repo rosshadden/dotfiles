@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+if ! [ -x "$(command -v vipe)" ]; then
+  echo "Error: vipe not found." >&2
+  exit 1
+fi
+
+if ! [ -x "$(command -v xsel)" ]; then
+  echo "Error: xsel not found." >&2
+  exit 1
+fi
+
+# TMP=$(mktemp -p /tmp -t vimclip.XXXXXXXX)
+# $EDITOR +"w! $TMP"
+# if [ -s "$TMP" ]; then
+#   xsel -i -b < "$TMP"
+# else
+#   rm "$TMP"
+# fi
+
+isInteractive() {
+	ps -o stat= -p $$ | grep -q '+'
+}
+
+if isInteractive; then
+	unset VISUAL
+fi
+
+echo | vipe 2> /dev/null | echo -n "$(cat)" | xsel -ib

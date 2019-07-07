@@ -19,7 +19,7 @@ augroup completion
 	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-	au User asyncomplete_setup call asyncomplete#register_source({
+	autocmd User asyncomplete_setup call asyncomplete#register_source({
 		\ 'name': 'nim',
 		\ 'whitelist': [ 'nim' ],
 		\ 'completor': { opt, ctx -> nim#suggest#sug#GetAllCandidates({ start, candidates -> asyncomplete#complete(opt['name'], ctx, start, candidates) }) }
