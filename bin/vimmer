@@ -18,21 +18,24 @@ isInteractive() {
 }
 
 main() {
-	# TODO: arg to populate with PRIMARY clipboard
+	local input=""
 
-	# TMP=$(mktemp -p /tmp -t vimclip.XXXXXXXX)
-	# $EDITOR +"w! $TMP"
-	# if [ -s "$TMP" ]; then
-	#   xsel -i -b < "$TMP"
-	# else
-	#   rm "$TMP"
-	# fi
+	local spec=":p"
+	while getopts $spec opt; do
+		case "$opt" in
+			p) input="$(xsel)" ;;
+			S) echo $spec; exit ;;
+			:) error "Option '-$OPTARG' requires an argument" ;;
+			*) error "Invalid option: -$OPTARG" ;;
+		esac
+	done
+	shift $((OPTIND - 1))
 
 	if isInteractive; then
 		unset VISUAL
 	fi
 
-	local output="$(echo | vipe 2> /dev/null)"
+	local output="$(echo "$input" | vipe 2> /dev/null)"
 
 	if [[ $output != "" ]]; then
 		echo -n "$output" | xsel -ib

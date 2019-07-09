@@ -156,7 +156,8 @@ bindsym $super+t mark LAST; exec $terminal
 bindsym $super+Shift+t mark LAST; exec $terminal -- tmux -u
 
 # edit anything
-bindsym $super+e exec termite --title=vimmer --exec=vimmer
+bindsym $super+e exec termite --title="vimmer" --exec="vimmer"
+bindsym $super+Shift+e exec termite --title="vimmer" --exec="vimmer -p"
 
 # open runner
 bindsym $super+r mark LAST; exec $chooseCommand
