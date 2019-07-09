@@ -123,8 +123,8 @@ export HIST_STAMPS=yyyy-mm-dd
 # big-ass search history
 export HISTSIZE=65536
 
-export GTK_PATH=$HOME/.gtk-2.0/modules
 export GTK_MODULES=vi
+export GTK_PATH=$HOME/.gtk-2.0/modules
 
 # make gpg open in-terminal dialog
 export GPG_TTY="$(tty)"
