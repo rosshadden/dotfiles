@@ -12,9 +12,9 @@ name=${1:-$(basename "$PWD" | sed 's;\.;-;g')}
 
 # Rename session if already in a tmux session
 if [ -n "$TMUX" ]; then
-	tmux rename-session "$name"
 	echo "Already in tmux, nerd."
 	echo "Renaming session to: $name"
+	tmux rename-session "$name"
 	exit
 fi
 
