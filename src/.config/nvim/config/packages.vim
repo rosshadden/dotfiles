@@ -94,7 +94,7 @@ call plug#begin(expand(g:packageDir))
 	" diff two selections
 	Plug 'AndrewRadev/linediff.vim'
 	" linter
-	Plug 'w0rp/ale'
+	Plug 'dense-analysis/ale'
 	" visual star search
 	Plug 'bronson/vim-visual-star-search'
 	" tagbar

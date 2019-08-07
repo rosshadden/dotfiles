@@ -159,6 +159,9 @@ bindsym $super+Shift+t mark LAST; exec $terminal -- tmux -u
 bindsym $super+e exec termite --title="vimmer" --exec="vimmer"
 bindsym $super+Shift+e exec termite --title="vimmer" --exec="vimmer -p"
 
+# volume -- pavucontrol
+bindsym $super+v mark LAST; exec $(pavucontrol); $exit
+
 # open runner
 bindsym $super+r mark LAST; exec $chooseCommand
 # open launcher
@@ -728,6 +731,8 @@ mode "BORDER" {
 mode "GAPS" {
 	bindsym o mode "GAPS-OUTER"
 	bindsym i mode "GAPS-INNER"
+	bindsym 0 gaps outer current set 0; gaps inner current set 0
+	bindsym Shift+0 gaps outer all set 0; gaps inner all set 0
 	bindsym $super+space $return
 	bindsym Escape $exit
 }
@@ -863,9 +868,6 @@ mode "PROJECTS" {
 }
 
 mode "APPS" {
-	# volume -- pavucontrol
-	bindsym v mark LAST; exec $(pavucontrol); $exit
-
 	# music -- Google Music
 	bindsym m mark LAST; exec $(gtk-launch nuvolaplayer3-google-play-music); $exit
 
