@@ -31,22 +31,13 @@ call plug#begin(expand(g:packageDir))
 	Plug 'embear/vim-localvimrc'
 	" look at registers
 	Plug 'junegunn/vim-peekaboo'
-	" completions
-	Plug 'ncm2/ncm2'
-		\| Plug 'ncm2/ncm2-bufword'
-		\| Plug 'ncm2/ncm2-path'
-		\| Plug 'fgrsnau/ncm2-aspell'
-		\| Plug 'ncm2/ncm2-syntax'
-			\| Plug 'Shougo/neco-syntax'
-		\| Plug 'ncm2/ncm2-neosnippet'
-		\| Plug 'ncm2/ncm2-vim', { 'for': 'vim' }
-			\| Plug 'Shougo/neco-vim', { 'for': 'vim' }
-		\| Plug 'ncm2/ncm2-tern', { 'for': 'javascript', 'do': 'npm install' }
-		\| Plug 'ncm2/ncm2-tmux', { 'for': [ 'text', 'config', 'markdown', 'pandoc', 'yaml', 'make', 'sh', 'gitcommit' ] }
 	if !has('nvim')
+		" compatibility
 		Plug 'roxma/vim-hug-neovim-rpc'
 	endif
 	Plug 'Shougo/echodoc.vim'
+	" completions
+	Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 	" text objects and motions
 
@@ -93,8 +84,6 @@ call plug#begin(expand(g:packageDir))
 	Plug 'terryma/vim-multiple-cursors'
 	" diff two selections
 	Plug 'AndrewRadev/linediff.vim'
-	" linter
-	Plug 'dense-analysis/ale'
 	" visual star search
 	Plug 'bronson/vim-visual-star-search'
 	" tagbar
@@ -138,7 +127,9 @@ call plug#begin(expand(g:packageDir))
 	" languages
 
 	" polyglot support
-	Plug 'sheerun/vim-polyglot'
+	" TODO: remove when https://github.com/sheerun/vim-polyglot/pull/419 is merged
+	" Plug 'sheerun/vim-polyglot'
+	Plug 'sheldonkwok/vim-polyglot', { 'branch': 'fix/disable-tsx-on-typescript-disable' }
 	" polyglot autoformat support
 	Plug 'Chiel92/vim-autoformat'
 	" markdown

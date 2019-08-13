@@ -4,6 +4,20 @@
 
 set completeopt=noinsert,menuone,noselect
 
+let g:coc_global_extensions = [
+	\ 'coc-css',
+	\ 'coc-emoji',
+	\ 'coc-eslint',
+	\ 'coc-json',
+	\ 'coc-prettier',
+	\ 'coc-pyls',
+	\ 'coc-snippets',
+	\ 'coc-tslint',
+	\ 'coc-tslint-plugin',
+	\ 'coc-tsserver',
+	\ 'coc-yaml'
+\ ]
+
 if emoji#available()
 	set completefunc=emoji#complete
 endif
@@ -11,7 +25,6 @@ endif
 " Enable omni completion.
 augroup completion
 	autocmd!
-	autocmd BufEnter * call ncm2#enable_for_buffer()
 	autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
 	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -30,16 +43,15 @@ augroup END
 " MAPPINGS
 """"""""""""""""
 
-" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-inoremap <c-c> <esc>
+" trigger completions
+inoremap <silent><expr> <a-space> coc#refresh()
 
-" When the <Enter> key is pressed while the popup menu is visible, it only hides the menu.
-" Use this mapping to close the menu and also start a new line.
-inoremap <expr> <cr> (pumvisible() ? "\<c-y>\<cr>" : "\<cr>")
+" accept snippet on <cr>
+inoremap <silent><expr> <cr> (pumvisible()) ? coc#_select_confirm() : "\<c-g>u\<cr>\<c-r>=coc#on_enter()\<cr>"
 
 " <tab>: completion.
-inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+inoremap <expr> <tab> (pumvisible()) ? "\<c-n>" : "\<tab>"
+inoremap <expr> <s-tab> (pumvisible()) ? "\<c-p>" : "\<s-tab>"
 
 if emoji#available()
 	map gm :s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<cr>
