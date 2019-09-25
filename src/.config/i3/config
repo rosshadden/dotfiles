@@ -894,6 +894,8 @@ mode "APPS" {
 	# stream app -- OBS
 	bindsym s mark LAST; exec $(gtk-launch obs); $exit
 
+	bindsym e exec $(rofimoji --use-clipboard --skin-tone neutral); $exit
+
 	bindsym $super+space $return
 	bindsym Escape $exit
 }

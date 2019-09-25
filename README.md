@@ -17,6 +17,9 @@ See the [TODO](TODO.md) for things I have in mind.
 
 - `zsh`
 	- [`zplug`](https://zplug.sh/) - package manager
+- [`i3`](https://i3wm.org/)
+	- `xdotool`
+	- [`rofimoji`](https://github.com/fdw/rofimoji)
 - [`neovim`](https://neovim.io/)
 	- [`npm:tern`](https://github.com/ternjs/tern) - code analyzer
 	- [`npm:jsctags`](https://github.com/ramitos/jsctags) - JavaScript tags

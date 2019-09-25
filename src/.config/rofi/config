@@ -46,3 +46,5 @@ rofi.threads:                        0
 rofi.window-format:                  {w}    {c}    {n}    {t}
 ! Enable the extended coloring options
 rofi.color-enabled:                  true
+
+rofi.modi: window,run,ssh,drun

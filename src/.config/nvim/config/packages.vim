@@ -152,7 +152,6 @@ call plug#begin(expand(g:packageDir))
 	Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
 	Plug 'moll/vim-node', { 'for': 'javascript' }
 	" ts
-	Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
 	Plug 'mhartington/nvim-typescript', { 'for': 'typescript', 'do': './install.sh' }
 	Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 	" rust
