@@ -171,7 +171,6 @@ call plug#begin(expand(g:packageDir))
 	" Plug 'JCavallo/nvim-nim', { 'for': [ 'nim', 'nims', 'nimble' ] }
 	Plug 'alaviss/nim.nvim', { 'for': [ 'nim', 'nims', 'nimble' ] }
 	" clojure
-	Plug 'clojure-vim/acid.nvim', { 'for': 'clojure', 'do': ':UpdateRemotePlugins' }
 	Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
 	Plug 'eraserhd/parinfer-rust', { 'for': 'clojure', 'do': 'cargo build --release' }
 	" godot

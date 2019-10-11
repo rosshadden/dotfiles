@@ -32,7 +32,7 @@ highlight ExtraWhitespace ctermfg=white ctermbg=blue
 call MakePrefix('space', '<:prefix>s')
 
 " visual shifting (does not exit Visual mode)
-vnoremap < <gv
+vnoremap << <gv
 vnoremap > >gv
 
 " easy-align
