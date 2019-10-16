@@ -24,6 +24,8 @@ xset s 3600 3600
 # UTILS
 ################
 
+numlockx &
+
 # composite manager
 isCommand compton && compton -b &
 
