@@ -40,8 +40,8 @@ display_bitrate = yes
 mouse_support = yes
 mouse_list_scroll_whole_page = no
 
-search_engine_default_search_mode = 2
-external_editor = nano
+search_engine_default_search_mode = 1
+external_editor = nvim
 use_console_editor = yes
 
 colors_enabled = yes

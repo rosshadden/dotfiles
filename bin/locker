@@ -7,8 +7,9 @@ function lock() {
 	local color
 	local image
 	local random=false
+	local screen=false
 
-	local spec=":bc:i:rs"
+	local spec=":bc:i:rsS"
 	while getopts $spec opt; do
 		case "$opt" in
 			b) blur=true ;;
@@ -19,11 +20,17 @@ function lock() {
 				image=/tmp/lockscreen.png
 				escrotum $image
 				;;
+			S) screen=true ;;
 			:) error "Option '-$OPTARG' requires an argument" ;;
 			*) error "Invalid option: -$OPTARG" ;;
 		esac
 	done
 	shift $((OPTIND - 1))
+
+	if [[ $screen == true ]]; then
+		xset dpms force off
+		exit 0
+	fi
 
 	if [[ $blur == true ]]; then
 		i3lock-wrapper

@@ -63,10 +63,10 @@ set $return mode "PREFIX"
 set $exit mode "default"
 
 # commands
-set $playCmd "mpc toggle; playerctl play-pause"
-set $stopCmd "mpc stop; playerctl stop"
-set $nextCmd "mpc toggle; playerctl next"
-set $prevCmd "mpc toggle; playerctl previous"
+set $playCmd "playerctl play-pause"
+set $stopCmd "playerctl stop"
+set $nextCmd "playerctl next"
+set $prevCmd "playerctl previous"
 
 # default apps
 set $chooseCommand "rofi -show run -sidebar-mode"
@@ -175,7 +175,7 @@ bindsym $super+x; exec $chooseKill
 bindsym $super+Shift+x; exec $chooseKillForce
 
 # lock screen
-bindsym $macro5 exec ~/dotfiles/bin/locker -r
+bindsym $macro5 exec ~/dotfiles/bin/locker -S
 bindsym Shift+$macro5 exec ~/dotfiles/bin/locker -s
 bindsym Control+$macro5 exec ~/dotfiles/bin/locker -b
 
@@ -584,6 +584,9 @@ mode "SYSTEM" {
 	bindsym Shift+s exec "systemctl suspend";   $exit
 	bindsym Shift+h exec "systemctl hybernate"; $exit
 
+	# screen
+	bindsym s exec xset dpms force off; $exit
+
 	# lock screen
 	bindsym l exec ~/dotfiles/bin/locker -r; $exit
 	bindsym Shift+l exec ~/dotfiles/bin/locker -s; $exit
@@ -839,7 +842,7 @@ mode "MEDIA" {
 	bindsym Shift+Right exec $nextCmd
 	bindsym Shift+$left exec $prevCmd
 	bindsym Shift+$right exec $prevCmd
-	bindsym Shift+s exec "mpc stop; playerctl stop"
+	bindsym Shift+s exec $stopCmd
 
 	# screenshots
 

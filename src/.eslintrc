@@ -1,5 +1,5 @@
 {
-	"extends": "zipscene/environments/node",
+	"extends": "eslint:recommended",
 	"rules": {
 		"camelcase": 0,
 		"no-empty": 0,
@@ -7,6 +7,6 @@
 		"quote-props": 0
 	},
 	"parserOptions": {
-		"ecmaVersion": 8
+		"ecmaVersion": 11
 	}
 }
