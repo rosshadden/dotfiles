@@ -24,17 +24,31 @@ function for-in() {
 	local dry=false
 	local condition
 
-	local spec=":c:hj:nsS"
-	while getopts $spec opt; do
-		case "$opt" in
-			c) condition="$OPTARG" ;;
+	local spec=":c:hj:nsS-:"
+	while getopts $spec option; do
+		local value="${OPTARG#*=}"
+
+		case "$option" in
+			-)
+				option="${OPTARG%=*}"
+
+				case "$OPTARG" in
+					condition=*) condition="$value" ;;
+					headers) headers=true ;;
+					jobs=*) options="-j$value" ;;
+					dry-run) dry=true ;;
+					single-job) options="-j1" ;;
+					spec) echo $spec; exit ;;
+					*) error "Invalid option: --$value" ;;
+				esac
+				;;
+			c) condition="$value" ;;
 			h) headers=true ;;
-			j) options="-j$OPTARG" ;;
+			j) options="-j$value" ;;
 			n) dry=true ;;
 			s) options="-j1" ;;
-			S) echo $spec; exit ;;
-			:) error "Option '-$OPTARG' requires an argument" ;;
-			*) error "Invalid option: -$OPTARG" ;;
+			:) error "Option '-$value' requires an argument" ;;
+			*) error "Invalid option: -$value" ;;
 		esac
 	done
 	shift $((OPTIND - 1))

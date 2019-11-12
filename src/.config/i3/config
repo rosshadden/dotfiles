@@ -283,6 +283,7 @@ bindsym XF86AudioRaiseVolume exec "~/dotfiles/bin/config volume +5"
 bindsym XF86AudioLowerVolume exec "~/dotfiles/bin/config volume -5"
 bindsym XF86AudioMute exec "~/dotfiles/bin/config volume !"
 bindsym XF86AudioMicMute exec "~/dotfiles/bin/config mic !"
+bindsym Control+Shift+$super+$alt+m exec "~/dotfiles/bin/config mic !"
 
 # playback
 bindsym XF86AudioPlay exec $playCmd

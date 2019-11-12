@@ -16,7 +16,7 @@ function for-of() {
 	local options
 	local condition="[[ -d {1} ]]"
 
-	local spec="$(for-in -S)"
+	local spec="$(for-in --spec)"
 	while getopts $spec opt; do
 		case "$opt" in
 			c) condition="$condition && $OPTARG" ;;
