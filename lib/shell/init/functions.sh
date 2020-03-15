@@ -37,7 +37,7 @@ hasPipe() {
 	if [[ "$stdin" =~ /dev/pts ]]; then return 1; fi
 }
 
-port() {
+dupe() {
 	local direction="$1"
 	local dir="$2"
 	shift 2
