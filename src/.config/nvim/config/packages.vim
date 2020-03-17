@@ -36,8 +36,9 @@ call plug#begin(expand(g:packageDir))
 		Plug 'roxma/vim-hug-neovim-rpc'
 	endif
 	Plug 'Shougo/echodoc.vim'
+	" Plug 'wellle/context.vim'
 	" completions
-	Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+	Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' }
 
 	" text objects and motions
 
@@ -164,10 +165,10 @@ call plug#begin(expand(g:packageDir))
 	" Plug 'JCavallo/nvim-nim', { 'for': [ 'nim', 'nims', 'nimble' ] }
 	Plug 'alaviss/nim.nvim', { 'for': [ 'nim', 'nims', 'nimble' ] }
 	" clojure
-	Plug 'clojure-vim/async-clj-omni', { 'for': 'clojure' }
 	Plug 'eraserhd/parinfer-rust', { 'for': 'clojure', 'do': 'cargo build --release' }
+	Plug 'Olical/conjure', { 'do': 'bin/compile' }
 	" godot
-	Plug 'calviken/vim-gdscript3'
+	Plug 'clktmr/vim-gdscript3'
 
 	" integration
 

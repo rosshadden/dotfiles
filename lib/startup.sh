@@ -27,7 +27,7 @@ xset s 3600 3600
 numlockx &
 
 # composite manager
-isCommand compton && compton -b &
+isCommand picom && picom -b &
 
 ################
 # APPS

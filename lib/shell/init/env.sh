@@ -4,7 +4,7 @@
 # DOTFILES
 ################
 
-export DOTS_THEME="$(cat $DOTS/THEME)"
+[ -f $DOTS/THEME ] && export DOTS_THEME="$(cat $DOTS/THEME)"
 
 ################
 # BINS
@@ -92,7 +92,6 @@ export GODOT_BIN=/usr/bin/godot
 
 export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable vcs)
 export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs vi_mode time)
-export POWERLEVEL9K_HOME_FOLDER_ABBREVIATION=🏠
 
 if [ -f "/usr/bin/nvim" ]; then
 	export EDITOR=nvim

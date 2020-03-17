@@ -52,9 +52,11 @@ function init() {
 	addMode(Visual, vmap, vmapkey, vunmap);
 }
 
-function settings() {
+function doSettings() {
 	Hints.characters = 'aoeusnthidkbpg';
 	chrome.storage.local.set({ "noPdfViewer": 1 });
+	settings.caseSensitive = true;
+	// settings.smartCase = true;
 }
 
 function mappings() {
@@ -139,7 +141,7 @@ function providers() {
 
 (function() {
 	init();
-	settings();
+	doSettings();
 	mappings();
 	unmappings();
 	providers();

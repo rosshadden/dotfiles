@@ -832,17 +832,18 @@ mode "MEDIA" {
 	# playback
 
 	bindsym space exec $playCmd; $exit
-	bindsym l exec $nextCmd; $exit
+	bindsym $right exec $nextCmd; $exit
 	bindsym Right exec $nextCmd; $exit
-	bindsym h exec $prevCmd; $exit
+	bindsym $left exec $prevCmd; $exit
+	bindsym Control+h exec playerctl position 0; $exit
 	bindsym Left exec $prevCmd; $exit
 	bindsym s exec $stopCmd; $exit
 
 	bindsym Shift+space exec $playCmd
+	bindsym Shift+$left exec $prevCmd
+	bindsym Shift+Left exec $prevCmd
 	bindsym Shift+$right exec $nextCmd
 	bindsym Shift+Right exec $nextCmd
-	bindsym Shift+$left exec $prevCmd
-	bindsym Shift+$right exec $prevCmd
 	bindsym Shift+s exec $stopCmd
 
 	# screenshots
@@ -873,7 +874,7 @@ mode "PROJECTS" {
 
 mode "APPS" {
 	# music -- Google Music
-	bindsym m mark LAST; exec $(gtk-launch nuvolaplayer3-google-play-music); $exit
+	bindsym m mark LAST; workspace number 6 media; exec $(gtk-launch gpmdp); $exit
 
 	# todo app -- Todoist
 	bindsym t mark LAST; exec $(gtk-launch chrome-bgjohebimpjdhhocbknplfelpmdhifhd-Default); $exit
@@ -898,7 +899,8 @@ mode "APPS" {
 	# stream app -- OBS
 	bindsym s mark LAST; exec $(gtk-launch obs); $exit
 
-	bindsym e exec $(rofimoji --use-clipboard --skin-tone neutral); $exit
+	bindsym e exec $(rofimoji --copy-only --skin-tone neutral); $exit
+	bindsym u exec $(~/bin/dmenu-uni all); $exit
 
 	bindsym $super+space $return
 	bindsym Escape $exit
@@ -982,7 +984,7 @@ assign [title="(Google Keep|todoist|DevDocs)" window_role="app"] → $numLit $ws
 
 # games
 for_window [instance="^Godot_Engine$"] floating enable
-for_window [title="^Godot (Engine|Editor)|\.tscn$"] floating disable
+for_window [title="^Godot (Engine|Editor).*\.tscn$"] floating disable
 for_window [class="^Dolphin-emu$|^Launch-faster-melee$|^Launch-fm$" title="^Dolphin$|^launch-faster-melee$"] floating toggle
 
 # chat

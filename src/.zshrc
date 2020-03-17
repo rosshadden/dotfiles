@@ -42,6 +42,7 @@ function packages() {
 	zplug "trapd00r/LS_COLORS"
 	zplug "zsh-users/zsh-history-substring-search"
 	zplug "zsh-users/zsh-syntax-highlighting"
+	zplug "Aloxaf/fzf-tab"
 
 	if ! zplug check --verbose; then zplug install; fi
 	zplug load
