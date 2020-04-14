@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# TODO: add option for removing trailing newline
+copy() {
+	local file="$1"
+
+	if [ "$file" ]; then
+		cat "$file" | xsel -ib
+		return
+	fi
+
+	xsel -ib
+}
+
+copy "$@"

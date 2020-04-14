@@ -60,11 +60,6 @@ trim() {
 	fi
 }
 
-copy() {
-	local flags="${1:--b}"
-	xsel -i $flags
-}
-
 put() {
 	local flags="${1:--b}"
 	xsel -o $flags

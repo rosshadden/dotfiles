@@ -128,9 +128,7 @@ call plug#begin(expand(g:packageDir))
 	" languages
 
 	" polyglot support
-	" TODO: remove when https://github.com/sheerun/vim-polyglot/pull/419 is merged
-	" Plug 'sheerun/vim-polyglot'
-	Plug 'sheldonkwok/vim-polyglot', { 'branch': 'fix/disable-tsx-on-typescript-disable' }
+	Plug 'sheerun/vim-polyglot'
 	" polyglot autoformat support
 	Plug 'Chiel92/vim-autoformat'
 	" markdown
