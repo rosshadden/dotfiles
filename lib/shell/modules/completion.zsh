@@ -68,3 +68,6 @@ if [[ $COMPLETION_WAITING_DOTS = true ]]; then
   zle -N expand-or-complete-with-dots
   bindkey "^I" expand-or-complete-with-dots
 fi
+
+# enable fzf tab in case it didn't start correctly
+enable-fzf-tab

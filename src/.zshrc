@@ -36,13 +36,13 @@ function packages() {
 	local shellDir=$DOTS/lib/shell
 	source $shellDir/zplug/init.zsh
 
-	zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+	zplug "Aloxaf/fzf-tab"
 	zplug "Tarrasch/zsh-bd"
 	zplug "Tarrasch/zsh-functional"
+	zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 	zplug "trapd00r/LS_COLORS"
 	zplug "zsh-users/zsh-history-substring-search"
 	zplug "zsh-users/zsh-syntax-highlighting"
-	zplug "Aloxaf/fzf-tab"
 
 	if ! zplug check --verbose; then zplug install; fi
 	zplug load

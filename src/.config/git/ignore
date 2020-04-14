@@ -5,7 +5,8 @@
 .flagged
 
 # vim
-*.swp
 *.swo
-portkey.json
+*.swp
 .tern-port
+portkey.json
+tags
