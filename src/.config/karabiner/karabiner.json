@@ -40,6 +40,29 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Change command to ctrl+space if pressed alone.",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_command",
+                                    "modifiers": {
+                                        "optional": [ "any" ]
+                                    }
+                                },
+                                "to": [
+                                    { "key_code": "left_command" }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "modifiers": [ "left_control" ],
+                                        "key_code": "spacebar"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
