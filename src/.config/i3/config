@@ -325,21 +325,22 @@ bindsym Control+Shift+Print exec "~/dotfiles/bin/screenshot select"
 ################
 
 $return {
-	bindsym apostrophe mode "GOTO"
 	bindsym a mode "APPS"
+	bindsym apostrophe mode "GOTO"
 	bindsym b mode "BUFFER"
+	bindsym c mode "CLIPBOARD"
 	bindsym g mode "GAPS"
 	bindsym i mode "I3"
 	bindsym l mode "LAYOUT"
 	bindsym m mode "MEDIA"
-	bindsym Shift+m mode "MOUSE"
 	bindsym p mode "PROJECTS"
 	bindsym r mode "RESIZE"
-	bindsym Shift+r mode "MOVE"
 	bindsym s mode "SYSTEM"
 	bindsym t mode "TMUX"
 
+	bindsym Shift+m mode "MOUSE"
 	bindsym Shift+p mode "PASS"
+	bindsym Shift+r mode "MOVE"
 
 	bindsym $super+space $exit
 	bindsym Escape $exit
@@ -348,6 +349,15 @@ $return {
 mode "BUFFER" {
 	bindsym c kill; $exit
 	bindsym r exec i3-input -P 'Rename container: ' -F 'title_format %s'; $exit
+
+	bindsym $super+space $return
+	bindsym Escape $exit
+}
+
+mode "CLIPBOARD" {
+	bindsym space mark LAST; exec copyq toggle; $exit
+
+	bindsym p $exit; exec sleep 0.1 && xdotool type --clearmodifiers --delay 0 -- "$(xsel)"
 
 	bindsym $super+space $return
 	bindsym Escape $exit
