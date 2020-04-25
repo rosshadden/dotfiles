@@ -84,7 +84,7 @@ isCommand() {
 # @return {String} - Current shell
 #
 getShell() {
-	ps -o fname --no-headers $$
+	ps -p "$$" -ocomm= | sed 's;^/.*/;;'
 }
 
 # reload shell config

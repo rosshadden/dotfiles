@@ -16,5 +16,9 @@ unset counter
 
 shell="$(getShell)"
 if [[ "$shell" == "zsh" ]]; then
-	eval "$(dircolors -b $ZPLUG_REPOS/trapd00r/LS_COLORS/LS_COLORS)"
+	if isCommand dircolors; then
+		eval "$(dircolors -b $ZPLUG_REPOS/trapd00r/LS_COLORS/LS_COLORS)"
+	elif isCommand gdircolors; then
+		eval "$(gdircolors -b $ZPLUG_REPOS/trapd00r/LS_COLORS/LS_COLORS)"
+	fi
 fi

@@ -17,7 +17,7 @@ export PATH=~/dotfiles/bin:~/local/bin:~/.local/bin
 export PATH=$PATH:~/dev/reaction/bin
 
 # system
-export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin
+export PATH=$PATH:/usr/local/bin:/usr/sbin:/usr/local/sbin:/usr/bin:/bin
 
 # perl (if installed)
 if isCommand perl; then export PATH=$PATH:/usr/bin/core_perl; fi
@@ -93,7 +93,7 @@ export GODOT_BIN=/usr/bin/godot
 export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable vcs)
 export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs vi_mode time)
 
-if [ -f "/usr/bin/nvim" ]; then
+if isCommand nvim; then
 	export EDITOR=nvim
 else
 	export EDITOR=vim

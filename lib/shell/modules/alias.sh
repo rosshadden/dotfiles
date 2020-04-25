@@ -12,7 +12,12 @@ alias k="fc -ln -1"
 ################
 
 # alias suspend="dbus-send --print-reply --system --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"
-alias ls="ls -G --color"
+if ls --help 2>&1 | grep -q -- --color
+then
+    alias ls='ls -G --color=auto'
+else
+    alias ls='ls -G'
+fi
 alias l="ls -lah"
 
 alias psu="ps -u $USER"
