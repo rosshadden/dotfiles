@@ -62,7 +62,12 @@ trim() {
 
 put() {
 	local flags="${1:--b}"
-	xsel -o $flags
+
+	if isCommand xsel; then
+		xsel -o $flags
+	elif isCommand pbpaste; then
+		pbpaste
+	fi
 }
 
 error() {

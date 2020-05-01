@@ -5,11 +5,23 @@ copy() {
 	local file="$1"
 
 	if [ "$file" ]; then
-		cat "$file" | xsel -ib
+		if isCommand xsel; then
+			cat "$file" | xsel -ib
+		elif isCommand pbcopy; then
+			cat "$file" | pbcopy
+		fi
 		return
 	fi
 
-	xsel -ib
+	if isCommand xsel; then
+		xsel -ib
+	elif isCommand pbcopy; then
+		pbcopy
+	fi
+}
+
+isCommand() {
+	command -v "$1" >/dev/null 2>&1
 }
 
 copy "$@"
