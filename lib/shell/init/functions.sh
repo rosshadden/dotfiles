@@ -119,13 +119,17 @@ ta() {
 }
 
 ##
-# create a new session, joining in to an existing one
+# Attach to existing session using fzf'd list
 #
-# @param {String} - Existing session
-# @param {String} - New session
+# @param {String} [name] - Existing session
 ##
 tj() {
-	tmux -u new-session -t "$1" -s "$1-$2"
+	local name="$1"
+	if [ "name" ]; then
+		ta "name"
+	else
+		ta $(tmux list-sessions -F '#{session_name}' | fzf)
+	fi
 }
 
 fzff() {

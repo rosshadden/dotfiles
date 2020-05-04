@@ -37,7 +37,9 @@ let g:highlightedyank_highlight_duration = 200
 """"""""""""""""
 
 let g:lightline = {
-	\ 'colorscheme': 'Tomorrow_Night_Eighties'
+	\ 'colorscheme': 'Tomorrow_Night_Eighties',
+	\ 'separator': { 'left': '', 'right': '' },
+	\ 'subseparator': { 'left': '', 'right': '' },
 \ }
 
 """"""""""""""""
