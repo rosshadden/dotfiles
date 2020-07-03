@@ -62,22 +62,4 @@ k = move-up
 ################
 
 [colors]
-# The RGB values range in [0, 1000]
-black = 0; 0; 0
-red = 937; 380; 333
-green = 356; 768; 749
-blue = 24; 714; 937
 white = 1000; 1000; 1000
-gray = 700; 700; 700
-darkgray = 256; 256; 256
-
-[colorpairs]
-normal = white; transparent
-highlight = white; blue
-highlightd = blue; black
-shadow = black; darkgray
-title = black; red
-titled = white; gray
-text = red; darkgray
-disabled = gray; black
-urgent = green; black

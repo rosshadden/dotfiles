@@ -71,6 +71,8 @@ if isCommand pt; then
 	export FZF_DEFAULT_COMMAND="pt -g ''"
 elif isCommand ag; then
 	export FZF_DEFAULT_COMMAND="ag --hidden -g '' --ignore=.git"
+elif isCommand fd; then
+	export FZF_DEFAULT_COMMAND="fd ."
 fi
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"

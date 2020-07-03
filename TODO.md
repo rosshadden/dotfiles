@@ -69,6 +69,7 @@
 
 ## i3
 
+- mute specific windows
 - make the 2nd `i3lock` thing blur my background
 - modes
 	- break out modes into separate files
