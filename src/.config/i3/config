@@ -284,18 +284,11 @@ bindsym XF86AudioLowerVolume exec "~/dotfiles/bin/config volume -5"
 bindsym XF86AudioMute exec "~/dotfiles/bin/config volume !"
 bindsym XF86AudioMicMute exec "~/dotfiles/bin/config mic !"
 bindsym Control+Shift+$super+$alt+m exec "~/dotfiles/bin/config mic !"
-bindsym --whole-window Mod3+button2 exec "~/dotfiles/bin/config volume !"
-bindsym --whole-window Mod3+button3 exec "~/dotfiles/bin/config mic !"
-bindsym --whole-window Mod3+button4 exec "~/dotfiles/bin/config volume +5"
-bindsym --whole-window Mod3+button5 exec "~/dotfiles/bin/config volume -5"
 
 # playback
 bindsym XF86AudioPlay exec $playCmd
 bindsym XF86AudioNext exec $nextCmd
 bindsym XF86AudioPrev exec $prevCmd
-bindsym --whole-window Mod3+button1 exec $playCmd
-bindsym --whole-window Mod3+button6 exec $prevCmd
-bindsym --whole-window Mod3+button7 exec $nextCmd
 
 # brightness
 bindsym XF86MonBrightnessUp exec "~/dotfiles/bin/config brightness +5"
