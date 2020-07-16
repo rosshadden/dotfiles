@@ -284,11 +284,18 @@ bindsym XF86AudioLowerVolume exec "~/dotfiles/bin/config volume -5"
 bindsym XF86AudioMute exec "~/dotfiles/bin/config volume !"
 bindsym XF86AudioMicMute exec "~/dotfiles/bin/config mic !"
 bindsym Control+Shift+$super+$alt+m exec "~/dotfiles/bin/config mic !"
+bindsym --whole-window Mod3+button2 exec "~/dotfiles/bin/config volume !"
+bindsym --whole-window Mod3+button3 exec "~/dotfiles/bin/config mic !"
+bindsym --whole-window Mod3+button4 exec "~/dotfiles/bin/config volume +5"
+bindsym --whole-window Mod3+button5 exec "~/dotfiles/bin/config volume -5"
 
 # playback
 bindsym XF86AudioPlay exec $playCmd
 bindsym XF86AudioNext exec $nextCmd
 bindsym XF86AudioPrev exec $prevCmd
+bindsym --whole-window Mod3+button1 exec $playCmd
+bindsym --whole-window Mod3+button6 exec $prevCmd
+bindsym --whole-window Mod3+button7 exec $nextCmd
 
 # brightness
 bindsym XF86MonBrightnessUp exec "~/dotfiles/bin/config brightness +5"
@@ -884,7 +891,7 @@ mode "PROJECTS" {
 
 mode "APPS" {
 	# music -- Google Music
-	bindsym m mark LAST; workspace number 6 media; exec $(gtk-launch gpmdp); $exit
+	bindsym m mark LAST; workspace number 6 $wsMedia; exec $(gtk-launch gpmdp); $exit
 
 	# todo app -- Todoist
 	bindsym t mark LAST; exec $(gtk-launch chrome-bgjohebimpjdhhocbknplfelpmdhifhd-Default); $exit
@@ -995,7 +1002,7 @@ assign [title="(Google Keep|todoist|DevDocs)" window_role="app"] → $numLit $ws
 # games
 for_window [instance="^Godot_Engine$"] floating enable
 for_window [title="^Godot (Engine|Editor).*\.tscn$"] floating disable
-for_window [class="^Dolphin-emu$|^Launch-faster-melee$|^Launch-fm$" title="^Dolphin$|^launch-faster-melee$"] floating toggle
+# for_window [class="^Dolphin-emu$|^Launch-faster-melee$|^Launch-fm$" title="^Dolphin$|^launch-faster-melee$"] floating toggle
 
 # chat
 assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $numChat $wsChat

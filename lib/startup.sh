@@ -37,7 +37,7 @@ isCommand picom && picom -b &
 isCommand dropbox && dropbox-cli start &
 
 # chat
-isCommand pidgin && pidgin &
+# isCommand pidgin && pidgin &
 isCommand slack && slack &
 
 # copypasta
