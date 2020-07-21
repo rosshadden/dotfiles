@@ -8,6 +8,7 @@ let g:coc_global_extensions = [
 	\ 'coc-css',
 	\ 'coc-emoji',
 	\ 'coc-eslint',
+	\ 'coc-go',
 	\ 'coc-java',
 	\ 'coc-json',
 	\ 'coc-prettier',

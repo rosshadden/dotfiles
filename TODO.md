@@ -71,6 +71,7 @@
 
 - mute specific windows
 - make the 2nd `i3lock` thing blur my background
+- make playerctl player changeable
 - modes
 	- break out modes into separate files
 		- add a generated help notification for each mode, on `?`

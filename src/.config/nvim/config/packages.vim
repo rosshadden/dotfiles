@@ -144,6 +144,8 @@ call plug#begin(expand(g:packageDir))
 	" ts
 	Plug 'mhartington/nvim-typescript', { 'for': 'typescript', 'do': './install.sh' }
 	Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
+	" go
+	Plug 'fatih/vim-go'
 	" graphql
 	Plug 'jparise/vim-graphql', { 'for': 'graphql' }
 	" rust
