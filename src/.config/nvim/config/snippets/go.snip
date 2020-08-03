@@ -1,0 +1,11 @@
+################
+# LOGS
+################
+
+snippet log
+alias p
+	fmt.Printf("${1:%+v}\n", ${0:TARGET});
+
+snippet println
+alias pl
+	fmt.Println("${0:TARGET}");
