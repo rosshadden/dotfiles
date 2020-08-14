@@ -12,7 +12,7 @@
 
 action=$1
 
-file=$(date +'%Y-%m-%d-%T.png')
+file=$(date +'%Y-%m-%d-%I-%M-%S.png')
 # TODO: read this from an env variable
 path=/tmp/ss
 mkdir -p $path
