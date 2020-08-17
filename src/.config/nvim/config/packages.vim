@@ -37,7 +37,7 @@ call plug#begin(expand(g:packageDir))
 	endif
 	Plug 'Shougo/echodoc.vim'
 	" Plug 'wellle/context.vim'
-	" completions
+	" completions and lint
 	Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' }
 
 	" text objects and motions

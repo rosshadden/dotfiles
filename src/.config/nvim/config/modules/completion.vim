@@ -41,6 +41,11 @@ augroup completion
 	\ })
 augroup END
 
+augroup completionColors
+	autocmd!
+	autocmd ColorScheme * highlight CocErrorSign ctermfg=Yellow guifg=#ffff00
+augroup END
+
 """"""""""""""""
 " MAPPINGS
 """"""""""""""""
