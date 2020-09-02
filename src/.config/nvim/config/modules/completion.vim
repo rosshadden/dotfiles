@@ -11,6 +11,7 @@ let g:coc_global_extensions = [
 	\ 'coc-go',
 	\ 'coc-java',
 	\ 'coc-json',
+	\ 'coc-omnisharp',
 	\ 'coc-prettier',
 	\ 'coc-pyls',
 	\ 'coc-snippets',
@@ -33,12 +34,6 @@ augroup completion
 	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-	autocmd User asyncomplete_setup call asyncomplete#register_source({
-		\ 'name': 'nim',
-		\ 'whitelist': [ 'nim' ],
-		\ 'completor': { opt, ctx -> nim#suggest#sug#GetAllCandidates({ start, candidates -> asyncomplete#complete(opt['name'], ctx, start, candidates) }) }
-	\ })
 augroup END
 
 augroup completionColors

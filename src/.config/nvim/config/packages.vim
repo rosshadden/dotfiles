@@ -161,8 +161,6 @@ call plug#begin(expand(g:packageDir))
 	" emmet
 	Plug 'mattn/emmet-vim', { 'for': 'html' }
 	" nim
-	" Plug 'erw7/nim.vim', { 'for': [ 'nim', 'nims', 'nimble' ], 'branch': 'develop' }
-	" Plug 'JCavallo/nvim-nim', { 'for': [ 'nim', 'nims', 'nimble' ] }
 	Plug 'alaviss/nim.nvim', { 'for': [ 'nim', 'nims', 'nimble' ] }
 	" clojure
 	Plug 'eraserhd/parinfer-rust', { 'for': 'clojure', 'do': 'cargo build --release' }

@@ -1,0 +1,14 @@
+{
+	"languageserver": {
+		"nim": {
+			"command": "nimlsp",
+			"filetypes": [ "nim" ],
+			"trace.server": "verbose"
+		},
+		"godot": {
+			"host": "127.0.0.1",
+			"filetypes": [ "gd", "gdscript3" ],
+			"port": 6008
+		}
+	}
+}

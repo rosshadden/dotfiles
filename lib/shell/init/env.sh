@@ -88,6 +88,9 @@ export STEAM_COMPAT_DATA_PATH=/media/data/games/proton/
 # godot
 export GODOT_BIN=/usr/bin/godot
 
+# mono
+export FrameworkPathOverride=/lib/mono/4.8-api
+
 ################
 # SETTINGS
 ################
