@@ -55,6 +55,11 @@ inoremap <silent><expr> <cr> (pumvisible()) ? coc#_select_confirm() : "\<c-g>u\<
 inoremap <expr> <tab> (pumvisible()) ? "\<c-n>" : "\<tab>"
 inoremap <expr> <s-tab> (pumvisible()) ? "\<c-p>" : "\<s-tab>"
 
+try
+	nmap <silent> [c :call CocAction('diagnosticPrevious')<cr>
+	nmap <silent> ]c :call CocAction('diagnosticNext')<cr>
+endtry
+
 if emoji#available()
 	map gm :s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<cr>
 	map gM :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<cr>
