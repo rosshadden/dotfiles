@@ -116,7 +116,7 @@ function mappings() {
 	});
 	alias('A', 'I');
 	mapkey('ga', '#1 Go to last input', () => Hints.create("input[type=text]:visible:last", Hints.dispatchMouseClick));
-	alias(modes.Insert, '<Ctrl-o>', '<Ctrl-i>', true);
+	alias(modes.Insert, '<Ctrl-y>', '<Ctrl-i>', true);
 	alias(modes.Insert, '<Ctrl-i>', '<Ctrl-f>', true);
 	alias(modes.Insert, '<Ctrl-h>', '<Alt-b>');
 	alias(modes.Insert, '<Ctrl-l>', '<Alt-f>');

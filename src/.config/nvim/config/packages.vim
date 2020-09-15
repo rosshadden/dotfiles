@@ -166,7 +166,7 @@ call plug#begin(expand(g:packageDir))
 	Plug 'eraserhd/parinfer-rust', { 'for': 'clojure', 'do': 'cargo build --release' }
 	Plug 'Olical/conjure', { 'do': 'bin/compile' }
 	" godot
-	Plug 'clktmr/vim-gdscript3'
+	Plug 'habamax/vim-godot'
 
 	" integration
 
@@ -175,6 +175,8 @@ call plug#begin(expand(g:packageDir))
 	Plug 'codeindulgence/vim-tig'
 	" editorconfig
 	Plug 'editorconfig/editorconfig-vim'
+	" firenvim
+	Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 	" external
 

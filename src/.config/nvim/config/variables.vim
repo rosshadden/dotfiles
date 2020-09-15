@@ -12,6 +12,12 @@ endif
 let g:configDir = g:vimDir . '/config'
 let g:packageDir = g:vimDir . '/plugged'
 
+let g:polyglot_disabled = [
+	\ 'javascript',
+	\ 'markdown',
+	\ 'nim',
+\ ]
+
 " https://github.com/junegunn/vim-plug/wiki/faq
 function! LoadIf(cond, ...)
 	let opts = get(a:000, 0, {})
