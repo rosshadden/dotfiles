@@ -1,6 +1,7 @@
 (defcfg
   input (device-file "/dev/input/by-id/usb-Razer_Razer_BlackWidow_Ultimate-if01-event-kbd")
-  output (uinput-sink "My output")
+  output (uinput-sink "KMonad output"
+                      "sleep 1 && setxkbmap -option compose:sclk")
 
   fallthrough true)
   ;; allow-cmd true)
@@ -28,11 +29,11 @@
   xsu (tap-hold-next 400 M-spc lmet)
 
   ;; keyboard layouts
-  dtq (layer-switch qwerty)
-  qtd (layer-switch dvorak))
+  dvk (layer-switch dvorak)
+  qwr (layer-switch qwerty))
 
 (deflayer dvorak
-  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @dtq
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @qwr
   _    _    _    _    _    _    _    _    _    _    _    [    ]    _     _    _    _     _    _    _    _
   _    '    ,    .    p    y    f    g    c    r    l    /    =    _     _    _    _     _    _    _    _
   @xcp a    o    e    u    i    d    h    t    n    s    -    _                          _    _    _
@@ -40,9 +41,9 @@
   _    _    @xlt           _              @xsu _    _    _               _    _    _     _    _)
 
 (deflayer qwerty
-  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @qtd
-  _    _    _    _    _    _    _    _    _    _    _    -    =    _     _    _    _     _    _    _    _
-  _    q    w    e    r    t    y    u    i    o    p    [    ]    _     _    _    _     _    _    _    _
-  @xcp a    s    d    f    g    h    j    k    l    ;    '    _                          _    _    _
-  _    z    x    c    v    b    n    m    ,    .    /    _                    _          _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @dvk
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+  @xcp _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
   _    _    @xlt           _              @xsu _    _    _               _    _    _     _    _)
