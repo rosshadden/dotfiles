@@ -25,6 +25,8 @@ else
 	escrotum $path
 fi
 
+if [ ! -f "$path" ]; then exit; fi
+
 # copy the path
 echo -n "$path" | xsel -ib
 

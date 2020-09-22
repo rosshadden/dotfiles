@@ -255,8 +255,6 @@ bindsym button3 mark LAST
 # bindsym button5 exec "notify-send down"
 bindsym button6 move left
 bindsym button7 move right
-bindsym button8 exec "notify-send back"
-bindsym button9 exec "notify-send forward"
 
 ################
 # SYSTEM
