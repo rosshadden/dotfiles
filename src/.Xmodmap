@@ -1,11 +1,11 @@
 ! swap Alt_R and Super_R,
 ! making Super much more comfortable
 
-clear Mod1
-clear Mod4
-
-add Mod1 = Alt_L Super_R
-add Mod4 = Super_L Alt_R
+! clear Mod1
+! clear Mod4
+!
+! add Mod1 = Alt_L Super_R
+! add Mod4 = Super_L Alt_R
 
 keycode 131 = Hyper_L
 remove Mod4 = Hyper_L

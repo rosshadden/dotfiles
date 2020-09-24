@@ -1,10 +1,11 @@
 (defcfg
   input (device-file "/dev/input/by-id/usb-Razer_Razer_BlackWidow_Ultimate-if01-event-kbd")
   output (uinput-sink "KMonad output"
-                      "sleep 1 && setxkbmap -option compose:sclk")
+                      "sleep 1 && setxkbmap -option compose:sclk;
+                       xmodmap ~/dotfiles/src/.Xmodmap")
 
-  fallthrough true)
-  ;; allow-cmd true)
+  fallthrough true
+  allow-cmd true)
 
 (defsrc
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
@@ -14,23 +15,22 @@
   lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up         kp1  kp2  kp3  kprt
   lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght  kp0  kp.)
 
-;; (deflayer
-;;   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-;;   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-;;   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-;;   _    _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
-;;   _    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
-;;   _    _    _              _              _    _    _    _               _    _    _     _    _)
-
 (defalias
   ;; tap/hold keys
-  xcp (tap-hold-next 400 esc ctl)
-  xlt (tap-hold-next 400 C-spc lalt)
-  xsu (tap-hold-next 400 M-spc lmet)
+  xcp (tap-hold-next-release 400 esc ctl)
+  xlt (tap-hold-next-release 400 C-spc lalt)
+  xsu (tap-hold-next-release 400 M-spc lmet)
 
-  ;; keyboard layouts
+  ;; layouts
   dvk (layer-switch dvorak)
-  qwr (layer-switch qwerty))
+  qwr (layer-switch qwerty)
+  gam (layer-switch games)
+  pfx (layer-next prefix)
+
+  ;; commands
+  rst (cmd-button "pkill kmonad && kmonad ~/dotfiles/src/.config/kmonad/config.kbd")
+  brs (cmd-button "bars"))
+
 
 (deflayer dvorak
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @qwr
@@ -38,7 +38,7 @@
   _    '    ,    .    p    y    f    g    c    r    l    /    =    _     _    _    _     _    _    _    _
   @xcp a    o    e    u    i    d    h    t    n    s    -    _                          _    _    _
   _    ;    q    j    k    x    b    m    w    v    z    _                    _          _    _    _    _
-  _    _    @xlt           _              @xsu _    _    _               _    _    _     _    _)
+  _    _    @xlt           _              @xsu _    @pfx _               _    _    _     _    _)
 
 (deflayer qwerty
   _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @dvk
@@ -46,4 +46,28 @@
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
   @xcp _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
-  _    _    @xlt           _              @xsu _    _    _               _    _    _     _    _)
+  _    _    @xlt           _              @xsu _    @pfx _               _    _    _     _    _)
+
+(deflayer games
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @dvk
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+  _    y    q    w    e    r    t    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+  @xcp h    a    s    d    f    g    _    _    _    _    _    _                          _    _    _
+  _    n    z    x    c    v    b    _    _    _    _    _                    _          _    _    _    _
+  _    _    @xlt           _              @xsu _    @pfx _               _    _    _     _    _)
+
+(deflayer prefix
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+  _    _    _    _    _    _    _    @gam _    @rst _    _    _    _     _    _    _     _    _    _    _
+  _    _    _    _    _    _    @dvk _    _    _    _    _    _                          _    _    _
+  _    _    @qwr _    _    _    @brs      _    _    _    _    _                    _          _    _    _    _
+  _    _    _              _              _    _    @pfx _               _    _    _     _    _)
+
+(deflayer template
+  _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
+  _    _    _              _              _    _    _    _               _    _    _     _    _)
