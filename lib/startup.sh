@@ -38,7 +38,7 @@ isCommand dropbox && dropbox-cli start &
 
 # chat
 # isCommand pidgin && pidgin &
-isCommand slack && slack &
+# isCommand slack && slack &
 
 # copypasta
 isCommand copyq && copyq &

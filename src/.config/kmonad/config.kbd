@@ -2,7 +2,7 @@
   input (device-file "/dev/input/by-id/usb-Razer_Razer_BlackWidow_Ultimate-if01-event-kbd")
   output (uinput-sink "KMonad output"
                       "sleep 1 && setxkbmap -option compose:sclk;
-                       xmodmap ~/dotfiles/src/.Xmodmap")
+                       xmodmap -e 'keycode 131 = Hyper_L' -e 'remove Mod4 = Hyper_L' -e 'add Mod3 = Hyper_L'")
 
   fallthrough true
   allow-cmd true)
@@ -17,9 +17,9 @@
 
 (defalias
   ;; tap/hold keys
-  xcp (tap-hold-next-release 400 esc ctl)
-  xlt (tap-hold-next-release 400 C-spc lalt)
-  xsu (tap-hold-next-release 400 M-spc lmet)
+  xcp (tap-hold-next 400 esc ctl)
+  xlt (tap-hold-next 400 C-spc lalt)
+  xsu (tap-hold-next 400 M-spc lmet)
 
   ;; layouts
   dvk (layer-switch dvorak)
