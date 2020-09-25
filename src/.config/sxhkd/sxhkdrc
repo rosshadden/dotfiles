@@ -1,5 +1,165 @@
+################
+# SXHKD
+################
+
+# reload
+super + q
+	systemctl --user reload sxhkd
+
+# restart
+super + shift + q
+	systemctl --user restart sxhkd
+
+################
+# SYSTEM
+################
+
+# allow switching VTs
+control alt f1
+	xdotool key XF86Switch_VT_1
+control alt f2
+	xdotool key XF86Switch_VT_2
+control alt f3
+	xdotool key XF86Switch_VT_3
+control alt f4
+	xdotool key XF86Switch_VT_4
+control alt f5
+	xdotool key XF86Switch_VT_5
+control alt f6
+	xdotool key XF86Switch_VT_6
+control alt f7
+	xdotool key XF86Switch_VT_7
+control alt f8
+	xdotool key XF86Switch_VT_8
+control alt f9
+	xdotool key XF86Switch_VT_9
+control alt f10
+	xdotool key XF86Switch_VT_10
+
+################
+# WINDOWS
+################
+
+super + shift + c
+	xkill
+
+super + alt + c
+	xdotool windowunmap $(xdotool getactivewindow)
+
+################
+# MEDIA
+################
+
+# volume
+XF86AudioRaiseVolume
+	~/bin/config volume +5
+XF86AudioLowerVolume
+	~/bin/config volume -5
+XF86AudioMute
+	~/bin/config volume !
+XF86AudioMicMute
+	~/bin/config mic !
+Control+Shift+$super+$alt+m
+	~/bin/config mic !
+
+# playback
+XF86AudioPlay
+	playerctl play-pause
+XF86AudioNext
+	playerctl next
+XF86AudioPrev
+	playerctl previous
+
+# brightness
+XF86MonBrightnessUp
+	~/bin/config brightness +5
+XF86MonBrightnessDown
+	~/bin/config brightness -5
+
+# fix keys
+XF86Tools
+	xdotool keydown --window obs ctrl+shift+Num_Lock; \
+	sleep 0.01; \
+	xdotool keyup --window obs ctrl+shift+Num_Lock
+
+# app launcher
+XF86LaunchA
+	rofi -show drun -p 'launch: '
+
+# file explorer
+XF86Explorer
+	ranger
+
+# toggle touchpad
+XF86TouchpadToggle
+	~/bin/config touchpad !
+
+# screenshots
+Print
+	~/bin/screenshot
+$alt+Print
+	~/bin/screenshot window
+Control+Shift+Print
+	~/bin/screenshot select
+
 hyper + {button1,button6,button7}
 	playerctl {play-pause,previous,next}
 
 hyper + {button2,button3,button4,button5}
 	~/dotfiles/bin/config {volume !, mic !, volume +5,volume -5}
+
+################
+# INTERACTIVE
+################
+
+# open runner
+super + r
+	rofi -show run -sidebar-mode
+
+# open launcher
+super + o
+	rofi -show drun -p 'launch: '
+
+# open runner/launcher
+super + a
+	rofi -combi-modi drun,run -show combi -p 'all: '
+
+# open window finder
+super + w
+	rofi -show window -sidebar-mode
+
+# open killer
+super + x
+	kill $(ps -u $USER -o pid,command | tail -n +2 | rofi -dmenu -multi-select -p 'kill' | awk '{ print $1 }')
+super + shift + x
+	kill -9 $(ps -u $USER -o pid,command | tail -n +2 | rofi -dmenu -multi-select -p 'kill' | awk '{ print $1 }')
+
+# lock screen
+shift + XF86Launch8
+	~/bin/locker -s
+control + XF86Launch8
+	~/bin/locker -b
+
+################
+# APPS
+################
+
+# terminal
+super + t
+	~/bin/termoil
+
+# terminal + tmux
+super + shift + t
+	~/bin/termoil -- tmux -u
+
+# write to clipboard
+super + e
+	~/bin/termoil -- vimmer
+
+# write to clipboard, starting with SELECTION clipboard
+super + shift + e
+	~/bin/termoil -- vimmer -p
+
+# volume gui
+super + v
+	pavucontrol

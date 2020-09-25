@@ -167,6 +167,8 @@ call plug#begin(expand(g:packageDir))
 	Plug 'Olical/conjure', { 'do': 'bin/compile' }
 	" godot
 	Plug 'habamax/vim-godot'
+	" sxhkd
+	Plug 'kovetskiy/sxhkd-vim'
 
 	" integration
 
