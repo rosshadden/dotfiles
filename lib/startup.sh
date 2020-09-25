@@ -14,9 +14,6 @@ xset s 3600 3600
 # display+themes
 [[ -f ~/.Xresources ]] && xrdb ~/.Xresources
 
-# keyboard
-[[ -f ~/bin/keys ]] && ~/bin/keys
-
 # temp workspace
 [[ -d /tmp/aoeu ]] || mkdir /tmp/aoeu
 

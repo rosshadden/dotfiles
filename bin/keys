@@ -1,73 +1,20 @@
 #!/usr/bin/env bash
 
-# TODO: Clean up entire script
+function keys() {
+	local config="${HOME}/.config/kmonad/config.env.kbd"
 
-action=${1:-init}
-if [[ $action == "aoeu" ]] || [[ $action == "asdf" ]]; then action=toggle; fi
+	if [[ ! -f ${config} ]]; then
+		keys-legacy
+	fi
 
-# NOTE: I switch layouts with `aoeu` -> qwerty and `asdf` -> dvorak
-# because of the positions of the keys
-
-# reset xcape
-function resetXcape {
-	pkill xcape
-	xcape -e "Control_L=Escape;Alt_L=Control_L|space;Alt_R=Super_L|space"
-	# TODO: the following is more ideal, but depends on `caps:ctrl_modifier` working
-	# xcape -e "Caps_Lock=Escape;Alt_R=Control_L|space"
+	# run for all relevant keyboard devices
+	local keyboards="$(hwinfo --keyboard | grep -oE '/dev/input/by-path/[0-9A-Za-z_\-]+')"
+	for keyboard in $keyboards; do
+		echo "keyboard: ${keyboard}"
+		export KEYBOARD="${keyboard}"
+		# TODO: I bet this hangs and wouldn't actually work for multiple keyboards. A problem for the distant future!
+		envsubst <${config} | ~/local/bin/kmonad /dev/stdin
+	done
 }
 
-# load keyboard mappings
-function loadMap {
-	[[ -f $DOTS/src/.Xmodmap ]] && xmodmap "$DOTS/src/.Xmodmap"
-	return 0
-}
-
-if [[ $action == "init" ]]; then
-	if [ "$DISPLAY" ]; then
-		setxkbmap \
-			-layout us,us \
-			-variant dvorak, \
-			-option \
-			-option grp_led:caps \
-			-option grp:shifts_toggle \
-			-option keypad:pointerkeys \
-			-option compose:sclk \
-			-option ctrl:nocaps
-			# -option caps:ctrl_modifier
-			# TODO: the above is ideal, but running `xmodmap` afterward breaks
-		loadMap
-		resetXcape
-	else
-		loadkeys dvorak
-	fi
-elif [[ $action == "get" ]]; then
-	if [ "$DISPLAY" ]; then
-		variant=$(setxkbmap -query | awk '/variant/{ print $2 }' | cut -d ',' -f 1)
-		[[ $variant == "" ]] && variant=qwerty
-		echo $variant
-	fi
-elif [[ $action == "toggle" ]]; then
-	if [[ $(keys get) == "dvorak" ]]; then
-		keys qwerty
-	else
-		keys dvorak
-	fi
-elif [[ $action == "dvorak" ]]; then
-	# switch to dvorak
-	if [ "$DISPLAY" ]; then
-		setxkbmap -variant dvorak,
-		loadMap
-	else
-		loadkeys dvorak
-	fi
-elif [[ $action == "qwerty" || $action == "us" ]]; then
-	# switch to qwerty
-	if [ "$DISPLAY" ]; then
-		setxkbmap -variant ,dvorak
-		loadMap
-	else
-		loadkeys us
-	fi
-else
-	echo "Not a valid command.  Since I'm too lazy to make help text for this, you have to look in the source code."
-fi
+keys "$@"

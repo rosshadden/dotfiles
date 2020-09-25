@@ -5,4 +5,4 @@ Description=Sync taskwarrior
 ExecStart=/usr/bin/task sync
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

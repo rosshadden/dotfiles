@@ -13,4 +13,4 @@ After=sound.target
 ExecStart=/usr/bin/mopidy
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

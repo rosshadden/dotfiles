@@ -1,0 +1,13 @@
+[Unit]
+Description=kmonad keyboard fancifier
+; BindsTo=display-manager.service
+; After=display-manager.service
+
+[Service]
+ExecStartPre=/usr/bin/sleep 1
+ExecStart=/home/ross/bin/keys
+; ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
