@@ -4,46 +4,42 @@
 
 # reload
 super + q
-	systemctl --user reload sxhkd
-
-# restart
-super + shift + q
-	systemctl --user restart sxhkd
+	pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'Reloaded sxhkd config'
 
 ################
 # SYSTEM
 ################
 
 # allow switching VTs
-control alt f1
+control alt F1
 	xdotool key XF86Switch_VT_1
-control alt f2
+control alt F2
 	xdotool key XF86Switch_VT_2
-control alt f3
+control alt F3
 	xdotool key XF86Switch_VT_3
-control alt f4
+control alt F4
 	xdotool key XF86Switch_VT_4
-control alt f5
+control alt F5
 	xdotool key XF86Switch_VT_5
-control alt f6
+control alt F6
 	xdotool key XF86Switch_VT_6
-control alt f7
+control alt F7
 	xdotool key XF86Switch_VT_7
-control alt f8
+control alt F8
 	xdotool key XF86Switch_VT_8
-control alt f9
+control alt F9
 	xdotool key XF86Switch_VT_9
-control alt f10
+control alt F10
 	xdotool key XF86Switch_VT_10
 
 ################
 # WINDOWS
 ################
 
-super + shift + c
+super + alt + c
 	xkill
 
-super + alt + c
+super + alt + shift + c
 	xdotool windowunmap $(xdotool getactivewindow)
 
 ################
@@ -59,7 +55,7 @@ XF86AudioMute
 	~/bin/config volume !
 XF86AudioMicMute
 	~/bin/config mic !
-Control+Shift+$super+$alt+m
+control + shift + super + alt + m
 	~/bin/config mic !
 
 # playback
@@ -78,9 +74,9 @@ XF86MonBrightnessDown
 
 # fix keys
 XF86Tools
-	xdotool keydown --window obs ctrl+shift+Num_Lock; \
+	xdotool keydown --window obs ctrl + shift + Num_Lock; \
 	sleep 0.01; \
-	xdotool keyup --window obs ctrl+shift+Num_Lock
+	xdotool keyup --window obs ctrl + shift + Num_Lock
 
 # app launcher
 XF86LaunchA
@@ -97,9 +93,9 @@ XF86TouchpadToggle
 # screenshots
 Print
 	~/bin/screenshot
-$alt+Print
+alt + Print
 	~/bin/screenshot window
-Control+Shift+Print
+control + shift + Print
 	~/bin/screenshot select
 
 hyper + {button1,button6,button7}
@@ -145,11 +141,11 @@ control + XF86Launch8
 ################
 
 # terminal
-super + t
-	~/bin/termoil
+super + Return
+	termite
 
 # terminal + tmux
-super + shift + t
+super + shift + Return
 	~/bin/termoil -- tmux -u
 
 # write to clipboard
@@ -163,3 +159,113 @@ super + shift + e
 # volume gui
 super + v
 	pavucontrol
+
+################
+# WM
+################
+
+# quit / restart bspwm
+super + shift + {_,alt +} q
+	bspc {quit,wm -r}
+
+# close / kill
+super + {_,shift +} c
+	bspc node -{c,k}
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0,bracketleft,bracketright}
+	bspc {desktop -f,node -d} '^{1-9,10,11,12}' --follow
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+super + y
+	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest window
+super + g
+	bspc node -s biggest.window
+
+#
+# state/flags
+#
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+super + {u,shift + u,comma,shift + comma}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous window in the current desktop
+super + shift + {n,p}
+	bspc node -f {next,prev}.local.!hidden.window
+
+# focus the next/previous desktop in the current monitor
+super + {n,p}
+	bspc desktop -f {next,prev}.local
+
+# focus the last node/desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+super + {_,shift +}apostrophe
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+#
+# preselect
+#
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# resze
+super + space ; r : {h,j,k,l}
+	STEP=20; SELECTION={1,2,3,4}; \
+	bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
+	bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)
+
+super + space ; {a,b}
+	notify-send {a,b}
+
+super + space ; c
+	notify-send c

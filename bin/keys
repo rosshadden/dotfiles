@@ -13,7 +13,7 @@ function keys() {
 		echo "keyboard: ${keyboard}"
 		export KEYBOARD="${keyboard}"
 		# TODO: I bet this hangs and wouldn't actually work for multiple keyboards. A problem for the distant future!
-		envsubst <${config} | ~/local/bin/kmonad /dev/stdin
+		envsubst <${config} | /home/ross/local/bin/kmonad /dev/stdin
 	done
 }
 
