@@ -1,4 +1,4 @@
-; vim:ft=dosini
+# vim: ft=dosini
 
 include-file = /home/ross/.config/polybar/bars/bottom.ini
 include-file = /home/ross/.config/polybar/bars/common.ini

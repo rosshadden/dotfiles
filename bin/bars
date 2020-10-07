@@ -12,6 +12,7 @@ while pgrep -x polybar >/dev/null; do sleep 1; done
 for m in $(polybar -m | sort | awk -F: '{ print $1 }'); do
 	MONITOR=$m polybar top &
 	MONITOR=$m polybar bottom &
+	sleep 1
 done
 
-echo "Bars launched..."
+echo "Bars launched"
