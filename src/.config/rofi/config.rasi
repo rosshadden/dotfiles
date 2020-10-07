@@ -1,0 +1,26 @@
+configuration {
+	modi: "window,run,ssh,drun";
+	width: -128;
+	lines: 16;
+	font: "Fira Code 10";
+	bw: 4;
+	location: 0;
+	padding: 32;
+	fixed-num-lines: true;
+	show-icons: true;
+	terminal: "rofi-sensible-terminal";
+	sort: false;
+	eh: 2;
+	matching: "regex";
+	m: "-1";
+	line-margin: 4;
+	separator-style: "solid";
+	hide-scrollbar: true;
+	fullscreen: false;
+	threads: 0;
+	window-format: "{w}    {c}    {n}    {t}";
+	color-normal: "#2f1e2e, #e7e9db, #2f1e2e, #e7e9db, #2f1e2e";
+	color-urgent: "#2f1e2e, #ef6155, #2f1e2e, #ef6155, #2f1e2e";
+	color-active: "#2f1e2e, #06b6ef, #2f1e2e, #06b6ef, #2f1e2e";
+	color-window: "#2f1e2e, #e7e9db";
+}
