@@ -1,20 +1,28 @@
 #!/usr/bin/env bash
 
 function keys() {
-	local config="${HOME}/.config/kmonad/config.env.kbd"
+	source ~/lib/shell/init/env.sh
 
-	if [[ ! -f ${config} ]]; then
-		keys-legacy
+	local dir="${HOME}/.config/kmonad"
+
+	if [[ ! -d ${dir} ]]; then
+		${HOME}/bin/keys-legacy
+		exit
 	fi
 
-	# run for all relevant keyboard devices
-	local keyboards="$(hwinfo --keyboard | grep -oE '/dev/input/by-path/[0-9A-Za-z_\-]+')"
-	for keyboard in $keyboards; do
-		echo "keyboard: ${keyboard}"
-		export KEYBOARD="${keyboard}"
-		# TODO: I bet this hangs and wouldn't actually work for multiple keyboards. A problem for the distant future!
-		envsubst <${config} | /home/ross/local/bin/kmonad /dev/stdin
-	done
+	local conf=$({
+		${dir}/kmonad.js config "${KEYBOARD}" ; \
+		${dir}/kmonad.js source ; \
+		${dir}/kmonad.js alias "${dir}/modules/alias.json" ; \
+		${dir}/kmonad.js layer ${dir}/modules/layers/dvorak.js ; \
+
+		for layer in $(ls ${dir}/modules/layers/* | grep -vi dvorak); do
+			${dir}/kmonad.js layer ${layer}
+		done
+	})
+
+	echo "$conf"
+	echo "$conf" | /home/ross/local/bin/kmonad /dev/stdin
 }
 
 keys "$@"

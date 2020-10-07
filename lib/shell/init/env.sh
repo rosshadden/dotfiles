@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
 ################
+# FUNCTIONS
+################
+
+function isCommand() {
+	command -v "$1" >/dev/null 2>&1
+}
+
+################
 # DOTFILES
 ################
 
@@ -142,3 +150,9 @@ export GPG_TTY="$(tty)"
 
 # enable XON/XOFF flow control
 stty -ixon
+
+################
+# LOCAL
+################
+
+[[ -f ~/local/lib/env.sh ]] && source ~/local/lib/env.sh

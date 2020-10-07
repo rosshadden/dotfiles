@@ -1,0 +1,11 @@
+{
+	"name": "qwerty",
+	"keys": {
+		"caps": "@xcp",
+		"pause": "@dvk",
+
+		"lalt": "@xlt",
+		"lmet": "@pfx",
+		"ralt": "@xsu"
+	}
+}

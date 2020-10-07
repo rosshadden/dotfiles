@@ -1,0 +1,15 @@
+{
+	"aliases": {
+		"xcp": "(tap-hold-next 400 esc ctl)",
+		"xlt": "(tap-hold-next 400 C-spc lalt)",
+		"xsu": "(tap-hold-next 400 M-spc lmet)",
+
+		"dvk": "(layer-switch dvorak)",
+		"qwr": "(layer-switch qwerty)",
+		"gam": "(layer-switch games)",
+		"pfx": "(tap-hold-next 400 (layer-next prefix) lmet)",
+
+		"rst": "(cmd-button \"pkill kmonad\")",
+		"brs": "(cmd-button \"/home/ross/bin/bars\")"
+	}
+}
