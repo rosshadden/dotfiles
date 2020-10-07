@@ -120,7 +120,7 @@ elif [[ $setting == "ip" ]]; then
 		interfacePath="$netPath/$value"
 		value=${interfacePath#$netPath/}
 	fi
-	ips=$(ip addr show $value | pt -e '\d+(\.\d+){3} .*global' | awk '{ print $7 ": " $2 }' | sed -E 's;/[0-9]+;;')
+	ips=$(ip addr show $value | ag '\d+(\.\d+){3} .*global' | awk '{ print $7 ": " $2 }' | sed -E 's;/[0-9]+;;')
 	if [[ $value ]]; then
 		ips=$(echo "$ips" | awk '{ print $2 }')
 	fi

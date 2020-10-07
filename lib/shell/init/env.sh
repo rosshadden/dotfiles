@@ -67,9 +67,7 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 fzfOutput=ansi
 # fzfOutput=xterm256
 numLines=$(($(tput lines) * 2))
-if isCommand pt; then
-	export FZF_DEFAULT_COMMAND="pt -g ''"
-elif isCommand ag; then
+if isCommand ag; then
 	export FZF_DEFAULT_COMMAND="ag --hidden -g '' --ignore=.git"
 elif isCommand fd; then
 	export FZF_DEFAULT_COMMAND="fd ."

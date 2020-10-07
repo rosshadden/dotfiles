@@ -196,6 +196,6 @@ trickPython() {
 }
 
 fixBluetooth() {
-	local index=$(pacmd list-cards | pt 'name: <bluez' -B 1 | head -1 | sed -E 's;^.*index: (.+);\1;')
+	local index=$(pacmd list-cards | ag 'name: <bluez' -B 1 | head -1 | sed -E 's;^.*index: (.+);\1;')
 	pacmd set-card-profile "$index" off && pacmd set-card-profile "$index" a2dp_sink
 }
