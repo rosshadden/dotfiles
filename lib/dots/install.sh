@@ -80,6 +80,17 @@ function link() {
 	fi
 	echo
 
+	echo "Linking lib to $HOME"
+	if [[ ! -e "$HOME/lib" ]]; then
+		echo "Linking lib to $HOME"
+		ln -s "$DOTS/lib" "$HOME"
+	elif [[ ! -h "$HOME/lib" ]]; then
+		echo "File already exists and is not a symlink: lib"
+	else
+		echo "Skipping existing node: lib"
+	fi
+	echo
+
 	echo "Linking dotfiles to $HOME"
 	for file in $DOTS/src/{,.[^.]}*; do
 		local name="$(basename $file)"

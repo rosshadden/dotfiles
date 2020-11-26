@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function keys() {
-	source ~/lib/shell/init/env.sh
+	source ${HOME}/lib/shell/init/env.sh
 
 	local dir="${HOME}/.config/kmonad"
 
@@ -22,7 +22,7 @@ function keys() {
 	})
 
 	echo "$conf"
-	echo "$conf" | /home/ross/local/bin/kmonad /dev/stdin
+	echo "$conf" | ${HOME}/local/bin/kmonad /dev/stdin
 }
 
 keys "$@"
