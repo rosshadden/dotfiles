@@ -1,13 +1,13 @@
 {
 	"aliases": {
-		"xcp": "(tap-hold-next 400 esc ctl)",
-		"xlt": "(tap-hold-next 400 C-spc lalt)",
-		"xsu": "(tap-hold-next 400 M-spc lmet)",
+		"xcp": "(tap-hold-next-release 100 esc ctl)",
+		"xsu": "(tap-hold-next-release 100 M-spc lmet)",
+		"xtp": "(tap-hold-next-release 100 C-spc ctl)",
 
 		"dvk": "(layer-switch dvorak)",
 		"qwr": "(layer-switch qwerty)",
 		"gam": "(layer-switch games)",
-		"pfx": "(tap-hold-next 400 (layer-next prefix) lmet)",
+		"pfx": "(tap-hold-next-release 100 (layer-next prefix) lmet)",
 
 		"rst": "(cmd-button \"pkill kmonad\")",
 		"brs": "(cmd-button \"/home/ross/bin/bars\")"

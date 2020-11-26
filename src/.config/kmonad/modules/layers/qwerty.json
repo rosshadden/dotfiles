@@ -4,7 +4,7 @@
 		"caps": "@xcp",
 		"pause": "@dvk",
 
-		"lalt": "@xlt",
+		"lctl": "@xtp",
 		"lmet": "@pfx",
 		"ralt": "@xsu"
 	}
