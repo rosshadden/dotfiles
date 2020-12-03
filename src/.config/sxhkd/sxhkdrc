@@ -103,6 +103,7 @@ hyper + {button1,button6,button7}
 
 hyper + {button2,button3,button4,button5}
 	~/dotfiles/bin/config {volume !, mic !, volume +5,volume -5}
+	# xdotool key --clearmodifiers {XF86AudioMute,XF86AudioMicMute,XF86AudioRaiseVolume,XF86AudioLowerVolume}
 
 ################
 # INTERACTIVE
@@ -131,8 +132,12 @@ super + shift + x
 	kill -9 $(ps -u $USER -o pid,command | tail -n +2 | rofi -dmenu -multi-select -p 'kill' | awk '{ print $1 }')
 
 # lock screen
+XF86Launch8
+	~/bin/locker -rS
+# TODO: does not work
 shift + XF86Launch8
 	~/bin/locker -s
+# TODO: does not work
 control + XF86Launch8
 	~/bin/locker -b
 

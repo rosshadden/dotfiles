@@ -492,7 +492,7 @@ mode "SYSTEM" {
 
 	# lock screen
 	bindsym l exec ~/bin/locker -r; $exit
-	bindsym Shift+l exec ~/bin/locker -s; $exit
+	bindsym Shift+l exec ~/bin/locker -rS; $exit
 	bindsym Control+l exec ~/bin/locker -s; $exit
 
 	# brightness
