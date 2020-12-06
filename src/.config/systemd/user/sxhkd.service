@@ -5,7 +5,7 @@ Documentation=man:sxhkd(1)
 # After=ly.service
 
 [Service]
-ExecStartPre=/usr/bin/sleep 1 && /usr/bin/systemctl --user import-environment DISPLAY XAUTHORITY
+ExecStartPre=/usr/bin/systemctl --user import-environment DISPLAY XAUTHORITY
 ExecStart=/usr/bin/sxhkd
 ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
 
