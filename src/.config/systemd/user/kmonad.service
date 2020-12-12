@@ -4,8 +4,9 @@ Description=kmonad keyboard fancifier
 # After=display-manager.service
 
 [Service]
-# ExecStartPre=/usr/bin/sleep 1
+ExecStartPre=/usr/bin/sleep 1
 ExecStart=/home/ross/bin/keys
+# ExecStart=/home/ross/bin/keys-legacy
 # ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
 Restart=on-failure
 

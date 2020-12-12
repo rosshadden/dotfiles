@@ -6,8 +6,10 @@ Documentation=man:sxhkd(1)
 
 [Service]
 ExecStartPre=/usr/bin/systemctl --user import-environment DISPLAY XAUTHORITY
+ExecStartPre=/usr/bin/sleep 1
 ExecStart=/usr/bin/sxhkd
 ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
 
 [Install]
-WantedBy=graphical-session.target
+# WantedBy=graphical-session.target
+WantedBy=graphical.target
