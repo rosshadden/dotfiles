@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-systemctl --user restart kmonad
-sleep 2 && systemctl --user restart sxhkd
 ~/bin/bars
+
+# TODO: wtf
+sleep 2 && systemctl --user restart sxhkd
 
 # define monitors
 bspc monitor -d I II III IV V VI VII VIII IX X XI XII
@@ -19,5 +20,3 @@ bspc config gapless_monocle true
 # bspc rule -a mplayer2 state=floating
 # bspc rule -a Kupfer.py focus=on
 # bspc rule -a Screenkey manage=off
-
-notify-send loaded

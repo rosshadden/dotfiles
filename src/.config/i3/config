@@ -905,11 +905,11 @@ assign [class="^zoom$" title="^Zoom Meeting"] → $numMonitor $wsMonitor
 # statusbar
 exec_always --no-startup-id ~/bin/bars
 
-exec --no-startup-id ~/dotfiles/lib/startup.sh
-
-# wallpaper
-exec --no-startup-id feh --recursive --randomize --bg-scale ~/Dropbox/media/images/wallpaper
-
 # autolock
 # exec --no-startup-id xss-lock -n "notify-send -u critical -t 5000 'LOCKING screen in 60 seconds'" -- ~/bin/locker -r
 exec --no-startup-id xss-lock -- ~/bin/locker -r
+
+exec --no-startup-id ~/dotfiles/lib/startup.sh
+
+# TODO: wtf
+exec --no-startup-id systemctl --user restart sxhkd

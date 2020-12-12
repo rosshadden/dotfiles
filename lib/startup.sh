@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+################
+# FUNCTIONS
+################
+
 isCommand() {
 	command -v "$1" >/dev/null 2>&1
 }
@@ -21,10 +25,22 @@ xset s 3600 3600
 # UTILS
 ################
 
+# numlock
 numlockx &
+
+# statusbar
+# TODO: doesn't work with bpswm
+# ~/bin/bars
 
 # composite manager
 isCommand picom && picom -b &
+
+# autolock
+# TODO: doesn't work with bpswm
+# xss-lock -- ~/bin/locker -r
+
+# wallpaper
+feh --recursive --randomize --bg-scale ~/Dropbox/media/images/wallpaper
 
 ################
 # APPS
