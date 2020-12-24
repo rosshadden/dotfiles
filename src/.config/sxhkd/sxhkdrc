@@ -92,11 +92,13 @@ XF86TouchpadToggle
 
 # screenshots
 Print
-	~/bin/screenshot
+	~/bin/screenshot select
 alt + Print
 	~/bin/screenshot window
+shift + Print
+	~/bin/screenshot screen
 control + shift + Print
-	~/bin/screenshot select
+	~/bin/screenshot full
 
 hyper + {button1,button6,button7}
 	playerctl {play-pause,previous,next}

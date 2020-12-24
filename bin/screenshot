@@ -10,40 +10,108 @@
 # - [dunst]
 ################
 
-action=$1
+function screenshot-old() {
+	action=$1
 
-file=$(date +'%Y-%m-%d-%I-%M-%S.png')
-# TODO: read this from an env variable
-path=/tmp/ss
-mkdir -p $path
-path=$path/$file
-
-# take screenshot
-if [[ $action == 'select' || $action == 'window' ]]; then
-	escrotum -s $path
-else
-	escrotum $path
-fi
-
-if [ ! -f "$path" ]; then exit; fi
-
-# copy the path
-echo -n "$path" | xsel -ib
-
-ss=$(dunstify -A dropbox,dropbox "Screenshot taken" "path: $path\nPath copied to clipboard.")
-
-if [[ $ss == 'dropbox' ]]; then
+	file=$(date +'%Y-%m-%d-%I-%M-%S.png')
 	# TODO: read this from an env variable
-	dbPath=~/Dropbox/Public/media/images/ss/$file
+	path=/tmp/ss
+	mkdir -p $path
+	path=$path/$file
 
-	mv $path $dbPath
+	# take screenshot
+	if [[ $action == 'select' || $action == 'window' ]]; then
+		escrotum -s $path
+	else
+		escrotum $path
+	fi
 
-	# TODO: only do this if dropbox is passed as an argument
-	# generate public url
-	url=$(dropbox-cli puburl $dbPath)
+	if [ ! -f "$path" ]; then exit; fi
 
-	# copy the public url
-	echo -n "$url" | xsel -ib
+	# copy the path
+	echo -n "$path" | xsel -ib
 
-	dunstify "Screenshot taken" "path: $dbPath\nURL: $url\nURL copied to clipboard."
-fi
+	ss=$(dunstify -A dropbox,dropbox "Screenshot taken" "path: $path\nPath copied to clipboard.")
+
+	if [[ $ss == 'dropbox' ]]; then
+		# TODO: read this from an env variable
+		dbPath=~/Dropbox/Public/media/images/ss/$file
+
+		mv $path $dbPath
+
+		# TODO: only do this if dropbox is passed as an argument
+		# generate public url
+		url=$(dropbox-cli puburl $dbPath)
+
+		# copy the public url
+		echo -n "$url" | xsel -ib
+
+		dunstify "Screenshot taken" "path: $dbPath\nURL: $url\nURL copied to clipboard."
+	fi
+}
+
+function get-screen-geometry() {
+	# Get the location of the mouse
+	local XMOUSE=$(xdotool getmouselocation | awk -F "[: ]" '{print $2}')
+	local YMOUSE=$(xdotool getmouselocation | awk -F "[: ]" '{print $4}')
+
+	# TODO: get focused screen
+	# local coords="$(xdotool getwindowgeometry $(xdotool getactivewindow) | grep Position | awk '{print $2}')"
+	# local XMOUSE=$(echo $coords | awk -F "[,]" '{print $1}')
+	# local YMOUSE=$(echo $coords | awk -F "[,]" '{print $2}')
+
+	local MONITORS=$(xrandr | grep -o '[0-9]*x[0-9]*[+-][0-9]*[+-][0-9]*')
+	for mon in ${MONITORS}; do
+		# Parse the geometry of the monitor
+		local MONW=$(echo ${mon} | awk -F "[x+]" '{print $1}')
+		local MONH=$(echo ${mon} | awk -F "[x+]" '{print $2}')
+		local MONX=$(echo ${mon} | awk -F "[x+]" '{print $3}')
+		local MONY=$(echo ${mon} | awk -F "[x+]" '{print $4}')
+
+		# Use a simple collision check
+		if (( ${XMOUSE} >= ${MONX} )); then
+			if (( ${XMOUSE} <= ${MONX}+${MONW} )); then
+				if (( ${YMOUSE} >= ${MONY} )); then
+					if (( ${YMOUSE} <= ${MONY}+${MONH} )); then
+						# We have found our monitor!
+						echo "${MONW}x${MONH}+${MONX}+${MONY}"
+						exit 0
+					fi
+				fi
+			fi
+		fi
+	done
+
+	echo "Oh no the mouse is in the void!"
+	exit 1
+}
+
+function screenshot() {
+	local type="${1:-select}"
+	local copyCmd="/usr/bin/xclip -selection clipboard -target image/png"
+
+	case "${type}" in
+		full)
+			maim | $copyCmd
+			;;
+		screen)
+			# TODO: get focused screen
+			maim --geometry="$(get-screen-geometry)" | $copyCmd
+			;;
+		window)
+			maim --window=$(xdotool getactivewindow) | $copyCmd
+			;;
+		select)
+			maim --select | ${copyCmd}
+			;;
+		select-window)
+			maim --select --tolerance=9999999 | ${copyCmd}
+			;;
+		*)
+			echo "screenshot type not supported: ${type}"
+			exit 1
+			;;
+	esac
+}
+
+screenshot "$@"

@@ -750,9 +750,10 @@ mode "MEDIA" {
 
 	# screenshots
 
-	bindsym y exec "~/bin/screenshot"; $exit
+	bindsym y exec "~/bin/screenshot select"; $exit
 	bindsym $alt+y exec "~/bin/screenshot window"; $exit
-	bindsym Shift+y exec "~/bin/screenshot select"; $exit
+	bindsym Shift+y exec "~/bin/screenshot screen"; $exit
+	bindsym Control+Shift+y exec "~/bin/screenshot full"; $exit
 
 	bindsym F1 exec "~/bin/config volume !"
 	bindsym F2 exec "~/bin/config volume -5"
@@ -797,6 +798,9 @@ mode "APPS" {
 
 	# documentation -- devdocs
 	bindsym d mark LAST; exec devdocs-desktop; $exit
+
+	# games - Steam
+	bindsym g mark LAST; exec steam-native; $exit
 
 	# stream app -- OBS
 	bindsym s mark LAST; exec $(gtk-launch obs); $exit
