@@ -4,7 +4,11 @@
 
 snippet log
 alias p
-	fmt.Printf("%${1:+v}\n", ${0:TARGET})
+	fmt.Printf("$1: %${2:+v}\n", ${1:TARGET})
+
+snippet padlog
+alias pp
+	fmt.Printf("\n$1: %${2:+v}\n\n", ${1:TARGET})
 
 snippet println
 alias pl

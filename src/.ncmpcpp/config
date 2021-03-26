@@ -23,7 +23,7 @@ autocenter_mode = yes
 centered_cursor = yes
 
 # progressbar_look = "◾◾◽"
-progressbar_boldness = yes
+# progressbar_boldness = yes
 
 user_interface = alternative
 
@@ -51,11 +51,11 @@ state_line_color = red
 main_window_color = magenta
 color1 = green
 color2 = red
-main_window_highlight_color = green
+# main_window_highlight_color = green
 progressbar_color = black
 progressbar_elapsed_color = green
 statusbar_color = green
 alternative_ui_separator_color = black
-active_column_color = red
+# active_column_color = red
 window_border_color = magenta
 active_window_border = green

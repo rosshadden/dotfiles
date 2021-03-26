@@ -777,7 +777,7 @@ mode "PROJECTS" {
 
 mode "APPS" {
 	# music -- Google Music
-	bindsym m mark LAST; workspace number 6 $wsMedia; exec $(gtk-launch gpmdp); $exit
+	bindsym m mark LAST; workspace number 6 $wsMedia; exec $(gtk-launch ytmdesktop); $exit
 
 	# todo app -- Todoist
 	bindsym t mark LAST; exec $(gtk-launch chrome-bgjohebimpjdhhocbknplfelpmdhifhd-Default); $exit

@@ -45,6 +45,9 @@ augroup END
 " MAPPINGS
 """"""""""""""""
 
+" restart coc
+nnoremap <:app>o :CocRestart<cr>
+
 " trigger completions
 inoremap <silent><expr> <a-space> coc#refresh()
 

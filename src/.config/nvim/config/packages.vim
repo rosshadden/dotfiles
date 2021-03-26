@@ -146,6 +146,7 @@ call plug#begin(expand(g:packageDir))
 	Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 	" go
 	Plug 'fatih/vim-go'
+	Plug 'sebdah/vim-delve'
 	" graphql
 	Plug 'jparise/vim-graphql', { 'for': 'graphql' }
 	" rust
