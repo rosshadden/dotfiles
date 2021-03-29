@@ -14,7 +14,6 @@ let g:jsdoc_return_type             = 1 " 1
 let g:jsdoc_return_description      = 1 " 1
 let g:jsdoc_default_mapping         = 0 " 1
 
-
 """"""""""""""""
 " MAPPINGS
 """"""""""""""""
