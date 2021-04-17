@@ -22,7 +22,7 @@ function isCommand() {
 export PATH=~/dotfiles/bin:~/local/bin:~/.local/bin
 
 # work
-export PATH=$PATH:~/dev/reaction/bin
+export PATH=$PATH:~/dev/reaction/bin:~/dev/mailchimp/bin
 
 # system
 export PATH=$PATH:/usr/local/bin:/usr/sbin:/usr/local/sbin:/usr/bin:/bin
@@ -106,6 +106,7 @@ export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs
 
 if isCommand nvim; then
 	export EDITOR=nvim
+	export DIFFPROG="nvim -d"
 else
 	export EDITOR=vim
 fi

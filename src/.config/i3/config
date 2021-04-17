@@ -805,7 +805,7 @@ mode "APPS" {
 	# stream app -- OBS
 	bindsym s mark LAST; exec $(gtk-launch obs); $exit
 
-	bindsym e exec $(rofimoji --copy-only --skin-tone neutral); $exit
+	bindsym e exec $(rofimoji --action=copy --skin-tone=neutral); $exit
 	bindsym u exec $(~/bin/dmenu-uni all); $exit
 
 	bindsym $super+space $return

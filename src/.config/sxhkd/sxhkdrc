@@ -100,10 +100,10 @@ shift + Print
 control + shift + Print
 	~/bin/screenshot full
 
-hyper + {button1,button6,button7}
+shift + super + alt + {button1,button6,button7}
 	playerctl {play-pause,previous,next}
 
-hyper + {button2,button3,button4,button5}
+shift + super + alt + {button2,button3,button4,button5}
 	~/dotfiles/bin/config {volume !, mic !, volume +5,volume -5}
 	# xdotool key --clearmodifiers {XF86AudioMute,XF86AudioMicMute,XF86AudioRaiseVolume,XF86AudioLowerVolume}
 
