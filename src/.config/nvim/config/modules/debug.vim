@@ -23,3 +23,5 @@ nmap <:debug>j <Plug>VimspectorDownFrame
 
 " connect
 nmap <:debug>c :call vimspector#Launch()<cr>
+nmap <:debug>r :call vimspector#Reset()<cr>
+nmap <:debug>R :call vimspector#Restart()<cr>
