@@ -149,7 +149,7 @@ control + XF86Launch8
 
 # terminal
 super + Return
-	termite
+	~/bin/termoil
 
 # terminal + tmux
 super + shift + Return

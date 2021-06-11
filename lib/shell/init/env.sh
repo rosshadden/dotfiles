@@ -115,12 +115,12 @@ export GIT_EDITOR=$EDITOR
 
 export BROWSER=google-chrome-stable
 
-if [ -f "/usr/bin/termite" ]; then
-	export TERMINAL=termite
-elif [ -f "/usr/bin/kitty" ]; then
-	export TERMINAL=kitty
+if [ -f "/usr/bin/kitty" ]; then
+	export TERMINAL="kitty"
+elif [ -f "/usr/bin/termite" ]; then
+	export TERMINAL="termite"
 else
-	export TERMINAL=xterm
+	export TERMINAL="xterm"
 fi
 
 export DEFAULT_USER=$USER

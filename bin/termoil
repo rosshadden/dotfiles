@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ -f "/usr/bin/kitty" ]; then
+	export TERMINAL="kitty"
+fi
+
 function termoil() {
 	local term="i3-sensible-terminal"
 
