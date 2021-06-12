@@ -8,7 +8,7 @@ command! W :exec ':silent w !sudo tee % > /dev/null' | :edit!
 command! FixIndentation call FixIndentation()
 
 " reload vimrc config
-command! Reload :exec 'source ' . g:configFile . ' | redraw! | echo "Vim config reloaded." | AirlineRefresh'
+command! Reload :exec 'source ' . g:configFile . ' | redraw! | echo "Vim config reloaded."'
 
 " change Working Directory to that of the current file
 command! CWD lcd %:p:h

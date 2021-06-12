@@ -1,5 +1,7 @@
 local themeDir=$DOTS/lib/themes
 
+eval "$(starship init zsh)"
+
 # base16 colors
 if [ "${TERM%%-*}" = 'linux' ]; then
 	BASE16_TYPE="vconsole"

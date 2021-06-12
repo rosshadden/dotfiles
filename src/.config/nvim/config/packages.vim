@@ -127,10 +127,8 @@ call plug#begin(expand(g:packageDir))
 
 	" languages
 
-	" polyglot support
-	Plug 'sheerun/vim-polyglot'
-	" polyglot autoformat support
-	Plug 'Chiel92/vim-autoformat'
+	" treesitter
+	Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 	" markdown
 	Plug 'euclio/vim-markdown-composer', { 'do': 'cargo build --release' }
 	Plug 'vim-pandoc/vim-pandoc'

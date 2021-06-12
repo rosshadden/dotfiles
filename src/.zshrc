@@ -37,9 +37,6 @@ function packages() {
 	source $shellDir/zplug/init.zsh
 
 	zplug "Aloxaf/fzf-tab"
-	zplug "Tarrasch/zsh-bd"
-	zplug "Tarrasch/zsh-functional"
-	zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 	zplug "trapd00r/LS_COLORS"
 	zplug "zsh-users/zsh-history-substring-search"
 	zplug "zsh-users/zsh-syntax-highlighting"
@@ -50,9 +47,9 @@ function packages() {
 
 function modules() {
 	local shellDir=$DOTS/lib/shell
-	for file in $shellDir/init/{functions,env}.sh; do sourceIfExists $file; done
-	for file in $shellDir/plugins/*.zsh; do sourceIfExists $file; done
-	for file in $shellDir/modules/*.{,z}sh; do sourceIfExists $file; done
+	for file in $shellDir/init/{functions,env}.sh; do source $file; done
+	for file in $shellDir/plugins/*.zsh; do source $file; done
+	for file in $shellDir/modules/*.{,z}sh; do source $file; done
 	for file in ~/local/.sh ~/local/.zshrc; do sourceIfExists $file; done
 }
 

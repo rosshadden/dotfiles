@@ -33,7 +33,7 @@ let loaded_matchparen = 1
 let g:highlightedyank_highlight_duration = 200
 
 """"""""""""""""
-" LIGHTLINE
+" STATUSLINE
 """"""""""""""""
 
 let g:lightline = {
