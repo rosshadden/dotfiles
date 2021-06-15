@@ -5,10 +5,20 @@
 			"filetypes": [ "nim" ],
 			"trace.server": "verbose"
 		},
+
 		"godot": {
 			"host": "127.0.0.1",
 			"filetypes": [ "gd", "gdscript" ],
 			"port": 6008
+		},
+
+		"intelephense": {
+			"command": "intelephense",
+			"args": [ "--stdio" ],
+			"filetypes": [ "php" ],
+			"initializationOptions": {
+				"storagePath": "/tmp/intelephense"
+			}
 		}
 	}
 }
