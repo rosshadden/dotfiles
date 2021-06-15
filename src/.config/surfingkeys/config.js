@@ -139,7 +139,7 @@ function providers() {
 		return data.items.map(({ title }) => title);
 	});
 
-	addProvider('T', 'twitch', 'https://twitch.tv');
+	addProvider('T', "twitch", "https://twitch.tv/");
 	addProvider('r', 'reddit', 'https://www.reddit.com/r/');
 
 	addProvider('w', 'wikipedia', 'https://en.wikipedia.org/wiki/', 's', 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&formatversion=2&namespace=0&limit=40&search=', (response) =>

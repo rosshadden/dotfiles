@@ -18,7 +18,11 @@ function termoil() {
 	shift $((OPTIND - 1))
 
 	if [[ "$*" ]]; then
-		$term -e "$(echo "$@")"
+		if [ "$TERMINAL" == "kitty" ] || [ "$term" == "kitty "]; then
+			$term -- $(echo "$@")
+		else
+			$term -e "$(echo "$@")"
+		fi
 	else
 		$term
 	fi
