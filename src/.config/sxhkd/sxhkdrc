@@ -129,9 +129,9 @@ super + w
 
 # open killer
 super + x
-	kill $(ps -u $USER -o pid,command | tail -n +2 | rofi -dmenu -multi-select -p 'kill' | awk '{ print $1 }')
+	kill $(ps -u $USER -o pid,command | tail -n +2 | rofi -dmenu -multi-select -p 'kill' | cut -d' ' -f1)
 super + shift + x
-	kill -9 $(ps -u $USER -o pid,command | tail -n +2 | rofi -dmenu -multi-select -p 'kill' | awk '{ print $1 }')
+	kill -9 $(ps -u $USER -o pid,command | tail -n +2 | rofi -dmenu -multi-select -p 'kill' | cut -d' ' -f1)
 
 # lock screen
 XF86Launch8

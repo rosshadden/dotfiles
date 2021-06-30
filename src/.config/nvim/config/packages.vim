@@ -39,6 +39,7 @@ call plug#begin(expand(g:packageDir))
 	" Plug 'wellle/context.vim'
 	" completions and lint
 	Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+	Plug 'neovim/nvim-lspconfig'
 
 	" text objects and motions
 
@@ -176,6 +177,8 @@ call plug#begin(expand(g:packageDir))
 	Plug 'codeindulgence/vim-tig'
 	" editorconfig
 	Plug 'editorconfig/editorconfig-vim'
+	" databases
+	Plug 'tpope/vim-dadbod'
 	" firenvim
 	Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 

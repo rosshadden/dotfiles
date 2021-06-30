@@ -21,6 +21,22 @@ let g:coc_global_extensions = [
 	\ 'coc-yaml'
 \ ]
 
+lua << EOF
+local lsp = require('lspconfig')
+
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+end
+
+local servers = { "nimls", "tsserver" }
+for _, server in ipairs(servers) do
+	lsp[server].setup { on_attach = on_attach }
+end
+EOF
+
 if emoji#available()
 	set completefunc=emoji#complete
 endif
