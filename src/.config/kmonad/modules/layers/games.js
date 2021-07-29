@@ -3,7 +3,7 @@ const qwerty = require("./qwerty.json");
 function makeKeys() {
 	const keys = qwerty.keys;
 
-	keys["q"] = "]";
+	keys["q"] = "\\";
 	keys["w"] = "q";
 	keys["e"] = "w";
 	keys["r"] = "e";
@@ -15,6 +15,7 @@ function makeKeys() {
 	keys["p"] = "o";
 	keys["["] = "p";
 	keys["]"] = "[";
+	keys["\\"] = "]";
 
 	keys["a"] = "'";
 	keys["s"] = "a";
@@ -39,7 +40,7 @@ function makeKeys() {
 	keys["."] = ",";
 	keys["/"] = ".";
 
-	keys["pause"] = "@qwr";
+	keys["pause"] = "@dvk";
 
 	return keys;
 }

@@ -42,7 +42,7 @@ function makeKeys() {
 	keys["-"] = "[";
 	keys["="] = "]";
 
-	keys["pause"] = "@qwr";
+	keys["pause"] = "@gam";
 
 	return keys;
 }

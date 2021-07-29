@@ -890,7 +890,7 @@ assign [title="(Google Keep|todoist|DevDocs)" window_role="app"] → $numLit $ws
 
 # games
 for_window [instance="^Godot_Engine$"] floating enable
-for_window [title="^Godot (Engine|Editor).*\.tscn$"] floating disable
+for_window [title="^Godot (Engine|Editor)(.*\.tscn| - Project Manager)$"] floating disable
 # for_window [class="^Dolphin-emu$|^Launch-faster-melee$|^Launch-fm$" title="^Dolphin$|^launch-faster-melee$"] floating toggle
 
 # chat
