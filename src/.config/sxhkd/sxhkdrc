@@ -42,6 +42,10 @@ super + alt + c
 super + alt + shift + c
 	xdotool windowunmap $(xdotool getactivewindow)
 
+# mute window
+super + m
+	~/bin/mute-window
+
 ################
 # MEDIA
 ################
@@ -184,8 +188,8 @@ super + {_,shift + }{1-9,0,bracketleft,bracketright}
 	bspc {desktop -f,node -d} '^{1-9,10,11,12}' --follow
 
 # alternate between the tiled and monocle layout
-super + m
-	bspc desktop -l next
+# super + m
+# 	bspc desktop -l next
 
 # send the newest marked node to the newest preselected node
 super + y

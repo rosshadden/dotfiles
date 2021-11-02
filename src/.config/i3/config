@@ -168,20 +168,23 @@ bindsym $super+Control+Shift+$left move workspace to output left
 bindsym $super+Control+Shift+$right move workspace to output right
 
 # focus next/previous workspace on current output
-bindsym $super+n mark LAST; workspace next_on_output
 bindsym $super+p mark LAST; workspace prev_on_output
+bindsym $super+n mark LAST; workspace next_on_output
+# changes focus on scroll (even without super) which is 👎
+bindsym --whole-window --border $super+button6 mark LAST; workspace prev_on_output
+bindsym --whole-window --border $super+button7 mark LAST; workspace next_on_output
 
 # move container to next/previous workspace
 bindsym $super+Shift+n move to workspace next_on_output; workspace next_on_output
 bindsym $super+Shift+p move to workspace prev_on_output; workspace prev_on_output
 
 # focus next/previous workspace
-bindsym $super+f mark LAST; workspace next
 bindsym $super+b mark LAST; workspace prev
+bindsym $super+f mark LAST; workspace next
 
 # move window to next/previous workspace
-bindsym $super+Shift+f move to workspace next; workspace next
 bindsym $super+Shift+b move to workspace prev; workspace prev
+bindsym $super+Shift+f move to workspace next; workspace next
 
 # previous container
 bindsym $super+Tab mark TEMP; [con_mark="LAST"] focus; [con_mark="TEMP"] mark LAST
@@ -201,7 +204,7 @@ bindsym $super+Shift+s move scratchpad
 
 # modes
 bindsym $super+space $return
-bindsym $super+m mode "MARK"
+bindsym $super+shift+m mode "MARK"
 bindsym $super+apostrophe mode "GOTO"
 # TODO: [y] yank
 # TODO: [p] paste
@@ -872,6 +875,7 @@ for_window [title="Qalculate!"] floating enable
 for_window [class="^Gpick|Pavucontrol$"] floating enable
 for_window [class="^copyq$"] border pixel 0, floating enable
 for_window [title="^vimmer$"] floating enable
+for_window [title="Aseprite"] move position center, floating_maximum_size 1600 x 900
 
 # web
 assign [class="^google-chrome" window_role="browser"] → $numWeb $wsWeb
@@ -889,6 +893,7 @@ for_window [title="Google Play Music" window_role="pop-up"] floating disable, mo
 assign [title="(Google Keep|todoist|DevDocs)" window_role="app"] → $numLit $wsLit
 
 # games
+for_window [class="dota2"] fullscreen
 for_window [instance="^Godot_Engine$"] floating enable
 for_window [title="^Godot (Engine|Editor)(.*\.tscn| - Project Manager)$"] floating disable
 # for_window [class="^Dolphin-emu$|^Launch-faster-melee$|^Launch-fm$" title="^Dolphin$|^launch-faster-melee$"] floating toggle

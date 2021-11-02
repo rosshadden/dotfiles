@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+function mute-window() {
+	local pid="$(xprop | ag '_NET_WM_PID' | awk '{ print $3 }')"
+	local data="$(pacmd list-sink-inputs | egrep "^\s+index:|^\s+muted:|^\s+application.process.id" | ag -B 2 "$pid")"
+	local index="$(echo "$data" | head -1 | awk '{ print $2 }')"
+	local muted="$(echo "$data" | sed -n '2 p' | awk '{ print $2 }')"
+
+	if [ "$muted" = "yes" ]; then
+		muted="no"
+	else
+		muted="yes"
+	fi
+
+	if [ "$index" ]; then
+		pacmd set-sink-input-mute "$index" "$muted"
+	fi
+}
+
+mute-window
