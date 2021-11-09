@@ -140,9 +140,6 @@ call plug#begin(expand(g:packageDir))
 	Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' }
 	Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
 	Plug 'moll/vim-node', { 'for': 'javascript' }
-	" ts
-	Plug 'mhartington/nvim-typescript', { 'for': 'typescript', 'do': './install.sh' }
-	Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 	" go
 	Plug 'fatih/vim-go'
 	Plug 'puremourning/vimspector'

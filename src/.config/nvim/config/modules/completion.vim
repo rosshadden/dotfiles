@@ -15,8 +15,6 @@ let g:coc_global_extensions = [
 	\ 'coc-prettier',
 	\ 'coc-pyls',
 	\ 'coc-snippets',
-	\ 'coc-tslint',
-	\ 'coc-tslint-plugin',
 	\ 'coc-tsserver',
 	\ 'coc-yaml'
 \ ]
