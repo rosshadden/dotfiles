@@ -20,5 +20,10 @@
 				"storagePath": "/tmp/intelephense"
 			}
 		}
-	}
+	},
+
+	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+
+	"": null
 }

@@ -1,5 +1,5 @@
 [global]
-    font = Fira Code 14
+    font = Fira Code 12
 
     # Allow a small subset of html markup in notifications and formats:
     #   <b>bold</b>
@@ -58,7 +58,7 @@
     origin = top-right
     width = 500
     hegiht = 5
-    offset = 4x20
+    offset = 10x10
 
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
@@ -75,7 +75,7 @@
     idle_threshold = 120
 
     # Which monitor should the notifications be displayed on.
-    monitor = 0
+    monitor = 1
 
     # Display notification on focused monitor.  Possible modes are:
     #   mouse: follow mouse pointer
@@ -89,7 +89,7 @@
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
     # follow = mouse
-    follow = keyboard
+    follow = none
 
     # Should a notification popped up from history be sticky or timeout
     # as if it would normally do.
@@ -116,7 +116,7 @@
     separator_height = 2
 
     # Padding between text and separator.
-    padding = 16
+    padding = 8
 
     # Horizontal padding.
     horizontal_padding = 16

@@ -83,8 +83,10 @@ options word
 
 # shorthand
 
+snippet p
+	console.log(${1:'${3:$2\}', ${2\}});
+
 snippet log
-alias p
 	console.log(${1:TARGET});
 
 snippet info

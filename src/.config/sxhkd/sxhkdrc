@@ -33,13 +33,13 @@ control alt F10
 	xdotool key XF86Switch_VT_10
 
 # notifications
-super + u
+super + backslash
 	dunstctl close
-super + control + u
+super + control + backslash
 	dunstctl close-all
-super + shift + u
+super + shift + backslash
 	dunstctl history-pop
-super + alt + u
+super + alt + backslash
 	dunstctl context
 
 ################

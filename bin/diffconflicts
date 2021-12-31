@@ -84,8 +84,8 @@ printf -v QREMOTE '%q' "${REMOTE}"
 printf -v QMERGED '%q' "${MERGED}"
 
 # Temporary files for left and right side
-LCONFL="${MERGED}.REMOTE.$$.tmp"
-RCONFL="${MERGED}.LOCAL.$$.tmp"
+LCONFL="${MERGED}.OURS.$$.tmp"
+RCONFL="${MERGED}.THEIRS.$$.tmp"
 
 # Always delete our temp files; Git will handle it's own temp files
 trap 'rm -f "'"${LCONFL}"'" "'"${RCONFL}"'"' SIGINT SIGTERM EXIT
