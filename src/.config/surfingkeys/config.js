@@ -9,8 +9,8 @@ function addMode(mode, mapFn, mapkeyFn, unmapFn) {
 }
 
 function addProvider(key, name, url, ...args) {
-	addSearchAliasX(key, name, url, ...args);
-	mapkey(
+	api.addSearchAlias(key, name, url, ...args);
+	api.mapkey(
 		`o${key}`,
 		`#8Open Search with alias ${key}`,
 		() => Front.openOmnibar({ type: 'SearchEngine', extra: key })
@@ -47,13 +47,13 @@ function unmapp(mode, keys) {
 }
 
 function init() {
-	addMode(Normal, map, mapkey, unmap);
-	addMode(Insert, imap, imapkey, iunmap);
-	addMode(Visual, vmap, vmapkey, vunmap);
+	addMode("Normal", api.map, api.mapkey, api.unmap);
+	addMode("Insert", api.imap, api.imapkey, api.iunmap);
+	addMode("Visual", api.vmap, api.vmapkey, api.vunmap);
 }
 
 function doSettings() {
-	Hints.characters = 'aoeusnthidkbpg';
+	api.Hints.characters = 'aoeusnthidkbpg';
 	chrome.storage.local.set({ "noPdfViewer": 1 });
 	settings.caseSensitive = true;
 	// settings.smartCase = true;
@@ -77,12 +77,12 @@ function mappings() {
 	});
 
 	// SCROLLING
-	mapp('<Ctrl-y>', '#2 pageUp', () => Normal.scroll("pageUp"), { repeatIgnore: true });
-	mapp('<Ctrl-e>', '#2 pageDown', () => Normal.scroll("pageDown"), { repeatIgnore: true });
-	mapp('<Ctrl-u>', '#2 pageUp', () => Normal.scroll("pageUp"), { repeatIgnore: true });
-	mapp('<Ctrl-d>', '#2 pageDown', () => Normal.scroll("pageDown"), { repeatIgnore: true });
-	mapp('<Ctrl-b>', '#2 pageUp', () => Normal.scroll("pageUp"), { repeatIgnore: true });
-	mapp('<Ctrl-f>', '#2 pageDown', () => Normal.scroll("pageDown"), { repeatIgnore: true });
+	mapp('<Ctrl-y>', '#2 pageUp', () => api.Normal.scroll("pageUp"), { repeatIgnore: true });
+	mapp('<Ctrl-e>', '#2 pageDown', () => api.Normal.scroll("pageDown"), { repeatIgnore: true });
+	mapp('<Ctrl-u>', '#2 pageUp', () => api.Normal.scroll("pageUp"), { repeatIgnore: true });
+	mapp('<Ctrl-d>', '#2 pageDown', () => api.Normal.scroll("pageDown"), { repeatIgnore: true });
+	mapp('<Ctrl-b>', '#2 pageUp', () => api.Normal.scroll("pageUp"), { repeatIgnore: true });
+	mapp('<Ctrl-f>', '#2 pageDown', () => api.Normal.scroll("pageDown"), { repeatIgnore: true });
 
 	// HISTORY
 	alias('H', 'S', true);
@@ -93,10 +93,10 @@ function mappings() {
 
 	// NAV
 	alias('st', 'su', true);
-	mapkey('su', '#4 Edit current URL with vim editor (same tab)', () => {
+	api.mapkey('su', '#4 Edit current URL with vim editor (same tab)', () => {
 		Front.showEditor(window.location.href, (url) => window.location = url, 'url');
 	});
-	mapkey('g#', '#4Reload current page without hash string (all parts after #)', function() {
+	api.mapkey('g#', '#4Reload current page without hash string (all parts after #)', function() {
 			window.location.href = window.location.href.replace(/#[^\#]*$/, '');
 	});
 
@@ -115,7 +115,7 @@ function mappings() {
 		element.setSelectionRange(element.value.length, element.value.length);
 	});
 	alias('A', 'I');
-	mapkey('ga', '#1 Go to last input', () => Hints.create("input[type=text]:visible:last", Hints.dispatchMouseClick));
+	api.mapkey('ga', '#1 Go to last input', () => Hints.create("input[type=text]:visible:last", Hints.dispatchMouseClick));
 	alias(modes.Insert, '<Ctrl-y>', '<Ctrl-i>', true);
 	alias(modes.Insert, '<Ctrl-i>', '<Ctrl-f>', true);
 	alias(modes.Insert, '<Ctrl-h>', '<Alt-b>');
