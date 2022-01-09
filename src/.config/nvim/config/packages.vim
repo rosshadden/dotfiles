@@ -160,8 +160,8 @@ call plug#begin(expand(g:packageDir))
 	" nim
 	Plug 'alaviss/nim.nvim', { 'for': [ 'nim', 'nims', 'nimble' ] }
 	" clojure
-	Plug 'eraserhd/parinfer-rust', { 'for': 'clojure', 'do': 'cargo build --release' }
-	Plug 'Olical/conjure', { 'do': 'bin/compile' }
+	" Plug 'eraserhd/parinfer-rust', { 'for': 'clojure', 'do': 'cargo build --release' }
+	" Plug 'Olical/conjure', { 'do': 'bin/compile' }
 	" godot
 	Plug 'habamax/vim-godot'
 	" sxhkd

@@ -1,0 +1,6 @@
+require("core.modules.app")
+require("core.modules.buffers")
+require("core.modules.completion")
+require("core.modules.files")
+require("core.modules.tabs")
+require("core.modules.languages")

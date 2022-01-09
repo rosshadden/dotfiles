@@ -5,6 +5,7 @@
 set completeopt=noinsert,menuone,noselect
 
 let g:coc_global_extensions = [
+	\ 'coc-browser',
 	\ 'coc-css',
 	\ 'coc-emoji',
 	\ 'coc-eslint',
