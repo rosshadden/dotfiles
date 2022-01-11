@@ -1,3 +1,46 @@
+--
+-- settings
+--
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
+--
+-- syntax
+--
+
+require("nvim-treesitter.configs").setup {
+	ensure_installed = {
+		"bash",
+		"c",
+		"c_sharp",
+		"clojure",
+		"cpp",
+		"dockerfile",
+		"gdscript",
+		"go",
+		"godot_resource",
+		"html",
+		"javascript",
+		"json",
+		"lua",
+		"php",
+		"python",
+		"toml",
+		"tsx",
+		"typescript",
+		"yaml",
+	},
+	highlight = { enable = true },
+	incremental_selection = { enable = true },
+	indent = { enable = true },
+	textobjects = { enable = true },
+}
+
+--
+-- LSP
+--
+
 local lsp = require "lspconfig"
 local lspUtils = require "lspconfig.util"
 
@@ -8,13 +51,20 @@ local onAttach = function(_, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
+local servers = { "gdscript", }
+for _, server in ipairs(servers) do
+	lsp[server].setup {
+		on_attach = onAttach,
+		capabilities = capabilities,
+	}
+end
+
+-- lua
+-- TODO: support doing this in the above loop, pulling and merging additional config
 local rtp = vim.split(package.path, ";")
 table.insert(rtp, "lua/?.lua")
 table.insert(rtp, "lua/?/init.lua")
-
--- TODO: do these in a loop, pulling and merging additional config if applicable
-
-lsp.sumneko_lua.setup{
+lsp.sumneko_lua.setup {
 	on_attach = onAttach,
 	capabilities = capabilities,
 	root_dir = function(file)
@@ -35,9 +85,4 @@ lsp.sumneko_lua.setup{
 			},
 		},
 	},
-}
-
-lsp.gdscript.setup{
-	on_attach = onAttach,
-	capabilities = capabilities,
 }

@@ -19,6 +19,7 @@ cmp.setup({
 			vim.fn["vsnip#anonymous"](args.body)
 		end,
 	},
+
 	mapping = {
 		["<a-space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c", }),
 		["<cr>"] = cmp.mapping.confirm({ select = true }),
@@ -44,8 +45,10 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 	},
+
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
+		{ name = "nvim_lua" },
 		{ name = "vsnip" },
 	}, {
 		{ name = "buffer" },

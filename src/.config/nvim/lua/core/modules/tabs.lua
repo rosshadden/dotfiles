@@ -1,3 +1,15 @@
+--
+-- settings
+--
+
+-- tabs! (not to be confused with tabs)
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+
+--
+-- mappings
+--
+
 -- prefix
 vim.keymap.set("n", "<space>t", "<plug><tabs>", { silent = true })
 

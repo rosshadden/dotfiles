@@ -11,7 +11,7 @@ See the [TODO](TODO.md) for things I have in mind.
 - [`neovim`](https://neovim.io/)
 - [`zsh`](https://wiki.archlinux.org/index.php/zsh)
 - [`tmux`](https://tmux.github.io/)
-- [`termite`](https://wiki.archlinux.org/index.php/Termite)
+- [`wezterm`](https://wezfurlong.org/wezterm/)
 
 ## Dependencies
 

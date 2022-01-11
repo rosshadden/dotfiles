@@ -12,3 +12,6 @@ vim.keymap.set("n", "<plug><app>W", ":wall!<cr>", { silent = true })
 -- exit
 vim.keymap.set("n", "<plug><app>x", ":xall<cr>", { silent = true })
 vim.keymap.set("n", "<plug><app>X", ":xall!<cr>", { silent = true })
+
+-- reload config
+vim.keymap.set("n", "<plug><app>r", reload, { silent = true })

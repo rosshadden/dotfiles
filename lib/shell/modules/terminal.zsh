@@ -34,9 +34,3 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
 	zle -N zle-line-init
 	zle -N zle-line-finish
 fi
-
-# allow termite to open new windows in pwd
-if [[ $TERM == xterm-termite ]]; then
-	source /etc/profile.d/vte.sh
-	__vte_osc7
-fi

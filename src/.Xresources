@@ -21,7 +21,6 @@
 *.highlightfg: #ffffff
 *.bordercolor: #5f00af
 *.opacity: 100
-*.terminal: termite
 
 !!!!!!!!!!!!!!!!
 !! CURSOR

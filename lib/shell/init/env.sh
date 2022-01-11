@@ -74,7 +74,8 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # fzf
 fzfOutput=ansi
 # fzfOutput=xterm256
-numLines=$(($(tput lines) * 2))
+# numLines=$(($(tput lines) * 2))
+numLines=144
 if isCommand ag; then
 	export FZF_DEFAULT_COMMAND="ag --hidden -g '' --ignore=.git"
 elif isCommand fd; then
@@ -115,10 +116,10 @@ export GIT_EDITOR=$EDITOR
 
 export BROWSER=google-chrome-stable
 
-if [ -f "/usr/bin/kitty" ]; then
+if isCommand wezterm; then
+	export TERMINAL="wez"
+elif isCommand kitty; then
 	export TERMINAL="kitty"
-elif [ -f "/usr/bin/termite" ]; then
-	export TERMINAL="termite"
 else
 	export TERMINAL="xterm"
 fi

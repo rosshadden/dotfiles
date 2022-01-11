@@ -6,7 +6,7 @@
 # Generates theme files, using base16-builder
 ################
 
-templates="dunst gtk-2.0 gtk-3.0 i3 nvim rofi shell termite vconsole vim xresources"
+templates="dunst gtk-2.0 gtk-3.0 i3 nvim rofi shell kitty vconsole vim xresources"
 themeFile="$DOTS/THEME"
 themePath="$DOTS/lib/themes"
 base16="$DOTS/node_modules/.bin/base16-builder"

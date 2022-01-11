@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-if [ -f "/usr/bin/kitty" ]; then
-	export TERMINAL="kitty"
-fi
-
 function termoil() {
 	local term="i3-sensible-terminal"
 
@@ -18,7 +14,7 @@ function termoil() {
 	shift $((OPTIND - 1))
 
 	if [[ "$*" ]]; then
-		if [ "$TERMINAL" == "kitty" ] || [ "$term" == "kitty "]; then
+		if [ "$term" == "kitty "]; then
 			$term -- $(echo "$@")
 		else
 			$term -e "$(echo "$@")"
