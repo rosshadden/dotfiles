@@ -15,6 +15,17 @@ return {
 	-- cursor
 	force_reverse_video_cursor = true,
 
+	-- keys
+
+	enable_csi_u_key_encoding = true,
+
+	keys = {
+		-- unmap
+		{ key = "Enter", mods = "ALT", action = "DisableDefaultAssignment" },
+
+		{ key = "F11", action = "ToggleFullScreen" },
+	},
+
 	-- workspaces
 
 	unix_domains = {

@@ -29,6 +29,9 @@ local plugins = function(use)
 	-- misc
 	use "echasnovski/mini.nvim"
 
+	-- languages
+	use "LhKipp/nvim-nu"
+
 	-- bootstrap new installations
 	if packerBootstrap then packer.sync() end
 end

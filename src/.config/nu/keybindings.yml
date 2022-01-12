@@ -1,0 +1,162 @@
+##
+## VIM
+##
+
+# - key:
+#     Char: U
+#   binding:
+#     Redo: 1
+
+# Delete word leading up to cursor (using vim boundary)
+- key:
+    Char: W
+  modifiers:
+    CTRL:
+  binding:
+    Kill:
+      BackwardWord:
+        repeat: 1
+        word: Vi
+
+# Insert any special character without performing its associated action (#65)
+- key:
+    Char: V
+  modifiers:
+    CTRL:
+  binding:
+    QuotedInsert:
+
+##
+## EMACS
+##
+
+# movement
+
+- key:
+    Char: a
+  modifiers:
+    CTRL:
+  binding:
+    Move: BeginningOfLine
+
+- key:
+    Char: e
+  modifiers:
+    CTRL:
+  binding:
+    Move: EndOfLine
+
+- key:
+    Char: f
+  modifiers:
+    CTRL:
+  binding:
+    Move:
+      ForwardChar: 1
+
+- key:
+    Char: b
+  modifiers:
+    CTRL:
+  binding:
+    Move:
+      BackwardChar: 1
+
+- key:
+    Char: f
+  modifiers:
+    ALT:
+  binding:
+    Move:
+      ForwardWord:
+        repeat: 1
+        at: Start
+        word: Big
+
+- key:
+    Char: b
+  modifiers:
+    ALT:
+  binding:
+    Move:
+      BackwardWord:
+        repeat: 1
+        word: Big
+
+# editing
+
+- key:
+    Char: t
+  modifiers:
+    ALT:
+  binding:
+    TransposeWords: 1
+
+- key:
+    Char: d
+  modifiers:
+    ALT:
+  binding:
+    Kill:
+      ForwardWord:
+        repeat: 1
+        at: Start
+        word: Big
+
+# Control Backspace, delete 1 word at a time
+- key:
+    Backspace:
+  modifiers:
+    CTRL:
+  binding:
+    Kill:
+      BackwardWord:
+        repeat: 1
+        word: Vi
+
+# Alt Backspace, delete 1 word at a time
+- key:
+    Backspace:
+  modifiers:
+    ALT:
+  binding:
+    Kill:
+      BackwardWord:
+        repeat: 1
+        word: Big
+
+# history
+
+- key:
+    Char: n
+  modifiers:
+    CTRL:
+  binding:
+    LineDownOrNextHistory: 1
+
+- key:
+    Char: p
+  modifiers:
+    CTRL:
+  binding:
+    LineUpOrPreviousHistory: 1
+
+##
+## CUSTOM
+##
+
+# Complete Hint
+- key:
+    Char: l
+  modifiers:
+    ALT:
+  binding:
+    CompleteHint:
+
+# newline
+- key:
+    Enter
+  modifiers:
+    ALT:
+  binding:
+    AcceptOrInsertLine:

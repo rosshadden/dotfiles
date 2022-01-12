@@ -1,3 +1,7 @@
+--
+-- MAPPINGS
+--
+
 -- prefix
 vim.keymap.set("n", "<space>b", "<plug><buffers>", { silent = true })
 
@@ -33,9 +37,13 @@ vim.keymap.set("n", "<plug><buffers>S", ":update!<cr>", { silent = true })
 vim.keymap.set("n", "<plug><buffers>x", ":xit<cr>", { silent = true })
 vim.keymap.set("n", "<plug><buffers>X", ":xit!<cr>", { silent = true })
 
-----------------
--- plugins
-----------------
+-- reload
+vim.keymap.set("n", "<plug><buffers>r", ":edit<cr>", { silent = true })
+vim.keymap.set("n", "<plug><buffers>R", ":edit!<cr>", { silent = true })
+
+--
+-- PLUGINS
+--
 
 require("nvim-tmux-navigation").setup({
 	disable_when_zoomed = true,

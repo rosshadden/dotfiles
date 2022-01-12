@@ -1,2 +1,47 @@
+skip_welcome_message = true
+
+
+startup = [
+	"source ./aliases.nu",
+	"source ./functions.nu",
+]
+
 [line_editor]
-edit_mode = "emacs"
+completion_match_method = "case-insensitive"
+completion_type = "circular"
+edit_mode = "vi"
+tab_stop = 2
+
+[textview]
+tab_width = 2
+true_color = true
+use_italics = true
+vcs_modification_markers = true
+
+path = [
+	# personal
+	"~/bin",
+	"~/local/bin",
+	"~/.local/bin",
+
+	# system
+	"/usr/local/bin",
+	"/usr/sbin",
+	"/usr/local/sbin",
+	"/usr/bin",
+
+	# lang
+	"~/.nimble/bin",
+	"~/.cargo/bin",
+	"~/go/bin",
+	"~/.rvm/bin",
+	"~/.gem/ruby/3.0.0/bin",
+	"/usr/bin/core_perl",
+	"/usr/lib/jvm/java-7-openjdk/jre/bin",
+
+	# domain
+	"~/dev/reaction/bin",
+	"~/dev/mailchimp/bin",
+]
+
+[env]

@@ -1,0 +1,44 @@
+##
+# settings
+
+set hidden
+
+# ui
+set drawbox
+
+##
+# mappings
+
+map ; read
+
+# create
+map O push $mkdir<space>
+map o push $touch<space>
+
+# delete
+map D delete
+map tp trash-put
+
+# fuzz
+map g<space> fzf_select
+map gd fzf_cd
+
+##
+# functions
+
+# trash
+cmd trash-put %trash-put $fx
+
+# fzf
+
+cmd fzf_select ${{
+	list="$(fzf)"
+	lf -remote "send $id select \"$list\""
+}}
+
+cmd fzf_cd ${{
+	list="$(fd --type d | fzf)"
+	lf -remote "send $id cd \"$list\""
+}}
+
+# vim: ft=config

@@ -9,7 +9,9 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- syntax
 --
 
-require("nvim-treesitter.configs").setup {
+local configs = require "nvim-treesitter.configs"
+
+configs.setup {
 	ensure_installed = {
 		"bash",
 		"c",
@@ -30,6 +32,8 @@ require("nvim-treesitter.configs").setup {
 		"tsx",
 		"typescript",
 		"yaml",
+
+		"nu",
 	},
 	highlight = { enable = true },
 	incremental_selection = { enable = true },
