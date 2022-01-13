@@ -73,15 +73,16 @@
         at: Start
         word: Big
 
-- key:
-    Char: b
-  modifiers:
-    ALT:
-  binding:
-    Move:
-      BackwardWord:
-        repeat: 1
-        word: Big
+# NOTE: unmapping because it messes with <esc>b
+# - key:
+#     Char: b
+#   modifiers:
+#     ALT:
+#   binding:
+#     Move:
+#       BackwardWord:
+#         repeat: 1
+#         word: Big
 
 # editing
 

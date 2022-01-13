@@ -1,3 +1,17 @@
+--
+-- SETTINGS
+--
+
+-- disable splash screen and "press ENTER" prompt
+vim.opt.shortmess = "actIO"
+
+-- 🐀 ratJAM 🐀
+vim.opt.mouse = "a"
+
+--
+-- MAPPINGS
+--
+
 -- prefix
 vim.keymap.set("n", "<space>a", "<plug><app>", { silent = true })
 

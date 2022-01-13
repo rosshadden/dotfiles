@@ -1,5 +1,30 @@
 skip_welcome_message = true
 
+path = [
+	# personal
+	"/home/ross/bin",
+	"/home/ross/local/bin",
+	"/home/ross/.local/bin",
+
+	# system
+	"/usr/local/bin",
+	"/usr/sbin",
+	"/usr/local/sbin",
+	"/usr/bin",
+
+	# lang
+	"/home/ross/.nimble/bin",
+	"/home/ross/.cargo/bin",
+	"/home/ross/go/bin",
+	"/home/ross/.rvm/bin",
+	"/home/ross/.gem/ruby/3.0.0/bin",
+	"/usr/bin/core_perl",
+	"/usr/lib/jvm/java-7-openjdk/jre/bin",
+
+	# domain
+	"/home/ross/dev/reaction/bin",
+	"/home/ross/dev/mailchimp/bin",
+]
 
 startup = [
 	"source ./aliases.nu",
@@ -8,7 +33,7 @@ startup = [
 
 [line_editor]
 completion_match_method = "case-insensitive"
-completion_type = "circular"
+completion_type = "list"
 edit_mode = "vi"
 tab_stop = 2
 
@@ -18,30 +43,24 @@ true_color = true
 use_italics = true
 vcs_modification_markers = true
 
-path = [
-	# personal
-	"~/bin",
-	"~/local/bin",
-	"~/.local/bin",
-
-	# system
-	"/usr/local/bin",
-	"/usr/sbin",
-	"/usr/local/sbin",
-	"/usr/bin",
-
-	# lang
-	"~/.nimble/bin",
-	"~/.cargo/bin",
-	"~/go/bin",
-	"~/.rvm/bin",
-	"~/.gem/ruby/3.0.0/bin",
-	"/usr/bin/core_perl",
-	"/usr/lib/jvm/java-7-openjdk/jre/bin",
-
-	# domain
-	"~/dev/reaction/bin",
-	"~/dev/mailchimp/bin",
-]
-
 [env]
+
+##
+## settings
+##
+
+EDITOR = "nvim"
+BROWSER = "google-chrome-stable"
+
+##
+## apps
+##
+
+# nodejs
+N_PREFIX = "~/local"
+
+# steam
+STEAM_COMPAT_DATA_PATH = "/media/data/games/proton/"
+
+# godot
+GODOT_BIN = "/usr/bin/godot"

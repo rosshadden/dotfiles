@@ -2,7 +2,8 @@
 -- SETTINGS
 --
 
-vim.opt.termguicolors = true
+-- line numbers
+vim.opt.number = true
 
 vim.cmd "colorscheme base16-paraiso"
 

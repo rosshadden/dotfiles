@@ -126,7 +126,7 @@ ta() {
 tj() {
 	local name="$1"
 	if [ "$name" ]; then
-		ta "name"
+		ta "$name"
 	else
 		ta $(tmux list-sessions -F '#{session_name}' | fzf)
 	fi

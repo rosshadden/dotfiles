@@ -21,7 +21,21 @@ return {
 
 	keys = {
 		-- unmap
-		{ key = "Enter", mods = "ALT", action = "DisableDefaultAssignment" },
+		{ mods = "ALT", key = "Enter", action = "DisableDefaultAssignment" },
+		{ mods = "ALT", key = "1", action = "DisableDefaultAssignment" },
+		{ mods = "ALT", key = "2", action = "DisableDefaultAssignment" },
+		{ mods = "ALT", key = "3", action = "DisableDefaultAssignment" },
+		{ mods = "ALT", key = "4", action = "DisableDefaultAssignment" },
+		{ mods = "ALT", key = "5", action = "DisableDefaultAssignment" },
+		{ mods = "ALT", key = "6", action = "DisableDefaultAssignment" },
+		{ mods = "ALT", key = "7", action = "DisableDefaultAssignment" },
+		{ mods = "ALT", key = "8", action = "DisableDefaultAssignment" },
+		{ mods = "ALT", key = "9", action = "DisableDefaultAssignment" },
+		{ mods = "ALT", key = "0", action = "DisableDefaultAssignment" },
+
+		-- normalize
+		{ mods = "SHIFT", key = " ", action = wezterm.action{ SendString = " " } },
+		{ mods = "SHIFT", key = "Backspace", action = wezterm.action{ SendKey = { key = "Backspace" } } },
 
 		{ key = "F11", action = "ToggleFullScreen" },
 	},

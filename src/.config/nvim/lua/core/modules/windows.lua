@@ -1,4 +1,11 @@
 --
+-- SETTINGS
+--
+
+-- window title
+vim.opt.title = true
+
+--
 -- MAPPINGS
 --
 

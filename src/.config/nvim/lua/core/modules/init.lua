@@ -1,4 +1,5 @@
 require("core.modules.app")
+require("core.modules.search")
 require("core.modules.copypasta")
 require("core.modules.delete")
 require("core.modules.templates")

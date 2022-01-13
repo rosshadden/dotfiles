@@ -1,9 +1,23 @@
 --
+-- SETTINGS
+--
+
+-- let buffers exist in the background
+vim.opt.hidden = true
+
+-- more natural splits
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
+--
 -- MAPPINGS
 --
 
 -- prefix
 vim.keymap.set("n", "<space>b", "<plug><buffers>", { silent = true })
+
+-- switch to alternate buffer
+vim.keymap.set("n", "<leader>b", "<c-^>", { silent = true })
 
 -- split [j, k, h, l]
 vim.keymap.set("n", "<plug><buffers>j", ":rightbelow new<cr>", { silent = true })
@@ -18,6 +32,7 @@ vim.keymap.set("n", "<plug><buffers>H", ":leftabove vsplit<cr>", { silent = true
 vim.keymap.set("n", "<plug><buffers>L", ":rightbelow vsplit<cr>", { silent = true })
 
 -- close
+vim.keymap.set("n", "<a-c>", ":bdelete<cr>", { silent = true })
 vim.keymap.set("n", "<plug><buffers>c", ":bdelete<cr>", { silent = true })
 vim.keymap.set("n", "<plug><buffers>C", ":bdelete!<cr>", { silent = true })
 
@@ -40,6 +55,12 @@ vim.keymap.set("n", "<plug><buffers>X", ":xit!<cr>", { silent = true })
 -- reload
 vim.keymap.set("n", "<plug><buffers>r", ":edit<cr>", { silent = true })
 vim.keymap.set("n", "<plug><buffers>R", ":edit!<cr>", { silent = true })
+
+-- navigation
+vim.keymap.set("n", "<plug><buffers>n", ":bnext<cr>", { silent = true })
+vim.keymap.set("n", "<plug><buffers>p", ":bprevious<cr>", { silent = true })
+vim.keymap.set("n", "<plug><buffers>N", ":blast<cr>", { silent = true })
+vim.keymap.set("n", "<plug><buffers>P", ":bfirst<cr>", { silent = true })
 
 --
 -- PLUGINS

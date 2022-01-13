@@ -166,6 +166,8 @@ call plug#begin(expand(g:packageDir))
 	Plug 'habamax/vim-godot'
 	" sxhkd
 	Plug 'kovetskiy/sxhkd-vim'
+	" orgmode
+	Plug 'nvim-orgmode/orgmode'
 
 	" integration
 
