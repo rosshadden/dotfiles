@@ -27,8 +27,7 @@ path = [
 ]
 
 startup = [
-	"source ./aliases.nu",
-	"source ./functions.nu",
+	"source ./init.nu",
 ]
 
 [line_editor]

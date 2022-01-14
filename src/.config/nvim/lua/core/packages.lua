@@ -30,7 +30,7 @@ local plugins = function(use)
 	use "echasnovski/mini.nvim"
 
 	-- languages
-	use "LhKipp/nvim-nu"
+	use { "LhKipp/nvim-nu", run = ":TSInstall nu" }
 
 	-- bootstrap new installations
 	if packerBootstrap then packer.sync() end

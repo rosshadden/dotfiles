@@ -1,5 +1,5 @@
 --
--- settings
+-- SETTINGS
 --
 
 -- show invisibles
@@ -7,7 +7,7 @@ vim.opt.list = true
 vim.opt.listchars = [[tab:» ,trail:·,nbsp:_,extends:>,precedes:<]]
 
 --
--- mappings
+-- MAPPINGS
 --
 
 -- prefix

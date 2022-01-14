@@ -20,6 +20,11 @@ cmp.setup({
 		end,
 	},
 
+	-- NOTE: cmp-cmdline has a weird bug, so this bypasses it for now
+	experimental = {
+		native_menu = true,
+	},
+
 	mapping = {
 		["<a-space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c", }),
 		["<cr>"] = cmp.mapping.confirm({ select = true }),
@@ -52,6 +57,7 @@ cmp.setup({
 		{ name = "vsnip" },
 	}, {
 		{ name = "buffer" },
+		{ name = "path" },
 	}),
 })
 

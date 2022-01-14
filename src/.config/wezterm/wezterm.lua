@@ -1,6 +1,6 @@
 local wezterm = require "wezterm"
 
-return {
+local config = {
 	-- startup
 	-- default_prog = { "/usr/bin/nu", "-l" },
 	default_gui_startup_args = { "connect", "unix" },
@@ -15,36 +15,46 @@ return {
 	-- cursor
 	force_reverse_video_cursor = true,
 
-	-- keys
-
+	-- more native keys
 	enable_csi_u_key_encoding = true,
+}
 
-	keys = {
-		-- unmap
-		{ mods = "ALT", key = "Enter", action = "DisableDefaultAssignment" },
-		{ mods = "ALT", key = "1", action = "DisableDefaultAssignment" },
-		{ mods = "ALT", key = "2", action = "DisableDefaultAssignment" },
-		{ mods = "ALT", key = "3", action = "DisableDefaultAssignment" },
-		{ mods = "ALT", key = "4", action = "DisableDefaultAssignment" },
-		{ mods = "ALT", key = "5", action = "DisableDefaultAssignment" },
-		{ mods = "ALT", key = "6", action = "DisableDefaultAssignment" },
-		{ mods = "ALT", key = "7", action = "DisableDefaultAssignment" },
-		{ mods = "ALT", key = "8", action = "DisableDefaultAssignment" },
-		{ mods = "ALT", key = "9", action = "DisableDefaultAssignment" },
-		{ mods = "ALT", key = "0", action = "DisableDefaultAssignment" },
+-- mappings
+config.keys = {
+	-- unmap
+	{ mods = "ALT", key = "Enter", action = "DisableDefaultAssignment" },
+	{ mods = "ALT", key = "1", action = "DisableDefaultAssignment" },
+	{ mods = "ALT", key = "2", action = "DisableDefaultAssignment" },
+	{ mods = "ALT", key = "3", action = "DisableDefaultAssignment" },
+	{ mods = "ALT", key = "4", action = "DisableDefaultAssignment" },
+	{ mods = "ALT", key = "5", action = "DisableDefaultAssignment" },
+	{ mods = "ALT", key = "6", action = "DisableDefaultAssignment" },
+	{ mods = "ALT", key = "7", action = "DisableDefaultAssignment" },
+	{ mods = "ALT", key = "8", action = "DisableDefaultAssignment" },
+	{ mods = "ALT", key = "9", action = "DisableDefaultAssignment" },
+	{ mods = "ALT", key = "0", action = "DisableDefaultAssignment" },
 
-		-- normalize
-		{ mods = "SHIFT", key = " ", action = wezterm.action{ SendString = " " } },
-		{ mods = "SHIFT", key = "Backspace", action = wezterm.action{ SendKey = { key = "Backspace" } } },
+	-- normalize
+	{ mods = "SHIFT", key = " ", action = wezterm.action{ SendString = " " } },
+	{ mods = "SHIFT", key = "Backspace", action = wezterm.action{ SendKey = { key = "Backspace" } } },
 
-		{ key = "F11", action = "ToggleFullScreen" },
-	},
+	{ key = "F11", action = "ToggleFullScreen" },
 
-	-- workspaces
+	-- commands
+	-- { mods = "CTRL", key = "R", action = wezterm.action{ SpawnCommand = { args = { "ls" } } } },
+}
 
-	unix_domains = {
-		{
-			name = "unix",
-		},
+-- menu
+config.launch_menu = {
+	{ args = { "htop" }, },
+	{ args = { "btm" }, },
+}
+
+-- workspaces
+config.unix_domains = {
+	{
+		name = "unix",
 	},
 }
+
+return config
