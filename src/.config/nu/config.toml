@@ -31,6 +31,7 @@ startup = [
 ]
 
 [line_editor]
+max_history_size = 1048576
 completion_match_method = "case-insensitive"
 completion_type = "list"
 edit_mode = "vi"

@@ -1,3 +1,19 @@
+# fzf through shell history, typing result.
+# Requires: `xdotool`
+def fzf-history [
+	--query (-q): string # Optionally start with given query.
+] {
+	let result = (history | reverse | reduce { $acc + (char nl) + $it } | fzf --prompt "HISTORY> " --query $"($query)")
+	xdotool type $result
+}
+
+# fzf through files, typing result.
+# Requires: `xdotool`, `fd`
+def fzf-files [] {
+	let result = (fd | fzf --prompt "FILES> ")
+	xdotool type $result
+}
+
 # Duplicate files to another location.
 # Places them in the same folders relative to destination.
 def dupe [

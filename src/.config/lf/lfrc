@@ -9,6 +9,8 @@ set drawbox
 ##
 # mappings
 
+map <esc> quit
+
 map ; read
 
 # create

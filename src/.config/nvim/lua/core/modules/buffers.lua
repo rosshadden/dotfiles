@@ -66,13 +66,14 @@ vim.keymap.set("n", "<plug><buffers>P", ":bfirst<cr>", { silent = true })
 -- PLUGINS
 --
 
-require("nvim-tmux-navigation").setup({
+local tmuxNav = require("nvim-tmux-navigation")
+
+tmuxNav.setup({
 	disable_when_zoomed = true,
-	keybindings = {
-		left = "<c-h>",
-		down = "<c-j>",
-		up = "<c-k>",
-		right = "<c-l>",
-		last_active = "<c-bs>",
-	}
 })
+
+vim.keymap.set({ "", "i" }, "<c-j>", tmuxNav.NvimTmuxNavigateDown, { silent = true })
+vim.keymap.set({ "", "i" }, "<c-k>", tmuxNav.NvimTmuxNavigateUp, { silent = true })
+vim.keymap.set({ "", "i" }, "<c-h>", tmuxNav.NvimTmuxNavigateLeft, { silent = true })
+vim.keymap.set({ "", "i" }, "<c-l>", tmuxNav.NvimTmuxNavigateRight, { silent = true })
+vim.keymap.set({ "", "i" }, "<c-bs>", tmuxNav.NvimTmuxNavigateLastActive, { silent = true })

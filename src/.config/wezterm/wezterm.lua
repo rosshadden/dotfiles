@@ -19,6 +19,8 @@ local config = {
 	enable_csi_u_key_encoding = true,
 }
 
+config.leader = { mods = "CTRL", key = "Enter" }
+
 -- mappings
 config.keys = {
 	-- unmap
@@ -41,7 +43,7 @@ config.keys = {
 	{ key = "F11", action = "ToggleFullScreen" },
 
 	-- commands
-	-- { mods = "CTRL", key = "R", action = wezterm.action{ SpawnCommand = { args = { "ls" } } } },
+	{ mods = "LEADER", key = "r", action = wezterm.action{ SendString = "'fzf-history --query='\x0D" } },
 }
 
 -- menu
