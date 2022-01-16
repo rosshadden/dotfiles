@@ -1,0 +1,14 @@
+{
+	"print": {
+		"prefix": "p",
+		"body": [ "print($1${2:, $1})" ]
+	},
+	"print-line": {
+		"prefix": "pl",
+		"body": [ "print($0)" ]
+	},
+	"inspect": {
+		"prefix": "i",
+		"body": [ "vim.inspect($0)" ]
+	}
+}

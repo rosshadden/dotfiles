@@ -1,0 +1,5 @@
+--
+-- PLUGINS
+--
+
+require("gitsigns").setup()

@@ -7,5 +7,5 @@ function reload()
 	end
 
 	dofile(vim.env.MYVIMRC)
-	print("reloaded config")
+	vim.api.nvim_echo({ { "config reloaded", "None" } }, false, {})
 end

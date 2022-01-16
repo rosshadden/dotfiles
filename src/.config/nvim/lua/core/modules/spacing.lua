@@ -11,7 +11,7 @@ vim.opt.listchars = [[tab:» ,trail:·,nbsp:_,extends:>,precedes:<]]
 --
 
 -- prefix
-vim.keymap.set("n", "<space>s", "<plug><spacing>", { silent = true })
+vim.keymap.set("n", "<space><space>", "<plug><spacing>", { silent = true })
 
 -- visual shifting (does not exit Visual mode)
 vim.keymap.set("v", "<", "<gv", { silent = true, noremap = true })

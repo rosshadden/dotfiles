@@ -1,6 +1,17 @@
 local cmp = require "cmp"
 
+--
+-- SETTINGS
+--
+
 vim.opt.completeopt = { "menu", "menuone", "preview", "noselect", "noinsert", }
+
+-- vim-vsnip
+vim.g.vsnip_snippet_dir = "~/.config/nvim/snippets"
+
+--
+-- FUNCTIONS
+--
 
 local hasPriorWords = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -10,6 +21,16 @@ end
 local feedkey = function(key, mode)
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
+
+--
+-- MAPPINGS
+--
+
+-- vim.keymap.set({ "i", "s" }, "<c-s>", [[vsnip#available(1) ? "<plug>(vsnip-expand-or-jump)" : "<c-s>"]], { silent = true, expr = true })
+
+--
+-- PLUGINS
+--
 
 -- generic completion
 cmp.setup({
@@ -30,11 +51,18 @@ cmp.setup({
 		["<cr>"] = cmp.mapping.confirm({ select = true }),
 		["<c-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 		["<c-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+
+		["<c-s>"] = cmp.mapping(function(fallback)
+			if vim.fn["vsnip#available"](1) == 1 then
+				feedkey("<plug>(vsnip-expand-or-jump)", "")
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+
 		["<tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			elseif vim.fn["vsnip#available"](1) == 1 then
-				feedkey("<plug>(vsnip-expand-or-jump)", "")
 			elseif hasPriorWords() then
 				cmp.complete()
 			else
@@ -45,8 +73,6 @@ cmp.setup({
 		["<s-tab>"] = cmp.mapping(function()
 			if cmp.visible() then
 				cmp.select_prev_item()
-			elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-				feedkey("<plug>(vsnip-jump-prev)", "")
 			end
 		end, { "i", "s" }),
 	},

@@ -4,7 +4,6 @@
 
 -- prefix
 vim.keymap.set({ "n", "v" }, "<space>c", "<plug><copy>", { silent = true })
-vim.keymap.set({ "n", "v" }, "<space>p", "<plug><pasta>", { silent = true })
 
 -- system clipboard [CLIPBOARD]
 vim.keymap.set({ "n", "v" }, "<plug><copy>", [["+]], { silent = true, noremap = true })
@@ -42,4 +41,3 @@ vim.keymap.set({ "n", "v" }, "<plug><copy>=", [["=]], { silent = true, noremap =
 
 	-- alt-file register
 	vim.keymap.set({ "n", "v" }, "<plug><copy>F", [["#]], { silent = true, noremap = true })
-	-- ]

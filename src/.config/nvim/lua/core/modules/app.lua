@@ -29,3 +29,7 @@ vim.keymap.set("n", "<plug><app>X", ":xall!<cr>", { silent = true })
 
 -- reload config
 vim.keymap.set("n", "<plug><app>r", reload, { silent = true })
+
+-- messages
+vim.keymap.set("n", "<plug><app>m", ":messages<cr>", { silent = true })
+vim.keymap.set("n", "<plug><app>M", ":messages clear<cr>", { silent = true })

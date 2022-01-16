@@ -7,27 +7,31 @@ end
 
 local plugins = function(use)
 	use "wbthomason/packer.nvim"
-	use { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } }
+
+	-- ast
 	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 	use "neovim/nvim-lspconfig"
 	use { "hrsh7th/nvim-cmp", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-cmdline", "hrsh7th/cmp-nvim-lua", }
-	use "hrsh7th/vim-vsnip"
 
 	-- text
-	use { "numToStr/Comment.nvim", config = function() require("Comment").setup() end }
-
-	-- ui
-	use "RRethy/nvim-base16"
+	use "hrsh7th/vim-vsnip"
+	use "numToStr/Comment.nvim"
 
 	-- navigation
+	use { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } }
 	use "phaazon/hop.nvim"
-	use "alexghergh/nvim-tmux-navigation"
+	use "bendk/polyword.vim"
 
 	-- integration
+	use { "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } }
+	use "alexghergh/nvim-tmux-navigation"
 	use "is0n/fm-nvim"
 
 	-- misc
 	use "echasnovski/mini.nvim"
+
+	-- ui
+	use "RRethy/nvim-base16"
 
 	-- languages
 	use { "LhKipp/nvim-nu", run = ":TSInstall nu" }
