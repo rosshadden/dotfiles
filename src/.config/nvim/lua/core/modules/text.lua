@@ -1,3 +1,6 @@
+local polyword = require "polyword"
+local inMotion = require "in-motion"
+
 --
 -- SETTINGS
 --
@@ -14,6 +17,8 @@ vim.opt.wrap = false
 --
 
 -- prefix
+vim.keymap.set("", "<space>p", "<plug><put-in-motion>", { silent = true })
+vim.keymap.set("", "<space>s", "<plug><sort-in-motion>", { silent = true })
 vim.keymap.set("n", "<space>S", "<plug><surround>", { silent = true })
 vim.keymap.set("n", "<space>m", "<plug><polyword>", { silent = true })
 
@@ -42,8 +47,11 @@ vim.keymap.set("", "<plug><polyword>k", function() polyword.transform("kebab") e
 vim.keymap.set("", "<plug><polyword>K", function() polyword.transform("kebab-upper") end, { silent = true })
 
 --
--- PLUGINS
+-- SETUP
 --
+
+inMotion.put.setup()
+inMotion.sort.setup()
 
 require("Comment").setup()
 

@@ -1,5 +1,6 @@
 ##
-# settings
+## settings
+##
 
 set hidden
 
@@ -7,7 +8,8 @@ set hidden
 set drawbox
 
 ##
-# mappings
+## mappings
+##
 
 map <esc> quit
 
@@ -22,11 +24,12 @@ map D delete
 map tp trash-put
 
 # fuzz
-map g<space> fzf_select
+map gc fzf_select
 map gd fzf_cd
 
 ##
-# functions
+## functions
+##
 
 # trash
 cmd trash-put %trash-put $fx
@@ -39,7 +42,7 @@ cmd fzf_select ${{
 }}
 
 cmd fzf_cd ${{
-	list="$(fd --type d | fzf)"
+	list="$(fd --type d --hidden | fzf)"
 	lf -remote "send $id cd \"$list\""
 }}
 

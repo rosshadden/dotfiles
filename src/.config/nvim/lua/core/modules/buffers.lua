@@ -1,3 +1,6 @@
+local telescope = require("telescope.builtin")
+local tmuxNav = require("nvim-tmux-navigation")
+
 --
 -- SETTINGS
 --
@@ -56,24 +59,26 @@ vim.keymap.set("n", "<plug><buffers>X", ":xit!<cr>", { silent = true })
 vim.keymap.set("n", "<plug><buffers>r", ":edit<cr>", { silent = true })
 vim.keymap.set("n", "<plug><buffers>R", ":edit!<cr>", { silent = true })
 
+-- choose
+vim.keymap.set("n", "<plug><buffers><space>", telescope.buffers, { silent = true })
+
 -- navigation
 vim.keymap.set("n", "<plug><buffers>n", ":bnext<cr>", { silent = true })
 vim.keymap.set("n", "<plug><buffers>p", ":bprevious<cr>", { silent = true })
 vim.keymap.set("n", "<plug><buffers>N", ":blast<cr>", { silent = true })
 vim.keymap.set("n", "<plug><buffers>P", ":bfirst<cr>", { silent = true })
 
---
--- PLUGINS
---
-
-local tmuxNav = require("nvim-tmux-navigation")
-
-tmuxNav.setup({
-	disable_when_zoomed = true,
-})
-
+-- tmux
 vim.keymap.set({ "", "i" }, "<c-j>", tmuxNav.NvimTmuxNavigateDown, { silent = true })
 vim.keymap.set({ "", "i" }, "<c-k>", tmuxNav.NvimTmuxNavigateUp, { silent = true })
 vim.keymap.set({ "", "i" }, "<c-h>", tmuxNav.NvimTmuxNavigateLeft, { silent = true })
 vim.keymap.set({ "", "i" }, "<c-l>", tmuxNav.NvimTmuxNavigateRight, { silent = true })
 vim.keymap.set({ "", "i" }, "<c-bs>", tmuxNav.NvimTmuxNavigateLastActive, { silent = true })
+
+--
+-- SETUP
+--
+
+tmuxNav.setup {
+	disable_when_zoomed = true,
+}

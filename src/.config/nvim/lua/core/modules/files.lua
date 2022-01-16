@@ -1,17 +1,9 @@
 local telescope = require("telescope.builtin")
 local fm = require("fm-nvim")
 
-fm.setup {
-	mappings = {
-		vert_split = "<c-l>",
-		horz_split = "<c-j>",
-	},
-	ui = {
-		split = {
-			direction = "rightbelow",
-		},
-	},
-}
+--
+-- MAPPINGS
+--
 
 -- prefix
 vim.keymap.set("n", "<space>f", "<plug><files>", { silent = true })
@@ -36,3 +28,26 @@ vim.keymap.set("n", "<plug><files>c", telescope.find_files, { silent = true })
 
 -- git
 vim.keymap.set("n", "<plug><files>g", telescope.git_files, { silent = true })
+
+-- search
+vim.keymap.set("n", "<plug><files>s", telescope.live_grep, { silent = true })
+
+--
+-- SETUP
+--
+
+fm.setup {
+	mappings = {
+		vert_split = "<c-l>",
+		horz_split = "<c-j>",
+	},
+	ui = {
+		split = {
+			direction = "rightbelow",
+		},
+		float = {
+			border = { "╔", "═" ,"╗", "║", "╝", "═", "╚", "║" },
+		},
+	},
+}
+

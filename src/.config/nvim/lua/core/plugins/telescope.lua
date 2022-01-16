@@ -1,7 +1,20 @@
 local telescope = require("telescope.builtin")
 local actions = require("telescope.actions")
 
-require("telescope").setup{
+--
+-- MAPPINGS
+--
+
+-- prefix
+vim.keymap.set("n", "<space>T", "<plug><telescope>", { silent = true })
+
+vim.keymap.set("n", "<plug><telescope><space>", telescope.builtin, { silent = true })
+
+--
+-- SETUP
+--
+
+require("telescope").setup {
 	defaults = {
 		mappings = {
 			n = {
@@ -16,15 +29,21 @@ require("telescope").setup{
 				["<c-l>"] = actions.select_vertical,
 			},
 		},
+		vimgrep_arguments = {
+			"rg",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+			"--hidden", -- added
+		},
 	},
 	pickers = {
 		find_files = {
-			find_command = { "fd", "--type", "file", "--hidden", "--strip-cwd-prefix" },
+			hidden = true,
 		},
 	},
 }
 
--- prefix
-vim.keymap.set("n", "<space>T", "<plug><telescope>", { silent = true })
-
-vim.keymap.set("n", "<plug><telescope><space>", telescope.builtin, { silent = true })
