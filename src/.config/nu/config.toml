@@ -36,6 +36,7 @@ completion_match_method = "case-insensitive"
 completion_type = "list"
 edit_mode = "vi"
 tab_stop = 2
+show_hints = false
 
 [textview]
 tab_width = 2

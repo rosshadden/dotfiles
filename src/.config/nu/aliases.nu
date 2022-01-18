@@ -21,6 +21,9 @@ alias tigs = tig status
 alias tigr = tig \$(git rev-parse HEAD)..\$(git rev-parse FETCH_HEAD)
 # alias tigr- = tigr --no-merges
 
+# tmux
+alias tl = tmux list-sessions
+
 ##
 ## MISC
 ##

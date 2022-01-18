@@ -1,3 +1,21 @@
+# fzf through files, typing result.
+# Requires: `xdotool`, `fd`
+def fzf-files [] {
+	fd --type f | fzf --prompt "FILES> "
+}
+
+# fzf through files, typing result.
+# Requires: `xdotool`, `fd`
+def fzf-test [] {
+	fd --type f | fzf --prompt "FILES> "
+}
+
+# fzf through directories, navigating to result
+# Requires: `xdotool`, `fd`
+def fzf-cd [] {
+	fd --type d | fzf --prompt "FOLDERS> "
+}
+
 # fzf through shell history, typing result.
 # Requires: `xdotool`
 def fzf-history [
@@ -7,11 +25,11 @@ def fzf-history [
 	xdotool type $result
 }
 
-# fzf through files, typing result.
+# type last arg from previous command
 # Requires: `xdotool`, `fd`
-def fzf-files [] {
-	let result = (fd | fzf --prompt "FILES> ")
-	xdotool type $result
+def last-arg [] {
+	let cmd = (history | last)
+	$cmd | split row (char space) | last
 }
 
 # Duplicate files to another location.
