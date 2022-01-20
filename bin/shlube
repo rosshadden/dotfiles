@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+##
+# Normalizes running shells with a specific command.
+#
+# TODO: make use parent shell by default
+#
+# Usage: shlube zsh -- echo hi
+##
+function main() {
+	local shell="$1"
+	shift 2
+	$shell -c "$(echo "$@")"
+}
+
+main "$@"

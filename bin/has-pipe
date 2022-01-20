@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+main() {
+	local stdin="$(ls -l /proc/self/fd/0)"
+	stdin="${stdin/*-> /}"
+	if [[ "$stdin" =~ /dev/pts ]]; then return 1; fi
+}
+
+main "$@"

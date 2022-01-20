@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+
+##
+# Normalizes running terminals with a specific command.
+#
+# Usage: termoil -- echo hi
+##
 function termoil() {
 	local term="i3-sensible-terminal"
 
