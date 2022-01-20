@@ -1,11 +1,19 @@
 local wezterm = require "wezterm"
 
-function getCmd(pane)
+function parseCmd(pane)
 	local lines = wezterm.split_by_newlines(pane:get_logical_lines_as_text())
 	local current = lines[#lines]
-	prompt, cmd = current:match("([^>]+>) (.*)")
+	cwd, a, cmd, d, e = current:match([[([^>]+)>(%s*(.*))]])
 	if cmd == nil then cmd = "" end
-	return cmd
+	return cwd, cmd
+end
+
+function tablfy(value)
+	result = {}
+	for match in (value .. " "):gmatch("(.-)" .. " ") do
+		table.insert(result, match)
+	end
+	return result
 end
 
 local config = {
@@ -83,16 +91,24 @@ config.keys = {
 		-- debug
 		mods = "LEADER", key = "Backspace",
 		action = wezterm.action_callback(function(win, pane)
-			local cmd = getCmd(pane)
-			-- win:perform_action(
-			-- 	wezterm.action{ SplitVertical = { args = { "nu", "-c", "fzf-files" } } },
-			-- 	pane
-			-- )
+			local cwd, cmd = parseCmd(pane)
+
+			win:perform_action(
+				wezterm.action{
+					SplitVertical = {
+						-- args = { "nu", "-c", "fzf" },
+						args = { "shlube", "nu", "--", "wezterm", "cli", "send-text", "--pane-id " .. pane:pane_id(), "hey" },
+						cwd = cwd,
+					}
+				},
+				pane
+			)
+
 			-- os.execute("wezterm cli split-pane --pane-id " .. 0 .. " -- nu -c fzf")
-			os.execute("/tmp/aoeu/test.sh")
+			-- os.execute("/tmp/aoeu/test.sh")
 		end)
 	},
-	{ mods = "LEADER", key = "w", action = wezterm.action{ SplitVertical = { args = { "/tmp/aoeu/test.sh" } } } },
+	-- { mods = "LEADER", key = "w", action = wezterm.action{ SplitVertical = { args = { "shlube", "nu", "--", "wezterm", "cli", "send-text", "--pane-id " .. pane:pane_id(), "hey" } } } },
 }
 
 -- menu

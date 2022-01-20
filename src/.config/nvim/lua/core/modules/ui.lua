@@ -5,7 +5,8 @@
 -- line numbers
 vim.opt.number = true
 
-vim.cmd "colorscheme base16-paraiso"
+-- colorscheme
+require("base16-colorscheme").setup("paraiso")
 
 -- TODO: slow as hell
 -- require("mini.starter").setup()

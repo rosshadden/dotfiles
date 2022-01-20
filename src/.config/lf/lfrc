@@ -2,34 +2,97 @@
 ## settings
 ##
 
+# files
 set hidden
+set shellopts "-eu"
 
 # ui
+set number
 set drawbox
+
+# preview
+set previewer stpv
+set cleaner stpvimgclr
+&stpvimg --listen $id
 
 ##
 ## mappings
 ##
 
-map <esc> quit
+# unmap
+map ,
+map c
+map y
+map d
+map <space>
 
+# shortcuts
+map <esc> quit
 map ; read
+map C clear
+
+# navigation
+map t :toggle; down
+map T :toggle; up
 
 # create
-map O push $mkdir<space>
+map O push $mkdir<space>-p<space>
 map o push $touch<space>
 
 # delete
-map D delete
-map tp trash-put
+map dd cut
+map dD delete
+map dt trash-put
+
+# rename
+map cc :rename; cmd-delete-home
+map ce :rename; cmd-word-back; cmd-delete-word
+map cb :rename; cmd-word-back; cmd-left; cmd-delete-home
+map I :rename; cmd-home
+map a :rename; cmd-word-back; cmd-left
+map A :rename
+
+# copy
+map yy copy
+map yp ${{ echo -n $f | copy }}
+map yf ${{ basename -- $f | trim | copy }}
+
+# open
+map L rifle
+map x $$f
+map X !$f
+
+# debug
+map ,r source ~/.config/lf/lfrc
+map <backspace2> debug
+
+# integrations
 
 # fuzz
-map gc fzf_select
-map gd fzf_cd
+map <space>fc fzf_select
+map <space>fd fzf_cd
 
 ##
 ## functions
 ##
+
+cmd open ${{
+	test -L $f && f=$(readlink -f $f)
+	case $(file --mime-type $f -b) in
+		text/*) $EDITOR $fx ;;
+		*) for f in $fx; do setsid $OPENER $f >/dev/null 2>/dev/null & done ;;
+	esac
+}}
+
+cmd pack ${{
+	apack $1 $fx
+}}
+
+cmd unpack ${{
+	aunpack $f
+}}
+
+## integrations
 
 # trash
 cmd trash-put %trash-put $fx
@@ -46,4 +109,17 @@ cmd fzf_cd ${{
 	lf -remote "send $id cd \"$list\""
 }}
 
-# vim: ft=config
+# ranger
+cmd rifle ${{
+	set -f
+	rifle -l $f
+	read -p "Select runner: " runner
+	rifle -p $runner $f
+}}
+
+# debug
+cmd debug ${{
+	echo debug
+}}
+
+# vim: ft=bash

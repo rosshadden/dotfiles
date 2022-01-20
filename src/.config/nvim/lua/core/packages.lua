@@ -1,5 +1,3 @@
-local packer = require("packer")
-
 local installPath = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if vim.fn.empty(vim.fn.glob(installPath)) > 0 then
 	packerBootstrap = vim.fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", installPath })
@@ -38,14 +36,14 @@ local plugins = function(use)
 	use { "LhKipp/nvim-nu", run = ":TSInstall nu" }
 
 	-- bootstrap new installations
-	if packerBootstrap then packer.sync() end
+	if packerBootstrap then require("packer").sync() end
 end
 
-packer.startup(plugins)
+require("packer").startup(plugins)
 
-vim.cmd([[
+vim.cmd [[
 	augroup packer
 		autocmd!
 		autocmd BufWritePost packages.lua source <afile> | PackerSync
 	augroup end
-]])
+]]

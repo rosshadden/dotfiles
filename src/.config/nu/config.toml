@@ -65,3 +65,7 @@ STEAM_COMPAT_DATA_PATH = "/media/data/games/proton/"
 
 # godot
 GODOT_BIN = "/usr/bin/godot"
+
+# sensible pagers
+PAGER = "less -FRSX"
+MANPAGER = "sh -c 'col -bx | bat --language man --plain'"
