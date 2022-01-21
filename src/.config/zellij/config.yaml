@@ -1,0 +1,278 @@
+---
+
+##
+## SETTINGS
+##
+
+theme: default
+
+default_mode: locked
+
+##
+## MAPPINGS
+##
+
+keybinds:
+  unbind: true
+
+  locked:
+    - action: [SwitchToMode: normal,]
+      key: [Ctrl: "s",]
+
+  normal:
+    # return
+    - action: [SwitchToMode: locked,]
+      key: [Esc, Char: "q"]
+    - action: [SwitchToMode: locked,]
+      key: [Char: "\n"]
+
+    # send prefix
+    - action: [Write: [19,], SwitchToMode: locked]
+      key: [Ctrl: "s",]
+
+    # debug
+    - action: [Run: {cmd: "fzf"}, WriteChars: "$in", SwitchToMode: locked,]
+      key: [Char: " ",]
+
+    # modes
+    - action: [SwitchToMode: session,]
+      key: [Char: "s",]
+    - action: [SwitchToMode: tab,]
+      key: [Char: "t",]
+    - action: [SwitchToMode: pane,]
+      key: [Char: "b",]
+    - action: [SwitchToMode: move,]
+      key: [Char: "m",]
+    - action: [SwitchToMode: resize,]
+      key: [Char: "r",]
+    - action: [SwitchToMode: scroll,]
+      key: [Char: "k", Char: "c",]
+
+    # actions
+
+    - action: [Detach,]
+      key: [Char: "d",]
+
+    # nav
+    - action: [MoveFocus: Down, SwitchToMode: locked,]
+      key: [Char: "j",]
+    - action: [MoveFocus: Up, SwitchToMode: locked,]
+      key: [Char: "k",]
+    - action: [MoveFocus: Left, SwitchToMode: locked,]
+      key: [Char: "h",]
+    - action: [MoveFocus: Right, SwitchToMode: locked,]
+      key: [Char: "l",]
+
+    # tabs
+    - action: [GoToPreviousTab, SwitchToMode: locked,]
+      key: [Char: "p",]
+    - action: [GoToNextTab, SwitchToMode: locked,]
+      key: [Char: "n",]
+    - action: [ToggleTab, SwitchToMode: locked,]
+      key: [Char: "\t"]
+    - action: [GoToTab: 1, SwitchToMode: locked,]
+      key: [Char: "1",]
+    - action: [GoToTab: 2, SwitchToMode: locked,]
+      key: [Char: "2",]
+    - action: [GoToTab: 3, SwitchToMode: locked,]
+      key: [Char: "3",]
+    - action: [GoToTab: 4, SwitchToMode: locked,]
+      key: [Char: "4",]
+    - action: [GoToTab: 5, SwitchToMode: locked,]
+      key: [Char: "5",]
+    - action: [GoToTab: 6, SwitchToMode: locked,]
+      key: [Char: "6",]
+    - action: [GoToTab: 7, SwitchToMode: locked,]
+      key: [Char: "7",]
+    - action: [GoToTab: 8, SwitchToMode: locked,]
+      key: [Char: "8",]
+    - action: [GoToTab: 9, SwitchToMode: locked,]
+      key: [Char: "9",]
+
+    # resize
+    - action: [ToggleFocusFullscreen, SwitchToMode: locked,]
+      key: [Char: "z",]
+    - action: [Resize: Increase, SwitchToMode: locked,]
+      key: [Char: "+", Char: "=",]
+    - action: [Resize: Decrease, SwitchToMode: locked,]
+      key: [Char: "-",]
+    - action: [SwitchToMode: resize, Resize: Down,]
+      key: [Char: "J",]
+    - action: [SwitchToMode: resize, Resize: Up,]
+      key: [Char: "K",]
+    - action: [SwitchToMode: resize, Resize: Left,]
+      key: [Char: "H",]
+    - action: [SwitchToMode: resize, Resize: Right,]
+      key: [Char: "L",]
+
+  session:
+    # return
+    - action: [SwitchToMode: locked,]
+      key: [Esc, Char: "q"]
+    - action: [SwitchToMode: normal,]
+      key: [Char: "\n"]
+
+    - action: [Detach,]
+      key: [Char: "d",]
+    - action: [Quit,]
+      key: [Char: "c",]
+
+  tab:
+    # return
+    - action: [SwitchToMode: locked,]
+      key: [Esc, Char: "q"]
+    - action: [SwitchToMode: normal,]
+      key: [Char: "\n"]
+
+    - action: [SwitchToMode: renametab,]
+      key: [Char: "r",]
+    - action: [SwitchToMode: renametab, TabNameInput: [0],]
+      key: [Char: "R",]
+    - action: [NewTab: , SwitchToMode: locked,]
+      key: [Char: "n",]
+    - action: [NewTab: ,]
+      key: [Char: "N",]
+    - action: [CloseTab, SwitchToMode: locked,]
+      key: [Char: "c",]
+    - action: [CloseTab,]
+      key: [Char: "C",]
+    - action: [GoToPreviousTab,]
+      key: [Char: "h",]
+    - action: [GoToNextTab,]
+      key: [Char: "l",]
+    - action: [GoToTab: 1, SwitchToMode: locked,]
+      key: [Char: "1",]
+    - action: [GoToTab: 2, SwitchToMode: locked,]
+      key: [Char: "2",]
+    - action: [GoToTab: 3, SwitchToMode: locked,]
+      key: [Char: "3",]
+    - action: [GoToTab: 4, SwitchToMode: locked,]
+      key: [Char: "4",]
+    - action: [GoToTab: 5, SwitchToMode: locked,]
+      key: [Char: "5",]
+    - action: [GoToTab: 6, SwitchToMode: locked,]
+      key: [Char: "6",]
+    - action: [GoToTab: 7, SwitchToMode: locked,]
+      key: [Char: "7",]
+    - action: [GoToTab: 8, SwitchToMode: locked,]
+      key: [Char: "8",]
+    - action: [GoToTab: 9, SwitchToMode: locked,]
+      key: [Char: "9",]
+    - action: [ToggleActiveSyncTab, SwitchToMode: locked,]
+      key: [Char: "s"]
+
+  pane:
+    # return
+    - action: [SwitchToMode: locked,]
+      key: [Esc, Char: "q"]
+    - action: [SwitchToMode: normal,]
+      key: [Char: "\n"]
+
+    - action: [SwitchToMode: renamepane,]
+      key: [Char: "r",]
+    - action: [SwitchToMode: renamepane, PaneNameInput: [0],]
+      key: [Char: "R",]
+    - action: [NewPane: , SwitchToMode: locked,]
+      key: [Char: "n",]
+    - action: [NewPane: Down, SwitchToMode: locked,]
+      key: [Char: "j",]
+    - action: [NewPane: Up, SwitchToMode: locked,]
+      key: [Char: "k",]
+    - action: [NewPane: Left, SwitchToMode: locked,]
+      key: [Char: "h",]
+    - action: [NewPane: Right, SwitchToMode: locked,]
+      key: [Char: "l",]
+    - action: [CloseFocus: , SwitchToMode: locked,]
+      key: [Char: "c",]
+    - action: [ToggleFocusFullscreen, SwitchToMode: locked,]
+      key: [Char: "z",]
+    - action: [MovePane: Down, SwitchToMode: locked,]
+      key: [Char: "J",]
+    - action: [MovePane: Up, SwitchToMode: locked,]
+      key: [Char: "K",]
+    - action: [MovePane: Left, SwitchToMode: locked,]
+      key: [Char: "H",]
+    - action: [MovePane: Right, SwitchToMode: locked,]
+      key: [Char: "L",]
+
+  move:
+    # return
+    - action: [SwitchToMode: locked,]
+      key: [Esc, Char: "q"]
+    - action: [SwitchToMode: normal,]
+      key: [Char: "\n"]
+
+    - action: [MovePane: Down,]
+      key: [Char: "j",]
+    - action: [MovePane: Up,]
+      key: [Char: "k",]
+    - action: [MovePane: Left,]
+      key: [Char: "h",]
+    - action: [MovePane: Right,]
+      key: [Char: "l",]
+
+  resize:
+    # return
+    - action: [SwitchToMode: locked,]
+      key: [Esc, Char: "q"]
+    - action: [SwitchToMode: normal,]
+      key: [Char: "\n"]
+
+    - action: [Resize: Down,]
+      key: [Char: "j",]
+    - action: [Resize: Up,]
+      key: [Char: "k",]
+    - action: [Resize: Left,]
+      key: [Char: "h",]
+    - action: [Resize: Right,]
+      key: [Char: "l",]
+    - action: [Resize: Down,]
+      key: [Char: "J",]
+    - action: [Resize: Up,]
+      key: [Char: "K",]
+    - action: [Resize: Left,]
+      key: [Char: "H",]
+    - action: [Resize: Right,]
+      key: [Char: "L",]
+    - action: [Resize: Increase,]
+      key: [Char: "+", Char: "=", Char: "i",]
+    - action: [Resize: Decrease,]
+      key: [Char: "-", Char: "d",]
+
+  scroll:
+    # return
+    - action: [SwitchToMode: locked,]
+      key: [Esc, Char: "q"]
+    - action: [SwitchToMode: normal,]
+      key: [Char: "\n"]
+
+    - action: [ScrollDown,]
+      key: [Char: "j", Down,]
+    - action: [ScrollUp,]
+      key: [Char: "k", Up,]
+    - action: [PageScrollDown,]
+      key: [Ctrl: "f", Char: "f", PageDown, Right, Char: "l",]
+    - action: [PageScrollUp,]
+      key: [Ctrl: "f", Char: "b", PageUp, Left, Char: "h",]
+    - action: [HalfPageScrollDown,]
+      key: [Ctrl: "d", Char: "d",]
+    - action: [HalfPageScrollUp,]
+      key: [Ctrl: "u", Char: "u",]
+
+  renametab:
+    # return
+    - action: [SwitchToMode: locked,]
+      key: [Esc, Char: "\n"]
+
+  renamepane:
+    # return
+    - action: [SwitchToMode: locked,]
+      key: [Esc, Char: "\n"]
+
+plugins:
+  - path: tab-bar
+    tag: tab-bar
+  - path: status-bar
+    tag: status-bar
+  - path: strider
+    tag: strider

@@ -1,3 +1,7 @@
+local configs = require "nvim-treesitter.configs"
+local lsp = require "lspconfig"
+local lspUtils = require "lspconfig.util"
+
 --
 -- settings
 --
@@ -8,8 +12,6 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 --
 -- syntax
 --
-
-local configs = require "nvim-treesitter.configs"
 
 configs.setup {
 	ensure_installed = {
@@ -35,18 +37,61 @@ configs.setup {
 
 		"nu",
 	},
+
 	highlight = { enable = true },
 	incremental_selection = { enable = true },
 	indent = { enable = true },
-	textobjects = { enable = true },
+
+	textobjects = {
+		select = {
+			enable = true,
+
+			lookahead = true,
+
+			keymaps = {
+				["if"] = "@function.inner",
+				["af"] = "@function.outer",
+				["ic"] = "@class.inner",
+				["ac"] = "@class.outer",
+				["ia"] = "@parameter.inner",
+				["aa"] = "@parameter.outer",
+				["iC"] = "@conditional.inner",
+				["aC"] = "@conditional.outer",
+				["i/"] = "@comment.outer",
+				["a/"] = "@comment.outer",
+			},
+		},
+
+		swap = {},
+
+		move = {
+			enable = true,
+
+			set_jumps = true,
+
+			goto_next_start = {
+				["]m"] = "@function.outer",
+				["]]"] = "@class.outer",
+			},
+			goto_next_end = {
+				["]M"] = "@function.outer",
+				["]["] = "@class.outer",
+			},
+			goto_previous_start = {
+				["[m"] = "@function.outer",
+				["[["] = "@class.outer",
+			},
+			goto_previous_end = {
+				["[M"] = "@function.outer",
+				["[]"] = "@class.outer",
+			},
+		},
+	},
 }
 
 --
 -- LSP
 --
-
-local lsp = require "lspconfig"
-local lspUtils = require "lspconfig.util"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)

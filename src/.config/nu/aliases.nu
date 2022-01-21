@@ -24,6 +24,9 @@ alias tigr = tig \$(git rev-parse HEAD)..\$(git rev-parse FETCH_HEAD)
 # tmux
 alias tl = tmux list-sessions
 
+# zellij
+alias z = zellij
+
 ##
 ## MISC
 ##

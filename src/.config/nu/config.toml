@@ -43,6 +43,8 @@ tab_width = 2
 true_color = true
 use_italics = true
 vcs_modification_markers = true
+pager = "less"
+paging_mode = "QuitIfOneScreen"
 
 [env]
 
