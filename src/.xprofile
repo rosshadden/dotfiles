@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export GTK_PATH=$HOME/.gtk-2.0/modules
+export GTK_PATH=$HOME/.gtk-modules
 export GTK_MODULES=vi
 
 # startup script

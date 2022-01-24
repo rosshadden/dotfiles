@@ -19,6 +19,7 @@ local plugins = function(use)
 
 	-- navigation
 	use { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } }
+	use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 	use "phaazon/hop.nvim"
 	use "bendk/polyword.vim"
 
@@ -32,6 +33,7 @@ local plugins = function(use)
 
 	-- ui
 	use "RRethy/nvim-base16"
+	use "kyazdani42/nvim-web-devicons"
 
 	-- languages
 	use { "LhKipp/nvim-nu", run = ":TSInstall nu" }

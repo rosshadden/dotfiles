@@ -1,3 +1,4 @@
+local ts = require("telescope")
 local telescope = require("telescope.builtin")
 local actions = require("telescope.actions")
 
@@ -14,7 +15,7 @@ vim.keymap.set("n", "<plug><telescope><space>", telescope.builtin, { silent = tr
 -- SETUP
 --
 
-require("telescope").setup {
+ts.setup {
 	defaults = {
 		mappings = {
 			n = {
@@ -30,6 +31,7 @@ require("telescope").setup {
 				["<c-l>"] = actions.select_vertical,
 			},
 		},
+
 		vimgrep_arguments = {
 			"rg",
 			"--color=never",
@@ -41,6 +43,7 @@ require("telescope").setup {
 			"--hidden", -- added
 		},
 	},
+
 	pickers = {
 		find_files = {
 			hidden = true,
@@ -48,3 +51,4 @@ require("telescope").setup {
 	},
 }
 
+ts.load_extension("fzf")

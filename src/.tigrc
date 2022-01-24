@@ -334,6 +334,8 @@ bind generic <esc>e !ranger --selectfile=%(file)
 bind status <esc>a !git amend
 bind status <esc>A !git amend -e
 
+# tag commit
+bind main T !@git tag %(prompt) %(commit)
 
 # Colors
 # ------

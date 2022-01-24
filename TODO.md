@@ -6,7 +6,6 @@
 - look into [these dotfiles](https://github.com/xero/dotfiles) for sexiness
 - consider moving systemd stuff to sync, or vice versa
 - move startup things to systemd
-- make tropes/mappings consistent across programs
 - consider organizing into apps, with a general misc catch-all app for ~ and ~/.config
 
 ## dots
@@ -34,59 +33,36 @@
 - git aliases
 - i3 workflow
 - tig workflow
-- ranger workflow
 
 # apps
 
 ## vim
 
-- replace neosnippets with coc-snippets
-- figure out where I can use `on_cmd` in `packages.vim`
-- conditionally include packages, based on dependencies
-	- @ex taskwarrior (even though I've since removed this)
 - modes
-	- javascript
+	- tests
 		- make mappings for opening the test for the current file (and vice versa)
-			- hopefully use `portkey`, but it'll need a global default file
 	- buffer
 		- mapping to delete all unused/hidden buffers (not just empty)
-	- files
-		- mapping that uses `ranger` to insert a (relative) path to the selected file
-		- make a mapping or mode for finding files not in the repo
 	- diff
 		- :LineDiff
 		- :DiffChanges
 		- :git diff
 	- sessions
 		- fix and/or make stuff that actually works
-	- ember? or nah
-- plugins
-	- [pluginify my modes](http://stevelosh.com/blog/2011/09/writing-vim-plugins/#mapping-keys-the-right-way)
-	- pluginify `ranger` stuff
-	- pluginify other stuff
-	- see if I can make [this](https://github.com/easymotion/vim-easymotion/issues/248#issuecomment-156444426) happen
-		- map `.` in target select mode
+- [pluginify my modes](https://stevelosh.com/blog/2011/09/writing-vim-plugins/#s6-mapping-keys-the-right-way)
 
 ## i3
 
-- mute specific windows
-- make the 2nd `i3lock` thing blur my background
 - make playerctl player changeable
 - modes
 	- break out modes into separate files
 		- add a generated help notification for each mode, on `?`
-	- clipboard management
-	- `[tmux]m` for music/media/muse, whatever
 - universalize the media/resize/move increments and whatnot
 	- make sure there are mappings for both big and small increments
-- integrate `tp`
-- integrate dunst
 - integrate todoist
 
 ## tmux
 
-- make function that evenly resizes panes
-- rewrite or change tmux-urlview, to use `fzf`
 - use `choose-session` to pick a session to link current session to
 
 ### tp
@@ -96,13 +72,11 @@
 - add option to `ta` and `tp` to `j`ump to the directory and make the session name the destination dir
 	- should possibly share code with `tp` and `ta`, to determine the session name
 - universalize all of the `tl`, `ta`, `tp`, etc things, into one binary
+	- `t p`, `t l`, etc.
 
 ## tig
 
-- spend time making it even more useful
-- universalize mappings
-- fix opening files in neovim
-- investigate [wiki binds](https://github.com/jonas/tig/wiki/Bindings)
+- fix opening files in neovim (again)
 - mappings
 	- scrap
 	- stash / pop
@@ -113,58 +87,14 @@
 		- add tags to the list branch
 	- add mappings to wiki
 
-## ranger
-
-- support an easier deletion, like how `vifm` does it using `trash-cli`
-- mapping to rename with vim
-
-## fzf
-
-- either:
-	- make a binary, like `f` or `r`
-	- or, make a consistent prefix, like `fcd`, `f-cd`, or `fzf-cd`
-- make convenient wrappers
-	- `cd`
-	- `j`
-- maybe this is all `awmni`'s responsibility...
-
-## rofi
-
-- migrate theme to themes dir, and load through `rofi.theme`
-
 ## copyq
 
 - make it use my dotfiles theme
 - figure out why URLs are duplicated
 
-## zeal
-
-- integrate into workflow
-- figure out wtf keeps going wrong with the i3 shortcut, and fix it
-
-## dunst
-
-- make context menu entry for copying contents to clipboard
-
 # shell
 
-- wrap aliases and functions in `if [[ -x \`which <cmd>\` ]]` blocks
-- make things more modular
-- handle zsh- and bash- specific things better
-	- `shell/features.sh`, and `shell/features.zsh`
-- revisit aliases
-	- introduce `ls -1`
 - add `-n` arg to `copy` to strip out `\n`s
-
-## zsh
-
-- vet using zplug for loading local modules
-- refactor `.zshrc`
-	- make semantic modules instead of a file for aliases and a file for functions (for example)
-	- split `features.zsh` into files
-	- look into [built-in functions](https://github.com/zsh-users/zsh/tree/master/Functions/Zle)
-	- look into [better status indicator](http://ivyl.0xcafe.eu/2013/02/03/refining-zsh/#vi_mode_status_indicator)
-- make mapping to insert newline at cursor
 
 ## for-{in,of}
 
@@ -178,9 +108,6 @@
 ## keys
 
 - vet breaking out into separate repo
-- use something better than `grp:shifts_toggle` in `keys`
-- only run `xcape` over `CapsLock`, not `Control_L`
-	- for some reason this doesn't work as expected, though I'm not sure why
 
 # awmni / owmni
 
