@@ -22,6 +22,7 @@ path = [
 	"/usr/lib/jvm/java-7-openjdk/jre/bin",
 
 	# domain
+	"/home/ross/dev/bin",
 	"/home/ross/dev/reaction/bin",
 	"/home/ross/dev/mailchimp/bin",
 ]
