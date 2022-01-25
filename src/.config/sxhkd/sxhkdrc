@@ -74,11 +74,11 @@ control + shift + super + alt + m
 
 # playback
 XF86AudioPlay
-	playerctl play-pause
+	playerctl --player=%any,chromium play-pause
 XF86AudioNext
-	playerctl next
+	playerctl --player=%any,chromium next
 XF86AudioPrev
-	playerctl previous
+	playerctl --player=%any,chromium previous
 
 # brightness
 XF86MonBrightnessUp
@@ -115,7 +115,7 @@ control + shift + Print
 	~/bin/screenshot full
 
 shift + super + alt + {button1,button6,button7}
-	playerctl {play-pause,previous,next}
+	playerctl --player=%any,chromium {play-pause,previous,next}
 
 shift + super + alt + {button2,button3,button4,button5}
 	~/dotfiles/bin/config {volume !, mic !, volume +5,volume -5}

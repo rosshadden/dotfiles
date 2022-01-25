@@ -20,6 +20,7 @@ local config = {
 	-- startup
 	-- default_prog = { "/usr/bin/nu", "-l" },
 	default_gui_startup_args = { "connect", "unix" },
+	term = "wezterm",
 
 	-- fonts
 	font_size = 10,

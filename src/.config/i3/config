@@ -63,10 +63,10 @@ set $return mode "PREFIX"
 set $exit mode "default"
 
 # commands
-set $playCmd "playerctl play-pause"
-set $stopCmd "playerctl stop"
-set $nextCmd "playerctl next"
-set $prevCmd "playerctl previous"
+set $playCmd "playerctl --player=%any,chromium play-pause"
+set $stopCmd "playerctl --player=%any,chromium stop"
+set $nextCmd "playerctl --player=%any,chromium next"
+set $prevCmd "playerctl --player=%any,chromium previous"
 
 # default apps
 set $terminal ~/bin/termoil
@@ -740,7 +740,7 @@ mode "MEDIA" {
 	bindsym $right exec $nextCmd; $exit
 	bindsym Right exec $nextCmd; $exit
 	bindsym $left exec $prevCmd; $exit
-	bindsym Control+h exec playerctl position 0; $exit
+	bindsym Control+h exec playerctl --player=%any,chromium position 0; $exit
 	bindsym Left exec $prevCmd; $exit
 	bindsym s exec $stopCmd; $exit
 

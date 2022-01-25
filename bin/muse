@@ -1,32 +1,28 @@
 #!/usr/bin/env bash
 
 ################################
-# Control and query media
+# Query media
 #
 # Dependencies:
 # - [playerctl](https://github.com/acrisci/playerctl)
 ################################
 
-muse() {
+function main() {
 	local players="$(playerctl -l)"
 	if [[ ! $players ]]; then exit 0; fi
 
-	local action="${1:-query}"
+	declare -A icons
+	icons["Playing"]=""
+	icons["Paused"]=""
+	icons["Stopped"]=""
 
-	if [[ $action == "query" ]]; then
-		declare -A icons
-		icons["Playing"]=""
-		icons["Paused"]=""
-		icons["Stopped"]=""
+	local artist="$(playerctl --player=%any,chromium metadata artist 2>/dev/null)"
+	local title="$(playerctl --player=%any,chromium metadata title 2>/dev/null)"
+	local album="$(playerctl --player=%any,chromium metadata album 2>/dev/null)"
+	local status="$(playerctl --player=%any,chromium status 2>/dev/null)"
+	local icon="${icons[$status]}"
 
-		local artist="$(playerctl metadata artist 2>/dev/null)"
-		local title="$(playerctl metadata title 2>/dev/null)"
-		local album="$(playerctl metadata album 2>/dev/null)"
-		local status="$(playerctl status 2>/dev/null)"
-		local icon="${icons[$status]}"
-
-		echo "$icon $artist - $title"
-	fi
+	echo "$icon $artist - $title"
 }
 
-muse "$@"
+main "$@"

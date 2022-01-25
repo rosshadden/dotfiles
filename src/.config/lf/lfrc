@@ -58,6 +58,7 @@ map yp ${{ echo -n $f | copy }}
 map yf ${{ basename -- $f | trim | copy }}
 
 # open
+map <enter> open
 map L rifle
 map x $$f
 map X !$f
