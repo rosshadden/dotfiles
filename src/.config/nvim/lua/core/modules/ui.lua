@@ -9,9 +9,14 @@ vim.opt.number = true
 require("base16-colorscheme").setup("paraiso")
 
 vim.cmd [[
+	" transparency
 	highlight Normal guibg=none
+	highlight NormalNC guibg=none
+	highlight NormalFloat guibg=none
 	highlight LineNr guibg=none
 	highlight SignColumn guibg=none
+
+	" search
 	highlight Search guibg=#41323f guifg=#fec418
 	highlight IncSearch guibg=#41323f guifg=#ef6155
 ]]

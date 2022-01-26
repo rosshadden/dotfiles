@@ -143,9 +143,9 @@ super + w
 
 # open killer
 super + x
-	kill $(ps -u $USER -o pid,command | tail -n +2 | rofi -dmenu -multi-select -p 'kill' | cut -d' ' -f1)
+	kill (^ps -u $nu.env.USER -o pid,command | tail -n +2 | rofi -dmenu -multi-select -p "kill" | split column -c ' ' pid | get pid | str to-int)
 super + shift + x
-	kill -9 $(ps -u $USER -o pid,command | tail -n +2 | rofi -dmenu -multi-select -p 'kill' | cut -d' ' -f1)
+	kill -f (^ps -u $nu.env.USER -o pid,command | tail -n +2 | rofi -dmenu -multi-select -p "kill" | split column -c ' ' pid | get pid | str to-int)
 
 # lock screen
 XF86Launch8
