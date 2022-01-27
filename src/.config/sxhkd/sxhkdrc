@@ -129,6 +129,10 @@ shift + super + alt + {button2,button3,button4,button5}
 super + r
 	rofi -show run -sidebar-mode
 
+# type history
+super + shift + r
+	history | reverse | str collect (char nl) | rofi -dmenu | xte ($"str(char space)($in)")
+
 # open launcher
 super + o
 	rofi -show drun -p 'launch: '

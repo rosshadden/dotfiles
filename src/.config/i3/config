@@ -203,7 +203,7 @@ bindsym $super+s mark LAST; scratchpad show
 bindsym $super+Shift+s move scratchpad
 
 # modes
-bindsym $super+space $return
+bindsym $super+$alt+space $return
 bindsym $super+shift+m mode "MARK"
 bindsym $super+apostrophe mode "GOTO"
 # TODO: [y] yank
@@ -237,7 +237,7 @@ $return {
 	bindsym Shift+p mode "PASS"
 	bindsym Shift+r mode "MOVE"
 
-	bindsym $super+space $exit
+	bindsym $super+$alt+space $exit
 	bindsym Escape $exit
 }
 
@@ -245,7 +245,7 @@ mode "BUFFER" {
 	bindsym c kill; $exit
 	bindsym r exec i3-input -P 'Rename container: ' -F 'title_format %s'; $exit
 
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
@@ -254,7 +254,7 @@ mode "CLIPBOARD" {
 
 	bindsym p $exit; exec sleep 0.1 && xdotool type --clearmodifiers --delay 0 -- "$(xsel)"
 
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
@@ -359,7 +359,7 @@ mode "MARK" {
 	bindsym w exec notify-send "Reserved: web";    $exit
 
 	# exit
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
@@ -435,7 +435,7 @@ mode "GOTO" {
 	bindsym w mark LAST; [class="Google-chrome"] focus; $exit
 
 	# exit
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
@@ -447,7 +447,7 @@ mode "I3" {
 	# exit i3 (logs you out of your X session)
 	bindsym q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"; $exit
 
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
@@ -479,7 +479,7 @@ mode "TMUX" {
 
 	# TODO: open preset for the current workspace
 
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
@@ -521,7 +521,7 @@ mode "SYSTEM" {
 	# bluetooth
 	bindsym b exec ~/bin/config bluetooth; $exit
 
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
@@ -554,7 +554,7 @@ mode "RESIZE" {
 
 	bindsym space move right; resize shrink width 36 px or 36 ppt
 
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
@@ -585,7 +585,7 @@ mode "MOVE" {
 	bindsym Control+Shift+$left move left 64 px
 	bindsym Control+Shift+$right move right 64 px
 
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
@@ -621,7 +621,7 @@ mode "LAYOUT" {
 	# borders
 	bindsym b mode "BORDER"
 
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
@@ -633,7 +633,7 @@ mode "BORDER" {
 	bindsym 1 border 1pixel; $exit
 	bindsym 2 border normal; $exit
 
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
@@ -642,7 +642,7 @@ mode "GAPS" {
 	bindsym i mode "GAPS-INNER"
 	bindsym 0 gaps outer current set 0; gaps inner current set 0; $exit
 	bindsym Shift+0 gaps outer all set 0; gaps inner all set 0; $exit
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
@@ -655,7 +655,7 @@ mode "GAPS-OUTER" {
 	bindsym Shift+minus gaps outer all minus 5
 	bindsym Shift+0     gaps outer all set 0
 
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
@@ -668,7 +668,7 @@ mode "GAPS-INNER" {
 	bindsym Shift+minus gaps inner all minus 5
 	bindsym Shift+0     gaps inner all set 0
 
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
@@ -709,7 +709,7 @@ mode "MOUSE" {
 	bindsym Control+$left exec $(xdotool mousemove_relative -- -512    0)
 	bindsym Control+$right exec $(xdotool mousemove_relative --  512    0)
 
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
@@ -766,7 +766,7 @@ mode "MEDIA" {
 	bindsym F6 exec $playCmd
 	bindsym F7 exec $nextCmd
 
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
@@ -774,7 +774,7 @@ mode "PROJECTS" {
 	bindsym space exec i3-input -P 'Open project: ' -F 'exec ~/bin/tp %s'; $exit
 	bindsym Shift+space exec i3-input -P 'Open project: ' -F 'exec ~/bin/tp %s'; $exit
 
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
@@ -811,19 +811,19 @@ mode "APPS" {
 	bindsym e exec $(rofimoji --action=copy --skin-tone=neutral); $exit
 	bindsym u exec $(~/bin/dmenu-uni all); $exit
 
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
 mode "PASS" {
 	bindsym space exec $(passmenu); $exit
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 
 mode "PIDGIN" {
 	bindsym space mark LAST; exec $(~/bin/purple | rofi -dmenu -p "IM:" -i | xargs -I $ ~/bin/purple '$'); $exit
-	bindsym $super+space $return
+	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }
 

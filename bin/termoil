@@ -4,9 +4,11 @@
 ##
 # Normalizes running terminals with a specific command.
 #
-# Usage: termoil -- echo hi
+# Usage:
+#   termoil -- echo hi
+#   echo "echo hi" | termoil
 ##
-function termoil() {
+function main() {
 	local term="i3-sensible-terminal"
 
 	local spec=":t:"
@@ -30,4 +32,8 @@ function termoil() {
 	fi
 }
 
-termoil "$@"
+if has-pipe; then
+	main "$1" -c "$(cat)"
+else
+	main "$@"
+fi

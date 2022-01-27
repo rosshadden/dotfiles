@@ -12,6 +12,15 @@ vim.opt.spelllang = "en_us"
 vim.opt.wrap = false
 
 --
+-- MAPPINGS
+--
+
+-- prefix
+vim.keymap.set("n", "<space>S", "<plug><surround>", { silent = true })
+
+vim.keymap.set("n", "S", "s$", { silent = true, remap = true })
+
+--
 -- SETUP
 --
 

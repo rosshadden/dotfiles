@@ -18,7 +18,6 @@ end
 -- prefix
 vim.keymap.set("", "<space>p", "<plug><put-in-motion>", { silent = true })
 vim.keymap.set("", "<space>s", "<plug><sort-in-motion>", { silent = true })
-vim.keymap.set("n", "<space>S", "<plug><surround>", { silent = true })
 vim.keymap.set("n", "<space>m", "<plug><polyword>", { silent = true })
 
 -- miniword

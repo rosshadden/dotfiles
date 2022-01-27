@@ -6,6 +6,8 @@
 set hidden
 set shellopts "-eu"
 
+set shell bash
+
 # ui
 set number
 set drawbox
@@ -63,9 +65,22 @@ map L rifle
 map x $$f
 map X !$f
 
-# debug
+# toggle previews
+cmd togglePreview ${{
+	if [ $lf_preview == true ]; then
+		lf -remote "send $id set nopreview"
+		lf -remote "send $id set ratios 1"
+		lf -remote "send $id set info size:time"
+	else
+		lf -remote "send $id set ratios 1:2:3"
+		lf -remote "send $id set info"
+		lf -remote "send $id set preview"
+	fi
+}}
+map ~ togglePreview
+
+# reload config
 map ,r source ~/.config/lf/lfrc
-map <backspace2> debug
 
 # integrations
 
@@ -118,9 +133,16 @@ cmd rifle ${{
 	rifle -p $runner $f
 }}
 
+# get config value
+cmd get ${{
+	option="lf_${1}"
+	value="${!option}"
+	lf -remote "send $id echo $value"
+}}
+
 # debug
 cmd debug ${{
-	echo debug
+	lf -remote "send $id echo $1"
 }}
 
 # vim: ft=bash

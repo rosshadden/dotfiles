@@ -1,5 +1,5 @@
 # make gpg open in-terminal dialog
-let-env GPG_TTY = (tty | str trim)
+let-env GPG_TTY = (if ($nu.env | select GPG_TTY | empty?) { tty | str trim } { $nu.env.GPG_TTY })
 
 let-env FZF_DEFAULT_COMMAND = "fd --type file --hidden --follow"
 let-env FZF_DEFAULT_OPTS = ([

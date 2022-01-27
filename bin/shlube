@@ -5,7 +5,9 @@
 #
 # TODO: make use parent shell by default
 #
-# Usage: shlube zsh -- echo hi
+# Usage:
+#   shlube zsh -- echo hi
+#   echo "echo hi" | shlube nu
 ##
 function main() {
 	local shell="$1"
@@ -13,4 +15,8 @@ function main() {
 	$shell -c "$(echo "$@")"
 }
 
-main "$@"
+if has-pipe; then
+	main "$1" -c "$(cat)"
+else
+	main "$@"
+fi

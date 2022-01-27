@@ -18,6 +18,14 @@ if [ -n "$TMUX" ]; then
 	exit
 fi
 
+# Join existing session if it already exists
+if tmux list-sessions | grep "^${name}:"; then
+	echo "Session already exists, nerd."
+	echo "Attaching to: $name"
+	tmux attach -t "$name"
+	exit
+fi
+
 path=${2:-$(fasd -d "$name")}
 path=${path:-.}
 

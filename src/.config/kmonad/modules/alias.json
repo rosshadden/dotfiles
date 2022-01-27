@@ -1,7 +1,7 @@
 {
 	"aliases": {
 		"xcp": "(tap-hold-next-release 100 esc ctl)",
-		"xsu": "(tap-hold-next-release 100 M-spc lmet)",
+		"xsu": "(tap-hold-next-release 100 M-A-spc lmet)",
 		"xtp": "(tap-hold-next-release 100 C-spc ctl)",
 
 		"dvk": "(layer-switch dvorak)",
