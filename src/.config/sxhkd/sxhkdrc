@@ -129,9 +129,11 @@ shift + super + alt + {button2,button3,button4,button5}
 super + r
 	rofi -show run -sidebar-mode
 
-# type history
+# shell history
 super + shift + r
-	history | reverse | str collect (char nl) | rofi -dmenu | xte ($"str(char space)($in)")
+	history | reverse | uniq | str collect (char nl) | rofi -dmenu | xte ($"str(char space)($in)")
+super + shift + alt + r
+	zsh -c "source ~/.zshrc; fc -R; fc -lrn 1" | rofi -dmenu | xte ($"str(char space)($in)")
 
 # open launcher
 super + o
@@ -167,19 +169,19 @@ control + XF86Launch8
 
 # terminal
 super + Return
-	~/bin/termoil
+	termoil
 
 # terminal + tmux
 super + shift + Return
-	~/bin/termoil -- tmux -u
+	termoil -- tmux -u
 
 # write to clipboard
 super + e
-	~/bin/termoil -- vimmer
+	termoil -- vimmer
 
 # write to clipboard, starting with SELECTION clipboard
 super + shift + e
-	~/bin/termoil -- vimmer -p
+	termoil -- vimmer -p
 
 # volume gui
 super + v

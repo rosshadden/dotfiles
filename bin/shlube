@@ -11,12 +11,13 @@
 ##
 function main() {
 	local shell="$1"
-	shift 2
+	shift 1
+	if [ "$1" == "--" ]; then shift 1; fi
 	$shell -c "$(echo "$@")"
 }
 
 if has-pipe; then
-	main "$1" -c "$(cat)"
+	main "$1" "$(cat)"
 else
 	main "$@"
 fi

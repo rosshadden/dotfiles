@@ -8,9 +8,9 @@ path = [
 
 	# system
 	"/usr/local/bin",
-	"/usr/sbin",
-	"/usr/local/sbin",
 	"/usr/bin",
+	"/usr/local/sbin",
+	"/usr/sbin",
 
 	# lang
 	"/home/ross/.nimble/bin",
@@ -55,6 +55,8 @@ paging_mode = "QuitIfOneScreen"
 
 EDITOR = "nvim"
 BROWSER = "google-chrome-stable"
+# KEYBOARD = "/dev/input/by-id/usb-Razer_Razer_BlackWidow_Ultimate-event-kbd"
+KEYBOARD = "/dev/input/by-id/usb-Razer_Razer_BlackWidow_Ultimate-if01-event-kbd"
 
 ##
 ## apps

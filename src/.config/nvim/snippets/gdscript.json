@@ -1,0 +1,16 @@
+{
+	"print": {
+		"prefix": "p",
+		"body": [ "prints(${2:\"${3:$1}\", $1})" ]
+	},
+
+	"print plain": {
+		"prefix": "pp",
+		"body": [ "prints($0)" ]
+	},
+
+	"print text": {
+		"prefix": "pt",
+		"body": [ "prints(\"$0\")" ]
+	}
+}

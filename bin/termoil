@@ -22,7 +22,7 @@ function main() {
 	shift $((OPTIND - 1))
 
 	if [[ "$*" ]]; then
-		if [ "$term" == "kitty "]; then
+		if [ "$term" == "kitty" ]; then
 			$term -- $(echo "$@")
 		else
 			$term -e "$(echo "$@")"
@@ -32,8 +32,4 @@ function main() {
 	fi
 }
 
-if has-pipe; then
-	main "$1" -c "$(cat)"
-else
-	main "$@"
-fi
+main "${@:-$(cat)}"

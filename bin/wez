@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-function wez() {
+function main() {
 	wezterm start -- $(echo "$@")
 }
 
-wez "$@"
+main "$@"

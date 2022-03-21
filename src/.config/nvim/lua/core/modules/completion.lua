@@ -41,9 +41,10 @@ cmp.setup({
 		end,
 	},
 
-	-- NOTE: cmp-cmdline has a weird bug, so this bypasses it for now
 	experimental = {
-		native_menu = true,
+		ghost_text = true,
+		-- NOTE: cmp-cmdline has a weird bug, so this bypasses it for now
+		view = { entries = "native" },
 	},
 
 	mapping = {
@@ -82,16 +83,18 @@ cmp.setup({
 		{ name = "nvim_lua" },
 		{ name = "vsnip" },
 	}, {
-		{ name = "buffer" },
+		{ name = "neorg" },
+		{ name = "buffer", keyword_length = 5 },
 		{ name = "path" },
+		{ name = "emoji" },
 	}),
 })
 
 -- search completion
 cmp.setup.cmdline("/", {
-	sources = {
+	sources = cmp.config.sources({
 		{ name = "buffer" },
-	},
+	}),
 })
 
 -- command completion

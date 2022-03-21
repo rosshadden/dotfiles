@@ -1,12 +1,24 @@
 {
 	"print": {
 		"prefix": "p",
-		"body": [ "print($1${2:, $1})" ]
+		"body": [ "print(${2:\"${3:$1}\", $1})" ]
 	},
-	"print-line": {
-		"prefix": "pl",
+
+	"print plain": {
+		"prefix": "pp",
 		"body": [ "print($0)" ]
 	},
+
+	"print text": {
+		"prefix": "pt",
+		"body": [ "print(\"$0\")" ]
+	},
+
+	"print inspect": {
+		"prefix": "pi",
+		"body": [ "print(vim.inspect($0))" ]
+	},
+
 	"inspect": {
 		"prefix": "i",
 		"body": [ "vim.inspect($0)" ]

@@ -11,4 +11,4 @@ fi
 
 BASE16_SHELL="$themeDir/$BASE16_TYPE"
 
-[[ -f "$BASE16_SHELL" ]] && source $BASE16_SHELL
+# [[ -f "$BASE16_SHELL" ]] && source $BASE16_SHELL

@@ -424,9 +424,9 @@ mode "GOTO" {
 	# chat
 	bindsym c mark LAST; [title="(Buddy List|finch)"] focus; $exit
 	# editor
-	bindsym e mark LAST; [class="URxvt" title="VIM"] focus; $exit
+	bindsym e mark LAST; [title="VIM"] focus; $exit
 	# files
-	bindsym f mark LAST; [class="URxvt" title="ranger"] focus; $exit
+	bindsym f mark LAST; [title="lf"] focus; $exit
 	# music
 	bindsym m mark LAST; [title="(?i)music"] focus; $exit
 	# video
@@ -466,7 +466,7 @@ mode "TMUX" {
 	bindsym 2            mark LAST; workspace number 2 $wsDev;     exec $runTmux $nameDev -c ~/dev; $exit
 	bindsym 3            mark LAST; workspace number 3 $wsRemote;  exec $runTmux $nameRemote; $exit
 	bindsym 4            mark LAST; workspace number 4 $wsHack;    exec $runTmux $nameHack; $exit
-	bindsym 5            mark LAST; workspace number 5 $wsFiles;   exec $runTmux $nameFiles 'ranger'; $exit
+	bindsym 5            mark LAST; workspace number 5 $wsFiles;   exec $runTmux $nameFiles 'lf'; $exit
 	bindsym 6            mark LAST; workspace number 6 $wsMedia;   exec $runTmux $nameMedia 'ncmpcpp'; $exit
 	bindsym 7            mark LAST; workspace number 7 $wsLit;     exec $runTmux $nameLit -c ~/dev/lit; $exit
 	bindsym 8            mark LAST; workspace number 8 $wsMonitor; exec $runTmux $nameMonitor; $exit
@@ -894,7 +894,7 @@ assign [title="(Google Keep|todoist|DevDocs)" window_role="app"] → $numLit $ws
 
 # games
 for_window [class="dota2"] fullscreen
-for_window [instance="^Godot_Engine$"] floating enable
+for_window [class="^Godot_Engine$|^Godot_Editor$"] floating enable
 for_window [title="^Godot (Engine|Editor)(.*\.tscn| - Project Manager)$"] floating disable
 # for_window [class="^Dolphin-emu$|^Launch-faster-melee$|^Launch-fm$" title="^Dolphin$|^launch-faster-melee$"] floating toggle
 

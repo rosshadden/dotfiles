@@ -1,16 +1,40 @@
 local configs = require "nvim-treesitter.configs"
+local ft = require "Comment.ft"
 local lsp = require "lspconfig"
 local lspUtils = require "lspconfig.util"
+local parsers = require("nvim-treesitter.parsers").get_parser_configs()
 
 --
--- settings
+-- SETTINGS
 --
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
+ft.set("gdscript", "#%s")
+
 --
--- syntax
+-- SETUP
+--
+
+parsers.norg_meta = {
+	install_info = {
+		url = "https://github.com/nvim-neorg/tree-sitter-norg-meta",
+		files = { "src/parser.c" },
+		branch = "main",
+	},
+}
+
+parsers.norg_table = {
+	install_info = {
+		url = "https://github.com/nvim-neorg/tree-sitter-norg-table",
+		files = { "src/parser.c" },
+		branch = "main",
+	},
+}
+
+--
+-- SYNTAX
 --
 
 configs.setup {
@@ -20,6 +44,7 @@ configs.setup {
 		"c_sharp",
 		"clojure",
 		"cpp",
+		"css",
 		"dockerfile",
 		"gdscript",
 		"go",
@@ -27,7 +52,10 @@ configs.setup {
 		"html",
 		"javascript",
 		"json",
+		"kotlin",
 		"lua",
+		"markdown",
+		"norg",
 		"php",
 		"python",
 		"toml",
@@ -35,6 +63,9 @@ configs.setup {
 		"typescript",
 		"yaml",
 
+		-- custom
+		"norg_meta",
+		"norg_table",
 		"nu",
 	},
 
@@ -100,7 +131,7 @@ local onAttach = function(_, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
-local servers = { "gdscript", }
+local servers = { "gdscript", "tsserver", }
 for _, server in ipairs(servers) do
 	lsp[server].setup {
 		on_attach = onAttach,

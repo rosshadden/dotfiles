@@ -22,7 +22,7 @@ function keys() {
 	})
 
 	echo "$conf"
-	echo "$conf" | ${HOME}/local/bin/kmonad /dev/stdin
+	echo "$conf" | kmonad /dev/stdin
 }
 
 keys "$@"

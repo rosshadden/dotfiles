@@ -78,3 +78,6 @@ def put [
 	let flags = (if ($flags | empty?) { "--clipboard" } { $flags })
 	xsel -o $flags
 }
+
+def zshtory [] {
+}
