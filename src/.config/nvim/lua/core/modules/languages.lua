@@ -131,7 +131,12 @@ local onAttach = function(_, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
-local servers = { "gdscript", "tsserver", }
+local servers = {
+	"bashls",
+	"gdscript",
+	"gopls",
+	"tsserver",
+}
 for _, server in ipairs(servers) do
 	lsp[server].setup {
 		on_attach = onAttach,
