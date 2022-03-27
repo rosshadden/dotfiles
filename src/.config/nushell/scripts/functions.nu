@@ -21,7 +21,7 @@ def fzf-cd [] {
 def fzf-history [
 	--query (-q): string # Optionally start with given query.
 ] {
-	let result = (history | reverse | reduce { $acc + (char nl) + $it } | fzf --prompt "HISTORY> " --query $"($query)")
+	let result = (history | reverse | reduce { |it, acc| $acc + (char nl) + $it } | fzf --prompt "HISTORY> " --query $"($query)")
 	xdotool type $result
 }
 
@@ -41,7 +41,7 @@ def dupe [
 ] {
 	if $direction == "to" {
 		^cp -r $files $directory
-	} {
+	} else {
 		for file in $files {
 			cp -r $"($directory)/($file)" $file
 		}
@@ -53,12 +53,12 @@ def dupe [
 def ta [
 	...params: string # Optional name. Defaults to name of current directory.
 ] {
-	let name = (if ($params | length) == 1 { $params } { basename (pwd) })
-	let isTmux = "TMUX" in ($nu.env | pivot keys | get keys)
+	let name = (if ($params | length) == 1 { $params } else { basename (pwd) | trim })
+	let isTmux = "TMUX" in ($env | transpose keys | get keys)
 	if $isTmux {
 		tmux rename-session $name
 		echo "Renaming session to: $name"
-	} {
+	} else {
 		tmux -u new-session -A -s $name
 	}
 }
@@ -67,7 +67,7 @@ def ta [
 def tj [
 	...params: string # Optional name. Defaults to name of current directory.
 ] {
-	let name = (if ($params | length) == 1 { $params } { tmux list-sessions -F '#{session_name}' | fzf })
+	let name = (if ($params | length) == 1 { $params } else { tmux list-sessions -F '#{session_name}' | fzf })
 	ta $name
 }
 
@@ -75,7 +75,7 @@ def tj [
 def put [
 	--flags (-f): string # Optional flags to override default of "--clipboard"
 ] {
-	let flags = (if ($flags | empty?) { "--clipboard" } { $flags })
+	let flags = (if ($flags | empty?) { "--clipboard" } else { $flags })
 	xsel -o $flags
 }
 

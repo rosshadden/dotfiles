@@ -28,10 +28,12 @@ vim.cmd [[
 -- FUNCTIONS
 --
 
+local group = vim.api.nvim_create_augroup("yank-highlight", {})
+
 -- highlight on yank
-vim.cmd [[
-	augroup YankHighlight
-		autocmd!
-		autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-	augroup end
-]]
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = group,
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})

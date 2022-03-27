@@ -137,11 +137,11 @@ super + shift + alt + r
 
 # open launcher
 super + o
-	rofi -show drun -p 'launch: '
+	rofi -show drun
 
 # open runner/launcher
 super + a
-	rofi -combi-modi drun,run -show combi -p 'all: '
+	rofi -combi-modi drun,run -show combi
 
 # open window finder
 super + w
@@ -169,19 +169,19 @@ control + XF86Launch8
 
 # terminal
 super + Return
-	termoil
+	~/bin/termoil
 
 # terminal + tmux
 super + shift + Return
-	termoil -- tmux -u
+	~/bin/termoil -- tmux -u
 
 # write to clipboard
 super + e
-	termoil -- vimmer
+	~/bin/termoil -- vimmer
 
 # write to clipboard, starting with SELECTION clipboard
 super + shift + e
-	termoil -- vimmer -p
+	~/bin/termoil -- vimmer -p
 
 # volume gui
 super + v

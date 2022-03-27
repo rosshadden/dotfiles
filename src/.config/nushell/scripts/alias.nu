@@ -8,8 +8,8 @@ alias l = ls -la
 ## EDITING
 ##
 
-alias e = ^$nu.env.EDITOR
-alias se = sudo $nu.env.EDITOR
+alias e = ^$env.EDITOR
+alias se = sudo $env.EDITOR
 
 ##
 ## APPS

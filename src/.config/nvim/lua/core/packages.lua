@@ -70,9 +70,12 @@ end
 
 require("packer").startup(plugins)
 
-vim.cmd [[
-	augroup packer
-		autocmd!
-		autocmd BufWritePost packages.lua source <afile> | PackerSync
-	augroup end
-]]
+local group = vim.api.nvim_create_augroup("packer", {})
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+	group = group,
+	pattern = "packages.lua",
+	command = [[
+		source <afile> | PackerSync
+	]],
+})
