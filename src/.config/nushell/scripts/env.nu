@@ -1,5 +1,5 @@
 # make gpg open in-terminal dialog
-let-env GPG_TTY = (if ($env | get -i GPG_TTY | empty?) { tty | str trim } else { $env.GPG_TTY })
+let-env GPG_TTY = (if ("GPG_TTY" not-in $env) { tty | str trim } else { $env.GPG_TTY })
 
 let-env FZF_DEFAULT_COMMAND = "fd --type file --hidden --follow"
 let-env FZF_DEFAULT_OPTS = ([
@@ -53,6 +53,7 @@ let-env PATH = (
 	]
 	| append [
 		# system
+		"/usr/local/bin",
 		"/usr/local/sbin",
 		"/usr/sbin",
 

@@ -200,8 +200,9 @@ let $config = {
 	float_precision: 2
 	use_ansi_coloring: true
 	filesize_format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, zb, zib, auto
-	edit_mode: emacs # emacs, vi
+	edit_mode: vi
 	max_history_size: 1048576
+
 	menu_config: {
 		columns: 4
 		col_width: 20	 # Optional value. If missing all the screen width is used to calculate column width
@@ -210,6 +211,7 @@ let $config = {
 		selected_text_style: green_reverse
 		marker: "| "
 	}
+
 	history_config: {
 		page_size: 10
 		selector: "!"
@@ -217,57 +219,104 @@ let $config = {
 		selected_text_style: green_reverse
 		marker: "? "
 	}
+
 	keybindings: [
 		{
-			name: completion_menu
-			modifier: none
-			keycode: tab
-			mode: emacs # Options: emacs vi_normal vi_insert
-			event: {
-				until: [
-					{ send: menu name: completion_menu }
-					{ send: menunext }
-				]
-			}
-		}
-		{
-			name: completion_previous
-			modifier: shift
-			keycode: backtab
-			mode: [emacs, vi_normal, vi_insert] # Note: You can add the same keybinding to all modes by using a list
-			event: { send: menuprevious }
-		}
-		{
-			name: history_menu
+			name: edit-complete-line
+			mode: vi_insert
 			modifier: control
-			keycode: char_x
-			mode: emacs
+			keycode: char_e
 			event: {
 				until: [
-					{ send: menu name: history_menu }
-					{ send: menupagenext }
+					{ send: historyHintComplete },
+					{ send: menuRight },
+					{ edit: moveToLineEnd },
 				]
 			}
 		}
 		{
-			name: history_previous
+			name: edit-complete
+			mode: vi_insert
+			modifier: alt
+			keycode: char_l
+			event: { send: historyHintComplete }
+		}
+
+		{
+			name: edit-cut-word
+			mode: vi_insert
 			modifier: control
-			keycode: char_z
-			mode: emacs
+			keycode: char_w
+			event: { edit: cutWordLeft }
+		}
+
+		{
+			name: edit-word-back
+			mode: vi_insert
+			modifier: alt
+			keycode: char_b
+			event: { edit: moveWordLeft }
+		}
+
+		{
+			name: edit-word-forward
+			mode: vi_insert
+			modifier: alt
+			keycode: char_f
+			event: { edit: moveWordRight }
+		}
+
+		{
+			name: edit-line-beginning
+			mode: vi_insert
+			modifier: control
+			keycode: char_a
+			event: { edit: moveToLineStart }
+		}
+
+		{
+			name: edit-delete-word-back
+			mode: vi_insert
+			modifier: alt
+			keycode: backspace
+			event: { edit: backspaceWord }
+		}
+
+		{
+			name: edit-delete-line-beginning
+			mode: vi_insert
+			modifier: control
+			keycode: char_u
+			event: { edit: cutFromStart }
+		}
+
+		{
+			name: edit-insert-line
+			mode: [ vi_normal vi_insert ]
+			modifier: alt
+			keycode: enter
 			event: {
 				until: [
-					{ send: menupageprevious }
-					{ edit: undo }
+					{ edit: insertString, value: "\n" }
 				]
 			}
 		}
+
+		{
+			name: exit
+			mode: vi_insert
+			modifier: control
+			keycode: char_d
+			event: { send: ctrlD }
+		}
+
 		{
 			name: reload_config
+			mode: [ emacs, vi_insert ]
 			modifier: none
 			keycode: f5
-			mode: emacs
 			event: {
-				send: executehostcommand,
+				send: executeHostCommand,
 				cmd: $"source '($nu.config-path)'"
 			}
 		}

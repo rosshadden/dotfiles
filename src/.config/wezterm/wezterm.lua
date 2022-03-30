@@ -25,6 +25,11 @@ local config = {
 	-- fonts
 	font_size = 10,
 	line_height = 0.8,
+	font = wezterm.font_with_fallback({
+		"JetBrains Mono",
+		-- "Fira Code",
+		"Unifont",
+	}),
 
 	-- ui
 	hide_tab_bar_if_only_one_tab = true,
