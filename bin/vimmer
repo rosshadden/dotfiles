@@ -35,7 +35,7 @@ main() {
 		unset VISUAL
 	fi
 
-	local output="$(echo "$input" | vipe 2> /dev/null)"
+	local output="$(echo "$input" | vipe --suffix md 2> /dev/null)"
 
 	if [[ $output != "" ]]; then
 		echo -n "$output" | xsel -ib

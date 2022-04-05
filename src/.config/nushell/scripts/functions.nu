@@ -1,19 +1,13 @@
 # fzf through files, typing result.
-# Requires: `xdotool`, `fd`
+# Requires: `fd`
 def fzf-files [] {
 	fd --type f | fzf --prompt "FILES> "
 }
 
-# fzf through files, typing result.
-# Requires: `xdotool`, `fd`
-def fzf-test [] {
-	fd --type f | fzf --prompt "FILES> "
-}
-
 # fzf through directories, navigating to result
-# Requires: `xdotool`, `fd`
-def fzf-cd [] {
-	fd --type d | fzf --prompt "FOLDERS> "
+# Requires: `fd`
+def-env fzf-cd [] {
+	cd (fd --type d | fzf --prompt "FOLDERS> " | str trim)
 }
 
 # fzf through shell history, typing result.
@@ -21,8 +15,7 @@ def fzf-cd [] {
 def fzf-history [
 	--query (-q): string # Optionally start with given query.
 ] {
-	let result = (history | reverse | reduce { |it, acc| $acc + (char nl) + $it } | fzf --prompt "HISTORY> " --query $"($query)")
-	xdotool type $result
+	(history | get command | reverse | str collect (char nl) | fzf --prompt "HISTORY> " --query $"($query)")
 }
 
 # type last arg from previous command
@@ -53,7 +46,7 @@ def dupe [
 def ta [
 	...params: string # Optional name. Defaults to name of current directory.
 ] {
-	let name = (if ($params | length) == 1 { $params } else { basename (pwd) | trim })
+	let name = (if ($params | length) == 1 { $params } else { basename (pwd) | str trim })
 	let isTmux = "TMUX" in ($env | transpose keys | get keys)
 	if $isTmux {
 		tmux rename-session $name
@@ -80,4 +73,11 @@ def put [
 }
 
 def zshtory [] {
+}
+
+# Change to dir matching zoxide query
+def-env s [
+	query: string # Directory query
+] {
+	cd (zoxide query $query | str trim)
 }

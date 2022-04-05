@@ -58,6 +58,7 @@ configs.setup {
 		"norg",
 		"php",
 		"python",
+		"rust",
 		"toml",
 		"tsx",
 		"typescript",
@@ -135,6 +136,7 @@ local servers = {
 	"bashls",
 	"gdscript",
 	"gopls",
+	"rust_analyzer",
 	"tsserver",
 }
 for _, server in ipairs(servers) do

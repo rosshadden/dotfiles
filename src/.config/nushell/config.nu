@@ -3,25 +3,25 @@ source ~/.config/nushell/scripts/functions.nu
 source ~/.config/nushell/scripts/env.nu
 source ~/.config/nushell/scripts/plugins.nu
 
+# source ($nu.config-path | path dirname | path join scripts | path join plugins.nu)
+
 use ~/.config/nushell/scripts/lab.nu *
 
-def create_left_prompt [] {
-	let path_segment = ($env.PWD)
-
-	$path_segment
+def promptLeft [] {
+	[
+		$env.PWD
+	] | str collect " "
 }
 
-def create_right_prompt [] {
-	let time_segment = ([
-		(date now | date format '%m/%d/%Y %r')
-	] | str collect)
-
-	$time_segment
+def promptRight [] {
+	[
+		(date now | date format "%T")
+	] | str collect " "
 }
 
 # Use nushell functions to define your right and left prompt
-let-env PROMPT_COMMAND = { create_left_prompt }
-let-env PROMPT_COMMAND_RIGHT = { create_right_prompt }
+let-env PROMPT_COMMAND = { promptLeft }
+let-env PROMPT_COMMAND_RIGHT = { promptRight }
 
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
@@ -35,11 +35,7 @@ let-env PROMPT_MULTILINE_INDICATOR = "::: "
 # - converted from a value back to a string when running external commands (to_string)
 # Note: The conversions happen *after* config.nu is loaded
 let-env ENV_CONVERSIONS = {
-	"PATH": {
-		from_string: { |s| $s | split row (char esep) }
-		to_string: { |v| $v | str collect (char esep) }
-	}
-	"Path": {
+	PATH: {
 		from_string: { |s| $s | split row (char esep) }
 		to_string: { |v| $v | str collect (char esep) }
 	}
@@ -49,14 +45,14 @@ let-env ENV_CONVERSIONS = {
 #
 # By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIRS = [
-	($nu.config-path | path dirname | path join 'scripts')
+	($nu.config-path | path dirname | path join scripts)
 ]
 
 # Directories to search for plugin binaries when calling register
 #
 # By default, <nushell-config-dir>/plugins is added
 let-env NU_PLUGIN_DIRS = [
-	($nu.config-path | path dirname | path join 'plugins')
+	($nu.config-path | path dirname | path join plugins)
 ]
 
 module completions {
@@ -66,7 +62,7 @@ module completions {
 	#
 	# This is a simplified version of completions for git branches and git remotes
 	def "nu-complete git branches" [] {
-		^git branch | lines | each { |line| $line | str find-replace '\* ' '' | str trim }
+		^git branch | lines | each { |line| $line | str find-replace '\* ' "" | str trim }
 	}
 
 	def "nu-complete git remotes" [] {
@@ -78,7 +74,7 @@ module completions {
 		-b: string																 # create and checkout a new branch
 		-B: string																 # create/reset and checkout a branch
 		-l																				 # create reflog for new branch
-		--guess																		# second guess 'git checkout <no-such-branch>' (default)
+		--guess																		# second guess "git checkout <no-such-branch>" (default)
 		--overlay																	# use overlay mode (default)
 		--quiet(-q)																# suppress progress reporting
 		--recurse-submodules: string							 # control recursive updating of submodules
@@ -134,7 +130,7 @@ use completions *
 
 # for more information on themes see
 # https://github.com/nushell/nushell/blob/main/docs/How_To_Coloring_and_Theming.md
-let default_theme = {
+let theme = {
 	# color for nushell primitives
 	separator: white
 	leading_trailing_space_bg: { attr: n } # no fg, no bg, attr non effectively turns this off
@@ -185,17 +181,16 @@ let default_theme = {
 	shape_nothing: light_cyan
 }
 
-# The default config record. This is where much of your global configuration is setup.
 let $config = {
 	filesize_metric: false
 	table_mode: rounded # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
 	use_ls_colors: true
 	rm_always_trash: false
-	color_config: $default_theme
+	color_config: $theme
 	use_grid_icons: true
 	footer_mode: "25" # always, never, number_of_rows, auto
-	quick_completions: true	# set this to false to prevent auto-selecting completions when only one remains
-	partial_completions: true	# set this to false to prevent partial filling of the prompt
+	quick_completions: true # set this to false to prevent auto-selecting completions when only one remains
+	partial_completions: true # set this to false to prevent partial filling of the prompt
 	animate_prompt: false # redraw the prompt every second
 	float_precision: 2
 	use_ansi_coloring: true
@@ -205,7 +200,7 @@ let $config = {
 
 	menu_config: {
 		columns: 4
-		col_width: 20	 # Optional value. If missing all the screen width is used to calculate column width
+		col_width: 20 # Optional value. If missing all the screen width is used to calculate column width
 		col_padding: 2
 		text_style: green
 		selected_text_style: green_reverse
@@ -221,29 +216,28 @@ let $config = {
 	}
 
 	keybindings: [
+
 		{
-			name: edit-complete-line
 			mode: vi_insert
 			modifier: control
 			keycode: char_e
 			event: {
 				until: [
-					{ send: historyHintComplete },
-					{ send: menuRight },
-					{ edit: moveToLineEnd },
+					{ send: historyHintComplete }
+					{ send: menuRight }
+					{ edit: moveToLineEnd }
 				]
 			}
 		}
+
 		{
-			name: edit-complete
-			mode: vi_insert
-			modifier: alt
-			keycode: char_l
-			event: { send: historyHintComplete }
+			mode: vi_normal
+			modifier: none
+			keycode: char_~
+			event: { edit: capitalizeChar }
 		}
 
 		{
-			name: edit-cut-word
 			mode: vi_insert
 			modifier: control
 			keycode: char_w
@@ -251,7 +245,6 @@ let $config = {
 		}
 
 		{
-			name: edit-word-back
 			mode: vi_insert
 			modifier: alt
 			keycode: char_b
@@ -259,7 +252,6 @@ let $config = {
 		}
 
 		{
-			name: edit-word-forward
 			mode: vi_insert
 			modifier: alt
 			keycode: char_f
@@ -267,7 +259,6 @@ let $config = {
 		}
 
 		{
-			name: edit-line-beginning
 			mode: vi_insert
 			modifier: control
 			keycode: char_a
@@ -275,7 +266,6 @@ let $config = {
 		}
 
 		{
-			name: edit-delete-word-back
 			mode: vi_insert
 			modifier: alt
 			keycode: backspace
@@ -283,7 +273,6 @@ let $config = {
 		}
 
 		{
-			name: edit-delete-line-beginning
 			mode: vi_insert
 			modifier: control
 			keycode: char_u
@@ -291,7 +280,6 @@ let $config = {
 		}
 
 		{
-			name: edit-insert-line
 			mode: [ vi_normal vi_insert ]
 			modifier: alt
 			keycode: enter
@@ -303,7 +291,6 @@ let $config = {
 		}
 
 		{
-			name: exit
 			mode: vi_insert
 			modifier: control
 			keycode: char_d
@@ -316,9 +303,62 @@ let $config = {
 			modifier: none
 			keycode: f5
 			event: {
-				send: executeHostCommand,
-				cmd: $"source '($nu.config-path)'"
+				send: executeHostCommand
+				cmd: $"source ($nu.config-path)"
 			}
 		}
+
+		{
+			name: fzf-cd
+			mode: [ emacs, vi_insert ]
+			modifier: alt
+			keycode: char_c
+			event: {
+				send: executeHostCommand
+				cmd: "fzf-cd"
+			}
+		}
+
+		# {
+		# 	name: fzf-files
+		# 	mode: [ emacs, vi_insert ]
+		# 	modifier: control
+		# 	keycode: char_t
+		# 	event: {
+		# 		edit: insertString
+		# 		value: "(fzf-files)"
+		# 	}
+		# }
+
+		# {
+		# 	name: fzf-history
+		# 	mode: [ emacs, vi_insert ]
+		# 	modifier: control
+		# 	keycode: char_r
+		# 	event: [
+		# 		{ edit: clear }
+		# 		{
+		# 			edit: insertString
+		# 			value: "fzf-history"
+		# 		}
+		# 		{ send: enter }
+		# 		{
+		# 			edit: insertString
+		# 			value: "fzf-history"
+		# 		}
+		# 	]
+		# }
+
+		{
+			name: zoxide-query
+			mode: [ emacs, vi_insert ]
+			modifier: alt
+			keycode: char_s
+			event: {
+				send: executeHostCommand
+				cmd: "cd (zoxide query -i | str trim)"
+			}
+		}
+
 	]
 }
