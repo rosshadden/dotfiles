@@ -12,8 +12,10 @@ local config = {
 	key_tables = {},
 
 	-- startup
+	-- default_prog = { "zsh", "-l" },
 	-- default_prog = { "bash", "-l" },
 	-- default_prog = { "nu", "-l" },
+	-- default_prog = { "nu" },
 	default_gui_startup_args = { "connect", "unix" },
 	term = "wezterm",
 
@@ -69,9 +71,7 @@ config.keys = {
 	{
 		mods = "LEADER", key = "Backspace",
 		action = wezterm.action_callback(function(win, pane)
-			os.execute("notify-send title " .. pane:get_title())
-			os.execute("notify-send process " .. pane:get_foreground_process_name())
-			-- os.execute("notify-send cwd " .. pane:get_current_working_dir())
+			os.execute("notify-send debug 'title: " .. pane:get_title() .. "\nprocess: " .. pane:get_foreground_process_name() .. "\ncwd: " .. pane:get_current_working_dir() .. "'")
 		end)
 	},
 }
@@ -109,10 +109,15 @@ for i = 1, 9 do
 end
 
 config.key_tables.panes = {
-	{ key = "j", action = wezterm.action{ SplitVertical = { domain = "CurrentPaneDomain" } } },
-	{ key = "k", action = wezterm.action{ SplitVertical = { domain = "CurrentPaneDomain" } } },
-	{ key = "h", action = wezterm.action{ SplitHorizontal = { domain = "CurrentPaneDomain" } } },
-	{ key = "l", action = wezterm.action{ SplitHorizontal = { domain = "CurrentPaneDomain" } } },
+	{ key = "j", action = wezterm.action{ SplitVertical = {
+		-- domain = "CurrentPaneDomain",
+		-- set_environment_variables = { PWD = "/tmp/aoeu" },
+		-- args = { "nu" },
+		-- cwd = "/tmp/aoeu",
+	} } },
+	{ key = "k", action = wezterm.action{ SplitVertical = {} } },
+	{ key = "h", action = wezterm.action{ SplitHorizontal = {} } },
+	{ key = "l", action = wezterm.action{ SplitHorizontal = {} } },
 
 	{ key = "f", action = "TogglePaneZoomState" },
 }

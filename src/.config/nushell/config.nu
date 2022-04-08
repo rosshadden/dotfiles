@@ -8,15 +8,13 @@ source ~/.config/nushell/scripts/plugins.nu
 use ~/.config/nushell/scripts/lab.nu *
 
 def promptLeft [] {
-	[
-		$env.PWD
-	] | str collect " "
+	$"(ansi osc)2;($env.PWD)"
+	$"(ansi osc)7;file://localhost($env.PWD)"
+	$"($env.PWD)"
 }
 
 def promptRight [] {
-	[
-		(date now | date format "%T")
-	] | str collect " "
+	(date now | date format "%T")
 }
 
 # Use nushell functions to define your right and left prompt

@@ -1,4 +1,4 @@
-let pluginsDir = "~/.config/nu/plugins"
+let pluginsDir = "~/.config/nushell/plugins"
 
 source ~/.config/nushell/plugins/systemd.nu
 

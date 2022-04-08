@@ -18,7 +18,7 @@ alias se = sudo $env.EDITOR
 # git
 alias g = git
 alias tigs = tig status
-alias tigr = tig "(git rev-parse HEAD)..(git rev-parse FETCH_HEAD)"
+alias tigr = tig $"(git rev-parse HEAD | str trim)..(git rev-parse FETCH_HEAD | str trim)"
 # alias tigr- = tigr --no-merges
 
 # tmux
