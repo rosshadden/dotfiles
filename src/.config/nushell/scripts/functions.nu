@@ -73,6 +73,7 @@ def put [
 }
 
 def zshtory [] {
+	bat ~/.zsh_history | str find-replace -a ': \d+:\d+;' ""
 }
 
 # Change to dir matching zoxide query

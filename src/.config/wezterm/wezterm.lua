@@ -12,10 +12,6 @@ local config = {
 	key_tables = {},
 
 	-- startup
-	-- default_prog = { "zsh", "-l" },
-	-- default_prog = { "bash", "-l" },
-	-- default_prog = { "nu", "-l" },
-	-- default_prog = { "nu" },
 	default_gui_startup_args = { "connect", "unix" },
 	term = "wezterm",
 
@@ -55,6 +51,7 @@ config.keys = {
 	-- modes
 	{ mods = "LEADER", key = "a", action = wezterm.action{ ActivateKeyTable = { name = "app" } } },
 	{ mods = "LEADER", key = "b", action = wezterm.action{ ActivateKeyTable = { name = "panes" } } },
+	{ mods = "LEADER", key = "c", action = "ActivateCopyMode" },
 	{ mods = "LEADER", key = "r", action = wezterm.action{ ActivateKeyTable = { name = "resize", one_shot = false } } },
 	{ mods = "LEADER", key = "t", action = wezterm.action{ ActivateKeyTable = { name = "tabs" } } },
 
@@ -109,17 +106,13 @@ for i = 1, 9 do
 end
 
 config.key_tables.panes = {
-	{ key = "j", action = wezterm.action{ SplitVertical = {
-		-- domain = "CurrentPaneDomain",
-		-- set_environment_variables = { PWD = "/tmp/aoeu" },
-		-- args = { "nu" },
-		-- cwd = "/tmp/aoeu",
-	} } },
+	{ key = "j", action = wezterm.action{ SplitVertical = {} } },
 	{ key = "k", action = wezterm.action{ SplitVertical = {} } },
 	{ key = "h", action = wezterm.action{ SplitHorizontal = {} } },
 	{ key = "l", action = wezterm.action{ SplitHorizontal = {} } },
 
 	{ key = "f", action = "TogglePaneZoomState" },
+	{ key = "z", action = "TogglePaneZoomState" },
 }
 
 config.key_tables.resize = {

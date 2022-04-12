@@ -19,6 +19,7 @@ src/.config/karabiner/assets/
 src/.config/karabiner/automatic_backups/
 src/.config/mpv/watch_later
 src/.config/nushell/history.txt
+src/.config/nushell/plugin.nu
 src/.config/nvim/.init.vim-rplugin~
 src/.config/nvim/.netrwhist
 src/.config/nvim/autoload/plug.vim.old

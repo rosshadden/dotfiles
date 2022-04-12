@@ -1,3 +1,6 @@
+register -e json /usr/bin/nu_plugin_inc
+register -e json /usr/bin/nu_plugin_query
+
 source ~/.config/nushell/scripts/alias.nu
 source ~/.config/nushell/scripts/functions.nu
 source ~/.config/nushell/scripts/env.nu
