@@ -1,60 +1,15 @@
 register -e json /usr/bin/nu_plugin_inc
 register -e json /usr/bin/nu_plugin_query
 
-source ~/.config/nushell/scripts/alias.nu
-source ~/.config/nushell/scripts/functions.nu
-source ~/.config/nushell/scripts/env.nu
-source ~/.config/nushell/scripts/plugins.nu
+source alias.nu
+source functions.nu
+source env.nu
+
+source plugins.nu
 
 # source ($nu.config-path | path dirname | path join scripts | path join plugins.nu)
 
-use ~/.config/nushell/scripts/lab.nu *
-
-def promptLeft [] {
-	$"(ansi osc)2;($env.PWD)"
-	$"(ansi osc)7;file://localhost($env.PWD)"
-	$"($env.PWD)"
-}
-
-def promptRight [] {
-	(date now | date format "%T")
-}
-
-# Use nushell functions to define your right and left prompt
-let-env PROMPT_COMMAND = { promptLeft }
-let-env PROMPT_COMMAND_RIGHT = { promptRight }
-
-# The prompt indicators are environmental variables that represent
-# the state of the prompt
-let-env PROMPT_INDICATOR = "〉"
-let-env PROMPT_INDICATOR_VI_INSERT = ": "
-let-env PROMPT_INDICATOR_VI_NORMAL = "〉"
-let-env PROMPT_MULTILINE_INDICATOR = "::: "
-
-# Specifies how environment variables are:
-# - converted from a string to a value on Nushell startup (from_string)
-# - converted from a value back to a string when running external commands (to_string)
-# Note: The conversions happen *after* config.nu is loaded
-let-env ENV_CONVERSIONS = {
-	PATH: {
-		from_string: { |s| $s | split row (char esep) }
-		to_string: { |v| $v | str collect (char esep) }
-	}
-}
-
-# Directories to search for scripts when calling source or use
-#
-# By default, <nushell-config-dir>/scripts is added
-let-env NU_LIB_DIRS = [
-	($nu.config-path | path dirname | path join scripts)
-]
-
-# Directories to search for plugin binaries when calling register
-#
-# By default, <nushell-config-dir>/plugins is added
-let-env NU_PLUGIN_DIRS = [
-	($nu.config-path | path dirname | path join plugins)
-]
+use lab.nu *
 
 module completions {
 	# Custom completions for external commands (those outside of Nushell)
@@ -63,66 +18,68 @@ module completions {
 	#
 	# This is a simplified version of completions for git branches and git remotes
 	def "nu-complete git branches" [] {
-		^git branch | lines | each { |line| $line | str find-replace '\* ' "" | str trim }
+		^git branch | lines | each { |line| $line | str replace '[\*\+] ' '' | str trim }
 	}
 
 	def "nu-complete git remotes" [] {
 		^git remote | lines | each { |line| $line | str trim }
 	}
 
+	# Check out git branches and files
 	export extern "git checkout" [
-		branch?: string@"nu-complete git branches" # name of the branch to checkout
-		-b: string																 # create and checkout a new branch
-		-B: string																 # create/reset and checkout a branch
-		-l																				 # create reflog for new branch
-		--guess																		# second guess "git checkout <no-such-branch>" (default)
-		--overlay																	# use overlay mode (default)
-		--quiet(-q)																# suppress progress reporting
-		--recurse-submodules: string							 # control recursive updating of submodules
-		--progress																 # force progress reporting
-		--merge(-m)																# perform a 3-way merge with the new branch
-		--conflict: string												 # conflict style (merge or diff3)
-		--detach(-d)															 # detach HEAD at named commit
-		--track(-t)																# set upstream info for new branch
-		--force(-f)																# force checkout (throw away local modifications)
-		--orphan: string													 # new unparented branch
-		--overwrite-ignore												 # update ignored files (default)
-		--ignore-other-worktrees									 # do not check if another worktree is holding the given ref
-		--ours(-2)																 # checkout our version for unmerged files
-		--theirs(-3)															 # checkout their version for unmerged files
-		--patch(-p)																# select hunks interactively
-		--ignore-skip-worktree-bits								# do not limit pathspecs to sparse entries only
-		--pathspec-from-file: string							 # read pathspec from file
+		...targets: string@"nu-complete git branches"   # name of the branch or files to checkout
+		--conflict: string                              # conflict style (merge or diff3)
+		--detach(-d)                                    # detach HEAD at named commit
+		--force(-f)                                     # force checkout (throw away local modifications)
+		--guess                                         # second guess 'git checkout <no-such-branch>' (default)
+		--ignore-other-worktrees                        # do not check if another worktree is holding the given ref
+		--ignore-skip-worktree-bits                     # do not limit pathspecs to sparse entries only
+		--merge(-m)                                     # perform a 3-way merge with the new branch
+		--orphan: string                                # new unparented branch
+		--ours(-2)                                      # checkout our version for unmerged files
+		--overlay                                       # use overlay mode (default)
+		--overwrite-ignore                              # update ignored files (default)
+		--patch(-p)                                     # select hunks interactively
+		--pathspec-from-file: string                    # read pathspec from file
+		--progress                                      # force progress reporting
+		--quiet(-q)                                     # suppress progress reporting
+		--recurse-submodules: string                    # control recursive updating of submodules
+		--theirs(-3)                                    # checkout their version for unmerged files
+		--track(-t)                                     # set upstream info for new branch
+		-b: string                                      # create and checkout a new branch
+		-B: string                                      # create/reset and checkout a branch
+		-l                                              # create reflog for new branch
 	]
 
+	# Push changes
 	export extern "git push" [
-		remote?: string@"nu-complete git remotes", # the name of the remote
-		refspec?: string@"nu-complete git branches"# the branch / refspec
-		--verbose(-v)															# be more verbose
-		--quiet(-q)																# be more quiet
-		--repo: string														 # repository
-		--all																			# push all refs
-		--mirror																	 # mirror all refs
-		--delete(-d)															 # delete refs
-		--tags																		 # push tags (can't be used with --all or --mirror)
-		--dry-run(-n)															# dry run
-		--porcelain																# machine-readable output
-		--force(-f)																# force updates
-		--force-with-lease: string								 # require old value of ref to be at this value
-		--recurse-submodules: string							 # control recursive pushing of submodules
-		--thin																		 # use thin pack
-		--receive-pack: string										 # receive pack program
-		--exec: string														 # receive pack program
-		--set-upstream(-u)												 # set upstream for git pull/status
-		--progress																 # force progress reporting
-		--prune																		# prune locally removed refs
-		--no-verify																# bypass pre-push hook
-		--follow-tags															# push missing but relevant tags
-		--signed: string													 # GPG sign the push
-		--atomic																	 # request atomic transaction on remote side
-		--push-option(-o): string									# option to transmit
-		--ipv4(-4)																 # use IPv4 addresses only
-		--ipv6(-6)																 # use IPv6 addresses only
+		remote?: string@"nu-complete git remotes",      # the name of the remote
+		...refs: string@"nu-complete git branches"      # the branch / refspec
+		--all                                           # push all refs
+		--atomic                                        # request atomic transaction on remote side
+		--delete(-d)                                    # delete refs
+		--dry-run(-n)                                   # dry run
+		--exec: string                                  # receive pack program
+		--follow-tags                                   # push missing but relevant tags
+		--force-with-lease: string                      # require old value of ref to be at this value
+		--force(-f)                                     # force updates
+		--ipv4(-4)                                      # use IPv4 addresses only
+		--ipv6(-6)                                      # use IPv6 addresses only
+		--mirror                                        # mirror all refs
+		--no-verify                                     # bypass pre-push hook
+		--porcelain                                     # machine-readable output
+		--progress                                      # force progress reporting
+		--prune                                         # prune locally removed refs
+		--push-option(-o): string                       # option to transmit
+		--quiet(-q)                                     # be more quiet
+		--receive-pack: string                          # receive pack program
+		--recurse-submodules: string                    # control recursive pushing of submodules
+		--repo: string                                  # repository
+		--set-upstream(-u)                              # set upstream for git pull/status
+		--signed: string                                # GPG sign the push
+		--tags                                          # push tags (can't be used with --all or --mirror)
+		--thin                                          # use thin pack
+		--verbose(-v)                                   # be more verbose
 	]
 }
 
@@ -198,23 +155,127 @@ let $config = {
 	filesize_format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, zb, zib, auto
 	edit_mode: vi
 	max_history_size: 1048576
+	sync_history_on_enter: false # Enable to share the history between multiple sessions, else you have to close the session to persist history to file
 
-	menu_config: {
-		columns: 4
-		col_width: 20 # Optional value. If missing all the screen width is used to calculate column width
-		col_padding: 2
-		text_style: green
-		selected_text_style: green_reverse
-		marker: "| "
-	}
-
-	history_config: {
-		page_size: 10
-		selector: "!"
-		text_style: green
-		selected_text_style: green_reverse
-		marker: "? "
-	}
+	menus: [
+		# Configuration for default nushell menus
+		# Note the lack of souce parameter
+		{
+			name: completion_menu
+			only_buffer_difference: false
+			marker: "| "
+			type: {
+				layout: columnar
+				columns: 4
+				col_width: 20	 # Optional value. If missing all the screen width is used to calculate column width
+				col_padding: 2
+			}
+			style: {
+					text: green
+				selected_text: green_reverse
+				description_text: yellow
+			}
+		}
+		{
+			name: history_menu
+			only_buffer_difference: true
+			marker: "? "
+			type: {
+				layout: list
+				page_size: 10
+			}
+			style: {
+				text: green
+				selected_text: green_reverse
+				description_text: yellow
+			}
+		}
+		{
+			name: help_menu
+			only_buffer_difference: true
+			marker: "? "
+			type: {
+				layout: description
+				columns: 4
+				col_width: 20	 # Optional value. If missing all the screen width is used to calculate column width
+				col_padding: 2
+				selection_rows: 4
+				description_rows: 10
+			}
+			style: {
+				text: green
+				selected_text: green_reverse
+				description_text: yellow
+			}
+		}
+		# Example of extra menus created using a nushell source
+		# Use the source field to create a list of records that populates
+		# the menu
+		{
+			name: commands_menu
+			only_buffer_difference: false
+			marker: "# "
+			type: {
+				layout: columnar
+				columns: 4
+				col_width: 20
+				col_padding: 2
+			}
+			style: {
+				text: green
+				selected_text: green_reverse
+				description_text: yellow
+			}
+			source: { |buffer, position|
+				$nu.scope.commands
+				| where command =~ $buffer
+				| each { |it| {value: $it.command description: $it.usage} }
+			}
+		}
+		{
+			name: vars_menu
+			only_buffer_difference: true
+			marker: "# "
+			type: {
+				layout: list
+				page_size: 10
+			}
+			style: {
+				text: green
+				selected_text: green_reverse
+				description_text: yellow
+			}
+			source: { |buffer, position|
+				$nu.scope.vars
+				| where name =~ $buffer
+				| sort-by name
+				| each { |it| {value: $it.name description: $it.type} }
+			}
+		}
+		{
+			name: commands_with_description
+			only_buffer_difference: true
+			marker: "# "
+			type: {
+				layout: description
+				columns: 4
+				col_width: 20
+				col_padding: 2
+				selection_rows: 4
+				description_rows: 10
+			}
+			style: {
+				text: green
+				selected_text: green_reverse
+				description_text: yellow
+			}
+			source: { |buffer, position|
+				$nu.scope.commands
+				| where command =~ $buffer
+				| each { |it| {value: $it.command description: $it.usage} }
+			}
+		}
+	]
 
 	keybindings: [
 

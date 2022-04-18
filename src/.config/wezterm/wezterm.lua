@@ -59,10 +59,10 @@ config.keys = {
 	{ mods = "LEADER", key = "Tab", action = "ActivateLastTab" },
 	{ mods = "LEADER", key = "p", action = wezterm.action{ ActivateTabRelative = -1 } },
 	{ mods = "LEADER", key = "n", action = wezterm.action{ ActivateTabRelative = 1 } },
-	{ mods = "ALT", key = "j", action = wezterm.action{ ActivatePaneDirection = "Down" } },
-	{ mods = "ALT", key = "k", action = wezterm.action{ ActivatePaneDirection = "Up" } },
-	{ mods = "ALT", key = "h", action = wezterm.action{ ActivatePaneDirection = "Left" } },
-	{ mods = "ALT", key = "l", action = wezterm.action{ ActivatePaneDirection = "Right" } },
+	{ mods = "CTRL", key = "j", action = wezterm.action{ ActivatePaneDirection = "Down" } },
+	{ mods = "CTRL", key = "k", action = wezterm.action{ ActivatePaneDirection = "Up" } },
+	{ mods = "CTRL", key = "h", action = wezterm.action{ ActivatePaneDirection = "Left" } },
+	{ mods = "CTRL", key = "l", action = wezterm.action{ ActivatePaneDirection = "Right" } },
 
 	-- debug
 	{
@@ -106,7 +106,15 @@ for i = 1, 9 do
 end
 
 config.key_tables.panes = {
-	{ key = "j", action = wezterm.action{ SplitVertical = {} } },
+	{ key = "c", action = wezterm.action{ CloseCurrentPane = { confirm = true } } },
+	{ key = "C", action = wezterm.action{ CloseCurrentPane = { confirm = false } } },
+
+	{ key = "j", action = wezterm.action{ SplitVertical = {
+		-- domain = "CurrentPaneDomain",
+		-- set_environment_variables = { PWD = "/tmp/aoeu" },
+		-- args = { "nu" },
+		-- cwd = "/tmp/aoeu",
+	} } },
 	{ key = "k", action = wezterm.action{ SplitVertical = {} } },
 	{ key = "h", action = wezterm.action{ SplitHorizontal = {} } },
 	{ key = "l", action = wezterm.action{ SplitHorizontal = {} } },

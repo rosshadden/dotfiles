@@ -69,10 +69,10 @@ vim.keymap.set("n", "<plug><buffers>N", ":blast<cr>", { silent = true })
 vim.keymap.set("n", "<plug><buffers>P", ":bfirst<cr>", { silent = true })
 
 -- cardinal
-vim.keymap.set("", "<a-j>", ":wincmd j<cr>", { silent = true })
-vim.keymap.set("", "<a-k>", ":wincmd k<cr>", { silent = true })
-vim.keymap.set("", "<a-h>", ":wincmd h<cr>", { silent = true })
-vim.keymap.set("", "<a-l>", ":wincmd l<cr>", { silent = true })
+vim.keymap.set("", "<a-j>", function() pcall(vim.cmd, "wincmd j") end, { silent = true })
+vim.keymap.set("", "<a-k>", function() pcall(vim.cmd, "wincmd k") end, { silent = true })
+vim.keymap.set("", "<a-h>", function() pcall(vim.cmd, "wincmd h") end, { silent = true })
+vim.keymap.set("", "<a-l>", function() pcall(vim.cmd, "wincmd l") end, { silent = true })
 
 -- tmux
 vim.keymap.set({ "", "i" }, "<c-j>", tmuxNav.NvimTmuxNavigateDown, { silent = true })

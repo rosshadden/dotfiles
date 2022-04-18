@@ -25,10 +25,10 @@ ts.setup {
 			i = {
 				["<a-n>"] = actions.cycle_history_next,
 				["<a-p>"] = actions.cycle_history_prev,
-				["<c-h>"] = actions.select_vertical,
-				["<c-j>"] = actions.select_horizontal,
-				["<c-k>"] = actions.select_horizontal,
-				["<c-l>"] = actions.select_vertical,
+				["<a-h>"] = actions.select_vertical,
+				["<a-j>"] = actions.select_horizontal,
+				["<a-k>"] = actions.select_horizontal,
+				["<a-l>"] = actions.select_vertical,
 			},
 		},
 

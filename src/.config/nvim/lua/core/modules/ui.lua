@@ -16,6 +16,9 @@ vim.cmd [[
 	highlight LineNr guibg=none
 	highlight SignColumn guibg=none
 
+	" whitespace
+	highlight NonText guifg=#444444
+
 	" search
 	highlight Search guibg=#41323f guifg=#fec418
 	highlight IncSearch guibg=#41323f guifg=#ef6155
