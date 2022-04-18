@@ -43,6 +43,7 @@ config.leader = { mods = "CTRL", key = "Space" }
 config.keys = {
 	-- unmap
 	{ mods = "ALT", key = "Enter", action = "DisableDefaultAssignment" },
+	{ mods = "CTRL", key = "Slash", action = wezterm.action{ SendString = "" }},
 
 	-- normalize
 	{ mods = "SHIFT", key = " ", action = wezterm.action{ SendString = " " } },

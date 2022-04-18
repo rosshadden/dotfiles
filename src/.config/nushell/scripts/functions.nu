@@ -1,13 +1,13 @@
 # fzf through files, typing result.
 # Requires: `fd`
 def fzf-files [] {
-	fd --type f | fzf --prompt "FILES> "
+	fd --type f --hidden | fzf --prompt "FILES> "
 }
 
 # fzf through directories, navigating to result
 # Requires: `fd`
 def-env fzf-cd [] {
-	cd (fd --type d | fzf --prompt "FOLDERS> " | str trim)
+	cd (fd --type d --hidden | fzf --prompt "FOLDERS> " | str trim)
 }
 
 # fzf through shell history, typing result.

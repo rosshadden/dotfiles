@@ -158,6 +158,7 @@ let $config = {
 	sync_history_on_enter: false # Enable to share the history between multiple sessions, else you have to close the session to persist history to file
 
 	menus: [
+
 		# Configuration for default nushell menus
 		# Note the lack of souce parameter
 		{
@@ -176,6 +177,7 @@ let $config = {
 				description_text: yellow
 			}
 		}
+
 		{
 			name: history_menu
 			only_buffer_difference: true
@@ -190,6 +192,7 @@ let $config = {
 				description_text: yellow
 			}
 		}
+
 		{
 			name: help_menu
 			only_buffer_difference: true
@@ -208,6 +211,7 @@ let $config = {
 				description_text: yellow
 			}
 		}
+
 		# Example of extra menus created using a nushell source
 		# Use the source field to create a list of records that populates
 		# the menu
@@ -232,6 +236,7 @@ let $config = {
 				| each { |it| {value: $it.command description: $it.usage} }
 			}
 		}
+
 		{
 			name: vars_menu
 			only_buffer_difference: true
@@ -252,6 +257,7 @@ let $config = {
 				| each { |it| {value: $it.name description: $it.type} }
 			}
 		}
+
 		{
 			name: commands_with_description
 			only_buffer_difference: true
@@ -275,6 +281,26 @@ let $config = {
 				| each { |it| {value: $it.command description: $it.usage} }
 			}
 		}
+
+		{
+			name: files_menu
+			only_buffer_difference: true
+			marker: "# "
+			type: {
+				layout: list
+			}
+			style: {
+				text: green
+				selected_text: green_reverse
+				description_text: yellow
+			}
+			source: { |buffer, position|
+				fd --type f --hidden | rg $buffer
+				| lines
+				| each { |it| { value: $it } }
+			}
+		}
+
 	]
 
 	keybindings: [
@@ -345,11 +371,7 @@ let $config = {
 			mode: [ vi_normal vi_insert ]
 			modifier: alt
 			keycode: enter
-			event: {
-				until: [
-					{ edit: insertString, value: "\n" }
-				]
-			}
+			event: { edit: insertString, value: "\n" }
 		}
 
 		{
@@ -361,7 +383,7 @@ let $config = {
 
 		{
 			name: reload_config
-			mode: [ emacs, vi_insert ]
+			mode: [ vi_insert emacs ]
 			modifier: none
 			keycode: f5
 			event: {
@@ -372,7 +394,7 @@ let $config = {
 
 		{
 			name: fzf-cd
-			mode: [ emacs, vi_insert ]
+			mode: [ vi_insert emacs ]
 			modifier: alt
 			keycode: char_c
 			event: {
@@ -381,45 +403,48 @@ let $config = {
 			}
 		}
 
-		# {
-		# 	name: fzf-files
-		# 	mode: [ emacs, vi_insert ]
-		# 	modifier: control
-		# 	keycode: char_t
-		# 	event: {
-		# 		edit: insertString
-		# 		value: "(fzf-files)"
-		# 	}
-		# }
-
-		# {
-		# 	name: fzf-history
-		# 	mode: [ emacs, vi_insert ]
-		# 	modifier: control
-		# 	keycode: char_r
-		# 	event: [
-		# 		{ edit: clear }
-		# 		{
-		# 			edit: insertString
-		# 			value: "fzf-history"
-		# 		}
-		# 		{ send: enter }
-		# 		{
-		# 			edit: insertString
-		# 			value: "fzf-history"
-		# 		}
-		# 	]
-		# }
-
 		{
 			name: zoxide-query
-			mode: [ emacs, vi_insert ]
+			mode: [ vi_insert emacs ]
 			modifier: alt
 			keycode: char_s
 			event: {
 				send: executeHostCommand
 				cmd: "cd (zoxide query -i | str trim)"
 			}
+		}
+
+		# menus
+
+		{
+			mode: [ vi_normal vi_insert emacs ]
+			modifier: alt
+			keycode: char_/
+			event: {
+				until: [
+					{ send: menu, name: commands_menu }
+					{ send: menuPageNext }
+				]
+			}
+		}
+
+		{
+			mode: [ vi_normal vi_insert emacs ]
+			modifier: alt
+			keycode: char_v
+			event: {
+				until: [
+					{ send: menu, name: vars_menu }
+					{ send: menuPageNext }
+				]
+			}
+		}
+
+		{
+			mode: [ vi_insert emacs ]
+			modifier: control
+			keycode: char_t
+			event: { send: menu, name: files_menu }
 		}
 
 	]
