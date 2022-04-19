@@ -3,6 +3,7 @@
 ##
 
 alias l = ls -la
+alias nud = ~/dev/forks/nushell/target/debug/nu
 
 ##
 ## EDITING
