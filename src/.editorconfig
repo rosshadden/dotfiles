@@ -13,7 +13,7 @@ trim_trailing_whitespace = true
 [*.{nim,py}]
 indent_style = space
 
-[*.{yaml,yml}]
+[*.{yaml,yml,norg}]
 indent_style = space
 
 [package.json]

@@ -25,6 +25,7 @@ ts.setup {
 			i = {
 				["<a-n>"] = actions.cycle_history_next,
 				["<a-p>"] = actions.cycle_history_prev,
+				["<a-t>"] = actions.select_tab,
 				["<a-h>"] = actions.select_vertical,
 				["<a-j>"] = actions.select_horizontal,
 				["<a-k>"] = actions.select_horizontal,

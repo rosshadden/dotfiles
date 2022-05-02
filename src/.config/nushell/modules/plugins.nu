@@ -1,10 +1,8 @@
-let pluginsDir = "~/.config/nushell/plugins"
+# systemd
+# source ~/.config/nushell/plugins/systemd.nu
 
-source ~/.config/nushell/plugins/systemd.nu
-
-# # zoxide
-# if ("./plugins/zoxide.nu" | path exists) {
-# } else {
-# 	zoxide init nushell --cmd s --hook prompt | save ./plugins/zoxide.nu
-# }
-# source ~/.config/nushell/plugins/zoxide.nu
+# zoxide
+if ("~/.config/nushell/plugins/zoxide.nu" | path exists | not $in) {
+	zoxide init nushell --cmd s --hook prompt | save ~/.config/nushell/plugins/zoxide.nu
+}
+source ~/.config/nushell/plugins/zoxide.nu

@@ -1,18 +1,18 @@
 # fzf through files, typing result.
 # Requires: `fd`
-def fzf-files [] {
+export def fzf-files [] {
 	fd --type f --hidden | fzf --prompt "FILES> "
 }
 
 # fzf through directories, navigating to result
 # Requires: `fd`
-def-env fzf-cd [] {
+export def-env fzf-cd [] {
 	cd (fd --type d --hidden | fzf --prompt "FOLDERS> " | str trim)
 }
 
 # fzf through shell history, typing result.
 # Requires: `xdotool`
-def fzf-history [
+export def fzf-history [
 	--query (-q): string # Optionally start with given query.
 ] {
 	(history | get command | reverse | str collect (char nl) | fzf --prompt "HISTORY> " --query $"($query)")
@@ -20,14 +20,14 @@ def fzf-history [
 
 # type last arg from previous command
 # Requires: `xdotool`, `fd`
-def last-arg [] {
+export def last-arg [] {
 	let cmd = (history | last)
 	$cmd | split row (char space) | last
 }
 
 # Duplicate files to another location.
 # Places them in the same folders relative to destination.
-def dupe [
+export def dupe [
 	direction: string # whether to dupe `to` or `from` the $directory
 	directory: path # the directory to dupe to/from
 	...files: path # files to dupe
@@ -43,7 +43,7 @@ def dupe [
 
 # Attach to existing session, or create new.
 # If inside a session already, rename it.
-def ta [
+export def ta [
 	...params: string # Optional name. Defaults to name of current directory.
 ] {
 	let name = (if ($params | length) == 1 { $params } else { basename (pwd) | str trim })
@@ -57,7 +57,7 @@ def ta [
 }
 
 # Attach to existing session using fzf'd list
-def tj [
+export def tj [
 	...params: string # Optional name. Defaults to name of current directory.
 ] {
 	let name = (if ($params | length) == 1 { $params } else { tmux list-sessions -F '#{session_name}' | fzf })
@@ -65,20 +65,20 @@ def tj [
 }
 
 # Paste from clipboard
-def put [
+export def put [
 	--flags (-f): string # Optional flags to override default of "--clipboard"
 ] {
 	let flags = (if ($flags | empty?) { "--clipboard" } else { $flags })
 	xsel -o $flags
 }
 
-def zshtory [] {
+export def zshtory [] {
 	bat ~/.zsh_history | str replace -a ': \d+:\d+;' ""
 }
 
-# Change to dir matching zoxide query
-def-env s [
-	query: string # Directory query
-] {
-	cd (zoxide query $query | str trim)
-}
+# # Change to dir matching zoxide query
+# export def-env s [
+# 	query: string # Directory query
+# ] {
+# 	cd (zoxide query $query | str trim)
+# }

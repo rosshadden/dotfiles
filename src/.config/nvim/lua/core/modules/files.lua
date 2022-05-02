@@ -38,8 +38,9 @@ vim.keymap.set("n", "<plug><files>s", telescope.live_grep, { silent = true })
 
 fm.setup {
 	mappings = {
-		vert_split = "<c-l>",
-		horz_split = "<c-j>",
+		vert_split = "<a-l>",
+		horz_split = "<a-j>",
+		tabedit = "<a-t>",
 	},
 	ui = {
 		split = {

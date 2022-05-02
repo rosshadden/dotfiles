@@ -2,74 +2,54 @@
 
 # =============================================================================
 #
-# Utility functions for zoxide.
-#
-
-# Default prompt for Nushell.
-def __zoxide_prompt [] {
-    let git = $'(do -i {git rev-parse --abbrev-ref HEAD} | str trim -rc (char newline))'
-    let git = (if ($git | str length) == 0 { '' } {
-        build-string (char lparen) (ansi cb) $git (ansi reset) (char rparen)
-    })
-    build-string (ansi gb) (pwd) (ansi reset) $git '> '
-}
-
-# =============================================================================
-#
 # Hook configuration for zoxide.
 #
 
+# Default prompt for Nushell.
+let-env __zoxide_oldprompt = (if '__zoxide_oldprompt' in (env).name {
+  $env.__zoxide_oldprompt
+} else if 'PROMPT_COMMAND' in (env).name {
+  $env.PROMPT_COMMAND
+} else {
+  { $env.PWD }
+})
+
 # Hook to add new entries to the database.
 def __zoxide_hook [] {
-    shells | where active == $true && name == filesystem | get path | each {
-        zoxide add -- $it
-    }
+  zoxide add -- $env.PWD
 }
 
 # Initialize hook.
-let-env PROMPT_COMMAND = (
-    let prompt = (if ($nu.env | select PROMPT_COMMAND | empty?) {
-        if ($nu.config | select prompt | empty?) { '__zoxide_prompt' } { $nu.config.prompt }
-    } { $nu.env.PROMPT_COMMAND });
-    if ($prompt | str contains '__zoxide_hook') { $prompt } { $'__zoxide_hook;($prompt)' }
-)
+let-env PROMPT_COMMAND = {
+  __zoxide_hook
+  do $env.__zoxide_oldprompt
+}
 
 # =============================================================================
 #
-# When using zoxide with --no-aliases, alias these internal functions as
-# desired.
+# When using zoxide with --no-cmd, alias these internal functions as desired.
 #
 
 # Jump to a directory using only keywords.
-def __zoxide_z [...rest:string] {
-    if (shells | where active == $true | get name) != filesystem {
-        if ($rest | length) > 1 {
-            $'zoxide: can only jump directories on filesystem(char nl)'
-        } {
-            cd $rest
-        }
-    } {
-        let arg0 = ($rest | append '~' | first 1);
-        if ($rest | length) <= 1 && ($arg0 == '-' || ($arg0 | path expand | path exists)) {
-            cd $arg0
-        } {
-            cd $'(zoxide query --exclude (pwd) -- $rest | str trim -rc (char newline))'
-        }
-    }
+def-env __zoxide_z [...rest:string] {
+  # `z -` does not work yet, see https://github.com/nushell/nushell/issues/4769
+  let arg0 = ($rest | append '~').0
+  let path = if ($rest | length) <= 1 && ($arg0 | path expand | path type) == dir {
+    $arg0
+  } else {
+    (zoxide query --exclude $env.PWD -- $rest | str trim -r -c "\n")
+  }
+  cd $path
 }
 
 # Jump to a directory using interactive search.
-def __zoxide_zi  [...rest:string] {
-    if (shells | where active == $true | get name) != filesystem {
-        $'zoxide: can only jump directories on filesystem(char nl)'
-    } {
-        cd $'(zoxide query -i -- $rest | str trim -rc (char newline))'
-    }
+def-env __zoxide_zi  [...rest:string] {
+  cd $'(zoxide query -i -- $rest | str trim -r -c "\n")'
 }
 
 # =============================================================================
 #
-# Convenient aliases for zoxide. Disable these using --no-aliases.
+# Commands for zoxide. Disable these using --no-cmd.
 #
 
 alias s = __zoxide_z
@@ -77,9 +57,13 @@ alias si = __zoxide_zi
 
 # =============================================================================
 #
-# To initialize zoxide, add this to your configuration (find it by running
-# `config path` in Nushell):
+# Add this to your env file (find it by running `$nu.env-path` in Nushell):
 #
-#   startup = ['zoxide init nushell --hook prompt | save ~/.zoxide.nu', 'source ~/.zoxide.nu']
+#   zoxide init nushell --hook prompt | save ~/.zoxide.nu
 #
-# Note: zoxide only supports Nushell v0.37.0 and above.
+# Now, add this to the end of your config file (find it by running
+# `$nu.config-path` in Nushell):
+#
+#   source ~/.zoxide.nu
+#
+# Note: zoxide only supports Nushell v0.61.0 and above.

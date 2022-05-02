@@ -54,6 +54,7 @@ config.keys = {
 	{ mods = "LEADER", key = "b", action = wezterm.action{ ActivateKeyTable = { name = "panes" } } },
 	{ mods = "LEADER", key = "c", action = "ActivateCopyMode" },
 	{ mods = "LEADER", key = "r", action = wezterm.action{ ActivateKeyTable = { name = "resize", one_shot = false } } },
+	{ mods = "LEADER", key = "s", action = wezterm.action{ ActivateKeyTable = { name = "session" } } },
 	{ mods = "LEADER", key = "t", action = wezterm.action{ ActivateKeyTable = { name = "tabs" } } },
 
 	-- navigation
@@ -83,6 +84,10 @@ config.key_tables.app = {
 	{ key = "f", action = "ToggleFullScreen" },
 	{ key = "l", action = "ShowLauncher" },
 	{ key = "r", action = "ReloadConfiguration" },
+}
+
+config.key_tables.session = {
+	{ key = "d", action = wezterm.action{ DetachDomain = "CurrentPaneDomain" } },
 }
 
 config.key_tables.tabs = {
