@@ -11,6 +11,8 @@ local parsers = require("nvim-treesitter.parsers").get_parser_configs()
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
+vim.g["plantuml_previewer#plantuml_jar_path"] = "/usr/share/java/plantuml/plantuml.jar"
+
 ft.set("gdscript", "#%s")
 
 --

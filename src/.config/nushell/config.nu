@@ -15,7 +15,7 @@ use mappings.nu get-mappings
 use menus.nu get-menus
 use theme.nu get-theme
 
-let $config = {
+let-env config = {
 	filesize_metric: false
 	table_mode: rounded # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
 	use_ls_colors: true
@@ -26,6 +26,7 @@ let $config = {
 	partial_completions: true # set this to false to prevent partial filling of the prompt
 	animate_prompt: false # redraw the prompt every second
 	float_precision: 2
+	buffer_editor: "nvim"
 	use_ansi_coloring: true
 	filesize_format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, zb, zib, auto
 	edit_mode: vi
