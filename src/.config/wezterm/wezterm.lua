@@ -12,6 +12,11 @@ local config = {
 	key_tables = {},
 
 	-- startup
+	-- default_prog = { "zsh", "-l" },
+	-- default_prog = { "bash", "-l" },
+	-- default_prog = { "nu", "-l" },
+	-- default_prog = { "nu", "--config", "/dev/null" },
+	-- default_prog = { "/home/ross/dev/forks/nushell/target/debug/nu" },
 	default_gui_startup_args = { "connect", "unix" },
 	term = "wezterm",
 
@@ -50,12 +55,12 @@ config.keys = {
 	{ mods = "SHIFT", key = "Backspace", action = wezterm.action{ SendKey = { key = "Backspace" } } },
 
 	-- modes
-	{ mods = "LEADER", key = "a", action = wezterm.action{ ActivateKeyTable = { name = "app" } } },
-	{ mods = "LEADER", key = "b", action = wezterm.action{ ActivateKeyTable = { name = "panes" } } },
+	{ mods = "LEADER", key = "a", action = wezterm.action{ ActivateKeyTable = { name = "app", one_shot = true, replace_current = false } } },
+	{ mods = "LEADER", key = "b", action = wezterm.action{ ActivateKeyTable = { name = "panes", one_shot = true, replace_current = false } } },
 	{ mods = "LEADER", key = "c", action = "ActivateCopyMode" },
-	{ mods = "LEADER", key = "r", action = wezterm.action{ ActivateKeyTable = { name = "resize", one_shot = false } } },
-	{ mods = "LEADER", key = "s", action = wezterm.action{ ActivateKeyTable = { name = "session" } } },
-	{ mods = "LEADER", key = "t", action = wezterm.action{ ActivateKeyTable = { name = "tabs" } } },
+	{ mods = "LEADER", key = "r", action = wezterm.action{ ActivateKeyTable = { name = "resize", one_shot = false, replace_current = false } } },
+	{ mods = "LEADER", key = "s", action = wezterm.action{ ActivateKeyTable = { name = "session", one_shot = true, replace_current = false } } },
+	{ mods = "LEADER", key = "t", action = wezterm.action{ ActivateKeyTable = { name = "tabs", one_shot = true, replace_current = false } } },
 
 	-- navigation
 	{ mods = "LEADER", key = "Tab", action = "ActivateLastTab" },
