@@ -68,7 +68,14 @@ local plugins = function(use)
 	if packerBootstrap then require("packer").sync() end
 end
 
-require("packer").startup(plugins)
+require("packer").startup({
+	plugins,
+	config = {
+		display = {
+			open_fn = require("packer.util").float,
+		},
+	}
+})
 
 local group = vim.api.nvim_create_augroup("packer", {})
 

@@ -5,6 +5,10 @@
 -- line numbers
 vim.opt.number = true
 
+-- status
+vim.opt.laststatus = 3
+vim.opt.winbar = "%=%m %f"
+
 -- colorscheme
 require("base16-colorscheme").setup("paraiso")
 
@@ -24,8 +28,8 @@ vim.cmd [[
 	highlight IncSearch guibg=#41323f guifg=#ef6155
 ]]
 
--- TODO: slow as hell
--- require("mini.starter").setup()
+-- startup menu
+require("mini.starter").setup({})
 
 --
 -- FUNCTIONS
