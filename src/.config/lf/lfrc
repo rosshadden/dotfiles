@@ -128,9 +128,9 @@ cmd fzf_cd ${{
 # ranger
 cmd rifle ${{
 	set -f
-	rifle -l $f
+	rifle -l "$f"
 	read -p "Select runner: " runner
-	rifle -p $runner $f
+	rifle -p "$runner" "$f"
 }}
 
 # get config value

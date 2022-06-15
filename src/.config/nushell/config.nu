@@ -23,7 +23,9 @@ let-env config = {
 	use_grid_icons: true
 	footer_mode: "25" # always, never, number_of_rows, auto
 	quick_completions: false # set this to false to prevent auto-selecting completions when only one remains
+	case_sensitive_completions: false
 	partial_completions: true # set this to false to prevent partial filling of the prompt
+	completion_algorithm: "prefix" # prefix, fuzzy
 	animate_prompt: false # redraw the prompt every second
 	float_precision: 2
 	buffer_editor: "nvim"
@@ -32,8 +34,12 @@ let-env config = {
 	edit_mode: vi
 	max_history_size: 1048576
 	sync_history_on_enter: true # Enable to share the history between multiple sessions, else you have to close the session to persist history to file
-	# shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
-	# completion_algorithm: "fuzzy" # prefix, fuzzy
+	history_file_format: "plaintext" # "sqlite" or "plaintext"
+	shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
+	disable_table_indexes: false # set to true to remove the index column from tables
+	cd_with_abbreviations: false # set to true to allow you to do things like cd s/o/f and nushell expand it to cd some/other/folder
+	case_sensitive_completions: false # set to true to enable case-sensitive completions
+	enable_external_completion: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up my be very slow
 
 	keybindings: (get-mappings)
 	menus: (get-menus)
