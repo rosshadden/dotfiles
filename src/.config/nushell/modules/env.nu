@@ -45,14 +45,14 @@ export env PATH {
 		$env.PATH
 		| prepend [
 			# personal
-			"/home/ross/bin",
-			"/home/ross/local/bin",
-			"/home/ross/.local/bin",
+			"~/bin",
+			"~/local/bin",
+			"~/.local/bin",
 
 			# domain
-			"/home/ross/dev/bin",
-			"/home/ross/dev/reaction/bin",
-			"/home/ross/dev/mailchimp/bin",
+			"~/dev/bin",
+			"~/dev/reaction/bin",
+			"~/dev/mailchimp/bin",
 		]
 		| append [
 			# system
@@ -61,11 +61,11 @@ export env PATH {
 			"/usr/sbin",
 
 			# lang
-			"/home/ross/.nimble/bin",
-			"/home/ross/.cargo/bin",
-			"/home/ross/go/bin",
-			"/home/ross/.rvm/bin",
-			"/home/ross/.gem/ruby/3.0.0/bin",
+			"~/.nimble/bin",
+			"~/.cargo/bin",
+			"~/go/bin",
+			"~/.rvm/bin",
+			"~/.gem/ruby/3.0.0/bin",
 			"/usr/bin/core_perl",
 			"/usr/lib/jvm/java-7-openjdk/jre/bin",
 		]
