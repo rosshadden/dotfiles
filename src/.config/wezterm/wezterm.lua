@@ -1,5 +1,7 @@
 local wezterm = require "wezterm"
 
+local scheme = wezterm.get_builtin_color_schemes()["Paraiso Dark"]
+
 function tablfy(value)
 	result = {}
 	for match in (value .. " "):gmatch("(.-)" .. " ") do
@@ -32,6 +34,9 @@ local config = {
 
 	-- ui
 	color_scheme = "Paraiso Dark",
+	color_schemes = {
+		["Paraiso Dark"] = scheme,
+	},
 	window_background_opacity = 0.95,
 
 	-- cursor
@@ -39,6 +44,9 @@ local config = {
 
 	-- more native keys
 	enable_csi_u_key_encoding = true,
+
+	-- quick select keys
+	quick_select_alphabet = "aoeuqjkxpyhtnsgcrlmwvzfidb",
 }
 
 -- mappings
@@ -117,18 +125,21 @@ for i = 1, 9 do
 end
 
 config.key_tables.panes = {
+	{ key = "Space", action = wezterm.action{ PaneSelect = {} } },
+	{ key = "s", action = wezterm.action{ PaneSelect = { mode = "SwapWithActive" } } },
+
 	{ key = "c", action = wezterm.action{ CloseCurrentPane = { confirm = true } } },
 	{ key = "C", action = wezterm.action{ CloseCurrentPane = { confirm = false } } },
 
-	{ key = "j", action = wezterm.action{ SplitVertical = {
-		-- domain = "CurrentPaneDomain",
-		-- set_environment_variables = { PWD = "/tmp/aoeu" },
-		-- args = { "nu" },
-		-- cwd = "/tmp/aoeu",
-	} } },
-	{ key = "k", action = wezterm.action{ SplitVertical = {} } },
-	{ key = "h", action = wezterm.action{ SplitHorizontal = {} } },
-	{ key = "l", action = wezterm.action{ SplitHorizontal = {} } },
+	{ key = "j", action = wezterm.action{ SplitPane = { direction = "Down" } } },
+	{ key = "k", action = wezterm.action{ SplitPane = { direction = "Up" } } },
+	{ key = "h", action = wezterm.action{ SplitPane = { direction = "Left" } } },
+	{ key = "l", action = wezterm.action{ SplitPane = { direction = "Right" } } },
+
+	{ key = "J", action = wezterm.action{ SplitPane = { direction = "Down", top_level = true } } },
+	{ key = "K", action = wezterm.action{ SplitPane = { direction = "Up", top_level = true } } },
+	{ key = "H", action = wezterm.action{ SplitPane = { direction = "Left", top_level = true } } },
+	{ key = "L", action = wezterm.action{ SplitPane = { direction = "Right", top_level = true } } },
 
 	{ key = "f", action = "TogglePaneZoomState" },
 	{ key = "z", action = "TogglePaneZoomState" },
@@ -163,8 +174,8 @@ config.window_frame = {
 
 config.colors = {
 	compose_cursor = "orange",
-	selection_fg = "black",
-	selection_bg = "fffacd",
+	cursor_border = "white",
+	-- foreground = "white",
 
 	tab_bar = {
 		background = "#ef6155",
@@ -178,6 +189,10 @@ config.colors = {
 		},
 	},
 }
+
+for key, value in pairs(config.colors) do
+	scheme[key] = value
+end
 
 wezterm.on("update-right-status", function(win, pane)
 	local process = pane:get_foreground_process_name()
