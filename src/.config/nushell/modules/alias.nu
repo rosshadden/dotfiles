@@ -2,8 +2,7 @@
 ## SHORTCUTS
 ##
 
-export alias l = ls -la
-export alias nud = ~/dev/forks/nushell/target/debug/nu
+export alias l = (ls -la | select name type target size modified)
 
 ##
 ## EDITING
@@ -20,7 +19,6 @@ export alias se = sudo $env.EDITOR
 export alias g = git
 export alias tigs = tig status
 export alias tigr = tig $"(git rev-parse HEAD | str trim)..(git rev-parse FETCH_HEAD | str trim)"
-# alias tigr- = tigr --no-merges
 
 # tmux
 export alias tl = tmux list-sessions

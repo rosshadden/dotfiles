@@ -1,5 +1,5 @@
 # make gpg open in-terminal dialog
-export env GPG_TTY { (if ("GPG_TTY" not-in $env) { tty | str trim } else { $env.GPG_TTY }) }
+export env GPG_TTY { (tty | str trim) }
 
 export env FZF_DEFAULT_COMMAND { "fd --type file --hidden --follow" }
 export env FZF_DEFAULT_OPTS {

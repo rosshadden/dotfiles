@@ -15,34 +15,26 @@ See the [TODO](TODO.md) for things I have in mind.
 
 ## Dependencies
 
-- `zsh`
-	- [`zplug`](https://zplug.sh/) - package manager
+- [`nushell`](https://nushell.sh)
 - [`i3`](https://i3wm.org/)
 	- `xdotool`
 	- [`rofimoji`](https://github.com/fdw/rofimoji)
 - [`neovim`](https://neovim.io/)
-	- [`npm:tern`](https://github.com/ternjs/tern) - code analyzer
-	- [`npm:jsctags`](https://github.com/ramitos/jsctags) - JavaScript tags
-	- [`npm:livedown`](https://github.com/shime/vim-livedown) - live previews of markdown files in vim
-	- [`ctags`](https://www.archlinux.org/packages/extra/i686/ctags/) - exuberant ctags
 - [`tmux`](https://github.com/tmux/tmux)
 	- [`tmuxp`](https://github.com/tony/tmuxp) - powers ./bin/tp
 	- [`urlview`](https://github.com/sigpipe/urlview)
 	- [`fpp`](https://github.com/facebook/PathPicker)
 - [`tig`](https://github.com/jonas/tig)
 - [`fzf`](https://github.com/junegunn/fzf)
-- [`pidgin`](https://pidgin.im/)
-	- `python-dbus` - powers `./lib/purple.py`
-	- [`gtk-theme-numix-ocean`](https://github.com/aaronjamesyoung/Numix-Ocean)
-- [`ranger`](https://github.com/hut/ranger)
+- [`lf`](https://github.com/gokcehan/lf)
 	- installed optional dependencies:
 		- `atool`
+		- `bat`
 		- `highlight`
 		- `libcaca`
 		- `mediainfo`
 		- `poppler`
 		- `python-chardet`
-		- `transmission-cli`
 		- `w3m`
 - fonts
 	- `ttf-fantasque-sans-mono` - main font

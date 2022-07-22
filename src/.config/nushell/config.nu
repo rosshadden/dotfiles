@@ -34,12 +34,22 @@ let-env config = {
 	edit_mode: vi
 	max_history_size: 1048576
 	sync_history_on_enter: true # Enable to share the history between multiple sessions, else you have to close the session to persist history to file
-	history_file_format: "plaintext" # "sqlite" or "plaintext"
+	history_file_format: "sqlite" # "sqlite" or "plaintext"
 	shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
 	disable_table_indexes: false # set to true to remove the index column from tables
 	cd_with_abbreviations: false # set to true to allow you to do things like cd s/o/f and nushell expand it to cd some/other/folder
 	case_sensitive_completions: false # set to true to enable case-sensitive completions
 	enable_external_completion: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up my be very slow
+	# max_external_completion_results: 100 # setting it lower can improve completion performance at the cost of omitting some options
+
+	# # A strategy of managing table view in case of limited space.
+	# table_trim: {
+	# 	methodology: wrapping, # truncating
+	# 	# A strategy which will be used by 'wrapping' methodology
+	# 	wrapping_try_keep_words: true,
+	# 	# A suffix which will be used with 'truncating' methodology
+	# 	# truncating_suffix: "..."
+	# }
 
 	keybindings: (get-mappings)
 	menus: (get-menus)

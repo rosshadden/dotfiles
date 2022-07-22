@@ -6,7 +6,7 @@
 vim.opt.shortmess = "actIO"
 
 -- 🐀 ratJAM 🐀
-vim.opt.mouse = "a"
+vim.opt.mouse = "ar"
 
 --
 -- MAPPINGS
