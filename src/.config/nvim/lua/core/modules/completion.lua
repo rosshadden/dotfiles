@@ -76,6 +76,22 @@ cmp.setup({
 				cmp.select_prev_item()
 			end
 		end, { "i", "s" }),
+
+		["<c-n>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif hasPriorWords() then
+				cmp.complete()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+
+		["<c-p>"] = cmp.mapping(function()
+			if cmp.visible() then
+				cmp.select_prev_item()
+			end
+		end, { "i", "s" }),
 	},
 
 	sources = cmp.config.sources({

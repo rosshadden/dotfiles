@@ -1,0 +1,123 @@
+(defcfg
+	input (iokit-name "Apple Internal Keyboard / Trackpad")
+	output (kext)
+	fallthrough true
+	allow-cmd true
+)
+
+(defsrc
+	caps
+	rmet
+	lsft rsft
+	fn
+	enter
+	r l
+	j p c v
+	i ;
+	f1 f2 f10 f11 f12
+)
+
+(defalias
+	xcp (tap-hold-next-release 100 esc ctl)
+	sup (around rmet (around ralt rctl))
+	mnu (layer-toggle yabai)
+)
+
+(deflayer main
+	@xcp
+	@mnu
+	_
+	_
+	fn
+	_
+	_ _
+	_ _ _ _
+	_ _
+	brdn brup mute vold volu
+)
+
+(deflayer yabai
+	_
+	_
+	(layer-toggle yabai-shift)
+	(layer-toggle yabai-shift)
+	_
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/wezterm start'")
+
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m space --focus prev || /opt/homebrew/bin/yabai -m space --focus last'")
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m space --focus next || opt/homebrew/bin/yabai -m space --focus first'")
+
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m window --focus west'")
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m window --focus east'")
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m window --focus south'")
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m window --focus north'")
+
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m window --close'")
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m window --toggle zoom-fullscreen'")
+
+	_ _ _ _ _
+)
+
+(deflayer yabai-shift
+	_
+	_
+	_
+	_
+	_
+	_
+
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m window --space prev'")
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m window --space next'")
+
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m window --swap west'")
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m window --swap east'")
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m window --swap south'")
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m window --swap north'")
+
+	_ _
+
+	_ _ _ _ _
+)
+
+#|
+(defsrc
+	esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+			 1    2    3    4    5    6    7    8    9    0    -    =    bspc
+	tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret
+	caps a    s    d    f    g    h    j    k    l    ;    '    \
+	lsft grv  z    x    c    v    b    n    m    ,    .    /    rsft
+	fn   lctl lalt lmet           spc       rmet ralt left down up   rght
+)
+
+#|
+
+(deflayer
+	_    _    _    _    _    _    _    _    _    _    _    _    _
+			 _    _    _    _    _    _    _    _    _    _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _
+	_    _    _    _              _         _    _    _    _    _    _
+)
+
+;; (deflayer default
+;; 	_    _    _    _    _    _    _    _    _    _    _    _    _
+;; 			 _    _    _    _    _    _    _    _    _    _    _    _    _
+;; 	_    _    _    _    _    _    _    _    _    _    _    _    _    _
+;; 	_    _    _    _    _    _    _    _    _    _    _    _    _
+;; 	@xcp _    _    _    _    _    _    _    _    _    _    _    _
+;; 	_    _    _    _              _         @mnu _    _    _    _    _
+;; )
+
+(deflayer yabai
+	_
+	_
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/wezterm --config-file=/Users/ross/dotfiles/src/.config/wezterm/wezterm.lua start'")
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m space --focus prev || /opt/homebrew/bin/yabai -m space --focus last'")
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m space --focus next || opt/homebrew/bin/yabai -m space --focus first'")
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m window --focus west'")
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m window --focus east'")
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m window --focus south'")
+	(cmd-button "sudo -u ross sh -c '/opt/homebrew/bin/yabai -m window --focus north'")
+)
+|#

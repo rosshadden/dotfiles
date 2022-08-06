@@ -118,10 +118,8 @@ config.key_tables.tabs = {
 	{ key = "L", action = wezterm.action{ MoveTabRelative = 1 } },
 }
 for i = 1, 9 do
-	table.insert(config.key_tables.tabs, {
-		key = tostring(i),
-		action = wezterm.action{ ActivateTab = i - 1 },
-	})
+	table.insert(config.keys, { mods = "LEADER", key = tostring(i), action = wezterm.action{ ActivateTab = i - 1 } })
+	table.insert(config.key_tables.tabs, { key = tostring(i), action = wezterm.action{ ActivateTab = i - 1 } })
 end
 
 config.key_tables.panes = {

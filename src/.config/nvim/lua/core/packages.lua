@@ -63,6 +63,8 @@ local plugins = function(use)
 	-- languages
 	use { "aklt/plantuml-syntax", { "weirongxu/plantuml-previewer.vim", requires = "tyru/open-browser.vim" } }
 	use { "LhKipp/nvim-nu", run = ":TSInstall nu" }
+	use "kmonad/kmonad-vim"
+	use "alaviss/nim.nvim"
 
 	-- bootstrap new installations
 	if packerBootstrap then require("packer").sync() end
