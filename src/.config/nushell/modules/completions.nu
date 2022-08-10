@@ -1,10 +1,16 @@
 # Custom completions for external commands (those outside of Nushell)
 # Each completions has two parts: the form of the external command, including its flags and parameters
 # and a helper command that knows how to complete values for those flags and parameters
-#
-# This is a simplified version of completions for git branches and git remotes
+
+# branches
 def "nu-complete git branches" [] {
 	^git branch | lines | each { |line| $line | str replace '[\*\+] ' '' | str trim }
+}
+
+# remote branches
+def "nu-complete git branches remote" [] {
+	^git branch -r | tail -n+2 | lines | each { |line| $line | str trim | str replace ' .+$' '' }
+	# ^git branch -r | cut -c 3- | tail -n+2
 }
 
 def "nu-complete git remotes" [] {
@@ -118,4 +124,75 @@ export extern "git push" [
 	--thin                                          # use thin pack
 	--verbose(-v)                                   # be more verbose
 	--help                                          # Display this help message
+]
+
+# chekout
+export extern "git co" [
+	...targets: string@"nu-complete git branches"   # name of the branch or files to checkout
+	--conflict: string                              # conflict style (merge or diff3)
+	--detach(-d)                                    # detach HEAD at named commit
+	--force(-f)                                     # force checkout (throw away local modifications)
+	--guess                                         # second guess 'git checkout <no-such-branch>' (default)
+	--ignore-other-worktrees                        # do not check if another worktree is holding the given ref
+	--ignore-skip-worktree-bits                     # do not limit pathspecs to sparse entries only
+	--merge(-m)                                     # perform a 3-way merge with the new branch
+	--orphan: string                                # new unparented branch
+	--ours(-2)                                      # checkout our version for unmerged files
+	--overlay                                       # use overlay mode (default)
+	--overwrite-ignore                              # update ignored files (default)
+	--patch(-p)                                     # select hunks interactively
+	--pathspec-from-file: string                    # read pathspec from file
+	--progress                                      # force progress reporting
+	--quiet(-q)                                     # suppress progress reporting
+	--recurse-submodules: string                    # control recursive updating of submodules
+	--theirs(-3)                                    # checkout their version for unmerged files
+	--track(-t)                                     # set upstream info for new branch
+	-b: string                                      # create and checkout a new branch
+	-B: string                                      # create/reset and checkout a branch
+	-l                                              # create reflog for new branch
+	--help                                          # Display this help message
+]
+
+# change dir
+export extern "git cd" [
+	...targets: string@"nu-complete git branches"   # name of the branch or files to checkout
+	--conflict: string                              # conflict style (merge or diff3)
+	--detach(-d)                                    # detach HEAD at named commit
+	--force(-f)                                     # force checkout (throw away local modifications)
+	--guess                                         # second guess 'git checkout <no-such-branch>' (default)
+	--ignore-other-worktrees                        # do not check if another worktree is holding the given ref
+	--ignore-skip-worktree-bits                     # do not limit pathspecs to sparse entries only
+	--merge(-m)                                     # perform a 3-way merge with the new branch
+	--orphan: string                                # new unparented branch
+	--ours(-2)                                      # checkout our version for unmerged files
+	--overlay                                       # use overlay mode (default)
+	--overwrite-ignore                              # update ignored files (default)
+	--patch(-p)                                     # select hunks interactively
+	--pathspec-from-file: string                    # read pathspec from file
+	--progress                                      # force progress reporting
+	--quiet(-q)                                     # suppress progress reporting
+	--recurse-submodules: string                    # control recursive updating of submodules
+	--theirs(-3)                                    # checkout their version for unmerged files
+	--track(-t)                                     # set upstream info for new branch
+	-b: string                                      # create and checkout a new branch
+	-B: string                                      # create/reset and checkout a branch
+	-l                                              # create reflog for new branch
+	--help                                          # Display this help message
+]
+
+# branch
+export extern "git b" [
+	...targets: string@"nu-complete git branches"   # name of the branch or files to checkout
+	-d                                              # delet
+	-r                                              # remot
+	-h                                              # halp
+	--help                                          # halp
+]
+
+# rebase
+export extern "git rb" [
+	...targets: string@"nu-complete git branches remote"   # name of the branch or files to checkout
+	-d                                              # delet
+	-h                                              # halp
+	--help                                          # halp
 ]
