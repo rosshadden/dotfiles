@@ -14,11 +14,6 @@ local config = {
 	key_tables = {},
 
 	-- startup
-	-- default_prog = { "zsh", "-l" },
-	-- default_prog = { "bash", "-l" },
-	-- default_prog = { "nu", "-l" },
-	-- default_prog = { "nu", "--config", "/dev/null" },
-	-- default_prog = { "/home/ross/dev/forks/nushell/target/debug/nu" },
 	default_gui_startup_args = { "connect", "unix" },
 	term = "wezterm",
 

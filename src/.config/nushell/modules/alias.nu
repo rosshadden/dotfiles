@@ -2,8 +2,6 @@
 ## SHORTCUTS
 ##
 
-export alias l = (ls -la | select name type target size modified)
-
 ##
 ## EDITING
 ##
@@ -32,3 +30,6 @@ export alias z = zellij
 
 # get public ip
 export alias wimi = curl ipecho.net/plain
+export alias wimli = (ip address show label enp* | rg -o '\d+\.\d+\.\d+\.\d+/\d+' | str trim)
+
+export alias dcp = docker-compose

@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ -f "/usr/bin/wezterm" ]; then
+	export TERMINAL="/home/ross/bin/wez"
+	# export TERMINAL="/usr/bin/wezterm"
+fi
 
 ##
 # Normalizes running terminals with a specific command.

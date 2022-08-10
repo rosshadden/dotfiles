@@ -1,3 +1,5 @@
+local starter = require "mini.starter"
+
 --
 -- SETTINGS
 --
@@ -29,7 +31,13 @@ vim.cmd [[
 ]]
 
 -- startup menu
-require("mini.starter").setup({})
+require("mini.starter").setup({
+	items = {
+		starter.sections.recent_files(10, true),
+		starter.sections.telescope(),
+		starter.sections.builtin_actions(),
+	}
+})
 
 --
 -- FUNCTIONS

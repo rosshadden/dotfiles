@@ -29,7 +29,10 @@ inMotion.sort.setup()
 
 require("Comment").setup()
 
+require("mini.ai").setup()
+require("mini.cursorword").setup()
 -- require("mini.pairs").setup()
+require("mini.trailspace").setup()
 
 require("mini.surround").setup {
 	mappings = {

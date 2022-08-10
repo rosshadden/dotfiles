@@ -43,8 +43,6 @@ cmp.setup({
 
 	experimental = {
 		ghost_text = true,
-		-- NOTE: cmp-cmdline has a weird bug, so this bypasses it for now
-		view = { entries = "native" },
 	},
 
 	mapping = {

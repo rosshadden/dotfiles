@@ -1,3 +1,50 @@
+##
+## SHORTCUTS
+##
+
+export def l [dir: string = "."] {
+	ls -la $dir | if empty? {} else { select name type target size modified }
+}
+
+##
+## UTILS
+##
+
+# Duplicate files to another location.
+# Places them in the same folders relative to destination.
+export def dupe [
+	direction: string # whether to dupe `to` or `from` the $directory
+	directory: path # the directory to dupe to/from
+	...files: path # files to dupe
+] {
+	if $direction == "to" {
+		^cp -r $files $directory
+	} else {
+		for file in $files {
+			cp -r $"($directory)/($file)" $file
+		}
+	}
+}
+
+# Paste from clipboard
+export def put [
+	--flags (-f): string # Optional flags to override default of "--clipboard"
+] {
+	let flags = (if ($flags | empty?) { "--clipboard" } else { $flags })
+	xsel -o $flags
+}
+
+# type last arg from previous command
+# Requires: `xdotool`, `fd`
+export def last-arg [] {
+	let cmd = (history | last)
+	$cmd | split row (char space) | last
+}
+
+##
+## APPS
+##
+
 # fzf through files, typing result.
 # Requires: `fd`
 export def fzf-files [] {
@@ -16,29 +63,6 @@ export def fzf-history [
 	--query (-q): string # Optionally start with given query.
 ] {
 	(history | get command | reverse | str collect (char nl) | fzf --prompt "HISTORY> " --query $"($query)")
-}
-
-# type last arg from previous command
-# Requires: `xdotool`, `fd`
-export def last-arg [] {
-	let cmd = (history | last)
-	$cmd | split row (char space) | last
-}
-
-# Duplicate files to another location.
-# Places them in the same folders relative to destination.
-export def dupe [
-	direction: string # whether to dupe `to` or `from` the $directory
-	directory: path # the directory to dupe to/from
-	...files: path # files to dupe
-] {
-	if $direction == "to" {
-		^cp -r $files $directory
-	} else {
-		for file in $files {
-			cp -r $"($directory)/($file)" $file
-		}
-	}
 }
 
 # Attach to existing session, or create new.
@@ -62,14 +86,6 @@ export def tj [
 ] {
 	let name = (if ($params | length) == 1 { $params } else { tmux list-sessions -F '#{session_name}' | fzf })
 	ta $name
-}
-
-# Paste from clipboard
-export def put [
-	--flags (-f): string # Optional flags to override default of "--clipboard"
-] {
-	let flags = (if ($flags | empty?) { "--clipboard" } else { $flags })
-	xsel -o $flags
 }
 
 export def zshtory [] {

@@ -19,6 +19,20 @@ ft.set("gdscript", "#%s")
 -- SETUP
 --
 
+parsers.nim = {
+	install_info = {
+		url = "https://github.com/aMOPel/tree-sitter-nim",
+		branch = "main",
+		-- url = "https://github.com/monaqa/tree-sitter-nim",
+		-- branch = "master",
+		files = {
+			"src/parser.c",
+			"src/scanner.cc",
+		},
+	},
+	filetype = "nim",
+}
+
 parsers.norg_meta = {
 	install_info = {
 		url = "https://github.com/nvim-neorg/tree-sitter-norg-meta",
@@ -67,6 +81,7 @@ configs.setup {
 		"yaml",
 
 		-- custom
+		"nim",
 		"norg_meta",
 		"norg_table",
 		"nu",
@@ -137,7 +152,9 @@ end
 local servers = {
 	"bashls",
 	"gdscript",
-	"gopls",
+	"jsonls",
+	"marksman",
+	"nimls",
 	"rust_analyzer",
 	"tsserver",
 }

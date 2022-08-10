@@ -41,10 +41,10 @@ vim.keymap.set("n", "<a-tab>", "g<tab>", { silent = true })
 vim.keymap.set("n", "<plug><tabs>s", ":tab split<cr>", { silent = true })
 
 -- new
-vim.keymap.set("n", "<plug><tabs>n", ":tabnew<cr>", { silent = true })
-vim.keymap.set("n", "<plug><tabs>N", ":$tabnew<cr>", { silent = true })
-vim.keymap.set("n", "<plug><tabs>p", ":-tabnew<cr>", { silent = true })
-vim.keymap.set("n", "<plug><tabs>P", ":0tabnew<cr>", { silent = true })
+vim.keymap.set("n", "<plug><tabs>n", ":tabedit<cr>", { silent = true })
+vim.keymap.set("n", "<plug><tabs>N", ":tabedit %<cr>", { silent = true })
+vim.keymap.set("n", "<plug><tabs>p", ":-tabedit<cr>", { silent = true })
+vim.keymap.set("n", "<plug><tabs>P", ":tabedit %<cr>", { silent = true })
 
 -- close
 vim.keymap.set("n", "<plug><tabs>c", ":tabclose<cr>", { silent = true })
