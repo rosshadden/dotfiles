@@ -47,9 +47,10 @@ cmp.setup({
 
 	mapping = {
 		["<a-space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c", }),
-		["<cr>"] = cmp.mapping.confirm({ select = true }),
+		["<cr>"] = cmp.mapping.confirm({ select = false }),
 		["<c-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 		["<c-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+		["<c-e>"] = cmp.mapping.abort(),
 
 		["<c-s>"] = cmp.mapping(function(fallback)
 			if vim.fn["vsnip#available"](1) == 1 then
