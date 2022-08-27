@@ -79,6 +79,7 @@ configs.setup {
 		"tsx",
 		"typescript",
 		"yaml",
+		"zig",
 
 		-- custom
 		"nim",
@@ -157,6 +158,7 @@ local servers = {
 	"nimls",
 	"rust_analyzer",
 	"tsserver",
+	"zls",
 }
 for _, server in ipairs(servers) do
 	lsp[server].setup {

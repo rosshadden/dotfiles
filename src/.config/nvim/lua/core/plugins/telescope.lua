@@ -48,7 +48,7 @@ ts.setup {
 	pickers = {
 		find_files = {
 			hidden = true,
-			find_command = { "fd", "-H" },
+			find_command = { "fd", "-H", "--type", "f", },
 		},
 	},
 }

@@ -4,6 +4,7 @@ register -e json /usr/bin/nu_plugin_query
 use alias.nu *
 use functions.nu *
 use env.nu *
+use path.nu *
 source plugins.nu
 
 # source ($nu.config-path | path dirname | path join modules | path join plugins.nu)
@@ -32,7 +33,7 @@ let-env config = {
 	filesize_format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, zb, zib, auto
 	edit_mode: vi
 	max_history_size: 1048576
-	sync_history_on_enter: true # Enable to share the history between multiple sessions, else you have to close the session to persist history to file
+	sync_history_on_enter: false # Enable to share the history between multiple sessions, else you have to close the session to persist history to file
 	history_file_format: "sqlite" # "sqlite" or "plaintext"
 	shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
 	disable_table_indexes: false # set to true to remove the index column from tables
@@ -40,6 +41,7 @@ let-env config = {
 	case_sensitive_completions: false # set to true to enable case-sensitive completions
 	enable_external_completion: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up my be very slow
 	max_external_completion_results: 100 # setting it lower can improve completion performance at the cost of omitting some options
+	show_banner: false
 
 	# # A strategy of managing table view in case of limited space.
 	# table_trim: {
