@@ -16,6 +16,7 @@ export env PATH {
 			"/usr/local/bin",
 			"/usr/local/sbin",
 			"/usr/sbin",
+			"/opt/homebrew/bin",
 
 			# lang
 			"~/.nimble/bin",

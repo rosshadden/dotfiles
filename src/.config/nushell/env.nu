@@ -12,7 +12,7 @@ def promptLeft [] {
 
 def promptRight [] {
 	([
-		(if (do --ignore-errors { git rev-parse --abbrev-ref HEAD } | empty? | not $in) {
+		(if (do --ignore-errors { git rev-parse --abbrev-ref HEAD } | is-empty | not $in) {
 			(build-string
 				"["
 				(git pwd | str trim)
