@@ -25,11 +25,11 @@ vim.keymap.set("", "-", "<plug><motion>", { silent = true })
 -- directions
 
 vim.keymap.set("", "<plug><motion>j", function()
-	hop.hint_lines({ direction = hints.HintDirection.AFTER_CURSOR })
+	hop.hint_vertical({ direction = hints.HintDirection.AFTER_CURSOR })
 end, { silent = true, noremap = true })
 
 vim.keymap.set("", "<plug><motion>k", function()
-	hop.hint_lines({ direction = hints.HintDirection.BEFORE_CURSOR })
+	hop.hint_vertical({ direction = hints.HintDirection.BEFORE_CURSOR })
 end, { silent = true, noremap = true })
 
 vim.keymap.set("", "<plug><motion>h", function()
@@ -40,7 +40,7 @@ vim.keymap.set("", "<plug><motion>l", function()
 	hop.hint_patterns({ direction = hints.HintDirection.AFTER_CURSOR, current_line_only = true }, jumpPattern)
 end, { silent = true, noremap = true })
 
-vim.keymap.set("", "<plug><motion>v", hop.hint_lines, { silent = true, noremap = true })
+vim.keymap.set("", "<plug><motion>v", hop.hint_vertical, { silent = true, noremap = true })
 
 vim.keymap.set("", "<plug><motion>s", function()
 	hop.hint_patterns({ current_line_only = true }, jumpPattern)
@@ -71,11 +71,11 @@ vim.keymap.set("", "<plug><motion>F", function()
 end, { silent = true, noremap = true })
 
 vim.keymap.set("", "<plug><motion>t", function()
-	hop.hint_char1({ direction = hints.HintDirection.AFTER_CURSOR })
+	hop.hint_char1({ direction = hints.HintDirection.AFTER_CURSOR, hint_offset = -1 })
 end, { silent = true, noremap = true })
 
 vim.keymap.set("", "<plug><motion>T", function()
-	hop.hint_char1({ direction = hints.HintDirection.BEFORE_CURSOR })
+	hop.hint_char1({ direction = hints.HintDirection.BEFORE_CURSOR, hint_offset = 1 })
 end, { silent = true, noremap = true })
 
 -- patterns
@@ -92,5 +92,5 @@ end, { silent = true, noremap = true })
 
 -- anywhere
 vim.keymap.set("", "<plug><motion>a", function()
-	hop.hint_patterns({}, jumpPattern)
+	hop.hint_anywhere()
 end, { silent = true, noremap = true })

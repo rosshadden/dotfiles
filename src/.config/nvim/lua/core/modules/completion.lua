@@ -1,4 +1,5 @@
 local cmp = require "cmp"
+local luasnip = require "luasnip"
 
 --
 -- SETTINGS
@@ -7,7 +8,7 @@ local cmp = require "cmp"
 vim.opt.completeopt = { "menu", "menuone", "preview", "noselect", "noinsert", }
 
 -- vim-vsnip
-vim.g.vsnip_snippet_dir = "~/.config/nvim/snippets"
+require("luasnip.loaders.from_vscode").lazy_load()
 
 --
 -- FUNCTIONS
@@ -23,12 +24,6 @@ local feedkey = function(key, mode)
 end
 
 --
--- MAPPINGS
---
-
--- vim.keymap.set({ "i", "s" }, "<c-s>", [[vsnip#available(1) ? "<plug>(vsnip-expand-or-jump)" : "<c-s>"]], { silent = true, expr = true })
-
---
 -- PLUGINS
 --
 
@@ -37,7 +32,7 @@ cmp.setup({
 	-- completion = { autocomplete = false, },
 	snippet = {
 		expand = function(args)
-			vim.fn["vsnip#anonymous"](args.body)
+			require("luasnip").lsp_expand(args.body)
 		end,
 	},
 
@@ -53,16 +48,16 @@ cmp.setup({
 		["<c-e>"] = cmp.mapping.abort(),
 
 		["<c-s>"] = cmp.mapping(function(fallback)
-			if vim.fn["vsnip#available"](1) == 1 then
-				feedkey("<plug>(vsnip-expand-or-jump)", "")
-			else
-				fallback()
+			if luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
 			end
 		end, { "i", "s" }),
 
 		["<tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
 			elseif hasPriorWords() then
 				cmp.complete()
 			else
@@ -70,9 +65,13 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 
-		["<s-tab>"] = cmp.mapping(function()
+		["<s-tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
+			elseif luasnip.expand_or_jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
 			end
 		end, { "i", "s" }),
 
@@ -96,7 +95,7 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
-		{ name = "vsnip" },
+		{ name = "luasnip" },
 	}, {
 		{ name = "neorg" },
 		{ name = "buffer", keyword_length = 5 },

@@ -1,11 +1,26 @@
+def color [color: string] {
+	each { |it| $"(ansi $color)($it)(ansi reset)" }
+}
+
 def promptLeft [] {
 	$"(ansi osc)2;($env.PWD)"
 	$"(ansi osc)7;file://localhost($env.PWD)"
-	($env.PWD)
+	([
+		($env.PWD)
+	] | str collect)
 }
 
 def promptRight [] {
-	(date now | date format "%T")
+	([
+		(if (do --ignore-errors { git rev-parse --abbrev-ref HEAD } | empty? | not $in) {
+			(build-string
+				"["
+				(git pwd | str trim)
+				"] "
+			) | color red
+		})
+		(date now | date format "%T" | color purple)
+	] | str collect)
 }
 
 # Use nushell functions to define your right and left prompt
