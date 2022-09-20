@@ -14,11 +14,12 @@ local config = {
 	key_tables = {},
 
 	-- startup
+	-- default_prog = { "/media/media/src/forks/nushell/target/debug/nu" },
 	default_gui_startup_args = { "connect", "unix" },
 	term = "wezterm",
 
 	-- fonts
-	font_size = 10,
+	font_size = 9,
 	line_height = 0.8,
 	font = wezterm.font_with_fallback({
 		"JetBrains Mono",
@@ -32,7 +33,7 @@ local config = {
 	color_schemes = {
 		["Paraiso Dark"] = scheme,
 	},
-	window_background_opacity = 0.95,
+	window_background_opacity = 0.8,
 
 	-- cursor
 	force_reverse_video_cursor = true,

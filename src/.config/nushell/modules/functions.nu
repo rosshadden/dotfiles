@@ -3,7 +3,7 @@
 ##
 
 export def l [dir: string = "."] {
-	ls -la $dir | if empty? {} else { select name type target size modified }
+	ls -la $dir | if is-empty {} else { select name type target size modified }
 }
 
 ##
@@ -30,7 +30,7 @@ export def dupe [
 export def put [
 	--flags (-f): string # Optional flags to override default of "--clipboard"
 ] {
-	let flags = (if ($flags | empty?) { "--clipboard" } else { $flags })
+	let flags = (if ($flags | is-empty) { "--clipboard" } else { $flags })
 	xsel -o $flags
 }
 

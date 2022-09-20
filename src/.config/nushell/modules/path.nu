@@ -20,6 +20,7 @@ export env PATH {
 
 			# lang
 			"~/.nimble/bin",
+			"~/.bun/bin",
 			"~/.cargo/bin",
 			"~/go/bin",
 			"~/.rvm/bin",

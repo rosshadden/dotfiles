@@ -1,5 +1,5 @@
-register -e json /usr/bin/nu_plugin_inc
-register -e json /usr/bin/nu_plugin_query
+register /usr/bin/nu_plugin_inc
+register /usr/bin/nu_plugin_query
 
 use alias.nu *
 use functions.nu *
