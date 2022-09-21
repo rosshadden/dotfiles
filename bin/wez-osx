@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+for socket in /run/user/1000/wezterm/gui-sock-* do
+  [ -S "$socket" ] && break;
+done
+
+if [ -n "$socket" ] then
+  env WEZTERM_UNIX_SOCKET="$socket" wezterm cli spawn
+else
+  wezterm-gui start
+fi
+
+# function main() {
+# 	wezterm start -- $(echo "$@")
+# }
+#
+# main "$@"
