@@ -43,6 +43,7 @@ local plugins = function(use)
 
 	-- enhancement
 	use "ryvnf/readline.vim"
+	use "lambdalisue/file-protocol.vim"
 
 	-- integration
 	use { "lewis6991/gitsigns.nvim", requires = "nvim-lua/plenary.nvim" }

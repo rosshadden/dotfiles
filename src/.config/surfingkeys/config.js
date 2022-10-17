@@ -19,8 +19,8 @@ function scroll(amount = 0) {
 function options() {
 	api.Hints.setCharacters("aoeusntidbpg");
 	chrome.storage.local.set({ "noPdfViewer": 1 });
-	settings.caseSensitive = true;
-	// settings.smartCase = true;
+	// settings.caseSensitive = true;
+	settings.smartCase = true;
 }
 
 function mappings() {

@@ -33,7 +33,7 @@ local config = {
 	color_schemes = {
 		["Paraiso Dark"] = scheme,
 	},
-	window_background_opacity = 0.8,
+	window_background_opacity = 0.85,
 
 	-- cursor
 	force_reverse_video_cursor = true,

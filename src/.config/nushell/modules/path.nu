@@ -1,5 +1,5 @@
-export env PATH {
-	(
+export-env {
+	let-env PATH = (
 		$env.PATH
 		| prepend [
 			# personal

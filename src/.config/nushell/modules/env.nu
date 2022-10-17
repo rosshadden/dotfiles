@@ -1,37 +1,37 @@
-# make gpg open in-terminal dialog
-export env GPG_TTY { (tty | str trim) }
+export-env {
+	# make gpg open in-terminal dialog
+	let-env GPG_TTY = (tty | str trim)
 
-export env FZF_DEFAULT_COMMAND { "fd --type file --hidden --follow" }
-export env FZF_DEFAULT_OPTS {
-	([
-		"--cycle"
-		"--bind 'alt-enter:print-query,tab:toggle-up,ctrl-y:execute-silent(echo {} | copy)'"
-		"--preview 'bat --line-range :500 {}'"
-	] | str collect " ")
+	let-env FZF_DEFAULT_COMMAND = "fd --type file --hidden --follow"
+	let-env FZF_DEFAULT_OPTS = ([
+			"--cycle"
+			"--bind 'alt-enter:print-query,tab:toggle-up,ctrl-y:execute-silent(echo {} | copy)'"
+			"--preview 'bat --line-range :500 {}'"
+		] | str collect " ")
+
+	##
+	## settings
+	##
+
+	let-env EDITOR = "nvim"
+	let-env BROWSER = "google-chrome-stable"
+	# let-env KEYBOARD = "/dev/input/by-id/usb-Razer_Razer_BlackWidow_Ultimate-event-kbd"
+	let-env KEYBOARD = "/dev/input/by-id/usb-Razer_Razer_BlackWidow_Ultimate-if01-event-kbd"
+
+	##
+	## apps
+	##
+
+	# nodejs
+	let-env N_PREFIX = "~/local"
+
+	# steam
+	let-env STEAM_COMPAT_DATA_PATH = "/media/data/games/proton/"
+
+	# godot
+	let-env GODOT_BIN = "/usr/bin/godot"
+
+	# sensible pagers
+	let-env PAGER = "less -FRSX"
+	let-env MANPAGER = "sh -c 'col -bx | bat --language man --plain'"
 }
-
-##
-## settings
-##
-
-export env EDITOR { "nvim" }
-export env BROWSER { "google-chrome-stable" }
-# export env KEYBOARD { "/dev/input/by-id/usb-Razer_Razer_BlackWidow_Ultimate-event-kbd" }
-export env KEYBOARD { "/dev/input/by-id/usb-Razer_Razer_BlackWidow_Ultimate-if01-event-kbd" }
-
-##
-## apps
-##
-
-# nodejs
-export env N_PREFIX { "~/local" }
-
-# steam
-export env STEAM_COMPAT_DATA_PATH { "/media/data/games/proton/" }
-
-# godot
-export env GODOT_BIN { "/usr/bin/godot" }
-
-# sensible pagers
-export env PAGER { "less -FRSX" }
-export env MANPAGER { "sh -c 'col -bx | bat --language man --plain'" }
