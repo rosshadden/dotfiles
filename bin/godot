@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+function main() {
+	local version="${1:-4}"
+	local dir="godot"
+	local target="editor"
+	local arch="x86_64"
+
+	shift
+
+	# support older versions
+	local platform="linuxbsd"
+	if [ "$version" == "stable" ]; then
+		platform="x11"
+		dir="godot-3"
+	fi
+
+	local path="$HOME/dev/forks/$dir/bin"
+	local file="godot.$platform.$target.$arch"
+
+	# prefer llvm
+	if [ -f "$path/$file.llvm" ]; then
+		file="$file.llvm"
+	fi
+
+	$path/$file "$@"
+}
+
+main "$@"
