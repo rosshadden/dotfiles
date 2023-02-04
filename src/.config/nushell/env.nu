@@ -13,10 +13,10 @@ def promptLeft [] {
 def promptRight [] {
 	([
 		(if (do --ignore-errors { git rev-parse --abbrev-ref HEAD } | is-empty | not $in) {
-			(build-string
-				"["
-				(git pwd | str trim)
-				"] "
+			(""
+				+ "["
+				+ (git pwd | str trim)
+				+ "] "
 			) | color red
 		})
 		(date now | date format "%T" | color purple)

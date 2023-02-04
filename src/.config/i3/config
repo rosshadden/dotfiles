@@ -803,7 +803,7 @@ mode "APPS" {
 	bindsym d mark LAST; exec devdocs-desktop; $exit
 
 	# games - Steam
-	bindsym g mark LAST; exec steam-native; $exit
+	bindsym g mark LAST; exec steam-native -console; $exit
 
 	# stream app -- OBS
 	bindsym s mark LAST; exec $(gtk-launch obs); $exit

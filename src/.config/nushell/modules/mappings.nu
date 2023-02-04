@@ -110,6 +110,18 @@ export def get-mappings [] {
 			}
 		}
 
+		# qol
+
+		{
+			mode: vi_insert
+			modifier: alt
+			keycode: char_.
+			event: {
+				send: executeHostCommand
+				cmd: "commandline --insert (history | last | get command | parse --regex '(?P<arg>[^ ]+)$' | get arg | first)"
+			}
+		}
+
 		# menus
 
 		{

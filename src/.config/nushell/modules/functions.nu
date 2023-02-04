@@ -3,7 +3,7 @@
 ##
 
 export def l [dir: string = "."] {
-	ls -la $dir | if is-empty {} else { select name type target size modified }
+	ls -la $dir | if ($in | is-empty) {} else { select name type target size modified }
 }
 
 ##
@@ -62,7 +62,7 @@ export def-env fzf-cd [] {
 export def fzf-history [
 	--query (-q): string # Optionally start with given query.
 ] {
-	(history | get command | reverse | str collect (char nl) | fzf --prompt "HISTORY> " --query $"($query)")
+	(history | get command | reverse | to text | fzf --prompt "HISTORY> " --query $"($query)")
 }
 
 # Attach to existing session, or create new.

@@ -5,25 +5,14 @@
 # Hook configuration for zoxide.
 #
 
-# Default prompt for Nushell.
-let-env __zoxide_oldprompt = (if '__zoxide_oldprompt' in (env).name {
-  $env.__zoxide_oldprompt
-} else if 'PROMPT_COMMAND' in (env).name {
-  $env.PROMPT_COMMAND
-} else {
-  { $env.PWD }
-})
-
-# Hook to add new entries to the database.
-def __zoxide_hook [] {
-  zoxide add -- $env.PWD
-}
-
-# Initialize hook.
-let-env PROMPT_COMMAND = {
-  __zoxide_hook
-  do $env.__zoxide_oldprompt
-}
+# Initialize hook to add new entries to the database.
+let-env config = ($env | default {} config).config
+let-env config = ($env.config | default {} hooks)
+let-env config = ($env.config | update hooks ($env.config.hooks | default {} env_change))
+let-env config = ($env.config | update hooks.env_change ($env.config.hooks.env_change | default [] PWD))
+let-env config = ($env.config | update hooks.env_change.PWD ($env.config.hooks.env_change.PWD | append {|_, dir|
+  zoxide add -- $dir
+}))
 
 # =============================================================================
 #
@@ -34,7 +23,7 @@ let-env PROMPT_COMMAND = {
 def-env __zoxide_z [...rest:string] {
   # `z -` does not work yet, see https://github.com/nushell/nushell/issues/4769
   let arg0 = ($rest | append '~').0
-  let path = if ($rest | length) <= 1 && ($arg0 | path expand | path type) == dir {
+  let path = if (($rest | length) <= 1) and ($arg0 == '-' or ($arg0 | path expand | path type) == dir) {
     $arg0
   } else {
     (zoxide query --exclude $env.PWD -- $rest | str trim -r -c "\n")
@@ -59,11 +48,11 @@ alias si = __zoxide_zi
 #
 # Add this to your env file (find it by running `$nu.env-path` in Nushell):
 #
-#   zoxide init nushell --hook prompt | save ~/.zoxide.nu
+#   zoxide init nushell --hook prompt | save -f ~/.zoxide.nu
 #
 # Now, add this to the end of your config file (find it by running
 # `$nu.config-path` in Nushell):
 #
 #   source ~/.zoxide.nu
 #
-# Note: zoxide only supports Nushell v0.61.0 and above.
+# Note: zoxide only supports Nushell v0.73.0 and above.

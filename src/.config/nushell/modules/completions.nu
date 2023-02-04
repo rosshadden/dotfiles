@@ -2,6 +2,8 @@
 # Each completions has two parts: the form of the external command, including its flags and parameters
 # and a helper command that knows how to complete values for those flags and parameters
 
+## git
+
 # branches
 def "nu-complete git branches" [] {
 	^git branch | lines | each { |line| $line | str replace '[\*\+] ' '' | str trim }
@@ -13,6 +15,7 @@ def "nu-complete git branches remote" [] {
 	# ^git branch -r | cut -c 3- | tail -n+2
 }
 
+# remotes
 def "nu-complete git remotes" [] {
 	^git remote | lines | each { |line| $line | str trim }
 }

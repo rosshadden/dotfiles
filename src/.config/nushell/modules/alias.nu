@@ -6,8 +6,8 @@
 ## EDITING
 ##
 
-export alias e = ^$env.EDITOR
-export alias se = sudo $env.EDITOR
+export alias e = nvim
+export alias se = sudo nvim
 
 ##
 ## APPS
