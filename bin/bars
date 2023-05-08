@@ -1,18 +1,23 @@
 #!/usr/bin/env sh
 
-# Terminate already running bar instances
-killall -q polybar
+function main() {
+	# Terminate already running bar instances
+	killall -q polybar
 
-debug="${1:-0}"
-if [[ "$debug" == "0" ]]; then exec 2>/dev/null; fi
+	local debug="${1:-0}"
+	if [[ "$debug" == "0" ]]; then exec 2>/dev/null; fi
 
-# Wait until the processes have been shut down
-while pgrep -x polybar >/dev/null; do sleep 1; done
+	# Wait until the processes have been shut down
+	while pgrep -x polybar >/dev/null; do sleep 1; done
 
-for m in $(polybar -m | sort | awk -F: '{ print $1 }'); do
-	MONITOR=$m polybar top &
-	MONITOR=$m polybar bottom &
-	sleep 1
-done
+	local monitors="$(polybar -m | sort -r | awk -F: '{ print $1 }')"
+	for m in $monitors; do
+		MONITOR=$m polybar top &
+		MONITOR=$m polybar bottom &
+		sleep 1
+	done
 
-echo "Bars launched"
+	echo "Bars launched"
+}
+
+main

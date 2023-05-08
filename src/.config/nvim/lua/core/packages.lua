@@ -38,7 +38,8 @@ local plugins = function(use)
 	-- navigation
 	use { "nvim-telescope/telescope.nvim", requires = "nvim-lua/plenary.nvim" }
 	use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-	use "phaazon/hop.nvim"
+	-- use "phaazon/hop.nvim"
+	use "spamwax/hop.nvim"
 	use "bendk/polyword.vim"
 
 	-- enhancement

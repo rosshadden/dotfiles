@@ -7,20 +7,20 @@ def promptLeft [] {
 	$"(ansi osc)7;file://localhost($env.PWD)"
 	([
 		($env.PWD)
-	] | str collect)
+	] | str join)
 }
 
 def promptRight [] {
 	([
-		(if (do --ignore-errors { git rev-parse --abbrev-ref HEAD } | is-empty | not $in) {
+		(if (do { git rev-parse --abbrev-ref HEAD } | complete | get stderr | is-empty) {
 			(""
 				+ "["
-				+ (git pwd | str trim)
+				+ (git rev-parse --abbrev-ref HEAD | str trim)
 				+ "] "
 			) | color red
 		})
 		(date now | date format "%T" | color purple)
-	] | str collect)
+	] | str join)
 }
 
 # Use nushell functions to define your right and left prompt
@@ -41,7 +41,7 @@ let-env PROMPT_MULTILINE_INDICATOR = "::: "
 let-env ENV_CONVERSIONS = {
 	PATH: {
 		from_string: { |s| $s | split row (char esep) }
-		to_string: { |v| $v | path expand | str collect (char esep) }
+		to_string: { |v| $v | path expand | str join (char esep) }
 	}
 }
 

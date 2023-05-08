@@ -7,7 +7,7 @@ export-env {
 			"--cycle"
 			"--bind 'alt-enter:print-query,tab:toggle-up,ctrl-y:execute-silent(echo {} | copy)'"
 			"--preview 'bat --line-range :500 {}'"
-		] | str collect " ")
+		] | str join " ")
 
 	##
 	## settings

@@ -153,6 +153,7 @@ end
 local servers = {
 	"bashls",
 	"gdscript",
+	"gopls",
 	"jsonls",
 	"marksman",
 	"nimls",
@@ -172,7 +173,7 @@ end
 local rtp = vim.split(package.path, ";")
 table.insert(rtp, "lua/?.lua")
 table.insert(rtp, "lua/?/init.lua")
-lsp.sumneko_lua.setup {
+lsp.lua_ls.setup {
 	on_attach = onAttach,
 	capabilities = capabilities,
 	root_dir = function(file)

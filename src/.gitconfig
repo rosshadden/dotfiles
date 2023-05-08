@@ -181,3 +181,5 @@
 	news = !git lgs HEAD..FETCH_HEAD
 	report = log --reverse --author=Ross --no-merges --format=format:\"%s%n    %b\"
 	report-new = !sh -c 'git --no-pager log --reverse --author=Ross --no-merges --format=format:"%s%n    %b" origin/$(git pwd)..$(git pwd)' -
+[protocol "file"]
+	allow = always

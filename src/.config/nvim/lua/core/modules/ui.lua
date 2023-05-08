@@ -30,14 +30,14 @@ vim.cmd [[
 	highlight IncSearch guibg=#41323f guifg=#ef6155
 ]]
 
--- startup menu
-require("mini.starter").setup({
-	items = {
-		starter.sections.recent_files(10, true),
-		starter.sections.telescope(),
-		starter.sections.builtin_actions(),
-	}
-})
+-- -- startup menu
+-- require("mini.starter").setup({
+-- 	items = {
+-- 		starter.sections.recent_files(10, true),
+-- 		starter.sections.telescope(),
+-- 		starter.sections.builtin_actions(),
+-- 	}
+-- })
 
 --
 -- FUNCTIONS
