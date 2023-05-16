@@ -3,10 +3,17 @@ local norg = require("neorg")
 norg.setup {
 	load = {
 		["core.defaults"] = {},
-		["core.norg.concealer"] = {},
-		["core.norg.completion"] = {
+		["core.concealer"] = {},
+		["core.completion"] = {
 			config = {
 				engine = "nvim-cmp",
+			},
+		},
+		["core.dirman"] = {
+			config = {
+				workspaces = {
+					notes = "~/dev/lit/notes",
+				},
 			},
 		},
 	},

@@ -1,4 +1,4 @@
-local packer = require("packer")
+local lazy = require("lazy")
 
 --
 -- MAPPINGS
@@ -8,4 +8,4 @@ local packer = require("packer")
 vim.keymap.set("n", "<space>P", "<plug><plugins>", { silent = true })
 
 -- update
-vim.keymap.set("n", "<plug><plugins>u", packer.sync, { silent = true })
+vim.keymap.set("n", "<plug><plugins>u", lazy.update, { silent = true })

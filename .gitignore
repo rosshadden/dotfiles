@@ -24,7 +24,6 @@ src/.config/nvim/.init.vim-rplugin~
 src/.config/nvim/.netrwhist
 src/.config/nvim/autoload/plug.vim.old
 src/.config/nvim/plugged
-src/.config/nvim/plugin/packer_compiled.lua
 src/.config/nvim/sessions
 src/.config/ranger/**/__*
 src/.config/ranger/bookmarks

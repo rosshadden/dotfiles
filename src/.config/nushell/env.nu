@@ -6,7 +6,7 @@ def promptLeft [] {
 	$"(ansi osc)2;($env.PWD)"
 	$"(ansi osc)7;file://localhost($env.PWD)"
 	([
-		($env.PWD)
+		($env.PWD | str replace $env.HOME ~)
 	] | str join)
 }
 

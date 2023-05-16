@@ -89,7 +89,7 @@ function updateVim() {
 	# update vim plugins
 	if isCommand vim || isCommand nvim; then
 		lawg "vim:plugins"
-		$EDITOR +PlugClean +PlugUpdate +PlugUpgrade +UpdateRemotePLugins +Tmuxline +qa
+		$EDITOR --headless -c "Lazy sync" +q
 		lawg "vim:plugins"
 	fi
 }

@@ -19,7 +19,7 @@ local config = {
 	term = "wezterm",
 
 	-- fonts
-	font_size = 9,
+	font_size = 10,
 	line_height = 0.8,
 	font = wezterm.font_with_fallback({
 		"JetBrains Mono",
