@@ -58,7 +58,20 @@ local plugins = function()
 		"alexghergh/nvim-tmux-navigation",
 		"is0n/fm-nvim",
 		"gpanders/editorconfig.nvim",
-
+		{
+			"jackMort/ChatGPT.nvim",
+			event = "VeryLazy",
+			config = function()
+				require("chatgpt").setup({
+					api_key_cmd = "echo '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'",
+				})
+			end,
+			dependencies = {
+				"MunifTanjim/nui.nvim",
+				"nvim-lua/plenary.nvim",
+				"nvim-telescope/telescope.nvim"
+			}
+		},
 		{
 			"nvim-neorg/neorg",
 			dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter" },
@@ -67,6 +80,7 @@ local plugins = function()
 				require("core.plugins.neorg")
 			end,
 		},
+		{ "eraserhd/parinfer-rust", build = "cargo build --release" },
 
 		-- misc
 		"echasnovski/mini.nvim",
@@ -80,6 +94,7 @@ local plugins = function()
 		{ "LhKipp/nvim-nu", ft = "nu", build = ":TSInstall nu" },
 		{ "kmonad/kmonad-vim", ft = "kbd" },
 		{ "alaviss/nim.nvim", ft = "nim" },
+		{ { "SeniorMars/typst.nvim", ft = "typ" }, "kaarmu/typst.vim" },
 	}
 end
 

@@ -7,7 +7,7 @@
 ##
 
 export alias e = nvim
-export alias se = sudo nvim
+export alias se = sudo -E nvim
 
 ##
 ## APPS

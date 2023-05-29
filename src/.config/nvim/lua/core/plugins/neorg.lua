@@ -3,7 +3,11 @@ local norg = require("neorg")
 norg.setup {
 	load = {
 		["core.defaults"] = {},
-		["core.concealer"] = {},
+		["core.concealer"] = {
+			config = {
+				icon_preset = "diamond",
+			},
+		},
 		["core.completion"] = {
 			config = {
 				engine = "nvim-cmp",
@@ -14,7 +18,10 @@ norg.setup {
 				workspaces = {
 					notes = "~/dev/lit/notes",
 				},
+				default_workspace = "notes",
 			},
 		},
+		["core.export"] = {},
+		["core.integrations.treesitter"] = {},
 	},
 }

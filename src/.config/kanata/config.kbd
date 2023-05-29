@@ -1,0 +1,6 @@
+(defcfg process-unmapped-keys no)
+(defsrc 0 1 2 3 4 5 6 7 8 9 a b c d e f g h i j k l m n o p q r s t u v w x y z ; [ ] \ ' , . / - = f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12 caps lsft rsft lctl lmet lalt ralt rmet rctl bspc esc grv ret spc tab ssrq slck pause ins del home end pgup pgdn cmp up left down rght nlck kp0 kp1 kp2 kp3 kp4 kp5 kp6 kp7 kp8 kp9 kprt kp* kp+ kp- kp. kp/)
+(defalias)
+(deflayer dvorak _ _ _ _ _ _ _ _ _ _ a x j e . u i d c h t n m b r l ' p o y g k , q f ; s / = _ - w v z [ ] _ _ _ _ _ _ _ _ _ _ _ _ (tap-hold-press 200 200 esc lctl) lsft rsft lctl lmet lalt (tap-hold-press 100 100 M-A-spc lmet) rmet (tap-hold-press 100 100 C-spc ctl) _ esc _ _ _ _ _ _ pause _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _)
+(deflayer qwerty _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 4 _ _ _ _ _ _ _ ; _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _)
+

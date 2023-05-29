@@ -3,26 +3,10 @@
 function keys() {
 	source ${HOME}/lib/shell/init/env.sh
 
-	local dir="${HOME}/.config/kmonad"
+	local conf="${HOME}/.config/kanata/config.kbd"
 
-	if [[ ! -d ${dir} ]]; then
-		${HOME}/bin/keys-legacy
-		exit
-	fi
-
-	local conf=$({
-		${dir}/kmonad.js config "${KEYBOARD}" ; \
-		${dir}/kmonad.js source ; \
-		${dir}/kmonad.js alias "${dir}/modules/alias.json" ; \
-		${dir}/kmonad.js layer ${dir}/modules/layers/dvorak.js ; \
-
-		for layer in $(ls ${dir}/modules/layers/* | grep -vi dvorak); do
-			${dir}/kmonad.js layer ${layer}
-		done
-	})
-
-	echo "$conf"
-	echo "$conf" | kmonad /dev/stdin
+	cat "${conf}"
+	kanata -c "${conf}"
 }
 
 keys "$@"

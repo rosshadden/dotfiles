@@ -19,6 +19,18 @@ ft.set("gdscript", "#%s")
 -- SETUP
 --
 
+vim.filetype.add({
+	extension = {
+		typ = "typst",
+	},
+})
+
+vim.filetype.add({
+	extension = {
+		bb = "clojure",
+	},
+})
+
 parsers.nim = {
 	install_info = {
 		url = "https://github.com/aMOPel/tree-sitter-nim",
@@ -30,7 +42,6 @@ parsers.nim = {
 			"src/scanner.cc",
 		},
 	},
-	filetype = "nim",
 }
 
 parsers.norg_meta = {
@@ -45,6 +56,18 @@ parsers.norg_table = {
 	install_info = {
 		url = "https://github.com/nvim-neorg/tree-sitter-norg-table",
 		files = { "src/parser.c" },
+		branch = "main",
+	},
+}
+
+parsers.typst = {
+	-- filetype = "typ",
+	install_info = {
+		url = "https://github.com/SeniorMars/tree-sitter-typst",
+		files = {
+			"src/parser.c",
+			"src/scanner.c",
+		},
 		branch = "main",
 	},
 }
@@ -66,8 +89,10 @@ configs.setup {
 		"go",
 		"godot_resource",
 		"html",
+		"janet_simple",
 		"javascript",
 		"json",
+		"julia",
 		"kotlin",
 		"lua",
 		"markdown",
@@ -85,6 +110,7 @@ configs.setup {
 		"nim",
 		"norg_meta",
 		"norg_table",
+		"typst",
 		"nu",
 	},
 
@@ -155,10 +181,12 @@ local servers = {
 	"gdscript",
 	"gopls",
 	"jsonls",
+	"julials",
 	"marksman",
 	"nimls",
 	"rust_analyzer",
 	"tsserver",
+	"typst_lsp",
 	"zls",
 }
 for _, server in ipairs(servers) do

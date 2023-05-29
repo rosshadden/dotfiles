@@ -11,6 +11,10 @@ vim.opt.number = true
 vim.opt.laststatus = 3
 vim.opt.winbar = "%=%m %f"
 
+-- concealment
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = "nv"
+
 -- colorscheme
 require("base16-colorscheme").setup("paraiso")
 

@@ -902,6 +902,7 @@ for_window [title="^Godot (Engine|Editor)(.*\.tscn| - Project Manager)$"] floati
 assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $numChat $wsChat
 assign [class="^Slack$"] → $numChat $wsChat
 assign [title="^finch$"] → $numChat $wsChat
+for_window [class="Chat-gpt"] floating enable
 
 # monitor
 assign [class="^obs$"] → $numMonitor $wsMonitor
