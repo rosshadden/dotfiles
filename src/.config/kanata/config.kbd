@@ -1,4 +1,6 @@
-(defcfg process-unmapped-keys no)
+(defcfg
+	danger-enable-cmd yes
+)
 
 (defsrc
 	esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
@@ -31,7 +33,7 @@
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
 	_    _    _    _    _    _    _    _    _    lrld _    _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    _    _    @dvk _    _    _    _    _    _                          _    _    _
+	_    _    _    _    @tst _    @dvk _    _    _    _    _    _                          _    _    _
 	_    _    @qwr _    _    _    _    _    _    _    _    _                    _          _    _    _    _
 	_    _    _              _              _    _    _    _               _    _    _     _    _
 )
@@ -45,12 +47,21 @@
 	_    _    _              _              _    _    _    _               _    _    _     _    _
 )
 
-(defalias
-	xcp (tap-hold-release 100 100 esc lctl)
-	xsu (tap-hold-release 100 100 M-A-spc lmet)
-	xtp (tap-hold-release 100 100 C-spc ctl)
+(defvar
+	tap-timeout 100
+		tt $tap-timeout
+	hold-timeout 100
+		ht $hold-timeout
+)
 
-	pfx (layer-while-held layers)
+(defalias
+	xcp (tap-hold-release $tt $ht esc lctl)
+	xsu (tap-hold-release $tt $ht M-A-spc lmet)
+	xtp (tap-hold-release $tt $ht C-spc ctl)
+
+	pfx (one-shot 400 (layer-while-held layers))
 	dvk (layer-switch dvorak)
 	qwr (layer-switch qwerty)
+
+	tst (cmd notify-send foo bar)
 )
