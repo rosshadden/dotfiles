@@ -1,6 +1,56 @@
 (defcfg process-unmapped-keys no)
-(defsrc 0 1 2 3 4 5 6 7 8 9 a b c d e f g h i j k l m n o p q r s t u v w x y z ; [ ] \ ' , . / - = f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12 caps lsft rsft lctl lmet lalt ralt rmet rctl bspc esc grv ret spc tab ssrq slck pause ins del home end pgup pgdn cmp up left down rght nlck kp0 kp1 kp2 kp3 kp4 kp5 kp6 kp7 kp8 kp9 kprt kp* kp+ kp- kp. kp/)
-(defalias)
-(deflayer dvorak _ _ _ _ _ _ _ _ _ _ a x j e . u i d c h t n m b r l ' p o y g k , q f ; s / = _ - w v z [ ] _ _ _ _ _ _ _ _ _ _ _ _ (tap-hold-press 200 200 esc lctl) lsft rsft lctl lmet lalt (tap-hold-press 100 100 M-A-spc lmet) rmet (tap-hold-press 100 100 C-spc ctl) _ esc _ _ _ _ _ _ pause _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _)
-(deflayer qwerty _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 4 _ _ _ _ _ _ _ ; _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _)
 
+(defsrc
+	esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+	grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup  nlck kp/  kp*  kp-
+	tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn  kp7  kp8  kp9  kp+
+	caps a    s    d    f    g    h    j    k    l    ;    '    ret                        kp4  kp5  kp6
+	lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up         kp1  kp2  kp3  kprt
+	lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght  kp0  kp.
+)
+
+(deflayer dvorak
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @qwr
+	_    _    _    _    _    _    _    _    _    _    _    [    ]    _     _    _    _     _    _    _    _
+	_    '    ,    .    p    y    f    g    c    r    l    /    =    _     _    _    _     _    _    _    _
+	@xcp a    o    e    u    i    d    h    t    n    s    -    _                          _    _    _
+	_    ;    q    j    k    x    b    m    w    v    z    _                    _          _    _    _    _
+	_    @pfx _              _              @xsu _    _    @xtp            _    _    _     _    _
+)
+
+(deflayer qwerty
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @dvk
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	@xcp _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
+	_    @pfx _              _              @xsu _    _    @xtp            _    _    _     _    _
+)
+
+(deflayer layers
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    _    _    _    _    _    lrld _    _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    _    _    @dvk _    _    _    _    _    _                          _    _    _
+	_    _    @qwr _    _    _    _    _    _    _    _    _                    _          _    _    _    _
+	_    _    _              _              _    _    _    _               _    _    _     _    _
+)
+
+(deflayer empty
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
+	_    _    _              _              _    _    _    _               _    _    _     _    _
+)
+
+(defalias
+	xcp (tap-hold-release 100 100 esc lctl)
+	xsu (tap-hold-release 100 100 M-A-spc lmet)
+	xtp (tap-hold-release 100 100 C-spc ctl)
+
+	pfx (layer-while-held layers)
+	dvk (layer-switch dvorak)
+	qwr (layer-switch qwerty)
+)

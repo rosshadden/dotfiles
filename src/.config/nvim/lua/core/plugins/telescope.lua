@@ -51,6 +51,11 @@ ts.setup {
 			find_command = { "fd", "--hidden", "--type", "f" },
 		},
 	},
+
+	extensions = {
+		undo = {},
+	},
 }
 
 ts.load_extension("fzf")
+ts.load_extension("undo")

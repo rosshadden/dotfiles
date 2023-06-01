@@ -47,12 +47,12 @@ map dD delete
 map dt trash-put
 
 # rename
-map cc :rename; cmd-delete-home
-map ce :rename; cmd-word-back; cmd-delete-word
-map cb :rename; cmd-word-back; cmd-left; cmd-delete-home
+map cc :rename; cmd-end; cmd-delete-home
+map ce :rename; cmd-end; cmd-word-back; cmd-delete-word
+map cb :rename; cmd-word-back; cmd-delete-word
 map I :rename; cmd-home
-map a :rename; cmd-word-back; cmd-left
-map A :rename
+map a :rename
+map A :rename; cmd-end
 
 # copy
 map yy copy

@@ -43,7 +43,10 @@ local plugins = function()
 		"numToStr/Comment.nvim",
 
 		-- navigation
-		{ "nvim-telescope/telescope.nvim", dependencies = "nvim-lua/plenary.nvim" },
+		{
+			"nvim-telescope/telescope.nvim",
+			dependencies = { "nvim-lua/plenary.nvim", "debugloop/telescope-undo.nvim" }
+		},
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		-- "phaazon/hop.nvim",
 		"spamwax/hop.nvim",
