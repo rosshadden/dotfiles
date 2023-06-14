@@ -1,5 +1,8 @@
+;; TODO: make layer timing out revert to dvorak or something
+
 (defcfg
 	danger-enable-cmd yes
+	delegate-to-first-layer yes
 )
 
 (defsrc
@@ -22,19 +25,28 @@
 
 (deflayer qwerty
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @dvk
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	@xcp _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
-	_    @pfx _              _              @xsu _    _    @xtp            _    _    _     _    _
+	_    _    _    _    _    _    _    _    _    _    _    -    =    _     _    _    _     _    _    _    _
+	_    q    w    e    r    t    y    u    i    o    p    [    ]    _     _    _    _     _    _    _    _
+	_    a    s    d    f    g    h    j    k    l    ;    '    _                          _    _    _
+	_    z    x    c    v    b    n    m    ,    .    /    _                    _          _    _    _    _
+	_    _    _              _              _    _    _    _               _    _    _     _    _
 )
 
 (deflayer layers
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    _    _    _    _    _    lrld _    _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    @tst _    @dvk _    _    _    _    _    _                          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    @tst  _    _    _     _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    lrld  _    _    _     _    _    _    _
+	caps _    _    _    _    @mcr @dvk _    _    @num _    _    _                          _    _    _
 	_    _    @qwr _    _    _    _    _    _    _    _    _                    _          _    _    _    _
+	_    _    _              _              _    _    _    _               _    _    _     _    _
+)
+
+(deflayer numbers
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+	_    _    _    _    _    _    _    kp7  kp8  kp9  kp0  _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    _    _    _    kp4  kp5  kp6  kp-  _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    _    _    _    kp1  kp2  kp3  kp+  _    _                          _    _    _
+	_    _    _    _    _    _    kp0  kp0  kp.  kp.  kp/  _                    _          _    _    _    _
 	_    _    _              _              _    _    _    _               _    _    _     _    _
 )
 
@@ -54,14 +66,43 @@
 		ht $hold-timeout
 )
 
-(defalias
+(defalias ;; KEYs
 	xcp (tap-hold-release $tt $ht esc lctl)
 	xsu (tap-hold-release $tt $ht M-A-spc lmet)
 	xtp (tap-hold-release $tt $ht C-spc ctl)
+)
 
-	pfx (one-shot 400 (layer-while-held layers))
+(defalias ;; LAYERS
+	;; pfx (tap-hold-release $tt $ht (one-shot 400 (layer-while-held layers)) lmet)
+	pfx (layer-while-held layers)
 	dvk (layer-switch dvorak)
 	qwr (layer-switch qwerty)
+	mcr (layer-switch macro)
+	num (layer-switch numbers)
 
-	tst (cmd notify-send foo bar)
+	tst (cmd nu -c "notify-send debug (2 + 3)")
 )
+
+(deflayer macro
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	@xcp _    _    _    _    @mi  _    _    _    _    _    _    _                          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
+	_    @pfx _              _              _    _    _    _               _    _    _     _    _
+)
+
+(defalias ;; MACROS
+	mi (macro i 2 i)
+)
+
+;; TODO:
+;; - dynamic macros
+;; - mashing keys/mouse
+;; - media
+;; - mouse
+;; - applications
+;; - games (translated qwerty)
+;; -? wm
+;; -? terminal
+;; - symbols (greek, math, programming, eng)

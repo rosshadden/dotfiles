@@ -167,6 +167,12 @@ bindsym $super+Control+Shift+$down move workspace to output down
 bindsym $super+Control+Shift+$left move workspace to output left
 bindsym $super+Control+Shift+$right move workspace to output right
 
+# swap workspace with adjacent outputs
+bindsym $super+$alt+Shift+$up mark TEMP; focus output up; mark LAST; move workspace to output down; [con_mark="TEMP"] focus; move workspace to output up; mark LAST
+bindsym $super+$alt+Shift+$down mark TEMP; focus output down; mark LAST; move workspace to output up; [con_mark="TEMP"] focus; move workspace to output down; mark LAST
+bindsym $super+$alt+Shift+$left mark TEMP; focus output left; mark LAST; move workspace to output right; [con_mark="TEMP"] focus; move workspace to output left; mark LAST
+bindsym $super+$alt+Shift+$right mark TEMP; focus output right; mark LAST; move workspace to output left; [con_mark="TEMP"] focus; move workspace to output right; mark LAST
+
 # focus next/previous workspace on current output
 bindsym $super+p mark LAST; workspace prev_on_output
 bindsym $super+n mark LAST; workspace next_on_output
@@ -885,6 +891,7 @@ for_window [title="^DevTools"] floating disable
 assign [class="nuvolaplayer|Vlc|mpv"] → $numMedia $wsMedia
 assign [title="Popcorn Time"] → $numMedia $wsMedia
 assign [title="Google Play Music" window_role="pop-up"] → $numMedia $wsMedia
+assign [title=".* - Twitch - .*" window_role="browser"] → layout splith
 assign [class="^zoom$" title="^Zoom$"] → $numMonitor $wsMonitor
 for_window [class="Vlc|mpv"] border none
 for_window [title="Google Play Music" window_role="pop-up"] floating disable, move to workspace $numMedia $wsMedia
@@ -902,7 +909,6 @@ for_window [title="^Godot (Engine|Editor)(.*\.tscn| - Project Manager)$"] floati
 assign [class="Pidgin" window_role="(buddy_list|conversation)"] → $numChat $wsChat
 assign [class="^Slack$"] → $numChat $wsChat
 assign [title="^finch$"] → $numChat $wsChat
-for_window [class="Chat-gpt"] floating enable
 
 # monitor
 assign [class="^obs$"] → $numMonitor $wsMonitor

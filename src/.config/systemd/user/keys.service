@@ -5,8 +5,7 @@ Description=keyboard fancifier
 
 [Service]
 ExecStartPre=/usr/bin/sleep 1
-ExecStart=/home/ross/bin/keys
-# ExecStart=/home/ross/bin/keys-legacy
+ExecStart=/home/ross/.cargo/bin/keys
 # ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
 Restart=on-failure
 

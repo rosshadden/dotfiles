@@ -1,0 +1,16 @@
+{
+	"print": {
+		"prefix": "p",
+		"body": [ "println!(\"{}\", $1);" ]
+	},
+
+	"print plain": {
+		"prefix": "pp",
+		"body": [ "println!(\"$1\");" ]
+	},
+
+	"debug": {
+		"prefix": "d",
+		"body": [ "println!(\"{:?}\", $1);" ]
+	}
+}

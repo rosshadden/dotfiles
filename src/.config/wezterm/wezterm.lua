@@ -2,14 +2,6 @@ local wezterm = require "wezterm"
 
 local scheme = wezterm.get_builtin_color_schemes()["Paraiso Dark"]
 
-function tablfy(value)
-	result = {}
-	for match in (value .. " "):gmatch("(.-)" .. " ") do
-		table.insert(result, match)
-	end
-	return result
-end
-
 local config = {
 	key_tables = {},
 
@@ -33,7 +25,7 @@ local config = {
 	color_schemes = {
 		["Paraiso Dark"] = scheme,
 	},
-	-- window_background_opacity = 0.85,
+	window_background_opacity = 0.95,
 
 	-- cursor
 	force_reverse_video_cursor = true,

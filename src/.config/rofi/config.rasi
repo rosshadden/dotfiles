@@ -1,8 +1,11 @@
 @theme "purple"
 
+* {
+	width: 512;
+}
+
 configuration {
 	modi: "window,run,ssh,drun";
-	width: -128;
 	lines: 16;
 	font: "Fira Code 10";
 	bw: 4;
