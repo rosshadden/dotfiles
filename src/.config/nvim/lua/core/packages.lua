@@ -57,6 +57,7 @@ local plugins = function()
 		"lambdalisue/file-protocol.vim",
 
 		-- integration
+		"Exafunction/codeium.vim",
 		{ "lewis6991/gitsigns.nvim", dependencies = "nvim-lua/plenary.nvim" },
 		"alexghergh/nvim-tmux-navigation",
 		"is0n/fm-nvim",

@@ -5,6 +5,31 @@
 	delegate-to-first-layer yes
 )
 
+(defvar
+	tap-timeout 100
+		tt $tap-timeout
+	hold-timeout 100
+		ht $hold-timeout
+)
+
+(defalias ;; KEYs
+	xcp (tap-hold-release $tt $ht esc lctl)
+	xsu (tap-hold-release $tt $ht M-A-spc lmet)
+	xtp (tap-hold-release $tt $ht C-spc ctl)
+)
+
+(defalias ;; LAYERS
+	pfx (tap-hold-release $tt $ht (layer-switch dvorak) (layer-while-held layers))
+
+	dvk (layer-switch dvorak)
+	mcr (layer-switch macro)
+	med (layer-switch media)
+	num (layer-switch numbers)
+	sys (layer-switch system)
+	scr (layer-switch screenshot)
+	qwr (layer-switch qwerty)
+)
+
 (defsrc
 	esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
 	grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup  nlck kp/  kp*  kp-
@@ -32,21 +57,88 @@
 	_    _    _              _              _    _    _    _               _    _    _     _    _
 )
 
+(defalias
+	tst (cmd nu -c "notify-send debug (2 + 3)")
+)
+
 (deflayer layers
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    @tst  _    _    _     _    _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    lrld  _    _    _     _    _    _    _
-	caps _    _    _    _    @mcr @dvk _    _    @num _    _    _                          _    _    _
-	_    _    @qwr _    _    _    _    _    _    _    _    _                    _          _    _    _    _
+	caps _    _    _    _    @mcr @dvk _    _    @num @sys _    _                          _    _    _
+	_    _    @qwr _    _    _    _    @med _    _    _    _                    _          _    _    _    _
 	_    _    _              _              _    _    _    _               _    _    _     _    _
 )
 
 (deflayer numbers
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-	_    _    _    _    _    _    _    kp7  kp8  kp9  kp0  _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    _    _    _    kp4  kp5  kp6  kp-  _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    _    _    _    kp1  kp2  kp3  kp+  _    _                          _    _    _
-	_    _    _    _    _    _    kp0  kp0  kp.  kp.  kp/  _                    _          _    _    _    _
+	_    _    _    _    _    _    _    nlck kp/  kp*  =    _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    _    _    _    kp7  kp8  kp9  kp-  _    _    _     _    _    _     _    _    _    _
+	@dvk _    _    _    _    _    _    kp4  kp5  kp6  kp+  _    _                          _    _    _
+	_    _    _    _    _    _    kp0  kp1  kp2  kp3  kprt _                    _          _    _    _    _
+	_    _    _              kp0            kp.  _    _    _               _    _    _     _    _
+)
+
+(defalias
+	mut (cmd nu -c "~/bin/config volume !")
+	mic (cmd nu -c "~/bin/config mic !")
+	v+ (cmd nu -c "~/bin/config volume +5")
+	v- (cmd nu -c "~/bin/config volume -5")
+	p▶️ (cmd playerctl --player=%any,chromium play-pause)
+	p (cmd playerctl --player=%any,chromium play-pause)
+	p (cmd playerctl --player=%any,chromium next)
+	p (cmd playerctl --player=%any,chromium previous)
+	p (cmd playerctl --player=%any,chromium position 0)
+)
+
+(deflayer media
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    @p  _    _    _     _    _    _     _    _    _    _
+	@dvk _    _    _    _    @mic _    @p  _    _    @p  _    _                          _    _    _
+	_    _    _    @v-  @v+  _    @p  @mut _    _    _    _                    _          _    _    _    _
+	_    _    _              @p▶️            _    _    _    _               _    _    _     _    _
+)
+
+(defalias
+	lck (multi (cmd nu -c "~/bin/locker -rS") (layer-switch dvorak))
+)
+
+(deflayer system
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    @lck _    _    _     _    _    _     _    _    _    _
+	@dvk _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
+	_    _    _              _              _    _    _    _               _    _    _     _    _
+)
+
+(defalias
+	m1 (cmd xdotool click 1)
+)
+
+(deflayer mouse
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	@dvk _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
+	_    _    _              _              _    _    _    _               _    _    _     _    _
+)
+
+(defalias
+	s (cmd nu -c "~/bin/screenshot select")
+	s (cmd nu -c "~/bin/screenshot window")
+	s (cmd nu -c "~/bin/screenshot screen")
+	s (cmd nu -c "~/bin/screenshot full")
+)
+
+(deflayer screenshot
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	@dvk _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
 	_    _    _              _              _    _    _    _               _    _    _     _    _
 )
 
@@ -59,49 +151,26 @@
 	_    _    _              _              _    _    _    _               _    _    _     _    _
 )
 
-(defvar
-	tap-timeout 100
-		tt $tap-timeout
-	hold-timeout 100
-		ht $hold-timeout
-)
-
-(defalias ;; KEYs
-	xcp (tap-hold-release $tt $ht esc lctl)
-	xsu (tap-hold-release $tt $ht M-A-spc lmet)
-	xtp (tap-hold-release $tt $ht C-spc ctl)
-)
-
-(defalias ;; LAYERS
-	;; pfx (tap-hold-release $tt $ht (one-shot 400 (layer-while-held layers)) lmet)
-	pfx (layer-while-held layers)
-	dvk (layer-switch dvorak)
-	qwr (layer-switch qwerty)
-	mcr (layer-switch macro)
-	num (layer-switch numbers)
-
-	tst (cmd nu -c "notify-send debug (2 + 3)")
+(defalias ;; MACROS
+	mi2 (macro i 2 i)
 )
 
 (deflayer macro
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	@xcp _    _    _    _    @mi  _    _    _    _    _    _    _                          _    _    _
+	@dvk _    _    _    _    @mi2 _    _    _    _    _    _    _                          _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
 	_    @pfx _              _              _    _    _    _               _    _    _     _    _
-)
-
-(defalias ;; MACROS
-	mi (macro i 2 i)
 )
 
 ;; TODO:
 ;; - dynamic macros
 ;; - mashing keys/mouse
-;; - media
 ;; - mouse
+;; - screenshots
 ;; - applications
+;; - system
 ;; - games (translated qwerty)
 ;; -? wm
 ;; -? terminal
