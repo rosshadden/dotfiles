@@ -1,0 +1,15 @@
+(defalias
+	s (multi (cmd nu -c "~/bin/screenshot select") (layer-switch dvorak))
+	s (multi (cmd nu -c "~/bin/screenshot window") (layer-switch dvorak))
+	s (multi (cmd nu -c "~/bin/screenshot screen") (layer-switch dvorak))
+	s (multi (cmd nu -c "~/bin/screenshot full") (layer-switch dvorak))
+)
+
+(deflayer capture
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    _    _    @s  _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	@dvk _    _    _    _    _    _    _    _    _    @s  _    _                          _    _    _
+	_    _    _    _    _    _    _    _    @s  _    _    _                    _          _    _    _    _
+	_    _    _              @s            _    _    _    _               _    _    _     _    _
+)

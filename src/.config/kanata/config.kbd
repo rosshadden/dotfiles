@@ -1,192 +1,37 @@
-;; TODO: make layer timing out revert to dvorak or something
-
-(defcfg
-	danger-enable-cmd yes
-	delegate-to-first-layer yes
-)
-
-(defvar
-	tap-timeout 100
-		tt $tap-timeout
-	hold-timeout 100
-		ht $hold-timeout
-)
+(include ./settings.kbd)
+(include ./vars.kbd)
 
 (defalias ;; KEYs
-	xcp (tap-hold-release $tt $ht esc lctl)
-	xsu (tap-hold-release $tt $ht M-A-spc lmet)
-	xtp (tap-hold-release $tt $ht C-spc ctl)
+	xcp (tap-hold-release $tap-timeout $hold-timeout esc lctl)
+	xsu (tap-hold-release $tap-timeout $hold-timeout M-A-spc lmet)
+	xtp (tap-hold-release $tap-timeout $hold-timeout C-spc ctl)
 )
 
 (defalias ;; LAYERS
-	pfx (tap-hold-release $tt $ht (layer-switch dvorak) (layer-while-held layers))
+	pfx (tap-hold-release $tap-timeout $hold-timeout (layer-switch dvorak) (layer-while-held layers))
 
 	app (layer-switch applications)
 	dvk (layer-switch dvorak)
-	mcr (layer-switch macro)
+	mcr (layer-switch macros)
 	med (fork (layer-switch media) (layer-switch mouse) (lsft rsft))
 	num (layer-switch numbers)
 	qwr (layer-switch qwerty)
-	sys (fork (layer-switch system) (layer-switch screenshot) (lsft rsft))
+	sys (fork (layer-switch system) (layer-switch capture) (lsft rsft))
 )
 
-(defsrc
-	esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
-	grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup  nlck kp/  kp*  kp-
-	tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn  kp7  kp8  kp9  kp+
-	caps a    s    d    f    g    h    j    k    l    ;    '    ret                        kp4  kp5  kp6
-	lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up         kp1  kp2  kp3  kprt
-	lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght  kp0  kp.
-)
+(include ./source.kbd)
 
-(deflayer dvorak
-	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @qwr
-	_    _    _    _    _    _    _    _    _    _    _    [    ]    _     _    _    _     _    _    _    _
-	_    '    ,    .    p    y    f    g    c    r    l    /    =    _     _    _    _     _    _    _    _
-	@xcp a    o    e    u    i    d    h    t    n    s    -    _                          _    _    _
-	_    ;    q    j    k    x    b    m    w    v    z    _                    _          _    _    _    _
-	_    @pfx _              _              @xsu _    _    @xtp            _    _    _     _    _
-)
+(include ./layers/dvorak.kbd)
+(include ./layers/qwerty.kbd)
+(include ./layers/layers.kbd)
 
-(deflayer qwerty
-	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @dvk
-	_    _    _    _    _    _    _    _    _    _    _    -    =    _     _    _    _     _    _    _    _
-	_    q    w    e    r    t    y    u    i    o    p    [    ]    _     _    _    _     _    _    _    _
-	_    a    s    d    f    g    h    j    k    l    ;    '    _                          _    _    _
-	_    z    x    c    v    b    n    m    ,    .    /    _                    _          _    _    _    _
-	_    _    _              _              _    _    _    _               _    _    _     _    _
-)
-
-(defalias
-	tst (cmd nu -c "notify-send debug (2 + 3)")
-)
-
-(deflayer layers
-	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    @tst  _    _    _     _    _    _    _
-	_    _    _    _    @app _    _    _    _    _    _    _    _    lrld  _    _    _     _    _    _    _
-	caps _    _    _    _    @mcr @dvk _    _    @num @sys _    _                          _    _    _
-	_    _    @qwr _    _    _    _    @med _    _    _    _                    _          _    _    _    _
-	_    _    _              _              _    _    _    _               _    _    _     _    _
-)
-
-(deflayer numbers
-	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-	_    _    _    _    _    _    _    nlck kp/  kp*  =    _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    _    _    _    kp7  kp8  kp9  kp-  _    _    _     _    _    _     _    _    _    _
-	@dvk _    _    _    _    _    _    kp4  kp5  kp6  kp+  _    _                          _    _    _
-	_    _    _    _    _    _    kp0  kp1  kp2  kp3  kprt _                    _          _    _    _    _
-	_    _    _              kp0            kp.  _    _    _               _    _    _     _    _
-)
-
-(defalias
-	mut (cmd nu -c "~/bin/config volume !")
-	mic (cmd nu -c "~/bin/config mic !")
-	v+ (fork
-		(multi (cmd nu -c "~/bin/config volume +5") (layer-switch dvorak))
-		(cmd nu -c "~/bin/config volume +5")
-		(lsft rsft)
-	)
-	v- (fork
-		(multi (cmd nu -c "~/bin/config volume -5") (layer-switch dvorak))
-		(cmd nu -c "~/bin/config volume -5")
-		(lsft rsft)
-	)
-	p▶️ (cmd playerctl --player=%any,chromium play-pause)
-	p (cmd playerctl --player=%any,chromium play-pause)
-	p (cmd playerctl --player=%any,chromium next)
-	p (cmd playerctl --player=%any,chromium previous)
-	p (cmd playerctl --player=%any,chromium position 0)
-)
-
-(deflayer media
-	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    _    _    _    _    _    _    @p  _    _    _     _    _    _     _    _    _    _
-	@dvk _    _    _    _    @mic _    @p  _    _    @p  _    _                          _    _    _
-	_    _    _    @v-  @v+  _    @p  @mut _    _    _    _                    _          _    _    _    _
-	_    _    _              @p▶️            _    _    _    _               _    _    _     _    _
-)
-
-(defalias
-	lck (multi (cmd nu -c "~/bin/locker -rS") (layer-switch dvorak))
-)
-
-;; TODO: screen brightness, keyboard brightness
-(deflayer system
-	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    _    _    _    _    _    _    @lck _    _    _     _    _    _     _    _    _    _
-	@dvk _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
-	_    _    _              _              _    _    _    _               _    _    _     _    _
-)
-
-(defalias
-	m1 (cmd xdotool click 1)
-)
-
-(deflayer mouse
-	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	@dvk _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
-	_    _    _              _              _    _    _    _               _    _    _     _    _
-)
-
-(defalias
-	s (multi (cmd nu -c "~/bin/screenshot select") (layer-switch dvorak))
-	s (multi (cmd nu -c "~/bin/screenshot window") (layer-switch dvorak))
-	s (multi (cmd nu -c "~/bin/screenshot screen") (layer-switch dvorak))
-	s (multi (cmd nu -c "~/bin/screenshot full") (layer-switch dvorak))
-)
-
-(deflayer screenshot
-	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    _    _    @s  _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	@dvk _    _    _    _    _    _    _    _    _    @s  _    _                          _    _    _
-	_    _    _    _    _    _    _    _    @s  _    _    _                    _          _    _    _    _
-	_    _    _              @s            _    _    _    _               _    _    _     _    _
-)
-
-(defalias
-	azm (cmd zoom)
-)
-
-;; TODO: utilize sequences?
-;; TODO: chrome, vivaldi, slack, discord, chatGPT, music player, google messages, calculator, steam
-(deflayer applications
-	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	@dvk _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
-	_    _    _    _    _    _    _    _    _    _    @azm _                    _          _    _    _    _
-	_    _    _              _              _    _    _    _               _    _    _     _    _
-)
-
-(deflayer empty
-	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	@dvk _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
-	_    _    _              _              _    _    _    _               _    _    _     _    _
-)
-
-(defalias ;; MACROS
-	mi2 (macro i 2 i)
-)
-
-(deflayer macro
-	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	@dvk _    _    _    _    @mi2 _    _    _    _    _    _    _                          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
-	_    @pfx _              _              _    _    _    _               _    _    _     _    _
-)
+(include ./layers/numbers.kbd)
+(include ./layers/media.kbd)
+(include ./layers/system.kbd)
+(include ./layers/mouse.kbd)
+(include ./layers/capture.kbd)
+(include ./layers/applications.kbd)
+(include ./layers/macros.kbd)
 
 ;; TODO:
 ;; - dynamic macros

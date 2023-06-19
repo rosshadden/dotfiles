@@ -1,0 +1,8 @@
+(deflayer dvorak
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @qwr
+	_    _    _    _    _    _    _    _    _    _    _    [    ]    _     _    _    _     _    _    _    _
+	_    '    ,    .    p    y    f    g    c    r    l    /    =    _     _    _    _     _    _    _    _
+	@xcp a    o    e    u    i    d    h    t    n    s    -    _                          _    _    _
+	_    ;    q    j    k    x    b    m    w    v    z    _                    _          _    _    _    _
+	_    @pfx _              _              @xsu _    _    @xtp            _    _    _     _    _
+)

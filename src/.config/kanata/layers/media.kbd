@@ -1,0 +1,56 @@
+(defalias
+	mut (fork
+		(multi (cmd nu -c "~/bin/config volume !") (layer-switch dvorak))
+		(cmd nu -c "~/bin/config volume !")
+		(lsft rsft)
+	)
+	mic (fork
+		(multi (cmd nu -c "~/bin/config mic !") (layer-switch dvorak))
+		(cmd nu -c "~/bin/config mic !")
+		(lsft rsft)
+	)
+	v+ (fork
+		(multi (cmd nu -c "~/bin/config volume +5") (layer-switch dvorak))
+		(cmd nu -c "~/bin/config volume +5")
+		(lsft rsft)
+	)
+	v- (fork
+		(multi (cmd nu -c "~/bin/config volume -5") (layer-switch dvorak))
+		(cmd nu -c "~/bin/config volume -5")
+		(lsft rsft)
+	)
+	p▶️ (fork
+		(multi (cmd playerctl --player=%any,chromium play-pause) (layer-switch dvorak))
+		(cmd playerctl --player=%any,chromium play-pause)
+		(lsft rsft)
+	)
+	p (fork
+		(multi (cmd playerctl --player=%any,chromium play-pause) (layer-switch dvorak))
+		(cmd playerctl --player=%any,chromium play-pause)
+		(lsft rsft)
+	)
+	p (fork
+		(multi (cmd playerctl --player=%any,chromium next) (layer-switch dvorak))
+		(cmd playerctl --player=%any,chromium next)
+		(lsft rsft)
+	)
+	p (fork
+		(multi (cmd playerctl --player=%any,chromium previous) (layer-switch dvorak))
+		(cmd playerctl --player=%any,chromium previous)
+		(lsft rsft)
+	)
+	p (fork
+		(multi (cmd playerctl --player=%any,chromium position 0) (layer-switch dvorak))
+		(cmd playerctl --player=%any,chromium position 0)
+		(lsft rsft)
+	)
+)
+
+(deflayer media
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    @p  _    _    _     _    _    _     _    _    _    _
+	@dvk _    _    _    _    @mic _    @p  _    _    @p  _    _                          _    _    _
+	_    _    _    @v-  @v+  _    @p  @mut _    _    _    _                    _          _    _    _    _
+	_    _    _              @p▶️            _    _    _    _               _    _    _     _    _
+)

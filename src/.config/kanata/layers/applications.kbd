@@ -1,0 +1,14 @@
+(defalias
+	azm (cmd zoom)
+)
+
+;; TODO: utilize sequences?
+;; TODO: chrome, vivaldi, slack, discord, chatGPT, music player, google messages, calculator, steam
+(deflayer applications
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	@dvk _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
+	_    _    _    _    _    _    _    _    _    _    @azm _                    _          _    _    _    _
+	_    _    _              _              _    _    _    _               _    _    _     _    _
+)
