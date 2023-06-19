@@ -21,13 +21,13 @@
 (defalias ;; LAYERS
 	pfx (tap-hold-release $tt $ht (layer-switch dvorak) (layer-while-held layers))
 
+	app (layer-switch applications)
 	dvk (layer-switch dvorak)
 	mcr (layer-switch macro)
-	med (layer-switch media)
+	med (fork (layer-switch media) (layer-switch mouse) (lsft rsft))
 	num (layer-switch numbers)
-	sys (layer-switch system)
-	scr (layer-switch screenshot)
 	qwr (layer-switch qwerty)
+	sys (fork (layer-switch system) (layer-switch screenshot) (lsft rsft))
 )
 
 (defsrc
@@ -64,7 +64,7 @@
 (deflayer layers
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    @tst  _    _    _     _    _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    lrld  _    _    _     _    _    _    _
+	_    _    _    _    @app _    _    _    _    _    _    _    _    lrld  _    _    _     _    _    _    _
 	caps _    _    _    _    @mcr @dvk _    _    @num @sys _    _                          _    _    _
 	_    _    @qwr _    _    _    _    @med _    _    _    _                    _          _    _    _    _
 	_    _    _              _              _    _    _    _               _    _    _     _    _
@@ -82,8 +82,16 @@
 (defalias
 	mut (cmd nu -c "~/bin/config volume !")
 	mic (cmd nu -c "~/bin/config mic !")
-	v+ (cmd nu -c "~/bin/config volume +5")
-	v- (cmd nu -c "~/bin/config volume -5")
+	v+ (fork
+		(multi (cmd nu -c "~/bin/config volume +5") (layer-switch dvorak))
+		(cmd nu -c "~/bin/config volume +5")
+		(lsft rsft)
+	)
+	v- (fork
+		(multi (cmd nu -c "~/bin/config volume -5") (layer-switch dvorak))
+		(cmd nu -c "~/bin/config volume -5")
+		(lsft rsft)
+	)
 	p▶️ (cmd playerctl --player=%any,chromium play-pause)
 	p (cmd playerctl --player=%any,chromium play-pause)
 	p (cmd playerctl --player=%any,chromium next)
@@ -104,6 +112,7 @@
 	lck (multi (cmd nu -c "~/bin/locker -rS") (layer-switch dvorak))
 )
 
+;; TODO: screen brightness, keyboard brightness
 (deflayer system
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
@@ -127,18 +136,33 @@
 )
 
 (defalias
-	s (cmd nu -c "~/bin/screenshot select")
-	s (cmd nu -c "~/bin/screenshot window")
-	s (cmd nu -c "~/bin/screenshot screen")
-	s (cmd nu -c "~/bin/screenshot full")
+	s (multi (cmd nu -c "~/bin/screenshot select") (layer-switch dvorak))
+	s (multi (cmd nu -c "~/bin/screenshot window") (layer-switch dvorak))
+	s (multi (cmd nu -c "~/bin/screenshot screen") (layer-switch dvorak))
+	s (multi (cmd nu -c "~/bin/screenshot full") (layer-switch dvorak))
 )
 
 (deflayer screenshot
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    _    _    @s  _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	@dvk _    _    _    _    _    _    _    _    _    @s  _    _                          _    _    _
+	_    _    _    _    _    _    _    _    @s  _    _    _                    _          _    _    _    _
+	_    _    _              @s            _    _    _    _               _    _    _     _    _
+)
+
+(defalias
+	azm (cmd zoom)
+)
+
+;; TODO: utilize sequences?
+;; TODO: chrome, vivaldi, slack, discord, chatGPT, music player, google messages, calculator, steam
+(deflayer applications
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
 	@dvk _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
+	_    _    _    _    _    _    _    _    _    _    @azm _                    _          _    _    _    _
 	_    _    _              _              _    _    _    _               _    _    _     _    _
 )
 
@@ -146,7 +170,7 @@
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
+	@dvk _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
 	_    _    _              _              _    _    _    _               _    _    _     _    _
 )
@@ -168,10 +192,11 @@
 ;; - dynamic macros
 ;; - mashing keys/mouse
 ;; - mouse
-;; - screenshots
-;; - applications
-;; - system
 ;; - games (translated qwerty)
 ;; -? wm
 ;; -? terminal
 ;; - symbols (greek, math, programming, eng)
+;; - arrows / vim-ish
+;; - generate help for current layer or something
+;; - services (restart logid for example)
+;; - starting/restarting/killing common processes (ex: killing zoom, restarting steam)
