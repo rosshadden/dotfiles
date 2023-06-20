@@ -1,3 +1,7 @@
+(defalias
+	qwr (layer-switch qwerty)
+)
+
 (deflayer qwerty
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @dvk
 	_    _    _    _    _    _    _    _    _    _    _    -    =    _     _    _    _     _    _    _    _

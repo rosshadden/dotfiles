@@ -1,4 +1,6 @@
 (defalias
+	app (layer-switch applications)
+
 	azm (cmd zoom)
 )
 

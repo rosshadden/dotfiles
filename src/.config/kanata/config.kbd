@@ -1,30 +1,10 @@
 (include ./settings.kbd)
 (include ./vars.kbd)
-
-(defalias ;; KEYs
-	xcp (tap-hold-release $tap-timeout $hold-timeout esc lctl)
-	xsu (tap-hold-release $tap-timeout $hold-timeout M-A-spc lmet)
-	xtp (tap-hold-release $tap-timeout $hold-timeout C-spc ctl)
-)
-
-(defalias ;; LAYERS
-	pfx (tap-hold-release $tap-timeout $hold-timeout (layer-switch dvorak) (layer-while-held layers))
-
-	app (layer-switch applications)
-	dvk (layer-switch dvorak)
-	mcr (layer-switch macros)
-	med (fork (layer-switch media) (layer-switch mouse) (lsft rsft))
-	num (layer-switch numbers)
-	qwr (layer-switch qwerty)
-	sys (fork (layer-switch system) (layer-switch capture) (lsft rsft))
-)
-
 (include ./source.kbd)
 
 (include ./layers/dvorak.kbd)
 (include ./layers/qwerty.kbd)
 (include ./layers/layers.kbd)
-
 (include ./layers/numbers.kbd)
 (include ./layers/media.kbd)
 (include ./layers/system.kbd)

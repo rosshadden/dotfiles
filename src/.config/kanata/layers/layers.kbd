@@ -1,4 +1,6 @@
 (defalias
+	lyr (tap-hold-release $tap-timeout $hold-timeout (layer-switch dvorak) (layer-while-held layers))
+
 	tst (cmd nu -c "notify-send debug (2 + 3)")
 )
 

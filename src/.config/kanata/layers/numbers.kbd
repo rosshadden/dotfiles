@@ -1,3 +1,7 @@
+(defalias
+	num (layer-switch numbers)
+)
+
 (deflayer numbers
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
 	_    _    _    _    _    _    _    nlck kp/  kp*  =    _    _    _     _    _    _     _    _    _    _
