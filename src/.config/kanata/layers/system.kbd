@@ -1,5 +1,4 @@
 (defalias
-	;; sys (fork (layer-switch system) (layer-switch capture) (lsft rsft))
 	sys (layer-switch system)
 
 	lck (multi (cmd nu -c "~/bin/locker -rS") (layer-switch dvorak))

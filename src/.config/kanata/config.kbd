@@ -9,13 +9,15 @@
 ;; modules
 (include ./layers/applications.kbd)
 (include ./layers/capture.kbd)
-(include ./layers/layers.kbd)
 (include ./layers/macros.kbd)
 (include ./layers/media.kbd)
 (include ./layers/mouse.kbd)
 (include ./layers/numbers.kbd)
 (include ./layers/qwerty.kbd)
 (include ./layers/system.kbd)
+
+;; meta
+(include ./layers/layers.kbd)
 
 ;; TODO:
 ;; - dynamic macros

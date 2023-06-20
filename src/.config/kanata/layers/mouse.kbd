@@ -1,4 +1,6 @@
 (defalias
+	mse (layer-switch mouse)
+
 	m1 (cmd xdotool click 1)
 )
 
