@@ -1,17 +1,21 @@
+;; settings
 (include ./settings.kbd)
 (include ./vars.kbd)
 (include ./source.kbd)
 
+;; main
 (include ./layers/dvorak.kbd)
-(include ./layers/qwerty.kbd)
-(include ./layers/layers.kbd)
-(include ./layers/numbers.kbd)
-(include ./layers/media.kbd)
-(include ./layers/system.kbd)
-(include ./layers/mouse.kbd)
-(include ./layers/capture.kbd)
+
+;; modules
 (include ./layers/applications.kbd)
+(include ./layers/capture.kbd)
+(include ./layers/layers.kbd)
 (include ./layers/macros.kbd)
+(include ./layers/media.kbd)
+(include ./layers/mouse.kbd)
+(include ./layers/numbers.kbd)
+(include ./layers/qwerty.kbd)
+(include ./layers/system.kbd)
 
 ;; TODO:
 ;; - dynamic macros

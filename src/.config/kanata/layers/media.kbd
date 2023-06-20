@@ -1,5 +1,6 @@
 (defalias
 	med (fork (layer-switch media) (layer-switch mouse) (lsft rsft))
+	;; med (layer-switch media)
 
 	mut (fork
 		(multi (cmd nu -c "~/bin/config volume !") (layer-switch dvorak))

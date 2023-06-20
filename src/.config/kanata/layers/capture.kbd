@@ -1,4 +1,6 @@
 (defalias
+	cpt (layer-switch capture)
+
 	s (multi (cmd nu -c "~/bin/screenshot select") (layer-switch dvorak))
 	s (multi (cmd nu -c "~/bin/screenshot window") (layer-switch dvorak))
 	s (multi (cmd nu -c "~/bin/screenshot screen") (layer-switch dvorak))
