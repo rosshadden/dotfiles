@@ -1,10 +1,10 @@
 (defalias
-	med (fork (one-shot 2000 (layer-toggle media)) (layer-switch media) (lsft rsft))
+	med (fork (one-shot $one-shot (layer-toggle media)) (layer-switch media) (lsft rsft))
 
-	mut (cmd nu -c "~/bin/config volume !")
-	mic (cmd nu -c "~/bin/config mic !")
-	v+ (cmd nu -c "~/bin/config volume +5")
-	v- (cmd nu -c "~/bin/config volume -5")
+	mut (cmd nu -c "~/bin/cfg volume !")
+	mic (cmd nu -c "~/bin/cfg mic !")
+	v+ (cmd nu -c "~/bin/cfg volume +5")
+	v- (cmd nu -c "~/bin/cfg volume -5")
 	p▶️ (cmd playerctl --player=%any,chromium play-pause)
 	p (cmd playerctl --player=%any,chromium play-pause)
 	p (cmd playerctl --player=%any,chromium next)

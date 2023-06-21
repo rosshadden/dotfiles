@@ -18,7 +18,7 @@ value="$2"
 modules=( volume brightness battery ip touchpad dpi )
 
 # recursively call itself
-config() {
+cfg() {
 	$0 "$@"
 }
 
@@ -47,7 +47,7 @@ if [[ ! $setting ]]; then
 	# Output all settings
 	for module in "${modules[@]}"; do
 		echo "$module:"
-		config "$module"
+		cfg "$module"
 		echo
 	done
 elif [[ $setting == "volume" ]]; then
@@ -135,9 +135,9 @@ elif [[ $setting == "touchpad" ]]; then
 
 	if [[ $value == "toggle" ]]; then
 		if [[ $(synclient -l | grep "TouchpadOff .*=.*0") ]]; then
-			config touchpad "off"
+			cfg touchpad "off"
 		else
-			config touchpad "on"
+			cfg touchpad "on"
 		fi
 	elif [[ $value == "on" ]]; then
 		synclient TouchpadOff=0;

@@ -1,14 +1,14 @@
 (defalias
 	mcr (layer-switch macros)
 
-	mi2 (macro i 2 i)
+	mi2 (fork (macro i 2 i) i (lsft rsft))
 )
 
 (deflayer macros
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	@dvk _    _    _    _    @mi2 _    _    _    _    _    _    _                          _    _    _
+	_    _    _    _    _    @mi2 _    _    _    _    _    _    _                          _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
 	_    _    _              _              _    _    _    _               _    _    _     _    _
 )

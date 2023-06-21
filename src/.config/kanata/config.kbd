@@ -9,6 +9,7 @@
 ;; modules
 (include ./layers/applications.kbd)
 (include ./layers/capture.kbd)
+(include ./layers/clipboard.kbd)
 (include ./layers/macros.kbd)
 (include ./layers/media.kbd)
 (include ./layers/mouse.kbd)
@@ -31,3 +32,4 @@
 ;; - generate help for current layer or something
 ;; - services (restart logid for example)
 ;; - starting/restarting/killing common processes (ex: killing zoom, restarting steam)
+;; - pass

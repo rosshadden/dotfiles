@@ -1,7 +1,7 @@
 (defalias
 	sys (layer-switch system)
 
-	lck (multi (cmd nu -c "~/bin/locker -rS") (layer-switch dvorak))
+	lck (multi (cmd nu -c "~/bin/locker -rS") @dvk)
 )
 
 ;; TODO: screen brightness, keyboard brightness

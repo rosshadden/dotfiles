@@ -1,14 +1,28 @@
 (defalias
 	mse (layer-switch mouse)
 
-	m1 (cmd xdotool click 1)
+	clk (fork
+		(fork mlft mmid (lsft rsft))
+		mrgt
+		(lalt ralt)
+	)
+
+	ms↑ (fork (movemouse-up 1 1) (movemouse-up 2 1) (lsft rsft))
+	ms↓ (fork (movemouse-down 1 1) (movemouse-down 2 1) (lsft rsft))
+	ms← (fork (movemouse-left 1 1) (movemouse-left 2 1) (lsft rsft))
+	ms→ (fork (movemouse-right 1 1) (movemouse-right 2 1) (lsft rsft))
+
+	mw↑ (mwheel-up 50 120)
+	mw↓ (mwheel-down 50 120)
+	mw← (mwheel-left 50 120)
+	mw→ (mwheel-right 50 120)
 )
 
 (deflayer mouse
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	@dvk _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
-	_    _    _              _              _    _    _    _               _    _    _     _    _
+	_    _    _    _    _    _    @mw→ _    _    _    @ms→ _    _    _     _    _    _     _    _    _    _
+	@dvk _    _    _    @mw↑ _    @mw↓ @ms← _    _    _    _    _                          _    _    _
+	_    _    _    @ms↓ @ms↑ _    @mw← _    _    _    _    _                    _          _    _    _    _
+	_    _    _              @clk           _    _    _    _               _    _    _     _    _
 )

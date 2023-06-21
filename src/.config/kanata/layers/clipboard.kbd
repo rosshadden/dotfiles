@@ -1,0 +1,16 @@
+(defalias
+	clp (layer-switch clipboard)
+
+	acq (multi (cmd copyq toggle) @dvk)
+	psp (multi (cmd nu -c "xsel --output | xdotool type --clearmodifiers --delay 0 -- $in") @dvk)
+	psc (multi (cmd nu -c "xsel --output --clipboard | xdotool type --clearmodifiers --delay 0 -- $in") @dvk)
+)
+
+(deflayer clipboard
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
+	_    _    _    _    @psp _    _    _    @psc _    _    _    _    _     _    _    _     _    _    _    _
+	@dvk _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
+	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
+	_    _    _              @acq           _    _    _    _               _    _    _     _    _
+)

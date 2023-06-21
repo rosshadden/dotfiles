@@ -62,12 +62,6 @@ set $macro5 XF86Launch8
 set $return mode "PREFIX"
 set $exit mode "default"
 
-# commands
-set $playCmd "playerctl --player=%any,chromium play-pause"
-set $stopCmd "playerctl --player=%any,chromium stop"
-set $nextCmd "playerctl --player=%any,chromium next"
-set $prevCmd "playerctl --player=%any,chromium previous"
-
 # default apps
 set $terminal ~/bin/termoil
 set $runTmux ~/bin/termoil -- tmux -u new-session -A -s
@@ -218,10 +212,6 @@ bindsym $super+apostrophe mode "GOTO"
 # TODO: [f] focus (or maybe [/])
 
 ################
-# MEDIA
-################
-
-################
 # MODES
 ################
 
@@ -229,18 +219,14 @@ $return {
 	bindsym a mode "APPS"
 	bindsym apostrophe mode "GOTO"
 	bindsym b mode "BUFFER"
-	bindsym c mode "CLIPBOARD"
 	bindsym g mode "GAPS"
 	bindsym i mode "I3"
 	bindsym l mode "LAYOUT"
-	bindsym m mode "MEDIA"
-	bindsym p mode "PROJECTS"
+	bindsym p mode "PASS"
 	bindsym r mode "RESIZE"
 	bindsym s mode "SYSTEM"
 	bindsym t mode "TMUX"
 
-	bindsym Shift+m mode "MOUSE"
-	bindsym Shift+p mode "PASS"
 	bindsym Shift+r mode "MOVE"
 
 	bindsym $super+$alt+space $exit
@@ -250,15 +236,6 @@ $return {
 mode "BUFFER" {
 	bindsym c kill; $exit
 	bindsym r exec i3-input -P 'Rename container: ' -F 'title_format %s'; $exit
-
-	bindsym $super+$alt+space $return
-	bindsym Escape $exit
-}
-
-mode "CLIPBOARD" {
-	bindsym space mark LAST; exec copyq toggle; $exit
-
-	bindsym p $exit; exec sleep 0.1 && xdotool type --clearmodifiers --delay 0 -- "$(xsel)"
 
 	bindsym $super+$alt+space $return
 	bindsym Escape $exit
@@ -507,25 +484,25 @@ mode "SYSTEM" {
 	# brightness
 
 	# small
-	bindsym $alt+$up exec "~/bin/config brightness +5"; $exit
-	bindsym $alt+$down exec "~/bin/config brightness -5"; $exit
-	bindsym $alt+Shift+$up exec "~/bin/config brightness +5"
-	bindsym $alt+Shift+$down exec "~/bin/config brightness -5"
+	bindsym $alt+$up exec "~/bin/cfg brightness +5"; $exit
+	bindsym $alt+$down exec "~/bin/cfg brightness -5"; $exit
+	bindsym $alt+Shift+$up exec "~/bin/cfg brightness +5"
+	bindsym $alt+Shift+$down exec "~/bin/cfg brightness -5"
 	# medium
-	bindsym k exec "~/bin/config brightness +20"; $exit
-	bindsym j exec "~/bin/config brightness -20"; $exit
-	bindsym Shift+$up exec "~/bin/config brightness +20"
-	bindsym Shift+$down exec "~/bin/config brightness -20"
+	bindsym k exec "~/bin/cfg brightness +20"; $exit
+	bindsym j exec "~/bin/cfg brightness -20"; $exit
+	bindsym Shift+$up exec "~/bin/cfg brightness +20"
+	bindsym Shift+$down exec "~/bin/cfg brightness -20"
 	# large
-	bindsym Control+$up exec "~/bin/config brightness +80"; $exit
-	bindsym Control+$down exec "~/bin/config brightness -80"; $exit
-	bindsym Control+Shift+$up exec "~/bin/config brightness +80"
-	bindsym Control+Shift+$down exec "~/bin/config brightness -80"
+	bindsym Control+$up exec "~/bin/cfg brightness +80"; $exit
+	bindsym Control+$down exec "~/bin/cfg brightness -80"; $exit
+	bindsym Control+Shift+$up exec "~/bin/cfg brightness +80"
+	bindsym Control+Shift+$down exec "~/bin/cfg brightness -80"
 
 	# wifi
-	bindsym w exec ~/bin/config wifi; $exit
+	bindsym w exec ~/bin/cfg wifi; $exit
 	# bluetooth
-	bindsym b exec ~/bin/config bluetooth; $exit
+	bindsym b exec ~/bin/cfg bluetooth; $exit
 
 	bindsym $super+$alt+space $return
 	bindsym Escape $exit
@@ -673,112 +650,6 @@ mode "GAPS-INNER" {
 	bindsym Shift+plus  gaps inner all plus 5
 	bindsym Shift+minus gaps inner all minus 5
 	bindsym Shift+0     gaps inner all set 0
-
-	bindsym $super+$alt+space $return
-	bindsym Escape $exit
-}
-
-mode "MOUSE" {
-	# buttons
-
-	# left
-	bindsym space exec xdotool click 1
-	# middle
-	bindsym $alt+space exec xdotool click 2
-	# right
-	bindsym Shift+space exec xdotool click 3
-	# wheel up
-	bindsym b exec xdotool click 4
-	# wheel down
-	bindsym f exec xdotool click 5
-
-	# movement
-
-	# slow
-	bindsym $alt+$up exec $(xdotool mousemove_relative --  0 -4)
-	bindsym $alt+$down exec $(xdotool mousemove_relative --  0  4)
-	bindsym $alt+$left exec $(xdotool mousemove_relative -- -4  0)
-	bindsym $alt+$right exec $(xdotool mousemove_relative --  4  0)
-	# normal
-	bindsym h exec $(xdotool mousemove_relative -- -16   0)
-	bindsym l exec $(xdotool mousemove_relative --  16   0)
-	bindsym j exec $(xdotool mousemove_relative --   0  16)
-	bindsym k exec $(xdotool mousemove_relative --   0 -16)
-	# fast
-	bindsym Shift+$up exec $(xdotool mousemove_relative --    0 -128)
-	bindsym Shift+$down exec $(xdotool mousemove_relative --    0  128)
-	bindsym Shift+$left exec $(xdotool mousemove_relative -- -128    0)
-	bindsym Shift+$right exec $(xdotool mousemove_relative --  128    0)
-	# turbo
-	bindsym Control+$up exec $(xdotool mousemove_relative --    0 -512)
-	bindsym Control+$down exec $(xdotool mousemove_relative --    0  512)
-	bindsym Control+$left exec $(xdotool mousemove_relative -- -512    0)
-	bindsym Control+$right exec $(xdotool mousemove_relative --  512    0)
-
-	bindsym $super+$alt+space $return
-	bindsym Escape $exit
-}
-
-mode "MEDIA" {
-	# volume
-
-	bindsym m exec "~/bin/config volume !"; $exit
-	bindsym i exec "~/bin/config mic !"; $exit
-	bindsym k exec "~/bin/config volume +5"; $exit
-	bindsym j exec "~/bin/config volume -5"; $exit
-	bindsym Up exec "~/bin/config volume +10"; $exit
-	bindsym Down exec "~/bin/config volume -10"; $exit
-	bindsym Control+$up exec "~/bin/config volume +20"; $exit
-	bindsym Control+$down exec "~/bin/config volume -20"; $exit
-
-	bindsym Shift+m exec "~/bin/config volume !"
-	bindsym Shift+i exec "~/bin/config mic !"
-	bindsym Shift+$up exec "~/bin/config volume +5"
-	bindsym Shift+$down exec "~/bin/config volume -5"
-	bindsym Shift+Up exec "~/bin/config volume +10"
-	bindsym Shift+Down exec "~/bin/config volume -10"
-	bindsym Control+Shift+$up exec "~/bin/config volume +20"
-	bindsym Control+Shift+$down exec "~/bin/config volume -20"
-
-	# playback
-
-	bindsym space exec $playCmd; $exit
-	bindsym $right exec $nextCmd; $exit
-	bindsym Right exec $nextCmd; $exit
-	bindsym $left exec $prevCmd; $exit
-	bindsym Control+h exec playerctl --player=%any,chromium position 0; $exit
-	bindsym Left exec $prevCmd; $exit
-	bindsym s exec $stopCmd; $exit
-
-	bindsym Shift+space exec $playCmd
-	bindsym Shift+$left exec $prevCmd
-	bindsym Shift+Left exec $prevCmd
-	bindsym Shift+$right exec $nextCmd
-	bindsym Shift+Right exec $nextCmd
-	bindsym Shift+s exec $stopCmd
-
-	# screenshots
-
-	bindsym y exec "~/bin/screenshot select"; $exit
-	bindsym $alt+y exec "~/bin/screenshot window"; $exit
-	bindsym Shift+y exec "~/bin/screenshot screen"; $exit
-	bindsym Control+Shift+y exec "~/bin/screenshot full"; $exit
-
-	bindsym F1 exec "~/bin/config volume !"
-	bindsym F2 exec "~/bin/config volume -5"
-	bindsym F3 exec "~/bin/config volume +5"
-	bindsym F4 exec "~/bin/config mic !"
-	bindsym F5 exec $prevCmd
-	bindsym F6 exec $playCmd
-	bindsym F7 exec $nextCmd
-
-	bindsym $super+$alt+space $return
-	bindsym Escape $exit
-}
-
-mode "PROJECTS" {
-	bindsym space exec i3-input -P 'Open project: ' -F 'exec ~/bin/tp %s'; $exit
-	bindsym Shift+space exec i3-input -P 'Open project: ' -F 'exec ~/bin/tp %s'; $exit
 
 	bindsym $super+$alt+space $return
 	bindsym Escape $exit

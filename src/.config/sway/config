@@ -272,9 +272,9 @@ bindsym Control+$alt+F10 exec $(xdotool key XF86Switch_VT_10)
 ################
 
 # volume
-bindsym XF86AudioRaiseVolume exec "~/bin/config volume +5"
-bindsym XF86AudioLowerVolume exec "~/bin/config volume -5"
-bindsym XF86AudioMute exec "~/bin/config volume !"
+bindsym XF86AudioRaiseVolume exec "~/bin/cfg volume +5"
+bindsym XF86AudioLowerVolume exec "~/bin/cfg volume -5"
+bindsym XF86AudioMute exec "~/bin/cfg volume !"
 
 # playback
 bindsym XF86AudioPlay exec "mpc toggle; playerctl play-pause"
@@ -282,11 +282,11 @@ bindsym XF86AudioNext exec "mpc next; playerctl next"
 bindsym XF86AudioPrev exec "mpc prev; playerctl prev"
 
 # brightness
-bindsym XF86MonBrightnessUp exec "~/bin/config brightness +5"
-bindsym XF86MonBrightnessDown exec "~/bin/config brightness -5"
+bindsym XF86MonBrightnessUp exec "~/bin/cfg brightness +5"
+bindsym XF86MonBrightnessDown exec "~/bin/cfg brightness -5"
 
 # toggle touchpad
-bindsym XF86AudioMicMute exec --no-startup-id "~/bin/config touchpad !"
+bindsym XF86AudioMicMute exec --no-startup-id "~/bin/cfg touchpad !"
 
 # fix monitors
 bindsym XF86Display exec ~/local/bin/mon
@@ -304,7 +304,7 @@ bindsym XF86LaunchA exec --no-startup-id $chooseApp
 bindsym XF86Explorer exec ranger
 
 # touchscreen
-bindsym XF86TouchpadToggle exec "~/bin/config touchpad !"
+bindsym XF86TouchpadToggle exec "~/bin/cfg touchpad !"
 
 # web browser
 bindsym XF86HomePage exec --no-startup-id google-chrome-beta
@@ -582,25 +582,25 @@ mode "SYSTEM" {
 	# brightness
 
 	# small
-	bindsym $alt+k exec "~/bin/config brightness +5"; $exit
-	bindsym $alt+j exec "~/bin/config brightness -5"; $exit
-	bindsym $alt+Shift+k exec "~/bin/config brightness +5"
-	bindsym $alt+Shift+j exec "~/bin/config brightness -5"
+	bindsym $alt+k exec "~/bin/cfg brightness +5"; $exit
+	bindsym $alt+j exec "~/bin/cfg brightness -5"; $exit
+	bindsym $alt+Shift+k exec "~/bin/cfg brightness +5"
+	bindsym $alt+Shift+j exec "~/bin/cfg brightness -5"
 	# medium
-	bindsym k exec "~/bin/config brightness +20"; $exit
-	bindsym j exec "~/bin/config brightness -20"; $exit
-	bindsym Shift+k exec "~/bin/config brightness +20"
-	bindsym Shift+j exec "~/bin/config brightness -20"
+	bindsym k exec "~/bin/cfg brightness +20"; $exit
+	bindsym j exec "~/bin/cfg brightness -20"; $exit
+	bindsym Shift+k exec "~/bin/cfg brightness +20"
+	bindsym Shift+j exec "~/bin/cfg brightness -20"
 	# large
-	bindsym Control+k exec "~/bin/config brightness +80"; $exit
-	bindsym Control+j exec "~/bin/config brightness -80"; $exit
-	bindsym Control+Shift+k exec "~/bin/config brightness +80"
-	bindsym Control+Shift+j exec "~/bin/config brightness -80"
+	bindsym Control+k exec "~/bin/cfg brightness +80"; $exit
+	bindsym Control+j exec "~/bin/cfg brightness -80"; $exit
+	bindsym Control+Shift+k exec "~/bin/cfg brightness +80"
+	bindsym Control+Shift+j exec "~/bin/cfg brightness -80"
 
 	# wifi
-	bindsym w exec ~/bin/config wifi; $exit
+	bindsym w exec ~/bin/cfg wifi; $exit
 	# bluetooth
-	bindsym b exec ~/bin/config bluetooth; $exit
+	bindsym b exec ~/bin/cfg bluetooth; $exit
 
 	bindsym $super+space $return
 	bindsym Escape $exit
@@ -795,21 +795,21 @@ mode "MOUSE" {
 mode "MEDIA" {
 	# volume
 
-	bindsym m exec "~/bin/config volume !"; $exit
-	bindsym k exec "~/bin/config volume +5"; $exit
-	bindsym j exec "~/bin/config volume -5"; $exit
-	bindsym Up exec "~/bin/config volume +10"; $exit
-	bindsym Down exec "~/bin/config volume -10"; $exit
-	bindsym Control+k exec "~/bin/config volume +20"; $exit
-	bindsym Control+j exec "~/bin/config volume -20"; $exit
+	bindsym m exec "~/bin/cfg volume !"; $exit
+	bindsym k exec "~/bin/cfg volume +5"; $exit
+	bindsym j exec "~/bin/cfg volume -5"; $exit
+	bindsym Up exec "~/bin/cfg volume +10"; $exit
+	bindsym Down exec "~/bin/cfg volume -10"; $exit
+	bindsym Control+k exec "~/bin/cfg volume +20"; $exit
+	bindsym Control+j exec "~/bin/cfg volume -20"; $exit
 
-	bindsym Shift+m exec "~/bin/config volume !"
-	bindsym Shift+k exec "~/bin/config volume +5"
-	bindsym Shift+j exec "~/bin/config volume -5"
-	bindsym Shift+Up exec "~/bin/config volume +10"
-	bindsym Shift+Down exec "~/bin/config volume -10"
-	bindsym Control+Shift+k exec "~/bin/config volume +20"
-	bindsym Control+Shift+j exec "~/bin/config volume -20"
+	bindsym Shift+m exec "~/bin/cfg volume !"
+	bindsym Shift+k exec "~/bin/cfg volume +5"
+	bindsym Shift+j exec "~/bin/cfg volume -5"
+	bindsym Shift+Up exec "~/bin/cfg volume +10"
+	bindsym Shift+Down exec "~/bin/cfg volume -10"
+	bindsym Control+Shift+k exec "~/bin/cfg volume +20"
+	bindsym Control+Shift+j exec "~/bin/cfg volume -20"
 
 	# playback
 

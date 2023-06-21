@@ -62,15 +62,15 @@ super + m
 
 # volume
 XF86AudioRaiseVolume
-	~/bin/config volume +5
+	~/bin/cfg volume +5
 XF86AudioLowerVolume
-	~/bin/config volume -5
+	~/bin/cfg volume -5
 XF86AudioMute
-	~/bin/config volume !
+	~/bin/cfg volume !
 XF86AudioMicMute
-	~/bin/config mic !
+	~/bin/cfg mic !
 control + shift + super + alt + m
-	~/bin/config mic !
+	~/bin/cfg mic !
 
 # playback
 XF86AudioPlay
@@ -82,9 +82,9 @@ XF86AudioPrev
 
 # brightness
 XF86MonBrightnessUp
-	~/bin/config brightness +5
+	~/bin/cfg brightness +5
 XF86MonBrightnessDown
-	~/bin/config brightness -5
+	~/bin/cfg brightness -5
 
 # fix keys
 XF86Tools
@@ -102,7 +102,7 @@ XF86Explorer
 
 # toggle touchpad
 XF86TouchpadToggle
-	~/bin/config touchpad !
+	~/bin/cfg touchpad !
 
 # screenshots
 Print
@@ -118,7 +118,7 @@ shift + super + alt + {button1,button6,button7}
 	playerctl --player=%any,chromium {play-pause,previous,next}
 
 shift + super + alt + {button2,button3,button4,button5}
-	~/dotfiles/bin/config {volume !, mic !, volume +5,volume -5}
+	~/bin/cfg {volume !, mic !, volume +5,volume -5}
 	# xdotool key --clearmodifiers {XF86AudioMute,XF86AudioMicMute,XF86AudioRaiseVolume,XF86AudioLowerVolume}
 
 ################

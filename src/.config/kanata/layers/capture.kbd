@@ -1,10 +1,10 @@
 (defalias
 	cpt (layer-switch capture)
 
-	s (multi (cmd nu -c "~/bin/screenshot select") (layer-switch dvorak))
-	s (multi (cmd nu -c "~/bin/screenshot window") (layer-switch dvorak))
-	s (multi (cmd nu -c "~/bin/screenshot screen") (layer-switch dvorak))
-	s (multi (cmd nu -c "~/bin/screenshot full") (layer-switch dvorak))
+	s (multi (cmd nu -c "~/bin/screenshot select") @dvk)
+	s (multi (cmd nu -c "~/bin/screenshot window") @dvk)
+	s (multi (cmd nu -c "~/bin/screenshot screen") @dvk)
+	s (multi (cmd nu -c "~/bin/screenshot full") @dvk)
 )
 
 (deflayer capture
