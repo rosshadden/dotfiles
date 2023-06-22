@@ -1,4 +1,5 @@
 (defcfg
 	danger-enable-cmd yes
 	delegate-to-first-layer yes
+	process-unmapped-keys yes
 )

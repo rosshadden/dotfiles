@@ -1,5 +1,5 @@
 (defalias
-	med (fork (one-shot $one-shot (layer-toggle media)) (layer-switch media) (lsft rsft))
+	med (fork (one-shot $one-shot-linger (layer-toggle media)) (layer-switch media) (lsft rsft))
 
 	mut (cmd nu -c "~/bin/cfg volume !")
 	mic (cmd nu -c "~/bin/cfg mic !")

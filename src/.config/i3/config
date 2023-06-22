@@ -216,15 +216,12 @@ bindsym $super+apostrophe mode "GOTO"
 ################
 
 $return {
-	bindsym a mode "APPS"
 	bindsym apostrophe mode "GOTO"
 	bindsym b mode "BUFFER"
 	bindsym g mode "GAPS"
 	bindsym i mode "I3"
 	bindsym l mode "LAYOUT"
-	bindsym p mode "PASS"
 	bindsym r mode "RESIZE"
-	bindsym s mode "SYSTEM"
 	bindsym t mode "TMUX"
 
 	bindsym Shift+r mode "MOVE"
@@ -466,48 +463,6 @@ mode "TMUX" {
 	bindsym Escape $exit
 }
 
-mode "SYSTEM" {
-	# power
-	bindsym Shift+r exec "reboot";              $exit
-	bindsym Shift+p exec "poweroff";            $exit
-	bindsym Shift+s exec "systemctl suspend";   $exit
-	bindsym Shift+h exec "systemctl hybernate"; $exit
-
-	# screen
-	bindsym s exec xset dpms force off; $exit
-
-	# lock screen
-	bindsym l exec ~/bin/locker -r; $exit
-	bindsym Shift+l exec ~/bin/locker -rS; $exit
-	bindsym Control+l exec ~/bin/locker -s; $exit
-
-	# brightness
-
-	# small
-	bindsym $alt+$up exec "~/bin/cfg brightness +5"; $exit
-	bindsym $alt+$down exec "~/bin/cfg brightness -5"; $exit
-	bindsym $alt+Shift+$up exec "~/bin/cfg brightness +5"
-	bindsym $alt+Shift+$down exec "~/bin/cfg brightness -5"
-	# medium
-	bindsym k exec "~/bin/cfg brightness +20"; $exit
-	bindsym j exec "~/bin/cfg brightness -20"; $exit
-	bindsym Shift+$up exec "~/bin/cfg brightness +20"
-	bindsym Shift+$down exec "~/bin/cfg brightness -20"
-	# large
-	bindsym Control+$up exec "~/bin/cfg brightness +80"; $exit
-	bindsym Control+$down exec "~/bin/cfg brightness -80"; $exit
-	bindsym Control+Shift+$up exec "~/bin/cfg brightness +80"
-	bindsym Control+Shift+$down exec "~/bin/cfg brightness -80"
-
-	# wifi
-	bindsym w exec ~/bin/cfg wifi; $exit
-	# bluetooth
-	bindsym b exec ~/bin/cfg bluetooth; $exit
-
-	bindsym $super+$alt+space $return
-	bindsym Escape $exit
-}
-
 mode "RESIZE" {
 	# small
 	bindsym $alt+$up resize shrink height 1 px or 1 ppt
@@ -651,55 +606,6 @@ mode "GAPS-INNER" {
 	bindsym Shift+minus gaps inner all minus 5
 	bindsym Shift+0     gaps inner all set 0
 
-	bindsym $super+$alt+space $return
-	bindsym Escape $exit
-}
-
-mode "APPS" {
-	# music -- Google Music
-	bindsym m mark LAST; workspace number 6 $wsMedia; exec $(gtk-launch ytmdesktop); $exit
-
-	# todo app -- Todoist
-	bindsym t mark LAST; exec $(gtk-launch chrome-bgjohebimpjdhhocbknplfelpmdhifhd-Default); $exit
-
-	# news feed -- Reddit
-	bindsym r mark LAST; workspace number 7 news; exec $runTmux news 'rtv'; $exit
-
-	# clipboard manager -- copyq
-	# TODO: move to scratchpad
-	bindsym y mark LAST; exec copyq toggle; $exit
-
-	# calculator -- Qalc
-	# TODO: move to scratchpad
-	bindsym c mark LAST; exec qalculate-gtk; $exit
-
-	# pidgin
-	bindsym p mode "PIDGIN"
-
-	# documentation -- devdocs
-	bindsym d mark LAST; exec devdocs-desktop; $exit
-
-	# games - Steam
-	bindsym g mark LAST; exec VK_LOADER_DRIVERS_DISABLE=*lvp* steam-native -console; $exit
-
-	# stream app -- OBS
-	bindsym s mark LAST; exec $(gtk-launch obs); $exit
-
-	bindsym e exec $(rofimoji --action=copy --skin-tone=neutral); $exit
-	bindsym u exec $(~/bin/dmenu-uni all); $exit
-
-	bindsym $super+$alt+space $return
-	bindsym Escape $exit
-}
-
-mode "PASS" {
-	bindsym space exec $(passmenu); $exit
-	bindsym $super+$alt+space $return
-	bindsym Escape $exit
-}
-
-mode "PIDGIN" {
-	bindsym space mark LAST; exec $(~/bin/purple | rofi -dmenu -p "IM:" -i | xargs -I $ ~/bin/purple '$'); $exit
 	bindsym $super+$alt+space $return
 	bindsym Escape $exit
 }

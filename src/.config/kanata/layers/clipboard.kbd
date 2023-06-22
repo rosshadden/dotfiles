@@ -1,16 +1,110 @@
 (defalias
-	clp (layer-switch clipboard)
-
-	acq (multi (cmd copyq toggle) @dvk)
-	psp (multi (cmd nu -c "xsel --output | xdotool type --clearmodifiers --delay 0 -- $in") @dvk)
-	psc (multi (cmd nu -c "xsel --output --clipboard | xdotool type --clearmodifiers --delay 0 -- $in") @dvk)
+	clp (one-shot $one-shot (layer-toggle clipboard))
 )
 
 (deflayer clipboard
-	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    @psp _    _    _    @psc _    _    _    _    _     _    _    _     _    _    _    _
-	@dvk _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
-	_    _    _              @acq           _    _    _    _               _    _    _     _    _
+	#| esc   |# @dvk
+	#| f1    |# _
+	#| f2    |# _
+	#| f3    |# _
+	#| f4    |# _
+	#| f5    |# _
+	#| f6    |# _
+	#| f7    |# _
+	#| f8    |# _
+	#| f9    |# _
+	#| f10   |# _
+	#| f11   |# _
+	#| f12   |# _
+	#| ssrq  |# _
+	#| slck  |# _
+	#| pause |# _
+	#| grv   |# _
+	#| 1     |# _
+	#| 2     |# _
+	#| 3     |# _
+	#| 4     |# _
+	#| 5     |# _
+	#| 6     |# _
+	#| 7     |# _
+	#| 8     |# _
+	#| 9     |# _
+	#| 0     |# _
+	#| [     |# _
+	#| ]     |# _
+	#| bspc  |# _
+	#| ins   |# _
+	#| home  |# _
+	#| pgup  |# _
+	#| nlck  |# _
+	#| kp/   |# _
+	#| kp*   |# _
+	#| kp-   |# _
+	#| tab   |# _
+	#| '     |# _
+	#| ,     |# _
+	#| .     |# _
+	#| p     |# (cmd nu -c "xsel --output | xdotool type --clearmodifiers --delay 0 -- $in")
+	#| y     |# _
+	#| f     |# _
+	#| g     |# (cmd nu -c "~/bin/purple | rofi -dmenu -p "IM:" -i | ~/bin/purple $in")
+	#| c     |# (cmd nu -c "xsel --output --clipboard | xdotool type --clearmodifiers --delay 0 -- $in")
+	#| r     |# _
+	#| l     |# _
+	#| /     |# _
+	#| =     |# _
+	#| \     |# _
+	#| del   |# _
+	#| end   |# _
+	#| pgdn  |# _
+	#| kp7   |# _
+	#| kp8   |# _
+	#| kp9   |# _
+	#| kp+   |# _
+	#| caps  |# @dvk
+	#| a     |# _
+	#| o     |# _
+	#| e     |# (cmd rofimoji --action=copy --skin-tone=neutral)
+	#| u     |# (cmd nu -c "~/bin/dmenu-uni all")
+	#| i     |# _
+	#| d     |# _
+	#| h     |# _
+	#| t     |# _
+	#| n     |# _
+	#| s     |# _
+	#| -     |# _
+	#| ret   |# _
+	#| kp4   |# _
+	#| kp5   |# _
+	#| kp6   |# _
+	#| lsft  |# _
+	#| ;     |# _
+	#| q     |# _
+	#| j     |# _
+	#| k     |# _
+	#| x     |# _
+	#| b     |# _
+	#| m     |# (cmd passmenu)
+	#| w     |# _
+	#| v     |# _
+	#| z     |# _
+	#| rsft  |# _
+	#| up    |# _
+	#| kp1   |# _
+	#| kp2   |# _
+	#| kp3   |# _
+	#| kprt  |# _
+	#| lctl  |# _
+	#| lmet  |# _
+	#| lalt  |# _
+	#| spc   |# (cmd copyq toggle)
+	#| ralt  |# _
+	#| rmet  |# _
+	#| cmp   |# _
+	#| rctl  |# _
+	#| left  |# _
+	#| down  |# _
+	#| rght  |# _
+	#| kp0   |# _
+	#| kp.   |# _
 )

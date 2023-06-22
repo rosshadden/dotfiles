@@ -1,7 +1,7 @@
 (defalias
 	mcr (layer-switch macros)
 
-	mi2 (fork (macro i 2 i) i (lsft rsft))
+	mi2 (fork (macro i 2 i) i (lctl rctl))
 )
 
 (deflayer macros
