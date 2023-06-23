@@ -1,17 +1,22 @@
 (defalias
-	emp (layer-switch empty)
+	blk (layer-switch blank)
 )
 
-(deflayer empty
+(deflayer blank
 	@dvk _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
 	@dvk _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
 	_    _    _              _              _    _    _    _               _    _    _     _    _
+
+	_ _ _ _ _ _ _
+	_ _ _ _ _
+	_ _ _ _ _ _ _ _ _ _ _ _
+	_ _ _ _ _
 )
 
-(deflayer empty
+(deflayer blank
 	#| esc   |# @dvk
 	#| f1    |# _
 	#| f2    |# _

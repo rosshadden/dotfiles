@@ -10,28 +10,6 @@ super + q
 # SYSTEM
 ################
 
-# allow switching VTs
-control alt F1
-	xdotool key XF86Switch_VT_1
-control alt F2
-	xdotool key XF86Switch_VT_2
-control alt F3
-	xdotool key XF86Switch_VT_3
-control alt F4
-	xdotool key XF86Switch_VT_4
-control alt F5
-	xdotool key XF86Switch_VT_5
-control alt F6
-	xdotool key XF86Switch_VT_6
-control alt F7
-	xdotool key XF86Switch_VT_7
-control alt F8
-	xdotool key XF86Switch_VT_8
-control alt F9
-	xdotool key XF86Switch_VT_9
-control alt F10
-	xdotool key XF86Switch_VT_10
-
 # notifications
 super + backslash
 	dunstctl close
