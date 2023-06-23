@@ -73,7 +73,7 @@
 	#| n     |# _
 	#| s     |# _
 	#| -     |# _
-	#| ret   |# _
+	#| enter |# _
 	#| kp4   |# _
 	#| kp5   |# _
 	#| kp6   |# _
@@ -94,17 +94,47 @@
 	#| kp2   |# _
 	#| kp3   |# _
 	#| kprt  |# _
-	#| lctl  |# _
-	#| lmet  |# _
+	#| lctrl |# _
+	#| lmeta |# _
 	#| lalt  |# _
 	#| spc   |# (cmd copyq toggle)
 	#| ralt  |# _
-	#| rmet  |# _
-	#| cmp   |# _
-	#| rctl  |# _
+	#| rmeta |# _
+	#| menu  |# _
+	#| rctrl |# _
 	#| left  |# _
 	#| down  |# _
 	#| rght  |# _
 	#| kp0   |# _
 	#| kp.   |# _
+	#| mute  |# _
+	#| volu  |# _
+	#| vold  |# _
+	#| brup  |# _
+	#| brdn  |# _
+	#| blup  |# _
+	#| bldn  |# _
+	#| next  |# _
+	#| pp    |# _
+	#| prev  |# _
+	#| plyr  |# _
+	#| power |# _
+	#| sleep |# _
+	#| f13   |# _
+	#| f14   |# _
+	#| f15   |# _
+	#| f16   |# _
+	#| f17   |# _
+	#| f18   |# _
+	#| f19   |# _
+	#| f20   |# _
+	#| f21   |# _
+	#| f22   |# _
+	#| f23   |# _
+	#| f24   |# _
+	#| mlft  |# _
+	#| mrgt  |# _
+	#| mmid  |# _
+	#| mfwd  |# _
+	#| mbck  |# _
 )

@@ -1,10 +1,15 @@
 (defsrc
-	esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
+	esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck brk
 	grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup  nlck kp/  kp*  kp-
 	tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn  kp7  kp8  kp9  kp+
 	caps a    s    d    f    g    h    j    k    l    ;    '    ret                        kp4  kp5  kp6
 	lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up         kp1  kp2  kp3  kprt
-	lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght  kp0  kp.
+	lctl lmet lalt           spc            ralt rmet menu rctl            left down rght  kp0  kp.
+
+	mute volu vold brup brdn blup bldn
+	next pp prev plyr power sleep
+	f13 f14 f15 f16 f17 f18 f19 f20 f21 f22 f23 f24
+	mlft mrgt mmid mfwd mbck
 )
 
 ;; (defsrc
@@ -78,7 +83,7 @@
 ;; 	l
 ;; 	;
 ;; 	'
-;; 	ret
+;; 	enter
 ;; 	kp4
 ;; 	kp5
 ;; 	kp6
@@ -99,17 +104,47 @@
 ;; 	kp2
 ;; 	kp3
 ;; 	kprt
-;; 	lctl
-;; 	lmet
+;; 	lctrl
+;; 	lmeta
 ;; 	lalt
 ;; 	spc
 ;; 	ralt
-;; 	rmet
-;; 	cmp
-;; 	rctl
+;; 	rmeta
+;; 	menu
+;; 	rctrl
 ;; 	left
 ;; 	down
 ;; 	rght
 ;; 	kp0
 ;; 	kp.
+;; 	mute
+;; 	volu
+;; 	vold
+;; 	brup
+;; 	brdn
+;; 	blup
+;; 	bldn
+;; 	next
+;; 	pp
+;; 	prev
+;; 	plyr
+;; 	power
+;; 	sleep
+;; 	f13
+;; 	f14
+;; 	f15
+;; 	f16
+;; 	f17
+;; 	f18
+;; 	f19
+;; 	f20
+;; 	f21
+;; 	f22
+;; 	f23
+;; 	f24
+;; 	mlft
+;; 	mrgt
+;; 	mmid
+;; 	mfwd
+;; 	mbck
 ;; )
