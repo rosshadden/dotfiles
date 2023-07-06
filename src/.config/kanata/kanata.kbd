@@ -10,6 +10,7 @@
 (include ./layers/applications.kbd)
 (include ./layers/capture.kbd)
 (include ./layers/clipboard.kbd)
+(include ./layers/games.kbd)
 (include ./layers/macros.kbd)
 (include ./layers/media.kbd)
 (include ./layers/mouse.kbd)
@@ -21,6 +22,7 @@
 (include ./layers/layers.kbd)
 
 ;; TODO:
+;; - make L and R super both hold layers
 ;; - dynamic macros
 ;; - mashing keys/mouse
 ;; - mouse

@@ -4,44 +4,68 @@
 	xcp (tap-hold-release $tap-timeout $hold-timeout esc lctl)
 	xsu (tap-hold-release $tap-timeout $hold-timeout M-A-spc lmet)
 	xtp (tap-hold-release $tap-timeout $hold-timeout C-spc ctl)
+
+	xss (fork
+		(fork
+			(fork
+				(cmd nu -c "~/bin/screenshot select")
+				(cmd nu -c "~/bin/screenshot full")
+				(lctl rctl)
+			)
+			(cmd nu -c "~/bin/screenshot window")
+			(lalt ralt)
+		)
+		(cmd nu -c "~/bin/screenshot screen")
+		(lsft rsft)
+	)
 )
 
 (deflayer dvorak
-	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @qwr
+	_    _    _    _    _    _    _    _    _    _    _    _    _          @xss _    @qwr
 	_    _    _    _    _    _    _    _    _    _    _    [    ]    _     _    _    _     _    _    _    _
 	_    '    ,    .    p    y    f    g    c    r    l    /    =    _     _    _    _     _    _    _    _
 	@xcp a    o    e    u    i    d    h    t    n    s    -    _                          _    _    _
 	_    ;    q    j    k    x    b    m    w    v    z    _                    _          _    _    _    _
 	_    @lyr _              _              @xsu _    _    @xtp            _    _    _     _    _
 
-	#| mute  |# _
-	#| volu  |# _
-	#| vold  |# _
-	#| brup  |# _
-	#| brdn  |# _
+	#| mute  |# (cmd nu -c "~/bin/cfg volume !")
+	#| volu  |# (cmd nu -c "~/bin/cfg volume +5")
+	#| vold  |# (cmd nu -c "~/bin/cfg volume -5")
+	#| brup  |# (cmd nu -c "~/bin/cfg brightness -5")
+	#| brdn  |# (cmd nu -c "~/bin/cfg brightness -5")
 	#| blup  |# _
 	#| bldn  |# _
-	#| next  |# _
-	#| pp    |# _
-	#| prev  |# _
+	#| next  |# (cmd playerctl --player=%any,chromium next)
+	#| pp    |# (cmd playerctl --player=%any,chromium play-pause)
+	#| prev  |# (cmd playerctl --player=%any,chromium previous)
 	#| plyr  |# _
 	#| power |# _
 	#| sleep |# _
-	#| f13   |# _
-	#| f14   |# _
+	#| f13   |# (cmd rofi -show drun -display-drun launch)
+	#| f14   |# (cmd notify-send f14)
 	#| f15   |# _
-	#| f16   |# _
-	#| f17   |# _
-	#| f18   |# _
-	#| f19   |# _
-	#| f20   |# _
-	#| f21   |# _
-	#| f22   |# _
-	#| f23   |# _
-	#| f24   |# _
+	#| f16   |# (cmd notify-send f16)
+	#| f17   |# (fork
+								(fork
+									(cmd nu -c "~/bin/locker -rS")
+									(cmd nu -c "~/bin/locker -b")
+									(lctl rctl)
+								)
+								(cmd nu -c "~/bin/locker -s")
+								(lsft rsft)
+							)
+	#| f18   |# (cmd notify-send f18)
+	#| f19   |# (cmd notify-send f19)
+	#| f20   |# (cmd notify-send f20)
+	#| f21   |# (cmd notify-send f21)
+	#| f22   |# (cmd notify-send f22)
+	#| f23   |# (cmd notify-send f23)
+	#| f24   |# (cmd notify-send f24)
 	#| mlft  |# _
 	#| mrgt  |# _
 	#| mmid  |# _
 	#| mfwd  |# _
 	#| mbck  |# _
 )
+
+;; TODO: printscreen is its own layer
