@@ -1,8 +1,8 @@
 (defalias
-	clp (one-shot $one-shot (layer-toggle clipboard))
+	nfy (layer-switch notify)
 )
 
-(deflayer clipboard
+(deflayer notify
 	#| esc   |# @dvk
 	#| f1    |# _
 	#| f2    |# _
@@ -44,14 +44,14 @@
 	#| '     |# _
 	#| ,     |# _
 	#| .     |# _
-	#| p     |# (cmd nu -c "xsel --output | xdotool type --clearmodifiers --delay 0 -- $in")
+	#| p     |# (cmd dunstctl set-paused toggle)
 	#| y     |# _
 	#| f     |# _
-	#| g     |# (cmd nu -c "~/bin/purple | rofi -dmenu -p "IM:" -i | ~/bin/purple $in")
-	#| c     |# (cmd nu -c "xsel --output --clipboard | xdotool type --clearmodifiers --delay 0 -- $in")
+	#| g     |# _
+	#| c     |# (cmd dunstctl close-all)
 	#| r     |# _
 	#| l     |# _
-	#| /     |# _
+	#| /     |# (cmd nu -c "dunstctl is-paused | notify-send 'notify paused:' $in")
 	#| =     |# _
 	#| \     |# _
 	#| del   |# _
@@ -64,12 +64,12 @@
 	#| caps  |# @dvk
 	#| a     |# _
 	#| o     |# _
-	#| e     |# (cmd rofimoji --action=copy --skin-tone=neutral)
-	#| u     |# (cmd nu -c "~/bin/dmenu-uni all")
+	#| e     |# _
+	#| u     |# _
 	#| i     |# _
 	#| d     |# _
 	#| h     |# _
-	#| t     |# _
+	#| t     |# (cmd nu -c "dunstctl count | notify-send 'notify count:' $in")
 	#| n     |# _
 	#| s     |# _
 	#| -     |# _
@@ -80,11 +80,11 @@
 	#| lsft  |# _
 	#| ;     |# _
 	#| q     |# _
-	#| j     |# _
-	#| k     |# _
+	#| j     |# (cmd dunstctl history-pop)
+	#| k     |# (cmd dunstctl close)
 	#| x     |# _
 	#| b     |# _
-	#| m     |# (cmd passmenu)
+	#| m     |# _
 	#| w     |# _
 	#| v     |# _
 	#| z     |# _
@@ -97,7 +97,7 @@
 	#| lctrl |# _
 	#| lmeta |# _
 	#| lalt  |# _
-	#| spc   |# (cmd copyq toggle)
+	#| spc   |# (cmd dunstctl context)
 	#| ralt  |# _
 	#| rmeta |# _
 	#| menu  |# _

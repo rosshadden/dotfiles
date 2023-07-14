@@ -9,11 +9,12 @@
 ;; modules
 (include ./layers/applications.kbd)
 (include ./layers/capture.kbd)
-(include ./layers/clipboard.kbd)
+(include ./layers/copypasta.kbd)
 (include ./layers/games.kbd)
 (include ./layers/macros.kbd)
 (include ./layers/media.kbd)
 (include ./layers/mouse.kbd)
+(include ./layers/notify.kbd)
 (include ./layers/numbers.kbd)
 (include ./layers/qwerty.kbd)
 (include ./layers/system.kbd)
@@ -25,8 +26,6 @@
 ;; - make L and R super both hold layers
 ;; - dynamic macros
 ;; - mashing keys/mouse
-;; - mouse
-;; - games (translated qwerty)
 ;; -? wm
 ;; -? terminal
 ;; - symbols (greek, math, programming, eng)

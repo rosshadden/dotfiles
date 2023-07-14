@@ -10,6 +10,8 @@
 	p (cmd playerctl --player=%any,chromium next)
 	p (cmd playerctl --player=%any,chromium previous)
 	p (cmd playerctl --player=%any,chromium position 0)
+
+	mtw (cmd nu -c "~/bin/mute-window")
 )
 
 (deflayer media
@@ -17,7 +19,7 @@
 	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
 	_    _    _    _    _    _    _    _    _    _    @p  _    _    _     _    _    _     _    _    _    _
 	@dvk _    _    _    _    @mic _    @p  _    _    @p  _    _                          _    _    _
-	_    _    _    @v-  @v+  _    @p  @mut _    _    _    _                    _          _    _    _    _
+	_    _    _    @v-  @v+  _    @p  @mut @mtw _    _    _                    _          _    _    _    _
 	_    _    _              @p▶️            _    _    _    _               _    _    _     _    _
 
 	#| mute  |# _
