@@ -87,7 +87,7 @@
 	#| k     |# _
 	#| x     |# _
 	#| b     |# _
-	#| m     |# (cmd gtk-launch vtmdesktop)
+	#| m     |# (cmd gtk-launch ytmdesktop)
 	#| w     |# (cmd rofi -show window -sidebar-mode)
 	#| v     |# _
 	#| z     |# (cmd zoom)

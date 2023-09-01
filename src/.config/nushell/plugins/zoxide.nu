@@ -6,13 +6,16 @@
 #
 
 # Initialize hook to add new entries to the database.
-let-env config = ($env | default {} config).config
-let-env config = ($env.config | default {} hooks)
-let-env config = ($env.config | update hooks ($env.config.hooks | default {} env_change))
-let-env config = ($env.config | update hooks.env_change ($env.config.hooks.env_change | default [] PWD))
-let-env config = ($env.config | update hooks.env_change.PWD ($env.config.hooks.env_change.PWD | append {|_, dir|
-  zoxide add -- $dir
-}))
+if (not ($env | default false __zoxide_hooked | get __zoxide_hooked)) {
+  $env.__zoxide_hooked = true
+  $env.config = ($env | default {} config).config
+  $env.config = ($env.config | default {} hooks)
+  $env.config = ($env.config | update hooks ($env.config.hooks | default {} env_change))
+  $env.config = ($env.config | update hooks.env_change ($env.config.hooks.env_change | default [] PWD))
+  $env.config = ($env.config | update hooks.env_change.PWD ($env.config.hooks.env_change.PWD | append {|_, dir|
+    zoxide add -- $dir
+  }))
+}
 
 # =============================================================================
 #
@@ -21,7 +24,6 @@ let-env config = ($env.config | update hooks.env_change.PWD ($env.config.hooks.e
 
 # Jump to a directory using only keywords.
 def-env __zoxide_z [...rest:string] {
-  # `z -` does not work yet, see https://github.com/nushell/nushell/issues/4769
   let arg0 = ($rest | append '~').0
   let path = if (($rest | length) <= 1) and ($arg0 == '-' or ($arg0 | path expand | path type) == dir) {
     $arg0
@@ -33,7 +35,7 @@ def-env __zoxide_z [...rest:string] {
 
 # Jump to a directory using interactive search.
 def-env __zoxide_zi  [...rest:string] {
-  cd $'(zoxide query -i -- $rest | str trim -r -c "\n")'
+  cd $'(zoxide query --interactive -- $rest | str trim -r -c "\n")'
 }
 
 # =============================================================================
@@ -48,7 +50,7 @@ alias si = __zoxide_zi
 #
 # Add this to your env file (find it by running `$nu.env-path` in Nushell):
 #
-#   zoxide init nushell --hook prompt | save -f ~/.zoxide.nu
+#   zoxide init nushell | save -f ~/.zoxide.nu
 #
 # Now, add this to the end of your config file (find it by running
 # `$nu.config-path` in Nushell):

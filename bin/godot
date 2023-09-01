@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
 function main() {
-	local version="${1:-4}"
+	# TODO: parse args I guess
+	# local version="${1:-4}"
+	# shift
+
+	local version="4"
 	local dir="godot"
 	local target="editor"
 	local arch="x86_64"
-
-	shift
 
 	# support older versions
 	local platform="linuxbsd"

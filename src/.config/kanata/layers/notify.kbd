@@ -1,5 +1,5 @@
 (defalias
-	nfy (layer-switch notify)
+	nfy (one-shot $one-shot (layer-toggle notify))
 )
 
 (deflayer notify

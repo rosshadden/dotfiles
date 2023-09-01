@@ -668,10 +668,10 @@ for_window [title="^DevTools"] floating disable
 assign [class="nuvolaplayer|Vlc|mpv"] → $numMedia $wsMedia
 assign [title="Popcorn Time"] → $numMedia $wsMedia
 assign [title="Google Play Music" window_role="pop-up"] → $numMedia $wsMedia
-assign [title=".* - Twitch - .*" window_role="browser"] → layout splith
 assign [class="^zoom$" title="^Zoom$"] → $numMonitor $wsMonitor
 for_window [class="Vlc|mpv"] border none
 for_window [title="Google Play Music" window_role="pop-up"] floating disable, move to workspace $numMedia $wsMedia
+for_window [title=".* - Twitch - .*" window_role="browser"] layout splith
 
 # lit
 assign [title="(Google Keep|todoist|DevDocs)" window_role="app"] → $numLit $wsLit

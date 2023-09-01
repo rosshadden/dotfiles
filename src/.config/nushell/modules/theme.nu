@@ -2,17 +2,20 @@ export def get-theme [] {
 	{
 		# color for nushell primitives
 		separator: white
-		leading_trailing_space_bg: { attr: n } # no fg, no bg, attr non effectively turns this off
+		leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
 		header: green_bold
 		empty: blue
-		bool: white
+		# Closures can be used to choose colors for specific values.
+		# The value (in this case, a bool) is piped into the closure.
+		# eg) {|| if $in { 'light_cyan' } else { 'light_gray' } }
+		bool: light_cyan
 		int: white
-		filesize: white
+		filesize: cyan
 		duration: white
-		date: white
+		date: purple
 		range: white
 		float: white
-		string: white
+		string: {|x| if $x =~ "^#[a-fA-F\\d]+" { $x } else { "white" } }
 		nothing: white
 		binary: white
 		cellpath: white
@@ -21,32 +24,41 @@ export def get-theme [] {
 		list: white
 		block: white
 		hints: dark_gray
-
-		# shapes are used to change the cli syntax highlighting
-		shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b }
+		search_result: {bg: red fg: white}
+		shape_and: purple_bold
 		shape_binary: purple_bold
+		shape_block: blue_bold
 		shape_bool: light_cyan
-		shape_int: purple_bold
-		shape_float: purple_bold
-		shape_range: yellow_bold
-		shape_internalcall: cyan_bold
+		shape_closure: green_bold
+		shape_custom: green
+		shape_datetime: cyan_bold
+		shape_directory: cyan
 		shape_external: cyan
 		shape_externalarg: green_bold
+		shape_filepath: cyan
+		shape_flag: blue_bold
+		shape_float: purple_bold
+		# shapes are used to change the cli syntax highlighting
+		shape_garbage: { fg: white bg: red attr: b}
+		shape_globpattern: cyan_bold
+		shape_int: purple_bold
+		shape_internalcall: cyan_bold
+		shape_list: cyan_bold
 		shape_literal: blue
+		shape_match_pattern: green
+		shape_matching_brackets: { attr: u }
+		shape_nothing: light_cyan
 		shape_operator: yellow
+		shape_or: purple_bold
+		shape_pipe: purple_bold
+		shape_range: yellow_bold
+		shape_record: cyan_bold
+		shape_redirection: purple_bold
 		shape_signature: green_bold
 		shape_string: green
 		shape_string_interpolation: cyan_bold
-		shape_datetime: cyan_bold
-		shape_list: cyan_bold
 		shape_table: blue_bold
-		shape_record: cyan_bold
-		shape_block: blue_bold
-		shape_filepath: cyan
-		shape_globpattern: cyan_bold
 		shape_variable: purple
-		shape_flag: blue_bold
-		shape_custom: green
-		shape_nothing: light_cyan
+		shape_vardecl: purple
 	}
 }

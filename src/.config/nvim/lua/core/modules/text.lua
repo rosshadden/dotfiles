@@ -1,3 +1,5 @@
+local augend = require "dial.augend"
+local dial = require "dial.map"
 local inMotion = require "in-motion"
 
 --
@@ -19,6 +21,10 @@ vim.opt.wrap = false
 vim.keymap.set("n", "<space>S", "<plug><surround>", { silent = true })
 
 vim.keymap.set("n", "S", "s$", { silent = true, remap = true })
+
+-- increment/decrement
+vim.keymap.set("n", "<C-a>", dial.inc_normal(), { noremap = true })
+vim.keymap.set("n", "<C-x>", dial.dec_normal(), { noremap = true })
 
 --
 -- SETUP
@@ -44,4 +50,29 @@ require("mini.surround").setup {
 		highlight = "<plug><surround><space>",
 		update_n_lines = "<plug><surround>c",
 	}
+}
+
+require("dial.config").augends:register_group {
+	default = {
+		augend.integer.alias.decimal_int,
+		augend.integer.alias.hex,
+		augend.date.alias["%Y/%m/%d"],
+		augend.date.alias["%Y-%m-%d"],
+		augend.date.alias["%m/%d"],
+		augend.date.alias["%H:%M"],
+
+		augend.constant.alias.bool,
+		augend.date.alias["%m/%d/%Y"],
+		augend.semver.alias.semver,
+
+    augend.constant.new {
+			elements = { "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun" },
+		},
+		augend.constant.new {
+			elements = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" },
+		},
+    augend.constant.new {
+			elements = { "start", "stop" },
+		},
+	},
 }

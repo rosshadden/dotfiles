@@ -21,6 +21,9 @@ export alias tigr = tig $"(git rev-parse HEAD | str trim)..(git rev-parse FETCH_
 # tmux
 export alias tl = tmux list-sessions
 
+# zoxide
+export alias d = zoxide query
+
 # zellij
 export alias z = zellij
 

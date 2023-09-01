@@ -16,7 +16,7 @@ use mappings.nu get-mappings
 use menus.nu get-menus
 use theme.nu get-theme
 
-let-env config = {
+$env.config = {
 	use_grid_icons: true
 	footer_mode: "25" # always, never, number_of_rows, auto
 	float_precision: 2
@@ -45,6 +45,7 @@ let-env config = {
 			wrapping_try_keep_words: true # A strategy used by the 'wrapping' methodology
 			truncating_suffix: "..." # A suffix used by the 'truncating' methodology
 		}
+		header_on_separator: true
 	}
 	explore: {
 		help_banner: true
@@ -107,6 +108,7 @@ let-env config = {
 		max_size: 1048576 # Session has to be reloaded for this to take effect
 		sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file
 		file_format: "sqlite" # "sqlite" or "plaintext"
+		isolation: true # only available with sqlite file_format. true enables history isolation, false disables it. true will allow the history to be isolated to the current session using up/down arrows. false will allow the history to be shared across all sessions.
 	}
 	completions: {
 		case_sensitive: false # set to true to enable case-sensitive completions
@@ -145,4 +147,8 @@ let-env config = {
 			if (term size).columns >= 100 { table -e } else { table }
 		}
 	}
+}
+
+if ("~/local/lib/config.nu" | path exists) {
+	source ~/local/lib/config.nu
 }

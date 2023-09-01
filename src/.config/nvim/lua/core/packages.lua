@@ -55,6 +55,7 @@ local plugins = function()
 		-- enhancement
 		"ryvnf/readline.vim",
 		"lambdalisue/file-protocol.vim",
+		"monaqa/dial.nvim",
 
 		-- integration
 		"Exafunction/codeium.vim",
