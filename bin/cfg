@@ -91,19 +91,37 @@ elif [[ $setting == "mic" ]]; then
 		ponymix -t source set-volume $value
 	fi
 elif [[ $setting == "brightness" ]]; then
-	checkEnabled xbacklight
+	if isCommand xbacklight; then
+		if [[ ! $value ]]; then
+			xbacklight -get
+			exit 0
+		fi
 
-	if [[ ! $value ]]; then
-		xbacklight -get
-		exit 0
-	fi
+		if [[ ${value:0:1} == "+" ]]; then
+			xbacklight -inc ${value:1}
+		elif [[ ${value:0:1} == "-" ]]; then
+			xbacklight -dec ${value:1}
+		else
+			xbacklight -set $value
+		fi
+	elif isCommand brightnessctl; then
+		if [[ ! $value ]]; then
+			brightness_current="$(brightnessctl get)"
+			brightness_max="$(brightnessctl max)"
+			echo $(lua -e "print(100 * $brightness_current // $brightness_max)")
+			exit 0
+		fi
 
-	if [[ ${value:0:1} == "+" ]]; then
-		xbacklight -inc ${value:1}
-	elif [[ ${value:0:1} == "-" ]]; then
-		xbacklight -dec ${value:1}
+		if [[ ${value:0:1} == "+" ]]; then
+			brightnessctl set "${value:1}%+"
+		elif [[ ${value:0:1} == "-" ]]; then
+			brightnessctl set "${value:1}%-"
+		else
+			brightnessctl set "${value}%"
+		fi
 	else
-		xbacklight -set $value
+		echo "mode disabled"
+		exit 0
 	fi
 elif [[ $setting == "battery" ]]; then
 	checkEnabled acpi

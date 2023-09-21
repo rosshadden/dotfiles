@@ -148,7 +148,3 @@ $env.config = {
 		}
 	}
 }
-
-if ("~/local/lib/config.nu" | path exists) {
-	source ~/local/lib/config.nu
-}

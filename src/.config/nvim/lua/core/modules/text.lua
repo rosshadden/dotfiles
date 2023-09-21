@@ -72,6 +72,12 @@ require("dial.config").augends:register_group {
 			elements = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" },
 		},
     augend.constant.new {
+			elements = { "yes", "no" },
+		},
+    augend.constant.new {
+			elements = { "on", "off" },
+		},
+    augend.constant.new {
 			elements = { "start", "stop" },
 		},
 	},

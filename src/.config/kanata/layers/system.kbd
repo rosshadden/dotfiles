@@ -58,12 +58,12 @@
 	#| '     |# _
 	#| ,     |# _
 	#| .     |# _
-	#| p     |# (fork r (cmd poweroff) (lsft rsft))
+	#| p     |# (fork p (cmd sudo poweroff) (lsft rsft))
 	#| y     |# _
 	#| f     |# _
 	#| g     |# _
 	#| c     |# _
-	#| r     |# (fork r (cmd reboot) (lsft rsft))
+	#| r     |# (fork r (cmd sudo reboot) (lsft rsft))
 	#| l     |# (fork
 								(fork
 									(cmd nu -c "~/bin/locker -r")

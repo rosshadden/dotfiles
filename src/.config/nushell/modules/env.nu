@@ -14,7 +14,7 @@ export-env {
 	##
 
 	$env.EDITOR = "nvim"
-	$env.BROWSER = "google-chrome-stable"
+	$env.BROWSER = "thorium-browser"
 	# $env.KEYBOARD = "/dev/input/by-id/usb-Razer_Razer_BlackWidow_Ultimate-event-kbd"
 	$env.KEYBOARD = "/dev/input/by-id/usb-Razer_Razer_BlackWidow_Ultimate-if01-event-kbd"
 

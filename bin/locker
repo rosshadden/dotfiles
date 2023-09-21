@@ -9,7 +9,9 @@ function lock() {
 	local random=false
 	local screen=false
 
-	local spec=":bc:i:rsS"
+	local server="$(loginctl show-session $(awk '/tty/ { print $1 }' <(loginctl)) -p Type | awk -F= '{ print $2 }')"
+
+	local spec=":bc:i:rsSH"
 	while getopts $spec opt; do
 		case "$opt" in
 			b) blur=true ;;
@@ -21,6 +23,7 @@ function lock() {
 				escrotum $image
 				;;
 			S) screen=true ;;
+			H) echo "spec: $spec"; exit ;;
 			:) error "Option '-$OPTARG' requires an argument" ;;
 			*) error "Invalid option: -$OPTARG" ;;
 		esac
@@ -49,7 +52,11 @@ function lock() {
 		args="${args} --color $color"
 	fi
 
-	i3lock $args
+	if [[ $server == "wayland" ]]; then
+		swaylock $args
+	else
+		i3lock $args
+	fi
 }
 
 lock "$@"
