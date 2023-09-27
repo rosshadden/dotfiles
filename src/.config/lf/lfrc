@@ -79,6 +79,9 @@ cmd togglePreview ${{
 }}
 map ~ togglePreview
 
+# refresh
+map r reload
+
 # reload config
 map ,r source ~/.config/lf/lfrc
 

@@ -24,9 +24,6 @@ export alias tl = tmux list-sessions
 # zoxide
 export alias d = zoxide query
 
-# zellij
-export alias z = zellij
-
 ##
 ## MISC
 ##

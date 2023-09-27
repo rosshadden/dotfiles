@@ -114,7 +114,7 @@ fi
 export VISUAL="termoil -- $EDITOR"
 export GIT_EDITOR=$EDITOR
 
-export BROWSER=google-chrome-stable
+export BROWSER=thorium-browser
 
 if isCommand wezterm; then
 	export TERMINAL="wez"

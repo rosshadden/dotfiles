@@ -52,7 +52,7 @@
 	#| f     |# _
 	#| g     |# _
 	#| c     |# (cmd qalculate-gtk)
-	#| r     |# (cmd rofi -show run -sidebar-mode)
+	#| r     |# (cmd rofi -drun-show-actions -show run -sidebar-mode)
 	#| l     |# _
 	#| /     |# _
 	#| =     |# _
@@ -65,7 +65,7 @@
 	#| kp9   |# _
 	#| kp+   |# _
 	#| caps  |# @dvk
-	#| a     |# (cmd rofi -combi-modi drun,run -show combi)
+	#| a     |# (cmd rofi -drun-show-actions -combi-modi drun,run -show combi)
 	#| o     |# (cmd gtk-launch obs)
 	#| e     |# _
 	#| u     |# _
@@ -88,7 +88,7 @@
 	#| x     |# _
 	#| b     |# _
 	#| m     |# (cmd gtk-launch ytmdesktop)
-	#| w     |# (cmd rofi -show window -sidebar-mode)
+	#| w     |# (cmd rofi -drun-show-actions -show window -sidebar-mode)
 	#| v     |# _
 	#| z     |# (cmd zoom)
 	#| rsft  |# _
@@ -100,7 +100,7 @@
 	#| lctrl |# _
 	#| lmeta |# _
 	#| lalt  |# _
-	#| spc   |# (cmd rofi -show drun -display-drun launch)
+	#| spc   |# (cmd rofi -drun-show-actions -show drun -display-drun launch)
 	#| ralt  |# _
 	#| rmeta |# _
 	#| menu  |# _
