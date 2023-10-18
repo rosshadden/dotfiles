@@ -58,7 +58,11 @@ local plugins = function()
 		"monaqa/dial.nvim",
 
 		-- integration
-		"Exafunction/codeium.vim",
+		{
+			"Exafunction/codeium.nvim",
+			dependencies = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp" },
+			config = true,
+		},
 		{ "lewis6991/gitsigns.nvim", dependencies = "nvim-lua/plenary.nvim" },
 		"alexghergh/nvim-tmux-navigation",
 		"is0n/fm-nvim",

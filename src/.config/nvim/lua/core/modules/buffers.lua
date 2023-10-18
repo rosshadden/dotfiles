@@ -81,6 +81,9 @@ vim.keymap.set({ "", "i" }, "<c-h>", tmuxNav.NvimTmuxNavigateLeft, { silent = tr
 vim.keymap.set({ "", "i" }, "<c-l>", tmuxNav.NvimTmuxNavigateRight, { silent = true })
 vim.keymap.set({ "", "i" }, "<c-bs>", tmuxNav.NvimTmuxNavigateLastActive, { silent = true })
 
+-- terminal
+vim.keymap.set("n", "<plug><buffers>t", ":terminal<cr>", { silent = true })
+
 --
 -- SETUP
 --

@@ -98,6 +98,7 @@ configs.setup {
 		"markdown",
 		"norg",
 		"php",
+		"proto",
 		"python",
 		"rust",
 		"toml",

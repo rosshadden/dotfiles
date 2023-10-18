@@ -29,7 +29,7 @@ export alias d = zoxide query
 ##
 
 # get public ip
-export alias wimi = curl ipecho.net/plain
+export alias wimi = curl --location ipecho.net/plain
 
 export def wimli [] {
 	ip address show label enp* | rg -o '\d+\.\d+\.\d+\.\d+/\d+' | str trim
