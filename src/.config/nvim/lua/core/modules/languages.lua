@@ -101,6 +101,7 @@ configs.setup {
 		"proto",
 		"python",
 		"rust",
+		"terraform",
 		"toml",
 		"tsx",
 		"typescript",
@@ -173,7 +174,7 @@ configs.setup {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-local onAttach = function(_, bufnr)
+local on_attach = function(_, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
@@ -193,7 +194,7 @@ local servers = {
 }
 for _, server in ipairs(servers) do
 	lsp[server].setup {
-		on_attach = onAttach,
+		on_attach = on_attach,
 		capabilities = capabilities,
 	}
 end
@@ -204,7 +205,7 @@ local rtp = vim.split(package.path, ";")
 table.insert(rtp, "lua/?.lua")
 table.insert(rtp, "lua/?/init.lua")
 lsp.lua_ls.setup {
-	on_attach = onAttach,
+	on_attach = on_attach,
 	capabilities = capabilities,
 	root_dir = function(file)
 		return lspUtils.find_git_ancestor(file) or lspUtils.path.dirname(file)

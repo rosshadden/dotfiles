@@ -23,6 +23,19 @@ local feedkey = function(key, mode)
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
+local function border(hl_name)
+	return {
+		{ "┌", hl_name },
+		{ "─", hl_name },
+		{ "┐", hl_name },
+		{ "│", hl_name },
+		{ "┘", hl_name },
+		{ "─", hl_name },
+		{ "└", hl_name },
+		{ "│", hl_name },
+	}
+end
+
 --
 -- PLUGINS
 --
@@ -38,6 +51,11 @@ cmp.setup({
 
 	experimental = {
 		ghost_text = true,
+	},
+
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
 	},
 
 	mapping = {

@@ -204,7 +204,6 @@ bindsym $super+Shift+s move scratchpad
 
 # modes
 bindsym $super+$alt+space $return
-bindsym $super+shift+m mode "MARK"
 bindsym $super+apostrophe mode "GOTO"
 # TODO: [y] yank
 # TODO: [p] paste
@@ -221,6 +220,7 @@ $return {
 	bindsym g mode "GAPS"
 	bindsym i mode "I3"
 	bindsym l mode "LAYOUT"
+	bindsym m mode "MARK"
 	bindsym r mode "RESIZE"
 	bindsym t mode "TMUX"
 
@@ -402,17 +402,17 @@ mode "GOTO" {
 	# by app
 
 	# chat
-	bindsym c mark LAST; [title="(Buddy List|finch)"] focus; $exit
+	bindsym c mark LAST; [title="(Buddy List|finch|Messages for web)"] focus; $exit
 	# editor
 	bindsym e mark LAST; [title="VIM"] focus; $exit
 	# files
 	bindsym f mark LAST; [title="lf"] focus; $exit
 	# music
-	bindsym m mark LAST; [title="(?i)music"] focus; $exit
+	bindsym m mark LAST; [class="youtube-music"] focus; $exit
 	# video
 	bindsym v mark LAST; [class="vlc"] focus; $exit
 	# web
-	bindsym w mark LAST; [class="Google-chrome"] focus; $exit
+	bindsym w mark LAST; [class="(Google-chrome|Thorium-browser)"] focus; $exit
 
 	# exit
 	bindsym $super+$alt+space $return

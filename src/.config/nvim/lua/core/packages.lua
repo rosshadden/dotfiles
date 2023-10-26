@@ -1,12 +1,7 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
+		"git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath,
 	})
 end
 vim.opt.rtp:prepend(lazypath)
@@ -58,10 +53,15 @@ local plugins = function()
 		"monaqa/dial.nvim",
 
 		-- integration
+		"Exafunction/codeium.vim",
 		{
-			"Exafunction/codeium.nvim",
-			dependencies = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp" },
-			config = true,
+			"NeogitOrg/neogit",
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+				"nvim-telescope/telescope.nvim",
+				"sindrets/diffview.nvim",
+			},
+			config = true
 		},
 		{ "lewis6991/gitsigns.nvim", dependencies = "nvim-lua/plenary.nvim" },
 		"alexghergh/nvim-tmux-navigation",
