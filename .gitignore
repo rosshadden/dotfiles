@@ -37,4 +37,5 @@ src/.config/systemd/user/default.target.wants
 src/.config/systemd/user/timers.target.wants
 src/.config/vis/vis.log
 src/.ncmpcpp/error.log
+src/.termux/shell
 src/.vim/spell/*.spl

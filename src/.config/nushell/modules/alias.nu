@@ -2,6 +2,8 @@
 ## SHORTCUTS
 ##
 
+export alias x = exit
+
 ##
 ## EDITING
 ##
