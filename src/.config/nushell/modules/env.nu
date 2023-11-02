@@ -33,7 +33,8 @@ export-env {
 
 	# sensible pagers
 	$env.PAGER = "less -FRSX"
-	$env.MANPAGER = "sh -c 'col -bx | bat --language man --plain'"
+	$env.MANPAGER = "sh -c 'col -bx | bat -l man -p'"
+	$env.MANROFFOPT = "-c"
 
 	# pass
 	$env.PASSWORD_STORE_ENABLE_EXTENSIONS = "true" # [sic]

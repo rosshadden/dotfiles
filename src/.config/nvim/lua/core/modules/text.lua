@@ -80,5 +80,8 @@ require("dial.config").augends:register_group {
     augend.constant.new {
 			elements = { "start", "stop" },
 		},
+    augend.constant.new {
+			elements = { "high", "low" },
+		},
 	},
 }
