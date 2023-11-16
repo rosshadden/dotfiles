@@ -1,4 +1,4 @@
-export def get-menus [] {
+export def main [] {
 	[
 
 		# Configuration for default nushell menus

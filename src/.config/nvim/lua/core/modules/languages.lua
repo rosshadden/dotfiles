@@ -113,7 +113,6 @@ configs.setup {
 		"norg_meta",
 		"norg_table",
 		"typst",
-		"nu",
 	},
 
 	highlight = { enable = true },

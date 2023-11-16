@@ -1,4 +1,4 @@
-export def get-theme [] {
+export def main [] {
 	{
 		# color for nushell primitives
 		separator: white

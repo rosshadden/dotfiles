@@ -1,20 +1,18 @@
-# register /usr/bin/nu_plugin_inc
-# register /usr/bin/nu_plugin_query
+register /usr/bin/nu_plugin_inc
+register /usr/bin/nu_plugin_query
 
 use alias.nu *
-use functions.nu *
-use env.nu *
-use path.nu *
-source plugins.nu
-
-# source ($nu.config-path | path dirname | path join modules | path join plugins.nu)
-
-use lab.nu *
 use completions.nu *
+use functions.nu *
 
-use mappings.nu get-mappings
-use menus.nu get-menus
-use theme.nu get-theme
+use env.nu
+use lab.nu
+use mappings.nu
+use menus.nu
+use path.nu
+use theme.nu
+
+source plugins.nu
 
 $env.config = {
 	use_grid_icons: true
@@ -26,6 +24,7 @@ $env.config = {
 	shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
 	show_banner: false # true or false to enable or disable the banner
 	render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
+	use_kitty_protocol: true
 
 	ls: {
 		use_ls_colors: true # use the LS_COLORS environment variable to colorize output
@@ -107,25 +106,15 @@ $env.config = {
 		file_format: "sqlite" # "sqlite" or "plaintext"
 		isolation: true # only available with sqlite file_format. true enables history isolation, false disables it. true will allow the history to be isolated to the current session using up/down arrows. false will allow the history to be shared across all sessions.
 	}
-	completions: {
-		case_sensitive: false # set to true to enable case-sensitive completions
-		quick: false	# set this to false to prevent auto-selecting completions when only one remains
-		partial: true	# set this to false to prevent partial filling of the prompt
-		algorithm: "prefix"	# prefix or fuzzy
-		external: {
-			enable: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up my be very slow
-			max_results: 100 # setting it lower can improve completion performance at the cost of omitting some options
-			completer: null # check 'carapace_completer' above as an example
-		}
-	}
+	completions: (completions)
 	filesize: {
 		metric: true # true => KB, MB, GB (ISO standard), false => KiB, MiB, GiB (Windows standard)
 		format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, zb, zib, auto
 	}
 
-	keybindings: (get-mappings)
-	menus: (get-menus)
-	color_config: (get-theme)
+	keybindings: (mappings)
+	menus: (menus)
+	color_config: (theme)
 
 	hooks: {
 		pre_prompt: [{

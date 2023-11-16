@@ -1,6 +1,6 @@
 (defvar
 	tap-timeout 100
-	hold-timeout 200
+	hold-timeout 100
 	one-shot 400
 	one-shot-linger 2000
 )

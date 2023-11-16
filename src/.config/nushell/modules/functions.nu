@@ -53,7 +53,7 @@ export def fzf-files [] {
 
 # fzf through directories, navigating to result
 # Requires: `fd`
-export def-env fzf-cd [] {
+export def --env fzf-cd [] {
 	cd (fd --type d --hidden | fzf --prompt "FOLDERS> " | str trim)
 }
 
@@ -93,7 +93,7 @@ export def zshtory [] {
 }
 
 # # Change to dir matching zoxide query
-# export def-env s [
+# export def --env s [
 # 	query: string # Directory query
 # ] {
 # 	cd (zoxide query $query | str trim)

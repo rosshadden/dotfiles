@@ -1,4 +1,4 @@
-export def get-mappings [] {
+export def main [] {
 	[
 
 		{

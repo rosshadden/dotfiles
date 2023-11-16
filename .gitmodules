@@ -1,6 +1,3 @@
 [submodule "lib/shell/zplug"]
 	path = lib/shell/zplug
 	url = https://github.com/zplug/zplug.git
-[submodule "lib/vendor/isomorphic-copy"]
-	path = lib/vendor/isomorphic-copy
-	url = https://github.com/ms-jpq/isomorphic-copy.git
