@@ -9,7 +9,9 @@ export-env {
 
 			# domain
 			"~/dev/bin",
-			"~/dev/candidatelabs/bin",
+
+			# lang
+			"~/.local/share/fnm/aliases/default/bin",
 		]
 		| append [
 			# system

@@ -93,7 +93,6 @@ configs.setup {
 		"javascript",
 		"json",
 		"julia",
-		"kotlin",
 		"lua",
 		"markdown",
 		"norg",
