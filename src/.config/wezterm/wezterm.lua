@@ -6,7 +6,6 @@ local config = {
 	key_tables = {},
 
 	-- startup
-	-- default_prog = { "/media/media/src/forks/nushell/target/debug/nu" },
 	default_gui_startup_args = { "connect", "unix" },
 	term = "wezterm",
 
@@ -15,7 +14,7 @@ local config = {
 	line_height = 0.8,
 	font = wezterm.font_with_fallback({
 		"JetBrains Mono",
-		-- "Fira Code",
+		"Symbols Nerd Font",
 		"Noto Color Emoji",
 		"Unifont",
 	}),
