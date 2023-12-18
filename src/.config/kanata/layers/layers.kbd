@@ -5,16 +5,16 @@
 	lmm (fork @med @mse (lalt ralt))
 	lnn (fork @num @nfy (lalt ralt))
 
-	web (cmd nu -c "i3-msg 'mark LAST; workspace back_and_forth'")
+	baf (cmd swaymsg workspace back_and_forth)
 
-	tst (cmd nu -c "notify-send debug (2 + 3)")
+	tst (cmd nu -l -c "notify-send debug ($env.WAYLAND_DISPLAY)")
 )
 
 (deflayer layers
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    lrld  _    _    _     _    _    _    _
 	_    _    _    _    @app _    _    @gam @lcc _    _    _    _    @tst  _    _    _     _    _    _    _
-	caps _    _    _    @web @mcr @dvk _    _    @lnn @sys _    _                          _    _    _
+	caps _    _    _    @baf @mcr @dvk _    _    @lnn @sys _    _                          _    _    _
 	_    _    @qwr _    _    _    _    @lmm _    _    _    _                    _          _    _    _    _
 	_    _    _              _              _    _    _    _               _    _    _     _    _
 

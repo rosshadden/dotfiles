@@ -16,7 +16,8 @@ dmenu="rofi -dmenu"                               # Use Rofi instead
 #dmenu="fzf"                                       # Use fzf instead
 
 # Command to copy to clipboard:
-copy="xclip -rmlastnl -selection clipboard"
+# copy="xclip -rmlastnl -selection clipboard"
+copy="wl-copy"
 
 # Common emojis I use >99% of the time:
 common="-or g:smileys g:hand-fingers-open g:hand-fingers-partial g:hand-single-finger g:hand-fingers-closed g:hands g:body-parts g:person-gesture"

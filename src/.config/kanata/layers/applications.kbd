@@ -51,7 +51,7 @@
 	#| y     |# (cmd copyq toggle)
 	#| f     |# _
 	#| g     |# _
-	#| c     |# (cmd qalculate-gtk)
+	#| c     |# (cmd nu -c "qalculate-qt")
 	#| r     |# (cmd rofi -drun-show-actions -show run -sidebar-mode)
 	#| l     |# _
 	#| /     |# _
@@ -74,7 +74,7 @@
 	#| h     |# _
 	#| t     |# _
 	#| n     |# _
-	#| s     |# (cmd steam-native -console)
+	#| s     |# (cmd steam -console)
 	#| -     |# _
 	#| enter |# _
 	#| kp4   |# _
@@ -89,7 +89,7 @@
 	#| b     |# _
 	#| m     |# (cmd gtk-launch ytmdesktop)
 	#| w     |# (cmd rofi -drun-show-actions -show window -sidebar-mode)
-	#| v     |# _
+	#| v     |# (cmd nu -c "pavucontrol")
 	#| z     |# (cmd zoom)
 	#| rsft  |# _
 	#| up    |# _

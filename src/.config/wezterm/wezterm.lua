@@ -9,11 +9,13 @@ local config = {
 	default_gui_startup_args = { "connect", "unix" },
 	term = "wezterm",
 
+	front_end = "WebGpu",
+
 	-- fonts
 	font_size = 10,
 	line_height = 0.8,
 	font = wezterm.font_with_fallback({
-		"JetBrains Mono",
+		"Maple Mono",
 		"Symbols Nerd Font",
 		"Noto Color Emoji",
 		"Unifont",

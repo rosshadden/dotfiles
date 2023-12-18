@@ -16,6 +16,10 @@
 	mw↓ (mwheel-down 50 120)
 	mw← (mwheel-left 50 120)
 	mw→ (mwheel-right 50 120)
+
+	wpg (cmd warbd --grid)
+	wph (cmd warbd --hint)
+	wpn (cmd warbd --normal)
 )
 
 (deflayer mouse

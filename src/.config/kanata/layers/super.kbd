@@ -1,9 +1,10 @@
 (defalias
-	spr (layer-switch super)
+	;; spr (layer-switch super)
+	spr (tap-hold-release $tap-timeout $hold-timeout menu (layer-toggle super))
 )
 
 (deflayer super
-	#| esc   |# @dvk
+	#| esc   |# _
 	#| f1    |# _
 	#| f2    |# _
 	#| f3    |# _
@@ -63,7 +64,7 @@
 	#| kp+   |# _
 	#| caps  |# @dvk
 	#| a     |# _
-	#| o     |# _
+	#| o     |# (cmd nu -c "WAYLAND_DISPLAY=wayland-1 tofi-drun")
 	#| e     |# _
 	#| u     |# _
 	#| i     |# _

@@ -5,50 +5,7 @@
 # Optionally move to public Dropbox folder and copy public URL.
 #
 # Dependencies:
-# - escrotum
-# - [dropbox-cli]
-# - [dunst]
 ################
-
-function screenshot-old() {
-	action=$1
-
-	file=$(date +'%Y-%m-%d-%I-%M-%S.png')
-	# TODO: read this from an env variable
-	path=/tmp/ss
-	mkdir -p $path
-	path=$path/$file
-
-	# take screenshot
-	if [[ $action == 'select' || $action == 'window' ]]; then
-		escrotum -s $path
-	else
-		escrotum $path
-	fi
-
-	if [ ! -f "$path" ]; then exit; fi
-
-	# copy the path
-	echo -n "$path" | xsel -ib
-
-	ss=$(dunstify -A dropbox,dropbox "Screenshot taken" "path: $path\nPath copied to clipboard.")
-
-	if [[ $ss == 'dropbox' ]]; then
-		# TODO: read this from an env variable
-		dbPath=~/Dropbox/Public/media/images/ss/$file
-
-		mv $path $dbPath
-
-		# TODO: only do this if dropbox is passed as an argument
-		# generate public url
-		url=$(dropbox-cli puburl $dbPath)
-
-		# copy the public url
-		echo -n "$url" | xsel -ib
-
-		dunstify "Screenshot taken" "path: $dbPath\nURL: $url\nURL copied to clipboard."
-	fi
-}
 
 function get-screen-geometry() {
 	# Get the location of the mouse
@@ -86,32 +43,64 @@ function get-screen-geometry() {
 	exit 1
 }
 
-function screenshot() {
+function screenshot-x() {
 	local type="${1:-select}"
-	local copyCmd="/usr/bin/xclip -selection clipboard -target image/png"
+	local copy="/usr/bin/xclip -selection clipboard -target image/png"
 
 	case "${type}" in
 		full)
-			maim | $copyCmd
+			maim | $copy
 			;;
 		screen)
 			# TODO: get focused screen
-			maim --geometry="$(get-screen-geometry)" | $copyCmd
+			maim --geometry="$(get-screen-geometry)" | $copy
 			;;
 		window)
-			maim --window=$(xdotool getactivewindow) | $copyCmd
+			maim --window=$(xdotool getactivewindow) | $copy
 			;;
 		select)
-			maim --select | ${copyCmd}
+			maim --select | ${copy}
 			;;
 		select-window)
-			maim --select --tolerance=9999999 | ${copyCmd}
+			maim --select --tolerance=9999999 | ${copy}
 			;;
 		*)
 			echo "screenshot type not supported: ${type}"
 			exit 1
 			;;
 	esac
+}
+
+function screenshot-wayland() {
+	local type="${1:-select}"
+	local copy="wl-copy"
+
+	case "${type}" in
+		full)
+			maim | $copy
+			;;
+		screen)
+			# TODO: get focused screen
+			maim --geometry="$(get-screen-geometry)" | $copy
+			;;
+		window)
+			maim --window=$(xdotool getactivewindow) | $copy
+			;;
+		select)
+			grim -g $(slurp) - | $copy
+			;;
+		select-window)
+			maim --select --tolerance=9999999 | ${copy}
+			;;
+		*)
+			echo "screenshot type not supported: ${type}"
+			exit 1
+			;;
+	esac
+}
+
+function screenshot() {
+	screenshot-wayland
 }
 
 screenshot "$@"

@@ -17,6 +17,7 @@
 (include ./layers/notify.kbd)
 (include ./layers/numbers.kbd)
 (include ./layers/qwerty.kbd)
+(include ./layers/super.kbd)
 (include ./layers/system.kbd)
 
 ;; meta

@@ -3,7 +3,7 @@
 ##
 
 export def l [dir: string = "."] {
-	ls -la $dir | if ($in | is-empty) {} else { select name type target size modified }
+	ls -la $dir | if ($in | is-empty) {} else { select name type size target mode user group modified }
 }
 
 ##

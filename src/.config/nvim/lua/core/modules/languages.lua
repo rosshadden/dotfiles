@@ -33,13 +33,11 @@ vim.filetype.add({
 
 parsers.nim = {
 	install_info = {
-		url = "https://github.com/aMOPel/tree-sitter-nim",
-		branch = "main",
-		-- url = "https://github.com/monaqa/tree-sitter-nim",
-		-- branch = "master",
+		url = "https://github.com/alaviss/tree-sitter-nim",
+		-- branch = "main",
 		files = {
 			"src/parser.c",
-			"src/scanner.cc",
+			"src/scanner.c",
 		},
 	},
 }

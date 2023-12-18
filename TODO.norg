@@ -1,1 +1,12 @@
-- slim, modular rewrite
+* changes
+  - ( ) {https://hyprland.org/}[hyprland]
+  - ( ) {https://github.com/rvaiya/warpd}[warpd]
+
+* features
+  - ( ) come up with a way to make tofi support desktop actions
+
+* refactor
+  - ( ) slim, modular rewrite
+
+* bugs
+  - (x) fix weird vim thing

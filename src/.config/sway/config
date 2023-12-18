@@ -18,8 +18,8 @@ set $term ~/bin/wez
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $run tofi-run | xargs swaymsg exec --
-set $runApp tofi-drun | xargs swaymsg exec --
+set $run rofi -drun-show-actions -show run -sidebar-mode
+set $runApp rofi -drun-show-actions -show drun -display-drun launch
 
 focus_follows_mouse no
 
@@ -33,6 +33,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+
+output * adaptive_sync on
 
 ### Idle configuration
 #
@@ -92,6 +94,16 @@ input "type:touchpad" {
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+#
+# Mouse
+#
+    bindsym $mod+kp_subtract exec /home/ross/bin/cfg volume mute
+    bindsym --whole-window $mod+Button4 exec /home/ross/bin/cfg volume +1
+    bindsym --whole-window $mod+Button5 exec /home/ross/bin/cfg volume -1
+    bindsym --whole-window $mod+Shift+Button4 exec /home/ross/bin/cfg volume +5
+    bindsym --whole-window $mod+Shift+Button5 exec /home/ross/bin/cfg volume -5
+
 #
 # Moving around:
 #
@@ -105,6 +117,11 @@ input "type:touchpad" {
     bindsym $mod+Down focus down
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
+    # focus adjacent outputs
+    bindsym $mod+Control+$left focus output left
+    bindsym $mod+Control+$down focus output down
+    bindsym $mod+Control+$up focus output up
+    bindsym $mod+Control+$right focus output right
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
@@ -116,6 +133,11 @@ input "type:touchpad" {
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+    # move workspace to adjacent outputs
+    bindsym $mod+Control+Shift+$left move workspace to output left
+    bindsym $mod+Control+Shift+$down move workspace to output down
+    bindsym $mod+Control+Shift+$up move workspace to output up
+    bindsym $mod+Control+Shift+$right move workspace to output right
 
     bindsym $mod+Tab workspace back_and_forth
     bindsym $mod+Escape workspace back_and_forth
