@@ -1,0 +1,29 @@
+#!/usr/bin/env nu
+
+let api = "http://localhost:8123/api"
+
+def main [
+	state: string = "free",
+	--off,
+] {
+	mut action = "turn_on"
+
+	mut payload = {
+		entity_id: "light.eos_rgb_led",
+	}
+
+	let color = match $state {
+		"free" => "green",
+		"focus" => "yellow",
+		"busy" => "red",
+		_ => $state
+	}
+
+	if $state == "off" {
+		$action = "turn_off"
+	} else {
+		$payload.color_name = $color
+	}
+
+	http post -t application/json -H [Authorization $"Bearer (cat ~/Documents/certs/ha.cert)"] $"($api)/services/light/($action)" $payload
+}

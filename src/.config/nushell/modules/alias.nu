@@ -27,6 +27,13 @@ export alias tl = tmux list-sessions
 export alias d = zoxide query
 
 ##
+## ENV
+##
+
+# TODO: consider migrating to an env
+export alias sshc = ssh -i ~/.ssh/cuda
+
+##
 ## MISC
 ##
 

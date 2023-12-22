@@ -17,9 +17,9 @@
 	mw← (mwheel-left 50 120)
 	mw→ (mwheel-right 50 120)
 
-	wpg (cmd warbd --grid)
-	wph (cmd warbd --hint)
-	wpn (cmd warbd --normal)
+	wpg (cmd warpd --grid)
+	wph (cmd warpd --hint)
+	wpn (cmd warpd --normal)
 )
 
 (deflayer mouse
@@ -27,7 +27,7 @@
 	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
 	_    _    _    _    _    _    @mw→ _    _    _    @ms→ _    _    _     _    _    _     _    _    _    _
 	@dvk _    _    _    @mw↑ _    @mw↓ @ms← _    _    _    _    _                          _    _    _
-	_    _    _    @ms↓ @ms↑ _    @mw← _    _    _    _    _                    _          _    _    _    _
+	_    _    _    @ms↓ @ms↑ _    @mw← _    @wph _    _    _                    _          _    _    _    _
 	_    _    _              @clk           _    _    _    _               _    _    _     _    _
 
 	#| mute  |# _

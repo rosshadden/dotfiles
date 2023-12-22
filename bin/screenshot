@@ -62,7 +62,7 @@ function screenshot-x() {
 			maim --select | ${copy}
 			;;
 		select-window)
-			maim --select --tolerance=9999999 | ${copy}
+			maim --select --tolerance=9999999 | $copy
 			;;
 		*)
 			echo "screenshot type not supported: ${type}"
@@ -87,10 +87,10 @@ function screenshot-wayland() {
 			maim --window=$(xdotool getactivewindow) | $copy
 			;;
 		select)
-			grim -g $(slurp) - | $copy
+			grim -g "$(slurp)" - | $copy
 			;;
 		select-window)
-			maim --select --tolerance=9999999 | ${copy}
+			maim --select --tolerance=9999999 | $copy
 			;;
 		*)
 			echo "screenshot type not supported: ${type}"

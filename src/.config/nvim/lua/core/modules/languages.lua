@@ -182,7 +182,7 @@ local servers = {
 	"julials",
 	"marksman",
 	"nimls",
-	"pyright",
+	"pylsp",
 	"rust_analyzer",
 	"tsserver",
 	"typst_lsp",
