@@ -14,7 +14,7 @@ def main [
 
 	let color = match $state {
 		"free" => "green",
-		"focus" => "yellow",
+		"focus" => "orange",
 		"busy" => "red",
 		_ => $state
 	}

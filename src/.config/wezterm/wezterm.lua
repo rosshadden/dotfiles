@@ -12,10 +12,13 @@ local config = {
 	front_end = "WebGpu",
 
 	-- fonts
-	font_size = 10,
-	line_height = 0.8,
+	font_size = 12,
+	line_height = 1.0,
 	font = wezterm.font_with_fallback({
-		"Maple Mono",
+		-- "Monocraft",
+		"Fairfax Hax HD",
+		-- "Maple Mono",
+		"JetBrains Mono",
 		"Symbols Nerd Font",
 		"Noto Color Emoji",
 		"Unifont",
