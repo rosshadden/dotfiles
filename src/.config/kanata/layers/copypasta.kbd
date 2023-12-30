@@ -63,7 +63,7 @@
 	#| kp+   |# _
 	#| caps  |# @dvk
 	#| a     |# _
-	#| o     |# _
+	#| o     |# (cmd nu -c "hyprpicker -a")
 	#| e     |# (cmd rofimoji --action=copy --skin-tone=neutral)
 	#| u     |# (cmd nu -c "~/bin/dmenu-uni all")
 	#| i     |# _

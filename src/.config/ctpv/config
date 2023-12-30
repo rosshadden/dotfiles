@@ -1,1 +1,5 @@
 set chafasixel
+
+preview godot .gd .tscn {{
+	highlight -O truecolor "$f"
+}}
