@@ -22,6 +22,15 @@ norg.setup {
 			},
 		},
 		["core.export"] = {},
+
+		["core.keybinds"] = {
+			config = {
+				hook = function(mappings)
+					mappings.remap_key("norg", "n", "<C-Space>", "<localleader>t<space>")
+				end,
+			}
+		},
+
 		["core.integrations.treesitter"] = {},
 	},
 }
