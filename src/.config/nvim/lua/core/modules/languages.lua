@@ -22,17 +22,8 @@ ft.set("gdscript", "#%s")
 vim.filetype.add({
 	extension = {
 		conf = "config",
-	},
-})
-
-vim.filetype.add({
-	extension = {
+		yuck = "clojure",
 		typ = "typst",
-	},
-})
-
-vim.filetype.add({
-	extension = {
 		bb = "clojure",
 	},
 })
