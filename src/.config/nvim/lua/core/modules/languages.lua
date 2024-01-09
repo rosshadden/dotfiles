@@ -21,6 +21,12 @@ ft.set("gdscript", "#%s")
 
 vim.filetype.add({
 	extension = {
+		conf = "config",
+	},
+})
+
+vim.filetype.add({
+	extension = {
 		typ = "typst",
 	},
 })

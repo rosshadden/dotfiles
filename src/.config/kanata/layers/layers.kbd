@@ -5,7 +5,7 @@
 	lmm (fork @med @mse (lalt ralt))
 	lnn (fork @num @nfy (lalt ralt))
 
-	baf (cmd nu -c "ls /run/user/1000/sway-ipc.* | get name | first | $env.SWAYSOCK = $in; /usr/bin/swaymsg workspace back_and_forth")
+	baf (cmd nu -c "ls /run/user/1000/sway-ipc.* | sort-by modified | last | get name | $env.SWAYSOCK = $in; /usr/bin/swaymsg workspace back_and_forth")
 	;; baf (cmd swaymsg workspace back_and_forth)
 
 	tst (cmd nu -l -c "notify-send debug ($env.WAYLAND_DISPLAY)")
