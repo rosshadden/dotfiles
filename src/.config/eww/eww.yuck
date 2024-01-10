@@ -31,8 +31,8 @@
     :halign "end"
     time))
 
-(defpoll time :interval "1s"
-  "date '+%H:%M:%S'")
+(defpoll time :interval "60s"
+  "date '+%H:%M'")
 
 (defwindow bar
   :monitor 0
