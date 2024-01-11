@@ -51,8 +51,8 @@
 	#| y     |# (cmd copyq toggle)
 	#| f     |# _
 	#| g     |# _
-	#| c     |# (cmd nu -c "qalculate-qt")
-	#| r     |# (cmd rofi -drun-show-actions -show run -sidebar-mode)
+	#| c     |# _
+	#| r     |# _
 	#| l     |# _
 	#| /     |# _
 	#| =     |# _
@@ -65,8 +65,8 @@
 	#| kp9   |# _
 	#| kp+   |# _
 	#| caps  |# @dvk
-	#| a     |# (cmd rofi -drun-show-actions -combi-modi drun,run -show combi)
-	#| o     |# (cmd gtk-launch obs)
+	#| a     |# _
+	#| o     |# _
 	#| e     |# _
 	#| u     |# _
 	#| i     |# _
@@ -74,7 +74,7 @@
 	#| h     |# _
 	#| t     |# _
 	#| n     |# _
-	#| s     |# (cmd steam -console)
+	#| s     |# _
 	#| -     |# _
 	#| enter |# _
 	#| kp4   |# _
@@ -88,9 +88,9 @@
 	#| x     |# _
 	#| b     |# _
 	#| m     |# (cmd gtk-launch ytmdesktop)
-	#| w     |# (cmd rofi -drun-show-actions -show window -sidebar-mode)
-	#| v     |# (cmd nu -c "pavucontrol")
-	#| z     |# (cmd zoom)
+	#| w     |# _
+	#| v     |# _
+	#| z     |# _
 	#| rsft  |# _
 	#| up    |# _
 	#| kp1   |# _
@@ -100,7 +100,7 @@
 	#| lctrl |# _
 	#| lmeta |# _
 	#| lalt  |# _
-	#| spc   |# (cmd rofi -drun-show-actions -show drun -display-drun launch)
+	#| spc   |# _
 	#| ralt  |# _
 	#| rmeta |# _
 	#| menu  |# _

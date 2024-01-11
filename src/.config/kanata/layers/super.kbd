@@ -64,7 +64,7 @@
 	#| kp+   |# _
 	#| caps  |# @dvk
 	#| a     |# _
-	#| o     |# (cmd nu -c "WAYLAND_DISPLAY=wayland-1 tofi-drun")
+	#| o     |# (cmd nu -c "rofi -drun-show-actions -show drun -display-drun launch")
 	#| e     |# _
 	#| u     |# _
 	#| i     |# _
