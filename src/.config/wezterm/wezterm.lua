@@ -180,6 +180,14 @@ config.colors = {
 	},
 }
 
+config.tls_clients = {
+	{
+		name = "bork",
+		remote_address = "bork:8888",
+		bootstrap_via_ssh = "bork",
+	},
+}
+
 for key, value in pairs(config.colors) do
 	scheme[key] = value
 end
@@ -189,7 +197,9 @@ wezterm.on("update-right-status", function(win, pane)
 	local mode = win:active_key_table() or ""
 	local status = process
 	if mode ~= "" then status = "[" .. string.upper(mode) .. "] " .. status end
-	win:set_right_status(" " .. status .. " ")
+	if status then
+		win:set_right_status(" " .. status .. " ")
+	end
 end)
 
 return config
