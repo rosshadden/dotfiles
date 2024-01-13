@@ -2,16 +2,23 @@
 	all: unset;
 }
 
+// .bar {
+// 	background-color: #3a3a3a;
+// 	color: #b0b4bc;
+// 	padding: 16px;
+// }
+//
+// .workspaces button:hover {
+// 	color: #d35d6e;
+// }
+//
+// .info {
+// 	color: #ffd5cd;
+// }
+
 .bar {
-	background-color: #3a3a3a;
-	color: #b0b4bc;
-	padding: 16px;
-}
-
-.workspaces button:hover {
-	color: #d35d6e;
-}
-
-.info {
-	color: #ffd5cd;
+	background-color: #000000;
+	border-radius: 8px;
+	border: 1px solid #ffffff;
+	color: #ffffff;
 }
