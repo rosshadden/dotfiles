@@ -6,7 +6,7 @@ local config = {
 	key_tables = {},
 
 	-- startup
-	default_gui_startup_args = { "connect", "unix" },
+	-- default_gui_startup_args = { "connect", "unix" },
 	term = "wezterm",
 
 	front_end = "WebGpu",

@@ -1,60 +1,34 @@
-; (defwidget bar []
-;   (box :orientation "h"
-;     (workspaces)
-;     (title)
-;     (info)))
-;
-; (defwidget workspaces []
-;   (box :class "workspaces"
-;        :orientation "horizontal"
-;        :space-evenly true
-;        :halign "start"
-;        :spacing 16
-;     (button :onclick "hyprctl dispatch workspace name:lab" 0)
-;     (button :onclick "hyprctl dispatch workspace 1" 1)
-;     (button :onclick "hyprctl dispatch workspace 2" 2)
-;     (button :onclick "hyprctl dispatch workspace 3" 3)
-;     (button :onclick "hyprctl dispatch workspace 4" 4)
-;     (button :onclick "hyprctl dispatch workspace 5" 5)
-;     (button :onclick "hyprctl dispatch workspace 6" 6)
-;     (button :onclick "hyprctl dispatch workspace 7" 7)
-;     (button :onclick "hyprctl dispatch workspace 8" 8)
-;     (button :onclick "hyprctl dispatch workspace 9" 9)
-;     (button :onclick "hyprctl dispatch workspace 10" 10)
-;     (button :onclick "hyprctl dispatch workspace 11" 11)
-;     (button :onclick "hyprctl dispatch workspace 12" 12)))
-;
-; (defwidget info []
-;   (box
-;     :class "info"
-;     :orientation "horizontal"
-;     :space-evenly false
-;     :halign "end"
-;     time))
-;
-; (defwindow bar
-;   :monitor $
-;   :windowtype "dock"
-;   :geometry (geometry :x "0%"
-;                       :y "0%"
-;                       :width "99%"
-;                       :height "16px"
-;                       :anchor "top center")
-;   :exclusive true
-;   (bar))
+(defwidget workspaces []
+  (box
+    (button :onclick "hyprctl dispatch workspace name:lab" 0)
+    (button :onclick "hyprctl dispatch workspace 1" 1)))
 
 ; (deflisten title
-(defpoll title :interval "1s"
+(defpoll title
+  :initial "00:00:00"
+  :interval "1s"
   "hyprctl activewindow -j | jq --raw-output .title")
 
 (defpoll time :interval "1s"
   "date +'%H:%M:%S'")
 
 (defwidget bar []
-  title)
+  (box
+    (workspaces)
+    title
+    time))
 
-(defwindow bar
-  :monitor 0
+(deflisten media
+  :initial ""
+  "playerctl --follow metadata --format {{title}}")
+(defwidget info []
+  (box
+    media))
+
+; windows
+
+(defwindow bar [monitor]
+  :monitor monitor
   :windowtype "dock"
   :exclusive true
   :geometry (geometry :x "0%"
@@ -63,3 +37,14 @@
                       :height "16px"
                       :anchor "top center")
   (bar))
+
+(defwindow info [monitor]
+  :monitor monitor
+  :windowtype "dock"
+  :exclusive true
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "98%"
+                      :height "16px"
+                      :anchor "bottom center")
+  (info))

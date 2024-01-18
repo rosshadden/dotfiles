@@ -25,6 +25,7 @@ vim.filetype.add({
 		yuck = "clojure",
 		typ = "typst",
 		bb = "clojure",
+		nu = "nu",
 	},
 })
 
