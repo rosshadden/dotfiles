@@ -1,26 +1,30 @@
+(deflisten workspaces
+  :initial "[]"
+  "./scripts/get-workspaces")
+
+(deflisten window
+  :initial "{}"
+  "./scripts/get-window")
+
 (defwidget workspaces []
   (box
-    (button :onclick "hyprctl dispatch workspace name:lab" 0)
-    (button :onclick "hyprctl dispatch workspace 1" 1)))
-
-; (deflisten title
-(defpoll title
-  :initial "00:00:00"
-  :interval "1s"
-  "hyprctl activewindow -j | jq --raw-output .title")
+    (for workspace in workspaces
+      (button :onclick "hyprctl dispatch workspace ${workspace.id}" "${workspace.id}"))))
 
 (defpoll time :interval "1s"
+  :initial "00:00:00"
   "date +'%H:%M:%S'")
 
 (defwidget bar []
   (box
     (workspaces)
-    title
+    "${window.title}"
     time))
 
 (deflisten media
   :initial ""
   "playerctl --follow metadata --format {{title}}")
+
 (defwidget info []
   (box
     media))

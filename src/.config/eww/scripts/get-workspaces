@@ -1,0 +1,5 @@
+#!/usr/bin/env nu
+
+def main [] {
+	 print `[{"id":"name:lab"}, {"id":"1"}]`
+}
