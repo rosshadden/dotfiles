@@ -6,18 +6,22 @@
   :initial "{}"
   "./scripts/get-window")
 
-(defwidget workspaces []
+(defwidget workspaces [monitor]
   (box
     (for workspace in workspaces
-      (button :onclick "hyprctl dispatch workspace ${workspace.id}" "${workspace.name}"))))
+      (button
+        :visible {workspace.monitorID == monitor}
+        :onclick "hyprctl dispatch workspace ${workspace.id}"
+        "${workspace.name}"))))
 
 (defpoll time :interval "1s"
   :initial "00:00:00"
   "date +'%H:%M:%S'")
 
-(defwidget bar []
+(defwidget bar [monitor]
   (box
-    (workspaces)
+    (workspaces
+      :monitor monitor)
     "${window.title}"
     time))
 
@@ -40,7 +44,8 @@
                       :width "98%"
                       :height "16px"
                       :anchor "top center")
-  (bar))
+  (bar
+    :monitor monitor))
 
 (defwindow info [monitor]
   :monitor monitor
