@@ -9,7 +9,7 @@
 (defwidget workspaces []
   (box
     (for workspace in workspaces
-      (button :onclick "hyprctl dispatch workspace ${workspace.id}" "${workspace.id}"))))
+      (button :onclick "hyprctl dispatch workspace ${workspace.id}" "${workspace.name}"))))
 
 (defpoll time :interval "1s"
   :initial "00:00:00"
