@@ -1,14 +1,19 @@
-(deflisten hyprmon "./scripts/hyprmon")
+(deflisten hyprmon "./scripts/hyprmon listen")
 (defvar window "{}")
 (defvar workspaces "[]")
+(defvar workspace "{}")
 
 (defwidget workspaces [monitor]
-  (box
-    (for workspace in workspaces
-      (button
-        :visible {workspace.monitorID == monitor}
-        :onclick "hyprctl dispatch workspace ${workspace.id}"
-        "${workspace.name}"))))
+  (eventbox
+    :onscroll "./scripts/hyprmon change workspace ${monitor} {}"
+    (box
+      (for ws in workspaces
+        (button
+          :visible {ws.monitorID == monitor}
+          :class "${ws.id == workspace.id ? 'current' : ''}"
+          :tooltip "${ws.lastwindowtitle}"
+          :onclick "hyprctl dispatch workspace ${ws.id}"
+          "${ws.name}")))))
 
 (defpoll time
   :interval "1s"
@@ -56,3 +61,12 @@
 (defwindow background []
   :monitor 0
   hyprmon)
+
+(defwindow debug []
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "200px"
+                      :height "16px"
+                      :anchor "top right")
+  "")

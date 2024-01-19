@@ -4,8 +4,12 @@ def "refresh workspaces" [] {
 	hyprctl workspaces -j
 	| from json
 	| where name !~ :scratch
+	| sort-by id
 	| to json
 	| update workspaces $in
+
+	hyprctl activeworkspace -j
+	| update workspace $in
 }
 
 def "refresh window" [event: record] {
@@ -33,14 +37,6 @@ def process [line: string] {
 	}
 }
 
-def listen [] {
-	socat -u $"UNIX:/tmp/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock" -
-	| lines -s
-	| each {|line|
-		process $line
-	}
-}
-
 def update [key: string, value: string] {
 	eww update $"($key)=($value)"
 }
@@ -50,7 +46,38 @@ def init [] {
 	hyprctl activewindow -j | update window $in
 }
 
-def main [] {
+
+def main [] {}
+
+def "main listen" [] {
 	init
-	listen
+	socat -u $"UNIX:/tmp/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock" -
+	| lines -s
+	| each {|line|
+		process $line
+	}
+}
+
+def "main change workspace" [monitor: int, direction: string] {
+	let current = hyprctl activeworkspace -j
+	| from json
+	| get id
+
+	let workspaces = hyprctl workspaces -j
+	| from json
+	| where name !~ :scratch and monitorID == $monitor
+	| sort-by id
+
+	match $direction {
+		up => {
+			if ($workspaces | where id < $current | is-empty | not $in) {
+				hyprctl dispatch workspace m-1
+			}
+		},
+		down => {
+			if ($workspaces | where id > $current | is-empty | not $in) {
+				hyprctl dispatch workspace m+1
+			}
+		},
+	}
 }

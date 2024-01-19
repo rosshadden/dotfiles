@@ -4,9 +4,10 @@ def main [] {
 	eww close-all
 
 	eww open background
+	eww open debug
 
-	seq 0 (hyprctl monitors -j | jq "length - 1" | into int) | each {|foo|
-		eww open bar --id $"bar:($foo)" --arg $"monitor=($foo)"
-		eww open info --id $"info:($foo)" --arg $"monitor=($foo)"
+	hyprctl monitors -j | from json | each {|monitor|
+		eww open bar --id $"bar:($monitor.id)" --arg $"monitor=($monitor.id)"
+		eww open info --id $"info:($monitor.id)" --arg $"monitor=($monitor.id)"
 	}
 }
