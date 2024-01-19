@@ -26,6 +26,7 @@ def process [line: string] {
 	let event = $line | parse "{type}>>{data}" | first
 	match $event.type {
 		monitoradded | monitorremoved => {
+			# TODO: fix
 			bars
 		},
 		activewindowv2 => {
@@ -33,7 +34,10 @@ def process [line: string] {
 		},
 		workspace | createworkspace | destroyworkspace | focusedmon => {
 			refresh workspaces
-		}
+		},
+		submap => {
+			update mode $event.data
+		},
 	}
 }
 

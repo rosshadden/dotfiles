@@ -1,7 +1,8 @@
 (deflisten hyprmon "./scripts/hyprmon listen")
+(defvar mode "")
 (defvar window "{}")
-(defvar workspaces "[]")
 (defvar workspace "{}")
+(defvar workspaces "[]")
 
 (defwidget workspaces [monitor]
   (eventbox
@@ -33,6 +34,7 @@
 
 (defwidget info []
   (box
+    mode
     media))
 
 ; windows
