@@ -1,3 +1,6 @@
+(deflisten _listener
+  "./scripts/listener")
+
 (deflisten workspaces
   :initial "[]"
   "./scripts/get-workspaces")
