@@ -1,0 +1,47 @@
+#!/usr/bin/env nu
+
+def listen [] {
+	socat -u $"UNIX:/tmp/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock" - | lines -s | each {|line|
+		let event = $line | parse "{type}>>{data}" | first
+
+		match $event.type {
+			monitoradded | monitorremoved => {
+				bars
+			},
+
+			activewindowv2 => {
+				refresh window $event
+			},
+
+			workspace | createworkspace | destroyworkspace | focusedmon => {
+				refresh workspaces
+			}
+		}
+	}
+}
+
+def "refresh workspaces" [] {
+	hyprctl workspaces -j | jq -rc `map(select(.name | contains(":scratch") | not))` | update workspaces $in
+}
+
+def "refresh window" [event: record] {
+	let query = $event.data
+		| prepend `.[] | select(.address == "0x`
+		| append `")`
+		| str join
+	hyprctl clients -j | jq -rc $query | do {|aoeu| if $aoeu != null { $aoeu } else { "{}" } } $in | update window $in
+}
+
+def update [key: string, value: string] {
+	eww update $"($key)=($value)"
+}
+
+def init [] {
+	refresh workspaces
+	hyprctl activewindow -j | jq -rc | update window $in
+}
+
+def main [] {
+	init
+	listen
+}

@@ -1,13 +1,14 @@
-(deflisten _listener
-  "./scripts/listener")
+(deflisten hyprmon "./scripts/hyprmon")
 
-(deflisten workspaces
-  :initial "[]"
-  "./scripts/get-workspaces")
+(defvar workspaces "[]")
+; (deflisten workspaces
+;   :initial "[]"
+;   "./scripts/get-workspaces")
 
-(deflisten window
-  :initial "{}"
-  "./scripts/get-window")
+(defvar window "{}")
+; (deflisten window
+;   :initial "{}"
+;   "./scripts/get-window")
 
 (defwidget workspaces [monitor]
   (box
@@ -40,7 +41,6 @@
 
 (defwindow bar [monitor]
   :monitor monitor
-  :windowtype "dock"
   :exclusive true
   :geometry (geometry :x "0%"
                       :y "0%"
@@ -52,7 +52,6 @@
 
 (defwindow info [monitor]
   :monitor monitor
-  :windowtype "dock"
   :exclusive true
   :geometry (geometry :x "0%"
                       :y "0%"
@@ -60,3 +59,7 @@
                       :height "16px"
                       :anchor "bottom center")
   (info))
+
+(defwindow background []
+  :monitor 0
+  hyprmon)

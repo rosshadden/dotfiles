@@ -3,6 +3,8 @@
 def main [] {
 	eww close-all
 
+	eww open background
+
 	seq 0 (hyprctl monitors -j | jq "length - 1" | into int) | each {|foo|
 		eww open bar --id $"bar:($foo)" --arg $"monitor=($foo)"
 		eww open info --id $"info:($foo)" --arg $"monitor=($foo)"
