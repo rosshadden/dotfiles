@@ -1,14 +1,6 @@
 (deflisten hyprmon "./scripts/hyprmon")
-
-(defvar workspaces "[]")
-; (deflisten workspaces
-;   :initial "[]"
-;   "./scripts/get-workspaces")
-
 (defvar window "{}")
-; (deflisten window
-;   :initial "{}"
-;   "./scripts/get-window")
+(defvar workspaces "[]")
 
 (defwidget workspaces [monitor]
   (box
@@ -18,7 +10,8 @@
         :onclick "hyprctl dispatch workspace ${workspace.id}"
         "${workspace.name}"))))
 
-(defpoll time :interval "1s"
+(defpoll time
+  :interval "1s"
   :initial "00:00:00"
   "date +'%H:%M:%S'")
 
@@ -26,7 +19,7 @@
   (box
     (workspaces
       :monitor monitor)
-    "${window.title}"
+    "${window.title?:""}"
     time))
 
 (deflisten media

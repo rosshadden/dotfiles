@@ -1,35 +1,44 @@
 #!/usr/bin/env nu
 
-def listen [] {
-	socat -u $"UNIX:/tmp/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock" - | lines -s | each {|line|
-		let event = $line | parse "{type}>>{data}" | first
+def "refresh workspaces" [] {
+	hyprctl workspaces -j
+	| from json
+	| where name !~ :scratch
+	| to json
+	| update workspaces $in
+}
 
-		match $event.type {
-			monitoradded | monitorremoved => {
-				bars
-			},
+def "refresh window" [event: record] {
+	hyprctl clients -j
+	| from json
+	| where address == $"0x($event.data)"
+	| $in ++ [{}]
+	| first
+	| to json
+	| update window $in
+}
 
-			activewindowv2 => {
-				refresh window $event
-			},
-
-			workspace | createworkspace | destroyworkspace | focusedmon => {
-				refresh workspaces
-			}
+def process [line: string] {
+	let event = $line | parse "{type}>>{data}" | first
+	match $event.type {
+		monitoradded | monitorremoved => {
+			bars
+		},
+		activewindowv2 => {
+			refresh window $event
+		},
+		workspace | createworkspace | destroyworkspace | focusedmon => {
+			refresh workspaces
 		}
 	}
 }
 
-def "refresh workspaces" [] {
-	hyprctl workspaces -j | jq -rc `map(select(.name | contains(":scratch") | not))` | update workspaces $in
-}
-
-def "refresh window" [event: record] {
-	let query = $event.data
-		| prepend `.[] | select(.address == "0x`
-		| append `")`
-		| str join
-	hyprctl clients -j | jq -rc $query | do {|aoeu| if $aoeu != null { $aoeu } else { "{}" } } $in | update window $in
+def listen [] {
+	socat -u $"UNIX:/tmp/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock" -
+	| lines -s
+	| each {|line|
+		process $line
+	}
 }
 
 def update [key: string, value: string] {
@@ -38,7 +47,7 @@ def update [key: string, value: string] {
 
 def init [] {
 	refresh workspaces
-	hyprctl activewindow -j | jq -rc | update window $in
+	hyprctl activewindow -j | update window $in
 }
 
 def main [] {

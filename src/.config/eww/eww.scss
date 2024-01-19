@@ -4,7 +4,16 @@
 
 .bar {
 	background-color: #000000;
-	border-radius: 8px;
+	border-radius: 0 0 8px 8px;
 	border: 1px solid #ffffff;
+	border-top: 0;
+	color: #ffffff;
+}
+
+.info {
+	background-color: #000000;
+	border-radius: 8px 8px 0 0;
+	border: 1px solid #ffffff;
+	border-bottom: 0;
 	color: #ffffff;
 }
