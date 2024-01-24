@@ -35,7 +35,7 @@ def --env __zoxide_z [...rest:string] {
 
 # Jump to a directory using interactive search.
 def --env __zoxide_zi  [...rest:string] {
-  cd $'(zoxide query --interactive -- $rest | str trim -r -c "\n")'
+  cd $'(zoxide query --interactive -- ...$rest | str trim -r -c "\n")'
 }
 
 # =============================================================================

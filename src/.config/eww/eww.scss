@@ -2,12 +2,17 @@
 	all: unset;
 }
 
-.bar {
+@mixin bar() {
 	background-color: #000000;
-	border-radius: 0 0 8px 8px;
+	border-radius: 8px;
 	border: 1px solid #ffffff;
+}
+
+.bar {
+	@include bar;
+
+	border-radius: 0 0 8px 8px;
 	border-top: 0;
-	color: #ffffff;
 
 	button.current {
 		background: purple;
@@ -15,9 +20,8 @@
 }
 
 .info {
-	background-color: #000000;
+	@include bar;
+
 	border-radius: 8px 8px 0 0;
-	border: 1px solid #ffffff;
 	border-bottom: 0;
-	color: #ffffff;
 }

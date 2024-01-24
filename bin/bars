@@ -7,7 +7,7 @@ def main [] {
 	eww open debug
 
 	hyprctl monitors -j | from json | each {|monitor|
-		eww open bar --id $"bar:($monitor.id)" --arg $"monitor=($monitor.id)"
-		eww open info --id $"info:($monitor.id)" --arg $"monitor=($monitor.id)"
+		eww open bar --id $"bar:($monitor.id)" --arg $"monitor=($monitor.id)" --arg $"width=($monitor.width)"
+		eww open info --id $"info:($monitor.id)" --arg $"monitor=($monitor.id)" --arg $"width=($monitor.width)"
 	}
 }

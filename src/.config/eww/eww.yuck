@@ -4,29 +4,42 @@
 (defvar workspace "{}")
 (defvar workspaces "[]")
 
-(defwidget workspaces [monitor]
-  (eventbox
-    :onscroll "./scripts/hyprmon change workspace ${monitor} {}"
-    (box
-      (for ws in workspaces
-        (button
-          :visible {ws.monitorID == monitor}
-          :class "${ws.id == workspace.id ? 'current' : ''}"
-          :tooltip "${ws.lastwindowtitle}"
-          :onclick "hyprctl dispatch workspace ${ws.id}"
-          "${ws.name}")))))
+(defvar debug "")
+
+(defpoll date
+  :interval "1h"
+  :initial "0000-00-00"
+  "date +'%Y-%m-%d'")
 
 (defpoll time
   :interval "1s"
   :initial "00:00:00"
   "date +'%H:%M:%S'")
 
-(defwidget bar [monitor]
+(defwidget workspaces [monitor]
   (box
-    (workspaces
-      :monitor monitor)
-    "${window.title?:""}"
-    time))
+    (for ws in workspaces
+      (button
+        :visible {ws.monitorID == monitor}
+        :class "${ws.id == workspace.id ? 'current' : ''}"
+        :tooltip "${ws.lastwindowtitle}"
+        :onclick "hyprctl dispatch workspace ${ws.name}"
+        "${ws.name}"))))
+
+(defwidget title []
+  (label
+    :limit-width 64
+    :text "${window.title ?: ''}"))
+
+(defwidget bar [monitor]
+  (eventbox
+    :onscroll "./scripts/hyprmon change workspace ${monitor} {}"
+    (box
+      (workspaces
+        :monitor monitor)
+      (title)
+      date
+      time)))
 
 (deflisten media
   :initial ""
@@ -35,27 +48,28 @@
 (defwidget info []
   (box
     mode
-    media))
+    media
+    (box)))
 
 ; windows
 
-(defwindow bar [monitor]
+(defwindow bar [monitor width]
   :monitor monitor
   :exclusive true
   :geometry (geometry :x "0%"
                       :y "0%"
-                      :width "98%"
+                      :width "${width - 40}"
                       :height "16px"
                       :anchor "top center")
   (bar
     :monitor monitor))
 
-(defwindow info [monitor]
+(defwindow info [monitor width]
   :monitor monitor
   :exclusive true
   :geometry (geometry :x "0%"
                       :y "0%"
-                      :width "98%"
+                      :width "${width - 40}"
                       :height "16px"
                       :anchor "bottom center")
   (info))
@@ -71,4 +85,4 @@
                       :width "200px"
                       :height "16px"
                       :anchor "top right")
-  "")
+  debug)

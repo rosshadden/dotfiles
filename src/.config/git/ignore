@@ -1,12 +1,8 @@
 # project
+
 .ignore
 
-# system
-.flagged
-
 # vim
+
 *.swo
 *.swp
-.tern-port
-portkey.json
-tags

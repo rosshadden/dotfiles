@@ -1,0 +1,12 @@
+#!/usr/bin/env nu
+
+def main [] {
+	wl-paste
+	| vipe
+	| complete
+	| do {|result|
+		if $result.exit_code == 0 {
+			$result.stdout | str trim | wl-copy
+		}
+	} $in
+}

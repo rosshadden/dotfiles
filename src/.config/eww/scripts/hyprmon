@@ -36,7 +36,7 @@ def process [line: string] {
 			refresh workspaces
 		},
 		submap => {
-			update mode $event.data
+			update mode (if $event.data == "" { "NORMAL" } else { $event.data })
 		},
 	}
 }
@@ -48,6 +48,7 @@ def update [key: string, value: string] {
 def init [] {
 	refresh workspaces
 	hyprctl activewindow -j | update window $in
+	update mode NORMAL
 }
 
 

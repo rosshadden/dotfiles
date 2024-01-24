@@ -21,11 +21,12 @@ ft.set("gdscript", "#%s")
 
 vim.filetype.add({
 	extension = {
-		conf = "config",
-		yuck = "clojure",
-		typ = "typst",
 		bb = "clojure",
+		conf = "config",
 		nu = "nu",
+		typ = "typst",
+		yuck = "clojure",
+		zon = "zig",
 	},
 })
 
@@ -180,7 +181,6 @@ local servers = {
 	"julials",
 	"marksman",
 	"nimls",
-	"pylsp",
 	"rust_analyzer",
 	"tsserver",
 	"typst_lsp",
@@ -216,6 +216,19 @@ lsp.lua_ls.setup {
 			workspace = {
 				library = vim.api.nvim_get_runtime_file("", true),
 				checkThirdParty = false,
+			},
+		},
+	},
+}
+
+-- python
+lsp.pylsp.setup {
+	settings = {
+		pylsp = {
+			plugins = {
+				pycodestyle = {
+					ignore = { "E501" },
+				},
 			},
 		},
 	},
