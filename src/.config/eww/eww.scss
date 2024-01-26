@@ -1,5 +1,8 @@
 * {
-	all: unset;
+	// all: unset;
+	font-family: "Fairfax Hax HD";
+	font-family: "Monocraft";
+	font-size: 14px;
 }
 
 @mixin bar() {
@@ -8,20 +11,36 @@
 	border: 1px solid #ffffff;
 }
 
-.bar {
-	@include bar;
-
+@mixin top() {
 	border-radius: 0 0 8px 8px;
 	border-top: 0;
+}
 
-	button.current {
-		background: purple;
+@mixin bottom() {
+	border-radius: 8px 8px 0 0;
+	border-bottom: 0;
+}
+
+.bar {
+	@include bar;
+	@include top;
+
+	button {
+		@include top;
+
+		border: 1px solid rgba(0, 0, 0, 0.0);
+		border-top: 0;
+		padding: 0px;
+
+		&.current {
+			background: purple;
+			border: 1px solid #ffffff;
+			border-top: 0;
+		}
 	}
 }
 
 .info {
 	@include bar;
-
-	border-radius: 8px 8px 0 0;
-	border-bottom: 0;
+	@include bottom;
 }

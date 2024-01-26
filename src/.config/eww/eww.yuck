@@ -6,16 +6,6 @@
 
 (defvar debug "")
 
-(defpoll date
-  :interval "1h"
-  :initial "0000-00-00"
-  "date +'%Y-%m-%d'")
-
-(defpoll time
-  :interval "1s"
-  :initial "00:00:00"
-  "date +'%H:%M:%S'")
-
 (defwidget workspaces [monitor]
   (box
     (for ws in workspaces
@@ -28,7 +18,7 @@
 
 (defwidget title []
   (label
-    :limit-width 64
+    :limit-width 48
     :text "${window.title ?: ''}"))
 
 (defwidget bar [monitor]
@@ -38,8 +28,8 @@
       (workspaces
         :monitor monitor)
       (title)
-      date
-      time)))
+      "🗓 ${formattime(EWW_TIME, "%Y-%m-%d")}"
+      "⏲ ${formattime(EWW_TIME, "%H:%M:%S")}")))
 
 (deflisten media
   :initial ""
@@ -49,7 +39,15 @@
   (box
     mode
     media
-    (box)))
+    (box
+      "CPU ${round(EWW_CPU.avg, 0)}%"
+      "RAM ${round(EWW_RAM.used_mem_perc, 0)}%"
+      (box :visible {EWW_BATTERY != ""}
+        {EWW_BATTERY == ""
+         ? ""
+         : "${EWW_BATTERY?.BAT0?.capacity} [${EWW_BATTERY?.BAT0?.status}]"}))))
+
+
 
 ; windows
 
@@ -86,3 +84,16 @@
                       :height "16px"
                       :anchor "top right")
   debug)
+
+(defvar eos "off")
+(defwindow eos []
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "200px"
+                      :height "16px"
+                      :anchor "bottom left")
+  (combo-box-text
+    :items "[off, free, focus, busy]"
+    :onchange "eos {}; eww update eos=\"{}\""
+    eos))

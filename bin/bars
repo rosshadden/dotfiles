@@ -5,6 +5,7 @@ def main [] {
 
 	eww open background
 	eww open debug
+	eww open eos
 
 	hyprctl monitors -j | from json | each {|monitor|
 		eww open bar --id $"bar:($monitor.id)" --arg $"monitor=($monitor.id)" --arg $"width=($monitor.width)"

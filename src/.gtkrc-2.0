@@ -3,8 +3,8 @@
 ################
 
 include "/home/ross/dotfiles/lib/themes/gtk-2.0"
-gtk-font-name = "Fira Code 12"
-gtk-theme-name = "Numix-Ocean-Ocean"
+gtk-font-name = "Fairfax Hax HD 12"
+gtk-theme-name = "Catppuccin-Mocha-Standard-Lavender-Dark"
 gtk-key-theme-name = "Vi"
 
 ################
