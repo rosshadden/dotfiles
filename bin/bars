@@ -8,6 +8,7 @@ def main [] {
 	eww open eos
 
 	hyprctl monitors -j | from json | each {|monitor|
+		notify-send $"monitor ($monitor.id)" $"($monitor.name): ($monitor.width)x($monitor.height)\n($monitor.make): ($monitor.model)"
 		eww open bar --id $"bar:($monitor.id)" --arg $"monitor=($monitor.id)" --arg $"width=($monitor.width)"
 		eww open info --id $"info:($monitor.id)" --arg $"monitor=($monitor.id)" --arg $"width=($monitor.width)"
 	}

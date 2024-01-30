@@ -23,7 +23,8 @@
 
 (defwidget bar [monitor]
   (eventbox
-    :onscroll "./scripts/hyprmon change workspace ${monitor} {}"
+    :onscroll "hyprctl dispatch focusmonitor ${monitor}; ./scripts/hyprmon change workspace ${monitor} {}"
+    :onclick "hyprctl dispatch focusmonitor ${monitor}"
     (box
       (workspaces
         :monitor monitor)
@@ -88,10 +89,10 @@
 (defvar eos "off")
 (defwindow eos []
   :monitor 0
-  :geometry (geometry :x "0%"
-                      :y "0%"
+  :geometry (geometry :x "10px"
+                      :y "-14px"
                       :width "200px"
-                      :height "16px"
+                      :height "10px"
                       :anchor "bottom left")
   (combo-box-text
     :items "[off, free, focus, busy]"

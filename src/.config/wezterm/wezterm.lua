@@ -19,7 +19,7 @@ local config = {
 		"Fairfax Hax HD",
 		-- "Maple Mono",
 		"JetBrains Mono",
-		"Symbols Nerd Font",
+		"Symbols Nerd Font Mono",
 		"Noto Color Emoji",
 		"Unifont",
 	}),

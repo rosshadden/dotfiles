@@ -180,6 +180,7 @@ local servers = {
 	"jsonls",
 	"julials",
 	"marksman",
+	"nickel_ls",
 	"nimls",
 	"rust_analyzer",
 	"tsserver",
