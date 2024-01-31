@@ -324,8 +324,8 @@ bind generic <esc>m !sh -c "git merge $(git branch | cut -c 3- | fzf)"
 bind generic <esc>M !sh -c "git merge $(git branch -r | cut -c 3- | fzf)"
 
 # copy commit hash to clipboard
-bind generic Y !@sh -c "echo -n $(git rev-parse --short %(commit)) | xsel -ib"
-bind diff Y !@sh -c "echo -n $(git rev-parse %(commit)) | xsel -ib"
+bind generic Y !@sh -c "echo -n $(git rev-parse --short %(commit)) | wl-copy"
+bind diff Y !@sh -c "echo -n $(git rev-parse %(commit)) | wl-copy"
 
 # open file manager
 bind generic <esc>e !ranger --selectfile=%(file)

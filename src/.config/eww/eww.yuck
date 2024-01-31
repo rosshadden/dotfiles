@@ -10,7 +10,7 @@
   (box
     (for ws in workspaces
       (button
-        :visible {ws.monitorID == monitor}
+        :visible {ws.monitor == monitor.name}
         :class "${ws.id == workspace.id ? 'current' : ''}"
         :tooltip "${ws.lastwindowtitle}"
         :onclick "hyprctl dispatch workspace ${ws.name}"
@@ -23,11 +23,10 @@
 
 (defwidget bar [monitor]
   (eventbox
-    :onscroll "hyprctl dispatch focusmonitor ${monitor}; ./scripts/hyprmon change workspace ${monitor} {}"
-    :onclick "hyprctl dispatch focusmonitor ${monitor}"
+    :onscroll "hyprctl dispatch focusmonitor ${monitor.name}; ./scripts/hyprmon change workspace ${monitor.name} {}"
+    :onclick "hyprctl dispatch focusmonitor ${monitor.name}"
     (box
-      (workspaces
-        :monitor monitor)
+      (workspaces :monitor monitor)
       (title)
       "🗓 ${formattime(EWW_TIME, "%Y-%m-%d")}"
       "⏲ ${formattime(EWW_TIME, "%H:%M:%S")}")))
@@ -53,18 +52,17 @@
 ; windows
 
 (defwindow bar [monitor width]
-  :monitor monitor
+  :monitor "${monitor.model}"
   :exclusive true
   :geometry (geometry :x "0%"
                       :y "0%"
                       :width "${width - 40}"
                       :height "16px"
                       :anchor "top center")
-  (bar
-    :monitor monitor))
+  (bar :monitor monitor))
 
 (defwindow info [monitor width]
-  :monitor monitor
+  :monitor "${monitor.model}"
   :exclusive true
   :geometry (geometry :x "0%"
                       :y "0%"

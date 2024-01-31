@@ -63,14 +63,14 @@ def "main listen" [] {
 	}
 }
 
-def "main change workspace" [monitor: int, direction: string] {
+def "main change workspace" [monitor: string, direction: string] {
 	let current = hyprctl activeworkspace -j
 	| from json
 	| get id
 
 	let workspaces = hyprctl workspaces -j
 	| from json
-	| where name !~ :scratch and monitorID == $monitor
+	| where name !~ :scratch and monitor == $monitor
 	| sort-by id
 
 	match $direction {
