@@ -195,7 +195,7 @@ end
 wezterm.on("update-right-status", function(win, pane)
 	local process = pane:get_foreground_process_name()
 	local mode = win:active_key_table() or ""
-	local status = process
+	local status = process or ""
 	if mode ~= "" then status = "[" .. string.upper(mode) .. "] " .. status end
 	if status then
 		win:set_right_status(" " .. status .. " ")
