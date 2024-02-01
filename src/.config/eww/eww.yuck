@@ -45,7 +45,7 @@
       (box :visible {EWW_BATTERY != ""}
         {EWW_BATTERY == ""
          ? ""
-         : "${EWW_BATTERY?.BAT0?.capacity} [${EWW_BATTERY?.BAT0?.status}]"}))))
+         : "${EWW_BATTERY?.BAT0?.capacity}% [${EWW_BATTERY?.BAT0?.status}]"}))))
 
 
 

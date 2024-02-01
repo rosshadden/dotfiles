@@ -188,6 +188,9 @@ config.tls_servers = {
 
 config.tls_clients = {
 	{
+		name = "localhost",
+		remote_address = "localhost:8888",
+	}, {
 		name = "bork",
 		remote_address = "bork:8888",
 		bootstrap_via_ssh = "bork",
