@@ -9,7 +9,7 @@ def main [] {
 
 	hyprctl monitors -j | from json | sort-by id | each {|monitor|
 		notify-send $"monitor ($monitor.id)" $"($monitor.name): ($monitor.width)x($monitor.height)\n($monitor.make): ($monitor.model)"
-		eww open bar --id $"bar:($monitor.name)" --arg $"monitor=($monitor | to json)" --arg $"width=($monitor.width)"
-		eww open info --id $"info:($monitor.name)" --arg $"monitor=($monitor | to json)" --arg $"width=($monitor.width)"
+		eww open bar --id $"bar:($monitor.name)" --arg $"monitor=($monitor | to json)"
+		eww open info --id $"info:($monitor.name)" --arg $"monitor=($monitor | to json)"
 	}
 }

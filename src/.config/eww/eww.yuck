@@ -51,22 +51,22 @@
 
 ; windows
 
-(defwindow bar [monitor width]
+(defwindow bar [monitor]
   :monitor "${monitor.model}"
   :exclusive true
   :geometry (geometry :x "0%"
                       :y "0%"
-                      :width "${width - 40}"
+                      :width "${monitor.width / monitor.scale - 40}"
                       :height "16px"
                       :anchor "top center")
   (bar :monitor monitor))
 
-(defwindow info [monitor width]
+(defwindow info [monitor]
   :monitor "${monitor.model}"
   :exclusive true
   :geometry (geometry :x "0%"
                       :y "0%"
-                      :width "${width - 40}"
+                      :width "${monitor.width / monitor.scale - 40}"
                       :height "16px"
                       :anchor "bottom center")
   (info))

@@ -180,6 +180,12 @@ config.colors = {
 	},
 }
 
+config.tls_servers = {
+	{
+		bind_address = "0.0.0.0:8888",
+	},
+}
+
 config.tls_clients = {
 	{
 		name = "bork",
