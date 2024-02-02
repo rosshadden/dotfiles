@@ -6,6 +6,12 @@
 
 (defvar debug "")
 
+; TODO stream
+; TODO mouse events
+(defpoll volume
+  :interval "1s"
+  "ponymix get-volume")
+
 (defwidget workspaces [monitor]
   (box
     (for ws in workspaces
@@ -37,7 +43,9 @@
 
 (defwidget info []
   (box
-    mode
+    (box
+      mode
+      "VOL ${volume}%")
     media
     (box
       "CPU ${round(EWW_CPU.avg, 0)}%"

@@ -1,4 +1,5 @@
 local wezterm = require "wezterm"
+local act = wezterm.action
 
 local scheme = wezterm.get_builtin_color_schemes()["Paraiso Dark"]
 
@@ -48,34 +49,38 @@ config.leader = { mods = "CTRL", key = "Space" }
 config.keys = {
 	-- unmap
 	{ mods = "ALT", key = "Enter", action = "DisableDefaultAssignment" },
-	{ mods = "CTRL", key = "Slash", action = wezterm.action{ SendString = "" }},
+	{ mods = "CTRL", key = "Slash", action = act.SendString("")},
+
+	-- main
+	{ mods = "LEADER", key = "Space", action = act.ActivateCommandPalette },
 
 	-- normalize
-	{ mods = "SHIFT", key = " ", action = wezterm.action{ SendString = " " } },
-	{ mods = "SHIFT", key = "Backspace", action = wezterm.action{ SendKey = { key = "Backspace" } } },
+	{ mods = "SHIFT", key = " ", action = act{ SendString = " " } },
+	{ mods = "SHIFT", key = "Backspace", action = act{ SendKey = { key = "Backspace" } } },
 
 	-- modes
-	{ mods = "LEADER", key = "a", action = wezterm.action{ ActivateKeyTable = { name = "app", one_shot = true, replace_current = false } } },
-	{ mods = "LEADER", key = "b", action = wezterm.action{ ActivateKeyTable = { name = "panes", one_shot = true, replace_current = false } } },
+	{ mods = "LEADER", key = "a", action = act{ ActivateKeyTable = { name = "app", one_shot = true, replace_current = false } } },
+	{ mods = "LEADER", key = "b", action = act{ ActivateKeyTable = { name = "panes", one_shot = true, replace_current = false } } },
 	{ mods = "LEADER", key = "c", action = "ActivateCopyMode" },
-	{ mods = "LEADER", key = "r", action = wezterm.action{ ActivateKeyTable = { name = "resize", one_shot = false, replace_current = false } } },
-	{ mods = "LEADER", key = "s", action = wezterm.action{ ActivateKeyTable = { name = "session", one_shot = true, replace_current = false } } },
-	{ mods = "LEADER", key = "t", action = wezterm.action{ ActivateKeyTable = { name = "tabs", one_shot = true, replace_current = false } } },
+	{ mods = "LEADER", key = "r", action = act{ ActivateKeyTable = { name = "resize", one_shot = false, replace_current = false } } },
+	{ mods = "LEADER", key = "s", action = act{ ActivateKeyTable = { name = "sessions", one_shot = true, replace_current = false } } },
+	{ mods = "LEADER", key = "t", action = act{ ActivateKeyTable = { name = "tabs", one_shot = true, replace_current = false } } },
+	{ mods = "LEADER", key = "w", action = act{ ActivateKeyTable = { name = "workspaces", one_shot = true, replace_current = false } } },
 
 	-- navigation
 	{ mods = "LEADER", key = "Tab", action = "ActivateLastTab" },
-	{ mods = "LEADER", key = "p", action = wezterm.action{ ActivateTabRelative = -1 } },
-	{ mods = "LEADER", key = "n", action = wezterm.action{ ActivateTabRelative = 1 } },
-	{ mods = "CTRL", key = "j", action = wezterm.action{ ActivatePaneDirection = "Down" } },
-	{ mods = "CTRL", key = "k", action = wezterm.action{ ActivatePaneDirection = "Up" } },
-	{ mods = "CTRL", key = "h", action = wezterm.action{ ActivatePaneDirection = "Left" } },
-	{ mods = "CTRL", key = "l", action = wezterm.action{ ActivatePaneDirection = "Right" } },
+	{ mods = "LEADER", key = "p", action = act{ ActivateTabRelative = -1 } },
+	{ mods = "LEADER", key = "n", action = act{ ActivateTabRelative = 1 } },
+	{ mods = "CTRL", key = "j", action = act{ ActivatePaneDirection = "Down" } },
+	{ mods = "CTRL", key = "k", action = act{ ActivatePaneDirection = "Up" } },
+	{ mods = "CTRL", key = "h", action = act{ ActivatePaneDirection = "Left" } },
+	{ mods = "CTRL", key = "l", action = act{ ActivatePaneDirection = "Right" } },
 
 	-- debug
 	{
 		mods = "LEADER", key = "Backspace",
 		action = wezterm.action_callback(function(win, pane)
-			os.execute("notify-send debug 'title: " .. pane:get_title() .. "\nprocess: " .. pane:get_foreground_process_name() .. "\ncwd: " .. pane:get_current_working_dir() .. "'")
+			os.execute("notify-send debug")
 		end)
 	},
 }
@@ -91,56 +96,80 @@ config.key_tables.app = {
 	{ key = "r", action = "ReloadConfiguration" },
 }
 
-config.key_tables.session = {
-	{ key = "d", action = wezterm.action{ DetachDomain = "CurrentPaneDomain" } },
+config.key_tables.sessions = {
+	{ key = "d", action = act{ DetachDomain = "CurrentPaneDomain" } },
 }
 
 config.key_tables.tabs = {
 	{ key = "Space", action = "ShowTabNavigator" },
 	{ key = "Tab", action = "ActivateLastTab" },
-	{ key = "`", action = wezterm.action{ ActivateTab = -1 } },
+	{ key = "`", action = act{ ActivateTab = -1 } },
 
-	{ key = "n", action = wezterm.action{ SpawnTab = "CurrentPaneDomain" } },
-	{ key = "c", action = wezterm.action{ CloseCurrentTab = { confirm = true } } },
-	{ key = "C", action = wezterm.action{ CloseCurrentTab = { confirm = false } } },
+	{ key = "n", action = act.SpawnTab("CurrentPaneDomain") },
+	{ key = "c", action = act{ CloseCurrentTab = { confirm = true } } },
+	{ key = "C", action = act{ CloseCurrentTab = { confirm = false } } },
 
-	{ key = "h", action = wezterm.action{ ActivateTabRelative = -1 } },
-	{ key = "l", action = wezterm.action{ ActivateTabRelative = 1 } },
-	{ key = "H", action = wezterm.action{ MoveTabRelative = -1 } },
-	{ key = "L", action = wezterm.action{ MoveTabRelative = 1 } },
+	{ key = "h", action = act{ ActivateTabRelative = -1 } },
+	{ key = "l", action = act{ ActivateTabRelative = 1 } },
+	{ key = "H", action = act{ MoveTabRelative = -1 } },
+	{ key = "L", action = act{ MoveTabRelative = 1 } },
+
+	{ key = "e", action = act.SpawnCommandInNewTab { args = { "nvim" } } },
+	{ key = "g", action = act.SpawnCommandInNewTab { args = { "tig", "status" } } },
 }
 for i = 1, 9 do
-	table.insert(config.keys, { mods = "LEADER", key = tostring(i), action = wezterm.action{ ActivateTab = i - 1 } })
-	table.insert(config.key_tables.tabs, { key = tostring(i), action = wezterm.action{ ActivateTab = i - 1 } })
+	table.insert(config.keys, { mods = "LEADER", key = tostring(i), action = act{ ActivateTab = i - 1 } })
+	table.insert(config.key_tables.tabs, { key = tostring(i), action = act{ ActivateTab = i - 1 } })
 end
 
 config.key_tables.panes = {
-	{ key = "Space", action = wezterm.action{ PaneSelect = {} } },
-	{ key = "s", action = wezterm.action{ PaneSelect = { mode = "SwapWithActive" } } },
+	{ key = "Space", action = act{ PaneSelect = {} } },
+	{ key = "s", action = act{ PaneSelect = { mode = "SwapWithActive" } } },
 
-	{ key = "c", action = wezterm.action{ CloseCurrentPane = { confirm = true } } },
-	{ key = "C", action = wezterm.action{ CloseCurrentPane = { confirm = false } } },
+	{ key = "c", action = act{ CloseCurrentPane = { confirm = true } } },
+	{ key = "C", action = act{ CloseCurrentPane = { confirm = false } } },
 
-	{ key = "j", action = wezterm.action{ SplitPane = { direction = "Down" } } },
-	{ key = "k", action = wezterm.action{ SplitPane = { direction = "Up" } } },
-	{ key = "h", action = wezterm.action{ SplitPane = { direction = "Left" } } },
-	{ key = "l", action = wezterm.action{ SplitPane = { direction = "Right" } } },
+	{ key = "j", action = act{ SplitPane = { direction = "Down" } } },
+	{ key = "k", action = act{ SplitPane = { direction = "Up" } } },
+	{ key = "h", action = act{ SplitPane = { direction = "Left" } } },
+	{ key = "l", action = act{ SplitPane = { direction = "Right" } } },
 
-	{ key = "J", action = wezterm.action{ SplitPane = { direction = "Down", top_level = true } } },
-	{ key = "K", action = wezterm.action{ SplitPane = { direction = "Up", top_level = true } } },
-	{ key = "H", action = wezterm.action{ SplitPane = { direction = "Left", top_level = true } } },
-	{ key = "L", action = wezterm.action{ SplitPane = { direction = "Right", top_level = true } } },
+	{ key = "J", action = act{ SplitPane = { direction = "Down", top_level = true } } },
+	{ key = "K", action = act{ SplitPane = { direction = "Up", top_level = true } } },
+	{ key = "H", action = act{ SplitPane = { direction = "Left", top_level = true } } },
+	{ key = "L", action = act{ SplitPane = { direction = "Right", top_level = true } } },
 
 	{ key = "f", action = "TogglePaneZoomState" },
 	{ key = "z", action = "TogglePaneZoomState" },
 }
 
 config.key_tables.resize = {
-	{ key = "j", action = wezterm.action{ AdjustPaneSize = { "Down", 1 } } },
-	{ key = "k", action = wezterm.action{ AdjustPaneSize = { "Up", 1 } } },
-	{ key = "h", action = wezterm.action{ AdjustPaneSize = { "Left", 1 } } },
-	{ key = "l", action = wezterm.action{ AdjustPaneSize = { "Right", 1 } } },
+	{ key = "j", action = act{ AdjustPaneSize = { "Down", 1 } } },
+	{ key = "k", action = act{ AdjustPaneSize = { "Up", 1 } } },
+	{ key = "h", action = act{ AdjustPaneSize = { "Left", 1 } } },
+	{ key = "l", action = act{ AdjustPaneSize = { "Right", 1 } } },
 	table.unpack(exitMappings),
+}
+
+config.key_tables.workspaces = {
+	{ key = "Space", action = act.ShowLauncherArgs{ flags = "FUZZY|WORKSPACES" } },
+	{ key = "p", action = act.SwitchWorkspaceRelative(-1) },
+	{ key = "n", action = act.SwitchWorkspaceRelative(1) },
+	{
+		key = "N",
+		action = act.PromptInputLine {
+			description = wezterm.format {
+				{ Attribute = { Intensity = "Bold" } },
+				{ Foreground = { AnsiColor = "Fuchsia" } },
+				{ Text = "Enter name for new workspace" },
+			},
+			action = wezterm.action_callback(function(window, pane, line)
+				if line then
+					window:perform_action(act.SwitchToWorkspace { name = line, }, pane)
+				end
+			end),
+		},
+	},
 }
 
 -- menu
@@ -149,7 +178,7 @@ config.launch_menu = {
 	{ args = { "htop" }, },
 }
 
--- workspaces
+-- domains
 config.unix_domains = {
 	{
 		name = "unix",
@@ -190,6 +219,7 @@ config.tls_clients = {
 	{
 		name = "localhost",
 		remote_address = "localhost:8888",
+		bootstrap_via_ssh = "localhost",
 	}, {
 		name = "bork",
 		remote_address = "bork:8888",

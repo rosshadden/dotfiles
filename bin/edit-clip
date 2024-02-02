@@ -1,12 +1,28 @@
 #!/usr/bin/env nu
 
-def main [] {
-	wl-paste
+# Edits the clipboard with `vipe`.
+def main [
+ --selection (-s) # use selection buffer
+ --copy (-c) # copy result with `wl-copy`
+ --type (-t) # type result with `wlrctl`
+] {
+	if ($selection) {
+		wl-paste --primary
+	} else {
+		wl-paste
+	}
 	| vipe
 	| complete
 	| do {|result|
 		if $result.exit_code == 0 {
-			$result.stdout | str trim | wl-copy
+			$result.stdout | str trim
 		}
 	} $in
+	| if $copy {
+		wl-copy
+	} else if $type {
+		wlrctl keyboard type $in
+	} else {
+		$in
+	}
 }
