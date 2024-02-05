@@ -1,6 +1,6 @@
 #!/usr/bin/env nu
 
-let api = "http://localhost:8123/api"
+let api = "http://10.0.0.20:8123/api"
 
 def main [
 	state: string = "free",
