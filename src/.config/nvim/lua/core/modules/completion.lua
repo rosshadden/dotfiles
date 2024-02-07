@@ -63,7 +63,7 @@ cmp.setup({
 		["<cr>"] = cmp.mapping.confirm({ select = false }),
 		["<c-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 		["<c-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-		["<c-e>"] = cmp.mapping.abort(),
+		["<c-a>"] = cmp.mapping.abort(),
 
 		["<c-s>"] = cmp.mapping(function(fallback)
 			if luasnip.expand_or_jumpable() then
@@ -140,7 +140,7 @@ cmp.setup.cmdline(":", {
 
 -- codeium
 vim.g.codeium_disable_bindings = true
-vim.keymap.set("i", "<c-b>", function () return vim.fn["codeium#Accept"]() end, { expr = true })
+vim.keymap.set("i", "<c-e>", function () return vim.fn["codeium#Accept"]() end, { expr = true })
 vim.keymap.set("i", "<c-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
 vim.keymap.set("i", "<m-]>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true })
 vim.keymap.set("i", "<m-[>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true })

@@ -71,7 +71,7 @@
 	cl = clone --recursive
 	co = checkout
 	d = diff
-	f = fetch --jobs=4
+	f = fetch -p --tags --jobs=4
 	fa = fetch -p --tags --all --jobs=4
 	i = !git in
 	m = merge
