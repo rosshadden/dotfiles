@@ -2,28 +2,43 @@
 
 let api = "http://10.0.0.20:8123/api"
 
-def main [
-	state: string = "free",
-	--off,
-] {
-	mut action = "turn_on"
-
-	mut payload = {
-		entity_id: "light.eos_rgb_led",
-	}
-
-	let color = match $state {
-		"free" => "green",
-		"focus" => "orange",
-		"busy" => "red",
-		_ => $state
-	}
-
-	if $state == "off" {
-		$action = "turn_off"
+def request [endpoint: string, payload?: record] {
+	if $payload == null {
+		http get -H [Authorization $"Bearer (cat ~/Documents/certs/ha.cert)"] $"($api)($endpoint)"
 	} else {
-		$payload.color_name = $color
+		http post -t application/json -H [Authorization $"Bearer (cat ~/Documents/certs/ha.cert)"] $"($api)($endpoint)" $payload
+	}
+}
+
+def main [
+	state?: string, # off | free | focus | busy
+] {
+	let entity = "select.eos_status"
+
+	if $state == null {
+		return (request $"/states/($entity)")
 	}
 
-	http post -t application/json -H [Authorization $"Bearer (cat ~/Documents/certs/ha.cert)"] $"($api)/services/light/($action)" $payload
+	if not $state in [off free focus busy] {
+		error make { msg: "invalid state" }
+	}
+
+	request $"/states/($entity)" {
+		state: $state,
+	}
+}
+
+def "main color" [
+	color?: string,
+] {
+	let entity = "light.eos_rgb_led"
+
+	if $color == null {
+		return (request $"/states/($entity)")
+	}
+
+	request $"/services/light/turn_on" {
+		entity_id: $entity,
+		color_name: $color,
+	}
 }
