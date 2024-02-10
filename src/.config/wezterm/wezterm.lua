@@ -47,12 +47,16 @@ local config = {
 config.leader = { mods = "CTRL", key = "Space" }
 
 config.keys = {
+	-- send prefix
+	{ mods = "LEADER", key = "Space", action = act{ SendKey = { mods = "CTRL", key = "Space" } } },
+	{ mods = "LEADER|CTRL", key = "Space", action = act{ SendKey = { mods = "CTRL", key = "Space" } } },
+
 	-- unmap
 	{ mods = "ALT", key = "Enter", action = "DisableDefaultAssignment" },
 	{ mods = "CTRL", key = "Slash", action = act.SendString("")},
 
 	-- main
-	{ mods = "LEADER", key = "Space", action = act.ActivateCommandPalette },
+	{ mods = "LEADER|CTRL", key = "p", action = act.ActivateCommandPalette },
 
 	-- normalize
 	{ mods = "SHIFT", key = " ", action = act{ SendString = " " } },
