@@ -5,12 +5,11 @@ use alias.nu *
 use completions.nu *
 use functions.nu *
 
-use lab.nu
 use mappings.nu
 use menus.nu
 use theme.nu
 
-use bin/eos.nu
+use bin/eos
 
 source plugins.nu
 

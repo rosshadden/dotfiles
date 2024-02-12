@@ -97,7 +97,7 @@
 (defpoll eos
   :initial "{}"
   :interval "60s"
-  `~/bin/eos -f json`)
+  `nu -l -c 'eos | to json -r'`)
 (defwindow eos []
   :monitor 0
   :geometry (geometry :x "10px"
@@ -107,5 +107,5 @@
                       :anchor "bottom left")
   (combo-box-text
     :items `[off, free, focus, busy]`
-    :onchange `eww update eos="$(~/bin/eos -f json {})"`
+    :onchange `nu -l -c 'eos {} | to json -r | eww update $"eos=($in)"'`
     `${eos.state}`))
