@@ -1,4 +1,5 @@
 (deflisten hyprmon "./scripts/hyprmon listen")
+
 (defvar mode "")
 (defvar window "{}")
 (defvar workspace "{}")
@@ -92,7 +93,10 @@
                       :anchor "top right")
   debug)
 
-(defvar eos "off")
+(defpoll eos
+  :initial "off"
+  :interval "60s"
+  "nu -c '~/bin/eos -f nuon | from nuon | get state'")
 (defwindow eos []
   :monitor 0
   :geometry (geometry :x "10px"
@@ -102,5 +106,5 @@
                       :anchor "bottom left")
   (combo-box-text
     :items "[off, free, focus, busy]"
-    :onchange "eos {}; eww update eos=\"{}\""
+    :onchange "~/bin/eos {}; eww update eos=\"{}\""
     eos))
