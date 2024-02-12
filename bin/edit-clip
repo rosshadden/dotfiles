@@ -3,7 +3,6 @@
 # Edits the clipboard with `vipe`.
 def main [
  --selection (-s) # use selection buffer
- --copy (-c) # copy result with `wl-copy`
  --type (-t) # type result with `wlrctl`
 ] {
 	if ($selection) {
@@ -18,11 +17,8 @@ def main [
 			$result.stdout | str trim
 		}
 	} $in
-	| if $copy {
-		wl-copy
-	} else if $type {
+	| if $type {
+		# TODO: make work outside of running terminal
 		wlrctl keyboard type $in
-	} else {
-		$in
-	}
+	} else {}
 }

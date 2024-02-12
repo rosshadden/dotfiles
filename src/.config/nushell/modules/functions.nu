@@ -97,3 +97,21 @@ export def zshtory [] {
 # ] {
 # 	cd (zoxide query $query | str trim)
 # }
+
+# Load .env file in current directory.
+export def --env dotenv [] {
+	open .env
+	| lines -s
+	| parse -r `^\s*(?<key>[^\s=]+)\s*=\s*(?<value>[^\s].*)$`
+	| update value {
+		let val = $in
+		let parsed = ($val | parse -r "^(['\"`])(.*)\\1")
+		if ($parsed | length) == 0 {
+			$val
+		} else if ($parsed | length) > 0 {
+			$parsed.capture1.0
+		} else {}
+	}
+	| transpose --header-row --as-record
+	| load-env
+}
