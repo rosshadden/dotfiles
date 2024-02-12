@@ -1,3 +1,3 @@
-export def hello [name: string] {
+export def main [name?: string = "world"] {
 	$"hello ($name)!"
 }

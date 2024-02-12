@@ -10,6 +10,8 @@ use mappings.nu
 use menus.nu
 use theme.nu
 
+use bin/eos.nu
+
 source plugins.nu
 
 $env.config = {

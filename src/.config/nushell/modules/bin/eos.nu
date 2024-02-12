@@ -10,9 +10,9 @@ def request [endpoint: string, payload?: record] {
 	}
 }
 
-def main [
+export def main [
 	state?: string, # off | free | focus | busy
-	--format (-f): string, # json | nuon
+	--format (-f): string, # json
 ] {
 	const entity = "select.eos_status"
 	mut res = null
@@ -27,16 +27,15 @@ def main [
 		})
 	}
 
-	match $format {
+	$res | match $format {
 		json => ($res | to json -r),
-		nuon => ($res | to nuon -r),
-		_ => $res,
+		_ => {},
 	}
 }
 
-def "main led" [
+export def led [
 	color?: string,
-	--format (-f): string, # json | nuon
+	--format (-f): string, # json
 ] {
 	const entity = "light.eos_rgb_led"
 	mut res = null
@@ -52,7 +51,6 @@ def "main led" [
 
 	match $format {
 		json => ($res | to json -r),
-		nuon => ($res | to nuon -r),
 		_ => $res,
 	}
 }
