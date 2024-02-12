@@ -5,11 +5,9 @@ use alias.nu *
 use completions.nu *
 use functions.nu *
 
-use env.nu
 use lab.nu
 use mappings.nu
 use menus.nu
-use path.nu
 use theme.nu
 
 source plugins.nu

@@ -28,10 +28,9 @@ export def dupe [
 
 # Paste from clipboard
 export def put [
-	--flags (-f): string # Optional flags to override default of "--clipboard"
+	--no-newline (-n) # trim newline
 ] {
-	let flags = (if ($flags | is-empty) { "--clipboard" } else { $flags })
-	xsel -o $flags
+	wl-paste | if $no_newline { str trim } else {}
 }
 
 # type last arg from previous command

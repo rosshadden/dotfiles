@@ -5,7 +5,9 @@ copy() {
 	local file="$1"
 
 	if [ "$file" ]; then
-		if isCommand xsel; then
+		if isCommand wl-copy; then
+			cat "$file" | wl-copy
+		elif isCommand xsel; then
 			cat "$file" | xsel -ib
 		elif isCommand pbcopy; then
 			cat "$file" | pbcopy
@@ -13,7 +15,9 @@ copy() {
 		return
 	fi
 
-	if isCommand xsel; then
+	if isCommand wl-copy; then
+		wl-copy
+	elif isCommand xsel; then
 		xsel -ib
 	elif isCommand pbcopy; then
 		pbcopy

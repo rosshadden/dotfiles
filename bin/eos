@@ -28,8 +28,8 @@ def main [
 	}
 
 	match $format {
-		json => ($res | to json),
-		nuon => ($res | to nuon),
+		json => ($res | to json -r),
+		nuon => ($res | to nuon -r),
 		_ => $res,
 	}
 }
@@ -51,8 +51,8 @@ def "main led" [
 	}
 
 	match $format {
-		json => ($res | to json),
-		nuon => ($res | to nuon),
+		json => ($res | to json -r),
+		nuon => ($res | to nuon -r),
 		_ => $res,
 	}
 }

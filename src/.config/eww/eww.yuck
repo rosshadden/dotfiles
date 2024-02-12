@@ -1,4 +1,4 @@
-(deflisten hyprmon "./scripts/hyprmon listen")
+(deflisten hyprmon `./scripts/hyprmon listen`)
 
 (defvar mode "")
 (defvar window "{}")
@@ -18,29 +18,30 @@
     (for ws in workspaces
       (button
         :visible {ws.monitor == monitor.name}
-        :class "${ws.id == workspace.id ? 'current' : ''}"
-        :tooltip "${ws.lastwindowtitle}"
-        :onclick "hyprctl dispatch workspace ${ws.name}"
-        "${ws.name}"))))
+        :class `${ws.id == workspace.id ? "current" : ""}`
+        :tooltip `${ws.lastwindowtitle}`
+        :onclick `hyprctl dispatch workspace ${ws.name}`
+        `${ws.id}: ${ws.name}`))))
 
 (defwidget title []
   (label
     :limit-width 48
-    :text "${window.title ?: ''}"))
+    :text `${window.title ?: ""}`))
 
 (defwidget bar [monitor]
   (eventbox
-    :onscroll "hyprctl dispatch focusmonitor ${monitor.name}; ./scripts/hyprmon change workspace ${monitor.name} {}"
-    :onclick "hyprctl dispatch focusmonitor ${monitor.name}"
+    :cursor "pointer"
+    :onscroll `hyprctl dispatch focusmonitor ${monitor.name}; ./scripts/hyprmon change workspace ${monitor.name} {}`
+    :onclick `hyprctl dispatch focusmonitor ${monitor.name}`
     (box
       (workspaces :monitor monitor)
       (title)
-      "🗓 ${formattime(EWW_TIME, "%Y-%m-%d")}"
-      "⏲ ${formattime(EWW_TIME, "%H:%M:%S")}")))
+      `🗓 ${formattime(EWW_TIME, "%Y-%m-%d")}`
+      `⏲ ${formattime(EWW_TIME, "%H:%M:%S")}`)))
 
 (deflisten media
   :initial ""
-  "playerctl --follow metadata --format {{title}}")
+  `playerctl --follow metadata --format {{title}}`)
 
 (defwidget info []
   (box
@@ -53,19 +54,19 @@
       "RAM ${round(EWW_RAM.used_mem_perc, 0)}%"
       (box :visible {EWW_BATTERY != ""}
         {EWW_BATTERY == ""
-         ? ""
-         : "${EWW_BATTERY?.BAT0?.capacity}% [${EWW_BATTERY?.BAT0?.status}]"}))))
+         ? ``
+         : `${EWW_BATTERY?.BAT0?.capacity}% [${EWW_BATTERY?.BAT0?.status}]`}))))
 
 
 
 ; windows
 
 (defwindow bar [monitor]
-  :monitor "${monitor.model}"
+  :monitor `${monitor.model}`
   :exclusive true
   :geometry (geometry :x "0%"
                       :y "0%"
-                      :width "${monitor.width / monitor.scale - 40}"
+                      :width `${monitor.width / monitor.scale - 40}`
                       :height "16px"
                       :anchor "top center")
   (bar :monitor monitor))
@@ -75,7 +76,7 @@
   :exclusive true
   :geometry (geometry :x "0%"
                       :y "0%"
-                      :width "${monitor.width / monitor.scale - 40}"
+                      :width `${monitor.width / monitor.scale - 40}`
                       :height "16px"
                       :anchor "bottom center")
   (info))
@@ -94,9 +95,9 @@
   debug)
 
 (defpoll eos
-  :initial "off"
+  :initial "{}"
   :interval "60s"
-  "nu -c '~/bin/eos -f nuon | from nuon | get state'")
+  `~/bin/eos -f json`)
 (defwindow eos []
   :monitor 0
   :geometry (geometry :x "10px"
@@ -105,6 +106,6 @@
                       :height "10px"
                       :anchor "bottom left")
   (combo-box-text
-    :items "[off, free, focus, busy]"
-    :onchange "~/bin/eos {}; eww update eos=\"{}\""
-    eos))
+    :items `[off, free, focus, busy]`
+    :onchange `eww update eos="$(~/bin/eos -f json {})"`
+    `${eos.state}`))

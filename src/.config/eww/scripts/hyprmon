@@ -32,7 +32,25 @@ def process [line: string] {
 		activewindowv2 => {
 			refresh window $event
 		},
-		workspace | createworkspace | destroyworkspace | focusedmon => {
+		createworkspace => {
+			match $event.data {
+				"0" => { "lab" },
+				"1" => { "web" },
+				"2" => { "dev" },
+				"3" => { "remote" },
+				"4" => { "hack" },
+				"5" => { "lit" },
+				"6" => { "media" },
+				"7" => { "files" },
+				"8" => { "monitor" },
+				"9" => { "work" },
+				"10" => { "chat" },
+				"11" => { "design" },
+				"12" => { "games" },
+				_ => { "" },
+			} | hyprctl dispatch renameworkspace $event.data $in
+		},
+		workspace | createworkspace | destroyworkspace | renameworkspace | focusedmon => {
 			refresh workspaces
 		},
 		submap => {
