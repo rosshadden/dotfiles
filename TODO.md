@@ -4,9 +4,6 @@
 - move gtk-vikb into repo as submodule with build script
 - split `lib` into `lib` and `src`
 - look into [these dotfiles](https://github.com/xero/dotfiles) for sexiness
-- consider moving systemd stuff to sync, or vice versa
-- move startup things to systemd
-- consider organizing into apps, with a general misc catch-all app for ~ and ~/.config
 
 ## dots
 
@@ -31,7 +28,7 @@
 - meta (kind of pun), as in keyboard layout, remapped keys, etc.
 - vim setup
 - git aliases
-- i3 workflow
+- wm workflow
 - tig workflow
 
 # apps

@@ -1,9 +1,9 @@
 * changes
-  - ( ) {https://hyprland.org/}[hyprland]
-  - ( ) {https://github.com/rvaiya/warpd}[warpd]
+  - (x) {https://hyprland.org/}[hyprland]
+  - (x) {https://github.com/rvaiya/warpd}[warpd]
 
 * features
-  - ( ) come up with a way to make tofi support desktop actions
+  - (x) come up with a way to make tofi support desktop actions
 
 * refactor
   - ( ) slim, modular rewrite
