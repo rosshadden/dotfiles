@@ -1,3 +1,0 @@
-[submodule "lib/shell/zplug"]
-	path = lib/shell/zplug
-	url = https://github.com/zplug/zplug.git

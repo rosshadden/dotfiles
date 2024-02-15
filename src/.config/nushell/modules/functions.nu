@@ -87,10 +87,6 @@ export def tj [
 	ta $name
 }
 
-export def zshtory [] {
-	bat ~/.zsh_history | str replace -a ': \d+:\d+;' ""
-}
-
 # # Change to dir matching zoxide query
 # export def --env s [
 # 	query: string # Directory query
