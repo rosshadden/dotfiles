@@ -8,14 +8,12 @@
   },
   "keywords": [
     "dotfiles",
-    "i3",
-    "vim",
+    "hyprland",
     "neovim",
-    "tmux",
     "wezterm",
-    "arch linux",
+    "artix linux",
     "tig",
-    "ranger",
+    "lf",
     "fzf"
   ],
   "author": "Ross Hadden",

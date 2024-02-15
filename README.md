@@ -3,27 +3,28 @@
 A collection of dotfiles and scripts that I use between computers.
 
 See the [TODO](TODO.md) for things I have in mind.
+See the [newer TODO](TODO.norg) for a newer list.
 
 ## My environment
 
-- [Arch Linux](https://www.archlinux.org/)
-- [`i3`](https://i3wm.org/)
-- [`neovim`](https://neovim.io/)
-- [`zsh`](https://wiki.archlinux.org/index.php/zsh)
-- [`tmux`](https://tmux.github.io/)
-- [`wezterm`](https://wezfurlong.org/wezterm/)
+- [Artix Linux](https://artixlinux.org/)
+- [hyprland](https://hyprland.org/)
+- [neovim](https://neovim.io/)
+- [nushell](https://nushell.sh/)
+- [wezterm](https://wezfurlong.org/wezterm/)
 
 ## Dependencies
 
-- [`nushell`](https://nushell.sh)
-- [`i3`](https://i3wm.org/)
-	- `xdotool`
-	- [`rofimoji`](https://github.com/fdw/rofimoji)
-- [`neovim`](https://neovim.io/)
-- [`tmux`](https://github.com/tmux/tmux)
-	- [`tmuxp`](https://github.com/tony/tmuxp) - powers ./bin/tp
-	- [`urlview`](https://github.com/sigpipe/urlview)
-	- [`fpp`](https://github.com/facebook/PathPicker)
+- `nushell`
+- `hyprland`
+	- `wlrctl`
+	- `vipe`
+	- `eww`
+		- `playerctl`
+	- `rofi-lbonn-wayland`
+		- [`rofimoji`](https://github.com/fdw/rofimoji)
+		- `uni`
+- `neovim`
 - [`tig`](https://github.com/jonas/tig)
 - [`fzf`](https://github.com/junegunn/fzf)
 - [`lf`](https://github.com/gokcehan/lf)
@@ -37,9 +38,15 @@ See the [TODO](TODO.md) for things I have in mind.
 		- `python-chardet`
 		- `w3m`
 - fonts
-	- `ttf-fantasque-sans-mono` - main font
-	- `otf-fira-code` - x11 font
-	- `ttf-font-icons` - mix of non-overlapping fonts from Font Awesome and Ionicons
+	- `ttf-fairfax-hd` - main font
+
+## Optional
+
+- `fd`
+- `rg`
+- `jq`
+- `jo`
+- `xh`
 
 ## Vim stuff
 

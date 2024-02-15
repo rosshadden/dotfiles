@@ -1,14 +1,5 @@
-# general
-*.dat
-*.swp
-
-# meta
-THEME
-lib/themes
-lib/vendor
-node_modules
-
 # apps
+
 src/.config/copyq/.copyq_m
 src/.config/copyq/.copyq_s
 src/.config/copyq/copyq-bak.conf
@@ -20,22 +11,10 @@ src/.config/karabiner/automatic_backups/
 src/.config/mpv/watch_later
 src/.config/nushell/history*
 src/.config/nushell/plugin.nu
-src/.config/nvim/.init.vim-rplugin~
-src/.config/nvim/.netrwhist
 src/.config/nvim/lazy-lock.json
-src/.config/nvim/autoload/plug.vim.old
-src/.config/nvim/plugged
 src/.config/nvim/sessions
-src/.config/ranger/**/__*
-src/.config/ranger/bookmarks
-src/.config/ranger/copy_buffer
-src/.config/ranger/history
-src/.config/ranger/tagged
 src/.config/rtv/history.log
 src/.config/rtv/refresh-token
-src/.config/systemd/user/default.target.wants
-src/.config/systemd/user/timers.target.wants
 src/.config/vis/vis.log
 src/.ncmpcpp/error.log
 src/.termux/shell
-src/.vim/spell/*.spl

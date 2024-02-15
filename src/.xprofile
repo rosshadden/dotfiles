@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-export GTK_PATH=$HOME/.gtk-modules
-export GTK_MODULES=vi
-
-# startup script
-~/lib/startup.sh
