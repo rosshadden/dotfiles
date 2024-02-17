@@ -94,6 +94,23 @@ export def tj [
 # 	cd (zoxide query $query | str trim)
 # }
 
+# Check whether there is a newer nushell
+export def nu? [] {
+	let url = "https://github.com/nushell/nushell/releases/latest"
+	let current = version | get version
+	let latest = http head --redirect-mode manual $url
+	| transpose -rd
+	| get location
+	| split row "/"
+	| last
+
+	{
+		update?: ($current != $latest),
+		current: $current,
+		latest: $latest,
+	}
+}
+
 # Load .env file in current directory.
 export def --env dotenv [] {
 	open .env

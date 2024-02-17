@@ -58,12 +58,12 @@
 	#| '     |# _
 	#| ,     |# _
 	#| .     |# _
-	#| p     |# (fork p (cmd sudo poweroff) (lsft rsft))
+	#| p     |# (fork p (cmd loginctl poweroff) (lsft rsft))
 	#| y     |# _
 	#| f     |# _
 	#| g     |# _
 	#| c     |# _
-	#| r     |# (fork r (cmd sudo reboot) (lsft rsft))
+	#| r     |# (fork r (cmd loginctl reboot) (lsft rsft))
 	#| l     |# (fork
 								(fork
 									(cmd nu -c "~/bin/locker -r")
@@ -90,12 +90,12 @@
 	#| u     |# _
 	#| i     |# _
 	#| d     |# _
-	#| h     |# (fork r (cmd systemctl hybernate) (lsft rsft))
+	#| h     |# (fork r (cmd loginctl hibernate) (lsft rsft))
 	#| t     |# _
 	#| n     |# _
 	#| s     |# (fork
 								(cmd xset dpms force off)
-								(cmd systemctl suspend)
+								(cmd loginctl suspend)
 								(lsft rsft)
 							)
 	#| -     |# _

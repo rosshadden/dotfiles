@@ -84,7 +84,7 @@
 	s = status -sb
 	t = tag
 
-	# SYNCING
+	# SYNC
 
 	in = !sh -c 'git pull ${1-origin} ${2-$(git pwd)}' -
 	out = !sh -c 'git push ${1-origin} ${2-$(git pwd)}' -

@@ -16,6 +16,7 @@ vim.opt.conceallevel = 2
 vim.opt.concealcursor = "nv"
 
 -- colorscheme
+vim.opt.termguicolors = true
 require("base16-colorscheme").setup("paraiso")
 
 vim.cmd [[
