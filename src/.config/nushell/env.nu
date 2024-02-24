@@ -38,30 +38,57 @@ def color [color: string] {
 	each { |it| $"(ansi $color)($it)(ansi reset)" }
 }
 
-def promptLeft [] {
-	$"(ansi osc)2;($env.PWD)"
-	$"(ansi osc)7;file://localhost($env.PWD)"
-	([
-		($env.PWD | str replace $env.HOME ~)
-	] | str join)
+def prompt_left [] {
+	# TODO: verify working
+	print $"(ansi osc)2;($env.PWD)"
+	print $"(ansi osc)7;file://localhost($env.PWD)"
+
+	let dir = match (do -s { $env.PWD | path relative-to $nu.home-path }) {
+		null => $env.PWD
+		"" => "~"
+		$relative_pwd => ([~ $relative_pwd] | path join)
+	}
+
+	let path_color = (if (is-admin) { ansi red_bold } else { ansi green_bold })
+	let separator_color = (if (is-admin) { ansi light_red_bold } else { ansi light_green_bold })
+	let seg_path = $"($path_color)($dir)"
+
+	$seg_path | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)"
 }
 
-def promptRight [] {
+def prompt_right [] {
+	let seg_time = (
+		[
+			(ansi reset)
+			(ansi magenta)
+			(date now | format date "%X")
+		]
+		| str join | str replace --regex --all "([/:])" $"(ansi green)${1}(ansi magenta)"
+	)
+
+	let seg_vcs = (
+		if (do { git rev-parse --abbrev-ref HEAD } | complete | get stderr | is-empty) {
+			$"[(git rev-parse --abbrev-ref HEAD | str trim)]" | color yellow
+		}
+	)
+
+	let seg_exit_code = if ($env.LAST_EXIT_CODE != 0) {
+		([
+			(ansi rb)
+			($env.LAST_EXIT_CODE)
+		] | str join)
+	} else { "" }
+
 	([
-		(if (do { git rev-parse --abbrev-ref HEAD } | complete | get stderr | is-empty) {
-			(""
-				+ "["
-				+ (git rev-parse --abbrev-ref HEAD | str trim)
-				+ "] "
-			) | color red
-		})
-		(date now | format date "%T" | color purple)
-	] | str join)
+		$seg_exit_code
+		$seg_vcs
+		$seg_time
+	] | str join (char space))
 }
 
 # Use nushell functions to define your right and left prompt
-$env.PROMPT_COMMAND = { promptLeft }
-$env.PROMPT_COMMAND_RIGHT = { promptRight }
+$env.PROMPT_COMMAND = { prompt_left }
+$env.PROMPT_COMMAND_RIGHT = { prompt_right }
 
 # The prompt indicators are environmental variables that represent
 # the state of the prompt

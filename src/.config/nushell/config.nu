@@ -24,6 +24,9 @@ $env.config = {
 	show_banner: false # true or false to enable or disable the banner
 	render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
 	use_kitty_protocol: true
+	highlight_resolved_externals: true # true enables highlighting of external commands in the repl resolved by which.
+
+	plugins: {} # Per-plugin configuration. See https://www.nushell.sh/contributor-book/plugins.html#configuration.
 
 	ls: {
 		use_ls_colors: true # use the LS_COLORS environment variable to colorize output

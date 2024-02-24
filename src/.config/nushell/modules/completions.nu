@@ -40,6 +40,7 @@ export def main [] {
 			# completer: $carapace_completer
 			# completer: $zoxide_completer
 		}
+		# use_ls_colors: true # set this to true to enable file/path/directory completions using LS_COLORS
 	}
 }
 

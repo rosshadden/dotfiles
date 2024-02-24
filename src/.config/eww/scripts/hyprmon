@@ -5,7 +5,7 @@ def "refresh workspaces" [] {
 	| from json
 	| where name !~ :scratch
 	| sort-by id
-	| to json
+	| to json --raw
 	| update workspaces $in
 
 	hyprctl activeworkspace -j
@@ -18,7 +18,7 @@ def "refresh window" [event: record] {
 	| where address == $"0x($event.data)"
 	| $in ++ [{}]
 	| first
-	| to json
+	| to json --raw
 	| update window $in
 }
 
