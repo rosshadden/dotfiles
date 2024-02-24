@@ -89,7 +89,6 @@
   hyprmon)
 
 (defwindow debug []
-  :monitor 1
   :stacking "bottom"
   :geometry (geometry :x "0%"
                       :y "0%"

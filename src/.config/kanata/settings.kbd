@@ -2,8 +2,8 @@
 	danger-enable-cmd yes
 	delegate-to-first-layer yes
 	process-unmapped-keys yes
-	linux-dev-names-include (
-		"Razer Razer BlackWidow Ultimate Keyboard"
-		"Razer Razer BlackWidow Ultimate"
+	linux-dev-names-exclude (
+		"Ryan Neff Sofle Pico"
+		"Ryan Neff Sofle Pico Keyboard"
 	)
 )

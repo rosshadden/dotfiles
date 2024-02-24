@@ -1,13 +1,15 @@
 #!/usr/bin/env nu
 
 def main [] {
+	let monitors = hyprctl monitors -j | from json | sort-by id
+
 	eww close-all
 
+	eww open --screen ($monitors | last | get id) debug
 	eww open background
-	eww open debug
 	eww open eos
 
-	hyprctl monitors -j | from json | sort-by id | each {|monitor|
+	$monitors | each {|monitor|
 		notify-send $"monitor ($monitor.id)" $"($monitor.name): ($monitor.width)x($monitor.height)\n($monitor.make): ($monitor.model)"
 		eww open bar --id $"bar:($monitor.name)" --arg $"monitor=($monitor | to json)"
 		eww open info --id $"info:($monitor.name)" --arg $"monitor=($monitor | to json)"
