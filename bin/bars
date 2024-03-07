@@ -5,7 +5,6 @@ def main [] {
 
 	eww close-all
 
-	eww open --screen ($monitors | last | get id) debug
 	eww open background
 	eww open eos
 
@@ -13,5 +12,6 @@ def main [] {
 		notify-send $"monitor ($monitor.id)" $"($monitor.name): ($monitor.width)x($monitor.height)\n($monitor.make): ($monitor.model)"
 		eww open bar --id $"bar:($monitor.name)" --arg $"monitor=($monitor | to json)"
 		eww open info --id $"info:($monitor.name)" --arg $"monitor=($monitor | to json)"
+		eww open --id $"info:($monitor.name)" --screen ($monitor | get id) debug
 	}
 }

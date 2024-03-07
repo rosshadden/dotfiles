@@ -1,0 +1,48 @@
+(defalias
+	erm (layer-switch ermak)
+)
+
+(deflayer ermak
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @dvk
+	_    _    _    _    _    _    _    _    _    _    _    [    ]    _     _    _    _     _    _    _    _
+	_    b    y    o    u    '    ;    l    d    w    v    z    =    _     _    _    _     _    _    _    _
+	_ (tap-hold-release 200 200 c lmet)
+	(tap-hold-release 200 200 i lalt)
+	(tap-hold-release 200 200 e lctl)
+	(tap-hold-release 200 200 a rsft) ,
+	. (tap-hold-release 200 200 h rsft) (tap-hold-release 200 200 t rctl) (tap-hold-release 200 200 s ralt) (tap-hold-release 200 200 n rmet) q
+	_                          _    _    _
+	_    g    x    j    k    -    /    r    m    f    p    _                    _          _    _    _    _
+	_    _    _              _              _    _    _    _               _    _    _     _    _
+
+	#| mute  |# _
+	#| volu  |# _
+	#| vold  |# _
+	#| brup  |# _
+	#| brdn  |# _
+	#| blup  |# _
+	#| bldn  |# _
+	#| next  |# _
+	#| pp    |# _
+	#| prev  |# _
+	#| plyr  |# _
+	#| power |# _
+	#| sleep |# _
+	#| f13   |# _
+	#| f14   |# _
+	#| f15   |# _
+	#| f16   |# _
+	#| f17   |# _
+	#| f18   |# _
+	#| f19   |# _
+	#| f20   |# _
+	#| f21   |# _
+	#| f22   |# _
+	#| f23   |# _
+	#| f24   |# _
+	#| mlft  |# _
+	#| mrgt  |# _
+	#| mmid  |# _
+	#| mfwd  |# _
+	#| mbck  |# _
+)

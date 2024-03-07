@@ -1,15 +1,19 @@
 ;; settings
+
 (include ./settings.kbd)
 (include ./vars.kbd)
 (include ./source.kbd)
 
 ;; main
+
 (include ./layers/dvorak.kbd)
 
 ;; modules
+
 (include ./layers/applications.kbd)
 (include ./layers/capture.kbd)
 (include ./layers/copypasta.kbd)
+(include ./layers/ermak.kbd)
 (include ./layers/games.kbd)
 (include ./layers/macros.kbd)
 (include ./layers/media.kbd)
@@ -21,6 +25,7 @@
 (include ./layers/system.kbd)
 
 ;; meta
+
 (include ./layers/layers.kbd)
 
 ;; TODO:
