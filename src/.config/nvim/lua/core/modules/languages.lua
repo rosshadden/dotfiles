@@ -24,6 +24,7 @@ vim.filetype.add({
 		bb = "clojure",
 		conf = "config",
 		nu = "nu",
+		nuon = "nu",
 		typ = "typst",
 		yuck = "clojure",
 		zon = "zig",

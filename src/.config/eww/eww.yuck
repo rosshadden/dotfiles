@@ -95,7 +95,7 @@
                       :width "200px"
                       :height "16px"
                       :anchor "top right")
-  (image :path "/home/ross/dev/src/ermak/lit/ermak.png"))
+  (image :path "/home/ross/dev/src/ermak/data/kle/ermak.png"))
 
 (defpoll eos
   :initial "{}"

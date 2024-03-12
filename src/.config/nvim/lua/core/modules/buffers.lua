@@ -38,6 +38,8 @@ vim.keymap.set("n", "<plug><buffers>L", ":rightbelow vsplit<cr>", { silent = tru
 vim.keymap.set("n", "<a-c>", ":bdelete<cr>", { silent = true })
 vim.keymap.set("n", "<plug><buffers>c", ":bdelete<cr>", { silent = true })
 vim.keymap.set("n", "<plug><buffers>C", ":bdelete!<cr>", { silent = true })
+vim.keymap.set("n", "<plug><buffers>d", ":bdelete<cr>", { silent = true })
+vim.keymap.set("n", "<plug><buffers>D", ":bdelete!<cr>", { silent = true })
 
 -- quit
 vim.keymap.set("n", "<plug><buffers>q", ":quit<cr>", { silent = true })
