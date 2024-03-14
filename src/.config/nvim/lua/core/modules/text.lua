@@ -36,6 +36,7 @@ inMotion.sort.setup()
 require("Comment").setup()
 
 require("mini.ai").setup()
+require("mini.align").setup()
 require("mini.cursorword").setup()
 -- require("mini.pairs").setup()
 require("mini.trailspace").setup()
