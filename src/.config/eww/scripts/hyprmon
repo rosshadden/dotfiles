@@ -56,6 +56,10 @@ def process [line: string] {
 		submap => {
 			update mode (if $event.data == "" { "NORMAL" } else { $event.data })
 		},
+		urgent => {
+			# TODO
+			notify-send urgent $event.data
+		},
 	}
 }
 
