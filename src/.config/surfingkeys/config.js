@@ -17,7 +17,7 @@ function scroll(amount = 0) {
 }
 
 function options() {
-	api.Hints.setCharacters("aoeusntidbpg");
+	api.Hints.setCharacters("cieansthbyouvwdl");
 	chrome.storage.local.set({ "noPdfViewer": 1 });
 	// settings.caseSensitive = true;
 	settings.smartCase = true;

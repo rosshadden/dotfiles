@@ -39,7 +39,7 @@ local config = {
 	enable_csi_u_key_encoding = true,
 
 	-- quick select keys
-	quick_select_alphabet = "aoeuqjkxpyhtnsgcrlmwvzfidb",
+	quick_select_alphabet = "cieansthbyouvwdl,kj.rm",
 }
 
 -- mappings

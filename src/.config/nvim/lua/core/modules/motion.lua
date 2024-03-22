@@ -12,7 +12,7 @@ local jumpPattern = [[\v(<.|^$)|(.>|^$)|(\l)\zs(\u)|(_\zs.)|(#\zs.)]]
 --
 
 hop.setup {
-	keys = [[aoeidtnspyfgcrlqjkxbmwvzuh]]
+	keys = [[cieansthbyouvwld,.jkmr-/]]
 }
 
 --
