@@ -4,6 +4,14 @@
 	width: 512;
 }
 
+// TEMP: fixes weird prompt display issue
+textbox-prompt-colon {
+	enabled: false;
+}
+inputbar {
+	spacing: 4px;
+}
+
 configuration {
 	modi: "window,run,ssh,drun";
 	lines: 16;
