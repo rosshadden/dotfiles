@@ -6,12 +6,12 @@ def main [] {
 	eww close-all
 
 	eww open background
-	eww open eos
 
 	$monitors | each {|monitor|
-		notify-send $"monitor ($monitor.id)" $"($monitor.name): ($monitor.width)x($monitor.height)\n($monitor.make): ($monitor.model)"
-		eww open bar --id $"bar:($monitor.name)" --arg $"monitor=($monitor | to json)"
-		eww open info --id $"info:($monitor.name)" --arg $"monitor=($monitor | to json)"
-		eww open --id $"info:($monitor.name)" --screen ($monitor | get id) debug
+		# notify-send $"monitor ($monitor.id)" $"($monitor.name): ($monitor.width)x($monitor.height)\n($monitor.make): ($monitor.model)"
+		eww open debug --id $"debug:($monitor.name)" --screen $monitor.model
+		eww open eos --id $"eos:($monitor.name)" --screen $monitor.model
+		eww open top --id $"top:($monitor.name)" --screen $monitor.model --arg $"monitor=($monitor | to json -r)"
+		eww open bottom --id $"bottom:($monitor.name)" --screen $monitor.model --arg $"monitor=($monitor | to json -r)"
 	}
 }

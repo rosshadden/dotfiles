@@ -171,3 +171,11 @@ $env.MANROFFOPT = "-c"
 
 # pass
 $env.PASSWORD_STORE_ENABLE_EXTENSIONS = "true" # [sic]
+
+##
+## insurance
+##
+
+if ("~/local/config.nu" | path exists | not $in) {
+	touch ~/local/config.nu
+}

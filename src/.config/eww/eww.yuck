@@ -61,8 +61,7 @@
 
 ; windows
 
-(defwindow bar [monitor]
-  :monitor `${monitor.model}`
+(defwindow top [monitor]
   :exclusive true
   :stacking "fg"
   :geometry (geometry :x "0%"
@@ -72,8 +71,7 @@
                       :anchor "top center")
   (bar :monitor monitor))
 
-(defwindow info [monitor]
-  :monitor "${monitor.model}"
+(defwindow bottom [monitor]
   :exclusive true
   :stacking "fg"
   :geometry (geometry :x "0%"
@@ -102,7 +100,6 @@
   :interval "60s"
   `nu -l -c 'eos | to json -r'`)
 (defwindow eos []
-  :monitor 0
   :geometry (geometry :x "10px"
                       :y "-14px"
                       :width "200px"

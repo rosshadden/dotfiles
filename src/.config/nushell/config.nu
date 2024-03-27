@@ -136,3 +136,5 @@ $env.config = {
 		}
 	}
 }
+
+source ~/local/config.nu

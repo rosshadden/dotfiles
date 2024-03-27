@@ -22,7 +22,7 @@
 	border-bottom: 0;
 }
 
-.bar {
+.top {
 	@include bar;
 	@include top;
 
@@ -41,7 +41,7 @@
 	}
 }
 
-.info {
+.bottom {
 	@include bar;
 	@include bottom;
 }

@@ -61,9 +61,9 @@ export def led [
 
 # proxy
 
-export def "main led" [
-	color?: string,
-	--format (-f): string
-] {
-	led $color --format $format
-}
+# export def "main led" [
+# 	color?: string,
+# 	--format (-f): string
+# ] {
+# 	led $color --format $format
+# }
