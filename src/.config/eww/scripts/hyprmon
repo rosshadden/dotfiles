@@ -16,8 +16,8 @@ def "refresh window" [event: record] {
 	hyprctl clients -j
 	| from json
 	| where address == $"0x($event.data)"
-	| $in ++ [{}]
-	| first
+	| get -i 0
+	| default {}
 	| to json --raw
 	| update window $in
 }
@@ -57,11 +57,13 @@ def process [line: string] {
 			update mode (if $event.data == "" { "NORMAL" } else { $event.data })
 		},
 		urgent => {
-			notify-send -A "goto" urgent $event.data
+			let address = $"0x($event.data)"
+			let title = (hyprctl clients -j | from json | where address == $address | get 0.title)
+			notify-send -A "focus=Focus" urgent $title
 			| str trim
 			| match $in {
-				"0" => {
-					hyprctl dispatch focuswindow $"address:0x($event.data)"
+				"focus" => {
+					hyprctl dispatch focuswindow $"address:($address)"
 				},
 			}
 		},

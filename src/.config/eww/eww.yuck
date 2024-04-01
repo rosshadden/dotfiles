@@ -7,11 +7,15 @@
 
 (defvar debug "")
 
-; TODO stream
-; TODO mouse events
+; TODO: stream
+; TODO: mouse events
 (defpoll volume
   :interval "1s"
   "ponymix get-volume")
+; TODO: make cfg output structured data?
+(defpoll mic
+  :interval "1s"
+  "ponymix --source is-muted && echo [mic muted] || echo")
 
 (defwidget workspaces [monitor]
   (box
@@ -47,7 +51,8 @@
   (box
     (box
       mode
-      "VOL ${volume}%")
+      "VOL ${volume}%"
+      "${mic}")
     media
     (box
       "CPU ${round(EWW_CPU.avg, 0)}%"
