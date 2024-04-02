@@ -95,7 +95,10 @@ export def tj [
 # }
 
 # Check whether there is a newer nushell
-export def nu? [] {
+export def nu? [
+	--refresh (-r) # Refresh pacman
+] {
+	if $refresh { paru -Syy }
 	let url = "https://github.com/nushell/nushell/releases/latest"
 	let current = version | get version
 	let latest = http head --redirect-mode manual $url
@@ -105,9 +108,10 @@ export def nu? [] {
 	| last
 
 	{
-		update?: ($current != $latest),
-		current: $current,
-		latest: $latest,
+		update?: ($current != $latest)
+		current: $current
+		latest: $latest
+		pacman: (paru -Sl galaxy | rg nushell | detect columns -n -c 2..3 | get column2.0)
 	}
 }
 

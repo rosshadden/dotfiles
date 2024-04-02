@@ -12,6 +12,15 @@
 	hmr (tap-hold-release 200 200 n rmet)
 )
 
+;; (defoverrides
+;; 	(\) (lsft ')
+;; 	(lsft ') (lsft 9)
+;; 	(lsft ,) (;)
+;; 	(lsft .) (lsft ;)
+;; 	(lsft /) (\)
+;; 	(lsft \) (lsft 0)
+;; )
+
 (deflayer ermak
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @dvk
 	_    _    _    _    _    _    _    _    _    _    _    [    ]    _     _    _    _     _    _    _    _

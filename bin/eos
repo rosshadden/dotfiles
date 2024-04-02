@@ -10,6 +10,33 @@ def request [endpoint: string, payload?: record] {
 	}
 }
 
+def process [
+	line: string
+	addr?
+] {
+	let event = $line | parse "{type}>>{data}" | first
+	let data = $event.data | split row ','
+	match $event.type {
+		openwindow => {
+			if ($addr == null and $data.2 == "Zoom" and ($data.3 == "Zoom" or $data.3 == "Zoom Meeting")) {
+				let res = eos busy
+				print $res
+				$res | to json -r | eww update $"eos=($in)"
+				return $data.0
+			}
+		},
+		closewindow => {
+			if ($addr == $data.0) {
+				let res = eos free
+				print $res
+				$res | to json -r | eww update $"eos=($in)"
+				return null
+			}
+		}
+	}
+	return $addr
+}
+
 export def main [
 	state?: string, # off | free | focus | busy
 	--format (-f): string
@@ -32,6 +59,7 @@ export def main [
 		state: $state,
 	} | match $format {
 		json => { $in | to json -r },
+		nuon => { $in | to nuon },
 		_ => {},
 	}
 }
@@ -56,6 +84,15 @@ export def led [
 	} | match $format {
 		json => { $in | to json -r },
 		_ => {},
+	}
+}
+
+# Set state based on entering and exiting zoom meetings.
+export def listen [] {
+	socat -u $"UNIX:/tmp/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock" -
+	| lines -s
+	| reduce -f null {|line, addr|
+		process $line $addr
 	}
 }
 
