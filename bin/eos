@@ -10,6 +10,14 @@ def request [endpoint: string, payload?: record] {
 	}
 }
 
+def "get window" [addr: string] {
+	hyprctl clients -j
+	| from json
+	| where address == $"0x($addr)"
+	| get -i 0
+	| default {}
+}
+
 def process [
 	line: string
 	addr?
@@ -18,11 +26,18 @@ def process [
 	let data = $event.data | split row ','
 	match $event.type {
 		openwindow => {
-			if ($addr == null and $data.2 == "Zoom" and ($data.3 == "Zoom" or $data.3 == "Zoom Meeting")) {
+			if ($addr != null or $data.2 != "Zoom") { return $addr }
+			sleep 2sec
+
+			let window = get window $data.0
+			if ($window == {}) { return $addr }
+
+			if ($window.title == "Zoom Meeting") {
+				print $window
 				let res = eos busy
 				print $res
 				$res | to json -r | eww update $"eos=($in)"
-				return $data.0
+				return $window.address
 			}
 		},
 		closewindow => {
