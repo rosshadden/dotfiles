@@ -83,7 +83,7 @@ def init [] {
 
 def main [] {}
 
-def "main listen" [] {
+export def listen [] {
 	init
 	socat -u $"UNIX:/tmp/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock" -
 	| lines -s
@@ -92,7 +92,7 @@ def "main listen" [] {
 	}
 }
 
-def "main change workspace" [monitor: string, direction: string] {
+export def "change workspace" [monitor: string, direction: string] {
 	let current = hyprctl activeworkspace -j
 	| from json
 	| get id
@@ -114,4 +114,14 @@ def "main change workspace" [monitor: string, direction: string] {
 			}
 		},
 	}
+}
+
+# proxy
+
+export def "main listen" [] {
+	listen
+}
+
+export def "main change workspace" [monitor: string, direction: string] {
+	change workspace $monitor $direction
 }

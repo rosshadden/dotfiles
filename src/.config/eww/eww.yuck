@@ -1,5 +1,3 @@
-(deflisten hyprmon `./scripts/hyprmon listen`)
-
 (defvar mode "")
 (defvar window "{}")
 (defvar workspace "{}")
@@ -35,7 +33,7 @@
 (defwidget bar [monitor]
   (eventbox
     :cursor "pointer"
-    :onscroll `hyprctl dispatch focusmonitor ${monitor.name}; ./scripts/hyprmon change workspace ${monitor.name} {}`
+    :onscroll `hyprctl dispatch focusmonitor ${monitor.name}; ~/bin/hyprmon change workspace ${monitor.name} {}`
     :onclick `hyprctl dispatch focusmonitor ${monitor.name}`
     (box
       (workspaces :monitor monitor)
@@ -85,11 +83,6 @@
                       :height "16px"
                       :anchor "bottom center")
   (info))
-
-(defwindow background []
-  :monitor 0
-  :stacking "bg"
-  hyprmon)
 
 (defwindow debug []
   :stacking "bottom"

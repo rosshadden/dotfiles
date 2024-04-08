@@ -10,6 +10,7 @@ use menus.nu
 use theme.nu
 
 use bin/eos
+use bin/hyprmon
 
 source plugins.nu
 
