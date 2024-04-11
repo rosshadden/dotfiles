@@ -13,4 +13,6 @@ def main [] {
 		eww open bottom --id $"bottom:($monitor.name)" --screen $monitor.model --arg $"monitor=($monitor | to json -r)"
 		$monitor
 	}
+
+	dinitctl restart hyprmon
 }

@@ -27,6 +27,7 @@ def process [line: string] {
 	match $event.type {
 		monitoradded | monitorremoved => {
 			# TODO: fix
+			sleep 5sec
 			bars
 		},
 		activewindowv2 => {
@@ -84,11 +85,17 @@ def init [] {
 def main [] {}
 
 export def listen [] {
+	if not ("HYPRLAND_INSTANCE_SIGNATURE" in $env) {
+		load-env {
+			HYPRLAND_INSTANCE_SIGNATURE: (hyprctl instances -j | from json | get 0.instance)
+		}
+	}
 	init
 	socat -u $"UNIX:/tmp/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock" -
 	| lines -s
 	| each {|line|
 		process $line
+		null
 	}
 }
 
