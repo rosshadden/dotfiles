@@ -1,0 +1,5 @@
+type = process
+command = nu -l -c "eos listen"
+restart = false
+logfile = ./logs/eos.log
+env-file = ./env/wayland.env

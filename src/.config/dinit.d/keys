@@ -1,0 +1,5 @@
+type = process
+command = kanata
+restart = true
+logfile = ./logs/keys.log
+env-file = ./env/wayland.env

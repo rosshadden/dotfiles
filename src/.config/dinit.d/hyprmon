@@ -1,0 +1,5 @@
+type = process
+command = nu -l -c "hyprmon listen"
+restart = false
+logfile = ./logs/hyprmon.log
+env-file = ./env/wayland.env
