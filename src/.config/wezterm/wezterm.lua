@@ -25,7 +25,7 @@ local config = {
 		"Unifont",
 	}),
 
-	enable_wayland = false,
+	enable_wayland = true,
 
 	-- ui
 	color_scheme = "Paraiso Dark",
