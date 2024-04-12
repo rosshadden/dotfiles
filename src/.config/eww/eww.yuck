@@ -105,5 +105,5 @@
                       :anchor "bottom left")
   (combo-box-text
     :items `[off, free, focus, busy]`
-    :onchange `nu -l -c 'eos {} | to json -r | eww update $"eos=($in)"'`
+    :onchange `nu -l -c 'eos {}'`
     `${eos.state}`))

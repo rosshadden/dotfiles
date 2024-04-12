@@ -3,11 +3,13 @@
 const api = "http://10.0.0.20:8123/api"
 
 def request [endpoint: string, payload?: record] {
-	if $payload == null {
+	let res = if $payload == null {
 		http get -H [Authorization $"Bearer (cat ~/Documents/certs/ha.cert)"] $"($api)($endpoint)"
 	} else {
 		http post -t application/json -H [Authorization $"Bearer (cat ~/Documents/certs/ha.cert)"] $"($api)($endpoint)" $payload
 	}
+	$res | to json -r | eww update $"eos=($in)"
+	$res
 }
 
 def "get window" [addr: string] {
@@ -26,6 +28,7 @@ def process [
 	let data = $event.data | split row ','
 	match $event.type {
 		openwindow => {
+	print $event $data
 			if ($addr != null or $data.2 != "Zoom") { return $addr }
 			sleep 2sec
 
@@ -34,17 +37,14 @@ def process [
 
 			if ($window.title == "Zoom Meeting") {
 				print $window
-				let res = eos busy
-				print $res
-				$res | to json -r | eww update $"eos=($in)"
+				eos busy | print $in
 				return $window.address
 			}
 		},
 		closewindow => {
+			echo $addr $data
 			if ($addr == $data.0) {
-				let res = eos free
-				print $res
-				$res | to json -r | eww update $"eos=($in)"
+				eos free | print $in
 				return null
 			}
 		}
@@ -104,6 +104,11 @@ export def led [
 
 # Set state based on entering and exiting zoom meetings.
 export def listen [] {
+	if not ("HYPRLAND_INSTANCE_SIGNATURE" in $env) {
+		load-env {
+			HYPRLAND_INSTANCE_SIGNATURE: (hyprctl instances -j | from json | get 0.instance)
+		}
+	}
 	socat -u $"UNIX:/tmp/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock" -
 	| lines -s
 	| reduce -f null {|line, addr|
