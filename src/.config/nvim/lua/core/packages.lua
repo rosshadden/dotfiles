@@ -8,6 +8,13 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = function()
 	return {
+		-- lib
+		{
+			"vhyrro/luarocks.nvim",
+			priority = 1000,
+			config = true,
+		},
+
 		-- ast
 		{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 		"nvim-treesitter/nvim-treesitter-textobjects",
@@ -53,7 +60,16 @@ local plugins = function()
 		"monaqa/dial.nvim",
 
 		-- integration
-		"Exafunction/codeium.vim",
+		{
+			"Exafunction/codeium.nvim",
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+				"hrsh7th/nvim-cmp",
+			},
+			config = function()
+				require("codeium").setup()
+			end
+		},
 		{
 			"NeogitOrg/neogit",
 			dependencies = {
@@ -71,20 +87,18 @@ local plugins = function()
 			"jackMort/ChatGPT.nvim",
 			event = "VeryLazy",
 			config = function()
-				require("chatgpt").setup({
-					api_key_cmd = "echo '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'",
-				})
+				require("chatgpt").setup()
 			end,
 			dependencies = {
 				"MunifTanjim/nui.nvim",
 				"nvim-lua/plenary.nvim",
-				"nvim-telescope/telescope.nvim"
+				"nvim-telescope/telescope.nvim",
+				"folke/trouble.nvim",
 			}
 		},
 		{
 			"nvim-neorg/neorg",
-			dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter" },
-			build = ":Neorg sync-parsers",
+			dependencies = { "luarocks.nvim" },
 			config = function()
 				require("core.plugins.neorg")
 			end,

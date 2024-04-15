@@ -114,6 +114,7 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
+		{ name = "codeium" },
 	}, {
 		{ name = "neorg" },
 		{ name = "buffer", keyword_length = 5 },
@@ -137,10 +138,3 @@ cmp.setup.cmdline(":", {
 		{ name = "cmdline" },
 	}),
 })
-
--- codeium
-vim.g.codeium_disable_bindings = true
-vim.keymap.set("i", "<c-e>", function () return vim.fn["codeium#Accept"]() end, { expr = true })
-vim.keymap.set("i", "<c-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
-vim.keymap.set("i", "<m-]>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true })
-vim.keymap.set("i", "<m-[>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true })
