@@ -6,14 +6,14 @@
 
 ;; main
 
-(include ./layers/dvorak.kbd)
+(include ./layers/ermak.kbd)
 
 ;; modules
 
 (include ./layers/applications.kbd)
 (include ./layers/capture.kbd)
 (include ./layers/copypasta.kbd)
-(include ./layers/ermak.kbd)
+(include ./layers/dvorak.kbd)
 (include ./layers/games.kbd)
 (include ./layers/macros.kbd)
 (include ./layers/media.kbd)

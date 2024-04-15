@@ -14,5 +14,6 @@ def main [] {
 		$monitor
 	}
 
-	dinitctl restart hyprmon
+	dinitctl start eos
+	dinitctl start hyprmon
 }

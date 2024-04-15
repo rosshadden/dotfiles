@@ -1,5 +1,5 @@
 (defalias
-	lyr (tap-hold-release $tap-timeout $hold-timeout @dvk (layer-toggle layers))
+	lyr (tap-hold-release $tap-timeout $hold-timeout @erm (layer-toggle layers))
 
 	lcc (fork @cpp @cpt (lalt ralt))
 	lmm (fork @med @mse (lalt ralt))
@@ -14,9 +14,9 @@
 (deflayer layers
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    lrld  _    _    _     _    _    _    _
-	_    _    _    _    @app _    _    @gam @lcc _    _    _    _    @tst  _    _    _     _    _    _    _
-	caps _    _    @erm @baf @mcr @dvk _    _    @lnn @sys _    _                          _    _    _
-	_    _    @qwr _    _    _    _    @lmm _    _    _    _                    _          _    _    _    _
+	_    _    _    _    _    _    _    _    @dvk _    _    _    _    @tst  _    _    _     _    _    _    _
+	caps @lcc @mcr @erm @app _    _    @baf _    @sys @lnn @qwr _                          _    _    _
+	_    @gam _    _    _    _    _    _    @lmm _    _    _                    _          _    _    _    _
 	_    _    _              _              _    _    _    _               _    _    _     _    _
 
 	#| mute  |# _

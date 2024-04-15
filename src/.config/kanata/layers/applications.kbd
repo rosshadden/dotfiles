@@ -6,7 +6,7 @@
 ;; TODO: chrome, vivaldi, slack, discord, chatGPT, music player, google messages, calculator, steam
 
 (deflayer applications
-	#| esc   |# @dvk
+	#| esc   |# @erm
 	#| f1    |# _
 	#| f2    |# _
 	#| f3    |# _
@@ -64,7 +64,7 @@
 	#| kp8   |# _
 	#| kp9   |# _
 	#| kp+   |# _
-	#| caps  |# @dvk
+	#| caps  |# @erm
 	#| a     |# _
 	#| o     |# _
 	#| e     |# _

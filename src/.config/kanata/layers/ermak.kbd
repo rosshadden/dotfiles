@@ -1,6 +1,26 @@
 (defalias
 	erm (layer-switch ermak)
 
+	lsft (multi lsft (layer-while-held ermak-shifted))
+	rsft (multi rsft (layer-while-held ermak-shifted))
+
+	xcp (tap-hold-release $tap-timeout $hold-timeout esc lctl)
+	xsu (tap-hold-release $tap-timeout $hold-timeout M-A-spc lmet)
+	xtp (tap-hold-release $tap-timeout $hold-timeout C-spc ctl)
+
+	xss (fork
+		(fork
+			(fork
+				(cmd nu -c "~/bin/screenshot select")
+				(cmd nu -c "~/bin/screenshot full")
+				(lctl rctl)
+			)
+			(cmd nu -c "~/bin/screenshot window")
+			(lalt ralt)
+		)
+		(cmd nu -c "~/bin/screenshot screen")
+		(lsft rsft)
+	)
 
 	hml (tap-hold-release 200 200 c lmet)
 	hal (tap-hold-release 200 200 i lalt)
@@ -12,51 +32,63 @@
 	hmr (tap-hold-release 200 200 n rmet)
 )
 
-;; (defoverrides
-;; 	(\) (lsft ')
-;; 	(lsft ') (lsft 9)
-;; 	(lsft ,) (;)
-;; 	(lsft .) (lsft ;)
-;; 	(lsft /) (\)
-;; 	(lsft \) (lsft 0)
-;; )
-
 (deflayer ermak
-	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @dvk
-	_    _    _    _    _    _    _    _    _    _    _    [    ]    _     _    _    _     _    _    _    _
-	_    b    y    o    u    '    ;    l    d    w    v    z    =    _     _    _    _     _    _    _    _
-	_    @hml @hal @hcl @hsl ,    .    @hsr @hcr @har @hmr q    _                          _    _    _
-	_    g    x    j    k    -    /    r    m    f    p    _                    _          _    _    _    _
-	_    _    _              _              _    _    _    _               _    _    _     _    _
+	_     _    _    _    _    _    _    _    _    _    _    _     _          @xss _    @gam
+	[     _    _    _    _    _    _    _    _    _    _    ]     S-3  _     _    _    _     _    _    _    _
+	_     b    y    o    u    '    S-'  l    d    w    v    z     S-/  `     _    _    _     _    _    _    _
+	_     @hml @hal @hcl @hsl ,    .    @hsr @hcr @har @hmr q     _                          _    _    _
+	@lsft g    x    j    k    -    /    r    m    f    p    @rsft                 _          _    _    _    _
+	_     @lyr _              _              @xsu _    @spr @xtp             _    _    _     _    _
 
-	#| mute  |# _
-	#| volu  |# _
-	#| vold  |# _
-	#| brup  |# _
-	#| brdn  |# _
+	#| mute  |# (cmd nu -c "~/bin/cfg volume !")
+	#| volu  |# (cmd nu -c "~/bin/cfg volume +5")
+	#| vold  |# (cmd nu -c "~/bin/cfg volume -5")
+	#| brup  |# (cmd nu -c "~/bin/cfg brightness +5")
+	#| brdn  |# (cmd nu -c "~/bin/cfg brightness -5")
 	#| blup  |# _
 	#| bldn  |# _
-	#| next  |# _
-	#| pp    |# _
-	#| prev  |# _
+	#| next  |# (cmd playerctl --player=%any,chromium next)
+	#| pp    |# (cmd playerctl --player=%any,chromium play-pause)
+	#| prev  |# (cmd playerctl --player=%any,chromium previous)
 	#| plyr  |# _
 	#| power |# _
 	#| sleep |# _
-	#| f13   |# _
-	#| f14   |# _
+	#| f13   |# (cmd rofi -show drun -display-drun launch)
+	#| f14   |# (cmd notify-send f14)
 	#| f15   |# _
-	#| f16   |# _
-	#| f17   |# _
-	#| f18   |# _
-	#| f19   |# _
-	#| f20   |# _
-	#| f21   |# _
-	#| f22   |# _
-	#| f23   |# _
-	#| f24   |# _
+	#| f16   |# (cmd notify-send f16)
+	#| f17   |# (fork
+								(fork
+									(cmd nu -c "~/bin/locker -rS")
+									(cmd nu -c "~/bin/locker -b")
+									(lctl rctl)
+								)
+								(cmd nu -c "~/bin/locker -s")
+								(lsft rsft)
+							)
+	#| f18   |# (cmd notify-send f18)
+	#| f19   |# (cmd notify-send f19)
+	#| f20   |# (cmd notify-send f20)
+	#| f21   |# (cmd notify-send f21)
+	#| f22   |# (cmd notify-send f22)
+	#| f23   |# (cmd notify-send f23)
+	#| f24   |# (cmd notify-send f24)
 	#| mlft  |# _
 	#| mrgt  |# _
 	#| mmid  |# _
 	#| mfwd  |# _
 	#| mbck  |# _
 )
+
+(deflayer ermak-shifted
+	_    _    _           _    _    _           _           _    _    _    _    _    _          _    _    _
+	_    \    (unshift =) `    =    ,           .           6    7    5    8    _    4    _     _    _    _     _    _    _    _
+	_    _    _           _    _    9           0           _    _    _    _    _    1    2     _    _    _     _    _    _    _
+	_    _    _           _    _    (unshift ;) ;           _    _    _    _    _    _                          _    _    _
+	_    _    _           _    _    -           (unshift \) _    _    _    _    _                    _          _    _    _    _
+	_    _    _                     _                            _    _    _    _               _    _    _     _    _
+
+	_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+)
+
+;; TODO: printscreen is its own layer

@@ -1,17 +1,17 @@
 (defalias
 	cpt (layer-switch capture)
 
-	s (multi (cmd nu -c "~/bin/screenshot select") @dvk)
-	s (multi (cmd nu -c "~/bin/screenshot window") @dvk)
-	s (multi (cmd nu -c "~/bin/screenshot screen") @dvk)
-	s (multi (cmd nu -c "~/bin/screenshot full") @dvk)
+	s (multi (cmd nu -c "~/bin/screenshot select") @erm)
+	s (multi (cmd nu -c "~/bin/screenshot window") @erm)
+	s (multi (cmd nu -c "~/bin/screenshot screen") @erm)
+	s (multi (cmd nu -c "~/bin/screenshot full") @erm)
 )
 
 (deflayer capture
 	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
 	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
 	_    _    _    _    _    _    @s  _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	@dvk _    _    _    _    _    _    _    _    _    @s  _    _                          _    _    _
+	@erm _    _    _    _    _    _    _    _    _    @s  _    _                          _    _    _
 	_    _    _    _    _    _    _    _    @s  _    _    _                    _          _    _    _    _
 	_    _    _              @s            _    _    _    _               _    _    _     _    _
 

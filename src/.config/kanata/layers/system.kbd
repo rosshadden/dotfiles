@@ -17,7 +17,7 @@
 ;; TODO: screen brightness, keyboard brightness
 
 (deflayer system
-	#| esc   |# @dvk
+	#| esc   |# @erm
 	#| f1    |# @f1
 	#| f2    |# @f2
 	#| f3    |# @f3
@@ -83,7 +83,7 @@
 	#| kp8   |# _
 	#| kp9   |# _
 	#| kp+   |# _
-	#| caps  |# @dvk
+	#| caps  |# @erm
 	#| a     |# _
 	#| o     |# _
 	#| e     |# _

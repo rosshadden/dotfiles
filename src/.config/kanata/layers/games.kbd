@@ -3,11 +3,11 @@
 )
 
 (deflayer games
-	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @dvk
+	_    _    _    _    _    _    _    _    _    _    _    _    _          _    _    @erm
 	_    _    _    _    _    _    _    _    _    _    _    -    =    _     _    _    _     _    _    _    _
 	_    ]    q    w    e    r    t    y    u    i    o    p    [    _     _    _    _     _    _    _    _
 	_    '    a    s    d    f    g    h    j    k    l    ;    _                          _    _    _
-	_    /    z    x    c    v    b    n    m    ,    .    _                    _          _    _    _    _
+	lsft /    z    x    c    v    b    n    m    ,    .    rsft                 _          _    _    _    _
 	_    _    _              _              _    _    _    _               _    _    _     _    _
 
 	#| mute  |# _
