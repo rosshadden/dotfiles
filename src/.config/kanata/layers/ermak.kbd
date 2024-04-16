@@ -43,8 +43,8 @@
 	#| mute  |# (cmd nu -c "~/bin/cfg volume !")
 	#| volu  |# (cmd nu -c "~/bin/cfg volume +5")
 	#| vold  |# (cmd nu -c "~/bin/cfg volume -5")
-	#| brup  |# (cmd nu -c "~/bin/cfg brightness +5")
-	#| brdn  |# (cmd nu -c "~/bin/cfg brightness -5")
+	#| brup  |# (cmd nu -c "~/bin/cfg brightness +10")
+	#| brdn  |# (cmd nu -c "~/bin/cfg brightness -10")
 	#| blup  |# _
 	#| bldn  |# _
 	#| next  |# (cmd playerctl --player=%any,chromium next)

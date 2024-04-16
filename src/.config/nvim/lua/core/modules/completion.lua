@@ -1,5 +1,6 @@
 local cmp = require "cmp"
 local luasnip = require "luasnip"
+local lspkind = require "lspkind"
 
 --
 -- SETTINGS
@@ -122,6 +123,7 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
+		{ name = "copilot" },
 		{ name = "codeium" },
 	}, {
 		{ name = "neorg" },
@@ -146,3 +148,13 @@ cmp.setup.cmdline(":", {
 		{ name = "cmdline" },
 	}),
 })
+
+-- lspkind
+
+lspkind.init({
+	symbol_map = {
+		Copilot = "",
+	},
+})
+
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg ="#6CC644" })

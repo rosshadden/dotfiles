@@ -29,6 +29,7 @@ local plugins = function()
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-path",
+			"onsails/lspkind.nvim",
 		},
 
 		-- snippets
@@ -60,6 +61,21 @@ local plugins = function()
 		"monaqa/dial.nvim",
 
 		-- integration
+		{
+			"zbirenbaum/copilot.lua",
+			config = function()
+				require("copilot").setup({
+					suggestion = { enabled = false },
+					panel = { enabled = false },
+				})
+			end
+		},
+		{
+			"zbirenbaum/copilot-cmp",
+			config = function ()
+				require("copilot_cmp").setup()
+			end
+		},
 		{
 			"Exafunction/codeium.nvim",
 			dependencies = {
