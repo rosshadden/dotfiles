@@ -1,5 +1,7 @@
 # apps
 
+src/.config/copyq/*.dat
+src/.config/copyq/*.lock
 src/.config/copyq/.copyq_m
 src/.config/copyq/.copyq_s
 src/.config/copyq/copyq-bak.conf
