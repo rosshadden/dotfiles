@@ -67,9 +67,9 @@ export def fzf-history [
 # Attach to existing session, or create new.
 # If inside a session already, rename it.
 export def ta [
-	...params: string # Optional name. Defaults to name of current directory.
+	name?: string # Optional name. Defaults to name of current directory.
 ] {
-	let name = (if ($params | length) == 1 { $params } else { basename (pwd) | str trim })
+	let name = if ($name | is-empty) { pwd | basename $in } else { $name }
 	let isTmux = "TMUX" in ($env | transpose keys | get keys)
 	if $isTmux {
 		tmux rename-session $name
@@ -81,9 +81,9 @@ export def ta [
 
 # Attach to existing session using fzf'd list
 export def tj [
-	...params: string # Optional name. Defaults to name of current directory.
+	name?: string # Optional name. Defaults to name of current directory.
 ] {
-	let name = (if ($params | length) == 1 { $params } else { tmux list-sessions -F '#{session_name}' | fzf })
+	let name = if ($name | is-empty) { tmux list-sessions -F '#{session_name}' | fzf } else { $name }
 	ta $name
 }
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-# @depends `tmux`
-# @depends `tmuxp`
-# @depends `fasd`
+# @depends tmux
+# @depends tmuxp
+# @depends zoxide
 
 # TODO: [handle options](http://www.bahmanm.com/blogs/command-line-options-how-to-parse-in-bash-using-getopt)
 # TODO: make a "kill" or "clean" project, which kills tmux sessions
@@ -26,7 +26,7 @@ if tmux list-sessions | grep "^${name}:"; then
 	exit
 fi
 
-path=${2:-$(fasd -d "$name")}
+path=${2:-$(zoxide query "$name")}
 path=${path:-.}
 
 # start in target dir
