@@ -26,8 +26,7 @@ def process [line: string] {
 	let event = $line | parse "{type}>>{data}" | first
 	match $event.type {
 		monitoradded | monitorremoved => {
-			# TODO: fix
-			sleep 5sec
+			sleep 2sec
 			bars
 		},
 		activewindowv2 => {
