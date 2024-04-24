@@ -1,6 +1,6 @@
 local augend = require "dial.augend"
 local dial = require "dial.map"
-local inMotion = require "in-motion"
+local in_motion = require "in-motion"
 
 --
 -- SETTINGS
@@ -17,11 +17,6 @@ vim.opt.wrap = false
 -- MAPPINGS
 --
 
--- prefix
-vim.keymap.set("n", "<space>S", "<plug><surround>", { silent = true })
-
-vim.keymap.set("n", "S", "s$", { silent = true, remap = true })
-
 -- increment/decrement
 vim.keymap.set("n", "<C-a>", dial.inc_normal(), { noremap = true })
 vim.keymap.set("n", "<C-x>", dial.dec_normal(), { noremap = true })
@@ -30,28 +25,16 @@ vim.keymap.set("n", "<C-x>", dial.dec_normal(), { noremap = true })
 -- SETUP
 --
 
-inMotion.put.setup()
-inMotion.sort.setup()
+in_motion.put.setup()
+in_motion.sort.setup()
 
 require("Comment").setup()
 
-require("mini.ai").setup()
 require("mini.align").setup()
 require("mini.cursorword").setup()
 -- require("mini.pairs").setup()
+require("mini.surround").setup()
 require("mini.trailspace").setup()
-
-require("mini.surround").setup {
-	mappings = {
-		add = "s",
-		delete = "ds",
-		replace = "cs",
-		find = "<plug><surround>l",
-		find_left = "<plug><surround>h",
-		highlight = "<plug><surround><space>",
-		update_n_lines = "<plug><surround>c",
-	}
-}
 
 local constant = function(elements, options)
 	options = options or {}
