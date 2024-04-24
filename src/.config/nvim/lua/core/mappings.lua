@@ -4,3 +4,6 @@ vim.keymap.set("", "<leader>;", ";", { noremap = true })
 
 -- redo
 vim.keymap.set("n", "U", "<c-r>", { noremap = true, silent = true })
+
+-- find
+vim.keymap.set("", "/", "/\\v", { noremap = true })

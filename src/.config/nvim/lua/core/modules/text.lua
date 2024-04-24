@@ -53,36 +53,36 @@ require("mini.surround").setup {
 	}
 }
 
+local constant = function(elements, options)
+	options = options or {}
+	options.elements = elements
+	if options.preserve_case == nil then options.preserve_case = true end
+	return augend.constant.new(options)
+end
+
 require("dial.config").augends:register_group {
 	default = {
+		augend.case.new { types = { "camelCase", "snake_case" } },
+		augend.case.new { types = { "kebab-case", "snake_case" } },
+		augend.constant.alias.bool,
+		augend.date.alias["%H:%M"],
+		augend.date.alias["%Y-%m-%d"],
+		augend.date.alias["%Y/%m/%d"],
+		augend.date.alias["%m/%d"],
+		augend.date.alias["%m/%d/%Y"],
+		augend.integer.alias.binary,
 		augend.integer.alias.decimal_int,
 		augend.integer.alias.hex,
-		augend.date.alias["%Y/%m/%d"],
-		augend.date.alias["%Y-%m-%d"],
-		augend.date.alias["%m/%d"],
-		augend.date.alias["%H:%M"],
-
-		augend.constant.alias.bool,
-		augend.date.alias["%m/%d/%Y"],
+		augend.integer.alias.octal,
 		augend.semver.alias.semver,
-
-    augend.constant.new {
-			elements = { "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun" },
-		},
-		augend.constant.new {
-			elements = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" },
-		},
-    augend.constant.new {
-			elements = { "yes", "no" },
-		},
-    augend.constant.new {
-			elements = { "on", "off" },
-		},
-    augend.constant.new {
-			elements = { "start", "stop" },
-		},
-    augend.constant.new {
-			elements = { "high", "low" },
-		},
+		constant({ "&&", "||" }, { word = false }),
+		constant({ "and", "or" }),
+		constant({ "before", "after" }, { word = false }),
+		constant({ "high", "low" }),
+		constant({ "mon", "tues", "wed", "thurs", "fri", "sat", "sun" }),
+		constant({ "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday" }, { word = false }),
+		constant({ "on", "off" }),
+		constant({ "start", "stop" }),
+		constant({ "yes", "no" }),
 	},
 }
