@@ -45,78 +45,18 @@ vim.keymap.set("", "<plug><polyword>S", function() polyword.transform("snake-upp
 vim.keymap.set("", "<plug><polyword>k", function() polyword.transform("kebab") end, { silent = true })
 vim.keymap.set("", "<plug><polyword>K", function() polyword.transform("kebab-upper") end, { silent = true })
 
--- in/around line
-
--- make_textobject("il", function()
--- 	vim.api.nvim_feedkeys("^og_", "xt", true)
--- end)
-
--- make_textobject("al", function()
--- 	vim.api.nvim_feedkeys("0o$", "xt", true)
--- end)
-
--- in/around indent
-
--- make_textobject("ii", function()
--- 	if vim.api.nvim_get_current_line() == "" then return end
---
--- 	local pos = vim.api.nvim_win_get_cursor(0)
--- 	local lastLine = vim.api.nvim_buf_line_count(0)
--- 	local line = pos[1]
--- 	local selection = { line, line }
--- 	local level = vim.fn.indent(line)
---
--- 	local l = line
--- 	while l > 1 do
--- 		l = l - 1
--- 		if vim.fn.indent(l) < level then break end
--- 		selection[1] = l
--- 	end
---
--- 	l = line
--- 	while l < lastLine do
--- 		l = l + 1
--- 		if vim.fn.indent(l) < level then break end
--- 		selection[2] = l
--- 	end
---
--- 	-- print("debug", vim.api.nvim_get_current_line() == "")
--- 	vim.api.nvim_feedkeys(selection[1] .. "G0o" .. selection[2] .. "G$", "xt", true)
--- end)
-
--- make_textobject("ai", function()
--- 	if vim.api.nvim_get_current_line() == "" then return end
---
--- 	local pos = vim.api.nvim_win_get_cursor(0)
--- 	local lastLine = vim.api.nvim_buf_line_count(0)
--- 	local line = pos[1]
--- 	local selection = { line, line }
--- 	local level = vim.fn.indent(line)
---
--- 	local l = line
--- 	while l > 1 and (vim.fn.indent(l) >= level or vim.fn.getline(line) == "") do
--- 		l = l - 1
--- 	end
--- 	selection[1] = l
---
--- 	l = line
--- 	while l < lastLine and (vim.fn.indent(l) >= level or vim.fn.getline(line) == "") do
--- 		l = l + 1
--- 	end
--- 	selection[2] = l
---
--- 	-- print("debug", vim.api.nvim_get_current_line() == "")
--- 	vim.api.nvim_feedkeys(selection[1] .. "G0o" .. selection[2] .. "G$", "xt", true)
--- end)
-
 --
 -- SETUP
 --
 
+require("mini.bracketed").setup()
+require("mini.indentscope").setup()
+require("mini.operators").setup()
+
 mini_ai.setup({
 	custom_textobjects = {
-		-- current line
-		L = function()
+		-- current line/row
+		r = function()
 			local line = vim.api.nvim_win_get_cursor(0)[1]
 			return {
 				from = { line = line, col = 1 },
