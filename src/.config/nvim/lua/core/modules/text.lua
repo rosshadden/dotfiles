@@ -13,14 +13,6 @@ vim.opt.spelllang = "en_us"
 vim.opt.wrap = false
 
 --
--- MAPPINGS
---
-
--- increment/decrement
-vim.keymap.set("n", "<C-a>", dial.inc_normal(), { noremap = true })
-vim.keymap.set("n", "<C-x>", dial.dec_normal(), { noremap = true })
-
---
 -- SETUP
 --
 
@@ -65,3 +57,11 @@ require("dial.config").augends:register_group {
 		constant({ "yes", "no" }),
 	},
 }
+
+--
+-- MAPPINGS
+--
+
+-- increment/decrement
+vim.keymap.set("n", "<C-a>", dial.inc_normal(), { noremap = true })
+vim.keymap.set("n", "<C-x>", dial.dec_normal(), { noremap = true })

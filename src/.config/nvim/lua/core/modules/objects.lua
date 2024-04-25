@@ -1,6 +1,32 @@
 local polyword = require "polyword"
 
 --
+-- SETUP
+--
+
+require("mini.bracketed").setup()
+require("mini.extra").setup()
+require("mini.indentscope").setup()
+require("mini.operators").setup()
+
+require("mini.ai").setup({
+	custom_textobjects = {
+		-- current line/row
+		r = MiniExtra.gen_ai_spec.line(),
+
+		-- entire buffer
+		e = function()
+			local from = { line = 1, col = 1 }
+			local to = {
+				line = vim.fn.line('$'),
+				col = math.max(vim.fn.getline('$'):len(), 1)
+			}
+			return { from = from, to = to, vis_mode = 'V' }
+		end
+	}
+})
+
+--
 -- FUNCTIONS
 --
 
@@ -41,29 +67,3 @@ vim.keymap.set("", "<plug><polyword>s", function() polyword.transform("snake") e
 vim.keymap.set("", "<plug><polyword>S", function() polyword.transform("snake-upper") end, { silent = true })
 vim.keymap.set("", "<plug><polyword>k", function() polyword.transform("kebab") end, { silent = true })
 vim.keymap.set("", "<plug><polyword>K", function() polyword.transform("kebab-upper") end, { silent = true })
-
---
--- SETUP
---
-
-require("mini.bracketed").setup()
-require("mini.extra").setup()
-require("mini.indentscope").setup()
-require("mini.operators").setup()
-
-require("mini.ai").setup({
-	custom_textobjects = {
-		-- current line/row
-		r = MiniExtra.gen_ai_spec.line(),
-
-		-- entire buffer
-		e = function()
-			local from = { line = 1, col = 1 }
-			local to = {
-				line = vim.fn.line('$'),
-				col = math.max(vim.fn.getline('$'):len(), 1)
-			}
-			return { from = from, to = to, vis_mode = 'V' }
-		end
-	}
-})

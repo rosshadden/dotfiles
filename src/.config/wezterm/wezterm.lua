@@ -1,7 +1,7 @@
 local wezterm = require "wezterm"
 local act = wezterm.action
 
-local scheme = wezterm.get_builtin_color_schemes()["Paraiso Dark"]
+local scheme = wezterm.get_builtin_color_schemes()["Synthwave Alpha (Gogh)"]
 
 local config = {
 	key_tables = {},
@@ -28,11 +28,11 @@ local config = {
 	enable_wayland = true,
 
 	-- ui
-	color_scheme = "Paraiso Dark",
+	color_scheme = "main",
 	color_schemes = {
-		["Paraiso Dark"] = scheme,
+		["main"] = scheme,
 	},
-	window_background_opacity = 0.90,
+	-- window_background_opacity = 0.90,
 
 	-- cursor
 	force_reverse_video_cursor = true,

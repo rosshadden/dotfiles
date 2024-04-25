@@ -13,6 +13,14 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 --
+-- SETUP
+--
+
+tmuxNav.setup {
+	disable_when_zoomed = true,
+}
+
+--
 -- MAPPINGS
 --
 
@@ -85,11 +93,3 @@ vim.keymap.set({ "", "i" }, "<c-bs>", tmuxNav.NvimTmuxNavigateLastActive, { sile
 
 -- terminal
 vim.keymap.set("n", "<plug><buffers>t", ":terminal<cr>", { silent = true })
-
---
--- SETUP
---
-
-tmuxNav.setup {
-	disable_when_zoomed = true,
-}

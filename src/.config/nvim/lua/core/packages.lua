@@ -123,7 +123,6 @@ local plugins = function()
 		"echasnovski/mini.nvim",
 
 		-- ui
-		"RRethy/nvim-base16",
 		"kyazdani42/nvim-web-devicons",
 
 		-- languages
