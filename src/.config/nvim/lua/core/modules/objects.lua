@@ -1,5 +1,4 @@
 local polyword = require "polyword"
-local mini_ai = require("mini.ai")
 
 --
 -- FUNCTIONS
@@ -17,8 +16,6 @@ end
 -- polyword
 
 -- prefix
-vim.keymap.set("", "<space>p", "<plug><put-in-motion>", { silent = true })
-vim.keymap.set("", "<space>s", "<plug><sort-in-motion>", { silent = true })
 vim.keymap.set("n", "<space>m", "<plug><polyword>", { silent = true })
 
 -- miniword
@@ -50,19 +47,14 @@ vim.keymap.set("", "<plug><polyword>K", function() polyword.transform("kebab-upp
 --
 
 require("mini.bracketed").setup()
+require("mini.extra").setup()
 require("mini.indentscope").setup()
 require("mini.operators").setup()
 
-mini_ai.setup({
+require("mini.ai").setup({
 	custom_textobjects = {
 		-- current line/row
-		r = function()
-			local line = vim.api.nvim_win_get_cursor(0)[1]
-			return {
-				from = { line = line, col = 1 },
-				to = { line = line, col = math.max(vim.fn.getline(line):len(), 1) }
-			}
-		end,
+		r = MiniExtra.gen_ai_spec.line(),
 
 		-- entire buffer
 		e = function()

@@ -1,5 +1,3 @@
-local starter = require "mini.starter"
-
 --
 -- SETTINGS
 --
@@ -36,14 +34,25 @@ vim.cmd [[
 ]]
 
 -- startup menu
-starter.setup({
+local mini_starter = require "mini.starter"
+mini_starter.setup({
 	items = {
-		starter.sections.builtin_actions(),
-		starter.sections.recent_files(10, true),
-		starter.sections.pick(),
-		starter.sections.sessions(),
-		starter.sections.telescope(),
+		mini_starter.sections.builtin_actions(),
+		mini_starter.sections.recent_files(10, true),
+		mini_starter.sections.pick(),
+		mini_starter.sections.sessions(),
+		mini_starter.sections.telescope(),
 	},
+})
+
+--
+-- SETUP
+--
+
+-- animations
+require("mini.animate").setup({
+	open = { enable = false },
+	close = { enable = false },
 })
 
 --

@@ -42,7 +42,6 @@ local plugins = function()
 		},
 
 		-- text
-		"rosshadden/in-motion.nvim",
 		"numToStr/Comment.nvim",
 
 		-- navigation

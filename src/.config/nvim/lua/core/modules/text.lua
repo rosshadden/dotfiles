@@ -1,6 +1,5 @@
 local augend = require "dial.augend"
 local dial = require "dial.map"
-local in_motion = require "in-motion"
 
 --
 -- SETTINGS
@@ -24,9 +23,6 @@ vim.keymap.set("n", "<C-x>", dial.dec_normal(), { noremap = true })
 --
 -- SETUP
 --
-
-in_motion.put.setup()
-in_motion.sort.setup()
 
 require("Comment").setup()
 

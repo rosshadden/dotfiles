@@ -29,15 +29,16 @@ vim.keymap.set({ "n", "v" }, "<plug><copy>/", [["/]], { silent = true, noremap =
 -- expression register
 vim.keymap.set({ "n", "v" }, "<plug><copy>=", [["=]], { silent = true, noremap = true })
 
--- read-only [
-	-- insert register
-	vim.keymap.set({ "n", "v" }, "<plug><copy>i", [[".]], { silent = true, noremap = true })
+-- read-only
 
-	-- command register
-	vim.keymap.set({ "n", "v" }, "<plug><copy>;", [[":]], { silent = true, noremap = true })
+-- insert register
+vim.keymap.set({ "n", "v" }, "<plug><copy>i", [[".]], { silent = true, noremap = true })
 
-	-- file register
-	vim.keymap.set({ "n", "v" }, "<plug><copy>f", [["%]], { silent = true, noremap = true })
+-- command register
+vim.keymap.set({ "n", "v" }, "<plug><copy>;", [[":]], { silent = true, noremap = true })
 
-	-- alt-file register
-	vim.keymap.set({ "n", "v" }, "<plug><copy>F", [["#]], { silent = true, noremap = true })
+-- file register
+vim.keymap.set({ "n", "v" }, "<plug><copy>f", [["%]], { silent = true, noremap = true })
+
+-- alt-file register
+vim.keymap.set({ "n", "v" }, "<plug><copy>F", [["#]], { silent = true, noremap = true })

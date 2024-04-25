@@ -39,6 +39,7 @@ local config = {
 
 	-- more native keys
 	enable_csi_u_key_encoding = true,
+	enable_kitty_keyboard = true,
 
 	-- quick select keys
 	quick_select_alphabet = "cieansthbyouvwdl,kj.rm",
