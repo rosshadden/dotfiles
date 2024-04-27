@@ -55,8 +55,8 @@ mini_base16.setup({
 		-- base0E = "#815ba4",
 		-- base0F = "#e96ba8",
 
-		base00 = "#271C3A",
-		base01 = "#100323",
+		base00 = "#100323",
+		base01 = "#271C3A",
 		base02 = "#3E2D5C",
 		base03 = "#5D5766",
 		base04 = "#BEBCBF",
@@ -70,7 +70,7 @@ mini_base16.setup({
 		base0C = "#7263AA",
 		base0D = "#8E7DC6",
 		base0E = "#953B9D",
-		base0F = "#59325C",
+		base0F = "#e96ba8",
 	},
 	use_cterm = true,
 })

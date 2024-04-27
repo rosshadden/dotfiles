@@ -123,7 +123,7 @@ local plugins = function()
 		"echasnovski/mini.nvim",
 
 		-- ui
-		"kyazdani42/nvim-web-devicons",
+		"nvim-tree/nvim-web-devicons",
 
 		-- languages
 		{ "aklt/plantuml-syntax", { "weirongxu/plantuml-previewer.vim", dependencies = "tyru/open-browser.vim" } },

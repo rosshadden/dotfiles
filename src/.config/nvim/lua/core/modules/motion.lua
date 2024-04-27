@@ -121,12 +121,14 @@ end, { silent = true, noremap = true })
 
 -- anywhere
 
-vim.keymap.set("", "<plug><motion>a", function()
-	hop.hint_anywhere()
-end, { silent = true, noremap = true })
+vim.keymap.set("", "<plug><motion>a", hop.hint_anywhere, { silent = true, noremap = true })
 
 -- integration
 
-vim.keymap.set("", "<plug><motion>r", function()
-	hop_ts.hint_nodes()
-end, { silent = true, noremap = true })
+vim.keymap.set("", "<plug><motion>r", hop_ts.hint_nodes, { silent = true, noremap = true })
+
+-- actions
+
+local hop_yank = require("hop-yank")
+vim.keymap.set("", "<plug><motion>y", hop_yank.yank_char1, { silent = true, noremap = true })
+vim.keymap.set("", "<plug><motion>p", hop_yank.paste_char1, { silent = true, noremap = true })

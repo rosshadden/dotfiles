@@ -1,7 +1,8 @@
 local wezterm = require "wezterm"
 local act = wezterm.action
 
-local scheme = wezterm.get_builtin_color_schemes()["Synthwave Alpha (Gogh)"]
+local theme = "Synthwave Alpha (Gogh)"
+local scheme = wezterm.get_builtin_color_schemes()[theme]
 
 local config = {
 	key_tables = {},
