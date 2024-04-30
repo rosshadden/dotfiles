@@ -17,6 +17,16 @@ hop.setup {
 }
 
 --
+-- SETUP
+--
+
+require("mini.jump2d").setup({
+	mappings = {
+		start_jumping = ",",
+	},
+})
+
+--
 -- MAPPINGS
 --
 

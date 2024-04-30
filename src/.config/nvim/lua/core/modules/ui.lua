@@ -116,6 +116,47 @@ mini_hipatterns.setup({
 	},
 })
 
+-- clues
+local mini_clue = require("mini.clue")
+mini_clue.setup({
+	triggers = {
+		-- completions
+		{ mode = "i", keys = "<c-x>" },
+
+		-- goto
+		{ mode = "n", keys = "g" },
+		{ mode = "x", keys = "g" },
+
+		-- marks
+		{ mode = "n", keys = "'" },
+		{ mode = "n", keys = "`" },
+		{ mode = "x", keys = "'" },
+		{ mode = "x", keys = "`" },
+
+		-- registers
+		{ mode = "n", keys = '"' },
+		{ mode = "x", keys = '"' },
+		{ mode = "i", keys = "<c-r>" },
+		{ mode = "c", keys = "<c-r>" },
+
+		-- windows
+		{ mode = "n", keys = "<c-w>" },
+
+		-- folds
+		{ mode = "n", keys = "z" },
+		{ mode = "x", keys = "z" },
+	},
+
+	clues = {
+		mini_clue.gen_clues.builtin_completion(),
+		mini_clue.gen_clues.g(),
+		mini_clue.gen_clues.marks(),
+		mini_clue.gen_clues.registers(),
+		mini_clue.gen_clues.windows(),
+		mini_clue.gen_clues.z(),
+	},
+})
+
 --
 -- FUNCTIONS
 --

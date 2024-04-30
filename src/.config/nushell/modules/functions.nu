@@ -2,7 +2,7 @@
 ## SHORTCUTS
 ##
 
-export def l [dir: string = "."] {
+export def l [dir: glob = "."] {
 	ls -la $dir | if ($in | is-empty) {} else { select name type size target mode user group modified }
 }
 
