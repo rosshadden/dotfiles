@@ -8,6 +8,7 @@ require("mini.bracketed").setup()
 require("mini.extra").setup()
 require("mini.indentscope").setup()
 require("mini.operators").setup()
+require("mini.splitjoin").setup()
 
 require("mini.ai").setup({
 	custom_textobjects = {

@@ -16,6 +16,8 @@ vim.opt.splitright = true
 -- SETUP
 --
 
+require("mini.bufremove").setup()
+
 tmuxNav.setup {
 	disable_when_zoomed = true,
 }

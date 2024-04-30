@@ -7,6 +7,12 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 
 --
+-- SETUP
+--
+
+require("mini.tabline").setup()
+
+--
 -- MAPPINGS
 --
 

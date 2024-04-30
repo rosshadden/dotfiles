@@ -156,17 +156,3 @@ mini_clue.setup({
 		mini_clue.gen_clues.z(),
 	},
 })
-
---
--- FUNCTIONS
---
-
-local group = vim.api.nvim_create_augroup("yank-highlight", {})
-
--- highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
-	group = group,
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-})

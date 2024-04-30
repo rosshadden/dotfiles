@@ -41,9 +41,6 @@ local plugins = function()
 			"Metalymph/zig-snippets",
 		},
 
-		-- text
-		"numToStr/Comment.nvim",
-
 		-- navigation
 		{
 			"nvim-telescope/telescope.nvim",

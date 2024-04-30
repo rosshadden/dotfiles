@@ -9,11 +9,21 @@ vim.opt.shortmess = "actIO"
 vim.opt.mouse = "ar"
 
 --
+-- SETUP
+--
+
+require("mini.basics").setup()
+
+--
 -- MAPPINGS
 --
 
 -- prefix
 vim.keymap.set("n", "<space>a", "<plug><app>", { silent = true, noremap = true })
+
+-- restore default mappings
+vim.keymap.del({ "n", "x" }, "j")
+vim.keymap.del({ "n", "x" }, "k")
 
 -- quit
 vim.keymap.set("n", "<plug><app>q", ":quitall<cr>", { silent = true, noremap = true })

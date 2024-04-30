@@ -1,5 +1,4 @@
 local configs = require "nvim-treesitter.configs"
-local ft = require "Comment.ft"
 local lsp = require "lspconfig"
 local lspUtils = require "lspconfig.util"
 local parsers = require("nvim-treesitter.parsers").get_parser_configs()
@@ -13,11 +12,11 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 vim.g["plantuml_previewer#plantuml_jar_path"] = "/usr/share/java/plantuml/plantuml.jar"
 
-ft.set("gdscript", "#%s")
-
 --
 -- SETUP
 --
+
+require("mini.comment").setup()
 
 vim.filetype.add({
 	extension = {
