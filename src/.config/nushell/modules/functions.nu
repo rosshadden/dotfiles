@@ -64,6 +64,17 @@ export def fzf-history [
 	(history | get command | reverse | to text | fzf --prompt "HISTORY> " --query $"($query)")
 }
 
+# Open
+export def pj [] {
+	wezterm cli spawn --cwd . -- nu -e nvim
+	wezterm cli spawn --cwd . -- nu
+		| wezterm cli split-pane --pane-id $in --left nu -e tigs
+	wezterm cli activate-pane-direction left
+	wezterm cli spawn --cwd . -- nu
+	wezterm cli activate-tab --tab-index 0
+	wezterm cli kill-pane
+}
+
 # Attach to existing session, or create new.
 # If inside a session already, rename it.
 export def ta [

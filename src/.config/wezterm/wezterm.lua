@@ -114,8 +114,8 @@ config.key_tables.tabs = {
 	{ key = "`", action = act{ ActivateTab = -1 } },
 
 	{ key = "n", action = act.SpawnTab("CurrentPaneDomain") },
-	{ key = "c", action = act{ CloseCurrentTab = { confirm = true } } },
-	{ key = "C", action = act{ CloseCurrentTab = { confirm = false } } },
+	{ key = "q", action = act{ CloseCurrentTab = { confirm = true } } },
+	{ key = "Q", action = act{ CloseCurrentTab = { confirm = false } } },
 
 	{ key = "h", action = act{ ActivateTabRelative = -1 } },
 	{ key = "l", action = act{ ActivateTabRelative = 1 } },
@@ -134,8 +134,8 @@ config.key_tables.panes = {
 	{ key = "Space", action = act{ PaneSelect = {} } },
 	{ key = "s", action = act{ PaneSelect = { mode = "SwapWithActive" } } },
 
-	{ key = "c", action = act{ CloseCurrentPane = { confirm = true } } },
-	{ key = "C", action = act{ CloseCurrentPane = { confirm = false } } },
+	{ key = "q", action = act{ CloseCurrentPane = { confirm = true } } },
+	{ key = "Q", action = act{ CloseCurrentPane = { confirm = false } } },
 
 	{ key = "j", action = act{ SplitPane = { direction = "Down" } } },
 	{ key = "k", action = act{ SplitPane = { direction = "Up" } } },

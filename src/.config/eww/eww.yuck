@@ -15,6 +15,7 @@
   :interval "1s"
   "ponymix --source is-muted && echo [mic muted] || echo")
 
+; TODO: indicate active workspace on inactive monitor
 (defwidget workspaces [monitor]
   (box
     (for ws in workspaces
