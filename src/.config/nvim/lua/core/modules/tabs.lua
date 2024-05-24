@@ -10,7 +10,7 @@ vim.opt.shiftwidth = 2
 -- SETUP
 --
 
-require("mini.tabline").setup()
+-- require("mini.tabline").setup()
 
 --
 -- MAPPINGS

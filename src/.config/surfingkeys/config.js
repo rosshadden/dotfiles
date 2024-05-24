@@ -36,8 +36,6 @@ function mappings() {
 
 	// TABS
 
-	// close
-	alias("D", "x", true);
 	// reopen
 	alias("u", "X", true);
 	// mute
@@ -69,6 +67,7 @@ function mappings() {
 function unmappings() {
 	api.unmap("C");
 	api.unmap("d");
+	api.unmap("D");
 
 	// disable emojis
 	api.iunmap(":");

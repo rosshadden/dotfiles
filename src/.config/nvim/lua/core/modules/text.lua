@@ -31,8 +31,6 @@ end
 
 require("dial.config").augends:register_group {
 	default = {
-		augend.case.new { types = { "camelCase", "snake_case" } },
-		augend.case.new { types = { "kebab-case", "snake_case" } },
 		augend.constant.alias.bool,
 		augend.date.alias["%H:%M"],
 		augend.date.alias["%Y-%m-%d"],
@@ -44,6 +42,7 @@ require("dial.config").augends:register_group {
 		augend.integer.alias.hex,
 		augend.integer.alias.octal,
 		augend.semver.alias.semver,
+
 		constant({ "&&", "||" }, { word = false }),
 		constant({ "and", "or" }),
 		constant({ "before", "after" }, { word = false }),
@@ -52,6 +51,7 @@ require("dial.config").augends:register_group {
 		constant({ "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday" }, { word = false }),
 		constant({ "on", "off" }),
 		constant({ "start", "stop" }),
+		constant({ "up", "down", "left", "right" }),
 		constant({ "yes", "no" }),
 	},
 }
