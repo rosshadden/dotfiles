@@ -44,4 +44,8 @@
 .bottom {
 	@include bar;
 	@include bottom;
+
+	.abnormal {
+		background-color: red;
+	}
 }

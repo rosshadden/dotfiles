@@ -39,10 +39,6 @@ def color [color: string] {
 }
 
 def prompt_left [] {
-	# TODO: verify working
-	print $"(ansi osc)2;($env.PWD)"
-	print $"(ansi osc)7;file://localhost($env.PWD)"
-
 	let dir = match (do -s { $env.PWD | path relative-to $nu.home-path }) {
 		null => $env.PWD
 		"" => "~"

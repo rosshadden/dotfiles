@@ -1,4 +1,4 @@
-(defvar mode "")
+(defvar mode "NORMAL")
 (defvar window "{}")
 (defvar workspace "{}")
 (defvar workspaces "[]")
@@ -49,7 +49,9 @@
 (defwidget info []
   (box
     (box
-      mode
+      (label
+        :class `${mode != "NORMAL" ? "abnormal" : ""}`
+        :text mode)
       "VOL ${volume}%"
       "${mic}")
     media
@@ -93,7 +95,9 @@
                       :width "200px"
                       :height "16px"
                       :anchor "top right")
-  (image :path "/home/ross/dev/src/ermak/data/kle/ermak.png"))
+  (box
+    (image :path "/home/ross/dev/src/ermak/data/kle/ermak.png")
+    (image :path "/home/ross/dev/src/ermak/data/kle/ermak-controller.png")))
 
 (defpoll eos
   :initial "{}"

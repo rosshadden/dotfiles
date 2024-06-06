@@ -1,3 +1,10 @@
+--
+-- MAPPINGS
+--
+
+-- delete word
+vim.keymap.set("i", "<c-backspace>", "<c-w>", { silent = true, noremap = true })
+
 -- prefix
 vim.keymap.set("n", "<space>d", "<plug><delete>", { silent = true })
 

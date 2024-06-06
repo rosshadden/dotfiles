@@ -1,6 +1,3 @@
-register /usr/bin/nu_plugin_inc
-register /usr/bin/nu_plugin_query
-
 use alias.nu *
 use completions.nu *
 use functions.nu *
@@ -21,7 +18,7 @@ $env.config = {
 	buffer_editor: "nvim" # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
 	use_ansi_coloring: true
 	edit_mode: vi # emacs, vi
-	shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
+	# shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
 	show_banner: false # true or false to enable or disable the banner
 	render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
 	use_kitty_protocol: true

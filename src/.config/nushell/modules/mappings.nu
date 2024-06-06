@@ -30,6 +30,13 @@ export def main [] {
 
 		{
 			mode: vi_insert
+			modifier: control
+			keycode: backspace
+			event: { edit: cutWordLeft }
+		}
+
+		{
+			mode: vi_insert
 			modifier: alt
 			keycode: char_b
 			event: { edit: moveWordLeft }
