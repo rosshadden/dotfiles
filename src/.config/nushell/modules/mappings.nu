@@ -164,8 +164,8 @@ export def main [] {
 
 		{
 			name: ide_completion_menu
-			modifier: control
-			keycode: char_s
+			modifier: alt
+			keycode: space
 			mode: [emacs vi_normal vi_insert]
 			event: {
 				until: [

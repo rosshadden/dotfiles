@@ -15,6 +15,10 @@
   :interval "1s"
   "ponymix --source is-muted && echo [mic muted] || echo")
 
+(defpoll vpn
+  :interval "60s"
+  "nu -l -c 'cu vpn status | get state'")
+
 ; TODO: indicate active workspace on inactive monitor
 (defwidget workspaces [monitor]
   (box
@@ -39,8 +43,10 @@
     (box
       (workspaces :monitor monitor)
       (title)
-      `🗓 ${formattime(EWW_TIME, "%Y-%m-%d")}`
-      `⏲ ${formattime(EWW_TIME, "%H:%M:%S")}`)))
+      (box
+        `🌐 ${vpn}`
+        `🗓 ${formattime(EWW_TIME, "%Y-%m-%d")}`
+        `⏲ ${formattime(EWW_TIME, "%H:%M:%S")}`))))
 
 (deflisten media
   :initial ""

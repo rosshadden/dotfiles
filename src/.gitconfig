@@ -65,24 +65,24 @@
 [alias]
 	# SHORTHAND
 
-	a = add
-	b = branch
-	c = commit
+	a  = add
+	b  = branch
+	c  = commit
 	cl = clone --recursive
 	co = checkout
-	d = diff
-	f = fetch -p --tags --jobs=4
-	fa = fetch -p --tags --all --jobs=4
-	i = !git in
-	m = merge
+	d  = diff
+	f  = fetch --prune --tags --jobs=4
+	fa = fetch --prune --tags --jobs=4 --all
+	i  = !git in
+	m  = merge
 	mt = mergetool
-	o = !git out
+	o  = !git out
 	of = !git out-force
 	op = !git please
-	r = remote
+	r  = remote
 	rb = rebase
-	s = status -sb
-	t = tag
+	s  = status -sb
+	t  = tag
 
 	# SYNC
 
