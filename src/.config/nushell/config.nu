@@ -135,4 +135,4 @@ $env.config = {
 	}
 }
 
-source ~/local/config.nu
+export use ~/local/config.nu *

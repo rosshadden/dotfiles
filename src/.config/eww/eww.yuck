@@ -17,7 +17,7 @@
 
 (defpoll vpn
   :interval "60s"
-  "nu -l -c 'cu vpn status | get state'")
+  "nu -l -c 'cu vpn status | get --ignore-errors state | default null'")
 
 ; TODO: indicate active workspace on inactive monitor
 (defwidget workspaces [monitor]
@@ -44,7 +44,6 @@
       (workspaces :monitor monitor)
       (title)
       (box
-        `🌐 ${vpn}`
         `🗓 ${formattime(EWW_TIME, "%Y-%m-%d")}`
         `⏲ ${formattime(EWW_TIME, "%H:%M:%S")}`))))
 
@@ -58,8 +57,8 @@
       (label
         :class `${mode != "NORMAL" ? "abnormal" : ""}`
         :text mode)
-      "VOL ${volume}%"
-      "${mic}")
+      "VOL ${volume}% ${mic}"
+      `🌐 ${vpn}`)
     media
     (box
       "CPU ${round(EWW_CPU.avg, 0)}%"
@@ -67,8 +66,8 @@
       (box :visible {EWW_BATTERY != ""}
         {EWW_BATTERY == ""
          ? ``
-         : `${EWW_BATTERY?.BAT0?.capacity}% [${EWW_BATTERY?.BAT0?.status}]`}))
-    (systray :class "horizontal systray")))
+         : `${EWW_BATTERY?.BAT0?.capacity}% [${EWW_BATTERY?.BAT0?.status}]`})
+      (systray :class "horizontal systray"))))
 
 
 
