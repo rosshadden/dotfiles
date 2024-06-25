@@ -90,7 +90,8 @@ export def listen [] {
 		}
 	}
 	init
-	socat -u $"UNIX:($env.XDG_RUNTIME_DIR)/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock" -
+	# socat -u $"UNIX:($env.XDG_RUNTIME_DIR)/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock" -
+	socat -u $"UNIX:/tmp/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock" -
 	| lines -s
 	| each {|line|
 		process $line

@@ -1,12 +1,13 @@
 #!/usr/bin/env nu
 
-const api = "http://10.0.0.20:8123/api"
+const api = "http://hass.lan:8123/api"
 
 def request [endpoint: string, payload?: record] {
+	let headers = [ Authorization $"Bearer ($env.HASS_API_KEY?)" ]
 	let res = if $payload == null {
-		http get -H [Authorization $"Bearer (cat ~/Documents/certs/ha.cert)"] $"($api)($endpoint)"
+		http get -H $headers $"($api)($endpoint)"
 	} else {
-		http post -t application/json -H [Authorization $"Bearer (cat ~/Documents/certs/ha.cert)"] $"($api)($endpoint)" $payload
+		http post -t application/json -H $headers $"($api)($endpoint)" $payload
 	}
 	$res | to json -r | eww update $"eos=($in)"
 	$res
@@ -109,7 +110,8 @@ export def listen [] {
 			HYPRLAND_INSTANCE_SIGNATURE: (hyprctl instances -j | from json | get 0.instance)
 		}
 	}
-	socat -u $"UNIX:($env.XDG_RUNTIME_DIR)/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock" -
+	# socat -u $"UNIX:($env.XDG_RUNTIME_DIR)/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock" -
+	socat -u $"UNIX:/tmp/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock" -
 	| lines -s
 	| reduce -f null {|line, addr|
 		process $line $addr
