@@ -1,17 +1,20 @@
 export def main [] {
 	[
 
+		# complete hint (word)
+		{
+			mode: vi_insert
+			modifier: control
+			keycode: char_i
+			event: { send: historyHintWordComplete }
+		}
+
+		# complete hint (full)
 		{
 			mode: vi_insert
 			modifier: control
 			keycode: char_e
-			event: {
-				until: [
-					{ send: historyHintComplete }
-					{ send: menuRight }
-					{ edit: moveToLineEnd }
-				]
-			}
+			event: { send: historyHintComplete }
 		}
 
 		{
@@ -32,7 +35,7 @@ export def main [] {
 			mode: vi_insert
 			modifier: control
 			keycode: backspace
-			event: { edit: cutWordLeft }
+			event: { edit: backspaceWord }
 		}
 
 		{
@@ -58,13 +61,6 @@ export def main [] {
 
 		{
 			mode: vi_insert
-			modifier: alt
-			keycode: backspace
-			event: { edit: backspaceWord }
-		}
-
-		{
-			mode: vi_insert
 			modifier: control
 			keycode: char_u
 			event: { edit: cutFromStart }
@@ -74,7 +70,7 @@ export def main [] {
 			mode: [ vi_normal vi_insert ]
 			modifier: alt
 			keycode: enter
-			event: { edit: insertString, value: "\n" }
+			event: { edit: insertString, value: (char nl) }
 		}
 
 		{
@@ -91,7 +87,7 @@ export def main [] {
 			keycode: f5
 			event: {
 				send: executeHostCommand
-				cmd: $"source ($nu.config-path)"
+				cmd: "source $nu.config-path"
 			}
 		}
 
@@ -113,19 +109,31 @@ export def main [] {
 			keycode: char_s
 			event: {
 				send: executeHostCommand
-				cmd: "cd (zoxide query -i | str trim)"
+				cmd: "zoxide query -i | cd $in"
 			}
 		}
 
 		# qol
 
+		# input first word of prior command
+		{
+			mode: vi_insert
+			modifier: alt
+			keycode: "char_,"
+			event: {
+				send: executeHostCommand
+				cmd: "commandline edit --insert (history | last | get command | parse --regex `^(?P<val>[^ ]+)` | get val.0)"
+			}
+		}
+
+		# input last word of prior command
 		{
 			mode: vi_insert
 			modifier: alt
 			keycode: char_.
 			event: {
 				send: executeHostCommand
-				cmd: "commandline --insert (history | last | get command | parse --regex '(?P<arg>[^ ]+)$' | get arg | first)"
+				cmd: "commandline edit --insert (history | last | get command | parse --regex `(?P<val>[^ ]+)$` | get val.0)"
 			}
 		}
 

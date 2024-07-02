@@ -63,6 +63,7 @@ config.keys = {
 	{ mods = "LEADER|CTRL", key = "p", action = act.ActivateCommandPalette },
 
 	-- normalize
+	{ key = "Delete", action = act{ SendKey = { key = "Delete" } } },
 	{ mods = "SHIFT", key = " ", action = act{ SendString = " " } },
 	{ mods = "SHIFT", key = "Backspace", action = act{ SendKey = { key = "Backspace" } } },
 
