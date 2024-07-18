@@ -1,5 +1,5 @@
 type = process
-command = nu -l -c "eos listen"
+command = hyprpaper
 restart = true
-logfile = ./logs/eos.log
+logfile = ./logs/hyprpaper.log
 env-file = ./env/wayland.env

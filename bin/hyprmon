@@ -58,7 +58,7 @@ def process [line: string] {
 		},
 		urgent => {
 			let address = $"0x($event.data)"
-			let title = (hyprctl clients -j | from json | where address == $address | get 0.title)
+			let title = (hyprctl clients -j | from json | where address == $address | get -i 0.title | default "")
 			notify-send -A "focus=Focus" urgent $title
 			| str trim
 			| match $in {
@@ -83,6 +83,10 @@ def init [] {
 
 def main [] {}
 
+export def socket []: nothing -> string {
+	$"UNIX:($env | get -i XDG_RUNTIME_DIR | default tmp)/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock"
+}
+
 export def listen [] {
 	if not ("HYPRLAND_INSTANCE_SIGNATURE" in $env) {
 		load-env {
@@ -90,8 +94,7 @@ export def listen [] {
 		}
 	}
 	init
-	# socat -u $"UNIX:($env.XDG_RUNTIME_DIR)/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock" -
-	socat -u $"UNIX:/tmp/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock" -
+	socat -u (socket) -
 	| lines -s
 	| each {|line|
 		process $line

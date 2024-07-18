@@ -29,6 +29,7 @@
 	button {
 		@include top;
 
+		background: rgba(0, 0, 0, 0.0);
 		border: 1px solid rgba(0, 0, 0, 0.0);
 		border-top: 0;
 		padding: 0px;
@@ -48,4 +49,8 @@
 	.abnormal {
 		background-color: red;
 	}
+}
+
+.eos * {
+	background: #000000;
 }
