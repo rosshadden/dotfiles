@@ -44,6 +44,9 @@
       (workspaces :monitor monitor)
       (title)
       (box
+        (button
+          :onclick `hyprctl dispatch togglespecialworkspace scratch`
+          "scratch")
         `🗓 ${formattime(EWW_TIME, "%Y-%m-%d")}`
         `⏲ ${formattime(EWW_TIME, "%H:%M:%S")}`))))
 

@@ -44,6 +44,7 @@ require("dial.config").augends:register_group {
 		augend.semver.alias.semver,
 
 		constant({ "&&", "||" }, { word = false }),
+		constant({ "True", "False" }),
 		constant({ "and", "or" }),
 		constant({ "before", "after" }, { word = false }),
 		constant({ "high", "low" }),
