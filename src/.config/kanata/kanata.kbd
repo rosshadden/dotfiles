@@ -23,6 +23,7 @@
 (include ./layers/qwerty.kbd)
 (include ./layers/super.kbd)
 (include ./layers/system.kbd)
+(include ./layers/typing.kbd)
 
 ;; meta
 
