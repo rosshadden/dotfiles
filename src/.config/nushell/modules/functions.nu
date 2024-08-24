@@ -10,20 +10,29 @@ export def l [dir: glob = "."] {
 ## UTILS
 ##
 
+
+# Return whether the input is the given type
+export def is [
+	type: string
+]: any -> bool {
+	describe --detailed | $in.type == $type
+}
+
 # Duplicate files to another location.
 # Places them in the same folders relative to destination.
 export def dupe [
-	direction: string # whether to dupe `to` or `from` the $directory
-	directory: path # the directory to dupe to/from
+	direction: string # whether to dupe `to` or `from` the $path
+	path: path # the path to dupe to/from
 	...files: path # files to dupe
 ] {
 	if $direction == "to" {
-		^cp -r $files $directory
+		^cp -r $files $path
 	} else {
 		for file in $files {
-			cp -r $"($directory)/($file)" $file
+			cp -r $"($path)/($file)" $file
 		}
 	}
+	# TODO: mv (d cu down | ls -s $in | get name | to text | fzf -m | str trim | prepend (d cu down) | path  join) .
 }
 
 # Paste from clipboard
@@ -38,6 +47,32 @@ export def put [
 export def last-arg [] {
 	let cmd = (history | last)
 	$cmd | split row (char space) | last
+}
+
+# Print input and pass it on
+export def spy [] {
+	do {|input|
+		print $input
+		$input
+	} $in
+}
+
+
+# Render template using `tera-cli`
+export def rend [
+	template: string
+]: [
+	string -> string
+	record -> string
+] {
+	let temp_file = mktemp -t rend.XXX.tmp
+	$template | save -f $temp_file
+	let res = $in
+	| if ($in | is string) { from nuon } else {}
+	| to json --raw
+	| tera --stdin --template $temp_file
+	rm $temp_file
+	$res
 }
 
 ##

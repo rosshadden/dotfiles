@@ -25,76 +25,86 @@
     (for ws in workspaces
       (button
         :visible {ws.monitor == monitor.name}
-        :class `${ws.id == workspace.id ? "current" : ""}`
+        :class `ws ${ws.id == workspace.id ? "current" : ""}`
         :tooltip `${ws.lastwindowtitle}`
         :onclick `hyprctl dispatch workspace ${ws.name}`
         `${ws.id}: ${ws.name}`))))
-
-(defwidget title []
-  (label
-    :limit-width 48
-    :text `${window.title ?: ""}`))
 
 (defwidget bar [monitor]
   (eventbox
     :cursor "pointer"
     :onscroll `hyprctl dispatch focusmonitor ${monitor.name}; ~/bin/hyprmon change workspace ${monitor.name} {}`
     :onclick `hyprctl dispatch focusmonitor ${monitor.name}`
-    (box
+    :dragvalue "top"
+    :dragtype "text"
+    :ondropped "notify-send dropped {}"
+    (centerbox
       (workspaces :monitor monitor)
-      (title)
+      (label
+        :width `${monitor.width / monitor.scale / 2}`
+        :limit-width 128
+        :text `${window.title ?: ""}`)
       (box
-        (button
-          :onclick `hyprctl dispatch togglespecialworkspace scratch`
-          "scratch")
+        (eventbox
+          :ondropped "notify-send dropped {}"
+          "here")
         `🗓 ${formattime(EWW_TIME, "%Y-%m-%d")}`
-        `⏲ ${formattime(EWW_TIME, "%H:%M:%S")}`))))
+        `⏲ ${formattime(EWW_TIME, "%H:%M:%S")}`
+        ; TODO: color when populated
+        (button
+          :class "scratch"
+          :onclick `hyprctl dispatch togglespecialworkspace scratch`
+          "scratch")))))
 
 (deflisten media
   :initial ""
   `playerctl --follow metadata --format {{title}}`)
 
-(defwidget info []
-  (box
-    (box
+(defwidget info [monitor]
+  (eventbox
+    :dragvalue "bottom"
+    :dragtype "text"
+    (centerbox
+      (box
+        (label
+          :class `${mode != "NORMAL" ? "abnormal" : ""}`
+          :text mode)
+        "VOL ${volume}% ${mic}"
+        `🌐 ${vpn}`)
       (label
-        :class `${mode != "NORMAL" ? "abnormal" : ""}`
-        :text mode)
-      "VOL ${volume}% ${mic}"
-      `🌐 ${vpn}`)
-    media
-    (box
-      "CPU ${round(EWW_CPU.avg, 0)}%"
-      "RAM ${round(EWW_RAM.used_mem_perc, 0)}%"
-      (box :visible {EWW_BATTERY != ""}
-        {EWW_BATTERY == ""
-         ? ``
-         : `${EWW_BATTERY?.BAT0?.capacity}% [${EWW_BATTERY?.BAT0?.status}]`})
-      (systray :class "horizontal systray"))))
-
-
+        :width `${monitor.width / monitor.scale / 2}`
+        :text media)
+      (box
+        "CPU ${round(EWW_CPU.avg, 0)}%"
+        "RAM ${round(EWW_RAM.used_mem_perc, 0)}%"
+        (box :visible {EWW_BATTERY != ""}
+          {EWW_BATTERY == ""
+           ? ``
+           : `${EWW_BATTERY?.BAT0?.capacity}% [${EWW_BATTERY?.BAT0?.status}]`})
+        (systray
+          :class "horizontal systray")))))
 
 ; windows
 
 (defwindow top [monitor]
   :exclusive true
-  :stacking "fg"
+  :stacking "bg"
   :geometry (geometry :x "0%"
                       :y "0%"
-                      :width `${monitor.width / monitor.scale - 40}`
+                      :width "100%"
                       :height "16px"
                       :anchor "top center")
   (bar :monitor monitor))
 
 (defwindow bottom [monitor]
   :exclusive true
-  :stacking "fg"
+  :stacking "bg"
   :geometry (geometry :x "0%"
                       :y "0%"
-                      :width `${monitor.width / monitor.scale - 40}`
+                      :width "100%"
                       :height "16px"
                       :anchor "bottom center")
-  (info))
+  (info :monitor monitor))
 
 (defwindow debug []
   :stacking "bottom"
@@ -107,13 +117,15 @@
     (image :path "/home/ross/dev/src/ermak/data/kle/ermak.png")
     (image :path "/home/ross/dev/src/ermak/data/kle/ermak-controller.png")))
 
+; TODO: move to bar, right click to open menu
 (defpoll eos
   :initial "{}"
   :interval "60s"
   `nu -l -c 'eos | to json -r'`)
 (defwindow eos []
+  :stacking "bg"
   :geometry (geometry :x "10px"
-                      :y "-14px"
+                      :y "0px"
                       :width "200px"
                       :height "10px"
                       :anchor "bottom left")

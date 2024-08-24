@@ -6,6 +6,11 @@
 	color: #ffffff;
 }
 
+button {
+	background: rgba(0, 0, 0, 0.0);
+	padding: 0px 10px;
+}
+
 @mixin bar() {
 	background-color: #000000;
 	border-radius: 8px;
@@ -26,10 +31,9 @@
 	@include bar;
 	@include top;
 
-	button {
+	button.ws {
 		@include top;
 
-		background: rgba(0, 0, 0, 0.0);
 		border: 1px solid rgba(0, 0, 0, 0.0);
 		border-top: 0;
 		padding: 0px;
@@ -53,4 +57,7 @@
 
 .eos * {
 	background: #000000;
+}
+
+.scratch {
 }
