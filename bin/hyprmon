@@ -8,6 +8,12 @@ def "refresh workspaces" [] {
 	| to json --raw
 	| update workspaces $in
 
+	hyprctl workspaces -j
+	| from json
+	| where name =~ :scratch
+	| to json --raw
+	| update scratch $in
+
 	hyprctl activeworkspace -j
 	| update workspace $in
 }
@@ -50,7 +56,7 @@ def process [line: string] {
 				_ => { "" },
 			} | hyprctl dispatch renameworkspace $event.data $in
 		},
-		workspace | createworkspace | destroyworkspace | renameworkspace | focusedmon => {
+		workspace | createworkspace | destroyworkspace | renameworkspace | focusedmon | activespecial => {
 			refresh workspaces
 		},
 		submap => {

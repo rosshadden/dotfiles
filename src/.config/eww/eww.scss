@@ -60,4 +60,7 @@ button {
 }
 
 .scratch {
+	&.active {
+		background: red;
+	}
 }

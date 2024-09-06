@@ -1,4 +1,5 @@
 (defvar mode "NORMAL")
+(defvar scratch "[]")
 (defvar window "{}")
 (defvar workspace "{}")
 (defvar workspaces "[]")
@@ -9,11 +10,11 @@
 ; TODO: mouse events
 (defpoll volume
   :interval "1s"
-  "ponymix get-volume")
+  `echo "$(ponymix get-volume)% $(ponymix is-muted && echo [muted] || echo)"`)
 ; TODO: make cfg output structured data?
 (defpoll mic
   :interval "1s"
-  "ponymix --source is-muted && echo [mic muted] || echo")
+  "ponymix --source is-muted && echo [nomic] || echo")
 
 (defpoll vpn
   :interval "60s"
@@ -50,10 +51,11 @@
           "here")
         `🗓 ${formattime(EWW_TIME, "%Y-%m-%d")}`
         `⏲ ${formattime(EWW_TIME, "%H:%M:%S")}`
-        ; TODO: color when populated
         (button
-          :class "scratch"
+          :class `scratch ${(arraylength(scratch) > 0) ? "active" : ""}`
           :onclick `hyprctl dispatch togglespecialworkspace scratch`
+          :onrightclick `hyprctl dispatch workspace name:games`
+          :onmiddleclick `hyprctl dispatch workspace name:void`
           "scratch")))))
 
 (deflisten media
@@ -69,7 +71,7 @@
         (label
           :class `${mode != "NORMAL" ? "abnormal" : ""}`
           :text mode)
-        "VOL ${volume}% ${mic}"
+        "VOL ${volume} ${mic}"
         `🌐 ${vpn}`)
       (label
         :width `${monitor.width / monitor.scale / 2}`

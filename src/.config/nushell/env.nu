@@ -35,7 +35,7 @@ $env.PATH = (
 ##
 
 def color [color: string] {
-	each { |it| $"(ansi $color)($it)(ansi reset)" }
+	each { $"(ansi $color)($in)(ansi reset)" }
 }
 
 def prompt_left [] {
