@@ -183,7 +183,7 @@ local servers = {
 	"nickel_ls",
 	"nimls",
 	"rust_analyzer",
-	"tsserver",
+	"ts_ls",
 	"typst_lsp",
 	"zls",
 }

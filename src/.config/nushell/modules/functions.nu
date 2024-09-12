@@ -161,6 +161,25 @@ export def nu? [
 	}
 }
 
+# Get ip
+export def wimi [
+	--local (-l)
+]: nothing -> string {
+	if $local {
+		return (
+			ip --json addr
+			| from json
+			| where link_type == ether and addr_info.local != []
+			| get addr_info
+			| flatten
+			| where family == inet
+			| get local
+			| first
+		)
+	}
+	http get https://ipv4.icanhazip.com
+}
+
 # Load .env file in current directory.
 export def --env dotenv [] {
 	open .env

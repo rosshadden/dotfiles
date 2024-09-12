@@ -29,7 +29,7 @@ def process [
 	let data = $event.data | split row ','
 	match $event.type {
 		openwindow => {
-	print $event $data
+			print $event $data
 			if ($addr != null or $data.2 != "Zoom") { return $addr }
 			sleep 2sec
 
@@ -41,7 +41,7 @@ def process [
 				eos busy | print $in
 				return $window.address
 			}
-		},
+		}
 		closewindow => {
 			echo $addr $data
 			if ($addr == $data.0) {
@@ -53,8 +53,12 @@ def process [
 	return $addr
 }
 
+export def states []: nothing -> list {
+	[ off free focus busy ]
+}
+
 export def main [
-	state?: string, # off | free | focus | busy
+	state?: string@states
 	--format (-f): string
 ] {
 	const entity = "select.eos_status"
@@ -62,8 +66,8 @@ export def main [
 
 	if $state == null {
 		return (request $"/states/($entity)" | match $format {
-			json => { $in | to json -r },
-			_ => {},
+			json => { $in | to json -r }
+			_ => {}
 		})
 	}
 
@@ -72,16 +76,16 @@ export def main [
 	}
 
 	request $"/states/($entity)" {
-		state: $state,
+		state: $state
 	} | match $format {
-		json => { $in | to json -r },
-		nuon => { $in | to nuon },
-		_ => {},
+		json => { $in | to json -r }
+		nuon => { $in | to nuon }
+		_ => {}
 	}
 }
 
 export def led [
-	color?: string,
+	color?: string
 	--format (-f): string
 ] {
 	const entity = "light.eos_rgb_led"
@@ -89,17 +93,17 @@ export def led [
 
 	if $color == null {
 		return (request $"/states/($entity)" | match $format {
-			json => { $in | to json -r },
-			_ => {},
+			json => { $in | to json -r }
+			_ => {}
 		})
 	}
 
 	request $"/services/light/turn_on" {
-		entity_id: $entity,
-		color_name: $color,
+		entity_id: $entity
+		color_name: $color
 	} | match $format {
-		json => { $in | to json -r },
-		_ => {},
+		json => { $in | to json -r }
+		_ => {}
 	}
 }
 
@@ -124,7 +128,7 @@ export def listen [] {
 # proxy
 
 # export def "main led" [
-# 	color?: string,
+# 	color?: string
 # 	--format (-f): string
 # ] {
 # 	led $color --format $format

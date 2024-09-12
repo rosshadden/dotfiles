@@ -116,3 +116,4 @@ KC_S/!
 struct
 auth_results
 get_settings
+current/!

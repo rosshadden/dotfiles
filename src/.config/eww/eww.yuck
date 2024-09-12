@@ -72,7 +72,8 @@
           :class `${mode != "NORMAL" ? "abnormal" : ""}`
           :text mode)
         "VOL ${volume} ${mic}"
-        `🌐 ${vpn}`)
+        `🌐 ${vpn}`
+        (eos))
       (label
         :width `${monitor.width / monitor.scale / 2}`
         :text media)
@@ -119,19 +120,13 @@
     (image :path "/home/ross/dev/src/ermak/data/kle/ermak.png")
     (image :path "/home/ross/dev/src/ermak/data/kle/ermak-controller.png")))
 
-; TODO: move to bar, right click to open menu
 (defpoll eos
   :initial "{}"
   :interval "60s"
   `nu -l -c 'eos | to json -r'`)
-(defwindow eos []
-  :stacking "bg"
-  :geometry (geometry :x "10px"
-                      :y "0px"
-                      :width "200px"
-                      :height "10px"
-                      :anchor "bottom left")
+(defwidget eos []
   (combo-box-text
+    ; TODO: get list from `eos states`
     :items `[off, free, focus, busy]`
     :onchange `nu -l -c 'eos {}'`
-    `${eos.state}`))
+    `eos:${eos.state}`))
