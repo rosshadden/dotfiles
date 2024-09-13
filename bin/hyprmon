@@ -87,8 +87,11 @@ def init [] {
 }
 
 
-export def socket []: nothing -> string {
-	$"UNIX:($env | get -i XDG_RUNTIME_DIR | default tmp)/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock"
+export def socket [
+	--write (-w) # whether to get the writable socket
+]: nothing -> string {
+	let file = if $write { ".socket.sock" } else { ".socket2.sock" }
+	$"UNIX:($env | get -i XDG_RUNTIME_DIR | default tmp)/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/($file)"
 }
 
 def _listen [
@@ -121,7 +124,8 @@ export def action [
 	...args: string
 ] {
 	match $action {
-		"change-workspace" => { change-workspace $args.0 $args.1 }
+		change-workspace => { change-workspace $args.0 $args.1 }
+		movefocus => { movefocus $args.0 }
 	}
 }
 
@@ -146,5 +150,14 @@ def "change-workspace" [monitor: string, direction: string] {
 				hyprctl dispatch workspace m+1
 			}
 		}
+	}
+}
+
+def "movefocus" [direction: string] {
+	let old_window = hyprctl activewindow -j | from json | get address
+	hyprctl dispatch hy3:movefocus $direction
+	let new_window = hyprctl activewindow -j | from json | get address
+	if $old_window == $new_window {
+		hyprctl dispatch movefocus $direction
 	}
 }

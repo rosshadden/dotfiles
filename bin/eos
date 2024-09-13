@@ -124,12 +124,3 @@ export def listen [] {
 		process $line $addr
 	}
 }
-
-# proxy
-
-# export def "main led" [
-# 	color?: string
-# 	--format (-f): string
-# ] {
-# 	led $color --format $format
-# }
