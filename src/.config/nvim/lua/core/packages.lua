@@ -92,7 +92,7 @@ local plugins = function()
 		},
 		{ "lewis6991/gitsigns.nvim", dependencies = "nvim-lua/plenary.nvim" },
 		"alexghergh/nvim-tmux-navigation",
-		"is0n/fm-nvim",
+		{ "lmburns/lf.nvim", dependencies = "akinsho/toggleterm.nvim" },
 		"gpanders/editorconfig.nvim",
 		{
 			"jackMort/ChatGPT.nvim",
