@@ -34,7 +34,7 @@
 (defwidget bar [monitor]
   (eventbox
     :cursor "pointer"
-    :onscroll `hyprctl dispatch focusmonitor ${monitor.name}; ~/bin/hyprmon change workspace ${monitor.name} {}`
+    :onscroll `hyprctl dispatch focusmonitor ${monitor.name}; nu -l -c 'hyprmon action change-workspace ${monitor.name} {}'`
     :onclick `hyprctl dispatch focusmonitor ${monitor.name}`
     :dragvalue "top"
     :dragtype "text"

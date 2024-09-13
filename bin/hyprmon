@@ -34,34 +34,34 @@ def process [line: string] {
 		monitoradded | monitorremoved => {
 			sleep 2sec
 			bars
-		},
+		}
 		activewindowv2 => {
 			refresh window $event
-		},
+		}
 		createworkspace => {
 			match $event.data {
-				"0" => { "lab" },
-				"1" => { "web" },
-				"2" => { "dev" },
-				"3" => { "remote" },
-				"4" => { "hack" },
-				"5" => { "lit" },
-				"6" => { "media" },
-				"7" => { "music" },
-				"8" => { "monitor" },
-				"9" => { "files" },
-				"10" => { "chat" },
-				"11" => { "design" },
-				"12" => { "games" },
-				_ => { "" },
+				"0" => { "lab" }
+				"1" => { "web" }
+				"2" => { "dev" }
+				"3" => { "remote" }
+				"4" => { "hack" }
+				"5" => { "lit" }
+				"6" => { "media" }
+				"7" => { "music" }
+				"8" => { "monitor" }
+				"9" => { "files" }
+				"10" => { "chat" }
+				"11" => { "design" }
+				"12" => { "games" }
+				_ => { "" }
 			} | hyprctl dispatch renameworkspace $event.data $in
-		},
+		}
 		workspace | createworkspace | destroyworkspace | renameworkspace | focusedmon | activespecial => {
 			refresh workspaces
-		},
+		}
 		submap => {
 			update mode (if $event.data == "" { "NORMAL" } else { $event.data })
-		},
+		}
 		urgent => {
 			let address = $"0x($event.data)"
 			let title = (hyprctl clients -j | from json | where address == $address | get -i 0.title | default "")
@@ -70,9 +70,9 @@ def process [line: string] {
 			| match $in {
 				"focus" => {
 					hyprctl dispatch focuswindow $"address:($address)"
-				},
+				}
 			}
-		},
+		}
 	}
 }
 
@@ -87,13 +87,13 @@ def init [] {
 }
 
 
-def main [] {}
-
 export def socket []: nothing -> string {
 	$"UNIX:($env | get -i XDG_RUNTIME_DIR | default tmp)/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock"
 }
 
-export def listen [] {
+def _listen [
+	fn: closure
+] {
 	if not ("HYPRLAND_INSTANCE_SIGNATURE" in $env) {
 		load-env {
 			HYPRLAND_INSTANCE_SIGNATURE: (hyprctl instances -j | from json | get 0.instance)
@@ -103,12 +103,29 @@ export def listen [] {
 	socat -u (socket) -
 	| lines -s
 	| each {|line|
-		process $line
+		do $fn $line
 		null
 	}
 }
 
-export def "change workspace" [monitor: string, direction: string] {
+export def listen [] {
+	_listen {|line| process $line }
+}
+
+export def debug [] {
+	_listen {|line| print $line }
+}
+
+export def action [
+	action: string
+	...args: string
+] {
+	match $action {
+		"change-workspace" => { change-workspace $args.0 $args.1 }
+	}
+}
+
+def "change-workspace" [monitor: string, direction: string] {
 	let current = hyprctl activeworkspace -j
 	| from json
 	| get id
@@ -123,21 +140,11 @@ export def "change workspace" [monitor: string, direction: string] {
 			if ($workspaces | where id < $current | is-empty | not $in) {
 				hyprctl dispatch workspace m-1
 			}
-		},
+		}
 		down => {
 			if ($workspaces | where id > $current | is-empty | not $in) {
 				hyprctl dispatch workspace m+1
 			}
-		},
+		}
 	}
-}
-
-# proxy
-
-export def "main listen" [] {
-	listen
-}
-
-export def "main change workspace" [monitor: string, direction: string] {
-	change workspace $monitor $direction
 }
