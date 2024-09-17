@@ -17,8 +17,9 @@ function scroll(amount = 0) {
 }
 
 function options() {
-	api.Hints.setCharacters("cieansthbyouvwdl");
-	chrome.storage.local.set({ "noPdfViewer": 1 });
+	// TODO: fix https://github.com/brookhong/Surfingkeys/issues/2149
+	// api.Hints.setCharacters("cieansthbyouvwdl");
+	// chrome.storage.local.set({ "noPdfViewer": 1 });
 	// settings.caseSensitive = true;
 	settings.smartCase = true;
 }
@@ -87,7 +88,7 @@ function providers() {
 	});
 }
 
-(function main() {
+(() => {
 	options();
 	mappings();
 	unmappings();

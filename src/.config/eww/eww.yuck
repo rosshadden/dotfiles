@@ -36,9 +36,6 @@
     :cursor "pointer"
     :onscroll `hyprctl dispatch focusmonitor ${monitor.name}; nu -l -c 'hyprmon action change-workspace ${monitor.name} {}'`
     :onclick `hyprctl dispatch focusmonitor ${monitor.name}`
-    :dragvalue "top"
-    :dragtype "text"
-    :ondropped "notify-send dropped {}"
     (centerbox
       (workspaces :monitor monitor)
       (label
@@ -49,8 +46,14 @@
         (eventbox
           :ondropped "notify-send dropped {}"
           "here")
-        `🗓 ${formattime(EWW_TIME, "%Y-%m-%d")}`
-        `⏲ ${formattime(EWW_TIME, "%H:%M:%S")}`
+        (eventbox
+          :dragtype "text"
+          :dragvalue `${formattime(EWW_TIME, "%Y-%m-%d")}`
+          `🗓 ${formattime(EWW_TIME, "%Y-%m-%d")}`)
+        (eventbox
+          :dragtype "text"
+          :dragvalue `${formattime(EWW_TIME, "%H:%M:%S")}`
+          `⏲ ${formattime(EWW_TIME, "%H:%M:%S")}`)
         (button
           :class `scratch ${(arraylength(scratch) > 0) ? "active" : ""}`
           :onclick `hyprctl dispatch togglespecialworkspace scratch`
@@ -64,8 +67,6 @@
 
 (defwidget info [monitor]
   (eventbox
-    :dragvalue "bottom"
-    :dragtype "text"
     (centerbox
       (box
         (label

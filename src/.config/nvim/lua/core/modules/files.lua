@@ -11,6 +11,7 @@ mini_files.setup()
 mini_pick.setup()
 
 lf.setup {
+	border = "rounded",
 	default_actions = {
 		["<a-l>"] = "vsplit",
 		["<a-h>"] = "vsplit",
