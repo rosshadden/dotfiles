@@ -10,6 +10,12 @@ export def l [dir: glob = "."] {
 ## UTILS
 ##
 
+# Run closure as root
+export def nudo [
+	fn: closure # The closure to run
+] {
+	sudo nu --stdin -c $"do (view source $fn)"
+}
 
 # Return whether the input is the given type
 export def is [
@@ -178,6 +184,15 @@ export def wimi [
 		)
 	}
 	http get https://ipv4.icanhazip.com
+}
+
+# Hotwire system library symlink.
+export def hotwire [
+	name: string # Name of the library
+	version: string # Target version suffix
+] {
+	$"/usr/lib/lib($name).so"
+	| sudo ln -sr $in $"($in).($version)"
 }
 
 # Load .env file in current directory.
