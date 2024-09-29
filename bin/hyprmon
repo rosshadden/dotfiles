@@ -3,14 +3,14 @@
 def "refresh workspaces" [] {
 	hyprctl workspaces -j
 	| from json
-	| where name !~ :scratch
+	| where name !~ special:
 	| sort-by id
 	| to json --raw
 	| update workspaces $in
 
 	hyprctl workspaces -j
 	| from json
-	| where name =~ :scratch
+	| where name == special:scratch
 	| to json --raw
 	| update scratch $in
 
@@ -40,7 +40,6 @@ def process [line: string] {
 		}
 		createworkspace => {
 			match $event.data {
-				"0" => { "lab" }
 				"1" => { "web" }
 				"2" => { "dev" }
 				"3" => { "remote" }
@@ -51,12 +50,12 @@ def process [line: string] {
 				"8" => { "monitor" }
 				"9" => { "files" }
 				"10" => { "chat" }
-				"11" => { "design" }
+				"11" => { "lab" }
 				"12" => { "games" }
 				_ => { "" }
 			} | hyprctl dispatch renameworkspace $event.data $in
 		}
-		workspace | createworkspace | destroyworkspace | renameworkspace | focusedmon | activespecial => {
+		workspace | createworkspace | destroyworkspace | renameworkspace | moveworkspace | focusedmon | activespecial => {
 			refresh workspaces
 		}
 		submap => {
@@ -94,7 +93,7 @@ export def socket [
 	$"UNIX:($env | get -i XDG_RUNTIME_DIR | default tmp)/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/($file)"
 }
 
-def _listen [
+export def _listen [
 	fn: closure
 ] {
 	if not ("HYPRLAND_INSTANCE_SIGNATURE" in $env) {
@@ -113,6 +112,36 @@ def _listen [
 
 export def listen [] {
 	_listen {|line| process $line }
+}
+
+export def zoom [] {
+	let tmp = (mktemp -t hyprmon-zoom-XXX)
+	touch $tmp
+
+	_listen {|line|
+		let event = $line | parse "{type}>>{data}" | first
+
+		match $event.type {
+			openwindow => {
+				let data = $event.data | split column , addr ws class title | first
+				if $data.class == "Zoom Workplace" and $data.title == "Meeting" {
+					$data.addr | save -f $tmp
+					print "zoom started"
+					notify-send zoom "meeting started"
+					eos busy
+				}
+			}
+			closewindow => {
+				open $tmp
+				| if $event.data == $in {
+					"" | save -f $tmp
+					print "zoom ended"
+					notify-send zoom "meeting ended"
+					eos free
+				}
+			}
+		}
+	}
 }
 
 export def debug [] {
@@ -136,7 +165,7 @@ def "change-workspace" [monitor: string, direction: string] {
 
 	let workspaces = hyprctl workspaces -j
 	| from json
-	| where name !~ :scratch and monitor == $monitor
+	| where name !~ special: and monitor == $monitor
 	| sort-by id
 
 	match $direction {

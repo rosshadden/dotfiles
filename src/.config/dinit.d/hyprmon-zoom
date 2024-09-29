@@ -1,0 +1,5 @@
+type = process
+command = nu -l -c "hyprmon zoom"
+restart = true
+logfile = ./logs/hyprmon-zoom.log
+env-file = ./env/wayland.env

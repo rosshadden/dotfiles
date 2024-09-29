@@ -123,8 +123,9 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
+	}, {
 		{ name = "copilot" },
-		{ name = "codeium" },
+		-- { name = "codeium" },
 	}, {
 		{ name = "neorg" },
 		{ name = "buffer", keyword_length = 5 },

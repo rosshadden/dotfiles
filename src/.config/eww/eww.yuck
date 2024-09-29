@@ -29,6 +29,8 @@
         :class `ws ${ws.id == workspace.id ? "current" : ""}`
         :tooltip `${ws.lastwindowtitle}`
         :onclick `hyprctl dispatch workspace ${ws.name}`
+        :onrightclick `hyprctl dispatch moveworkspacetomonitor ${ws.id} -1`
+        :onmiddleclick `hyprctl dispatch closewindow address:${ws.lastwindow}`
         `${ws.id}: ${ws.name}`))))
 
 (defwidget bar [monitor]
@@ -44,7 +46,7 @@
         :text `${window.title ?: ""}`)
       (box
         (eventbox
-          :ondropped "notify-send dropped {}"
+          :ondropped "./scripts/drop.sh {}"
           "here")
         (eventbox
           :dragtype "text"
@@ -61,6 +63,10 @@
           :onmiddleclick `hyprctl dispatch workspace name:void`
           "scratch")))))
 
+(defwidget clipboard []
+  (eventbox
+    "clipboard"))
+
 (deflisten media
   :initial ""
   `playerctl --follow metadata --format {{title}}`)
@@ -72,13 +78,18 @@
         (label
           :class `${mode != "NORMAL" ? "abnormal" : ""}`
           :text mode)
-        "VOL ${volume} ${mic}"
+        (eventbox
+          :onclick "hyprctl dispatch exec pavucontrol"
+          :onrightclick "nu -l -c 'cfg volume !'"
+          :onmiddleclick "nu -l -c 'cfg mic !'"
+          "VOL ${volume} ${mic}")
         `🌐 ${vpn}`
         (eos))
       (label
         :width `${monitor.width / monitor.scale / 2}`
         :text media)
       (box
+        (clipboard)
         "CPU ${round(EWW_CPU.avg, 0)}%"
         "RAM ${round(EWW_RAM.used_mem_perc, 0)}%"
         (box :visible {EWW_BATTERY != ""}

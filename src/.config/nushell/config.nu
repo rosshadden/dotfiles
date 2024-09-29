@@ -12,7 +12,6 @@ use bin/hyprmon
 source plugins.nu
 
 $env.config = {
-	use_grid_icons: true
 	footer_mode: "25" # always, never, number_of_rows, auto
 	float_precision: 2
 	buffer_editor: "nvim" # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL

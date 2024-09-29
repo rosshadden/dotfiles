@@ -99,6 +99,20 @@ local exitMappings = {
 	{ key = "q", action = "PopKeyTable" },
 }
 
+if wezterm.gui then
+	copy_mode = wezterm.gui.default_key_tables().copy_mode
+	table.insert(copy_mode,
+		{ key = "Enter", mods = 'NONE', action = act.Multiple{
+			{ CopyTo =  "PrimarySelection" },
+			"ClearSelection",
+			"ScrollToBottom",
+			{ CopyMode =  "Close" },
+			{ PasteFrom =  "PrimarySelection" },
+		} }
+	)
+	config.key_tables.copy_mode = copy_mode
+end
+
 config.key_tables.app = {
 	{ key = "f", action = "ToggleFullScreen" },
 	{ key = "l", action = "ShowLauncher" },
