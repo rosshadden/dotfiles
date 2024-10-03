@@ -44,8 +44,14 @@ export def dupe [
 # Paste from clipboard
 export def put [
 	--no-newline (-n) # trim newline
+	--selection (-s) # use selection clipboard
 ] {
-	wl-paste | if $no_newline { str trim } else {}
+	# TODO: do more concisely
+	if $selection {
+		wl-paste --primary | if $no_newline { str trim } else {}
+	} else {
+		wl-paste | if $no_newline { str trim } else {}
+	}
 }
 
 # type last arg from previous command

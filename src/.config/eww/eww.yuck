@@ -29,10 +29,11 @@
         :class `ws ${ws.id == workspace.id ? "current" : ""}`
         :tooltip `${ws.lastwindowtitle}`
         :onclick `hyprctl dispatch workspace ${ws.name}`
-        :onrightclick `hyprctl dispatch moveworkspacetomonitor ${ws.id} -1`
+        :onrightclick `hyprctl dispatch moveworkspacetomonitor name:${ws.name} -1`
         :onmiddleclick `hyprctl dispatch closewindow address:${ws.lastwindow}`
         `${ws.id}: ${ws.name}`))))
 
+; TODO: notifications
 (defwidget bar [monitor]
   (eventbox
     :cursor "pointer"
@@ -47,7 +48,7 @@
       (box
         (eventbox
           :ondropped "./scripts/drop.sh {}"
-          "here")
+          "notifications")
         (eventbox
           :dragtype "text"
           :dragvalue `${formattime(EWW_TIME, "%Y-%m-%d")}`
