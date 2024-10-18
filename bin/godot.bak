@@ -21,7 +21,7 @@ function main() {
 		file="$file.llvm"
 	fi
 
-	$path/$file "$@"
+	echo $path/$file "$@"
 }
 
 main "$@"
