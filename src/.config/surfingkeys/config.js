@@ -17,10 +17,8 @@ function scroll(amount = 0) {
 }
 
 function options() {
-	// TODO: fix https://github.com/brookhong/Surfingkeys/issues/2149
-	// api.Hints.setCharacters("cieansthbyouvwdl");
-	// chrome.storage.local.set({ "noPdfViewer": 1 });
-	// settings.caseSensitive = true;
+	api.Hints.setCharacters("cieansthbyouvwdl");
+	chrome.storage.local.set({ "noPdfViewer": 1 });
 	settings.smartCase = true;
 }
 

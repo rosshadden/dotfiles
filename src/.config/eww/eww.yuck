@@ -130,8 +130,9 @@
                       :height "16px"
                       :anchor "top right")
   (box
-    (image :path "/home/ross/dev/src/ermak/data/kle/ermak.png")
-    (image :path "/home/ross/dev/src/ermak/data/kle/ermak-controller.png")))
+    "test"))
+    ; (image :path "/home/ross/dev/src/ermak/data/kle/ermak.png")
+    ; (image :path "/home/ross/dev/src/ermak/data/kle/ermak-controller.png")))
 
 (defpoll eos
   :initial "{}"

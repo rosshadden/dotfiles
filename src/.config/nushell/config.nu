@@ -9,7 +9,7 @@ use theme.nu
 use bin/eos
 use bin/hyprmon
 
-source plugins.nu
+source plugins/mod.nu
 
 $env.config = {
 	footer_mode: 25 # always, never, number_of_rows, auto

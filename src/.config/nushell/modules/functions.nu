@@ -108,10 +108,11 @@ export def --env fzf-cd [] {
 export def fzf-history [
 	--query (-q): string # Optionally start with given query.
 ] {
-	(history | get command | reverse | to text | fzf --prompt "HISTORY> " --query $"($query)")
+	history | get command | reverse | to text | fzf --prompt "HISTORY> " --query $"($query)"
 }
 
-# Open
+# Open tabs and panes in my usual layout.
+# TODO: support a project file that can override the defaylt layout
 export def pj [] {
 	wezterm cli spawn --cwd . -- nu -e nvim
 	wezterm cli spawn --cwd . -- nu
