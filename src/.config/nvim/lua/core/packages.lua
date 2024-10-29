@@ -49,6 +49,12 @@ local plugins = function()
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"smoka7/hop.nvim",
 		"chrisgrieser/nvim-spider",
+		{
+			"chrisgrieser/nvim-various-textobjs",
+			config = function()
+				require("various-textobjs").setup({ useDefaultKeymaps = true })
+			end,
+		},
 
 		-- enhancement
 		"ryvnf/readline.vim",
