@@ -48,7 +48,7 @@ local plugins = function()
 		},
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"smoka7/hop.nvim",
-		"bendk/polyword.vim",
+		"chrisgrieser/nvim-spider",
 
 		-- enhancement
 		"ryvnf/readline.vim",
