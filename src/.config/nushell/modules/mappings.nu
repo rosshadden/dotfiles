@@ -4,7 +4,7 @@ export def main [] {
 		# complete hint (word)
 		{
 			mode: vi_insert
-			modifier: control
+			modifier: alt
 			keycode: char_i
 			event: { send: historyHintWordComplete }
 		}
@@ -12,7 +12,7 @@ export def main [] {
 		# complete hint (full)
 		{
 			mode: vi_insert
-			modifier: control
+			modifier: alt
 			keycode: char_e
 			event: { send: historyHintComplete }
 		}
