@@ -63,7 +63,7 @@ def process [line: string] {
 		}
 		urgent => {
 			let address = $"0x($event.data)"
-			let title = (hyprctl clients -j | from json | where address == $address | get -i 0.title | default "")
+			let title = hyprctl clients -j | from json | where address == $address | get -i 0.title | default ""
 			notify-send -A "focus=Focus" urgent $title
 			| str trim
 			| match $in {
