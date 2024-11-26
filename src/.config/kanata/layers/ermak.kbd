@@ -34,8 +34,8 @@
 
 (deflayer ermak
 	_     _    _    _    _    _    _    _    _    _    _    _     _       @xss _    @gam
-	[     _    _    _    _    _    _    _    _    _    _    ]     `   _   _    _    _     _    _    _    _
-	_     b    y    o    u    '    S-'  l    d    w    v    z     S-3 S-/ _    _    _     _    _    _    _
+	[     _    _    _    _    _    _    _    _    _    _    ]     S-3 _   _    _    _     _    _    _    _
+	_     b    y    o    u    '    S-'  l    d    w    v    z     `   S-/ _    _    _     _    _    _    _
 	@xcp  @hml @hal @hcl @hsl ,    .    @hsr @hcr @har @hmr q     _                       _    _    _
 	@lsft g    x    j    k    -    /    r    m    f    p    @rsft              _          _    _    _    _
 	_     @lyr _              _              @xsu _    @spr @xtp          _    _    _     _    _

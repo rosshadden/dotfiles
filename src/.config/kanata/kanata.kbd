@@ -12,6 +12,7 @@
 
 (include ./layers/applications.kbd)
 (include ./layers/capture.kbd)
+(include ./layers/controller.kbd)
 (include ./layers/copypasta.kbd)
 (include ./layers/dvorak.kbd)
 (include ./layers/games.kbd)
