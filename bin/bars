@@ -15,4 +15,5 @@ def main [] {
 
 	dinitctl start eos
 	dinitctl start hyprmon
+	dinitctl start hyprmon-zoom
 }

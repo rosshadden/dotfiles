@@ -98,9 +98,10 @@ vim.cmd [[
 
 -- animations
 require("mini.animate").setup({
-	scroll = { enable = false },
-	open = { enable = false },
 	close = { enable = false },
+	open = { enable = false },
+	resize = { enable = false },
+	scroll = { enable = false },
 })
 
 -- highlights

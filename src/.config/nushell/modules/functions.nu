@@ -116,7 +116,7 @@ export def fzf-history [
 export def pj [] {
 	wezterm cli spawn --cwd . -- nu -e nvim
 	wezterm cli spawn --cwd . -- nu
-		| wezterm cli split-pane --pane-id $in --left nu -e tigs
+		| wezterm cli split-pane --cwd . --pane-id $in --left nu -e tigs
 	wezterm cli activate-pane-direction left
 	wezterm cli spawn --cwd . -- nu
 	wezterm cli activate-tab --tab-index 0

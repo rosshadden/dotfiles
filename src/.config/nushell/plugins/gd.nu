@@ -68,10 +68,10 @@ export def --env dev [
 
 	wezterm cli spawn --cwd . -- nu -e "gd edit"
 	wezterm cli spawn --cwd . -- nu
-		| wezterm cli split-pane --pane-id $in --left -- nu -e "tigs"
+		| wezterm cli split-pane --cwd . --pane-id $in --left -- nu -e "tigs"
 	wezterm cli activate-pane-direction left
 	wezterm cli spawn --cwd . -- nu -e "gd open"
-		| wezterm cli split-pane --pane-id $in --bottom -- nu
+		| wezterm cli split-pane --cwd . --pane-id $in --bottom -- nu
 	wezterm cli activate-tab --tab-index 0
 	wezterm cli kill-pane
 }

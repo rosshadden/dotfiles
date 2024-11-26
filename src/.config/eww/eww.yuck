@@ -104,7 +104,7 @@
 
 (defwindow top [monitor]
   :exclusive true
-  :stacking "bg"
+  :stacking "bottom"
   :geometry (geometry :x "0%"
                       :y "0%"
                       :width "100%"
@@ -114,7 +114,7 @@
 
 (defwindow bottom [monitor]
   :exclusive true
-  :stacking "bg"
+  :stacking "bottom"
   :geometry (geometry :x "0%"
                       :y "0%"
                       :width "100%"
