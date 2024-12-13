@@ -73,16 +73,16 @@ function unmappings() {
 }
 
 function providers() {
-	addProvider("D", "dota", "https://dota2.gamepedia.com/", "s", "https://dota2.gamepedia.com/api/v1/SearchSuggestions/List?query=", (response) => {
-		const data = JSON.parse(response.text);
-		return data.items.map(({ title }) => title);
+	addProvider("D", "dota", "https://liquipedia.net/dota2/", "s", "https://liquipedia.net/dota2/api.php?action=opensearch&format=json&search=", (res) => {
+		const [ query, titles, , urls ] = JSON.parse(res.text);
+		return titles;
 	});
 
 	addProvider("T", "twitch", "https://twitch.tv/");
 	addProvider("r", "reddit", "https://www.reddit.com/r/");
 
-	addProvider("w", "wikipedia", "https://en.wikipedia.org/wiki/", "s", "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&formatversion=2&namespace=0&limit=40&search=", (response) => {
-		return JSON.parse(response.text)[1];
+	addProvider("w", "wikipedia", "https://en.wikipedia.org/wiki/", "s", "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&formatversion=2&namespace=0&limit=40&search=", (res) => {
+		return JSON.parse(res.text)[1];
 	});
 }
 

@@ -60,7 +60,7 @@
         (button
           :class `scratch ${(arraylength(scratch) > 0) ? "active" : ""}`
           :onclick `hyprctl dispatch togglespecialworkspace scratch`
-          :onrightclick `hyprctl dispatch workspace name:games`
+          :onrightclick `hyprctl dispatch workspace 12`
           :onmiddleclick `hyprctl dispatch workspace name:void`
           "scratch")))))
 

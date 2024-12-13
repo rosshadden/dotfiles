@@ -130,7 +130,7 @@ local plugins = function()
 
 		-- languages
 		{ "aklt/plantuml-syntax", { "weirongxu/plantuml-previewer.vim", dependencies = "tyru/open-browser.vim" } },
-		{ "LhKipp/nvim-nu", ft = "nu", build = ":TSInstall nu" },
+		-- { "LhKipp/nvim-nu", ft = "nu", build = ":TSInstall nu" },
 		{ "kmonad/kmonad-vim", ft = "kbd" },
 		{ "alaviss/nim.nvim", ft = "nim" },
 		{ { "SeniorMars/typst.nvim", ft = "typ" }, "kaarmu/typst.vim" },
