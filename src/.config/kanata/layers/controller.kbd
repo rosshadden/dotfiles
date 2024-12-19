@@ -2,13 +2,23 @@
 	cnt (layer-switch controller)
 )
 
+(deflocalkeys-linux
+	start  314
+	select 315
+	btn_z  315
+	dup    544
+	ddown  545
+	dleft  546
+	dright 547
+)
+
 (deflayer controller
-	@erm _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _     _    _    _    _
-	@erm _    _    _    _    _    _    _    _    _    _    _    _                          _    _    _
-	_    _    _    _    _    _    _    _    _    _    _    _                    _          _    _    _    _
-	_    _    _              _              _    _    _    _               _    _    _     _    _
+	@erm   _    _     _     _    _      _    _    _    _    _    _     _          _    _    _
+	select _    _     _     _    _      _    _    _    _    _    start _    _     _    _    _     _    _    _    _
+	_      _    _     _     _    _      _    _    _    _    _    _     _    _     _    _    _     _    _    _    _
+	@erm   _    _     _     _    _      _    _    _    _    _    _     _                          _    _    _
+	_      _    dleft ddown dup  dright _    _    _    _    _    _                     _          _    _    _    _
+	_      _    _                _                _    _    _    _                _    _    _     _    _
 
 	#| mute  |# _
 	#| volu  |# _

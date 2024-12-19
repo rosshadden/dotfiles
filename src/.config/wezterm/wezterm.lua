@@ -244,6 +244,10 @@ config.tls_clients = {
 		remote_address = "localhost:8888",
 		bootstrap_via_ssh = "localhost",
 	}, {
+		name = "tardis",
+		remote_address = "tardis:8888",
+		bootstrap_via_ssh = "tardis",
+	}, {
 		name = "bork",
 		remote_address = "bork:8888",
 		bootstrap_via_ssh = "bork",
