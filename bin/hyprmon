@@ -64,18 +64,14 @@ def process [line: string] {
 		urgent => {
 			let address = $"0x($event.data)"
 			let title = hyprctl clients -j | from json | where address == $address | get -i 0.title | default ""
-			notify-send -A "focus=Focus" urgent $title
-			| str trim
-			| match $in {
-				"focus" => {
-					hyprctl dispatch focuswindow $"address:($address)"
-				}
-			}
+			update urgent ({ active: true, address: $address, title: $title } | to json --raw)
+			sleep 20sec
+			update urgent "{}"
 		}
 	}
 }
 
-def update [key: string, value: string] {
+def update [key: string, value: string = ""] {
 	eww update $"($key)=($value)"
 }
 

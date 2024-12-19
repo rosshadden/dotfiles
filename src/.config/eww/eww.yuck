@@ -3,6 +3,7 @@
 (defvar window "{}")
 (defvar workspace "{}")
 (defvar workspaces "[]")
+(defvar urgent "{}")
 
 (defvar debug "")
 
@@ -57,12 +58,18 @@
           :dragtype "text"
           :dragvalue `${formattime(EWW_TIME, "%H:%M:%S")}`
           `⏲ ${formattime(EWW_TIME, "%H:%M:%S")}`)
-        (button
-          :class `scratch ${(arraylength(scratch) > 0) ? "active" : ""}`
-          :onclick `hyprctl dispatch togglespecialworkspace scratch`
-          :onrightclick `hyprctl dispatch workspace 12`
-          :onmiddleclick `hyprctl dispatch workspace name:void`
-          "scratch")))))
+        (box
+          (button
+            :class `${(urgent.active == true) ? "active" : ""}`
+            :onclick `hyprctl dispatch focuswindow address:${urgent.address}`
+            :onrightclick `notify-send urgent "[${urgent.address}] ${urgent.title}"`
+            "!")
+          (button
+            :class `${(arraylength(scratch) > 0) ? "active" : ""}`
+            :onclick `hyprctl dispatch togglespecialworkspace scratch`
+            :onrightclick `hyprctl dispatch workspace 12`
+            :onmiddleclick `hyprctl dispatch workspace name:void`
+            "scratch"))))))
 
 (defwidget clipboard []
   (eventbox

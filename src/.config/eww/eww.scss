@@ -9,6 +9,10 @@
 button {
 	background: rgba(0, 0, 0, 0.0);
 	padding: 0px 10px;
+
+	&.active {
+		background: red;
+	}
 }
 
 @mixin bar() {
@@ -52,11 +56,5 @@ button {
 
 	.abnormal {
 		background-color: red;
-	}
-}
-
-.scratch {
-	&.active {
-		background: red;
 	}
 }
