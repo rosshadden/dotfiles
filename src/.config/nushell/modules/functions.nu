@@ -55,7 +55,6 @@ export def put [
 }
 
 # type last arg from previous command
-# Requires: `xdotool`, `fd`
 export def last-arg [] {
 	let cmd = (history | last)
 	$cmd | split row (char space) | last
@@ -104,7 +103,6 @@ export def --env fzf-cd [] {
 }
 
 # fzf through shell history, typing result.
-# Requires: `xdotool`
 export def fzf-history [
 	--query (-q): string # Optionally start with given query.
 ] {

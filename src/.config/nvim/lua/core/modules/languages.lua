@@ -184,7 +184,7 @@ local servers = {
 	"nimls",
 	"rust_analyzer",
 	"ts_ls",
-	"typst_lsp",
+	"tinymist",
 	"zls",
 }
 for _, server in ipairs(servers) do

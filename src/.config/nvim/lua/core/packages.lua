@@ -52,7 +52,7 @@ local plugins = function()
 		{
 			"chrisgrieser/nvim-various-textobjs",
 			config = function()
-				require("various-textobjs").setup({ useDefaultKeymaps = true })
+				require("various-textobjs").setup({ keymaps = { useDefaults = true } })
 			end,
 		},
 
