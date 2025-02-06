@@ -1,6 +1,6 @@
 #!/usr/bin/env nu
 
-const api = "http://hass.lan:8123/api"
+const api = "http://haus.lan:8123/api"
 
 def request [endpoint: string, payload?: record] {
 	let headers = [ Authorization $"Bearer ($env.HASS_API_KEY?)" ]

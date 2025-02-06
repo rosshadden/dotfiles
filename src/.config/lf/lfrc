@@ -38,6 +38,7 @@ map C clear
 # navigation
 map t :toggle; down
 map T :toggle; up
+map gt :tag-toggle; down
 
 # create
 map O push $mkdir<space>-p<space>

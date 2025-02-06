@@ -75,14 +75,19 @@
   (eventbox
     "clipboard"))
 
+(defwidget menu []
+  (label
+    :text "menu"))
+
 (deflisten media
   :initial ""
-  `playerctl --follow metadata --format {{title}}`)
+  `playerctl --follow metadata --format "{{artist}} - {{title}}"`)
 
 (defwidget info [monitor]
   (eventbox
     (centerbox
       (box
+        (menu)
         (label
           :class `${mode != "NORMAL" ? "abnormal" : ""}`
           :text mode)
