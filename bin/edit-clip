@@ -2,8 +2,9 @@
 
 # Edits the clipboard with `vipe`.
 def main [
- --selection (-s) # use selection buffer
- --type (-t) # type result with `wlrctl`
+	--selection (-s) # use selection buffer
+	--type (-t) # type result with `wlrctl`
+	--focus (-f) # focus last window
 ] {
 	if ($selection) {
 		wl-paste --primary
@@ -12,13 +13,13 @@ def main [
 	}
 	| vipe
 	| complete
-	| do {|result|
-		if $result.exit_code == 0 {
-			$result.stdout | str trim
-		}
-	} $in
+	| if $in.exit_code == 0 {
+		$in.stdout | str trim
+	}
 	| if $type {
-		# TODO: make work outside of running terminal
+		if $focus {
+			hyprctl dispatch focuscurrentorlast
+		}
 		wlrctl keyboard type $in
 	} else {}
 }

@@ -151,27 +151,6 @@ export def tj [
 # 	cd (zoxide query $query | str trim)
 # }
 
-# Check whether there is a newer nushell
-export def nu? [
-	--refresh (-r) # Refresh pacman
-] {
-	if $refresh { paru -Syy }
-	let url = "https://github.com/nushell/nushell/releases/latest"
-	let current = version | get version
-	let latest = http head --redirect-mode manual $url
-	| transpose -rd
-	| get location
-	| split row "/"
-	| last
-
-	{
-		update?: ($current != $latest)
-		current: $current
-		latest: $latest
-		pacman: (paru -Sl galaxy | rg nushell | detect columns -n -c 2..3 | get column2.0)
-	}
-}
-
 # Get ip
 export def wimi [
 	--local (-l)
@@ -201,8 +180,10 @@ export def hotwire [
 }
 
 # Load .env file in current directory.
-export def --env dotenv [] {
-	open .env
+export def --env dotenv [
+	file: string = ".env" # The file to load
+] {
+	open $file
 	| lines -s
 	| parse -r `^\s*(?<key>[^\s=]+)\s*=\s*(?<value>[^\s].*)$`
 	| update value {

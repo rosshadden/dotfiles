@@ -18,8 +18,6 @@ $env.config.show_banner = false
 $env.config.use_kitty_protocol = true
 $env.config.highlight_resolved_externals = true
 
-$env.config.filesize.metric = true
-
 $env.config.history.file_format = "sqlite"
 $env.config.history.max_size = 5_000_000
 $env.config.history.isolation = true
