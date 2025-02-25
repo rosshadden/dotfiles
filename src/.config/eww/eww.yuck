@@ -96,7 +96,9 @@
           :onrightclick "nu -l -c 'cfg volume !'"
           :onmiddleclick "nu -l -c 'cfg mic !'"
           "VOL ${volume} ${mic}")
-        `🌐 ${vpn}`
+        (label
+          :class `${vpn == "CONNECTED" ? "active" : ""}`
+          :text `🌐 ${vpn}`)
         (eos))
       (label
         :width `${monitor.width / monitor.scale / 2}`

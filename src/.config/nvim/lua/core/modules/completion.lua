@@ -123,14 +123,13 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
-	}, {
 		{ name = "path" },
 		{ name = "copilot" },
-		-- { name = "codeium" },
-	}, {
+		{ name = "codeium" },
 		{ name = "neorg" },
-		{ name = "buffer", keyword_length = 5 },
 		{ name = "emoji" },
+	}, {
+		{ name = "buffer", keyword_length = 5 },
 	}),
 })
 
@@ -145,7 +144,6 @@ cmp.setup.cmdline("/", {
 cmp.setup.cmdline(":", {
 	sources = cmp.config.sources({
 		{ name = "path" },
-	}, {
 		{ name = "cmdline" },
 	}),
 })

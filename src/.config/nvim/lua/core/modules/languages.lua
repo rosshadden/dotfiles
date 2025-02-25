@@ -202,7 +202,7 @@ lsp.lua_ls.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 	root_dir = function(file)
-		return lspUtils.find_git_ancestor(file) or lspUtils.path.dirname(file)
+		return vim.fs.dirname(vim.fs.find('.git', { path = file, upward = true })[1]) or vim.fs.dirname(file)
 	end,
 	settings = {
 		Lua = {

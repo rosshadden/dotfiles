@@ -158,6 +158,10 @@ $env.MANROFFOPT = "-c"
 # pass
 $env.PASSWORD_STORE_ENABLE_EXTENSIONS = "true" # [sic]
 
+# tig
+# NOTE: workaround because of https://github.com/jonas/tig/issues/1367
+$env.GIT_EDITOR = "nvim"
+
 ##
 ## insurance
 ##
