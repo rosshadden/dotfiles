@@ -136,6 +136,22 @@
                       :anchor "bottom center")
   (info :monitor monitor))
 
+(defpoll slippi
+  :interval "300min"
+  `nu -l -c 'raws slippi | get rankedNetplayProfile.ratingOrdinal'`)
+(defwindow raws []
+  :stacking "fg"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "200px"
+                      :height "10px"
+                      :anchor "top left")
+  (box
+    (button
+      :onclick `nu -l -c 'raws slippi | get rankedNetplayProfile.ratingOrdinal | eww update $"slippi=($in)"' &`
+      `🔁 slippi: ${slippi}`)))
+
+
 (defwindow debug []
   :stacking "bottom"
   :geometry (geometry :x "0%"
@@ -144,9 +160,8 @@
                       :height "16px"
                       :anchor "top right")
   (box
-    "test"))
-    ; (image :path "/home/ross/dev/src/ermak/data/kle/ermak.png")
-    ; (image :path "/home/ross/dev/src/ermak/data/kle/ermak-controller.png")))
+    (image :path "/home/ross/dev/src/ermak/data/kle/ermak.png")
+    (image :path "/home/ross/dev/src/ermak/data/kle/ermak-controller.png")))
 
 (defpoll eos
   :initial "{}"

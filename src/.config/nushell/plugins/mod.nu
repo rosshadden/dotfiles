@@ -6,6 +6,7 @@ if ($zoxide_plugin | path exists | not $in) {
 source $zoxide_plugin
 
 use gd.nu
+use raws.nu
 
 # systemd
 # source ../plugins/systemd.nu
