@@ -60,7 +60,8 @@ map A :rename; cmd-end
 # copy
 map yy copy
 map yp ${{ echo -n $f | copy }}
-map yf ${{ basename -- $f | trim | copy }}
+map yf ${{ nu  -c "basename -- $f | str trim | copy" }}
+map yc ${{ cat $f | copy }}
 
 # open
 map <enter> open

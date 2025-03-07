@@ -2,9 +2,7 @@
 export def main [] {}
 
 # Query slippi.gg to get Melee data.
-export def slippi [
-	--update (-u) # update bar
-] {
+export def slippi [] {
 	const api = "https://gql-gateway-2-dot-slippi.uc.r.appspot.com/graphql"
 	const payload = {
 		operationName: "AccountManagementPageQuery",

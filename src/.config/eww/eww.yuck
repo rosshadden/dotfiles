@@ -149,7 +149,7 @@
   (box
     (button
       :onclick `nu -l -c 'raws slippi | get rankedNetplayProfile.ratingOrdinal | eww update $"slippi=($in)"' &`
-      `🔁 slippi: ${slippi}`)))
+      `🔁 slippi: ${round(slippi, 0)}`)))
 
 
 (defwindow debug []
