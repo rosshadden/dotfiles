@@ -4,7 +4,7 @@ def args [args: list<string>] {
 
 # Open neovim in server mode.
 export def edit [] {
-	nvim --listen ./nvim.sock --cmd ':lua vim.g.ministarter_disable = true'
+	nvim
 }
 
 # Godot binray.

@@ -27,6 +27,7 @@ $env.PATH = (
 		"~/.nimble/bin",
 		"~/.rvm/bin",
 		"~/go/bin",
+		"~/.dotnet/tools",
 	]
 )
 
@@ -161,6 +162,9 @@ $env.PASSWORD_STORE_ENABLE_EXTENSIONS = "true" # [sic]
 # tig
 # NOTE: workaround because of https://github.com/jonas/tig/issues/1367
 $env.GIT_EDITOR = "nvim"
+
+# .NET
+$env.DOTNET_ROLL_FORWARD = "LatestMajor"
 
 ##
 ## insurance

@@ -62,3 +62,7 @@ button {
 label.active {
 	background-color: green;
 }
+
+.raws {
+	@include bar;
+}

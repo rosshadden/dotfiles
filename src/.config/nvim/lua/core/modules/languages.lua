@@ -175,6 +175,7 @@ end
 
 local servers = {
 	"bashls",
+	"csharp_ls",
 	"gdscript",
 	"gopls",
 	"jsonls",
@@ -182,8 +183,8 @@ local servers = {
 	"nickel_ls",
 	"nimls",
 	"rust_analyzer",
-	"ts_ls",
 	"tinymist",
+	"ts_ls",
 	"zls",
 }
 for _, server in ipairs(servers) do

@@ -5,6 +5,7 @@
 # files
 set hidden
 set shellopts "-eu"
+set hiddenfiles ".*:*.uid"
 
 set shell bash
 

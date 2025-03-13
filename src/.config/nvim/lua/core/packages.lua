@@ -61,6 +61,9 @@ local plugins = function()
 		"lambdalisue/file-protocol.vim",
 		"monaqa/dial.nvim",
 
+		-- debug
+		{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
+
 		-- integration
 		{
 			"zbirenbaum/copilot.lua",

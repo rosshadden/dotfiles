@@ -88,8 +88,8 @@ vim.keymap.set("", "<plug><motion>ge", function()
 end, { silent = true, noremap = true })
 
 -- sneaking
-vim.keymap.set("", "<plug><motion><cr>", hop.hint_char1, { silent = true, noremap = true })
-vim.keymap.set("", "<plug><motion><tab>", hop.hint_char2, { silent = true, noremap = true })
+vim.keymap.set("", "<plug><motion><tab>", hop.hint_char1, { silent = true, noremap = true })
+vim.keymap.set("", "<plug><motion><cr>", hop.hint_char2, { silent = true, noremap = true })
 
 -- characters
 
