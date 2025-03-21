@@ -24,7 +24,6 @@ vim.filetype.add({
 		conf = "config",
 		nu = "nu",
 		nuon = "nu",
-		typ = "typst",
 		yuck = "clojure",
 		zon = "zig",
 	},
@@ -53,18 +52,6 @@ parsers.norg_table = {
 	install_info = {
 		url = "https://github.com/nvim-neorg/tree-sitter-norg-table",
 		files = { "src/parser.c" },
-		branch = "main",
-	},
-}
-
-parsers.typst = {
-	-- filetype = "typ",
-	install_info = {
-		url = "https://github.com/SeniorMars/tree-sitter-typst",
-		files = {
-			"src/parser.c",
-			"src/scanner.c",
-		},
 		branch = "main",
 	},
 }
@@ -101,6 +88,7 @@ configs.setup {
 		"toml",
 		"tsx",
 		"typescript",
+		"typst",
 		"yaml",
 		"zig",
 
@@ -108,7 +96,6 @@ configs.setup {
 		"nim",
 		"norg_meta",
 		"norg_table",
-		"typst",
 	},
 
 	highlight = { enable = true },
@@ -177,6 +164,7 @@ local servers = {
 	"bashls",
 	"csharp_ls",
 	"gdscript",
+	"gdshader_lsp",
 	"gopls",
 	"jsonls",
 	"julials",

@@ -40,6 +40,7 @@ map C clear
 map t :toggle; down
 map T :toggle; up
 map gt :tag-toggle; down
+map gT :tag-toggle; up
 
 # create
 map O push $mkdir<space>-p<space>
