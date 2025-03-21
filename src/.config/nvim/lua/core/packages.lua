@@ -81,6 +81,16 @@ local plugins = function()
 			end
 		},
 		{
+			"CopilotC-Nvim/CopilotChat.nvim",
+			dependencies = {
+				{ "zbirenbaum/copilot.lua" },
+				{ "nvim-lua/plenary.nvim", branch = "master" },
+			},
+			build = "make tiktoken",
+			opts = {
+			},
+		},
+		{
 			"Exafunction/codeium.nvim",
 			dependencies = {
 				"nvim-lua/plenary.nvim",
