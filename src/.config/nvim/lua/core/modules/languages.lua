@@ -171,6 +171,7 @@ local servers = {
 	"nickel_ls",
 	"nimls",
 	"rust_analyzer",
+	"sourcekit",
 	"tinymist",
 	"ts_ls",
 	"zls",

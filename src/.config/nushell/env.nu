@@ -150,6 +150,7 @@ $env.STEAM_COMPAT_DATA_PATH = "/media/data/games/proton/"
 
 # godot
 $env.GODOT_BIN = "/usr/bin/godot"
+$env.GODOT4_BIN = $env.GODOT_BIN
 
 # sensible pagers
 $env.PAGER = "less -FRSX"
