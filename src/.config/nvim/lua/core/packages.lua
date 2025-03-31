@@ -142,8 +142,9 @@ local plugins = function()
 		"nvim-tree/nvim-web-devicons",
 
 		-- languages
+		{ "mrcjkb/rustaceanvim", version = '^5', lazy = false, },
 		{ "aklt/plantuml-syntax", { "weirongxu/plantuml-previewer.vim", dependencies = "tyru/open-browser.vim" } },
-		-- { "LhKipp/nvim-nu", ft = "nu", build = ":TSInstall nu" },
+		{ "nushell/tree-sitter-nu" },
 		{ "kmonad/kmonad-vim", ft = "kbd" },
 		{ "alaviss/nim.nvim", ft = "nim" },
 	}
