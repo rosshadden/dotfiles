@@ -11,7 +11,7 @@ export def slippi [] {
 			uid: "RAWS#790",
 		},
 		query: `
-			fragment profileFields on NetplayProfile {
+			fragment profileFieldsV2 on NetplayProfileV2 {
 				id
 				ratingOrdinal
 				ratingUpdateCount
@@ -55,5 +55,6 @@ export def slippi [] {
 		`
 	}
 
-	$payload | http post -t application/json $api | get data.getConnectCode.user
+	# $payload | http post -t application/json $api | get data.getConnectCode.user
+	$payload
 }

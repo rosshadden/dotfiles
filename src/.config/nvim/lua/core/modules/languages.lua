@@ -90,6 +90,7 @@ configs.setup {
 		"tsx",
 		"typescript",
 		"typst",
+		"v",
 		"yaml",
 		"zig",
 
@@ -176,6 +177,7 @@ local servers = {
 	"sourcekit",
 	"tinymist",
 	"ts_ls",
+	"v_analyzer",
 	"zls",
 }
 for _, server in ipairs(servers) do

@@ -131,6 +131,19 @@ $env.BROWSER = "thorium-browser"
 $env.XCURSOR_SIZE = 32
 
 ##
+## langs
+##
+
+# nodejs
+$env.N_PREFIX = "~/local"
+
+# vlang
+# $env.VROOT = "/usr/bin/v"
+
+# .NET
+$env.DOTNET_ROLL_FORWARD = "LatestMajor"
+
+##
 ## apps
 ##
 
@@ -141,9 +154,6 @@ $env.FZF_DEFAULT_OPTS = ([
 		"--bind 'alt-enter:print-query,tab:toggle-up,ctrl-y:execute-silent(echo {} | copy)'"
 		"--preview 'bat --line-range :500 {}'"
 	] | str join " ")
-
-# nodejs
-$env.N_PREFIX = "~/local"
 
 # steam
 $env.STEAM_COMPAT_DATA_PATH = "/media/data/games/proton/"
@@ -163,9 +173,6 @@ $env.PASSWORD_STORE_ENABLE_EXTENSIONS = "true" # [sic]
 # tig
 # NOTE: workaround because of https://github.com/jonas/tig/issues/1367
 $env.GIT_EDITOR = "nvim"
-
-# .NET
-$env.DOTNET_ROLL_FORWARD = "LatestMajor"
 
 ##
 ## insurance

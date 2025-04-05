@@ -126,9 +126,10 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "copilot" },
 		{ name = "codeium" },
-		{ name = "neorg" },
-		{ name = "emoji" },
 	}, {
+		{ name = "calc" },
+		{ name = "emoji" },
+		{ name = "neorg" },
 		{ name = "buffer", keyword_length = 5 },
 	}),
 })

@@ -31,6 +31,49 @@ export def run [
 	]) .
 }
 
+# Compile source files.
+export def build [
+] {
+	cargo build
+	gdextwiz build
+	tsc
+	swift build
+}
+
+# Watch to compile source files.
+export def watcher [
+] {
+	watch src {|op, path, new_path|
+		let ext = $path | path parse | get extension
+		if $ext in [ rs nim ts swift ] {
+			print ([
+				""
+				"################"
+				$"## ($op) ($path)(if $new_path != "" { $' -> ($new_path)' })"
+				"################"
+				""
+			] | str join (char newline))
+		}
+
+		try {
+			match $ext {
+				rs => {
+					cargo build
+				}
+				nim => {
+					gdextwiz build
+				}
+				ts => {
+					tsc
+				}
+				swift => {
+					swift build
+				}
+			}
+		}
+	}
+}
+
 # Run tests using GUT.
 export def test [
 	--gui (-g) # Run in headlessless mode.
