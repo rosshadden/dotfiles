@@ -19,6 +19,18 @@ dap.configurations.gdscript = {{
 	-- launch_scene = true,
 }}
 
+dap.adapters.node = {
+	type = "server",
+	host = "127.0.0.1",
+	port = 9229,
+}
+
+dap.configurations.typescript = {{
+	type = "node",
+	request = "attach",
+	name = "Attach inspector",
+}}
+
 dapui.setup()
 
 -- dap.listeners.before.attach.dapui_config = dapui.open
