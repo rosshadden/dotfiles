@@ -43,10 +43,7 @@ local plugins = function()
 		},
 
 		-- navigation
-		{
-			"nvim-telescope/telescope.nvim",
-			dependencies = { "nvim-lua/plenary.nvim", "debugloop/telescope-undo.nvim" }
-		},
+		{ "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim", "debugloop/telescope-undo.nvim" } },
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"smoka7/hop.nvim",
 		"chrisgrieser/nvim-spider",
@@ -64,6 +61,7 @@ local plugins = function()
 
 		-- debug
 		{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
+		{ "mxsdev/nvim-dap-vscode-js", dependencies = { "mfussenegger/nvim-dap" } },
 
 		-- integration
 		{

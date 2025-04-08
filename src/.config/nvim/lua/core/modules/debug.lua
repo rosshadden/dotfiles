@@ -1,9 +1,16 @@
 local dap = require("dap")
 local dapui = require("dapui")
+local dap_vscode = require("dap-vscode-js")
 
 --
 -- SETUP
 --
+
+dap_vscode.setup({
+	debugger_path = "/usr/lib/js-debug",
+	debugger_cmd = { "js-debug-dap" },
+	adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" }, -- which adapters to register in nvim-dap
+})
 
 dap.adapters.godot = {
 	type = "server",
@@ -19,16 +26,25 @@ dap.configurations.gdscript = {{
 	-- launch_scene = true,
 }}
 
-dap.adapters.node = {
-	type = "server",
-	host = "127.0.0.1",
-	port = 9229,
-}
-
 dap.configurations.typescript = {{
-	type = "node",
+	type = "pwa-node",
 	request = "attach",
-	name = "Attach inspector",
+	name = "Attach idk inspector",
+	address = "127.0.0.1",
+	port = 9229,
+	cwd = "${workspaceFolder}",
+}, {
+	type = "pwa-node",
+	request = "launch",
+	name = "Launch file",
+	program = "${file}",
+	cwd = "${workspaceFolder}",
+}, {
+	type = "pwa-node",
+	request = "attach",
+	name = "Attach",
+	processId = require("dap.utils").pick_process,
+	cwd = "${workspaceFolder}",
 }}
 
 dapui.setup()

@@ -22,6 +22,7 @@ vim.filetype.add({
 	extension = {
 		bb = "clojure",
 		conf = "config",
+		gdt = "gdscript",
 		nu = "nu",
 		nuon = "nu",
 		yuck = "clojure",
