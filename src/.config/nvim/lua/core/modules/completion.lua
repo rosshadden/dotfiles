@@ -72,28 +72,6 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 
-		["<tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			elseif hasPriorWords() then
-				cmp.complete()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-
-		["<s-tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif luasnip.expand_or_jumpable(-1) then
-				luasnip.jump(-1)
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-
 		["<c-e>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
