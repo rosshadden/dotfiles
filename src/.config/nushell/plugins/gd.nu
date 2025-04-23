@@ -69,6 +69,9 @@ export def watcher [
 				swift => {
 					swift build
 				}
+				v => {
+					./bin/build.vsh
+				}
 			}
 		}
 	}

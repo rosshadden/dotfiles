@@ -138,7 +138,7 @@ $env.XCURSOR_SIZE = 32
 $env.N_PREFIX = "~/local"
 
 # vlang
-# $env.VROOT = "/usr/bin/v"
+# $env.VROOT = "/usr/local/bin/v"
 
 # .NET
 $env.DOTNET_ROLL_FORWARD = "LatestMajor"

@@ -13,7 +13,7 @@ local jump_pattern_vertical = [[\v(<.|^$)|(.>|^$)|(\l)\zs(\u)|(_\zs.)|(#\zs.)]]
 --
 
 hop.setup {
-	keys = [[cieansthbyouvwldj-/mkr,.]]
+	keys = [[cnisetahywodulxfjmkr,.-/]]
 }
 
 --
