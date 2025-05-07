@@ -7,8 +7,13 @@ local spider = require("spider")
 require("mini.bracketed").setup()
 require("mini.extra").setup()
 require("mini.indentscope").setup()
-require("mini.operators").setup()
 require("mini.splitjoin").setup()
+
+require("mini.operators").setup({
+	replace = {
+		prefix = 'g.',
+	},
+})
 
 require("mini.ai").setup({
 	custom_textobjects = {

@@ -26,6 +26,7 @@ vim.filetype.add({
 		nu = "nu",
 		nuon = "nu",
 		yuck = "clojure",
+		vtmpl = "v",
 		zon = "zig",
 	},
 })

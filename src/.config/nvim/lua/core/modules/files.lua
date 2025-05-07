@@ -44,6 +44,7 @@ end, { silent = true })
 
 -- choose
 vim.keymap.set("n", "<plug><files>c", telescope.find_files, { silent = true })
+vim.keymap.set("n", "<plug><files>C", function() telescope.find_files({ no_ignore = true }) end, { silent = true })
 
 -- git
 vim.keymap.set("n", "<plug><files>g", telescope.git_files, { silent = true })

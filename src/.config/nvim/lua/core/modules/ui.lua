@@ -113,6 +113,7 @@ mini_hipatterns.setup({
 		hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
 		note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
 		temp = { pattern = "%f[%w]()TEMP()%f[%W]", group = "MiniHipatternsFixme" },
+		todo = { pattern = "%f[%w]()FIX()%f[%W]", group = "MiniHipatternsFixme" },
 		todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
 	},
 })

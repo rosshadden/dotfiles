@@ -45,7 +45,7 @@ export def watcher [
 ] {
 	watch src {|op, path, new_path|
 		let ext = $path | path parse | get extension
-		if $ext in [ rs nim ts swift ] {
+		if $ext in [ rs nim ts swift v vsh ] {
 			print ([
 				""
 				"################"
@@ -69,7 +69,7 @@ export def watcher [
 				swift => {
 					swift build
 				}
-				v => {
+				v | vsh => {
 					./bin/build.vsh
 				}
 			}
