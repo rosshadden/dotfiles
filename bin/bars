@@ -10,7 +10,7 @@ def main [] {
 		eww open top --id $"top:($monitor.name)" --screen $monitor.name --arg $"monitor=($monitor | to json -r)"
 		eww open bottom --id $"bottom:($monitor.name)" --screen $monitor.name --arg $"monitor=($monitor | to json -r)"
 		eww open debug --id $"debug:($monitor.name)" --screen $monitor.name
-		eww open raws --id $"raws:($monitor.name)" --screen $monitor.name
+		# eww open raws --id $"raws:($monitor.name)" --screen $monitor.name
 		$monitor
 	}
 

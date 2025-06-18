@@ -70,6 +70,7 @@ function unmappings() {
 
 	// disable emojis
 	api.iunmap(":");
+	api.iunmap("<Ctrl-a>");
 }
 
 function providers() {
@@ -77,10 +78,9 @@ function providers() {
 		const [ query, titles, , urls ] = JSON.parse(res.text);
 		return titles;
 	});
-
-	addProvider("T", "twitch", "https://twitch.tv/");
 	addProvider("r", "reddit", "https://www.reddit.com/r/");
-
+	addProvider("S", "slippi", "https://slippi.gg/user/");
+	addProvider("T", "twitch", "https://twitch.tv/");
 	addProvider("w", "wikipedia", "https://en.wikipedia.org/wiki/", "s", "https://en.wikipedia.org/w/api.php?action=opensearch&format=json&formatversion=2&namespace=0&limit=40&search=", (res) => {
 		return JSON.parse(res.text)[1];
 	});

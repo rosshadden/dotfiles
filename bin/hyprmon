@@ -81,7 +81,6 @@ def init [] {
 	update mode NORMAL
 }
 
-
 export def socket [
 	--write (-w) # whether to get the writable socket
 ]: nothing -> string {

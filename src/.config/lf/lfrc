@@ -41,6 +41,11 @@ map t :toggle; down
 map T :toggle; up
 map gt :tag-toggle; down
 map gT :tag-toggle; up
+map gn :{{
+	tag-toggle
+	down
+	tag-toggle
+}}
 
 # create
 map O push $mkdir<space>-p<space>

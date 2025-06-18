@@ -113,9 +113,7 @@ export def fzf-history [
 # TODO: support a project file that can override the defaylt layout
 export def pj [] {
 	wezterm cli spawn --cwd . -- nu -e nvim
-	wezterm cli spawn --cwd . -- nu
-		| wezterm cli split-pane --cwd . --pane-id $in --left nu -e tigs
-	wezterm cli activate-pane-direction left
+	wezterm cli spawn --cwd . -- nu -e tigs
 	wezterm cli spawn --cwd . -- nu
 	wezterm cli activate-tab --tab-index 0
 	wezterm cli kill-pane
