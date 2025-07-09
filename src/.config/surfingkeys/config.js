@@ -78,6 +78,7 @@ function providers() {
 		const [ query, titles, , urls ] = JSON.parse(res.text);
 		return titles;
 	});
+	addProvider("G", "godot", "https://docs.godotengine.org/en/latest/search.html?q=");
 	addProvider("r", "reddit", "https://www.reddit.com/r/");
 	addProvider("S", "slippi", "https://slippi.gg/user/");
 	addProvider("T", "twitch", "https://twitch.tv/");

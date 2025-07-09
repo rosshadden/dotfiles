@@ -107,7 +107,6 @@ cmp.setup({
 	}, {
 		{ name = "calc" },
 		{ name = "emoji" },
-		{ name = "neorg" },
 		{ name = "buffer", keyword_length = 5 },
 	}),
 })

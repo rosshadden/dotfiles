@@ -109,9 +109,28 @@ export def fzf-history [
 	history | get command | reverse | to text | fzf --prompt "HISTORY> " --query $"($query)"
 }
 
+export def zoxide-nodes [] {
+	let result = zoxide query --list | lines | each {
+		split row / | last
+	}
+
+	{
+		options: {
+			completion_algorithm: substring
+			sort: false
+		}
+		completions: $result
+	}
+}
+
 # Open tabs and panes in my usual layout.
 # TODO: support a project file that can override the defaylt layout
-export def pj [] {
+export def --env pj [
+	query?: string@zoxide-nodes
+] {
+	if not ($query | is-empty) {
+		cd (zoxide query $query)
+	}
 	wezterm cli spawn --cwd . -- nu -e nvim
 	wezterm cli spawn --cwd . -- nu -e tigs
 	wezterm cli spawn --cwd . -- nu
@@ -141,13 +160,6 @@ export def tj [
 	let name = if ($name | is-empty) { tmux list-sessions -F '#{session_name}' | fzf } else { $name }
 	ta $name
 }
-
-# # Change to dir matching zoxide query
-# export def --env s [
-# 	query: string # Directory query
-# ] {
-# 	cd (zoxide query $query | str trim)
-# }
 
 # Get ip
 export def wimi [

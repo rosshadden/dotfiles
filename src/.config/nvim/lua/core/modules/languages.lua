@@ -1,7 +1,6 @@
-local configs = require "nvim-treesitter.configs"
+local trees = require "nvim-treesitter.configs"
 local lsp = require "lspconfig"
 local lspUtils = require "lspconfig.util"
-local parsers = require("nvim-treesitter.parsers").get_parser_configs()
 
 --
 -- SETTINGS
@@ -31,38 +30,11 @@ vim.filetype.add({
 	},
 })
 
-parsers.nim = {
-	install_info = {
-		url = "https://github.com/alaviss/tree-sitter-nim",
-		-- branch = "main",
-		files = {
-			"src/parser.c",
-			"src/scanner.c",
-		},
-	},
-}
-
-parsers.norg_meta = {
-	install_info = {
-		url = "https://github.com/nvim-neorg/tree-sitter-norg-meta",
-		files = { "src/parser.c" },
-		branch = "main",
-	},
-}
-
-parsers.norg_table = {
-	install_info = {
-		url = "https://github.com/nvim-neorg/tree-sitter-norg-table",
-		files = { "src/parser.c" },
-		branch = "main",
-	},
-}
-
 --
 -- SYNTAX
 --
 
-configs.setup {
+trees.setup {
 	ensure_installed = {
 		"bash",
 		"c",
@@ -81,7 +53,7 @@ configs.setup {
 		"julia",
 		"lua",
 		"markdown",
-		"norg",
+		"nim",
 		"nu",
 		"php",
 		"proto",
@@ -95,11 +67,6 @@ configs.setup {
 		"v",
 		"yaml",
 		"zig",
-
-		-- custom
-		"nim",
-		"norg_meta",
-		"norg_table",
 	},
 
 	highlight = { enable = true },

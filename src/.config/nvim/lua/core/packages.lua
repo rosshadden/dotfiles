@@ -8,16 +8,17 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = function()
 	return {
-		-- lib
-		{
-			"vhyrro/luarocks.nvim",
-			priority = 1000,
-			config = true,
-		},
-
 		-- ast
-		{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-		"nvim-treesitter/nvim-treesitter-textobjects",
+		{
+			"nvim-treesitter/nvim-treesitter",
+			lazy = false,
+			branch = "master",
+			build = ":TSUpdate",
+		},
+		{
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			branch = "master",
+		},
 		"neovim/nvim-lspconfig",
 
 		-- completion
@@ -124,13 +125,6 @@ local plugins = function()
 				"nvim-telescope/telescope.nvim",
 				"folke/trouble.nvim",
 			}
-		},
-		{
-			"nvim-neorg/neorg",
-			dependencies = { "luarocks.nvim" },
-			config = function()
-				require("core.plugins.neorg")
-			end,
 		},
 		{ "eraserhd/parinfer-rust", build = "cargo build --release" },
 
