@@ -11,7 +11,7 @@ vim.opt.winbar = "%=%m %f"
 
 -- concealment
 vim.opt.conceallevel = 2
-vim.opt.concealcursor = "nv"
+-- vim.opt.concealcursor = "nv"
 
 -- colorscheme
 vim.opt.termguicolors = true
@@ -21,7 +21,7 @@ local mini_starter = require "mini.starter"
 mini_starter.setup({
 	items = {
 		mini_starter.sections.builtin_actions(),
-		mini_starter.sections.recent_files(10, true),
+		mini_starter.sections.recent_files(32, true),
 		mini_starter.sections.pick(),
 		mini_starter.sections.sessions(),
 		mini_starter.sections.telescope(),
