@@ -8,7 +8,7 @@ export def main [] {
 	}
 
 	let completer = {|spans: list<string>|
-		let expanded_alias = (scope aliases | where name == $spans.0 | get -i 0 | get -i expansion)
+		let expanded_alias = (scope aliases | where name == $spans.0 | get -o 0 | get -o expansion)
 
 		let spans = (
 			if $expanded_alias != null {

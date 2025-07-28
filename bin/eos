@@ -17,7 +17,7 @@ def "get window" [addr: string] {
 	hyprctl clients -j
 	| from json
 	| where address == $"0x($addr)"
-	| get -i 0
+	| get -o 0
 	| default {}
 }
 
@@ -108,7 +108,7 @@ export def led [
 }
 
 export def socket []: nothing -> string {
-	$"UNIX:($env | get -i XDG_RUNTIME_DIR | default tmp)/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock"
+	$"UNIX:($env | get -o XDG_RUNTIME_DIR | default tmp)/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/.socket2.sock"
 }
 
 # Set state based on entering and exiting zoom meetings.

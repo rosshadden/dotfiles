@@ -22,7 +22,7 @@ def "refresh window" [event: record] {
 	hyprctl clients -j
 	| from json
 	| where address == $"0x($event.data)"
-	| get -i 0
+	| get -o 0
 	| default {}
 	| to json --raw
 	| update window $in
@@ -63,7 +63,7 @@ def process [line: string] {
 		}
 		urgent => {
 			let address = $"0x($event.data)"
-			let title = hyprctl clients -j | from json | where address == $address | get -i 0.title | default ""
+			let title = hyprctl clients -j | from json | where address == $address | get -o 0.title | default ""
 			update urgent ({ active: true, address: $address, title: $title } | to json --raw)
 			sleep 20sec
 			update urgent "{}"
@@ -85,7 +85,7 @@ export def socket [
 	--write (-w) # whether to get the writable socket
 ]: nothing -> string {
 	let file = if $write { ".socket.sock" } else { ".socket2.sock" }
-	$"UNIX:($env | get -i XDG_RUNTIME_DIR | default tmp)/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/($file)"
+	$"UNIX:($env | get -o XDG_RUNTIME_DIR | default tmp)/hypr/($env.HYPRLAND_INSTANCE_SIGNATURE)/($file)"
 }
 
 export def _listen [
