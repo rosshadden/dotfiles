@@ -131,9 +131,6 @@ local plugins = function()
 		-- misc
 		"echasnovski/mini.nvim",
 
-		-- ui
-		"nvim-tree/nvim-web-devicons",
-
 		-- languages
 		{ "mrcjkb/rustaceanvim", version = '^5', lazy = false, },
 		{ "aklt/plantuml-syntax", { "weirongxu/plantuml-previewer.vim", dependencies = "tyru/open-browser.vim" } },

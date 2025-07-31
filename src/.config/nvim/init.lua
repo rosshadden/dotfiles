@@ -1,7 +1,7 @@
-require("core.packages")
-require("core.functions")
-require("core.settings")
-require("core.mappings")
+require("settings")
+require("packages")
+require("functions")
+require("mappings")
 
-require("core.modules")
-require("core.plugins")
+require("modules")
+require("plugins")

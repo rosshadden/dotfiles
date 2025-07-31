@@ -16,17 +16,17 @@ vim.opt.conceallevel = 2
 -- colorscheme
 vim.opt.termguicolors = true
 
--- startup menu
-local mini_starter = require "mini.starter"
-mini_starter.setup({
-	items = {
-		mini_starter.sections.builtin_actions(),
-		mini_starter.sections.recent_files(32, true),
-		mini_starter.sections.pick(),
-		mini_starter.sections.sessions(),
-		mini_starter.sections.telescope(),
-	},
-})
+-- -- startup menu
+-- local mini_starter = require "mini.starter"
+-- mini_starter.setup({
+-- 	items = {
+-- 		mini_starter.sections.builtin_actions(),
+-- 		mini_starter.sections.recent_files(32, true),
+-- 		mini_starter.sections.pick(),
+-- 		mini_starter.sections.sessions(),
+-- 		mini_starter.sections.telescope(),
+-- 	},
+-- })
 
 --
 -- SETUP
