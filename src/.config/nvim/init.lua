@@ -1,7 +1,5 @@
 require("settings")
-require("packages")
+require("plugins")
 require("functions")
 require("mappings")
-
 require("modules")
-require("plugins")
