@@ -1,3 +1,5 @@
+-- package management
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
 	vim.fn.system({
