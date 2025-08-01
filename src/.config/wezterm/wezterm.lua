@@ -14,10 +14,10 @@ local config = {
 	front_end = "WebGpu",
 
 	-- fonts
-	font_size = 11,
+	font_size = 10,
 	line_height = 1.0,
 	font = wezterm.font_with_fallback({
-		-- "Monocraft",
+		"Monocraft",
 		"Fairfax Hax HD",
 		-- "Maple Mono",
 		"JetBrains Mono",
