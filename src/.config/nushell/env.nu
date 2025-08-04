@@ -14,7 +14,7 @@ $env.PATH = (
 		"~/dev/bin",
 
 		# apps
-		"~/.local/share/fnm/aliases/default/bin",
+		"~/.asdf/shims",
 	]
 	| append [
 		# system
