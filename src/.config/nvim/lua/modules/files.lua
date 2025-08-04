@@ -29,9 +29,7 @@ lf.setup {
 vim.keymap.set("n", "<space>f", "<plug><files>", { silent = true })
 
 -- open file browser at file's cwd
-vim.keymap.set("n", "<plug><files><space>", function()
-	lf.start()
-end, { silent = true })
+vim.keymap.set("n", "<plug><files><space>", lf.start, { silent = true })
 -- open file browser at git root dir
 vim.keymap.set("n", "<plug><files><a-space>", function()
 	lf.start({ dir = "gwd" })

@@ -1,8 +1,8 @@
 -- TEMP
 vim.opt.runtimepath:prepend("~/dotfiles/src/.config/nvim2")
 
-require("core")
 require("functions")
+require("core")
 
 require("app")
 require("buffers")

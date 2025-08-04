@@ -1,13 +1,12 @@
+require("mini.pick").setup()
+
 --
 -- lf
 --
 
 vim.g.lf_netrw = true
 
-vim.pack.add({
-	"https://github.com/akinsho/toggleterm.nvim",
-	"https://github.com/lmburns/lf.nvim",
-})
+pack("lmburns/lf.nvim", { "akinsho/toggleterm.nvim" })
 
 local lf = require("lf")
 lf.setup({

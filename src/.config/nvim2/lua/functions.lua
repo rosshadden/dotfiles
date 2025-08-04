@@ -18,53 +18,30 @@ function map(seq, action, cfg)
 	vim.keymap.set(modes, seq, action, options)
 end
 
-local function normalize_package(pkg)
-  if type(pkg) == 'string' then
-    return { src = pkg:match('^https?://') and pkg or ('https://github.com/' .. pkg) }
-  elseif type(pkg) == 'table' then
-    -- { "user/repo", opts = { ... } }
-    if pkg[1] and type(pkg[1]) == 'string' then
-      local out = {
-        src = pkg[1]:match('^https?://') and pkg[1] or ('https://github.com/' .. pkg[1])
-      }
-      if pkg.opts then
-        for k, v in pairs(pkg.opts) do out[k] = v end
-      end
-      if pkg.deps then out.deps = pkg.deps end
-      return out
-    elseif pkg.src then
-      return vim.deepcopy(pkg)
-    else
-      error("invalid package spec")
-    end
-  else
-    error("invalid package spec")
-  end
+--- Helper function to flatten nested arrays
+local function flatten(t, result)
+	for _, v in ipairs(t) do
+		if type(v) == "table" and not v.src and #v > 0 then
+			flatten(v, result)
+		else
+			table.insert(result, v)
+		end
+	end
 end
 
+--- Add packages.
 function pack(...)
-  local args = { ... }
-  local final = {}
-  local seen = {}
+	local specs = {}
 
-  local function add(pkg)
-    pkg = normalize_package(pkg)
+	for _, arg in ipairs({...}) do
+		if type(arg) == "table" and not arg.src and #arg > 0 then
+			flatten(arg, specs)
+		else
+			table.insert(specs, arg)
+		end
+	end
 
-    if seen[pkg.src] then return end
-    seen[pkg.src] = true
-
-    if pkg.deps then
-      for _, dep in ipairs(pkg.deps) do
-        add(dep)  -- raw strings like "user/repo" get normalized here
-      end
-    end
-
-    table.insert(final, pkg)
-  end
-
-  for _, pkg in ipairs(args) do
-    add(pkg)
-  end
-
-  vim.pack.add(final)
+	return vim.pack.add(specs)
 end
+
+return pack
