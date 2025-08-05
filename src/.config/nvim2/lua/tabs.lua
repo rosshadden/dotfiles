@@ -7,8 +7,8 @@ map("<a-n>", next_tab)
 map("<a-p>", prev_tab)
 
 -- absolute navigation
-map("<a-`>", ":tabfirst<cr>")
-map("<a-0>", ":tablast<cr>")
+map("<a-`>", cmd "tabfirst")
+map("<a-0>", cmd "tablast")
 
 -- direct navigation
 for i = 1, 9, 1 do

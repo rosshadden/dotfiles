@@ -11,8 +11,8 @@ map("<a-h>", function() pcall(vim.cmd, "wincmd h") end, { modes = "" })
 map("<a-l>", function() pcall(vim.cmd, "wincmd l") end, { modes = "" })
 
 -- crud
-buffers:map("q", ":quit<cr>")
-buffers:map("s", ":update<cr>")
-buffers:map("w", ":write<cr>")
-buffers:map("x", ":exit<cr>")
-map("<a-q>", ":bdelete<cr>")
+buffers:map("q", cmd "quit")
+buffers:map("s", cmd "update")
+buffers:map("w", cmd "write")
+buffers:map("x", cmd "exit")
+map("<a-q>", cmd "bdelete")

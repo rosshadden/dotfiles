@@ -1,3 +1,5 @@
+local ui = Mode.new("ui", "<space>u")
+
 pack("https://github.com/folke/snacks.nvim")
 
 --
@@ -137,18 +139,16 @@ require("snacks").setup({
 -- EVENTS
 --
 
-local group = vim.api.nvim_create_augroup("misc", {})
-
 -- automatically resize windows
 vim.api.nvim_create_autocmd("VimResized", {
-	group = group,
+	group = ui.group,
 	callback = function()
 		vim.cmd("wincmd =")
 	end,
 })
 
 vim.api.nvim_create_autocmd("User", {
-	group = group,
+	group = ui.group,
 	pattern = "SnacksDashboardOpened",
 	callback = function(args)
 		vim.b[args.buf].minitrailspace_disable = true

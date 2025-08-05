@@ -53,6 +53,7 @@ map("<localleader>=", vim.lsp.buf.format)
 --
 
 vim.api.nvim_create_autocmd("LspAttach", {
+	group = lang.group,
 	callback = function(event)
 		local client = vim.lsp.get_client_by_id(event.data.client_id)
 		if client:supports_method("textDocument/completion") then

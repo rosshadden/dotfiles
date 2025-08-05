@@ -3,6 +3,7 @@ Mode = {
 	name = "",
 	seq = "",
 	prefix = "",
+	group = nil,
 }
 
 --- Create a Mode.
@@ -11,7 +12,10 @@ function Mode.new(name, seq)
 	self.name = name
 	self.seq = seq
 	self.prefix = "<plug>(" .. self.name .. ")"
+	self.group = vim.api.nvim_create_augroup(self.name, {})
+
 	map(self.seq, self.prefix)
+
 	return self
 end
 

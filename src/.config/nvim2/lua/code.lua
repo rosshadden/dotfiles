@@ -1,3 +1,5 @@
+local code = Mode.new("code", "<space>c")
+
 --
 -- SETTINGS
 --
@@ -61,11 +63,9 @@ map("<a-/>", "/\\v", { modes = "", noremap = true })
 -- EVENTS
 --
 
-local group = vim.api.nvim_create_augroup("code", {})
-
 -- preserve cursor position [:h restore-cursor]
 vim.api.nvim_create_autocmd("BufRead", {
-	group = group,
+	group = code.group,
 	command = [[
 		if line("'\"") > 1 && line("'\"") <= line("$") | exec "normal! g`\"" | endif
 	]],
