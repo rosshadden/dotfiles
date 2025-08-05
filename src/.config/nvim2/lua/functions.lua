@@ -43,5 +43,3 @@ function pack(...)
 
 	return vim.pack.add(specs)
 end
-
-return pack

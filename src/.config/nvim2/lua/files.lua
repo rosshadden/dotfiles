@@ -1,4 +1,19 @@
-require("mini.pick").setup()
+--
+-- lf
+--
+
+local mini_pick = require("mini.pick")
+mini_pick.setup({
+	mappings = {
+		choose_in_split = "<a-j>",
+		choose_in_vsplit = "<a-l>",
+		choose_in_tabpage = "<a-t>",
+	},
+})
+
+map("<leader>f", function()
+	mini_pick.builtin.files()
+end)
 
 --
 -- lf
@@ -20,4 +35,4 @@ lf.setup({
 	},
 })
 
-map("<leader>f", lf.start)
+map("<leader>b", lf.start)

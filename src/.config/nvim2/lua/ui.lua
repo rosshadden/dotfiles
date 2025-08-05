@@ -21,7 +21,7 @@ require("mini.icons").setup()
 
 -- colorscheme
 
-local mini_base16 = require("mini.base16")
+local mini_base16 = require "mini.base16"
 mini_base16.setup({
 	palette = mini_base16.mini_palette("#2b1a33", "#c9c5cb", 100),
 	-- palette = {
