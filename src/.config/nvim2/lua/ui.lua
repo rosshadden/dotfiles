@@ -2,6 +2,11 @@ local ui = Mode.new("ui", "<space>u")
 
 pack("https://github.com/folke/snacks.nvim")
 
+local mini_base16 = require "mini.base16"
+local mini_clue = require "mini.clue"
+local mini_hipatterns = require "mini.hipatterns"
+local mini_hiwords = require "mini.extra".gen_highlighter.words
+
 --
 -- SETTINGS
 --
@@ -20,12 +25,11 @@ vim.opt.winborder = "rounded"
 -- SETUP
 --
 
-require("mini.cursorword").setup()
-require("mini.icons").setup()
+require "mini.cursorword".setup()
+require "mini.icons".setup()
 
 -- colorscheme
 
-local mini_base16 = require "mini.base16"
 mini_base16.setup({
 	palette = mini_base16.mini_palette("#2b1a33", "#c9c5cb", 100),
 	-- palette = {
@@ -49,7 +53,66 @@ mini_base16.setup({
 	use_cterm = true,
 })
 
+-- highlights
+
+-- search
+vim.api.nvim_set_hl(0, "IncSearch", { bg = "#009f5b", fg = "#ffffff" })
+vim.api.nvim_set_hl(0, "CurSearch", { bg = "#009f5b", fg = "#ffffff" })
+
+mini_hipatterns.setup({
+	highlighters = {
+		hex_color = mini_hipatterns.gen_highlighter.hex_color(),
+
+		hack = mini_hiwords({ "HACK" }, "MiniHipatternsHack"),
+		note = mini_hiwords({ "NOTE" }, "MiniHipatternsNote"),
+		temp = mini_hiwords({ "TEMP" }, "MiniHipatternsFixme"),
+		fix =  mini_hiwords({ "FIX" }, "MiniHipatternsFixme"),
+		todo = mini_hiwords({ "TODO" }, "MiniHipatternsTodo"),
+	},
+})
+
+-- clues
+mini_clue.setup({
+	triggers = {
+		-- completions
+		{ mode = "i", keys = "<c-x>" },
+
+		-- goto
+		{ mode = "n", keys = "g" },
+		{ mode = "x", keys = "g" },
+
+		-- marks
+		{ mode = "n", keys = "'" },
+		{ mode = "n", keys = "`" },
+		{ mode = "x", keys = "'" },
+		{ mode = "x", keys = "`" },
+
+		-- registers
+		{ mode = "n", keys = '"' },
+		{ mode = "x", keys = '"' },
+		{ mode = "i", keys = "<c-r>" },
+		{ mode = "c", keys = "<c-r>" },
+
+		-- windows
+		{ mode = "n", keys = "<c-w>" },
+
+		-- folds
+		{ mode = "n", keys = "z" },
+		{ mode = "x", keys = "z" },
+	},
+
+	clues = {
+		mini_clue.gen_clues.builtin_completion(),
+		mini_clue.gen_clues.g(),
+		mini_clue.gen_clues.marks(),
+		mini_clue.gen_clues.registers(),
+		mini_clue.gen_clues.windows(),
+		mini_clue.gen_clues.z(),
+	},
+})
+
 -- dashboard
+-- TODO: lol
 
 local version = vim.version()
 local header = [[
@@ -86,7 +149,7 @@ local section = function(a, b)
 	return a
 end
 
-require("snacks").setup({
+require "snacks".setup({
 	dashboard = {
 		preset = {
 			header = header,

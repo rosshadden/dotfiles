@@ -1,4 +1,4 @@
-local code = Mode.new("code", "<space>c")
+local code = Mode.new("code")
 
 --
 -- SETTINGS
@@ -12,39 +12,22 @@ vim.opt.swapfile = false
 -- SETUP
 --
 
-require("mini.align").setup()
-require("mini.bracketed").setup()
-require("mini.extra").setup()
-require("mini.indentscope").setup()
-require("mini.splitjoin").setup()
-require("mini.surround").setup()
-require("mini.trailspace").setup()
+require "mini.align".setup()
+require "mini.splitjoin".setup()
+require "mini.surround".setup()
+require "mini.trailspace".setup()
 
+require "mini.move".setup({
+	mappings = {
+		down = "<down>",
+		left = "<left>",
+		right = "<right>",
+		up = "<up>",
 
-require("mini.basics").setup({
-	extra_ui = true,
-})
-
-require("mini.operators").setup({
-	replace = {
-		prefix = "g.",
-	},
-})
-
-require("mini.ai").setup({
-	custom_textobjects = {
-		-- current line/row
-		r = MiniExtra.gen_ai_spec.line(),
-
-		-- entire buffer
-		e = function()
-			local from = { line = 1, col = 1 }
-			local to = {
-				line = vim.fn.line('$'),
-				col = math.max(vim.fn.getline('$'):len(), 1)
-			}
-			return { from = from, to = to, vis_mode = 'V' }
-		end
+		line_down = "<down>",
+		line_left = "<left>",
+		line_right = "<right>",
+		line_up = "<up>",
 	}
 })
 
@@ -57,7 +40,7 @@ require("mini.ai").setup({
 -- redo
 map("U", "<c-r>", { noremap = true })
 -- find
-map("<a-/>", "/\\v", { modes = "", noremap = true })
+map("<leader>/", "/\\v", { modes = "", silent = false, noremap = true })
 
 --
 -- EVENTS

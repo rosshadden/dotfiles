@@ -4,8 +4,8 @@ function map(seq, action, cfg)
 
 	local modes = cfg.modes or "n"
 	local options = {
-		silent = (cfg.silent ~= nil) and cfg.silent or true,
-		noremap = (cfg.noremap ~= nil) and cfg.noremap or false,
+		silent = cfg.silent == nil and true or cfg.silent,
+		noremap = cfg.noremap == nil and false or cfg.noremap,
 		desc = cfg.desc,
 		expr = cfg.expr,
 		nowait = cfg.nowait,
@@ -14,6 +14,11 @@ function map(seq, action, cfg)
 		callback = cfg.callback,
 		buffer = cfg.buffer,
 	}
+
+	-- make commands noremap
+	if type(action) ~= "string" or action:sub(1, 1) == ":" then
+		options.noremap = true
+	end
 
 	vim.keymap.set(modes, seq, action, options)
 end
@@ -24,28 +29,23 @@ function cmd(name)
 	return ":" .. name .. "<cr>"
 end
 
---- Helper function to flatten nested arrays.
-local function flatten(t, result)
-	for _, v in ipairs(t) do
-		if type(v) == "table" and not v.src and #v > 0 then
-			flatten(v, result)
-		else
-			table.insert(result, v)
+--- Process and flatten plugin specs.
+local function process(v, result)
+	if type(v) == "table" and not v.src and #v > 0 then
+		for _, item in ipairs(v) do process(item, result) end
+	else
+		if type(v) == "string" and not v:match("^https?:") then
+			v = "https://github.com/" .. v
+		elseif type(v) == "table" and v.src and not v.src:match("^https?:") then
+			v.src = "https://github.com/" .. v.src
 		end
+		table.insert(result, v)
 	end
 end
 
 --- Add packages.
 function pack(...)
 	local specs = {}
-
-	for _, arg in ipairs({...}) do
-		if type(arg) == "table" and not arg.src and #arg > 0 then
-			flatten(arg, specs)
-		else
-			table.insert(specs, arg)
-		end
-	end
-
+	for _, arg in ipairs({...}) do process(arg, specs) end
 	return vim.pack.add(specs)
 end

@@ -14,7 +14,9 @@ function Mode.new(name, seq)
 	self.prefix = "<plug>(" .. self.name .. ")"
 	self.group = vim.api.nvim_create_augroup(self.name, {})
 
-	map(self.seq, self.prefix)
+	if seq ~= nil then
+		map(self.seq, self.prefix)
+	end
 
 	return self
 end

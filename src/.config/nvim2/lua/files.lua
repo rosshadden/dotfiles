@@ -2,8 +2,8 @@ local files = Mode.new("files", "<space>f")
 
 pack("lmburns/lf.nvim", { "akinsho/toggleterm.nvim" })
 
-local lf = require("lf")
-local mini_pick = require("mini.pick")
+local lf = require "lf"
+local mini_pick = require "mini.pick"
 
 --
 -- SETTINGS
@@ -38,8 +38,21 @@ lf.setup({
 -- MAPPINGS
 --
 
-files:map("c", function()
-	mini_pick.builtin.files()
+-- choose
+files:map("c", function() mini_pick.builtin.files({ tool = "fd" }) end)
+files:map("C", function()
+	mini_pick.builtin.cli({
+		command = { "fd", "--hidden", "--type", "f" },
+	})
 end)
 
+-- git
+files:map("g", function() mini_pick.builtin.files({ tool = "git" }) end)
+
+-- open explorer at file's cwd
 files:map("<space>", lf.start)
+-- open explorer at git root dir
+-- FIX: makes future `lf.start()`s start in gwd too for some reason
+files:map("<a-space>", function()
+	lf.start({ dir = "gwd" })
+end)
