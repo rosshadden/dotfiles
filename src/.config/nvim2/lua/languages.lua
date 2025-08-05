@@ -1,15 +1,10 @@
+local lang = Mode.new("lang", "<space>l")
+
 pack("neovim/nvim-lspconfig")
 
-map("<leader>=", vim.lsp.buf.format)
-
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(event)
-		local client = vim.lsp.get_client_by_id(event.data.client_id)
-		if client:supports_method("textDocument/completion") then
-			vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
-		end
-	end,
-})
+--
+-- SETUP
+--
 
 vim.lsp.config("lua_ls", {
 	on_init = function(client)
@@ -46,3 +41,22 @@ vim.lsp.config("lua_ls", {
 })
 
 vim.lsp.enable("lua_ls")
+
+--
+-- MAPPINGS
+--
+
+map("<localleader>=", vim.lsp.buf.format)
+
+--
+-- EVENTS
+--
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(event)
+		local client = vim.lsp.get_client_by_id(event.data.client_id)
+		if client:supports_method("textDocument/completion") then
+			vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
+		end
+	end,
+})

@@ -1,3 +1,5 @@
+local tabs = Mode.new("tabs", "<space>t")
+
 -- relatave navigation
 local next_tab = [[:<c-u>execute (v:count == 0) ? "tabnext" : "tabnext " . (v:count1 + 2)<cr>]]
 local prev_tab = [[:<c-u>execute (v:count == 0) ? "tabprevious" : "tabprevious " . v:count1<cr>]]

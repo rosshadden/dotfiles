@@ -1,3 +1,5 @@
+pack("https://github.com/folke/snacks.nvim")
+
 --
 -- SETTINGS
 --
@@ -13,7 +15,7 @@ vim.opt.conceallevel = 2
 vim.opt.winborder = "rounded"
 
 --
--- PACKAGES
+-- SETUP
 --
 
 require("mini.cursorword").setup()
@@ -60,8 +62,6 @@ local header = [[
           ░    ░  ░    ░ ░        ░   ░         ░
                                  ░
 ]]
-
-pack("https://github.com/folke/snacks.nvim")
 
 --- Creates a dashboard section config.
 ---
@@ -134,7 +134,7 @@ require("snacks").setup({
 })
 
 --
--- FUNCTIONS
+-- EVENTS
 --
 
 vim.api.nvim_create_autocmd("User", {
