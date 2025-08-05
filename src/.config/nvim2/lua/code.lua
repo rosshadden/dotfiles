@@ -56,3 +56,17 @@ require("mini.ai").setup({
 map("U", "<c-r>", { noremap = true })
 -- find
 map("<a-/>", "/\\v", { modes = "", noremap = true })
+
+--
+-- EVENTS
+--
+
+local group = vim.api.nvim_create_augroup("code", {})
+
+-- preserve cursor position [:h restore-cursor]
+vim.api.nvim_create_autocmd("BufRead", {
+	group = group,
+	command = [[
+		if line("'\"") > 1 && line("'\"") <= line("$") | exec "normal! g`\"" | endif
+	]],
+})

@@ -18,7 +18,13 @@ function map(seq, action, cfg)
 	vim.keymap.set(modes, seq, action, options)
 end
 
---- Helper function to flatten nested arrays
+--- Helper function to make nvim commands for mapping.
+--- @return string :name<cr>
+function cmd(name)
+	return ":" .. name .. "<cr>"
+end
+
+--- Helper function to flatten nested arrays.
 local function flatten(t, result)
 	for _, v in ipairs(t) do
 		if type(v) == "table" and not v.src and #v > 0 then
@@ -42,26 +48,4 @@ function pack(...)
 	end
 
 	return vim.pack.add(specs)
-end
-
---- Struct allowing mode-specific keymaps.
-Mode = {
-	name = "",
-	seq = "",
-	prefix = "",
-}
-
---- Create a Mode.
-function Mode.new(name, seq)
-	local self = setmetatable(Mode, Mode)
-	self.name = name
-	self.seq = seq
-	self.prefix = "<plug>(" .. self.name .. ")"
-	map(self.seq, self.prefix)
-	return self
-end
-
---- Map key in mode.
-function Mode:map(seq, action, cfg)
-	map(self.prefix .. seq, action, cfg)
 end

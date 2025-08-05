@@ -20,5 +20,8 @@ end
 -- MAPPINGS
 --
 
+-- crud
+app:map("q", cmd "quitall")
+
 app:map("r", reload)
-app:map("R", ":restart<cr>")
+app:map("R", cmd "restart")
