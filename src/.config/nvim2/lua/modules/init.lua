@@ -1,5 +1,5 @@
 --- Struct allowing mode-specific keymaps.
-Mode = {
+Module = {
 	name = "",
 	seq = "",
 	prefix = "",
@@ -7,8 +7,8 @@ Mode = {
 }
 
 --- Create a Mode.
-function Mode.new(name, seq)
-	local self = setmetatable(Mode, Mode)
+function Module.new(name, seq)
+	local self = setmetatable(Module, Module)
 	self.name = name
 	self.seq = seq
 	self.prefix = "<plug>(" .. self.name .. ")"
@@ -22,7 +22,7 @@ function Mode.new(name, seq)
 end
 
 --- Map key in mode.
-function Mode:map(seq, action, cfg)
+function Module:map(seq, action, cfg)
 	map(self.prefix .. seq, action, cfg)
 end
 

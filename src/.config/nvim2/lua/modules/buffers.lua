@@ -1,4 +1,4 @@
-local buffers = Mode.new("buffers", "<space>b")
+local buffers = Module.new("buffers", "<space>b")
 
 --
 -- MAPPINGS

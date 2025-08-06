@@ -1,4 +1,4 @@
-local files = Mode.new("files", "<space>f")
+local files = Module.new("files", "<space>f")
 
 pack("lmburns/lf.nvim", { "akinsho/toggleterm.nvim" })
 

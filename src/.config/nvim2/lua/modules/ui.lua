@@ -1,4 +1,4 @@
-local ui = Mode.new("ui", "<space>u")
+local ui = Module.new("ui", "<space>u")
 
 pack("https://github.com/folke/snacks.nvim")
 

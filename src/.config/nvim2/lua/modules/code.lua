@@ -1,4 +1,4 @@
-local code = Mode.new("code")
+local code = Module.new("code")
 
 --
 -- SETTINGS

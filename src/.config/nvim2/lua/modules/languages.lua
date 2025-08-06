@@ -1,4 +1,4 @@
-local lang = Mode.new("lang", "<space>l")
+local lang = Module.new("lang", "<space>l")
 
 pack("neovim/nvim-lspconfig")
 

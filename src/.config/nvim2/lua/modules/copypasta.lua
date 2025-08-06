@@ -1,4 +1,4 @@
-local copypasta = Mode.new("copypasta", "<space>c")
+local copypasta = Module.new("copypasta", "<space>c")
 
 --
 -- MAPPINGS

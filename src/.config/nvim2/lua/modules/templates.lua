@@ -1,4 +1,4 @@
-local templates = Mode.new("templates")
+local templates = Module.new("templates")
 
 local conf = vim.fn.stdpath "config"
 

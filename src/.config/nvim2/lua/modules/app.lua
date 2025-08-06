@@ -1,4 +1,4 @@
-local app = Mode.new("app", "<space>a")
+local app = Module.new("app", "<space>a")
 
 --
 -- SETUP

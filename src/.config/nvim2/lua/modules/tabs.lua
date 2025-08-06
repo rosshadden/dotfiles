@@ -1,4 +1,4 @@
-local tabs = Mode.new("tabs", "<space>t")
+local tabs = Module.new("tabs", "<space>t")
 
 --
 -- MAPPINGS
