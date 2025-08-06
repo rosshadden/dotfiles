@@ -61,6 +61,4 @@ buffers:map("r", cmd "edit")
 buffers:map("R", cmd "edit!")
 
 -- choose
-buffers:map("<space>", function()
-	mini_pick.builtin.buffers()
-end)
+buffers:map("<space>", mini_pick.registry.buffers)

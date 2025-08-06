@@ -27,6 +27,7 @@ vim.opt.winborder = "rounded"
 
 require "mini.cursorword".setup()
 require "mini.icons".setup()
+require "mini.trailspace".setup()
 
 -- colorscheme
 
