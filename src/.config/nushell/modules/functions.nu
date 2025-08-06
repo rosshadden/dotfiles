@@ -208,3 +208,17 @@ export def --env dotenv [
 	| transpose --header-row --as-record
 	| load-env
 }
+
+def path_segments [] {
+	pwd | split row (char path_sep) | skip
+}
+
+# Replace a substring in your path.
+#
+# Taken from zsh's `cd foo bar`
+export def --env rd [
+	from: string@path_segments
+	to: string
+] {
+	pwd | str replace $from $to | cd $in
+}
