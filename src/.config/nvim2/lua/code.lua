@@ -40,7 +40,7 @@ require "mini.move".setup({
 -- redo
 map("U", "<c-r>", { noremap = true })
 -- find
-map("<leader>/", "/\\v", { modes = "", silent = false, noremap = true })
+map("<leader>/", "/\\v", { modes = {}, silent = false, noremap = true })
 
 --
 -- EVENTS
