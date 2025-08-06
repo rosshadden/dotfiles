@@ -1,4 +1,9 @@
+local subwords = Module.new("subwords", "<space>s")
+
+pack("chrisgrieser/nvim-spider")
+
 local mini_extra = require "mini.extra"
+local spider = require "spider"
 
 --
 -- SETUP
@@ -28,3 +33,13 @@ require "mini.ai".setup({
 		end
 	}
 })
+
+--
+-- MAPPINGS
+--
+
+-- spider
+
+map("<leader>b", function() spider.motion("b") end)
+map("<leader>e", function() spider.motion("e") end)
+map("<leader>w", function() spider.motion("w") end)

@@ -32,7 +32,7 @@ map d
 map <space>
 
 # shortcuts
-map <esc> quit
+# map <esc> quit
 map ; read
 map C clear
 

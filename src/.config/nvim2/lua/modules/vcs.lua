@@ -5,3 +5,4 @@ pack("lewis6991/gitsigns.nvim")
 --
 
 require "mini.diff".setup()
+require "mini.git".setup()

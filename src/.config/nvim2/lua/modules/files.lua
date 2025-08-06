@@ -15,14 +15,6 @@ vim.g.lf_netrw = true
 -- SETUP
 --
 
-mini_pick.setup({
-	mappings = {
-		choose_in_split = "<a-j>",
-		choose_in_vsplit = "<a-l>",
-		choose_in_tabpage = "<a-t>",
-	},
-})
-
 lf.setup({
 	border = "rounded",
 	default_actions = {
@@ -39,15 +31,15 @@ lf.setup({
 --
 
 -- choose
-files:map("c", function() mini_pick.builtin.files({ tool = "fd" }) end)
+files:map("c", function() mini_pick.registry.files({ tool = "fd" }) end)
 files:map("C", function()
-	mini_pick.builtin.cli({
+	mini_pick.registry.cli({
 		command = { "fd", "--hidden", "--type", "f" },
 	})
 end)
 
 -- git
-files:map("g", function() mini_pick.builtin.files({ tool = "git" }) end)
+files:map("g", mini_pick.registry.git_files)
 
 -- open explorer at file's cwd
 files:map("<space>", lf.start)
@@ -56,3 +48,7 @@ files:map("<space>", lf.start)
 files:map("<a-space>", function()
 	lf.start({ dir = "gwd" })
 end)
+
+-- search
+files:map("s", mini_pick.registry.grep_live)
+files:map("S", mini_pick.registry.grep)
