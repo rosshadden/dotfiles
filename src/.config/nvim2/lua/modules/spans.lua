@@ -11,16 +11,16 @@ local hop = require "hop"
 -- SETUP
 --
 
-require "mini.indentscope".setup()
-require "mini.jump2d".setup()
+require("mini.indentscope").setup()
+require("mini.jump2d").setup()
 
-require "mini.operators".setup({
+require("mini.operators").setup({
 	replace = {
 		prefix = "g.",
 	},
 })
 
-require "mini.ai".setup({
+require("mini.ai").setup({
 	custom_textobjects = {
 		-- current line/row
 		r = require("mini.extra").gen_ai_spec.line(),
@@ -56,7 +56,7 @@ map("<leader>w", function() spider.motion("w") end)
 -- hop
 
 local hop_yank = require("hop-yank")
-local hints = require "hop.hint".HintDirection
+local hints = require("hop.hint").HintDirection
 local patterns = {
 	Word = [[\v(^|\s)@<=\S+]],
 	eoW = [[\v\S(\s|$)@!]],

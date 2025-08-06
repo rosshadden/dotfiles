@@ -5,7 +5,7 @@ pack("https://github.com/folke/snacks.nvim")
 local mini_base16 = require "mini.base16"
 local mini_clue = require "mini.clue"
 local mini_hipatterns = require "mini.hipatterns"
-local mini_hiwords = require "mini.extra".gen_highlighter.words
+local mini_hiwords = require("mini.extra").gen_highlighter.words
 
 --
 -- SETTINGS
@@ -25,9 +25,9 @@ vim.opt.winborder = "rounded"
 -- SETUP
 --
 
-require "mini.cursorword".setup()
-require "mini.icons".setup()
-require "mini.trailspace".setup()
+require("mini.cursorword").setup()
+require("mini.icons").setup()
+require("mini.trailspace").setup()
 
 -- colorscheme
 
@@ -150,7 +150,7 @@ local section = function(a, b)
 	return a
 end
 
-require "snacks".setup({
+require("snacks").setup({
 	dashboard = {
 		preset = {
 			header = header,

@@ -35,11 +35,11 @@ end
 -- SETUP
 --
 
-require "mini.align".setup()
-require "mini.splitjoin".setup()
-require "mini.surround".setup()
+require("mini.align").setup()
+require("mini.splitjoin").setup()
+require("mini.surround").setup()
 
-require "mini.move".setup({
+require("mini.move").setup({
 	mappings = {
 		down = "<down>",
 		left = "<left>",

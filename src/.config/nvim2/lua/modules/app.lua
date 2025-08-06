@@ -6,10 +6,10 @@ local mini_pick = require "mini.pick"
 -- SETUP
 --
 
-require "mini.bracketed".setup()
-require "mini.extra".setup()
+require("mini.bracketed").setup()
+require("mini.extra").setup()
 
-require "mini.basics".setup({
+require("mini.basics").setup({
 	extra_ui = true,
 })
 
