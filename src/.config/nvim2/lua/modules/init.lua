@@ -25,3 +25,15 @@ end
 function Mode:map(seq, action, cfg)
 	map(self.prefix .. seq, action, cfg)
 end
+
+require "modules.app"
+require "modules.buffers"
+require "modules.code"
+require "modules.copypasta"
+require "modules.files"
+require "modules.languages"
+require "modules.spans"
+require "modules.tabs"
+require "modules.templates"
+require "modules.ui"
+require "modules.vcs"
