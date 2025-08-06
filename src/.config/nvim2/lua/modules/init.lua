@@ -22,8 +22,8 @@ function Module.new(name, seq)
 end
 
 --- Map key in mode.
-function Module:map(seq, action, cfg)
-	map(self.prefix .. seq, action, cfg)
+function Module:map(seq, action, modes, cfg)
+	map(self.prefix .. seq, action, modes, cfg)
 end
 
 require "modules.app"

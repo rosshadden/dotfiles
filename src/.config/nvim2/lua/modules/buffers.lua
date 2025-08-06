@@ -1,23 +1,25 @@
 local buffers = Module.new("buffers", "<space>b")
 
+local mini_pick = require "mini.pick"
+
 --
 -- MAPPINGS
 --
 
--- relative navigation
-map("<a-j>", function() pcall(vim.cmd, "wincmd j") end, { modes = {} })
-map("<a-k>", function() pcall(vim.cmd, "wincmd k") end, { modes = {} })
-map("<a-h>", function() pcall(vim.cmd, "wincmd h") end, { modes = {} })
-map("<a-l>", function() pcall(vim.cmd, "wincmd l") end, { modes = {} })
+-- relative nav
+map("<a-j>", function() pcall(vim.cmd, "wincmd j") end, "")
+map("<a-k>", function() pcall(vim.cmd, "wincmd k") end, "")
+map("<a-h>", function() pcall(vim.cmd, "wincmd h") end, "")
+map("<a-l>", function() pcall(vim.cmd, "wincmd l") end, "")
 
--- stack navigation
+-- stack nav
 buffers:map("n", cmd "bnext")
 buffers:map("p", cmd "bprevious")
 buffers:map("N", cmd "blast")
 buffers:map("P", cmd "bfirst")
 
 -- switch to alternate buffer
-vim.keymap.set("n", "<leader>b", "<c-^>", { silent = true })
+buffers:map("a", "<c-^>")
 
 -- split [wasd]
 buffers:map("j", cmd "rightbelow new")
@@ -60,5 +62,5 @@ buffers:map("R", cmd "edit!")
 
 -- choose
 buffers:map("<space>", function()
-	MiniPick.builtin.buffers()
+	mini_pick.builtin.buffers()
 end)

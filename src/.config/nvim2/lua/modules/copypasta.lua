@@ -4,42 +4,40 @@ local copypasta = Module.new("copypasta", "<space>c")
 -- MAPPINGS
 --
 
-local options = { modes = { "n", "v" }, noremap = true }
-
 -- system clipboard [CLIPBOARD]
-copypasta:map("", [["+]], options)
+copypasta:map("", [["+]], "")
 
 -- selection clipboard [PRIMARY]
-copypasta:map("s", [["*]], options)
+copypasta:map("s", [["*]], "")
 
 -- blackhole register
-copypasta:map("b", [["_]], options)
+copypasta:map("b", [["_]], "")
 
 -- yank register
-copypasta:map("<c-y>", [["0]], options)
+copypasta:map("<c-y>", [["0]], "")
 
 -- delete register
-copypasta:map("<c-d>", [["1]], options)
+copypasta:map("<c-d>", [["1]], "")
 
 -- small-delete register
-copypasta:map("<c-s-d>", [["-]], options)
+copypasta:map("<c-s-d>", [["-]], "")
 
 -- search register
-copypasta:map("/", [["/]], options)
+copypasta:map("/", [["/]], "")
 
 -- expression register
-copypasta:map("=", [["=]], options)
+copypasta:map("=", [["=]], "")
 
 -- read-only
 
 -- insert register
-copypasta:map("i", [[".]], options)
+copypasta:map("i", [[".]], "")
 
 -- command register
-copypasta:map(";", [[":]], options)
+copypasta:map(";", [[":]], "")
 
 -- file register
-copypasta:map("f", [["%]], options)
+copypasta:map("f", [["%]], "")
 
 -- alt-file register
-copypasta:map("F", [["#]], options)
+copypasta:map("F", [["#]], "")

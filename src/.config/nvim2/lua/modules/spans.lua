@@ -1,3 +1,5 @@
+local mini_extra = require "mini.extra"
+
 --
 -- SETUP
 --
@@ -13,7 +15,7 @@ require "mini.operators".setup({
 require "mini.ai".setup({
 	custom_textobjects = {
 		-- current line/row
-		r = MiniExtra.gen_ai_spec.line(),
+		r = mini_extra.gen_ai_spec.line(),
 
 		-- entire buffer
 		e = function()

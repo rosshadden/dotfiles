@@ -1,26 +1,11 @@
 --- Map wrapper.
-function map(seq, action, cfg)
+function map(seq, action, modes, cfg)
+	modes = modes or "n"
 	cfg = cfg or {}
 
-	local modes = cfg.modes or "n"
-	local options = {
-		silent = cfg.silent == nil and true or cfg.silent,
-		noremap = cfg.noremap == nil and false or cfg.noremap,
-		desc = cfg.desc,
-		expr = cfg.expr,
-		nowait = cfg.nowait,
-		unique = cfg.unique,
-		replace_keycodes = cfg.replace_keycodes,
-		callback = cfg.callback,
-		buffer = cfg.buffer,
-	}
+	if cfg.silent == nil then cfg.silent = true end
 
-	-- make commands noremap
-	if type(action) ~= "string" or action:sub(1, 1) == ":" then
-		options.noremap = true
-	end
-
-	vim.keymap.set(modes, seq, action, options)
+	vim.keymap.set(modes, seq, action, cfg)
 end
 
 --- Helper function to make nvim commands for mapping.

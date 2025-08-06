@@ -37,10 +37,13 @@ require "mini.move".setup({
 
 -- enhancements
 
+-- delete word
+map("<c-backspace>", "<c-w>", "i")
+
 -- redo
-map("U", "<c-r>", { noremap = true })
+map("U", "<c-r>")
 -- find
-map("<leader>/", "/\\v", { modes = {}, silent = false, noremap = true })
+map("<leader>/", "/\\v", "", { silent = false })
 
 --
 -- EVENTS

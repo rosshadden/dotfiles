@@ -1,7 +1,6 @@
 local templates = Module.new("templates")
 
 local conf = vim.fn.stdpath "config"
-
 local function template(kind)
 	return conf .. "/templates/t." .. kind
 end

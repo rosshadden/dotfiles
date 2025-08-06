@@ -23,8 +23,7 @@ local function reload()
 			package.loaded[name] = nil
 		end
 	end
-	-- TEMP: change to `vim.env.MYVIMRC` if these ever replace may main config
-	dofile "/home/ross/dotfiles/src/.config/nvim2/init.lua"
+	dofile(vim.env.MYVIMRC)
 	vim.api.nvim_echo({ { "config reloaded" } }, false, {})
 end
 
