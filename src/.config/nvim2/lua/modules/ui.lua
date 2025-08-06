@@ -2,14 +2,22 @@ local ui = Module.new("ui", "<space>u")
 
 pack("https://github.com/folke/snacks.nvim")
 
-local mini_base16 = require "mini.base16"
-local mini_clue = require "mini.clue"
-local mini_hipatterns = require "mini.hipatterns"
-local mini_hiwords = require("mini.extra").gen_highlighter.words
-
 --
 -- SETTINGS
 --
+
+-- invisibles
+local space = "·"
+vim.opt.list = true
+vim.opt.listchars = {
+	extends = ">",
+	lead = space,
+	multispace = space,
+	nbsp = "_",
+	precedes = "<",
+	tab = "│─",
+	trail = space,
+}
 
 -- status
 vim.opt.laststatus = 3
@@ -22,6 +30,31 @@ vim.opt.conceallevel = 2
 vim.opt.winborder = "rounded"
 
 --
+-- FUNCTIONS
+--
+
+--- Creates a dashboard section config.
+---
+--- - `section("name")` → `{ section = "name" }`
+--- - `section({ ... })` → `{ ... }`
+--- - `section(fn)` → `fn`
+--- - `section("name", { ... })` → `{ section = "name", ... }`
+---
+--- @param a string|table Section name or config table.
+--- @param b? table Optional config table.
+--- @return table Normalized section config.
+local section = function(a, b)
+	if b ~= nil then
+		b.section = a
+		return b
+	end
+	if type(a) == "string" then
+		return { section = a }
+	end
+	return a
+end
+
+--
 -- SETUP
 --
 
@@ -31,6 +64,7 @@ require("mini.trailspace").setup()
 
 -- colorscheme
 
+local mini_base16 = require "mini.base16"
 mini_base16.setup({
 	palette = mini_base16.mini_palette("#2b1a33", "#c9c5cb", 100),
 	-- palette = {
@@ -54,12 +88,22 @@ mini_base16.setup({
 	use_cterm = true,
 })
 
+-- require("mini.hues").setup({
+-- 	background = "#2b1a33",
+-- 	foreground = "#c9c5cb",
+-- 	accent = "fg",
+-- 	saturation = "high",
+-- 	nrhues = 100,
+-- })
+
 -- highlights
 
 -- search
 vim.api.nvim_set_hl(0, "IncSearch", { bg = "#009f5b", fg = "#ffffff" })
 vim.api.nvim_set_hl(0, "CurSearch", { bg = "#009f5b", fg = "#ffffff" })
 
+local mini_hipatterns = require "mini.hipatterns"
+local mini_hiwords = require("mini.extra").gen_highlighter.words
 mini_hipatterns.setup({
 	highlighters = {
 		hex_color = mini_hipatterns.gen_highlighter.hex_color(),
@@ -73,6 +117,7 @@ mini_hipatterns.setup({
 })
 
 -- clues
+local mini_clue = require "mini.clue"
 mini_clue.setup({
 	triggers = {
 		-- completions
@@ -128,27 +173,6 @@ local header = [[
           ░    ░  ░    ░ ░        ░   ░         ░
                                  ░
 ]]
-
---- Creates a dashboard section config.
----
---- - `section("name")` → `{ section = "name" }`
---- - `section({ ... })` → `{ ... }`
---- - `section(fn)` → `fn`
---- - `section("name", { ... })` → `{ section = "name", ... }`
----
---- @param a string|table Section name or config table.
---- @param b? table Optional config table.
---- @return table Normalized section config.
-local section = function(a, b)
-	if b ~= nil then
-		b.section = a
-		return b
-	end
-	if type(a) == "string" then
-		return { section = a }
-	end
-	return a
-end
 
 require("snacks").setup({
 	dashboard = {

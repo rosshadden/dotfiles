@@ -2,9 +2,6 @@ local code = Module.new("code")
 
 pack("monaqa/dial.nvim")
 
-local augend = require "dial.augend"
-local dial = require "dial.map"
-
 --
 -- SETTINGS
 --
@@ -24,6 +21,7 @@ vim.opt.swapfile = false
 -- FUCTIONS
 --
 
+local augend = require "dial.augend"
 local constant = function(elements, options)
 	options = options or {}
 	options.elements = elements
@@ -96,6 +94,7 @@ map("U", "<c-r>")
 map("<leader>/", [[/\v]], "", { silent = false })
 
 -- increment/decrement
+local dial = require "dial.map"
 map("<c-a>", dial.inc_normal())
 map("<c-x>", dial.dec_normal())
 
