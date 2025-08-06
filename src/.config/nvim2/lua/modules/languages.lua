@@ -1,10 +1,27 @@
 local lang = Module.new("lang", "<space>l")
 
-pack("neovim/nvim-lspconfig")
+pack "neovim/nvim-lspconfig"
+pack { src = "nvim-treesitter/nvim-treesitter", version = "main" }
+
+--
+-- SETTINGS
+--
+
+vim.opt.foldmethod = "expr"
 
 --
 -- SETUP
 --
+
+-- syntax
+
+local trees = require "nvim-treesitter"
+trees.install({
+	"lua",
+	"nu",
+})
+
+-- lsp
 
 vim.lsp.config("lua_ls", {
 	on_init = function(client)
@@ -41,6 +58,7 @@ vim.lsp.config("lua_ls", {
 })
 
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("nushell")
 
 --
 -- MAPPINGS
