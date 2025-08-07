@@ -7,6 +7,7 @@ source $zoxide_plugin
 
 use gd.nu
 use raws.nu
+use yazi.nu *
 
 # systemd
 # source ../plugins/systemd.nu
