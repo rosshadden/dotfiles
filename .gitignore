@@ -14,9 +14,9 @@ src/.config/mpv/watch_later
 src/.config/nushell/history*
 src/.config/nushell/plugin.nu
 src/.config/nvim/lazy-lock.json
-src/.config/nvim/sessions
 src/.config/rtv/history.log
 src/.config/rtv/refresh-token
 src/.config/vis/vis.log
+src/.config/yazi/flavors/
 src/.ncmpcpp/error.log
-src/.termux/shell
+src/.termux/shell/

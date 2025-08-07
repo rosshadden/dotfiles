@@ -1,19 +1,30 @@
 local files = Module.new("files", "<space>f")
 
 pack("lmburns/lf.nvim", { "akinsho/toggleterm.nvim" })
+pack("mikavilpas/yazi.nvim", { "nvim-lua/plenary.nvim" })
 
 local lf = require "lf"
+local yazi = require "yazi"
 local mini_pick = require "mini.pick"
 
 --
 -- SETTINGS
 --
 
-vim.g.lf_netrw = true
+vim.g.loaded_netrwPlugin = 1
 
 --
 -- SETUP
 --
+
+yazi.setup({
+	open_for_directories = true,
+	keymaps = {
+		open_file_in_vertical_split = "<a-l>",
+		open_file_in_horizontal_split = "<a-j>",
+		open_file_in_tab = "<a-t>",
+	},
+})
 
 lf.setup({
 	border = "rounded",
@@ -42,12 +53,15 @@ end)
 files:map("g", mini_pick.registry.git_files)
 
 -- open explorer at file's cwd
-files:map("<space>", lf.start)
+files:map("<space>", yazi.yazi)
+-- open explorer at git root dir
+files:map("<a-space>", call(yazi.yazi, nil, vim.fn.getcwd()))
+
+-- open explorer at file's cwd
+files:map("l", lf.start)
 -- open explorer at git root dir
 -- FIX: makes future `lf.start()`s start in gwd too for some reason
-files:map("<a-space>", function()
-	lf.start({ dir = "gwd" })
-end)
+files:map("L", call(lf.start, { dir = "gwd" }))
 
 -- search
 files:map("s", mini_pick.registry.grep_live)

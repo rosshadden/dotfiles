@@ -34,3 +34,9 @@ function pack(...)
 	for _, arg in ipairs({...}) do process(arg, specs) end
 	return vim.pack.add(specs)
 end
+
+--- Wrap a function call with args, making mappings easier.
+function call(fn, ...)
+	local args = { ... }
+	return function() fn(unpack(args)) end
+end
