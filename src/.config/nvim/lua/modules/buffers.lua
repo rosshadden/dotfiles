@@ -6,6 +6,9 @@ local mini_pick = require "mini.pick"
 -- MAPPINGS
 --
 
+-- choose
+buffers:map("<space>", mini_pick.registry.buffers)
+
 -- relative nav
 map("<a-j>", function() pcall(vim.cmd, "wincmd j") end, "")
 map("<a-k>", function() pcall(vim.cmd, "wincmd k") end, "")
@@ -60,5 +63,5 @@ buffers:map("X", cmd "exit!")
 buffers:map("r", cmd "edit")
 buffers:map("R", cmd "edit!")
 
--- choose
-buffers:map("<space>", mini_pick.registry.buffers)
+-- source
+buffers:map("o", cmd "source")

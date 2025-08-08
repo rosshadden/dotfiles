@@ -2,4 +2,4 @@ type = process
 command = hyprpaper
 restart = true
 logfile = ./logs/hyprpaper.log
-env-file = ./env/wayland.env
+env-file = ./.env

@@ -1,22 +1,9 @@
 # apps
 
-src/.config/copyq/*.dat
-src/.config/copyq/*.lock
-src/.config/copyq/.copyq_m
-src/.config/copyq/.copyq_s
-src/.config/copyq/copyq-bak.conf
-src/.config/copyq/copyq_geometry.ini
-src/.config/copyq/copyq_tabs.ini
 src/.config/gtk-3.0/bookmarks
-src/.config/karabiner/assets/
-src/.config/karabiner/automatic_backups/
 src/.config/mpv/watch_later
 src/.config/nushell/history*
-src/.config/nushell/plugin.nu
-src/.config/nvim/lazy-lock.json
 src/.config/rtv/history.log
 src/.config/rtv/refresh-token
-src/.config/vis/vis.log
 src/.config/yazi/flavors/
-src/.ncmpcpp/error.log
 src/.termux/shell/
