@@ -1,0 +1,35 @@
+# open keymap.nuon | to toml | save -f keymap.toml
+
+{
+	mgr: {
+		prepend_keymap: [
+			[ on run desc ];
+
+			# create
+			[ o "create" "Create a file (ends with / for directories)" ]
+
+			# copy
+			[ [y d] "copy dirname"          "Copy the directory path" ]
+			[ [y f] "copy filename"         "Copy the filename" ]
+			[ [y n] "copy name_without_ext" "Copy the filename without extension" ]
+			[ [y p] "copy path"             "Copy the file path" ]
+			[ [y y] "yank"                  "Yank selected files (copy)" ]
+
+			# delete
+			[ [d D] "remove --permanently" "Permanently delete selected files" ]
+			[ [d d] "yank --cut"           "Yank selected files (cut)" ]
+			[ [d t] "remove"               "Trash selected files" ]
+
+			# rename
+			[ A     "rename --cursor=after_ext"          "Rename selected file(s)" ]
+			[ C     "rename --empty=dot_ext"             "Rename selected file(s)" ]
+			[ I     "rename --cursor=start"              "Rename selected file(s)" ]
+			[ [c c] "rename --empty=all"                 "Rename selected file(s)" ]
+			[ [c e] "rename --empty=ext"                 "Rename selected file(s)" ]
+			[ [c w] "rename --empty=stem --cursor=start" "Rename selected file(s)" ]
+			[ a     "rename --cursor=before_ext"         "Rename selected file(s)" ]
+			[ i     "rename --cursor=start"              "Rename selected file(s)" ]
+
+		]
+	}
+}

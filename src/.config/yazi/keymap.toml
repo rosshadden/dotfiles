@@ -1,0 +1,117 @@
+[[mgr.prepend_keymap]]
+on = "o"
+run = "create"
+desc = "Create a file (ends with / for directories)"
+
+[[mgr.prepend_keymap]]
+on = [
+    "y",
+    "d",
+]
+run = "copy dirname"
+desc = "Copy the directory path"
+
+[[mgr.prepend_keymap]]
+on = [
+    "y",
+    "f",
+]
+run = "copy filename"
+desc = "Copy the filename"
+
+[[mgr.prepend_keymap]]
+on = [
+    "y",
+    "n",
+]
+run = "copy name_without_ext"
+desc = "Copy the filename without extension"
+
+[[mgr.prepend_keymap]]
+on = [
+    "y",
+    "p",
+]
+run = "copy path"
+desc = "Copy the file path"
+
+[[mgr.prepend_keymap]]
+on = [
+    "y",
+    "y",
+]
+run = "yank"
+desc = "Yank selected files (copy)"
+
+[[mgr.prepend_keymap]]
+on = [
+    "d",
+    "D",
+]
+run = "remove --permanently"
+desc = "Permanently delete selected files"
+
+[[mgr.prepend_keymap]]
+on = [
+    "d",
+    "d",
+]
+run = "yank --cut"
+desc = "Yank selected files (cut)"
+
+[[mgr.prepend_keymap]]
+on = [
+    "d",
+    "t",
+]
+run = "remove"
+desc = "Trash selected files"
+
+[[mgr.prepend_keymap]]
+on = "A"
+run = "rename --cursor=after_ext"
+desc = "Rename selected file(s)"
+
+[[mgr.prepend_keymap]]
+on = "C"
+run = "rename --empty=dot_ext"
+desc = "Rename selected file(s)"
+
+[[mgr.prepend_keymap]]
+on = "I"
+run = "rename --cursor=start"
+desc = "Rename selected file(s)"
+
+[[mgr.prepend_keymap]]
+on = [
+    "c",
+    "c",
+]
+run = "rename --empty=all"
+desc = "Rename selected file(s)"
+
+[[mgr.prepend_keymap]]
+on = [
+    "c",
+    "e",
+]
+run = "rename --empty=ext"
+desc = "Rename selected file(s)"
+
+[[mgr.prepend_keymap]]
+on = [
+    "c",
+    "w",
+]
+run = "rename --empty=stem --cursor=start"
+desc = "Rename selected file(s)"
+
+[[mgr.prepend_keymap]]
+on = "a"
+run = "rename --cursor=before_ext"
+desc = "Rename selected file(s)"
+
+[[mgr.prepend_keymap]]
+on = "i"
+run = "rename --cursor=start"
+desc = "Rename selected file(s)"

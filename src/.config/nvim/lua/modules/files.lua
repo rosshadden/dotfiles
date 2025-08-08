@@ -20,6 +20,7 @@ vim.g.loaded_netrwPlugin = 1
 yazi.setup({
 	open_for_directories = true,
 	keymaps = {
+		show_help = "<f2>",
 		open_file_in_vertical_split = "<a-l>",
 		open_file_in_horizontal_split = "<a-j>",
 		open_file_in_tab = "<a-t>",
