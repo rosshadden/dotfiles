@@ -151,18 +151,6 @@
       :onclick `nu -l -c 'raws slippi | get rankedNetplayProfile.ratingOrdinal | eww update $"slippi=($in)"' &`
       `🔁 slippi: ${round(slippi, 0)}`)))
 
-
-(defwindow debug []
-  :stacking "bottom"
-  :geometry (geometry :x "0%"
-                      :y "0%"
-                      :width "200px"
-                      :height "16px"
-                      :anchor "top right")
-  (box
-    (image :path "/home/ross/dev/src/ermak/data/kle/ermak.png")
-    (image :path "/home/ross/dev/src/ermak/data/kle/ermak-controller.png")))
-
 (defpoll eos
   :initial "{}"
   :interval "60s"

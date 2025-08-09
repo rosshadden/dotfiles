@@ -18,9 +18,6 @@ local config = {
 	line_height = 1.0,
 	font = wezterm.font_with_fallback({
 		"Monocraft",
-		"Fairfax Hax HD",
-		-- "Maple Mono",
-		"JetBrains Mono",
 		"Symbols Nerd Font Mono",
 		"Noto Color Emoji",
 		"Unifont",

@@ -1,11 +1,15 @@
 --- Map wrapper.
-function map(seq, action, modes, cfg)
-	modes = modes or "n"
+--- @param seq string
+--- @param action string|function
+--- @param mode? string|string[]
+--- @param cfg? string|table
+function map(seq, action, mode, cfg)
+	mode = mode or "n"
 	cfg = cfg or {}
 
 	if cfg.silent == nil then cfg.silent = true end
 
-	vim.keymap.set(modes, seq, action, cfg)
+	vim.keymap.set(mode, seq, action, cfg)
 end
 
 --- Helper function to make nvim commands for mapping.
@@ -31,7 +35,7 @@ end
 --- Add packages.
 function pack(...)
 	local specs = {}
-	for _, arg in ipairs({...}) do process(arg, specs) end
+	for _, arg in ipairs({ ... }) do process(arg, specs) end
 	return vim.pack.add(specs)
 end
 
