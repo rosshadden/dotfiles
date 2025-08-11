@@ -64,4 +64,4 @@ buffers:map("r", cmd "edit")
 buffers:map("R", cmd "edit!")
 
 -- source
-buffers:map("o", cmd "source")
+buffers:map("u", cmd "source")

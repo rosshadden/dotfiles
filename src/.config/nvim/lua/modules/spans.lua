@@ -2,6 +2,7 @@ local motion = Module.new("motion", "<tab>")
 
 pack({
 	"chrisgrieser/nvim-spider",
+	"chrisgrieser/nvim-various-textobjs",
 	"smoka7/hop.nvim",
 })
 
@@ -37,6 +38,13 @@ require("mini.ai").setup({
 	}
 })
 
+local vto = require("various-textobjs")
+vto.setup({
+	keymaps = {
+		useDefaults = false
+	}
+})
+
 hop.setup({
 	keys = [[cnisetahywodulxfjmkr,.-/]]
 })
@@ -44,6 +52,9 @@ hop.setup({
 --
 -- MAPPINGS
 --
+
+map("as", call(vto.subword, "outer"), { "o", "x" })
+map("is", call(vto.subword, "inner"), { "o", "x" })
 
 -- spider
 

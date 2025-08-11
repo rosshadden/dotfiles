@@ -132,6 +132,7 @@ snacks.setup({
 			section("recent_files", {
 				icon = " ",
 				title = "Recent Files",
+				cwd = true,
 				indent = 2,
 				padding = 1,
 				pane = 2,

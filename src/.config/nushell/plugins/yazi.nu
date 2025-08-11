@@ -8,3 +8,5 @@ export def --env y [...args] {
 	}
 	rm -fp $tmp
 }
+
+export alias Y = yazi

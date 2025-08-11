@@ -76,6 +76,8 @@ require("dial.config").augends:register_group({
 		constant({ "start", "stop" }),
 		constant({ "up", "down", "left", "right" }),
 		constant({ "yes", "no" }),
+		constant({ "inner", "outer" }),
+		constant({ "next", "previous" }, { word = false }),
 	},
 })
 
@@ -90,6 +92,10 @@ map("<c-backspace>", "<c-w>", "i")
 
 -- redo
 map("U", "<c-r>")
+
+-- jump forth
+map("<c-u>", "<c-i>")
+
 -- find
 map("<leader>/", [[/\v]], "", { silent = false })
 

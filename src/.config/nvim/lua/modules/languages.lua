@@ -1,8 +1,9 @@
-local languages = Module.new("languages", "<space>l")
+local langs = Module.new("languages", "<space>l")
 
 pack "neovim/nvim-lspconfig"
 pack "zbirenbaum/copilot.lua"
 pack { src = "nvim-treesitter/nvim-treesitter", version = "main" }
+pack { src = "nvim-treesitter/nvim-treesitter-textobjects", version = "main" }
 
 --
 -- SETTINGS
@@ -29,7 +30,7 @@ vim.filetype.add({
 })
 
 local trees = require "nvim-treesitter"
-local langs = {
+local languages = {
 	"bash",
 	"c",
 	"c_sharp",
@@ -62,7 +63,7 @@ local langs = {
 	"yaml",
 	"zig",
 }
-trees.install(langs)
+trees.install(languages)
 
 -- lsp
 
@@ -118,24 +119,59 @@ vim.lsp.config("emmylua_ls", {
 	},
 })
 
+local mini_snippets = require("mini.snippets")
+mini_snippets.setup({
+	snippets = {
+		mini_snippets.gen_loader.from_file("~/.config/nvim/snippets/global.lua"),
+		mini_snippets.gen_loader.from_lang(),
+	},
+	mappings = {
+		expand = "<c-.>",
+		jump_next = "<right>",
+		jump_prev = "<left>",
+	},
+})
+mini_snippets.start_lsp_server({ match = false })
+
 require("copilot").setup({
 	suggestion = { enabled = false },
 	panel = { enabled = false },
 })
+
 --
--- FUNCTIONS
+-- MAPPINGS
 --
 
---- For replacing certain <c-x>... keymaps.
---- @param keys string
-local function feedkeys(keys)
-	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), "n", true)
-end
+map("<localleader>=", vim.lsp.buf.format)
 
---- Is the completion menu open?
-local function pumvisible()
-	return tonumber(vim.fn.pumvisible()) ~= 0
-end
+local ts_select = require("nvim-treesitter-textobjects.select").select_textobject
+map("aa", call(ts_select, "@parameter.outer", "textobjects"), { "x", "o" })
+map("ia", call(ts_select, "@parameter.inner", "textobjects"), { "x", "o" })
+map("af", call(ts_select, "@function.outer", "textobjects"), { "x", "o" })
+map("if", call(ts_select, "@function.inner", "textobjects"), { "x", "o" })
+map("ac", call(ts_select, "@class.outer", "textobjects"), { "x", "o" })
+map("ic", call(ts_select, "@class.inner", "textobjects"), { "x", "o" })
+map("aC", call(ts_select, "@conditional.outer", "textobjects"), { "x", "o" })
+map("iC", call(ts_select, "@conditional.inner", "textobjects"), { "x", "o" })
+map("aS", call(ts_select, "@local.scope", "locals"), { "x", "o" })
+
+local ts_swap = require("nvim-treesitter-textobjects.swap")
+langs:map("al", call(ts_swap.swap_next, "@parameter.inner"))
+langs:map("ah", call(ts_swap.swap_previous, "@parameter.inner"))
+langs:map("Al", call(ts_swap.swap_next, "@parameter.outer"))
+langs:map("Ah", call(ts_swap.swap_previous, "@parameter.outer"))
+
+local ts_move = require("nvim-treesitter-textobjects.move")
+map("[e", call(ts_move.goto_previous_start, { "@loop.inner", "@loop.outer" }, "textobjects"), { "n", "x", "o" })
+map("]e", call(ts_move.goto_next_start, { "@loop.inner", "@loop.outer" }, "textobjects"), { "n", "x", "o" })
+map("[r", call(ts_move.goto_previous_start, "@return.outer", "textobjects"), { "n", "x", "o" })
+map("]r", call(ts_move.goto_next_start, "@return.outer", "textobjects"), { "n", "x", "o" })
+map("[R", call(ts_move.goto_previous_start, "@regex.outer", "textobjects"), { "n", "x", "o" })
+map("]R", call(ts_move.goto_next_start, "@regex.outer", "textobjects"), { "n", "x", "o" })
+map("[s", call(ts_move.goto_previous_start, "@local.scope", "locals"), { "n", "x", "o" })
+map("]s", call(ts_move.goto_next_start, "@local.scope", "locals"), { "n", "x", "o" })
+map("[z", call(ts_move.goto_previous_start, "@fold", "folds"), { "n", "x", "o" })
+map("]z", call(ts_move.goto_next_start, "@fold", "folds"), { "n", "x", "o" })
 
 local function completion_mappings()
 	-- Use enter to accept completions.
@@ -193,19 +229,13 @@ local function completion_mappings()
 end
 
 --
--- MAPPINGS
---
-
-map("<localleader>=", vim.lsp.buf.format)
-
---
 -- EVENTS
 --
 
 -- enable language features
 vim.api.nvim_create_autocmd("FileType", {
-	group = languages.group,
-	pattern = langs,
+	group = langs.group,
+	pattern = languages,
 	callback = function()
 		vim.treesitter.start()
 		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
@@ -215,7 +245,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- enable lsp completion
 vim.api.nvim_create_autocmd("LspAttach", {
-	group = languages.group,
+	group = langs.group,
 	callback = function(event)
 		local client = vim.lsp.get_client_by_id(event.data.client_id)
 		if client == nil then return end
