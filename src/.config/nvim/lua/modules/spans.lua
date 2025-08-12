@@ -25,16 +25,6 @@ require("mini.ai").setup({
 	custom_textobjects = {
 		-- current line/row
 		r = require("mini.extra").gen_ai_spec.line(),
-
-		-- entire buffer
-		e = function()
-			local from = { line = 1, col = 1 }
-			local to = {
-				line = vim.fn.line('$'),
-				col = math.max(vim.fn.getline('$'):len(), 1)
-			}
-			return { from = from, to = to, vis_mode = 'V' }
-		end
 	}
 })
 
@@ -53,8 +43,21 @@ hop.setup({
 -- MAPPINGS
 --
 
+map("aF", call(vto.filepath, "outer"), { "x", "o" })
+map("iF", call(vto.filepath, "inner"), { "x", "o" })
 map("as", call(vto.subword, "outer"), { "x", "o" })
 map("is", call(vto.subword, "inner"), { "x", "o" })
+map("ak", call(vto.key, "outer"), { "x", "o" })
+map("ik", call(vto.key, "inner"), { "x", "o" })
+map("av", call(vto.value, "outer"), { "x", "o" })
+map("iv", call(vto.value, "inner"), { "x", "o" })
+map("aq", call(vto.anyQuote, "outer"), { "x", "o" })
+map("iq", call(vto.anyQuote, "inner"), { "x", "o" })
+map("ao", call(vto.anyBracket, "outer"), { "x", "o" })
+map("io", call(vto.anyBracket, "inner"), { "x", "o" })
+
+motion:map("G", vto.entireBuffer, { "x", "o" })
+motion:map("u", vto.url, { "x", "o" })
 
 -- spider
 

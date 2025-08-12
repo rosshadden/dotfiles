@@ -63,6 +63,13 @@ vim.lsp.config("emmylua_ls", {
 
 -- snippets
 
+require("mini.completion").setup({
+	lsp_completion = {
+		source_func = "omnifunc",
+		auto_setup = false,
+	},
+})
+
 local mini_snippets = require("mini.snippets")
 mini_snippets.setup({
 	snippets = {
@@ -113,32 +120,6 @@ local function completion_mappings()
 		end
 	end, "i")
 
-	-- Use <tab> to accept a Copilot suggestion, navigate between snippet tabstops,
-	-- or select the next completion.
-	-- Do something similar with <s-tab>.
-	map("<tab>", function()
-		local copilot = require "copilot.suggestion"
-
-		if copilot.is_visible() then
-			copilot.accept()
-		elseif pumvisible() then
-			feedkeys "<c-n>"
-		elseif vim.snippet.active { direction = 1 } then
-			vim.snippet.jump(1)
-		else
-			feedkeys "<tab>"
-		end
-	end, { "i", "s" })
-	map("<s-tab>", function()
-		if pumvisible() then
-			feedkeys "<c-p>"
-		elseif vim.snippet.active { direction = -1 } then
-			vim.snippet.jump(-1)
-		else
-			feedkeys "<s-tab>"
-		end
-	end, { "i", "s" })
-
 	-- Inside a snippet, use backspace to remove the placeholder.
 	map("<bs>", "<c-o>s", "s")
 end
@@ -151,6 +132,7 @@ end
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = completion.group,
 	callback = function(event)
+		vim.bo[event.buf].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
 		local client = vim.lsp.get_client_by_id(event.data.client_id)
 		if client == nil then return end
 		if client:supports_method("textDocument/completion") then
