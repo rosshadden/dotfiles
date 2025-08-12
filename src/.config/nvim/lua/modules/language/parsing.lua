@@ -78,13 +78,13 @@ map("aC", call(ts_select, "@conditional.outer", "textobjects"), { "x", "o" })
 map("iC", call(ts_select, "@conditional.inner", "textobjects"), { "x", "o" })
 map("aS", call(ts_select, "@local.scope", "locals"), { "x", "o" })
 
-local ts_swap = require("nvim-treesitter-textobjects.swap")
+local ts_swap = require "nvim-treesitter-textobjects.swap"
 language:map("al", call(ts_swap.swap_next, "@parameter.inner"))
 language:map("ah", call(ts_swap.swap_previous, "@parameter.inner"))
 language:map("Al", call(ts_swap.swap_next, "@parameter.outer"))
 language:map("Ah", call(ts_swap.swap_previous, "@parameter.outer"))
 
-local ts_move = require("nvim-treesitter-textobjects.move")
+local ts_move = require "nvim-treesitter-textobjects.move"
 map("[e", call(ts_move.goto_previous_start, { "@loop.inner", "@loop.outer" }, "textobjects"), { "n", "x", "o" })
 map("]e", call(ts_move.goto_next_start, { "@loop.inner", "@loop.outer" }, "textobjects"), { "n", "x", "o" })
 map("[r", call(ts_move.goto_previous_start, "@return.outer", "textobjects"), { "n", "x", "o" })

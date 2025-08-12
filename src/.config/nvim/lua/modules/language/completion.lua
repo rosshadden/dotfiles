@@ -4,6 +4,19 @@ pack "neovim/nvim-lspconfig"
 pack "zbirenbaum/copilot.lua"
 
 --
+-- FUNCTIONS
+--
+
+--- Get lib paths for input packages.
+--- @param pkgs string[]
+local function libs(pkgs)
+	for p, pkg in ipairs(pkgs) do
+		pkgs[p] = vim.fn.stdpath "data" .. "/site/pack/core/opt/" .. pkg
+	end
+	return pkgs
+end
+
+--
 -- SETUP
 --
 
@@ -31,6 +44,16 @@ local servers = {
 }
 vim.lsp.enable(servers)
 
+vim.lsp.config("*", {
+	capabilities = {
+		textDocument = {
+			semanticTokens = {
+				multilineTokenSupport = true,
+			},
+		},
+	},
+})
+
 vim.lsp.config("pylsp", {
 	settings = {
 		pylsp = {
@@ -55,7 +78,18 @@ vim.lsp.config("emmylua_ls", {
 			},
 			workspace = {
 				checkThirdParty = false,
-				library = { vim.env.VIMRUNTIME },
+				library = {
+					"/usr/share/nvim/runtime/lua",
+					vim.env.VIMRUNTIME .. "/lua",
+					unpack(libs({
+						"dial.nvim",
+						"hop.nvim",
+						"mini.nvim",
+						"nvim-treesitter",
+						"nvim-treesitter-textobjects",
+						"snacks.nvim",
+					})),
+				},
 			},
 		},
 	},
@@ -68,9 +102,13 @@ require("mini.completion").setup({
 		source_func = "omnifunc",
 		auto_setup = false,
 	},
+	mappings = {
+		force_twostep = "<a-space>",
+		force_fallback = "<ca-space>",
+	},
 })
 
-local mini_snippets = require("mini.snippets")
+local mini_snippets = require "mini.snippets"
 mini_snippets.setup({
 	snippets = {
 		mini_snippets.gen_loader.from_file("~/.config/nvim/snippets/global.lua"),
@@ -84,6 +122,8 @@ mini_snippets.setup({
 })
 mini_snippets.start_lsp_server({ match = false })
 
+-- additional sources
+
 require("copilot").setup({
 	suggestion = { enabled = false },
 	panel = { enabled = false },
@@ -94,6 +134,7 @@ require("copilot").setup({
 --
 
 map("<localleader>=", vim.lsp.buf.format)
+map("<m-f>", call(feedkeys, "<c-x><c-f>"), "i")
 
 local function completion_mappings()
 	-- Use enter to accept completions.

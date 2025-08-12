@@ -28,7 +28,7 @@ require("mini.ai").setup({
 	}
 })
 
-local vto = require("various-textobjs")
+local vto = require "various-textobjs"
 vto.setup({
 	keymaps = {
 		useDefaults = false
@@ -69,7 +69,7 @@ map("<leader>w", function() spider.motion("w") end)
 
 -- hop
 
-local hop_yank = require("hop-yank")
+local hop_yank = require "hop-yank"
 local hints = require("hop.hint").HintDirection
 local patterns = {
 	Word = [[\v(^|\s)@<=\S+]],
