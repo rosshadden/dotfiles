@@ -1,7 +1,9 @@
 local completion = Module.new("completion")
 
 pack "neovim/nvim-lspconfig"
-pack "zbirenbaum/copilot.lua"
+
+local mini_completion = require "mini.completion"
+local mini_snippets = require "mini.snippets"
 
 --
 -- FUNCTIONS
@@ -45,13 +47,11 @@ local servers = {
 vim.lsp.enable(servers)
 
 vim.lsp.config("*", {
-	capabilities = {
-		textDocument = {
-			semanticTokens = {
-				multilineTokenSupport = true,
-			},
-		},
-	},
+	capabilities = vim.tbl_deep_extend(
+		"force",
+		vim.lsp.protocol.make_client_capabilities(),
+		mini_completion.get_lsp_capabilities()
+	),
 })
 
 vim.lsp.config("pylsp", {
@@ -97,7 +97,7 @@ vim.lsp.config("emmylua_ls", {
 
 -- snippets
 
-require("mini.completion").setup({
+mini_completion.setup({
 	lsp_completion = {
 		source_func = "omnifunc",
 		auto_setup = false,
@@ -108,7 +108,6 @@ require("mini.completion").setup({
 	},
 })
 
-local mini_snippets = require "mini.snippets"
 mini_snippets.setup({
 	snippets = {
 		mini_snippets.gen_loader.from_file("~/.config/nvim/snippets/global.lua"),
@@ -121,13 +120,6 @@ mini_snippets.setup({
 	},
 })
 mini_snippets.start_lsp_server({ match = false })
-
--- additional sources
-
-require("copilot").setup({
-	suggestion = { enabled = false },
-	panel = { enabled = false },
-})
 
 --
 -- MAPPINGS
