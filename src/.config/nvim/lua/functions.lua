@@ -1,4 +1,5 @@
 --- Map wrapper.
+--- FIX: these should be passing "" to map, not "n". map needs to check for nil or something
 --- @param seq string
 --- @param action string|function
 --- @param mode? string|string[]

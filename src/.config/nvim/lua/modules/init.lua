@@ -15,7 +15,7 @@ function Module.new(name, seq)
 	self.group = vim.api.nvim_create_augroup(self.name, {})
 
 	if seq ~= nil then
-		map(self.seq, self.prefix)
+		map(self.seq, self.prefix, { "x", "n", "o" })
 	end
 
 	return self
@@ -28,10 +28,9 @@ end
 
 require "modules.app"
 require "modules.buffers"
-require "modules.code"
 require "modules.debug"
 require "modules.files"
-require "modules.languages"
+require "modules.language"
 require "modules.packages"
 require "modules.registers"
 require "modules.search"

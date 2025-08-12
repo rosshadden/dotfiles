@@ -53,8 +53,8 @@ hop.setup({
 -- MAPPINGS
 --
 
-map("as", call(vto.subword, "outer"), { "o", "x" })
-map("is", call(vto.subword, "inner"), { "o", "x" })
+map("as", call(vto.subword, "outer"), { "x", "o" })
+map("is", call(vto.subword, "inner"), { "x", "o" })
 
 -- spider
 
