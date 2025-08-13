@@ -16,6 +16,8 @@ vim.opt.conceallevel = 2
 --
 
 require("mini.cursorword").setup()
+require("mini.statusline").setup()
+require("mini.tabline").setup()
 
 -- clues
 local mini_clue = require "mini.clue"

@@ -1,6 +1,6 @@
-local code = Module.new("code")
+local code = Module.new("code", "<space>c")
 
-pack("monaqa/dial.nvim")
+pack "monaqa/dial.nvim"
 
 --
 -- SETTINGS
@@ -103,6 +103,9 @@ map("<leader>/", [[/\v]], "", { silent = false })
 local dial = require "dial.map"
 map("<c-a>", dial.inc_normal())
 map("<c-x>", dial.dec_normal())
+
+local mini_pick = require "mini.pick"
+code:map("s", mini_pick.registry.spellsuggest)
 
 --
 -- EVENTS

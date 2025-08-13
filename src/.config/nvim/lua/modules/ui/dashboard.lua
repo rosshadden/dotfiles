@@ -1,5 +1,7 @@
 pack "https://github.com/folke/snacks.nvim"
 
+local persist = require "persistence"
+
 --
 -- FUNCTIONS
 --
@@ -25,6 +27,11 @@ local section = function(a, b)
 	return a
 end
 
+--- Whether the current project has an existing session.
+local has_session = function()
+	return vim.tbl_contains(persist.list(), persist.current())
+end
+
 --
 -- SETUP
 --
@@ -44,17 +51,16 @@ local header = [[
 ]]
 
 local snacks = require "snacks"
-
 snacks.setup({
 	dashboard = {
 		preset = {
 			keys = {
-				{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+				{ icon = " ", key = "f", desc = "Find File", action = call(snacks.dashboard.pick, "files") },
 				{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-				{ icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-				{ icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-				{ icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
-				{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
+				{ icon = " ", key = "g", desc = "Find Text", action = call(snacks.dashboard.pick, "live_grep") },
+				{ icon = " ", key = "r", desc = "Recent Files", action = call(snacks.dashboard.pick, "oldfiles") },
+				{ icon = " ", key = "c", desc = "Config", action = call(snacks.dashboard.pick, "files", { cwd = vim.fn.stdpath "config" }) },
+				{ icon = " ", key = "s", desc = "Restore Session", action = persist.load, enabled = has_session },
 				{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 			},
 			header = header,

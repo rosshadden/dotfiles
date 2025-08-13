@@ -45,6 +45,10 @@ files:map("<space>", yazi.yazi)
 -- open explorer at git root dir
 files:map("<a-space>", call(yazi.yazi, nil, vim.fn.getcwd()))
 
+-- recents
+files:map("r", call(mini_pick.registry.oldfiles, { current_dir = true }))
+files:map("R", mini_pick.registry.oldfiles)
+
 -- search
 files:map("s", mini_pick.registry.grep_live)
 files:map("S", mini_pick.registry.grep)

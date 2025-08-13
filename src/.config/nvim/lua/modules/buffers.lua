@@ -3,6 +3,12 @@ local buffers = Module.new("buffers", "<space>b")
 local mini_pick = require "mini.pick"
 
 --
+-- SETTINGS
+--
+
+vim.o.switchbuf = "usetab"
+
+--
 -- MAPPINGS
 --
 

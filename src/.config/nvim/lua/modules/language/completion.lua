@@ -87,6 +87,7 @@ vim.lsp.config("emmylua_ls", {
 						"mini.nvim",
 						"nvim-treesitter",
 						"nvim-treesitter-textobjects",
+						"persistence.nvim",
 						"snacks.nvim",
 					})),
 				},

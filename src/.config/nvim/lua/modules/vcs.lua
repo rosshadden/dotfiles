@@ -1,4 +1,4 @@
-pack("lewis6991/gitsigns.nvim")
+pack "lewis6991/gitsigns.nvim"
 
 --
 -- SETUP

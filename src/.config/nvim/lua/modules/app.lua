@@ -1,5 +1,7 @@
 local app = Module.new("app", "<space>a")
 
+pack "folke/persistence.nvim"
+
 local mini_pick = require "mini.pick"
 
 --
@@ -8,6 +10,7 @@ local mini_pick = require "mini.pick"
 
 require("mini.bracketed").setup()
 require("mini.extra").setup()
+require("persistence").setup()
 
 require("mini.basics").setup({
 	extra_ui = true,
@@ -84,3 +87,9 @@ app:map(":", mini_pick.registry.commands)
 app:map("<space>", mini_pick.registry.registry)
 app:map("h", mini_pick.registry.help)
 app:map("k", mini_pick.registry.keymaps)
+
+--
+-- EVENTS
+--
+
+-- TODO: https://github.com/folke/persistence.nvim?tab=readme-ov-file#-events
