@@ -56,3 +56,12 @@ end
 function pumvisible()
 	return tonumber(vim.fn.pumvisible()) ~= 0
 end
+
+--- Run command with shell.
+--- @param cmd string The command to run.
+--- @param shell string? Shell override.
+--- @return vim.SystemObj
+function run(cmd, shell)
+	if shell == nil then shell = vim.o.shell end
+	return vim.system({ shell, vim.o.shellcmdflag, cmd })
+end
