@@ -1,12 +1,15 @@
 --- Struct allowing mode-specific keymaps.
-Module = {
-	name = "",
-	seq = "",
-	prefix = "",
-	group = nil,
-}
+--- @class Module
+--- @field name string Name of the module.
+--- @field seq string Entrypoint key sequence.
+--- @field prefix string Mapping prefix.
+--- @field group int augroup
+Module = {}
 
 --- Create a Mode.
+--- @param name string Name of the module.
+--- @param seq string? Entrypoint key sequence.
+--- @return Module
 function Module.new(name, seq)
 	local self = setmetatable(Module, Module)
 	self.name = name

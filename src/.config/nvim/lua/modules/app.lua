@@ -87,9 +87,3 @@ app:map(":", mini_pick.registry.commands)
 app:map("<space>", mini_pick.registry.registry)
 app:map("h", mini_pick.registry.help)
 app:map("k", mini_pick.registry.keymaps)
-
---
--- EVENTS
---
-
--- TODO: https://github.com/folke/persistence.nvim?tab=readme-ov-file#-events

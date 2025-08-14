@@ -1,4 +1,4 @@
-pack("echasnovski/mini.nvim")
+pack "echasnovski/mini.nvim"
 
 --
 -- SETTINGS
