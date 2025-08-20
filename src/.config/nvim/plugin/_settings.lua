@@ -1,5 +1,3 @@
-pack "echasnovski/mini.nvim"
-
 --
 -- SETTINGS
 --

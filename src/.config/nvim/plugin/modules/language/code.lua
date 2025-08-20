@@ -107,6 +107,8 @@ map("<c-x>", dial.dec_normal())
 local mini_pick = require "mini.pick"
 code:map("s", mini_pick.registry.spellsuggest)
 
+map("grd", vim.lsp.buf.definition)
+
 --
 -- EVENTS
 --

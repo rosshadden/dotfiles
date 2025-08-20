@@ -1,3 +1,5 @@
+pack "echasnovski/mini.nvim"
+
 --- Struct allowing mode-specific keymaps.
 --- @class Module
 --- @field name string Name of the module.
@@ -13,7 +15,7 @@ Module = {}
 function Module.new(name, seq)
 	local self = setmetatable(Module, Module)
 	self.name = name
-	self.seq = seq
+	self.seq = seq or ""
 	self.prefix = "<plug>(" .. self.name .. ")"
 	self.group = vim.api.nvim_create_augroup(self.name, {})
 
@@ -28,18 +30,3 @@ end
 function Module:map(seq, action, modes, cfg)
 	map(self.prefix .. seq, action, modes, cfg)
 end
-
-require "modules.app"
-require "modules.buffers"
-require "modules.debug"
-require "modules.files"
-require "modules.language"
-require "modules.packages"
-require "modules.registers"
-require "modules.search"
-require "modules.spans"
-require "modules.tabs"
-require "modules.templates"
-require "modules.ui"
-require "modules.vcs"
-require "modules.windows"
