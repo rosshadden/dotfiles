@@ -9,15 +9,6 @@ local mini_snippets = require "mini.snippets"
 -- FUNCTIONS
 --
 
---- Get lib paths for input packages.
---- @param pkgs string[]
-local function libs(pkgs)
-	for p, pkg in ipairs(pkgs) do
-		pkgs[p] = vim.fn.stdpath "data" .. "/site/pack/core/opt/" .. pkg
-	end
-	return pkgs
-end
-
 --
 -- SETUP
 --
@@ -52,48 +43,6 @@ vim.lsp.config("*", {
 		vim.lsp.protocol.make_client_capabilities(),
 		mini_completion.get_lsp_capabilities()
 	),
-})
-
-vim.lsp.config("pylsp", {
-	settings = {
-		pylsp = {
-			plugins = {
-				pycodestyle = {
-					ignore = { "E501" },
-				},
-			},
-		},
-	},
-})
-
-vim.lsp.config("emmylua_ls", {
-	settings = {
-		Lua = {
-			runtime = {
-				version = "LuaJIT",
-				requirePattern = {
-					"lua/?.lua",
-					"lua/?/init.lua",
-				}
-			},
-			workspace = {
-				checkThirdParty = false,
-				library = {
-					"/usr/share/nvim/runtime/lua",
-					vim.env.VIMRUNTIME .. "/lua",
-					unpack(libs({
-						"dial.nvim",
-						"hop.nvim",
-						"mini.nvim",
-						"nvim-treesitter",
-						"nvim-treesitter-textobjects",
-						"persistence.nvim",
-						"snacks.nvim",
-					})),
-				},
-			},
-		},
-	},
 })
 
 -- snippets
