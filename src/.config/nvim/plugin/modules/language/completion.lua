@@ -75,7 +75,6 @@ mini_snippets.start_lsp_server({ match = false })
 -- MAPPINGS
 --
 
-map("<localleader>=", vim.lsp.buf.format)
 map("<m-f>", call(feedkeys, "<c-x><c-f>"), "i")
 
 local function completion_mappings()

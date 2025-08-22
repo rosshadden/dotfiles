@@ -108,6 +108,7 @@ local mini_pick = require "mini.pick"
 code:map("s", mini_pick.registry.spellsuggest)
 
 map("grd", vim.lsp.buf.definition)
+map("grf", vim.lsp.buf.format)
 
 --
 -- EVENTS

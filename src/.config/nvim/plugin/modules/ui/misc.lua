@@ -11,6 +11,9 @@ vim.opt.foldenable = false
 -- concealment
 vim.opt.conceallevel = 2
 
+-- scroll offset
+vim.o.scrolloff = 8
+
 --
 -- SETUP
 --

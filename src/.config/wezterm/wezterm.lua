@@ -1,47 +1,49 @@
 local wezterm = require "wezterm"
 local act = wezterm.action
 
-local theme = "Synthwave Alpha (Gogh)"
-local scheme = wezterm.get_builtin_color_schemes()[theme]
+local config = wezterm.config_builder()
 
-local config = {
-	key_tables = {},
+config.key_tables = {}
 
-	-- startup
-	-- default_gui_startup_args = { "connect", "unix" },
-	term = "wezterm",
+-- startup
+-- config.default_gui_startup_args = { "connect", "unix" }
+config.term = "wezterm"
 
-	front_end = "WebGpu",
+config.front_end = "WebGpu"
 
 	-- fonts
-	font_size = 10,
-	line_height = 1.0,
-	font = wezterm.font_with_fallback({
-		"Monocraft",
-		"Symbols Nerd Font Mono",
-		"Noto Color Emoji",
-		"Unifont",
-	}),
+config.font_size = 10
+config.line_height = 1.0
+config.font = wezterm.font_with_fallback({
+	"Monocraft",
+	"Symbols Nerd Font Mono",
+	"Noto Color Emoji",
+	"Unifont",
+})
 
-	enable_wayland = true,
+config.enable_wayland = true
 
-	-- ui
-	color_scheme = "main",
-	color_schemes = {
-		["main"] = scheme,
-	},
-	-- window_background_opacity = 0.90,
-
-	-- cursor
-	force_reverse_video_cursor = true,
-
-	-- more native keys
-	enable_csi_u_key_encoding = true,
-	-- enable_kitty_keyboard = true,
-
-	-- quick select keys
-	quick_select_alphabet = "cieansthbyouvwdl,kj.rm",
+local themes = {
+	"Synthwave Alpha (Gogh)",
+	"techbase",
 }
+
+-- ui
+-- config.color_scheme =
+-- TODO: add mapping to switch themes
+config.color_scheme = themes[2]
+config.use_fancy_tab_bar = true
+-- config.window_background_opacity = 0.90
+
+-- cursor
+config.force_reverse_video_cursor = true
+
+-- more native keys
+config.enable_csi_u_key_encoding = true
+-- config.enable_kitty_keyboard = true
+
+-- quick select keys
+config.quick_select_alphabet = "cieansthbyouvwdl,kj.rm"
 
 -- mappings
 
@@ -217,7 +219,6 @@ config.colors = {
 	-- foreground = "white",
 
 	tab_bar = {
-		background = "#ef6155",
 		active_tab = {
 			bg_color = "#815ba4",
 			fg_color = "#ffffff",
@@ -227,6 +228,9 @@ config.colors = {
 			fg_color = "#ffffff",
 		},
 	},
+
+	-- foreground = "",
+	-- background = "",
 }
 
 config.tls_servers = {
@@ -250,10 +254,6 @@ config.tls_clients = {
 		bootstrap_via_ssh = "bork",
 	},
 }
-
-for key, value in pairs(config.colors) do
-	scheme[key] = value
-end
 
 wezterm.on("update-right-status", function(win, pane)
 	local process = pane:get_foreground_process_name()

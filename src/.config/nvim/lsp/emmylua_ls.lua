@@ -16,8 +16,6 @@ local result = {
 				requirePattern = {
 					"lua/?.lua",
 					"lua/?/init.lua",
-					"lsp/?.lua",
-					"lsp/?/init.lua",
 					"plugin/?.lua",
 					"plugin/?/init.lua",
 				}
@@ -28,7 +26,6 @@ local result = {
 					"/usr/share/nvim/runtime/lua",
 					vim.env.VIMRUNTIME .. "/lua",
 					vim.env.VIMRUNTIME .. "/plugin",
-					vim.env.VIMRUNTIME .. "/lsp",
 					unpack(libs({
 						"dial.nvim",
 						"hop.nvim",
