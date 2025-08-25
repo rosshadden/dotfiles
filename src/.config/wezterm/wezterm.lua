@@ -23,15 +23,15 @@ config.font = wezterm.font_with_fallback({
 
 config.enable_wayland = true
 
+-- TODO: add mapping to switch themes
 local themes = {
-	"Synthwave Alpha (Gogh)",
-	"techbase",
+	"cyberdream",
+	"SynthwaveAlpha",
+	"synthwave",
 }
 
 -- ui
--- config.color_scheme =
--- TODO: add mapping to switch themes
-config.color_scheme = themes[2]
+config.color_scheme = themes[1]
 config.use_fancy_tab_bar = true
 -- config.window_background_opacity = 0.90
 
@@ -208,30 +208,10 @@ config.unix_domains = {
 }
 
 config.window_frame = {
-	font_size = 8.0,
-	active_titlebar_bg = "#2f1e2e",
-	inactive_titlebar_bg = "#333333",
+	font_size = 10.0,
 }
 
-config.colors = {
-	compose_cursor = "orange",
-	cursor_border = "white",
-	-- foreground = "white",
-
-	tab_bar = {
-		active_tab = {
-			bg_color = "#815ba4",
-			fg_color = "#ffffff",
-		},
-		inactive_tab = {
-			bg_color = "#2f1e2e",
-			fg_color = "#ffffff",
-		},
-	},
-
-	-- foreground = "",
-	-- background = "",
-}
+-- config.colors.compose_cursor = config.colors.indexed[16]
 
 config.tls_servers = {
 	{

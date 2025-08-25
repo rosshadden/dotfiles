@@ -1,6 +1,6 @@
 local theme = Module.new("theme", "<space>T")
 
-pack "mcauley-penney/techbase.nvim"
+pack "scottmckendry/cyberdream.nvim"
 
 local mini_base16 = require "mini.base16"
 
@@ -35,25 +35,20 @@ vim.opt.winborder = "rounded"
 require("mini.icons").setup()
 require("mini.trailspace").setup()
 
-require("techbase").setup({
-	italic_comments = true,
-	transparent = false,
+-- colors
 
-	hl_overrides = {
-		MiniCursorWord = { link = "MatchParen" },
-	},
+require("cyberdream").setup({
+	transparent = true,
+	italic_comments = true,
 })
 
--- colorscheme
-
-vim.cmd.colorscheme "techbase"
-
+vim.cmd.colorscheme "cyberdream"
 
 -- highlights
 
 -- search
-vim.api.nvim_set_hl(0, "Search", { link = "DiagnosticInfo" })
-vim.api.nvim_set_hl(0, "IncSearch", { link = "DiagnosticOk" })
+vim.api.nvim_set_hl(0, "Search", { link = "MiniHipatternsNote" })
+vim.api.nvim_set_hl(0, "IncSearch", { link = "MiniHipatternsTodo" })
 vim.api.nvim_set_hl(0, "CurSearch", { link = "IncSearch" })
 
 local mini_hipatterns = require "mini.hipatterns"
@@ -70,14 +65,11 @@ mini_hipatterns.setup({
 })
 
 --
--- MAPPINGS
+-- FUNCTIONS
 --
 
-theme:map("[", function()
-end)
-
-theme:map("]", function()
-	if vim.g.colors_name == "techbase" then
+function theme:swap()
+	if vim.g.colors_name == "cyberdream" then
 		mini_base16.setup({
 			palette = mini_base16.mini_palette("#2b1a33", "#c9c5cb", 128),
 			-- palette = {
@@ -101,8 +93,16 @@ theme:map("]", function()
 			use_cterm = true,
 		})
 	else
-		vim.cmd.colorscheme "techbase"
+		vim.cmd.colorscheme "cyberdream"
 	end
+end
+
+--
+-- MAPPINGS
+--
+
+theme:map("<space>", function()
+	theme:swap()
 end)
 
 --
