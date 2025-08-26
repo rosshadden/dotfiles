@@ -7,13 +7,14 @@ pack "echasnovski/mini.nvim"
 --- @field prefix string Mapping prefix.
 --- @field group int augroup
 Module = {}
+Module.__index = Module
 
 --- Create a Mode.
 --- @param name string Name of the module.
 --- @param seq string? Entrypoint key sequence.
 --- @return Module
 function Module.new(name, seq)
-	local self = setmetatable(Module, Module)
+	local self = setmetatable({}, Module)
 	self.name = name
 	self.seq = seq or ""
 	self.prefix = "<plug>(" .. self.name .. ")"

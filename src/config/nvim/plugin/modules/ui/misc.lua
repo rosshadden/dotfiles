@@ -1,5 +1,5 @@
-local ui = Module.new("ui")
 local folds = Module.new("folds", "<space>z")
+local ui = Module.new("ui")
 
 --
 -- SETTINGS
@@ -62,7 +62,6 @@ mini_clue.setup({
 		mini_clue.gen_clues.z(),
 	},
 })
-
 
 --
 -- MAPPINGS
