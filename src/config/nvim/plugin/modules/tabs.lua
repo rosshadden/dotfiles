@@ -7,8 +7,6 @@ local tabs = Module.new("tabs", "<space>t")
 -- relatave navigation
 local next_tab = cmd [[<c-u>execute (v:count == 0) ? "tabnext" : "tabnext " . (v:count1 + 2)]]
 local prev_tab = cmd [[<c-u>execute (v:count == 0) ? "tabprevious" : "tabprevious " . v:count1]]
-map("<a-n>", next_tab)
-map("<a-p>", prev_tab)
 tabs:map("h", prev_tab)
 tabs:map("l", next_tab)
 

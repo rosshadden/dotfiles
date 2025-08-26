@@ -20,6 +20,8 @@ map("<a-j>", function() pcall(vim.cmd, "wincmd j") end, "")
 map("<a-k>", function() pcall(vim.cmd, "wincmd k") end, "")
 map("<a-h>", function() pcall(vim.cmd, "wincmd h") end, "")
 map("<a-l>", function() pcall(vim.cmd, "wincmd l") end, "")
+map("<a-n>", cmd "bnext")
+map("<a-p>", cmd "bprevious")
 
 -- stack nav
 buffers:map("n", cmd "bnext")

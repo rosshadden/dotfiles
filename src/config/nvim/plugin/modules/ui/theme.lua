@@ -1,4 +1,4 @@
-local theme = Module.new("theme", "<space>T")
+local theme = Module.new("theme", "<space>H")
 
 pack "scottmckendry/cyberdream.nvim"
 

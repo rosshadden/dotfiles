@@ -124,7 +124,10 @@ export def zoxide-nodes [] {
 }
 
 # Open tabs and panes in my usual layout.
-# TODO: support a project file that can override the defaylt layout
+#
+# TODO: support a project file that can override the default layout
+@deprecated "Use tig in neovim instead."
+@category deprecated
 export def --env pj [
 	query?: string@zoxide-nodes
 ] {
@@ -221,4 +224,9 @@ export def --env rd [
 	to: string
 ] {
 	pwd | str replace $from $to | cd $in
+}
+
+# Zoxide in a subdir.
+# TODO
+export def --env --wrapped Z [...rest: string] {
 }
