@@ -36,27 +36,25 @@ require("mini.icons").setup()
 require("mini.trailspace").setup()
 
 -- colors
-
 require("cyberdream").setup({
 	transparent = true,
 	italic_comments = true,
-})
 
+	highlights = {
+		Search = { link = "MiniHipatternsNote" },
+		IncSearch = { link = "MiniHipatternsTodo" },
+		CurSearch = { link = "IncSearch" },
+		CursorLine = { bg = "#1e2124" },
+	},
+})
 vim.cmd.colorscheme "cyberdream"
 
 -- highlights
-
--- search
-vim.api.nvim_set_hl(0, "Search", { link = "MiniHipatternsNote" })
-vim.api.nvim_set_hl(0, "IncSearch", { link = "MiniHipatternsTodo" })
-vim.api.nvim_set_hl(0, "CurSearch", { link = "IncSearch" })
-
 local mini_hipatterns = require "mini.hipatterns"
 local mini_hiwords = require("mini.extra").gen_highlighter.words
 mini_hipatterns.setup({
 	highlighters = {
 		hex_color = mini_hipatterns.gen_highlighter.hex_color(),
-
 		fix = mini_hiwords({ "FIX", "TEMP" }, "MiniHipatternsFixme"),
 		hack = mini_hiwords({ "HACK" }, "MiniHipatternsHack"),
 		note = mini_hiwords({ "NOTE" }, "MiniHipatternsNote"),

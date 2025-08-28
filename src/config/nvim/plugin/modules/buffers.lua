@@ -16,10 +16,10 @@ vim.o.switchbuf = "usetab"
 buffers:map("<space>", mini_pick.registry.buffers)
 
 -- relative nav
-map("<a-j>", function() pcall(vim.cmd, "wincmd j") end, "")
-map("<a-k>", function() pcall(vim.cmd, "wincmd k") end, "")
-map("<a-h>", function() pcall(vim.cmd, "wincmd h") end, "")
-map("<a-l>", function() pcall(vim.cmd, "wincmd l") end, "")
+map("<a-j>", function() pcall(vim.cmd, "wincmd j") end, { "n", "v", "o", "t" })
+map("<a-k>", function() pcall(vim.cmd, "wincmd k") end, { "n", "v", "o", "t" })
+map("<a-h>", function() pcall(vim.cmd, "wincmd h") end, { "n", "v", "o", "t" })
+map("<a-l>", function() pcall(vim.cmd, "wincmd l") end, { "n", "v", "o", "t" })
 map("<a-n>", cmd "bnext")
 map("<a-p>", cmd "bprevious")
 

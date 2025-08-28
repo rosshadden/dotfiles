@@ -33,7 +33,7 @@ local themes = {
 -- ui
 config.color_scheme = themes[1]
 config.use_fancy_tab_bar = true
--- config.window_background_opacity = 0.90
+config.window_background_opacity = 0.90
 
 -- cursor
 config.force_reverse_video_cursor = true

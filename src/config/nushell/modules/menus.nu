@@ -163,7 +163,7 @@ export def main [] {
 		{
 			name: files_menu
 			only_buffer_difference: true
-			marker: "# "
+			marker: ". "
 			type: {
 				layout: list
 			}
@@ -174,6 +174,25 @@ export def main [] {
 			}
 			source: { |buffer, position|
 				fd --type f --hidden | rg $buffer
+				| lines
+				| each { |it| { value: $it } }
+			}
+		}
+
+		{
+			name: folders_menu
+			only_buffer_difference: true
+			marker: "/ "
+			type: {
+				layout: list
+			}
+			style: {
+				text: green
+				selected_text: green_reverse
+				description_text: yellow
+			}
+			source: { |buffer, position|
+				fd --type d --hidden | rg $buffer
 				| lines
 				| each { |it| { value: $it } }
 			}

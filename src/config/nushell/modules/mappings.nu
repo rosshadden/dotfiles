@@ -171,6 +171,13 @@ export def main [] {
 		}
 
 		{
+			mode: [ vi_insert emacs ]
+			modifier: alt
+			keycode: char_d
+			event: { send: menu, name: folders_menu }
+		}
+
+		{
 			name: ide_completion_menu
 			modifier: alt
 			keycode: space

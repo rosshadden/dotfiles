@@ -25,6 +25,9 @@ require("mini.ai").setup({
 	custom_textobjects = {
 		-- current line/row
 		r = require("mini.extra").gen_ai_spec.line(),
+
+		-- brackets
+		b = { { '%b()', '%b[]', '%b{}', '%b<>' }, '^.().*().$' },
 	}
 })
 
@@ -43,6 +46,7 @@ hop.setup({
 -- MAPPINGS
 --
 
+-- married
 map("aF", call(vto.filepath, "outer"), { "x", "o" })
 map("iF", call(vto.filepath, "inner"), { "x", "o" })
 map("as", call(vto.subword, "outer"), { "x", "o" })
@@ -51,12 +55,10 @@ map("ak", call(vto.key, "outer"), { "x", "o" })
 map("ik", call(vto.key, "inner"), { "x", "o" })
 map("av", call(vto.value, "outer"), { "x", "o" })
 map("iv", call(vto.value, "inner"), { "x", "o" })
-map("aq", call(vto.anyQuote, "outer"), { "x", "o" })
-map("iq", call(vto.anyQuote, "inner"), { "x", "o" })
-map("ao", call(vto.anyBracket, "outer"), { "x", "o" })
-map("io", call(vto.anyBracket, "inner"), { "x", "o" })
+map("ag", vto.entireBuffer, { "x", "o" })
+map("ig", vto.entireBuffer, { "x", "o" })
 
-motion:map("G", vto.entireBuffer, { "x", "o" })
+-- single
 motion:map("u", vto.url, { "x", "o" })
 
 -- spider

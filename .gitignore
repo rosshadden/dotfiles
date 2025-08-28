@@ -1,9 +1,10 @@
 # apps
 
+src/.termux/shell/
 src/config/gtk-3.0/bookmarks
 src/config/mpv/watch_later
 src/config/nushell/history*
 src/config/rtv/history.log
 src/config/rtv/refresh-token
 src/config/yazi/flavors/
-src/.termux/shell/
+src/config/yazi/theme.toml-*

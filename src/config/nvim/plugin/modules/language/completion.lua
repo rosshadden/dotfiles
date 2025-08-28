@@ -1,13 +1,19 @@
 local completion = Module.new("completion")
 
 pack "neovim/nvim-lspconfig"
+pack "zbirenbaum/copilot.lua"
 
 local mini_completion = require "mini.completion"
 local mini_snippets = require "mini.snippets"
 
 --
--- FUNCTIONS
+-- SETTINGS
 --
+
+local term = vim.api.nvim_replace_termcodes("<c-z>", true, true, true)
+vim.opt.wildoptions = "pum,fuzzy"
+vim.opt.wildmode = "noselect:lastused,full"
+vim.opt.wildcharm = vim.fn.char2nr(term)
 
 --
 -- SETUP
@@ -17,6 +23,7 @@ local mini_snippets = require "mini.snippets"
 
 local servers = {
 	"bashls",
+	"copilot",
 	"csharp_ls",
 	"emmylua_ls",
 	"gdscript",
@@ -31,6 +38,7 @@ local servers = {
 	"pylsp",
 	"rust_analyzer",
 	"sourcekit",
+	"taplo",
 	"ts_ls",
 	"v_analyzer",
 	"zls",
@@ -44,6 +52,7 @@ vim.lsp.config("*", {
 		mini_completion.get_lsp_capabilities()
 	),
 })
+vim.lsp.inline_completion.enable()
 
 -- snippets
 
@@ -71,11 +80,47 @@ mini_snippets.setup({
 })
 mini_snippets.start_lsp_server({ match = false })
 
+require("copilot").setup({})
+
 --
 -- MAPPINGS
 --
 
-map("<m-f>", call(feedkeys, "<c-x><c-f>"), "i")
+map("<a-f>", call(feedkeys, "<c-x><c-f>"), "i")
+
+-- inline completions
+
+map("<tab>", function()
+	if not vim.lsp.inline_completion.get() then
+		return "<tab>"
+	end
+end, "i", {
+	expr = true,
+	replace_keycodes = true,
+	desc = "Get the current inline completion",
+})
+
+map("<left>", function()
+	if not pumvisible() then
+		return "<left>"
+	end
+	vim.lsp.inline_completion.select({ count = -1 })
+end, "i", {
+	expr = true,
+	replace_keycodes = true,
+	desc = "Get the previous inline completion",
+})
+
+map("<right>", function()
+	if not pumvisible() then
+		return "<right>"
+	end
+	vim.lsp.inline_completion.select()
+end, "i", {
+	expr = true,
+	replace_keycodes = true,
+	desc = "Get the next inline completion",
+})
 
 local function completion_mappings()
 	-- Use enter to accept completions.
@@ -106,6 +151,10 @@ local function completion_mappings()
 	map("<bs>", "<c-o>s", "s")
 end
 
+-- better command-line history (or at least different)
+map("<up>", "<end><c-u><up>", "c")
+map("<down>", "<end><c-u><down>", "c")
+
 --
 -- EVENTS
 --
@@ -120,6 +169,28 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		if client:supports_method("textDocument/completion") then
 			vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
 			completion_mappings()
+		end
+	end,
+})
+
+-- trigger completion when typing in command mode
+vim.api.nvim_create_autocmd("CmdlineChanged", {
+	pattern = ":",
+	callback = function()
+		local cmdline = vim.fn.getcmdline()
+		local curpos = vim.fn.getcmdpos()
+		local last_char = cmdline:sub(-1)
+		if
+				curpos == #cmdline + 1
+				and vim.fn.pumvisible() == 0
+				and last_char:match("[%w%/%: ]")
+				and not cmdline:match("^%d+$")
+		then
+			vim.opt.eventignore:append("CmdlineChanged")
+			vim.api.nvim_feedkeys(term, "ti", false)
+			vim.schedule(function()
+				vim.opt.eventignore:remove("CmdlineChanged")
+			end)
 		end
 	end,
 })
