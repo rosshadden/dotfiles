@@ -10,7 +10,7 @@ local mini_snippets = require "mini.snippets"
 -- SETTINGS
 --
 
-local term = vim.api.nvim_replace_termcodes("<c-z>", true, true, true)
+local term = vim.keycode("<c-z>")
 vim.opt.wildoptions = "pum,fuzzy"
 vim.opt.wildmode = "noselect:lastused,full"
 vim.opt.wildcharm = vim.fn.char2nr(term)
@@ -185,6 +185,7 @@ vim.api.nvim_create_autocmd("CmdlineChanged", {
 				and vim.fn.pumvisible() == 0
 				and last_char:match("[%w%/%: ]")
 				and not cmdline:match("^%d+$")
+				and last_char ~= "/"
 		then
 			vim.opt.eventignore:append("CmdlineChanged")
 			vim.api.nvim_feedkeys(term, "ti", false)
