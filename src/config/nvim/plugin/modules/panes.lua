@@ -1,4 +1,4 @@
-local buffers = Module.new("buffers", "<space>b")
+local buffers = Module.new("buffers", "<space>p")
 
 local mini_pick = require "mini.pick"
 

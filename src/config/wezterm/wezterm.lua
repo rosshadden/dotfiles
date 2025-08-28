@@ -68,8 +68,8 @@ config.keys = {
 
 	-- modes
 	{ mods = "LEADER", key = "a", action = act{ ActivateKeyTable = { name = "app", one_shot = true, replace_current = false } } },
-	{ mods = "LEADER", key = "b", action = act{ ActivateKeyTable = { name = "panes", one_shot = true, replace_current = false } } },
 	{ mods = "LEADER", key = "c", action = "ActivateCopyMode" },
+	{ mods = "LEADER", key = "p", action = act{ ActivateKeyTable = { name = "panes", one_shot = true, replace_current = false } } },
 	{ mods = "LEADER", key = "r", action = act{ ActivateKeyTable = { name = "resize", one_shot = false, replace_current = false } } },
 	{ mods = "LEADER", key = "s", action = act{ ActivateKeyTable = { name = "sessions", one_shot = true, replace_current = false } } },
 	{ mods = "LEADER", key = "t", action = act{ ActivateKeyTable = { name = "tabs", one_shot = true, replace_current = false } } },
@@ -77,8 +77,8 @@ config.keys = {
 
 	-- navigation
 	{ mods = "LEADER", key = "Tab", action = "ActivateLastTab" },
-	{ mods = "LEADER", key = "p", action = act{ ActivateTabRelative = -1 } },
-	{ mods = "LEADER", key = "n", action = act{ ActivateTabRelative = 1 } },
+	{ mods = "CTRL|ALT", key = "p", action = act{ ActivateTabRelative = -1 } },
+	{ mods = "CTRL|ALT", key = "n", action = act{ ActivateTabRelative = 1 } },
 	{ mods = "CTRL", key = "j", action = act{ ActivatePaneDirection = "Down" } },
 	{ mods = "CTRL", key = "k", action = act{ ActivatePaneDirection = "Up" } },
 	{ mods = "CTRL", key = "h", action = act{ ActivatePaneDirection = "Left" } },
@@ -88,7 +88,7 @@ config.keys = {
 	{
 		mods = "LEADER", key = "Backspace",
 		action = wezterm.action_callback(function(win, pane)
-			os.execute("notify-send debug")
+			os.execute "notify-send debug"
 		end)
 	},
 }

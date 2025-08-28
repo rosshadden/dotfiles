@@ -30,18 +30,18 @@ sync:map("w", function()
 	tigs:toggle "window"
 end)
 
-sync:map("h", function()
-	tigs:toggle "left"
-end)
-
-sync:map("l", function()
-	tigs:toggle "right"
-end)
-
 sync:map("j", function()
 	tigs:toggle "below"
 end)
 
 sync:map("k", function()
 	tigs:toggle "above"
+end)
+
+sync:map("h", function()
+	tigs:toggle "left"
+end)
+
+sync:map("l", function()
+	tigs:toggle "right"
 end)
