@@ -1,6 +1,0 @@
-require("settings")
-require("loaders")
-require("functions")
-require("mappings")
-require("modules")
-require("plugins")
