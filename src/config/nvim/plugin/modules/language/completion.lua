@@ -10,10 +10,8 @@ local mini_snippets = require "mini.snippets"
 -- SETTINGS
 --
 
-local term = vim.keycode("<c-z>")
-vim.opt.wildoptions = "pum,fuzzy"
 vim.opt.wildmode = "noselect:lastused,full"
-vim.opt.wildcharm = vim.fn.char2nr(term)
+vim.opt.wildoptions = "pum,fuzzy"
 
 --
 -- SETUP
@@ -86,7 +84,12 @@ require("copilot").setup({})
 -- MAPPINGS
 --
 
+-- file completion
 map("<a-f>", call(feedkeys, "<c-x><c-f>"), "i")
+
+-- better command-line history (or at least different)
+map("<up>", "<end><c-u><up>", "c")
+map("<down>", "<end><c-u><down>", "c")
 
 -- inline completions
 
@@ -151,10 +154,6 @@ local function completion_mappings()
 	map("<bs>", "<c-o>s", "s")
 end
 
--- better command-line history (or at least different)
-map("<up>", "<end><c-u><up>", "c")
-map("<down>", "<end><c-u><down>", "c")
-
 --
 -- EVENTS
 --
@@ -175,23 +174,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- trigger completion when typing in command mode
 vim.api.nvim_create_autocmd("CmdlineChanged", {
+	group = completion.group,
+	desc = "automatically show command completion",
 	pattern = ":",
-	callback = function()
-		local cmdline = vim.fn.getcmdline()
-		local curpos = vim.fn.getcmdpos()
-		local last_char = cmdline:sub(-1)
-		if
-				curpos == #cmdline + 1
-				and vim.fn.pumvisible() == 0
-				and last_char:match("[%w%/%: ]")
-				and not cmdline:match("^%d+$")
-				and last_char ~= "/"
-		then
-			vim.opt.eventignore:append("CmdlineChanged")
-			vim.api.nvim_feedkeys(term, "ti", false)
-			vim.schedule(function()
-				vim.opt.eventignore:remove("CmdlineChanged")
-			end)
-		end
-	end,
+	callback = call(vim.fn.wildtrigger),
 })
