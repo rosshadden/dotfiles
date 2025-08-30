@@ -65,3 +65,5 @@ function run(cmd, shell)
 	if shell == nil then shell = vim.o.shell end
 	return vim.system({ shell, vim.o.shellcmdflag, cmd })
 end
+
+-- TODO: make a helper for toggling settings

@@ -5,6 +5,20 @@ pack "folke/persistence.nvim"
 local mini_pick = require "mini.pick"
 
 --
+-- FUNCTIONS
+--
+
+-- Helper to input given actions in picker.
+local function input_actions(...)
+	local actions = { ... }
+	return function()
+		local mappings = mini_pick.get_picker_opts().mappings
+		local keys = vim.tbl_map(function(m) return mappings[m] end, actions)
+		vim.api.nvim_input(vim.keycode(table.concat(keys)))
+	end
+end
+
+--
 -- SETUP
 --
 
@@ -21,7 +35,55 @@ mini_pick.setup({
 		choose_in_split = "<a-j>",
 		choose_in_vsplit = "<a-l>",
 		choose_in_tabpage = "<a-t>",
+
+		refine = "<a-space>",
+		refine_marked = "<c-space>",
+
+		-- TODO: fix focus
+		choose_left = {
+			char = "<a-h>",
+			func = function()
+				vim.cmd("leftabove vsplit " .. mini_pick.get_picker_matches().current)
+				return true
+			end,
+		},
+
+		-- TODO: fix focus
+		choose_up = {
+			char = "<a-k>",
+			func = function()
+				vim.cmd("leftabove split " .. mini_pick.get_picker_matches().current)
+				vim.cmd("wincmd k")
+				return true
+			end,
+		},
+
+		mark_down = {
+			char = "<c-t>",
+			func = input_actions("mark", "move_down"),
+		},
+
+		mark_up = {
+			char = "<c-a-t>",
+			func = input_actions("mark", "move_up"),
+		},
 	},
+
+	window = {
+		-- center
+		config = function()
+			local height = math.floor(0.75 * vim.o.lines)
+			local width = math.floor(0.75 * vim.o.columns)
+			return {
+				anchor = 'NW',
+				height = height,
+				width = width,
+				row = math.floor(0.5 * (vim.o.lines - height)),
+				col = math.floor(0.5 * (vim.o.columns - width)),
+			}
+		end,
+	},
+
 })
 
 mini_pick.registry.registry = function()

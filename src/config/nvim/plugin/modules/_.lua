@@ -1,4 +1,4 @@
-pack "echasnovski/mini.nvim"
+pack "nvim-mini/mini.nvim"
 
 --- Struct allowing mode-specific keymaps.
 --- @class Module

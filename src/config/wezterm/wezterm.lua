@@ -51,7 +51,6 @@ config.leader = { mods = "CTRL", key = "Space" }
 
 config.keys = {
 	-- send prefix
-	{ mods = "LEADER", key = "Space", action = act{ SendKey = { mods = "CTRL", key = "Space" } } },
 	{ mods = "LEADER|CTRL", key = "Space", action = act{ SendKey = { mods = "CTRL", key = "Space" } } },
 
 	-- unmap
@@ -59,7 +58,7 @@ config.keys = {
 	{ mods = "CTRL", key = "Slash", action = act.SendString("")},
 
 	-- main
-	{ mods = "LEADER|CTRL", key = "p", action = act.ActivateCommandPalette },
+	{ mods = "LEADER", key = "Space", action = act.ActivateCommandPalette },
 
 	-- normalize
 	{ key = "Delete", action = act{ SendKey = { key = "Delete" } } },

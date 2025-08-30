@@ -1,4 +1,4 @@
-local completion = Module.new("completion")
+local completion = Module.new("completion", "<space>C")
 
 pack "neovim/nvim-lspconfig"
 pack "zbirenbaum/copilot.lua"
@@ -83,6 +83,10 @@ require("copilot").setup({})
 --
 -- MAPPINGS
 --
+
+completion:map("f", function()
+	vim.opt.completeopt:append({ "fuzzy" })
+end)
 
 -- file completion
 map("<a-f>", call(feedkeys, "<c-x><c-f>"), "i")
