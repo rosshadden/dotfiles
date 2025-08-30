@@ -1,10 +1,8 @@
 local motion = Module.new("motion", "<tab>")
 
-pack({
-	"chrisgrieser/nvim-spider",
-	"chrisgrieser/nvim-various-textobjs",
-	"smoka7/hop.nvim",
-})
+pack "chrisgrieser/nvim-spider"
+pack "chrisgrieser/nvim-various-textobjs"
+pack "smoka7/hop.nvim"
 
 local hop = require "hop"
 

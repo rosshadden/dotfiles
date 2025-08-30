@@ -1,4 +1,4 @@
-local packages = Module.new("packages", "<space>p")
+local packages = Module.new("packages", "<space>P")
 
 --
 -- MAPPINGS

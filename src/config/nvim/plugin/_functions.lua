@@ -37,7 +37,7 @@ end
 function pack(...)
 	local specs = {}
 	for _, arg in ipairs({ ... }) do process(arg, specs) end
-	return vim.pack.add(specs)
+	return vim.pack.add(specs, { load = true, confirm = false })
 end
 
 --- Wrap a function call with args, making mappings easier.
