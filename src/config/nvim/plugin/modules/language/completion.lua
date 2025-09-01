@@ -95,6 +95,28 @@ map("<a-f>", call(feedkeys, "<c-x><c-f>"), "i")
 map("<up>", "<end><c-u><up>", "c")
 map("<down>", "<end><c-u><down>", "c")
 
+local mini_map = require("mini.keymap").map_multistep
+mini_map("i", "<cr>", { "pmenu_accept", "minipairs_cr" })
+
+local next_steps = { {
+	condition = function() return pumvisible() end,
+	action = function() feedkeys "<c-n>" end,
+}, {
+	-- trigger lsp completion if available
+	condition = function() return next(vim.lsp.get_clients { bufnr = 0 }) end,
+	action = function() vim.lsp.completion.get() end,
+}, {
+	condition = function() return vim.bo.omnifunc == "" end,
+	action = function() feedkeys "<c-x><c-n>" end,
+}, {
+	condition = function() return true end,
+	action = function() feedkeys "<c-x><c-o>" end,
+} }
+mini_map("i", "<c-n>", next_steps)
+
+-- Inside a snippet, use backspace to remove the placeholder.
+map("<bs>", "<c-o>s", "s")
+
 -- inline completions
 
 map("<tab>", function()
@@ -129,35 +151,6 @@ end, "i", {
 	desc = "Get the next inline completion",
 })
 
-local function completion_mappings()
-	-- Use enter to accept completions.
-	map("<cr>", function()
-		return pumvisible() and "<c-y>" or "<cr>"
-	end, "i", { expr = true })
-
-	-- Use <c-n> to navigate to the next completion or:
-	-- - Trigger LSP completion.
-	-- - If there"s no one, fallback to vanilla omnifunc.
-	map("<c-n>", function()
-		if pumvisible() then
-			feedkeys "<c-n>"
-		else
-			if next(vim.lsp.get_clients { bufnr = 0 }) then
-				vim.lsp.completion.get()
-			else
-				if vim.bo.omnifunc == "" then
-					feedkeys "<c-x><c-n>"
-				else
-					feedkeys "<c-x><c-o>"
-				end
-			end
-		end
-	end, "i")
-
-	-- Inside a snippet, use backspace to remove the placeholder.
-	map("<bs>", "<c-o>s", "s")
-end
-
 --
 -- EVENTS
 --
@@ -171,7 +164,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		if client == nil then return end
 		if client:supports_method("textDocument/completion") then
 			vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
-			completion_mappings()
 		end
 	end,
 })

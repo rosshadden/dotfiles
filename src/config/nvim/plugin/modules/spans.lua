@@ -11,7 +11,6 @@ local hop = require "hop"
 --
 
 require("mini.indentscope").setup()
-require("mini.jump2d").setup()
 
 require("mini.operators").setup({
 	replace = {
