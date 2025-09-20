@@ -4,40 +4,44 @@ local registers = Module.new("registers", "<space>r")
 -- MAPPINGS
 --
 
+-- add to the `gp` and `gy` from mini.basics
+map("gP", [["+P]])
+map("gY", [["+Y]], { "n", "x" }, { remap = true })
+
 -- system clipboard [CLIPBOARD]
-registers:map("", [["+]], "")
+registers:map("", [["+]])
 
 -- selection clipboard [PRIMARY]
-registers:map("s", [["*]], "")
+registers:map("s", [["*]])
 
 -- blackhole register
-registers:map("b", [["_]], "")
+registers:map("b", [["_]])
 
 -- yank register
-registers:map("y", [["0]], "")
+registers:map("y", [["0]])
 
 -- delete register
-registers:map("d", [["1]], "")
+registers:map("d", [["1]])
 
 -- small-delete register
-registers:map("D", [["-]], "")
+registers:map("D", [["-]])
 
 -- search register
-registers:map("/", [["/]], "")
+registers:map("/", [["/]])
 
 -- expression register
-registers:map("=", [["=]], "")
+registers:map("=", [["=]])
 
 -- read-only
 
 -- insert register
-registers:map("i", [[".]], "")
+registers:map("i", [[".]])
 
 -- command register
-registers:map(";", [[":]], "")
+registers:map(";", [[":]])
 
 -- file register
-registers:map("f", [["%]], "")
+registers:map("f", [["%]])
 
 -- alt-file register
-registers:map("F", [["#]], "")
+registers:map("F", [["#]])

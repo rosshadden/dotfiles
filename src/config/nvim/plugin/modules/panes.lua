@@ -56,11 +56,11 @@ panes:map("q", cmd "quit")
 panes:map("Q", cmd "quit!")
 
 -- write
+map("<c-s-s>", cmd "write")
 panes:map("w", cmd "write")
 panes:map("W", cmd "write!")
 
 -- save
-map("<c-s>", cmd "update")
 panes:map("S", cmd "update!")
 panes:map("s", cmd "update")
 

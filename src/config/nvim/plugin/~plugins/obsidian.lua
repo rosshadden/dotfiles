@@ -10,6 +10,8 @@ pack "oflisback/obsidian-bridge.nvim"
 require("render-markdown").setup({
 	completions = { lsp = { enabled = true } },
 
+	render_modes = true,
+
 	heading = {
 		border = true,
 	},

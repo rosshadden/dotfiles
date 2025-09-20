@@ -1,5 +1,9 @@
 pack "nvim-mini/mini.nvim"
 
+--
+-- CLASSES
+--
+
 --- Struct allowing mode-specific keymaps.
 --- @class Module
 --- @field name string Name of the module.
@@ -21,7 +25,7 @@ function Module.new(name, seq)
 	self.group = vim.api.nvim_create_augroup(self.name, {})
 
 	if seq ~= nil then
-		map(self.seq, self.prefix, { "x", "n", "o" })
+		map(self.seq, self.prefix, { "x", "n", "o" }, { desc = self.name .. " module" })
 	end
 
 	return self

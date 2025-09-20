@@ -40,7 +40,8 @@ config.force_reverse_video_cursor = true
 
 -- more native keys
 config.enable_csi_u_key_encoding = true
--- config.enable_kitty_keyboard = true
+-- NOTE: adds an ESC delay
+config.enable_kitty_keyboard = false
 
 -- quick select keys
 config.quick_select_alphabet = "cieansthbyouvwdl,kj.rm"

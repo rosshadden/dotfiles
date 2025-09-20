@@ -10,8 +10,11 @@ local mini_snippets = require "mini.snippets"
 -- SETTINGS
 --
 
-vim.opt.wildmode = "noselect:lastused,full"
-vim.opt.wildoptions = "pum,fuzzy"
+vim.opt.complete = { ".", "w", "b", "u", "kspell" }
+vim.opt.completefuzzycollect = { "keyword", "files", "whole_line" }
+vim.opt.completeopt = { "menuone", "noselect", "fuzzy", "nosort" }
+vim.opt.wildmode = { "noselect:lastused", "full" }
+vim.opt.wildoptions = { "pum", "fuzzy" }
 
 --
 -- SETUP
@@ -51,6 +54,7 @@ vim.lsp.config("*", {
 	),
 })
 vim.lsp.inline_completion.enable()
+vim.lsp.on_type_formatting.enable()
 
 -- snippets
 
@@ -58,6 +62,10 @@ mini_completion.setup({
 	lsp_completion = {
 		source_func = "omnifunc",
 		auto_setup = false,
+		process_items = function(items, base)
+			local priority = { kind_priority = { Snippet = 99 } }
+			return mini_completion.default_process_items(items, base, priority)
+		end,
 	},
 	mappings = {
 		force_twostep = "<a-space>",
@@ -83,10 +91,6 @@ require("copilot").setup({})
 --
 -- MAPPINGS
 --
-
-completion:map("f", function()
-	vim.opt.completeopt:append({ "fuzzy" })
-end)
 
 -- file completion
 map("<a-f>", call(feedkeys, "<c-x><c-f>"), "i")

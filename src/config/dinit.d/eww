@@ -1,0 +1,5 @@
+type = process
+command = eww daemon
+restart = true
+logfile = ./logs/eww.log
+env-file = ./.env

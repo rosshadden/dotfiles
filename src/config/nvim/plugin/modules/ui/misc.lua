@@ -19,6 +19,7 @@ vim.o.scrolloff = 8
 --
 
 require("mini.cursorword").setup()
+require("mini.notify").setup()
 require("mini.statusline").setup()
 require("mini.tabline").setup()
 
@@ -26,6 +27,14 @@ require("mini.tabline").setup()
 local mini_clue = require "mini.clue"
 mini_clue.setup({
 	triggers = {
+		-- follow the leader
+		{ mode = "n", keys = "<leader>" },
+		{ mode = "x", keys = "<leader>" },
+
+		-- `[` and `]` keys
+		{ mode = 'n', keys = '[' },
+		{ mode = 'n', keys = ']' },
+
 		-- completions
 		{ mode = "i", keys = "<c-x>" },
 
@@ -51,15 +60,22 @@ mini_clue.setup({
 		-- folds
 		{ mode = "n", keys = "z" },
 		{ mode = "x", keys = "z" },
+
+		-- modes
+		{ mode = "n", keys = "<space>" },
 	},
 
 	clues = {
+		mini_clue.gen_clues.square_brackets(),
 		mini_clue.gen_clues.builtin_completion(),
 		mini_clue.gen_clues.g(),
 		mini_clue.gen_clues.marks(),
 		mini_clue.gen_clues.registers(),
 		mini_clue.gen_clues.windows(),
 		mini_clue.gen_clues.z(),
+
+		-- modes
+		{ mode = "n", keys = "<space>", desc = "+Modules" },
 	},
 })
 

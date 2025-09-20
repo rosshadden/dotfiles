@@ -115,6 +115,9 @@ end
 -- MAPPINGS
 --
 
+-- HACK: fixes c-i for some reason
+map("<c-i>", "<c-i>")
+
 -- quit
 app:map("q", cmd "quitall")
 app:map("Q", cmd "quitall!")

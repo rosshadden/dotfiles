@@ -1,0 +1,6 @@
+type = process
+command = ringboard-wayland
+depends-on = ringboard-server
+restart = true
+logfile = ./logs/ringboard.log
+env-file = ./.env

@@ -1,0 +1,4 @@
+type = process
+command = ringboard-server
+restart = true
+env-file = ./.env

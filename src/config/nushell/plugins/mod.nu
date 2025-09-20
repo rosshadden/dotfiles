@@ -1,3 +1,7 @@
+use gd.nu
+use raws.nu
+use yazi.nu *
+
 # zoxide
 const zoxide_plugin = "~/.config/nushell/plugins/zoxide.nu"
 if ($zoxide_plugin | path exists | not $in) {
@@ -5,9 +9,6 @@ if ($zoxide_plugin | path exists | not $in) {
 }
 source $zoxide_plugin
 
-use gd.nu
-use raws.nu
-use yazi.nu *
 
 # systemd
 # source ../plugins/systemd.nu
