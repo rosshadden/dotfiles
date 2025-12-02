@@ -9,6 +9,8 @@ if ($zoxide_plugin | path exists | not $in) {
 }
 source $zoxide_plugin
 
+# asdf
+source ~/.asdf/completions/nushell.nu
 
 # systemd
 # source ../plugins/systemd.nu

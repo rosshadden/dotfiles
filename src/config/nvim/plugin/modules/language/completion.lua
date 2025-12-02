@@ -41,7 +41,7 @@ local servers = {
 	"sourcekit",
 	"taplo",
 	"ts_ls",
-	"v_analyzer",
+	"vls",
 	"zls",
 }
 vim.lsp.enable(servers)
@@ -123,9 +123,9 @@ map("<bs>", "<c-o>s", "s")
 
 -- inline completions
 
-map("<tab>", function()
+map("<c-t>", function()
 	if not vim.lsp.inline_completion.get() then
-		return "<tab>"
+		return "<c-t>"
 	end
 end, "i", {
 	expr = true,

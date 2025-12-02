@@ -15,6 +15,7 @@ config.front_end = "WebGpu"
 config.font_size = 10
 config.line_height = 1.0
 config.font = wezterm.font_with_fallback({
+	"Miracode",
 	"Monocraft",
 	"Symbols Nerd Font Mono",
 	"Noto Color Emoji",

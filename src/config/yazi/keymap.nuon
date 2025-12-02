@@ -5,6 +5,10 @@
 		prepend_keymap: [
 			[ on run desc ];
 
+			# select
+			[ t toggle "Toggle the current selection state" ]
+			[ T [ toggle "arrow next" ] "Toggle the current selection state" ]
+
 			# create
 			[ o "create" "Create a file (ends with / for directories)" ]
 
@@ -29,6 +33,12 @@
 			[ [c w] "rename --empty=stem --cursor=start" "Rename selected file(s)" ]
 			[ a     "rename --cursor=before_ext"         "Rename selected file(s)" ]
 			[ i     "rename --cursor=start"              "Rename selected file(s)" ]
+
+			# tabs
+			[ "<c-t>" "tab_create --current" "Create a new tab with CWD" ]
+			[ "<a-q>" "close" "Close the current tab, or quit if it's last" ]
+			[ "<a-p>" "tab_switch -1 --relative" "Switch to previous tab" ]
+			[ "<a-n>" "tab_switch 1 --relative" "Switch to next tab" ]
 
 		]
 	}
