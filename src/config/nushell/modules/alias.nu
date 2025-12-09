@@ -3,6 +3,7 @@
 ##
 
 export alias x = exit
+export alias h = help
 
 ##
 ## EDITING
