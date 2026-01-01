@@ -13,6 +13,7 @@
 			[ o "create" "Create a file (ends with / for directories)" ]
 
 			# copy
+			[ [y c] `shell -- nu -c "notify-send hi '$@'"`         "Copy the file contents" ]
 			[ [y d] "copy dirname"          "Copy the directory path" ]
 			[ [y f] "copy filename"         "Copy the filename" ]
 			[ [y n] "copy name_without_ext" "Copy the filename without extension" ]
@@ -39,6 +40,17 @@
 			[ "<a-q>" "close" "Close the current tab, or quit if it's last" ]
 			[ "<a-p>" "tab_switch -1 --relative" "Switch to previous tab" ]
 			[ "<a-n>" "tab_switch 1 --relative" "Switch to next tab" ]
+
+			# relative motions
+			[ "1" "plugin relative-motions 1" "Move in relative steps" ]
+			[ "2" "plugin relative-motions 2" "Move in relative steps" ]
+			[ "3" "plugin relative-motions 3" "Move in relative steps" ]
+			[ "4" "plugin relative-motions 4" "Move in relative steps" ]
+			[ "5" "plugin relative-motions 5" "Move in relative steps" ]
+			[ "6" "plugin relative-motions 6" "Move in relative steps" ]
+			[ "7" "plugin relative-motions 7" "Move in relative steps" ]
+			[ "8" "plugin relative-motions 8" "Move in relative steps" ]
+			[ "9" "plugin relative-motions 9" "Move in relative steps" ]
 
 		]
 	}

@@ -22,6 +22,49 @@ config.font = wezterm.font_with_fallback({
 	"Unifont",
 })
 
+-- normal text
+config.font = wezterm.font({
+	-- family = "Monaspace Neon",
+	family = "Monaspace Argon",
+	-- harfbuzz_features = { "calt", "liga", "dlig", "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08" },
+	harfbuzz_features = { "calt", "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08", "ss09", "ss10", "liga", "dlig", },
+})
+
+config.font_rules = {
+	-- italic
+	{
+		intensity = "Normal",
+		italic = true,
+		font = wezterm.font({
+			family = "Monaspace Radon",
+			-- family = "Monaspace Xenon",
+			style = "Italic",
+		})
+	},
+
+	-- bold
+	{
+		intensity = "Bold",
+		italic = false,
+		font = wezterm.font( {
+			family = "Monaspace Krypton",
+			-- weight = "ExtraBold",
+			weight = "Bold",
+		})
+	},
+
+	-- bold italic
+	{
+		intensity = "Bold",
+		italic = true,
+		font = wezterm.font({
+			family = "Monaspace Xenon",
+			style = "Italic",
+			weight = "Bold",
+		})
+	},
+}
+
 config.enable_wayland = true
 
 -- TODO: add mapping to switch themes

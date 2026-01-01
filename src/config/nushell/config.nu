@@ -1,5 +1,6 @@
 use alias.nu *
 use completions.nu *
+use formats.nu *
 use functions.nu *
 
 use mappings.nu

@@ -2,6 +2,7 @@ local language = Module.new("language", "<space>l")
 
 pack { src = "nvim-treesitter/nvim-treesitter", version = "main" }
 pack { src = "nvim-treesitter/nvim-treesitter-textobjects", version = "main" }
+pack { src = "eraserhd/parinfer-rust" }
 
 --
 -- SETTINGS

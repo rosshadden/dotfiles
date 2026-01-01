@@ -11,7 +11,6 @@ local mini_snippets = require "mini.snippets"
 --
 
 vim.opt.complete = { ".", "w", "b", "u", "kspell" }
-vim.opt.completefuzzycollect = { "keyword", "files", "whole_line" }
 vim.opt.completeopt = { "menuone", "noselect", "fuzzy", "nosort" }
 vim.opt.wildmode = { "noselect:lastused", "full" }
 vim.opt.wildoptions = { "pum", "fuzzy" }
@@ -41,7 +40,7 @@ local servers = {
 	"sourcekit",
 	"taplo",
 	"ts_ls",
-	"vls",
+	-- "vls",
 	"zls",
 }
 vim.lsp.enable(servers)

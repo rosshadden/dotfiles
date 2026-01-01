@@ -174,6 +174,9 @@ $env.PASSWORD_STORE_ENABLE_EXTENSIONS = "true" # [sic]
 # NOTE: workaround because of https://github.com/jonas/tig/issues/1367
 $env.GIT_EDITOR = "nvim"
 
+# docker
+$env.DOCKER_BUILDKIT = 1
+
 ##
 ## insurance
 ##

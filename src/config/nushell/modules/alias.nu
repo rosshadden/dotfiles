@@ -16,6 +16,9 @@ export alias se = sudo -E nvim
 ## APPS
 ##
 
+# paru
+export alias p = paru
+
 # git
 export alias g = git
 export alias tigs = tig status
@@ -26,6 +29,9 @@ export alias tl = tmux list-sessions
 
 # zoxide
 export alias d = zoxide query
+
+# asdf
+export alias ciea = asdf
 
 ##
 ## ENV

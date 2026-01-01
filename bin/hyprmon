@@ -119,9 +119,8 @@ export def zoom [] {
 		match $event.type {
 			openwindow => {
 				let data = $event.data | split column , addr ws class title | first
-				if $data.class == "Zoom Workplace" and $data.title in [ Meeting Webinar "Zoom Workplace" ] {
+				if $data.class == "Zoom Workplace" and $data.title in [ Meeting Webinar ] {
 					$data.addr | save -f $tmp
-					print "zoom started"
 					notify-send zoom "meeting started"
 					eos busy
 				}
