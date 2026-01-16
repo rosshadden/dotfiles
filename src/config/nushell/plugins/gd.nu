@@ -3,8 +3,9 @@ def args [args: list<string>] {
 }
 
 # Open neovim in server mode.
+# TODO: make just `nvim` again, making the nvim config do the hard part
 export def edit [] {
-	nvim
+	nvim --listen ./.sock
 }
 
 # Godot binray.
