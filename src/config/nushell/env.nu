@@ -40,7 +40,7 @@ def color [color: string] {
 }
 
 def prompt_left [] {
-	let dir = match (do -i { $env.PWD | path relative-to $nu.home-path }) {
+	let dir = match (do -i { $env.PWD | path relative-to $nu.home-dir }) {
 		null => $env.PWD
 		"" => "~"
 		$relative_pwd => ([~ $relative_pwd] | path join)

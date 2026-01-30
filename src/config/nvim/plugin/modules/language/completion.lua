@@ -78,12 +78,13 @@ mini_snippets.setup({
 		mini_snippets.gen_loader.from_lang(),
 	},
 	mappings = {
-		expand = "<c-.>",
+		expand = "<c-d>",
 		jump_next = "<right>",
 		jump_prev = "<left>",
 	},
 })
-mini_snippets.start_lsp_server({ match = false })
+-- mini_snippets.start_lsp_server({ match = false })
+mini_snippets.start_lsp_server()
 
 require("copilot").setup({})
 

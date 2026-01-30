@@ -1,2 +1,5 @@
+# common
 *.png
+
+# godot
 *.import

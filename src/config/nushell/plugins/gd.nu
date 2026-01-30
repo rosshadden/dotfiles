@@ -33,8 +33,7 @@ export def run [
 }
 
 # Compile source files.
-export def build [
-] {
+export def build [] {
 	cargo build
 	gdextwiz build
 	tsc
@@ -42,8 +41,7 @@ export def build [
 }
 
 # Watch to compile source files.
-export def watcher [
-] {
+export def watcher [] {
 	watch src {|op, path, new_path|
 		let ext = $path | path parse | get extension
 		if $ext in [ rs nim ts swift v vsh ] {
@@ -76,6 +74,11 @@ export def watcher [
 			}
 		}
 	}
+}
+
+# Check Godot's recent blog entries.
+export def news [] {
+	http get godotengine.org/rss.xml | get content.0.content | where tag == item | get content | take 4 | each { where tag in [title link summary pubDate] | get content.content | flatten }
 }
 
 # Run tests using GUT.

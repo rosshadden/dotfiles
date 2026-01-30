@@ -38,6 +38,7 @@ local languages = {
 	"css",
 	"dockerfile",
 	"gdscript",
+	"gdshader",
 	"go",
 	"godot_resource",
 	"html",
