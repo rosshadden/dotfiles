@@ -31,7 +31,10 @@ require("mini.basics").setup({
 })
 
 mini_pick.setup({
+	-- TODO: open multiple
 	mappings = {
+		choose = "<cr>",
+		choose_marked = "<a-cr>",
 		choose_in_split = "<a-j>",
 		choose_in_vsplit = "<a-l>",
 		choose_in_tabpage = "<a-t>",
@@ -67,6 +70,10 @@ mini_pick.setup({
 			char = "<c-a-t>",
 			func = input_actions("mark", "move_up"),
 		},
+	},
+
+	source = {
+		choose_marked = mini_pick.default_choose_marked(mini_pick.get_picker_matches() or {}, { list_type = "location" }),
 	},
 
 	window = {

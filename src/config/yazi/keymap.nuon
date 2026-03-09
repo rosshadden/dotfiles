@@ -13,7 +13,7 @@
 			[ o "create" "Create a file (ends with / for directories)" ]
 
 			# copy
-			[ [y c] `shell -- nu -c "notify-send hi '$@'"`         "Copy the file contents" ]
+			[ [y c] `shell -- nu -c "open '$@' | wl-copy"`         "Copy the file contents" ]
 			[ [y d] "copy dirname"          "Copy the directory path" ]
 			[ [y f] "copy filename"         "Copy the filename" ]
 			[ [y n] "copy name_without_ext" "Copy the filename without extension" ]

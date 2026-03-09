@@ -83,8 +83,7 @@ mini_snippets.setup({
 		jump_prev = "<left>",
 	},
 })
--- mini_snippets.start_lsp_server({ match = false })
-mini_snippets.start_lsp_server()
+mini_snippets.start_lsp_server({ match = false })
 
 require("copilot").setup({})
 

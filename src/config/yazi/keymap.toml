@@ -21,7 +21,7 @@ on = [
     "y",
     "c",
 ]
-run = '''shell -- nu -c "notify-send hi '$@'"'''
+run = """shell -- nu -c "open '$@' | wl-copy""""
 desc = "Copy the file contents"
 
 [[mgr.prepend_keymap]]
