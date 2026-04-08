@@ -84,6 +84,11 @@
 	s  = status -sb
 	t  = tag
 
+	# show current branch commits
+	sb = !ls .git/refs/remotes/*/$(git pwd) | cut -d/ -f4,5 | xargs git show-branch $(git pwd)
+	# open mergetool to a chosen conflicted file
+	mc = !git mergetool $(git conflicts | fzf)
+
 	# SYNC
 
 	in = !sh -c 'git pull ${1-origin} ${2-$(git pwd)}' -
@@ -145,14 +150,10 @@
 	# remote URL
 	url = !echo -n $(git remote -v | head -1 | gawk '{ print $2 }')
 	web = !git url | sed 's_com:_com/_' | sed 's_git@__' | sed 's_\\.git$__'
-	# show current branch commits
-	sb = !ls .git/refs/remotes/*/$(git pwd) | cut -d/ -f4,5 | xargs git show-branch $(git pwd)
 	# delete local branches that are already merged into HEAD
 	shear = !git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
 	# list conflicted files
 	conflicts = !git s | grep 'UU' | awk '{ print $2 }'
-	# open mergetool to a chosen conflicted file
-	mc = !git mergetool $(git conflicts | fzf)
 
 	# DIFFING
 
@@ -161,7 +162,7 @@
 
 	# SEARCHING
 
-	rg = grep -I --ignore-case --line-number --heading --break
+	g = grep -I --ignore-case --line-number --heading --break
 
 	# STASHING
 

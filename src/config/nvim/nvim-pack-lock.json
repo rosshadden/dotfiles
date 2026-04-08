@@ -1,0 +1,90 @@
+{
+  "plugins": {
+    "copilot.lua": {
+      "rev": "575646d22e4a80758935e92f7be7e210c1ceb5bc",
+      "src": "https://github.com/zbirenbaum/copilot.lua"
+    },
+    "cyberdream.nvim": {
+      "rev": "a68ffa6af98bf1fc88f33a071c51a188ec85c725",
+      "src": "https://github.com/scottmckendry/cyberdream.nvim"
+    },
+    "dial.nvim": {
+      "rev": "f2634758455cfa52a8acea6f142dcd6271a1bf57",
+      "src": "https://github.com/monaqa/dial.nvim"
+    },
+    "ergoterm.nvim": {
+      "rev": "0fd6870bbbd3de5ab198bff0fceaa6f694ead01c",
+      "src": "https://github.com/waiting-for-dev/ergoterm.nvim"
+    },
+    "gitsigns.nvim": {
+      "rev": "7c4faa3540d0781a28588cafbd4dd187a28ac6e3",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
+    "hop.nvim": {
+      "rev": "707049feaca9ae65abb3696eff9aefc7879e66aa",
+      "src": "https://github.com/smoka7/hop.nvim"
+    },
+    "mini.nvim": {
+      "rev": "9d359222b3643f1fccbd8f3180445842e1cae00b",
+      "src": "https://github.com/nvim-mini/mini.nvim"
+    },
+    "nvim-lspconfig": {
+      "rev": "0203a9608d63eda57679b01e69f33a7b4c34b0d1",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "nvim-spider": {
+      "rev": "4bca4dbc53f01b37385146b37ab5ce55bdc083fc",
+      "src": "https://github.com/chrisgrieser/nvim-spider"
+    },
+    "nvim-treesitter": {
+      "rev": "5cb05e1b0fa3c469958a2b26f36b3fe930af221c",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
+      "version": "'main'"
+    },
+    "nvim-treesitter-textobjects": {
+      "rev": "4e91b5d0394329a229725b021a8ea217099826ef",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+      "version": "'main'"
+    },
+    "nvim-various-textobjs": {
+      "rev": "34ca4f6b54cf167554c5792cacc69c930b654136",
+      "src": "https://github.com/chrisgrieser/nvim-various-textobjs"
+    },
+    "obsidian-bridge.nvim": {
+      "rev": "28f076e861900902ee2e01c874a0195b64ca03b6",
+      "src": "https://github.com/oflisback/obsidian-bridge.nvim"
+    },
+    "obsidian.nvim": {
+      "rev": "ffb5882b8b3a29acb615f253da96e1da5057f89d",
+      "src": "https://github.com/obsidian-nvim/obsidian.nvim"
+    },
+    "parinfer-rust": {
+      "rev": "845bfbb9916687cba5b6bae088c9eab70dbb83a3",
+      "src": "https://github.com/eraserhd/parinfer-rust"
+    },
+    "persistence.nvim": {
+      "rev": "b20b2a7887bd39c1a356980b45e03250f3dce49c",
+      "src": "https://github.com/folke/persistence.nvim"
+    },
+    "plantuml-syntax": {
+      "rev": "9d4900aa16674bf5bb8296a72b975317d573b547",
+      "src": "https://github.com/aklt/plantuml-syntax"
+    },
+    "plenary.nvim": {
+      "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "render-markdown.nvim": {
+      "rev": "e3c18ddd27a853f85a6f513a864cf4f2982b9f26",
+      "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+    },
+    "snacks.nvim": {
+      "rev": "9912042fc8bca2209105526ac7534e9a0c2071b2",
+      "src": "https://github.com/folke/snacks.nvim"
+    },
+    "yazi.nvim": {
+      "rev": "8e6336856dfb4cb4b48aef62f9fbcc79931fdefb",
+      "src": "https://github.com/mikavilpas/yazi.nvim"
+    }
+  }
+}
