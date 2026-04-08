@@ -157,6 +157,7 @@ $env.FZF_DEFAULT_OPTS = ([
 
 # steam
 $env.STEAM_COMPAT_CLIENT_INSTALL_PATH = "~/.local/share/Steam/"
+# $env.STEAM_COMPAT_DATA_PATH = "/media/data/games/proton/"
 
 # godot
 $env.GODOT_BIN = "/usr/bin/godot"
