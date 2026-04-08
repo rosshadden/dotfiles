@@ -1,7 +1,7 @@
 {
   "plugins": {
     "copilot.lua": {
-      "rev": "575646d22e4a80758935e92f7be7e210c1ceb5bc",
+      "rev": "538f15c4eaad8661389a4a0d1ace2d6e079fac29",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "cyberdream.nvim": {
@@ -25,24 +25,28 @@
       "src": "https://github.com/smoka7/hop.nvim"
     },
     "mini.nvim": {
-      "rev": "9d359222b3643f1fccbd8f3180445842e1cae00b",
+      "rev": "439cdcd6992bc9012efd7d8ed7a7b7a0f1fac32a",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "nvim-lspconfig": {
-      "rev": "0203a9608d63eda57679b01e69f33a7b4c34b0d1",
+      "rev": "841c6d4139aedb8a3f2baf30cef5327371385b93",
       "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "nvim-soil": {
+      "rev": "6f6c3d2ddb6d450feaa5b173e293dd914e4bd712",
+      "src": "https://github.com/javiorfo/nvim-soil"
     },
     "nvim-spider": {
       "rev": "4bca4dbc53f01b37385146b37ab5ce55bdc083fc",
       "src": "https://github.com/chrisgrieser/nvim-spider"
     },
     "nvim-treesitter": {
-      "rev": "5cb05e1b0fa3c469958a2b26f36b3fe930af221c",
+      "rev": "6620ae1c44dfa8623b22d0cbf873a9e8d073b849",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
     "nvim-treesitter-textobjects": {
-      "rev": "4e91b5d0394329a229725b021a8ea217099826ef",
+      "rev": "93d60a475f0b08a8eceb99255863977d3a25f310",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
       "version": "'main'"
     },
@@ -55,7 +59,7 @@
       "src": "https://github.com/oflisback/obsidian-bridge.nvim"
     },
     "obsidian.nvim": {
-      "rev": "ffb5882b8b3a29acb615f253da96e1da5057f89d",
+      "rev": "6ea8b9d1ce10dd41795f298dd7f4dd3a26887d39",
       "src": "https://github.com/obsidian-nvim/obsidian.nvim"
     },
     "parinfer-rust": {
@@ -70,6 +74,10 @@
       "rev": "9d4900aa16674bf5bb8296a72b975317d573b547",
       "src": "https://github.com/aklt/plantuml-syntax"
     },
+    "plantuml.nvim": {
+      "rev": "acd1162b3ad23d2d51b0ca98eb54116dfbf8210f",
+      "src": "https://github.com/charlesnicholson/plantuml.nvim"
+    },
     "plenary.nvim": {
       "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
       "src": "https://github.com/nvim-lua/plenary.nvim"
@@ -79,11 +87,11 @@
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "snacks.nvim": {
-      "rev": "9912042fc8bca2209105526ac7534e9a0c2071b2",
+      "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
       "src": "https://github.com/folke/snacks.nvim"
     },
     "yazi.nvim": {
-      "rev": "8e6336856dfb4cb4b48aef62f9fbcc79931fdefb",
+      "rev": "9c881003b71816f4b8e9e6364095e20c90370711",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
