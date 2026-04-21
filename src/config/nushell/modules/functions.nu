@@ -61,9 +61,12 @@ export def last-arg [] {
 }
 
 # Print input and pass it on
-export def spy [] {
+export def spy [
+	value?: any # override the value to print
+] {
 	do {|input|
-		print $input
+		if ($value | is-empty) { $input } else { $value }
+		| print $in
 		$input
 	} $in
 }

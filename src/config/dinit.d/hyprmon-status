@@ -1,0 +1,5 @@
+type = process
+command = nu -l -c "hyprmon status"
+restart = true
+logfile = ./logs/hyprmon-status.log
+env-file = ./.env
