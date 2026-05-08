@@ -32,7 +32,7 @@ export def dupe [
 	...files: path # files to dupe
 ] {
 	if $direction == "to" {
-		^cp -r $files $path
+		^cp -r ...$files $path
 	} else {
 		for file in $files {
 			cp -r $"($path)/($file)" $file

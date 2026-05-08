@@ -21,7 +21,7 @@ on = [
     "y",
     "c",
 ]
-run = """shell -- nu -c "open '$@' | wl-copy""""
+run = """shell -- nu -c 'open "$@" | wl-copy'"""
 desc = "Copy the file contents"
 
 [[mgr.prepend_keymap]]
@@ -156,6 +156,23 @@ desc = "Switch to previous tab"
 on = "<a-n>"
 run = "tab_switch 1 --relative"
 desc = "Switch to next tab"
+
+[[mgr.prepend_keymap]]
+on = [
+    '\',
+    "b",
+]
+run = '''
+shell --block -- nu -c '
+					[ %s ] | each {
+						if ($in | str ends-with ".bak") {
+							mv $in ($in | str replace --regex \.bak$ "")
+						} else {
+							mv $in $"($in).bak"
+						}
+					}
+				''''
+desc = "Toggle .bak suffix"
 
 [[mgr.prepend_keymap]]
 on = "1"
