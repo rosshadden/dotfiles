@@ -8,3 +8,4 @@ src/config/rtv/history.log
 src/config/rtv/refresh-token
 src/config/yazi/flavors/
 src/config/yazi/theme.toml-*
+src/config/nvim/nvim-pack-lock.json
