@@ -37,25 +37,6 @@ def _process [event: record] {
 		activewindowv2 => {
 			refresh window $event
 		}
-		createworkspace => {
-			match $event.data {
-				"1" => { "web" }
-				"2" => { "dev" }
-				"3" => { "remote" }
-				"4" => { "hack" }
-				"5" => { "lit" }
-				"6" => { "media" }
-				"7" => { "music" }
-				"8" => { "monitor" }
-				"9" => { "files" }
-				"10" => { "chat" }
-				"11" => { "lab" }
-				"12" => { "games" }
-				_ => {
-					return
-				}
-			} | hyprctl dispatch renameworkspace $event.data $in
-		}
 		workspace | createworkspace | destroyworkspace | renameworkspace | moveworkspace | focusedmon | activespecial => {
 			refresh workspaces
 		}

@@ -1,0 +1,5 @@
+type = process
+command = /usr/local/bin/vbar
+restart = true
+logfile = ./logs/vbar.log
+env-file = ./.env

@@ -233,3 +233,13 @@ export def --env rd [
 # TODO
 export def --env --wrapped Z [...rest: string] {
 }
+
+# Ergonomic wrapper for `sd`.
+#
+# Uses `rg` to get applicable list of files.
+export def sdd [
+	pattern: string
+	replace: string
+] {
+	sd $pattern $replace ...(rg -l $pattern | lines)
+}
