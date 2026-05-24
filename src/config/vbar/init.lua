@@ -1,5 +1,15 @@
 local vbar = require("vbar")
 
+--
+-- UTILS
+
+function p(value)
+	vbar.exec("notify-send debug %s" % value)
+end
+
+--
+-- SETUP
+
 vbar.setup({
 	shell = { "nu", "-c" },
 
@@ -7,27 +17,28 @@ vbar.setup({
 	font_size = "12pt",
 	bg_color = "#1e1e2e",
 	fg_color = "#cdd6f4",
-
-	providers = {
-		cpu = { interval = 2 },
-		ram = { interval = 2 },
-	}
 })
 
--- Ruby/Python style string formatting.
-getmetatable("").__mod = function(a, b)
-	if not b then
-		return a
-	elseif type(b) == "table" then
-		return string.format(a, table.unpack(b))
-	else
-		return string.format(a, b)
-	end
-end
+--
+-- VARIABLES
 
-function p(value)
-	vbar.exec("notify-send debug %s" % value)
-end
+local volume = vbar.var("volume")
+volume:poll([[$"(ponymix get-volume)%(try { ponymix is-muted; ' [muted]' } catch { '' })"]])
+
+local media = vbar.var("media")
+media:poll([[playerctl metadata --format "{{artist}} - {{title}}"]])
+
+local title = vbar.var("title")
+title:poll([[hyprctl activewindow -j | from json | get title]])
+
+local lab = vbar.var("lab", { foo = "bar" })
+local mode = vbar.var("mode", "NORMAL")
+
+local clipboard = vbar.var("clipboard", "clip")
+clipboard:poll("wl-paste | lines | first", { interval = 5 })
+
+--
+-- WIDGETS
 
 local ws = vbar.workspaces({
 	active_color = "#89b4fa",
@@ -35,6 +46,9 @@ local ws = vbar.workspaces({
 function ws:click(name)
 	vbar.exec("hyprctl dispatch workspace %s | ignore" % name)
 end
+
+--
+-- BARS
 
 local top_bar = vbar.bar({
 	height = 16,
@@ -44,10 +58,11 @@ local top_bar = vbar.bar({
 		ws,
 	},
 	center = {
+		title,
 	},
 	right = {
-		vbar.label("${date}"),
-		vbar.label("${time}"),
+		vbar.vars.date:format("🗓️ {}"),
+		vbar.vars.time:format("🕑 {}"),
 	},
 })
 
@@ -61,28 +76,21 @@ function top_bar:scroll(dir)
 	]] % { self.monitor.id, self.monitor.id, dir, self.monitor.id, sign })
 end
 
-local volume = vbar.var("volume", { interval = 1 })
-function volume:poll()
-	return vbar.exec([[$"(ponymix get-volume)%(try { ponymix is-muted; ' [muted]' } catch { '' })"]])
-end
-
-local media = vbar.var("media", { interval = 5 })
-function media:poll()
-	return vbar.exec([[playerctl metadata --format "{{artist}} - {{title}}"]])
-end
-
 vbar.bar({
 	height = 16,
 	anchors = { "left", "right", "bottom" },
 
 	left = {
-		vbar.label("VOL ${volume}"),
+		volume:format("VOL {}"),
+		mode,
+		lab,
 	},
 	center = {
-		vbar.label("${media}"),
+		media,
 	},
 	right = {
-		vbar.label("CPU ${cpu.avg}%"),
-		vbar.label("RAM ${ram.pct}%"),
+		clipboard,
+		vbar.vars.cpu:format("CPU {}"),
+		vbar.vars.mem:format("MEM {}"),
 	},
 })
