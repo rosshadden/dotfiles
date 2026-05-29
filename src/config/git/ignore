@@ -1,5 +1,12 @@
+# env
+
+.env
+
 # project
 
 .ignore
 
-**/.claude/settings.local.json
+# apps
+
+**/.claude/settings*.json
+CLAUDE.md

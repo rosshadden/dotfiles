@@ -9,7 +9,11 @@ def request [endpoint: string, payload?: record] {
 	} else {
 		http post -t application/json -H $headers $"($api)($endpoint)" $payload
 	}
-	$res | to json -r | eww update $"eos=($in)"
+
+	# TODO: break this out and make it write to a socket or something that eww/vbar can use
+	# $res | to json -r | eww update $"eos=($in)"
+	# $res | to json -r | ~/dev/src/lab/vbar/vbar update $"eos=($in)"
+
 	$res
 }
 
@@ -67,6 +71,7 @@ export def main [
 	if $state == null {
 		return (request $"/states/($entity)" | match $format {
 			json => { $in | to json -r }
+			nuon => { $in | to nuon }
 			_ => {}
 		})
 	}
@@ -94,6 +99,7 @@ export def led [
 	if $color == null {
 		return (request $"/states/($entity)" | match $format {
 			json => { $in | to json -r }
+			nuon => { $in | to nuon }
 			_ => {}
 		})
 	}
@@ -103,6 +109,7 @@ export def led [
 		color_name: $color
 	} | match $format {
 		json => { $in | to json -r }
+		nuon => { $in | to nuon }
 		_ => {}
 	}
 }
