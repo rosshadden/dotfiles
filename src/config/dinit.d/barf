@@ -1,0 +1,5 @@
+type = process
+command = /usr/local/bin/barf
+restart = true
+logfile = ./logs/barf.log
+env-file = ./.env

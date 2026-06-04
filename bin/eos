@@ -10,9 +10,9 @@ def request [endpoint: string, payload?: record] {
 		http post -t application/json -H $headers $"($api)($endpoint)" $payload
 	}
 
-	# TODO: break this out and make it write to a socket or something that eww/vbar can use
+	# TODO: break this out and make it write to a socket or something that eww/barf can use
 	# $res | to json -r | eww update $"eos=($in)"
-	# $res | to json -r | ~/dev/src/lab/vbar/vbar update $"eos=($in)"
+	# $res | to json -r | ~/dev/src/lab/barf/barf update $"eos=($in)"
 
 	$res
 }

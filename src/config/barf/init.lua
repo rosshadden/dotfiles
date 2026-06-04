@@ -1,17 +1,17 @@
-local vbar = require("vbar")
+local barf = require("barf")
 
 --
 -- UTILS
 
 function p(value)
-	vbar.exec([[notify-send debug "%s"]] % value)
+	barf.exec([[notify-send debug "%s"]] % value)
 end
 
 -- Get hyprland workspaces.
 -- TODO: make work
 function get_workspaces()
-	local out = vbar.exec("hyprctl workspaces -j")
-	return vbar.json.decode(out)
+	local out = barf.exec("hyprctl workspaces -j")
+	return barf.json.decode(out)
 end
 
 -- Truncate text to a given length.
@@ -26,7 +26,7 @@ end
 --
 -- SETUP
 
-vbar.setup({
+barf.setup({
 	shell = { "nu", "-c" },
 
 	font_family = "monospace",
@@ -39,11 +39,11 @@ vbar.setup({
 -- VARIABLES
 
 local volume_cmd = [[$"(ponymix get-volume)%(try { ponymix is-muted; ' [muted]' } catch { '' })"]]
-local volume = vbar.var("volume")
+local volume = barf.var("volume")
 	:listen([[pactl subscribe | grep --line-buffered "on sink"]], volume_cmd)
 	:poll(volume_cmd, { interval = 5 })
 
-local media = vbar.var("media")
+local media = barf.var("media")
 	:listen(
 		[[playerctl --follow metadata --format "[{{status}}] {{artist}} - {{title}}"]],
 		[[
@@ -54,15 +54,15 @@ local media = vbar.var("media")
 		]]
 	)
 
-local title = vbar.var("title")
+local title = barf.var("title")
 	:poll([[hyprctl activewindow -j | from json | get title]])
 
-local mode = vbar.var("mode"):set("NORMAL")
+local mode = barf.var("mode"):set("NORMAL")
 
 --
 -- WIDGETS
 
-local ws = vbar.workspaces({
+local ws = barf.workspaces({
 	active_color = "#89b4fa",
 })
 	:click([[hyprctl dispatch workspace {} | ignore]])
@@ -70,29 +70,29 @@ local ws = vbar.workspaces({
 	-- TODO: abstract working with hyprctl
 	:middle_click([[hyprctl workspaces -j | from json | where name == "{}" | get 0.lastwindow | hyprctl dispatch closewindow $"address:($in)" | ignore]])
 
-local clipboard = vbar.var("clipboard")
+local clipboard = barf.var("clipboard")
 	:poll(function()
-		return truncate(vbar.exec([[wl-paste]]), 64)
+		return truncate(barf.exec([[wl-paste]]), 64)
 	end, { interval = 5 })
 	:drag()
 	:drop(function(self, value)
-		vbar.exec([[wl-copy "%s"]] % value)
+		barf.exec([[wl-copy "%s"]] % value)
 		self:set(truncate(value, 64))
 	end)
 	:format("📋 {}")
 
-local eos = vbar.var("eos")
+local eos = barf.var("eos")
 	:poll([[eos --format json | from json | get state]], {
 		-- TODO: why does `-l` not work in shell?
 		-- shell = { "nu", "-l", "-c" }
 	})
 	:format("EOS:{}")
 
-local vpn = vbar.var("vpn")
+local vpn = barf.var("vpn")
 	-- :poll([[which -a cu]], { interval = 60 })
   -- "nu -l -c 'cu vpn status | get --ignore-errors state | default null'")
 
-local lab = vbar.label("lab!")
+local lab = barf.label("lab!")
 	:click([[notify-send click left]])
 	:right_click([[notify-send click right]])
 	:middle_click([[notify-send click middle]])
@@ -101,7 +101,7 @@ local lab = vbar.label("lab!")
 --
 -- BARS
 
-local top_bar = vbar.bar({
+local top_bar = barf.bar({
 	height = 16,
 	anchors = { "left", "right", "top" },
 
@@ -112,13 +112,13 @@ local top_bar = vbar.bar({
 		title,
 	},
 	right = {
-		vbar.vars.date:format("🗓️ {}"),
-		vbar.vars.time:format("🕑 {}"),
+		barf.vars.date:format("🗓️ {}"),
+		barf.vars.time:format("🕑 {}"),
 	},
 })
 function top_bar:scroll(dir)
 	local sign = dir == "up" and "-" or "+"
-	vbar.exec([[
+	barf.exec([[
 		let current = (hyprctl monitors -j | from json | where id == %d | get activeWorkspace.id | get 0)
 		let workspaces = (hyprctl workspaces -j | from json | where monitorID == %d and name !~ special | sort-by id | get id)
 		let can_move = if "%s" == "up" { $workspaces | any {|w| $w < $current} } else { $workspaces | any {|w| $w > $current} }
@@ -126,7 +126,7 @@ function top_bar:scroll(dir)
 	]] % { self.monitor.id, self.monitor.id, dir, self.monitor.id, sign })
 end
 
-vbar.bar({
+barf.bar({
 	height = 16,
 	anchors = { "left", "right", "bottom" },
 
@@ -142,8 +142,8 @@ vbar.bar({
 	},
 	right = {
 		clipboard,
-		vbar.vars.cpu:format("CPU:{}"),
-		vbar.vars.mem:format("MEM:{}"),
-		vbar.systray(),
+		barf.vars.cpu:format("CPU:{}"),
+		barf.vars.mem:format("MEM:{}"),
+		barf.systray(),
 	},
 })
