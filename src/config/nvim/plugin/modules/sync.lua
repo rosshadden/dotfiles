@@ -45,3 +45,12 @@ end)
 sync:map("l", function()
 	tigs:toggle "right"
 end)
+
+local gitui = utils.Term:new({
+	cmd = "gitui",
+	persist_mode = true,
+})
+
+sync:map("u", function()
+	gitui:toggle "float"
+end)

@@ -88,6 +88,9 @@ local eos = barf.var("eos")
 	})
 	:format("EOS:{}")
 
+local eos = barf.var("eos.state")
+	:poll("nu -l -c 'eos | to json -r' | nu -c 'from json | get state'", { interval = 60 })
+
 local vpn = barf.var("vpn")
 	-- :poll([[which -a cu]], { interval = 60 })
   -- "nu -l -c 'cu vpn status | get --ignore-errors state | default null'")
@@ -117,11 +120,11 @@ local top_bar = barf.bar({
 	},
 })
 function top_bar:scroll(dir)
-	local sign = dir == "up" and "-" or "+"
+	local sign = dir == "up" and "+" or "-"
 	barf.exec([[
 		let current = (hyprctl monitors -j | from json | where id == %d | get activeWorkspace.id | get 0)
 		let workspaces = (hyprctl workspaces -j | from json | where monitorID == %d and name !~ special | sort-by id | get id)
-		let can_move = if "%s" == "up" { $workspaces | any {|w| $w < $current} } else { $workspaces | any {|w| $w > $current} }
+		let can_move = if "%s" == "down" { $workspaces | any {|w| $w < $current} } else { $workspaces | any {|w| $w > $current} }
 		if $can_move { hyprctl dispatch focusmonitor %d; hyprctl dispatch workspace m%s1 | ignore }
 	]] % { self.monitor.id, self.monitor.id, dir, self.monitor.id, sign })
 end
@@ -133,7 +136,11 @@ barf.bar({
 	left = {
 		mode,
 		volume:format("VOL:{}"),
-		eos,
+		barf.combo({
+			items = { "off", "free", "focus", "busy" },
+			var = eos,
+			onchange = "eos {} | ignore",
+		}),
 		vpn:format("VPN:{}"),
 		lab,
 	},

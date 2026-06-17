@@ -237,9 +237,14 @@ export def --env --wrapped Z [...rest: string] {
 # Ergonomic wrapper for `sd`.
 #
 # Uses `rg` to get applicable list of files.
+# If no replacement is given, just runs `rg` to search.
 export def sdd [
-	pattern: string
-	replace: string
+	pattern: string # Pattern to search for
+	replace?: string # Replacement string
 ] {
+	if ($replace | is-empty) {
+		rg $pattern
+		return
+	}
 	sd $pattern $replace ...(rg -l $pattern | lines)
 }

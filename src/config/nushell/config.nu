@@ -28,6 +28,11 @@ $env.config.keybindings = (mappings)
 $env.config.menus = (menus)
 $env.config.color_config = (theme)
 
+# abbreviations
+$env.config.abbreviations = {
+	g: "git"
+}
+
 $env.config.hooks.env_change.PWD = [
 	{|before, after|
 		zoxide add .

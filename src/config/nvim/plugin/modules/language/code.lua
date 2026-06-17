@@ -17,6 +17,9 @@ vim.opt.spelllang = "en_us"
 -- meta
 vim.opt.swapfile = false
 
+-- langs
+vim.g.rust_recommended_style = false
+
 --
 -- FUCTIONS
 --
@@ -126,6 +129,11 @@ code:map("s", mini_pick.registry.spellsuggest)
 
 map("grd", vim.lsp.buf.definition)
 map("grf", vim.lsp.buf.format)
+
+-- spaces -> tabs
+code:map("t", function()
+	vim.cmd("%s/    /\t/")
+end)
 
 --
 -- EVENTS
