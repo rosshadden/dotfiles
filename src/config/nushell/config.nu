@@ -29,9 +29,7 @@ $env.config.menus = (menus)
 $env.config.color_config = (theme)
 
 # abbreviations
-$env.config.abbreviations = {
-	g: "git"
-}
+$env.config.abbreviations = {}
 
 $env.config.hooks.env_change.PWD = [
 	{|before, after|

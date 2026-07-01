@@ -20,6 +20,7 @@ export alias se = sudo -E nvim
 export alias p = paru
 
 # git
+export alias g = git
 export alias tigs = tig status
 export alias tigr = tig $"(git rev-parse HEAD | str trim)..(git rev-parse FETCH_HEAD | str trim)"
 
