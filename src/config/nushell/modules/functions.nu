@@ -79,7 +79,7 @@ export def rend [
 	string -> string
 	record -> string
 ] {
-	let temp_file = mktemp -t rend.XXX.tmp
+	let temp_file = ^mktemp -t rend.XXX.tmp
 	$template | save -f $temp_file
 	let res = $in
 	| if ($in | is string) { from nuon } else {}

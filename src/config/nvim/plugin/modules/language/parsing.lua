@@ -55,6 +55,7 @@ local languages = {
 	"php",
 	"proto",
 	"python",
+	"ron",
 	"rust",
 	"terraform",
 	"toml",
